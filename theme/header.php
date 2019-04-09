@@ -16,7 +16,10 @@
 			if(Auth::isLoggedIn()) {
 				?>
 					<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0">
-						<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="<?php print $template->url('/'); ?>">fruithost</a>
+						<a class="navbar-brand col-12 col-sm-4 col-md-3 col-lg-2 mr-0" href="<?php print $template->url('/'); ?>">fruithost</a>
+						<button class="d-md-none navbar-toggler p-0 border-0 mr-auto ml-2" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
 						<ul class="navbar-nav px-3">
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="picture" src="http://www.gravatar.com/avatar/68c699b5eeb1eb7dfc96b7df85241925?s=22&d=mm&r=g" /> Account</a>
@@ -31,7 +34,7 @@
 					</nav>
 					<div class="container-fluid">
 						<div class="row">
-							<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+							<nav class="col-12 col-sm-4 col-md-3 col-lg-2 bg-light sidebar d-md-none d-md-block collapse navbar-collapse" id="sidebar">
 								<div class="sidebar-sticky">
 									<?php
 										if(!$navigation->isEmpty()) {

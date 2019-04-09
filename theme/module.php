@@ -3,25 +3,53 @@
 	?>
 		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 			<h1 class="h2">
-				<a href="<?php print $this->url(sprintf('/module/%s', $module)); ?>"><?php print $module; ?></a>
+				<a href="<?php print $this->url(sprintf('/module/%s', $module->getInfo()->getName())); ?>"><?php print $module->getInfo()->getName(); ?></a>
 				<?php
 					if(!empty($submodule)) {
 						?>
 							<i class="material-icons">arrow_right</i>
-							<a href="<?php print $this->url(sprintf('/module/%s/%s', $module, $submodule)); ?>"><?php print $submodule; ?></a>
+							<a href="<?php print $this->url(sprintf('/module/%s/%s', $module->getInfo()->getName(), $submodule)); ?>"><?php print $submodule; ?></a>
 						<?php
 					}
 				?>
 			</h1>
-			<div class="btn-toolbar mb-2 mb-md-0">
-				<div class="btn-group mr-2">
-					<button type="button" class="btn btn-sm btn-outline-secondary">Create</button>
-					<button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
-				</div>
-				<button type="button" class="btn btn-sm btn-outline-primary">Save</button>
-			</div>
+			<?php
+				$buttons = $this->getCore()->getHooks()->applyFilter('buttons', []);
+				
+				if(!empty($buttons)) {
+					?>
+						<div class="btn-toolbar mb-2 mb-md-0">
+							<?php
+								foreach($buttons AS $button) {
+									if(is_array($button) && !is_object($button)) {
+										printf('<div class="btn-group mr-2">');
+										
+										foreach($button AS $entry) {
+											if($entry->hasModal()) {
+												printf('<button type="button" name="%1$s" data-toggle="modal" data-target="#%4$s" class="btn btn-sm %3$s">%2$s</button>', $entry->getName(), $entry->getLabel(), $entry->getClasses(false), $entry->getModal());
+											} else {
+												printf('<button type="submit" name="%1$s" class="btn btn-sm %3$s">%2$s</button>', $entry->getName(), $entry->getLabel(), $entry->getClasses(false));
+											}
+										}
+										
+										printf('</div>');
+									} else {
+										if($button->hasModal()) {
+											printf('<button type="button" name="%1$s" data-toggle="modal" data-target="#%4$s" class="btn mr-2 btn-sm %3$s">%2$s</button>', $button->getName(), $button->getLabel(), $button->getClasses(false), $button->getModal());
+										} else {
+											printf('<button type="submit" name="%1$s" class="btn mr-2 btn-sm %3$s">%2$s</button>', $button->getName(), $button->getLabel(), $button->getClasses(false));
+										}
+									}
+								}
+							?>
+						</div>
+					<?php
+				}
+			?>
 		</div>
-		<p>Content...</p>
+		<?php
+			$module->getInstance()->content();
+		?>
 	<?php
 	$template->footer();
 ?>

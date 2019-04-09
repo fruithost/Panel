@@ -28,6 +28,8 @@ body.sortable {
 .sidebar-sticky {
 	position: relative;
 	top: 0;
+	left: 0;
+	right: 0;
 	height: calc(100vh - 48px);
 	padding-top: .5rem;
 	overflow-x: hidden;
@@ -72,10 +74,10 @@ body.sortable {
 }
 
 [role="main"] {
-	padding-top: 133px;
+	padding-top: 100px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 576px) {
 	[role="main"] {
 		padding-top: 48px;
 	}
@@ -181,4 +183,12 @@ ul.sortable li ul.list-unstyled li a div.icon {
 
 ul.sortable li ul.list-unstyled li a div.label {
 	font-size: 12px;
+}
+
+.jumbotron .material-icons {
+	font-size: 100px;
+}
+
+.jumbotron .btn-lg {
+	padding: 15px 50px;
 }

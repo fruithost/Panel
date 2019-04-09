@@ -71,8 +71,8 @@
 		
 		private function init() {
 			$this->hooks	= new Hooks();
-			$this->modules	= new Modules($this);
 			$this->template	= new Template($this);
+			$this->modules	= new Modules($this);
 			$this->router	= new Router($this);
 			
 			$this->router->addRoute('/', function() {
@@ -128,6 +128,24 @@
 					return;
 				}
 
+				$module = $this->getModules()->getModule($module);
+				
+				if(empty($module)) {
+					$this->template->display('error/module', [
+						'module'	=> $module,
+						'submodule'	=> $submodule
+					]);
+					return;
+				}
+				
+				if(!method_exists($module->getInstance(), 'content')) {
+					$this->template->display('error/module_empty', [
+						'module'	=> $module,
+						'submodule'	=> $submodule
+					]);
+					return;
+				}
+				
 				$this->template->display('module', [
 					'module'	=> $module,
 					'submodule'	=> $submodule

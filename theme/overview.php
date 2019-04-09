@@ -8,12 +8,12 @@
 			<h4 class="alert-heading">Welcome to fruithost!</h4>
 			<p>We've assembled some links to get you started:</p>
 			<div class="row">
-				<div class="col-4 text-center">
+				<div class="col-sm-4 text-center">
 					<h6 class="text-left">Get Started</h6>
 					<a href="<?php print $template->url('/module/domains'); ?>" class="btn btn-primary btn-lg ml-4 mr-4 mt-2">Create a Domain</a>
 					<p>or <a href="<?php print $template->url('/module/subdomains'); ?>">create a new subdomain</a></p>
 				</div>
-				<div class="col-4">
+				<div class="col-sm-4">
 					<h6>Next Steps</h6>
 					<ul class="list-unstyled">
 						<li><i class="material-icons">folder</i> <a href="<?php print $template->url('/module/ftp'); ?>">Create an FTP Account</a></li>
@@ -21,7 +21,7 @@
 						<li><i class="material-icons">mail_outline</i> <a href="<?php print $template->url('/module/mailserver'); ?>">Create a new Mailbox</a></li>
 					</ul>
 				</div>
-				<div class="col-4">
+				<div class="col-sm-4">
 					<h6>More Actions</h6>
 					<ul class="list-unstyled">
 						<li><i class="material-icons">settings</i> <a href="<?php print $template->url('/settings'); ?>">Modify your Account settings</a></li>
@@ -49,7 +49,6 @@
 								$visible = true;
 							}
 						}
-						
 						?>
 							<li class="col-md-6">
 								<div class="card m-2">
@@ -60,7 +59,6 @@
 											</div>
 											<div class="col text-right actions mr-0 pr-0">
 												<i class="material-icons" data-toggle="collapse" data-target="#overview_<?php print $category->getID(); ?>" aria-expanded="false" aria-controls="overview_<?php print $category->getID(); ?>">arrow_drop_up</i>
-												<!--<i class="material-icons moveable">zoom_out_map</i>-->
 											</div>
 										</div>
 									</div>

@@ -15,6 +15,10 @@
 			return (!empty($this->info) && !$this->info->isValid());
 		}
 		
+		public function getInfo() {
+			return $this->info;
+		}
+		
 		public function getInstance() {
 			return $this->instance;
 		}

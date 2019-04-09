@@ -17,6 +17,40 @@
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane show active" id="details" role="tabpanel" aria-labelledby="details-tab">
 					<p class="text-secondary p-4">Current personal details that you have provided us with, We ask that you keep these upto date in case we require to contact you regarding your hosting package.</p>
+					
+					<div class="container">
+						<div class="form-group row">
+							<label for="email" class="col-sm-2 col-form-label">E-Mail Adresss:</label>
+							<div class="col-sm-10">
+								<input type="email" class="form-control" id="email" value="" />
+							</div>
+						</div>
+						<hr class="mb-4" />
+						<div class="form-group row">
+							<label for="name_first" class="col-sm-2 col-form-label">Full Name:</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" id="name_first" value="" />
+							</div>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" id="name_last" value="" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="phone" class="col-sm-2 col-form-label">Phone Number:</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="phone" value="" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="address" class="col-sm-2 col-form-label">Postal Address:</label>
+							<div class="col-sm-10">
+								<textarea class="form-control" id="address"></textarea>
+							</div>
+						</div>
+						<div class="form-group text-right">
+							<button type="submit" class="btn btn-outline-success">Save</button>
+						</div>
+					</div>					
 				</div>
 				<div class="tab-pane" id="password" role="tabpanel" aria-labelledby="password-tab">
 					<p class="text-secondary p-4">Change your current control panel password.</p>

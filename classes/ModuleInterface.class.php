@@ -18,6 +18,28 @@
 			return $this->core;
 		}
 		
+		public function addButton($button) {
+			$this->addFilter('buttons', function($buttons) use($button) {
+				$buttons[] = $button;
+				return $buttons;
+			});
+		}
+		
+		public function addModal($modal) {
+			$this->addFilter('modals', function($modals) use($modal) {
+				$modals[] = $modal;
+				return $modals;
+			});
+		}
+		
+		public function assign($name, $value) {
+			$this->getCore()->getTemplate()->assign($name, $value);
+		}
+		
+		public function url($path) {
+			$this->getCore()->getTemplate()->url($path);
+		}
+		
 		/* Filter */
 		public function addFilter($name, $method, $priority = 10) {
 			return $this->core->getHooks()->addFilter($name, $method, $priority);

@@ -19,12 +19,14 @@
 			$this->core->getHooks()->addAction('html_head', [ $this, 'head_robots' ]);
 			$this->core->getHooks()->addAction('html_head', [ $this, 'head_scripts' ]);
 			$this->core->getHooks()->addAction('html_foot', [ $this, 'foot_scripts' ]);
+			$this->core->getHooks()->addAction('html_foot', [ $this, 'foot_modals' ]);
 			
 			$this->files->addStylesheet('bootstrap', $this->url('css/bootstrap/bootstrap.min.css'), '4.3.1');
 			$this->files->addStylesheet('jquery-ui', $this->url('css/jquery-ui/jquery-ui.css'), '1.12.1');
 			$this->files->addStylesheet('material-icons', $this->url('fonts/material-icons/material-icons.css'), '3.0.1', [ 'bootstrap' ]);
+			$this->files->addJavascript('popper', $this->url('js/popper/popper.min.js'), '3.3.1', [ 'jquery' ], TemplateFiles::FOOTER);
 			$this->files->addJavascript('jquery', $this->url('js/jquery/jquery-3.3.1.min.js'), '3.3.1', [], TemplateFiles::FOOTER);
-			$this->files->addJavascript('bootstrap', $this->url('js/bootstrap/bootstrap.bundle.min.js'), '4.3.1', [ 'jquery' ], TemplateFiles::FOOTER);
+			$this->files->addJavascript('bootstrap', $this->url('js/bootstrap/bootstrap.bundle.min.js'), '4.3.1', [ 'jquery', 'popper' ], TemplateFiles::FOOTER);
 			
 			$this->navigation->addCategory('account', 'Account');
 			$this->navigation->addCategory('database', 'Databases');
@@ -80,7 +82,7 @@
 				} else {
 					$this->getFiles()->addStylesheet('style', $this->url('css/style.css'), '1.0.0', [ 'bootstrap', 'material-icons' ]);
 					$this->getFiles()->addJavascript('jquery-ui', $this->url('js/jquery-ui/jquery-ui.min.js'), '1.12.1', [ 'jquery' ], TemplateFiles::FOOTER);
-					$this->getFiles()->addJavascript('ui', $template->url('js/ui.js'), '1.0.0', [ 'jquery', 'jquery-ui', 'bootstrap' ], TemplateFiles::FOOTER);
+					$this->getFiles()->addJavascript('ui', $template->url('js/ui.js'), '1.0.0', [ 'jquery', 'jquery-ui', 'popper', 'bootstrap' ], TemplateFiles::FOOTER);
 				}
 				
 				$path = sprintf('%1$s%2$stheme%2$s%3$s.php', PATH, DS, $file);

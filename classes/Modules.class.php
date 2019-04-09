@@ -13,7 +13,9 @@
 					continue;
 				}
 
-				$this->addModule(new Module(sprintf('%s%s%s', $this->getPath(), DS, $info->getFilename())));
+				$path = sprintf('%s%s%s', $this->getPath(), DS, $info->getFilename());
+				
+				$this->addModule(basename($path), new Module($path));
 			}
 		}
 		
@@ -21,8 +23,20 @@
 			return sprintf('%s%s%s', dirname(PATH), DS, 'modules');
 		}
 		
-		public function addModule($module) {
-			$this->modules[] = $module->init($this->core);
+		public function addModule($name, $module) {
+			$this->modules[$name] = $module->init($this->core);
+		}
+		
+		public function getModules() {
+			return $this->modules;
+		}
+		
+		public function getModule($name) {			
+			if(!isset($this->modules[$name])) {
+				return null;
+			}
+			
+			return $this->modules[$name];
 		}
 	}
 ?>
