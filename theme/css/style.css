@@ -43,6 +43,12 @@ body.sortable {
 	}
 }
 
+@media (max-width: 576px) {
+	.sidebar-sticky {
+		padding-top: 2.5rem;
+	}
+}
+
 .sidebar .nav-link {
 	font-weight: 500;
 	color: #333;
