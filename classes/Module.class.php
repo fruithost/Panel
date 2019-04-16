@@ -5,6 +5,7 @@
 		private $path		= null;
 		private $info		= null;
 		private $instance	= null;
+		private $enabled	= false;
 		
 		public function __construct($path) {
 			$this->path = $path;
@@ -21,6 +22,14 @@
 		
 		public function getInstance() {
 			return $this->instance;
+		}
+		
+		public function isEnabled() {
+			return $this->enabled;
+		}
+		
+		public function setEnabled($state) {
+			$this->enabled = $state;
 		}
 		
 		public function init($core) {

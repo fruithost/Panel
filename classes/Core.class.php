@@ -138,6 +138,10 @@
 					return;
 				}
 				
+				if(method_exists($module->getInstance(), 'load')) {
+					$module->getInstance()->load();
+				}
+				
 				if(!method_exists($module->getInstance(), 'content')) {
 					$this->template->display('error/module_empty', [
 						'module'	=> $module,
@@ -168,6 +172,39 @@
 				}
 				
 				$this->template->display('login');
+			});
+			
+			$this->router->addRoute('/ajax', function() {
+				if(!Auth::isLoggedIn()) {
+					header('HTTP/1.1 403 Forbidden');
+					require_once(dirname(PATH) . '/placeholder/errors/403.php');
+					exit();
+				}
+				
+				if(empty($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest') {
+					header('HTTP/1.1 405 Method Not Allowed');
+					require_once(dirname(PATH) . '/placeholder/errors/405.php');
+					exit();
+				}
+				
+				// Fire modals
+				if(isset($_POST['modal']) && !empty($_POST['modal'])) {
+					$modals = $this->getHooks()->applyFilter('modals', []);
+			
+					foreach($modals AS $modal) {
+						if($modal->getName() === $_POST['modal']) {
+							$callback	= $modal->getCallback('save');
+							$result		= call_user_func_array($callback, [ $_POST ]);
+							
+							if(is_bool($result)) {
+								print json_encode($result);
+								return;
+							}
+							
+							print $result;
+						}
+					}
+				}
 			});
 
 			$this->router->run();

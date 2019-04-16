@@ -14,6 +14,10 @@
 			/* Override Me */
 		}
 		
+		public function load() {
+			/* Override Me */
+		}
+		
 		public function getCore() {
 			return $this->core;
 		}
