@@ -33,4 +33,30 @@
 			ui.placeholder.addClass('col-6');
 		}
 	});
+	
+	$('.ajax').submit(function(event) {
+		event.preventDefault();
+		
+		let form = $(this);
+		
+		$.ajax({
+			type:	'POST',
+			url:	form.attr('action'),
+			data:	form.serialize(),
+			success: function onSuccess(response) {
+				if(response.toLowerCase() === 'true') {
+					form.closest('.modal').modal('hide');
+					return;
+				} else if(response.toLowerCase() === 'false') {
+					response = 'An unknown error has occurred.';
+				}
+				
+				let content = form.closest('.modal').find('.modal-body');
+				content.find('.alert').remove();
+				content.prepend('<div class="alert alert-danger" role="alert">' + response + '</div>');
+			}
+		});
+		
+		return false;
+	});
 }(jQuery));
