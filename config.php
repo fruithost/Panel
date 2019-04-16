@@ -6,4 +6,7 @@
 	define('DATABASE_PASSWORD',		'');
 	define('DATABASE_NAME',			'fruithost');
 	define('DATABASE_PREFIX',		'fh_');
+	
+	# Hosting Path
+	define('HOST_PATH',				'/var/fruithost/users/');
 ?>
