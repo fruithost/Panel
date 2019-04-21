@@ -77,7 +77,15 @@
 									?>
 								</div>
 							</nav>
-							<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-				<?php
+							<?php
+								if(isset($module) && method_exists($module->getInstance(), 'frame') && !empty($module->getInstance()->frame())) {
+									?>
+										<main role="main" class="frame col-md-9 ml-sm-auto col-lg-10 px-4">
+									<?php
+								} else {
+									?>
+										<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+									<?php
+								}
 			}
 		?>

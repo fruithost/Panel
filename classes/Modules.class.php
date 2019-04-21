@@ -21,7 +21,6 @@
 				$path = sprintf('%s%s%s', $this->getPath(), DS, $info->getFilename());
 				$module = new Module($path);
 				$module->setEnabled(in_array(basename($path), $enabled));
-				
 				$this->addModule(basename($path), $module);
 			}
 		}

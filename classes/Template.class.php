@@ -14,6 +14,7 @@
 			$this->files		= new TemplateFiles();
 			$this->navigation	= new TemplateNavigation($this->core);
 			$this->theme		= $this->core->getHooks()->applyFilter('theme_name', 'default');
+			
 			ob_start('ob_gzhandler');
 			
 			$this->core->getHooks()->addAction('html_head', [ $this, 'head_robots' ]);
@@ -56,7 +57,7 @@
 			$template	= $this;
 			
 			foreach($arguments AS $name => $value) {
-				${$name} = $value;
+				$this->assigns[$name] = $value;
 			}
 			
 			$path		= sprintf('%1$s%2$sthemes%2$s%4$s%2$s%3$s.php', dirname(PATH), DS, $file, $this->theme);

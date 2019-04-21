@@ -130,6 +130,24 @@ body.sortable {
 	margin: 0px;
 }
 
+[role="main"].frame {
+	padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+main iframe {
+	width: 100%;
+	border: none;
+	display: block;
+	height: 100%;
+	top: 0;
+    left: 0;
+    right: 0;
+    height: calc(100vh - 48px);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 .form-control-dark {
 	color: #fff;
 	background-color: rgba(255, 255, 255, .1);

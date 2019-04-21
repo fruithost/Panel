@@ -40,8 +40,8 @@
 			$this->getCore()->getTemplate()->assign($name, $value);
 		}
 		
-		public function url($path) {
-			$this->getCore()->getTemplate()->url($path);
+		public function url($path = '') {
+			return $this->getCore()->getTemplate()->url($path);
 		}
 		
 		/* Filter */

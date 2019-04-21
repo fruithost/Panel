@@ -1,6 +1,12 @@
 <?php
 	$template->header();
-	?>
+	
+	if(method_exists($module->getInstance(), 'frame') && !empty($module->getInstance()->frame())) {
+		?>
+			<iframe src="<?php print $module->getInstance()->frame(); ?>"></iframe>
+		<?php
+	} else {
+?>
 		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 			<h1 class="h2">
 				<a href="<?php print $this->url(sprintf('/module/%s', $module->getInfo()->getName())); ?>"><?php print $module->getInfo()->getName(); ?></a>
@@ -48,8 +54,8 @@
 			?>
 		</div>
 		<?php
-			$module->getInstance()->content();
-		?>
-	<?php
+			$module->getInstance()->content($submodule);
+	}
+	
 	$template->footer();
 ?>
