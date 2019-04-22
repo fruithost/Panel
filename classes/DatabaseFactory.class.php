@@ -8,7 +8,7 @@
 			if(self::$instance === NULL) {
 				self::$instance = new self(sprintf('mysql:host=%s;port=%d;dbname=%s', DATABASE_HOSTNAME, DATABASE_PORT, DATABASE_NAME), DATABASE_USERNAME, DATABASE_PASSWORD, [
 					\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
-					\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION
+					#\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION
 				]);
 			}
 			
