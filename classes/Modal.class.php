@@ -2,15 +2,17 @@
 	namespace fruithost;
 	
 	class Modal {
-		private $name = null;
-		private $title = null;
-		private $content = null;
-		private $buttons = [];
-		private $callbacks = [];
+		private $name		= null;
+		private $title		= null;
+		private $content	= null;
+		private $buttons	= [];
+		private $callbacks	= [];
+		private $variables	= [];
 		
-		public function __construct($name, $title, $content) {
-			$this->name		= $name;
-			$this->title	= $title;
+		public function __construct($name, $title, $content, $variables = []) {
+			$this->name			= $name;
+			$this->title		= $title;
+			$this->variables	= $variables;
 			
 			if(is_string($content)) {
 				$this->content	= $content;
@@ -49,6 +51,10 @@
 		}
 		
 		public function getContent($template) {
+			foreach($this->variables AS $name => $value) {
+				${$name} = $value;
+			}
+			
 			if(preg_match('/\.php$/', $this->content)) {
 				require_once($this->content);
 				return;

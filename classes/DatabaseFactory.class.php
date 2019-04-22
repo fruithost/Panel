@@ -7,7 +7,8 @@
 		public static function getInstance() {
 			if(self::$instance === NULL) {
 				self::$instance = new self(sprintf('mysql:host=%s;port=%d;dbname=%s', DATABASE_HOSTNAME, DATABASE_PORT, DATABASE_NAME), DATABASE_USERNAME, DATABASE_PASSWORD, [
-					\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
+					\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+					\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION
 				]);
 			}
 			
@@ -36,10 +37,10 @@
 			$fields = '';
 			
 			foreach($parameters AS $name => $value) {
-				$fields .= sprintf(' `%1$s`=:%1$s,', $name);
+				$fields .= sprintf('`%1$s`=:%1$s, ', $name);
 			}
 			
-			return $this->query(sprintf('UPDATE `%1$s` SET %2$s WHERE `%3$s`=:%3$s', $table, rtrim($fields, ','), $where), $parameters)->fetchAll(\PDO::FETCH_OBJ);
+			return $this->query(sprintf('UPDATE `%1$s` SET %2$s WHERE `%3$s`=:%3$s', $table, rtrim($fields, ', '), $where), $parameters)->fetchAll(\PDO::FETCH_OBJ);
 		}
 		
 		public function reset($table, $where, $old, $new) {

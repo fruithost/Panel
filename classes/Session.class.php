@@ -4,9 +4,9 @@
 	class Session {
 		public static function init() {
 			if(!isset($_SESSION)) {
-				session_save_path(sprintf('%s%stemp', dirname(PATH), DS));
+				@session_save_path(sprintf('%s%stemp', dirname(PATH), DS));
 				
-				session_start([
+				@session_start([
 					'cookie_lifetime'	=> 3600,
 					'read_and_close'	=> false
 				]);
