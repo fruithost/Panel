@@ -70,6 +70,8 @@
 		}
 		
 		private function init() {
+			Request::init();
+			
 			$this->hooks	= new Hooks();
 			$this->modules	= new Modules($this);
 			$this->template	= new Template($this);
