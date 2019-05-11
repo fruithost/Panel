@@ -199,14 +199,13 @@
 				]);
 			});
 			
-			$this->router->addRoute('^/lost-password(?:/(.*))?$', function($token = null) {
-				if(Auth::isLoggedIn()) {
+			
+			$this->router->addRoute('^/admin(?:/([a-zA-Z0-9\-_]+))?$', function($destination = null) {
+				if(!Auth::isLoggedIn()) {
 					Response::redirect('/');
 				}
 
-				$this->template->display('lost-password', [
-					'token'	=> $token
-				]);
+				$this->template->display('admin' . (!empty($destination) ? sprintf('/%s', $destination) : ''));
 			});
 			
 			$this->router->addRoute('/login', function() {
