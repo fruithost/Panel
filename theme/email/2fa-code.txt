@@ -1,0 +1,8 @@
+Hey $USERNAME,
+
+here is your 2FA Code for your login request:
+$CODE
+
+Thanks,
+
+The fruithost Team

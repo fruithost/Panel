@@ -10,15 +10,27 @@
 					<div class="alert alert-danger" role="alert"><?php print $error; ?></div>
 				<?php
 			}
+			
+			if(isset($two_factor) && $two_factor) {
+				?>
+					<div class="form-label-group text-left">
+						<input type="text" id="code" name="code" class="form-control" placeholder="Code" required autofocus />
+						<label for="code">Code</label>
+					</div>
+				<?php
+			} else {
+				?>
+					<div class="form-label-group text-left">
+						<input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus value="<?php print $username; ?>" />
+						<label for="username">Username</label>
+					</div>
+					<div class="form-label-group text-left">
+						<input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+						<label for="password">Password</label>
+					</div>
+				<?php
+			}
 		?>
-		<div class="form-label-group text-left">
-			<input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus value="<?php print $username; ?>" />
-			<label for="username">Username</label>
-		</div>
-		<div class="form-label-group text-left">
-			<input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
-			<label for="password">Password</label>
-		</div>
 		<div class="checkbox mb-3 mt-3 row text-left">
 			<label class="col-6 text-muted">
 				<input type="checkbox" name="remember" value="true"<?php print ($remember ? ' CHECKED' : ''); ?> /> Remember me

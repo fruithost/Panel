@@ -34,6 +34,15 @@
 					require_once($path);
 					return;
 				}
+				// Check it's an Library on an module!
+				/*} else if(preg_match('/\/module\//Uis', $_SERVER['REQUEST_URI'])) {
+					$file_array		= explode(BS, $file);
+					array_unshift($file_array, 'www');
+					array_unshift($file_array, str_replace('module', 'modules', $_SERVER['REQUEST_URI']));
+					$path	= sprintf('%s%s.php', dirname(PATH), implode(DS, $file_array));
+					require_once($path);
+					return;
+				}*/
 				
 				print 'Error Loading: ' . $path;
 				return;
@@ -101,20 +110,52 @@
 				$this->template->display('overview');
 			});
 			
-			$this->router->addRoute('/settings', function() {
+			$this->router->addRoute('^/settings(?:/([a-zA-Z0-9\-_]+))?$', function($tab = null) {
 				if(!Auth::isLoggedIn()) {
 					Response::redirect('/');
 				}
-
-				$this->template->display('settings');
+				
+				$languages = [
+					'en_US' => 'English'
+				];
+				
+				foreach(new \DirectoryIterator(sprintf('%slanguages/', PATH)) AS $info) {
+					if($info->isDot()) {
+						continue;
+					}
+					
+					if(preg_match('/(.*)\.po$/Uis', $info->getFileName(), $matches)) {
+						$language		= new \Sepia\PoParser\Parser(new \Sepia\PoParser\SourceHandler\FileSystem($info->getPathName()));
+						$parsed			= $language->parse();
+						$header			= $parsed->getHeader();
+						
+						foreach($header->asArray() AS $line) {
+							if(preg_match('/Language: (.*)$/Uis', $line, $names)) {
+								$languages[$matches[1]] = $names[1];
+								break;
+							}
+						}
+					}
+				}
+				
+				$this->template->display('settings', [
+					'tab'		=> $tab,
+					'languages'	=> $languages,
+					'timezones'	=> json_decode(file_get_contents(dirname(PATH) . '/config/timezones.json'))
+				]);
 			});
 			
-			$this->router->addRoute('/account', function() {
+			$this->router->addRoute('^/account(?:/([a-zA-Z0-9\-_]+))?$', function($tab = null) {
 				if(!Auth::isLoggedIn()) {
 					Response::redirect('/');
 				}
 
-				$this->template->display('account');
+				$this->template->display('account', [
+					'tab'	=> $tab,
+					'data'	=> Database::single('SELECT * FROM `fh_users_data` WHERE `user_id`=:user_id LIMIT 1', [
+						'user_id'	=> Auth::getID()
+					])
+				]);
 			});
 			
 			$this->router->addRoute('^/module(?:/([a-zA-Z0-9\-_]+)(?:/([a-zA-Z0-9\-_]+))?)?$', function($module = null, $submodule = null) {
