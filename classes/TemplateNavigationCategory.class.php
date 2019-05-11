@@ -34,14 +34,14 @@
 						'icon'		=> '<i class="material-icons">account_circle</i>',
 						'order'		=> 1,
 						'url'		=> '/account',
-						'active'	=> $this->navigation->getCore()->getRouter()->is('/account')
+						'active'	=> $this->navigation->getCore()->getRouter()->startsWith('/account')
 					],
 					(object) [
 						'name'		=> 'Settings',
 						'icon'		=> '<i class="material-icons">settings</i>',
 						'order'		=> 2,
 						'url'		=> '/settings',
-						'active'	=> $this->navigation->getCore()->getRouter()->is('/settings')
+						'active'	=> $this->navigation->getCore()->getRouter()->startsWith('/settings')
 					],
 					(object) [
 						'name'		=> 'Logout',
