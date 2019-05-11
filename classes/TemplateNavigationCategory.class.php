@@ -56,6 +56,16 @@
 				case 'admin':
 					$hardcoded = [];
 					
+					if(Auth::hasPermission('*')) {
+						$hardcoded[] = (object) [
+							'name'		=> 'Overview',
+							'icon'		=> '<i class="material-icons">apps</i>',
+							'order'		=> 1,
+							'url'		=> '/admin',
+							'active'	=> $this->navigation->getCore()->getRouter()->is('/admin')
+						];
+					}
+					
 					if(Auth::hasPermission('USERS::VIEW')) {
 						$hardcoded[] = (object) [
 							'name'		=> 'Users',
