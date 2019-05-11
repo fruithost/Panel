@@ -24,10 +24,11 @@
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="picture" src="http://www.gravatar.com/avatar/68c699b5eeb1eb7dfc96b7df85241925?s=22&d=mm&r=g" /> Account</a>
 								<div class="dropdown-menu bg-dark">
-									<a class="dropdown-item" href="#"><i class="material-icons">account_circle</i> Account</a>
-									<a class="dropdown-item" href="#"><i class="material-icons">settings</i> Settings</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#"><i class="material-icons">power_settings_new</i> Logout</a>
+									<?php
+										foreach($topbar->getEntries() AS $entry) {
+											printf('<a class="dropdown-item" href="%s">%s %s</a>', $entry->url, $entry->icon, $entry->name);
+										}
+									?>
 								</div>
 							</li>
 						</ul>

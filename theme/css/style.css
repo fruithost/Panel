@@ -130,6 +130,13 @@ body.sortable {
 	margin: 0px;
 }
 
+.navbar-nav .dropdown-menu .dropdown-item .material-icons {
+	margin-right: 4px;
+	color: #999;
+	font-size: 20px;
+	vertical-align: text-bottom;
+}
+
 [role="main"].frame {
 	padding-left: 0px !important;
     padding-right: 0px !important;

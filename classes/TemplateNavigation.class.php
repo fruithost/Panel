@@ -18,6 +18,10 @@
 			return $this->core;
 		}
 		
+		public function getCategory($name) {
+			return $this->entries[$name];
+		}
+		
 		public function isEmpty() {
 			return (count($this->entries) === 0);
 		}
