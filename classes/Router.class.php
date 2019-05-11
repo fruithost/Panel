@@ -56,6 +56,10 @@
 			return (strtolower($this->getCurrent()) === strtolower($name));
 		}
 		
+		public function startsWith($name) {
+			return (strpos(strtolower($this->getCurrent()), strtolower($name)) === 0);
+		}
+		
 		public function redirectTo($redirect) {
 			$this->redirect = $redirect;
 		}
