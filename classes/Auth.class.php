@@ -153,13 +153,17 @@
 		
 		public function hasPermission($name, $user_id = NULL) {
 			if(count($this->permissions) > 0) {
-				return $this->permissions;
+				if($name === '*') {
+					return count($this->permissions) >= 1;
+				}
+				
+				return in_array($name, $this->permissions);
 			}
 			
 			foreach(Database::fetch('SELECT * FROM `fh_users_permissions` WHERE `user_id`=:user_id', [
 				'user_id'	=> (empty($user_id) ? self::getID() : $user_id)
-			]) AS $permission) {
-				$this->permissions[] = $permission->permission;
+			]) AS $entry) {
+				$this->permissions[] = $entry->permission;
 			}
 			
 			
