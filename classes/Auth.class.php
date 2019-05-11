@@ -3,7 +3,8 @@
 	use \fruithost\Session;
 	
 	class AuthFactory {
-		private static $instance = NULL;
+		private static $instance	= NULL;
+		private $permissions		= [];
 		
 		public static function getInstance() {
 			if(self::$instance === NULL) {
@@ -149,6 +150,25 @@
 		public function getGravatar() {
 			return sprintf('https://www.gravatar.com/avatar/%s?s=%d&d=%s&r=%s', md5(strtolower(trim($this->getData('email')))), 22, 'mp', 'g');
 		}
+		
+		public function hasPermission($name, $user_id = NULL) {
+			if(count($this->permissions) > 0) {
+				return $this->permissions;
+			}
+			
+			foreach(Database::fetch('SELECT * FROM `fh_users_permissions` WHERE `user_id`=:user_id', [
+				'user_id'	=> (empty($user_id) ? self::getID() : $user_id)
+			]) AS $permission) {
+				$this->permissions[] = $permission->permission;
+			}
+			
+			
+			if($name === '*') {
+				return count($this->permissions) >= 1;
+			}
+			
+			return in_array($name, $this->permissions);
+		}
 	}
 	
 	class Auth {
@@ -190,6 +210,10 @@
 		
 		public static function getSettings($name, $user_id = NULL, $default = NULL) {
 			return AuthFactory::getInstance()->getSettings($name, $user_id, $default);
+		}
+		
+		public static function hasPermission($name, $user_id = NULL) {
+			return AuthFactory::getInstance()->hasPermission($name, $user_id);
 		}
 	}
 ?>

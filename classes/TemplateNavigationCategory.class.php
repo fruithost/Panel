@@ -27,30 +27,85 @@
 		public function getEntries() {
 			$hardcoded = [];
 			
-			if($this->id === 'account') {
-				$hardcoded = [
-					(object) [
-						'name'		=> 'Account',
-						'icon'		=> '<i class="material-icons">account_circle</i>',
-						'order'		=> 1,
-						'url'		=> '/account',
-						'active'	=> $this->navigation->getCore()->getRouter()->startsWith('/account')
-					],
-					(object) [
-						'name'		=> 'Settings',
-						'icon'		=> '<i class="material-icons">settings</i>',
-						'order'		=> 2,
-						'url'		=> '/settings',
-						'active'	=> $this->navigation->getCore()->getRouter()->startsWith('/settings')
-					],
-					(object) [
-						'name'		=> 'Logout',
-						'icon'		=> '<i class="material-icons">power_settings_new</i>',
-						'order'		=> 99999,
-						'url'		=> '/logout',
-						'active'	=> $this->navigation->getCore()->getRouter()->is('/logout')
-					]
-				];
+			switch($this->id) {
+				case 'account':
+					$hardcoded = [
+						(object) [
+							'name'		=> 'Account',
+							'icon'		=> '<i class="material-icons">account_circle</i>',
+							'order'		=> 1,
+							'url'		=> '/account',
+							'active'	=> $this->navigation->getCore()->getRouter()->startsWith('/account')
+						],
+						(object) [
+							'name'		=> 'Settings',
+							'icon'		=> '<i class="material-icons">settings</i>',
+							'order'		=> 2,
+							'url'		=> '/settings',
+							'active'	=> $this->navigation->getCore()->getRouter()->startsWith('/settings')
+						],
+						(object) [
+							'name'		=> 'Logout',
+							'icon'		=> '<i class="material-icons">power_settings_new</i>',
+							'order'		=> 99999,
+							'url'		=> '/logout',
+							'active'	=> $this->navigation->getCore()->getRouter()->is('/logout')
+						]
+					];
+				break;
+				case 'admin':
+					$hardcoded = [];
+					
+					if(Auth::hasPermission('USERS::VIEW')) {
+						$hardcoded[] = (object) [
+							'name'		=> 'Users',
+							'icon'		=> '<i class="material-icons">supervised_user_circle</i>',
+							'order'		=> 1,
+							'url'		=> '/admin/users',
+							'active'	=> $this->navigation->getCore()->getRouter()->startsWith('/admin/users')
+						];
+					}
+					
+					if(Auth::hasPermission('THEMES::VIEW')) {
+						$hardcoded[] = (object) [
+							'name'		=> 'Themes',
+							'icon'		=> '<i class="material-icons">palette</i>',
+							'order'		=> 2,
+							'url'		=> '/admin/themes',
+							'active'	=> $this->navigation->getCore()->getRouter()->startsWith('/admin/themes')
+						];
+					}
+					
+					if(Auth::hasPermission('MODULES::VIEW')) {
+						$hardcoded[] = (object) [
+							'name'		=> 'Modules',
+							'icon'		=> '<i class="material-icons">extension</i>',
+							'order'		=> 3,
+							'url'		=> '/admin/modules',
+							'active'	=> $this->navigation->getCore()->getRouter()->startsWith('/admin/modules')
+						];
+					}
+					
+					if(Auth::hasPermission('LOGFILES::VIEW')) {
+						$hardcoded[] = (object) [
+							'name'		=> 'Logfiles',
+							'icon'		=> '<i class="material-icons">insert_drive_file</i>',
+							'order'		=> 4,
+							'url'		=> '/admin/logs',
+							'active'	=> $this->navigation->getCore()->getRouter()->startsWith('/admin/logs')
+						];
+					}
+					
+					if(Auth::hasPermission('SERVER::VIEW')) {
+						$hardcoded[] = (object) [
+							'name'		=> 'Server',
+							'icon'		=> '<i class="material-icons">memory</i>',
+							'order'		=> 5,
+							'url'		=> '/admin/server',
+							'active'	=> $this->navigation->getCore()->getRouter()->startsWith('/admin/server')
+						];
+					}
+				break;
 			}
 			
 			$results = $this->navigation->getCore()->getHooks()->applyFilter(strtoupper(sprintf('%s_MANAGEMENT', $this->id)), $hardcoded);
