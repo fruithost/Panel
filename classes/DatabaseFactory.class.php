@@ -40,7 +40,20 @@
 				$fields .= sprintf('`%1$s`=:%1$s, ', $name);
 			}
 			
-			return $this->query(sprintf('UPDATE `%1$s` SET %2$s WHERE `%3$s`=:%3$s', $table, rtrim($fields, ', '), $where), $parameters)->fetchAll(\PDO::FETCH_OBJ);
+			if(is_array($where)) {
+				$query	= sprintf('UPDATE `%1$s` SET %2$s WHERE', $table, rtrim($fields, ', '));
+				$checks	= [];
+				
+				foreach($where AS $entry) {
+					$checks[] = sprintf('`%1$s`=:%1$s', $entry);
+				}
+				
+				$query .= implode(' AND ', $checks);
+			} else {
+				$query = sprintf('UPDATE `%1$s` SET %2$s WHERE `%3$s`=:%3$s', $table, rtrim($fields, ', '), $where);
+			}
+			
+			return $this->query($query, $parameters)->fetchAll(\PDO::FETCH_OBJ);
 		}
 		
 		public function reset($table, $where, $old, $new) {

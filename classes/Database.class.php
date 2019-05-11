@@ -14,6 +14,10 @@
 			return DatabaseFactory::getInstance()->count($query, $parameters);
 		}
 		
+		public static function exists($query, $parameters = []) {
+			return DatabaseFactory::getInstance()->count($query, $parameters) > 0;
+		}
+		
 		public static function fetch($query, $parameters = []) {
 			return DatabaseFactory::getInstance()->fetch($query, $parameters);
 		}
