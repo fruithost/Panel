@@ -145,6 +145,10 @@
 				]);
 			}
 		}
+		
+		public function getGravatar() {
+			return sprintf('https://www.gravatar.com/avatar/%s?s=%d&d=%s&r=%s', md5(strtolower(trim($this->getData('email')))), 22, 'mp', 'g');
+		}
 	}
 	
 	class Auth {
@@ -174,6 +178,10 @@
 		
 		public static function getMail() {
 			return AuthFactory::getInstance()->getData('email');
+		}
+		
+		public static function getGravatar() {
+			return AuthFactory::getInstance()->getGravatar();
 		}
 		
 		public static function setSettings($name, $user_id = NULL, $value) {

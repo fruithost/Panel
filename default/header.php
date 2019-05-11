@@ -22,7 +22,7 @@
 						</button>
 						<ul class="navbar-nav px-3">
 							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="picture" src="http://www.gravatar.com/avatar/68c699b5eeb1eb7dfc96b7df85241925?s=22&d=mm&r=g" /> Account</a>
+								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="picture" src="<?php print Auth::getGravatar(); ?>" /> Account</a>
 								<div class="dropdown-menu bg-dark">
 									<?php
 										foreach($topbar->getEntries() AS $entry) {

@@ -87,7 +87,7 @@
 					$this->getFiles()->addJavascript('ui', $template->url('js/ui.js'), '1.0.0', [ 'jquery', 'jquery-ui', 'popper', 'bootstrap' ], TemplateFiles::FOOTER);
 				}
 				
-				$path = sprintf('%1$s%2$stheme%2$s%3$s.php', PATH, DS, $file);
+				$path = sprintf('%1$s%2$sdefault%2$s%3$s.php', PATH, DS, $file);
 				
 				if(file_exists($path)) {
 					require_once($path);
@@ -106,7 +106,7 @@
 			if(file_exists($path)) {
 				require_once($path);
 			} else {
-				$path = sprintf('%1$s%2$stheme%2$s%3$s.php', PATH, DS, 'header');
+				$path = sprintf('%1$s%2$sdefault%2$s%3$s.php', PATH, DS, 'header');
 				
 				if(file_exists($path)) {
 					require_once($path);
@@ -125,7 +125,7 @@
 			if(file_exists($path)) {
 				require_once($path);
 			} else {
-				$path = sprintf('%1$s%2$stheme%2$s%3$s.php', PATH, DS, 'footer');
+				$path = sprintf('%1$s%2$sdefault%2$s%3$s.php', PATH, DS, 'footer');
 				
 				if(file_exists($path)) {
 					require_once($path);
