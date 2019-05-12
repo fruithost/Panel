@@ -29,6 +29,7 @@
 					$template->assign('error', 'Your 2FA code is invalid!');
 				}
 			} else if(Auth::getSettings('2FA_ENABLED', $_POST['username'], 'false') === 'true' && Auth::TwoFactorLogin($_POST['username'], $_POST['password'])) {
+				$text	= '';
 				$code	= rand(100000, 999999);
 				$result = Database::single('SELECT * FROM `fh_users` WHERE `username`=:username LIMIT 1', [
 					'username'	=> $_POST['username']
@@ -46,8 +47,8 @@
 				
 				// @ToDo override E-Mail templates if an Theme as set!!!!
 				
-				$html_file = sprintf('%stheme/email/2fa-code.html', PATH);
-				$text_file = sprintf('%stheme/email/2fa-code.txt', PATH);
+				$html_file = sprintf('%sdefault/email/2fa-code.html', PATH);
+				$text_file = sprintf('%sdefault/email/2fa-code.txt', PATH);
 				
 				if(file_exists($text_file)) {
 					$text = str_replace([

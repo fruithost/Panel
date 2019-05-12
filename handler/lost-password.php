@@ -87,8 +87,8 @@
 			
 			// @ToDo override E-Mail templates if an Theme as set!!!!
 			
-			$html_file = sprintf('%stheme/email/lost-password.html', PATH);
-			$text_file = sprintf('%stheme/email/lost-password.txt', PATH);
+			$html_file = sprintf('%sdefault/email/lost-password.html', PATH);
+			$text_file = sprintf('%sdefault/email/lost-password.txt', PATH);
 			
 			if(file_exists($text_file)) {
 				$text = str_replace([
