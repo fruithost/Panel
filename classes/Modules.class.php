@@ -18,11 +18,33 @@
 					continue;
 				}
 
-				$path = sprintf('%s%s%s', $this->getPath(), DS, $info->getFilename());
-				$module = new Module($path);
+				$path	= sprintf('%s%s%s', $this->getPath(), DS, $info->getFilename());
+				$module	= new Module($path);
 				$module->setEnabled(in_array(basename($path), $enabled));
 				$this->addModule(basename($path), $module);
 			}
+		}
+		
+		public function getList() {
+			$modules = [];
+			
+			foreach(new \DirectoryIterator($this->getPath()) AS $info) {
+				if($info->isDot()) {
+					continue;
+				}
+
+				$path	= sprintf('%s%s%s', $this->getPath(), DS, $info->getFilename());
+				$module	= new Module($path);
+				$name	= basename($path);
+				
+				if($this->hasModule($name)) {
+					$modules[] = $this->getModule($name);
+				} else {
+					$modules[] = $module;					
+				}
+			}
+			
+			return $modules;
 		}
 		
 		public function getPath() {
@@ -41,7 +63,15 @@
 			return $this->modules;
 		}
 		
-		public function getModule($name) {			
+		public function hasModule($name) {
+			if(!isset($this->modules[$name])) {
+				return false;
+			}
+			
+			return true;
+		}
+		
+		public function getModule($name) {
 			if(!isset($this->modules[$name])) {
 				return null;
 			}

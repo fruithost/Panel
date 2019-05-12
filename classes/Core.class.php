@@ -200,12 +200,67 @@
 			});
 			
 			
-			$this->router->addRoute('^/admin(?:/([a-zA-Z0-9\-_]+))?$', function($destination = null) {
+			$this->router->addRoute('/admin', function() {
 				if(!Auth::isLoggedIn()) {
 					Response::redirect('/');
 				}
+				
+				$this->template->display('admin');
+			});
+			
+			$this->router->addRoute('^/admin(?:/([a-zA-Z0-9\-_]+))(?:/([a-zA-Z0-9\-_]+))?$', function($destination = null, $tab = NULL) {
+				$data = [
+					'tab'	=> $tab
+				];
+				
+				if(!Auth::isLoggedIn()) {
+					Response::redirect('/');
+				}
+				
+				switch($destination) {
+					case 'logs':
+						$logfiles		= [];
+						$position		= 0;
+						$size			= 0;
+						$directories	= [
+							'/var/fruithost/logs/',
+							'/var/log/'
+						];
+						
+						do {
+							$size		= count($directories);
+							$directory	= $directories[$position++];
+							
+							foreach(new \DirectoryIterator($directory) AS $info) {
+								if($info->isDot()) {
+									continue;
+								}
+								
+								if($info->isDir()) {
+									if($info->isReadable()) {
+										$directories[]	= $info->getPathName();
+										$size			= count($directories);
+									}
+									continue;
+								}
+								
+								if(preg_match('/(\.(gz|\d)$|\-bin\.)/', $info->getPathName())) {
+									continue;
+								}
 
-				$this->template->display('admin' . (!empty($destination) ? sprintf('/%s', $destination) : ''));
+								$logfiles[] = $info->getPathName();
+							}
+						} while($size > $position);
+						
+						$data['logfiles'] = $logfiles;
+					break;
+					case 'modules':
+						$data['repositorys']	= Database::fetch('SELECT * FROM `fh_repositorys`');
+						$data['modules']		= $this->modules;
+					break;
+				}
+
+				$this->template->display('admin' . (!empty($destination) ? sprintf('/%s', $destination) : ''), $data);
 			});
 			
 			$this->router->addRoute('/login', function() {
