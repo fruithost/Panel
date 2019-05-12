@@ -345,3 +345,20 @@ ul.sortable li ul.list-unstyled li a div.label {
 	color: var(--success);
 	background: #e1ffe9;
 }
+
+[data-percentage] {
+	position: relative;
+}
+
+[data-percentage]:after {
+	content: attr(data-percentage);
+	display: block;
+	color: var(--light);
+	position: absolute;
+	text-align: center;
+	font-size: 10px;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
