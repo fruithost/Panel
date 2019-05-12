@@ -46,6 +46,7 @@
 			success: function onSuccess(response) {
 				if(response.toLowerCase() === 'true') {
 					form.closest('.modal').modal('hide');
+					window.location.reload();
 					return;
 				} else if(response.toLowerCase() === 'false') {
 					response = 'An unknown error has occurred.';
