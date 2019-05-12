@@ -1,5 +1,6 @@
 <?php
 	use fruithost\Auth;
+	use fruithost\Encryption;
 	
 	$template->header();
 	
@@ -24,13 +25,57 @@
 		</div>
 	</div>
 	<div class="d-flex pb-2 mb-3">
-		<div class="col-10">
-			VIEWER
-		</div>
-		<div class="col-2">
+		<div class="flex-fill logfile-container w-100 mr-2">
 			<?php
-				print_r($logfiles);
+				if(empty($logfile)) {
+					?>
+						<div class="alert alert-info mt-4" role="alert">
+							Please select a logfile to view it
+						</div>
+					<?php
+				} else {
+					foreach($logfile AS $index => $line) {
+						$line = preg_replace('/^\[([^\]]+)\]/Uis', '<span class="text-muted">$1</span>', $line);
+						$color = 'default';
+						
+						if(preg_match('/AH00171/', $line)) {
+							$color = 'info';
+						} else if(preg_match('/AH00163/', $line)) {
+							$color = 'warning';
+						} else if(preg_match('/AH00094/', $line)) {
+							$color = 'success';
+						} else if(preg_match('/AH00169/', $line)) {
+							$color = 'warning font-weight-bold';
+						} else if(preg_match('/((p|P)ermission denied|Stack trace|^PHP (.?)\.|PHP Notice|error)/', $line)) {
+							$color = 'danger font-weight-bold';
+						}
+						
+						printf('<div class="logfile log-%1$s" data-number="%3$s">%2$s</div>', $color, $line, $index);
+					}
+				}
 			?>
+		</div>
+		<div class="flex-fill ml-2">
+			<ul class="filetree">
+				<?php
+					$index = 0;
+					foreach($logfiles AS $path => $entry) {
+						++$index;
+						?>
+						<li class="folder">
+							<a data-toggle="collapse" href="#folder_<?php print $index; ?>" role="button"><i class="material-icons">folder</i> <?php print $path; ?></a>
+							<ul class="files collapse" id="folder_<?php print $index; ?>">
+								<?php
+									foreach($entry AS $file) {
+										printf('<li class="file"><a href="%s"><i class="material-icons">receipt</i> %s</a></li>', $this->url('/admin/logs/?file=' . Encryption::encrypt($path . $file, sprintf('LOGFILE::%s', Auth::getID()))), $file);
+									}
+								?>
+							</ul>
+						</li>
+						<?php
+					}
+				?>
+			</ul>
 		</div>
 	</div>
 	<?php

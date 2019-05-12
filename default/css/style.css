@@ -223,3 +223,125 @@ ul.sortable li ul.list-unstyled li a div.label {
 .jumbotron .btn-lg {
 	padding: 15px 50px;
 }
+
+.filetree {
+	list-style: none;
+	display: block;
+	padding: 0;
+	margin: 0;
+}
+
+.filetree li.folder {
+	display: block;
+}
+
+.filetree li.folder a {
+	display: flex;
+	text-decoration: none;
+	color: #999999;
+}
+
+.filetree li.folder a i.material-icons {
+	margin: 0 5px 0 0;
+	color: #ff9b00;
+	text-shadow: 1px 1px 0 #000000;
+}
+
+.filetree li.folder ul.files {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.filetree li.folder ul.files li.file {
+	display: flex;
+	margin: -6px 0 -3px 0;
+}
+
+.filetree li.folder ul.files li.file:before {
+	content: "├";
+	display: block;
+	position: relative;
+	font-size: 18px;
+	margin: 0 5px 0 5px;
+}
+
+.filetree li.folder ul.files li.file:last-child:before {
+	content: "└";
+}
+
+.filetree li.folder ul.files li.file a {
+	display: flex;
+	text-decoration: none;
+	color: #444444;
+	padding: 4px 0 0 0;
+}
+
+.filetree li.folder ul.files li.file a:hover {
+	color: var(--primary);
+	cursor: pointer;
+}
+
+.filetree li.folder ul.files li.file a i.material-icons {
+	margin: 0 5px 0 0;
+	color: #DDDDDD;
+	font-size: 18px;
+	text-shadow: 1px 1px 0 #444444;
+}
+
+.logfile-container {
+	overflow: auto;
+	width: auto;
+	height: auto;
+}
+
+.logfile {
+	font-size: 12px;
+	padding: 2px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.logfile::before {
+	display: inline-block;
+	content: attr(data-number);
+	color: #555555;
+	background: #DDDDDD;
+	border-right: 1px solid #555555;
+	margin: -2px 10px -2px -5px;
+	padding: 2px 5px;
+	min-width: 45px;
+	text-align: right;
+}
+
+.logfile:hover {
+	background: var(--light) !important;
+	color: var(--dark) !important;
+}
+
+.logfile:hover::before {
+	color: var(--dark);
+	background: var(--light);
+	border-right: 1px solid var(--dark);
+}
+
+.logfile.log-info {
+	color: var(--info);
+	background: #f2fafb;
+}
+
+.logfile.log-warning {
+	color: var(--warning);
+	background: #fbf7eb;
+}
+
+.logfile.log-danger {
+	color: var(--danger);
+	background: #ffdadd;
+}
+
+.logfile.log-success {
+	color: var(--success);
+	background: #e1ffe9;
+}

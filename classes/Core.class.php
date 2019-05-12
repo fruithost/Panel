@@ -226,10 +226,27 @@
 						$logfiles		= [];
 						$position		= 0;
 						$size			= 0;
+						$logfile		= NULL;
 						$directories	= [
 							'/var/fruithost/logs/',
 							'/var/log/'
 						];
+						
+						if(isset($_GET['file']) && !empty($_GET['file'])) {
+							$logfile = Encryption::decrypt($_GET['file'], sprintf('LOGFILE::%s', Auth::getID()));
+							
+							if(!file_exists($logfile)) {
+								$logfile = NULL;
+							}
+							
+							if(!is_readable($logfile)) {
+								$logfile = NULL;
+							}
+							
+							if(!empty($logfile)) {
+								$logfile = explode(PHP_EOL, shell_exec(sprintf('cat %s 2>&1', $logfile)));
+							}
+						}
 						
 						do {
 							$size		= count($directories);
@@ -251,12 +268,19 @@
 								if(preg_match('/(\.(gz|\d)$|\-bin\.)/', $info->getPathName())) {
 									continue;
 								}
-
-								$logfiles[] = $info->getPathName();
+								
+								$path = str_replace($info->getFileName(), '', $info->getPathName());
+	
+								if(empty($logfiles[$path])) {
+									$logfiles[$path] = [];
+								}
+							
+								$logfiles[$path][] = $info->getFileName();
 							}
 						} while($size > $position);
 						
-						$data['logfiles'] = $logfiles;
+						$data['logfile']	= $logfile;
+						$data['logfiles']	= $logfiles;
 					break;
 					case 'modules':
 						$data['repositorys']	= Database::fetch('SELECT * FROM `fh_repositorys`');
