@@ -29,7 +29,7 @@
 		}
 		
 		public function getData($name, $id = NULL, $default = NULL) {
-			$result = Database::single('SELECT * FROM `fh_users` WHERE `id`=:id LIMIT 1', [
+			$result = Database::single('SELECT * FROM `' . DATABASE_PREFIX . 'users` WHERE `id`=:id LIMIT 1', [
 				'id'	=> (empty($id) ? self::getID() : $id)
 			]);
 			
@@ -48,7 +48,7 @@
 		}
 		
 		public function login($username, $password) {
-			$result = Database::single('SELECT `id`, `username`, `password`, UPPER(SHA2(CONCAT(`id`, :salt, :password), 512)) as `crypted` FROM `fh_users` WHERE `username`=:username LIMIT 1', [
+			$result = Database::single('SELECT `id`, `username`, `password`, UPPER(SHA2(CONCAT(`id`, :salt, :password), 512)) as `crypted` FROM `' . DATABASE_PREFIX . 'users` WHERE `username`=:username LIMIT 1', [
 				'username'	=> $username,
 				'password'	=> $password,
 				'salt'		=>	MYSQL_PASSWORTD_SALT
@@ -76,7 +76,7 @@
 		}
 		
 		public function TwoFactorLogin($username, $password) {
-			$result = Database::single('SELECT `id`, `username`, `password`, UPPER(SHA2(CONCAT(`id`, :salt, :password), 512)) as `crypted` FROM `fh_users` WHERE `username`=:username LIMIT 1', [
+			$result = Database::single('SELECT `id`, `username`, `password`, UPPER(SHA2(CONCAT(`id`, :salt, :password), 512)) as `crypted` FROM `' . DATABASE_PREFIX . 'users` WHERE `username`=:username LIMIT 1', [
 				'username'	=> $username,
 				'password'	=> $password,
 				'salt'		=>	MYSQL_PASSWORTD_SALT
@@ -104,7 +104,7 @@
 		
 		public function getSettings($name, $user_id = NULL, $default = NULL) {
 			if(!empty($user_id) && is_string($user_id)) {
-				$result = Database::single('SELECT `id` FROM `fh_users` WHERE `username`=:username LIMIT 1', [
+				$result = Database::single('SELECT `id` FROM `' . DATABASE_PREFIX . 'users` WHERE `username`=:username LIMIT 1', [
 					'username'	=> $user_id
 				]);
 				
@@ -113,7 +113,7 @@
 				}
 			}
 			
-			$result = Database::single('SELECT * FROM `fh_users_settings` WHERE `user_id`=:user_id AND `key`=:key LIMIT 1', [
+			$result = Database::single('SELECT * FROM `' . DATABASE_PREFIX . 'users_settings` WHERE `user_id`=:user_id AND `key`=:key LIMIT 1', [
 				'user_id'	=> (empty($user_id) ? self::getID() : $user_id),
 				'key'		=> $name
 			]);
@@ -127,18 +127,30 @@
 			return $default;
 		}
 		
+		public function removeSettings($name, $user_id = NULL) {
+			if(Database::exists('SELECT `id` FROM `' . DATABASE_PREFIX . 'users_settings` WHERE `user_id`=:user_id AND `key`=:key LIMIT 1', [
+				'user_id'	=> (empty($user_id) ? $this->getID() : $user_id),
+				'key'		=> $name
+			])) {
+				Database::delete(DATABASE_PREFIX . 'users_settings', [
+					'user_id'	=> (empty($user_id) ? $this->getID() : $user_id),
+					'key'		=> $name
+				]);
+			}
+		}
+		
 		public function setSettings($name, $user_id = NULL, $value = NULL) {
-			if(Database::exists('SELECT `id` FROM `fh_users_settings` WHERE `user_id`=:user_id AND `key`=:key LIMIT 1', [
+			if(Database::exists('SELECT `id` FROM `' . DATABASE_PREFIX . 'users_settings` WHERE `user_id`=:user_id AND `key`=:key LIMIT 1', [
 				'user_id'	=> (empty($user_id) ? Auth::getID() : $user_id),
 				'key'		=> $name
 			])) {
-				Database::update('fh_users_settings', [ 'user_id', 'key' ], [
+				Database::update(DATABASE_PREFIX . 'users_settings', [ 'user_id', 'key' ], [
 					'user_id'		=> (empty($user_id) ? Auth::getID() : $user_id),
 					'key'			=> $name,
 					'value'			=> $value
 				]);
 			} else {
-				Database::insert('fh_users_settings', [
+				Database::insert(DATABASE_PREFIX . 'users_settings', [
 					'id'			=> NULL,
 					'user_id'		=> (empty($user_id) ? Auth::getID() : $user_id),
 					'key'			=> $name,
@@ -160,7 +172,7 @@
 				return in_array($name, $this->permissions);
 			}
 			
-			foreach(Database::fetch('SELECT * FROM `fh_users_permissions` WHERE `user_id`=:user_id', [
+			foreach(Database::fetch('SELECT * FROM `' . DATABASE_PREFIX . 'users_permissions` WHERE `user_id`=:user_id', [
 				'user_id'	=> (empty($user_id) ? self::getID() : $user_id)
 			]) AS $entry) {
 				$this->permissions[] = $entry->permission;
@@ -214,6 +226,10 @@
 		
 		public static function getSettings($name, $user_id = NULL, $default = NULL) {
 			return AuthFactory::getInstance()->getSettings($name, $user_id, $default);
+		}
+		
+		public static function removeSettings($name, $user_id = NULL) {
+			return AuthFactory::getInstance()->removeSettings($name, $user_id);
 		}
 		
 		public static function hasPermission($name, $user_id = NULL) {

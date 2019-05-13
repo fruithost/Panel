@@ -67,7 +67,7 @@
 				$where[] = sprintf('`%s`=:%s', $name, $name);
 			}
 			
-			return $this->query(sprintf('DELETE FROM `%s` WHERE %s', $table, implode(', ', $where)), $parameters);
+			return $this->query(sprintf('DELETE FROM `%s` WHERE %s', $table, implode(' AND ', $where)), $parameters);
 		}
 		
 		public function deleteWhereNot($table, $delete_not = [], $parameters = []) {

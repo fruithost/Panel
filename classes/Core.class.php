@@ -152,7 +152,7 @@
 
 				$this->template->display('account', [
 					'tab'	=> $tab,
-					'data'	=> Database::single('SELECT * FROM `fh_users_data` WHERE `user_id`=:user_id LIMIT 1', [
+					'data'	=> Database::single('SELECT * FROM `' . DATABASE_PREFIX . 'users_data` WHERE `user_id`=:user_id LIMIT 1', [
 						'user_id'	=> Auth::getID()
 					])
 				]);
@@ -351,7 +351,7 @@
 						$data['logfiles']	= $logfiles;
 					break;
 					case 'modules':
-						$data['repositorys']	= Database::fetch('SELECT * FROM `fh_repositorys`');
+						$data['repositorys']	= Database::fetch('SELECT * FROM `' . DATABASE_PREFIX . 'repositorys`');
 						$data['modules']		= $this->modules;
 					break;
 				}

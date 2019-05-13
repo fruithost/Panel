@@ -5,7 +5,7 @@
 	
 	if(!empty($token)) {
 		$found	= null;
-		$result = Database::fetch('SELECT `id`, `username`, `email`, `lost_token`, UPPER(SHA2(CONCAT(`id`, :salt, `email`), 512)) AS `crypted_mail` FROM `fh_users` WHERE `lost_enabled`=\'YES\' AND `lost_time` > DATE_SUB(NOW(), INTERVAL 24 HOUR)', [
+		$result = Database::fetch('SELECT `id`, `username`, `email`, `lost_token`, UPPER(SHA2(CONCAT(`id`, :salt, `email`), 512)) AS `crypted_mail` FROM `' . DATABASE_PREFIX . 'users` WHERE `lost_enabled`=\'YES\' AND `lost_time` > DATE_SUB(NOW(), INTERVAL 24 HOUR)', [
 			'salt'	=> RESET_PASSWORD_SALT
 		]);
 		
@@ -44,7 +44,7 @@
 					return;
 				}
 				
-				Database::update('fh_users', 'id', [
+				Database::update(DATABASE_PREFIX . 'users', 'id', [
 					'id'			=> $found->id,
 					'password'		=> strtoupper(hash('sha512', sprintf('%s%s%s', $found->id, MYSQL_PASSWORTD_SALT, $_POST['password_new']))),
 					'lost_enabled'	=> 'NO',
@@ -59,7 +59,7 @@
 			$template->assign('changeable', true);
 		}
 	} else if(isset($_POST['action']) && $_POST['action'] == 'lost-password') {
-		$result = Database::single('SELECT `id`, `username`, `email`, UPPER(SHA2(CONCAT(`id`, :salt, `email`), 512)) AS `crypted_mail` FROM `fh_users` WHERE `email`=:email LIMIT 1', [
+		$result = Database::single('SELECT `id`, `username`, `email`, UPPER(SHA2(CONCAT(`id`, :salt, `email`), 512)) AS `crypted_mail` FROM `' . DATABASE_PREFIX . 'users` WHERE `email`=:email LIMIT 1', [
 			'email'	=> $_POST['email'],
 			'salt'	=> RESET_PASSWORD_SALT
 		]);
@@ -71,7 +71,7 @@
 			$hash			= Encryption::encrypt($token_raw, $result->crypted_mail);
 			$recovery_link	= $template->url('/lost-password/' . $hash);
 			
-			Database::update('fh_users', 'id', [
+			Database::update(DATABASE_PREFIX . 'users', 'id', [
 				'id'			=> $result->id,
 				'lost_enabled'	=> 'YES',
 				'lost_time'		=> date('Y-m-d H:i:s', time()),

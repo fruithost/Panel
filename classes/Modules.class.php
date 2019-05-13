@@ -9,7 +9,7 @@
 			$this->core = $core;
 			$enabled	= [];
 			
-			foreach(Database::fetch('SELECT `name` FROM `fh_modules` WHERE `state`=\'ENABLED\'') AS $entry) {
+			foreach(Database::fetch('SELECT `name` FROM `' . DATABASE_PREFIX . 'modules` WHERE `state`=\'ENABLED\'') AS $entry) {
 				$enabled[] = $entry->name;
 			}
 			

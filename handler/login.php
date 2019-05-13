@@ -9,7 +9,7 @@
 		try {
 			if(isset($_POST['code'])) {
 				if(Session::get('two_factor') === intval(trim($_POST['code']))) {
-					$result = Database::single('SELECT * FROM `fh_users` WHERE `id`=:user_id LIMIT 1', [
+					$result = Database::single('SELECT * FROM `' . DATABASE_PREFIX . 'users` WHERE `id`=:user_id LIMIT 1', [
 						'user_id'	=> Session::get('two_id')
 					]);
 					
@@ -31,7 +31,7 @@
 			} else if(Auth::getSettings('2FA_ENABLED', $_POST['username'], 'false') === 'true' && Auth::TwoFactorLogin($_POST['username'], $_POST['password'])) {
 				$text	= '';
 				$code	= rand(100000, 999999);
-				$result = Database::single('SELECT * FROM `fh_users` WHERE `username`=:username LIMIT 1', [
+				$result = Database::single('SELECT * FROM `' . DATABASE_PREFIX . 'users` WHERE `username`=:username LIMIT 1', [
 					'username'	=> $_POST['username']
 				]);
 				

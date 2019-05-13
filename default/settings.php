@@ -70,6 +70,9 @@
 								</select>
 							</div>
 						</div>
+						<?php
+							$template->getCore()->getHooks()->runAction('ACCOUNT_SETTINGS_GLOBAL');
+						?>
 						<div class="form-group text-right">
 							<button type="submit" name="action" value="save" class="btn btn-outline-success">Save</button>
 						</div>

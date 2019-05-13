@@ -20,7 +20,7 @@
 					return;
 				}
 				
-				$result = Database::single('SELECT `password` FROM `fh_users` WHERE `id`=:user_id LIMIT 1', [
+				$result = Database::single('SELECT `password` FROM `' . DATABASE_PREFIX . 'users` WHERE `id`=:user_id LIMIT 1', [
 					'user_id'	=> Auth::getID()
 				]);
 				
@@ -39,7 +39,7 @@
 					return;
 				}
 				
-				Database::update('fh_users', 'id', [
+				Database::update(DATABASE_PREFIX . 'users', 'id', [
 					'id'			=> Auth::getID(),
 					'password'		=> strtoupper(hash('sha512', sprintf('%s%s%s', Auth::getID(), MYSQL_PASSWORTD_SALT, $_POST['password_new']))),
 					'lost_enabled'	=> 'NO',
@@ -74,10 +74,10 @@
 					return;
 				}
 				
-				if(Database::exists('SELECT `id` FROM `fh_users_data` WHERE `user_id`=:user_id LIMIT 1', [
+				if(Database::exists('SELECT `id` FROM `' . DATABASE_PREFIX . 'users_data` WHERE `user_id`=:user_id LIMIT 1', [
 					'user_id'	=> Auth::getID()
 				])) {
-					Database::update('fh_users_data', 'user_id', [
+					Database::update(DATABASE_PREFIX . 'users_data', 'user_id', [
 						'user_id'		=> Auth::getID(),
 						'phone_number'	=> $_POST['phone'],
 						'address'		=> $_POST['address'],
@@ -85,7 +85,7 @@
 						'name_last'		=> $_POST['name_last']
 					]);
 				} else {
-					Database::insert('fh_users_data', [
+					Database::insert(DATABASE_PREFIX . 'users_data', [
 						'id'			=> NULL,
 						'user_id'		=> Auth::getID(),
 						'phone_number'	=> $_POST['phone'],
@@ -95,7 +95,7 @@
 					]);
 				}
 				
-				$template->assign('data', Database::single('SELECT * FROM `fh_users_data` WHERE `user_id`=:user_id LIMIT 1', [
+				$template->assign('data', Database::single('SELECT * FROM `' . DATABASE_PREFIX . 'users_data` WHERE `user_id`=:user_id LIMIT 1', [
 					'user_id'	=> Auth::getID()
 				]));
 				
