@@ -69,13 +69,23 @@
 						?>
 						<div class="mb-2">
 							<div class="d-flex">
-								<i class="material-icons mr-1">storage</i>
+								<i class="material-icons mr-1"><?php
+									switch($disk['type']) {
+										case 'devtmpfs':
+										case 'tmpfs':
+											print 'memory';
+										break;
+										default:
+											print 'storage';
+										break;
+									}
+								?></i>
 								<strong><?php print $disk['mount']; ?></strong>
 							</div>
-							<div class="bg-secondary" style="height: 15px;" data-percentage="<?php print $disk['percent']; ?>">
+							<div class="bg-secondary" style="height: 15px;" data-percentage="<?php printf('%s%s', $disk['percent'], ($disk['used'] === '0' ? '' : sprintf(' (%s)', $disk['used']))); ?>">
 								<div class="bg-success" style="height: 100%; width: <?php print $disk['percent']; ?>"></div>
 							</div>
-							<small class="text-muted">Type: <?php print $disk['type']; ?> | FileSystem: <?php print $disk['filesystem']; ?></small>
+							<small class="text-muted">Type: <?php print $disk['type']; ?> | FileSystem: <?php print $disk['filesystem']; ?> | Size: <?php print $disk['avail']; ?> / <?php print $disk['size']; ?></small>
 						</div>
 						<?php
 					}

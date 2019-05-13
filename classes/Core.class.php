@@ -260,8 +260,10 @@
 							}
 						}
 
-						$disks	= [];
-						$output	= shell_exec('df -T -h');
+						$disks		= [];
+						$output		= shell_exec('df -T -h');
+						$search		= [ 'G', 'M' ];
+						$replace	= [ ' GB', ' MB' ];
 						
 						foreach(explode(PHP_EOL, $output) AS $index => $line) {
 							if($index === 0 || empty(trim($line))) {
@@ -273,9 +275,9 @@
 							$disks[] = [
 								'filesystem'	=> (isset($matches['filesystem']) ? $matches['filesystem'] : NULL),
 								'type'			=> (isset($matches['type']) ? $matches['type'] : NULL),
-								'size'			=> (isset($matches['size']) ? $matches['size'] : NULL),
-								'used'			=> (isset($matches['used']) ? $matches['used'] : NULL),
-								'avail'			=> (isset($matches['avail']) ? $matches['avail'] : NULL),
+								'size'			=> (isset($matches['size']) ? str_replace($search, $replace, $matches['size']) : NULL),
+								'used'			=> (isset($matches['used']) ? str_replace($search, $replace, $matches['used']) : NULL),
+								'avail'			=> (isset($matches['avail']) ? str_replace($search, $replace, $matches['avail']) : NULL),
 								'percent'		=> (isset($matches['percent']) ? $matches['percent'] : NULL),
 								'mount'			=> (isset($matches['mount']) ? $matches['mount'] : NULL)
 							];
