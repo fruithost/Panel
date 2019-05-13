@@ -1,6 +1,7 @@
 <?php
 	use fruithost\Auth;
 	use fruithost\Database;
+	use fruithost\Encryption;
 	
 	if(isset($_POST['action']) && $_POST['action'] === 'save') {
 		switch($tab) {
@@ -79,19 +80,19 @@
 				])) {
 					Database::update(DATABASE_PREFIX . 'users_data', 'user_id', [
 						'user_id'		=> Auth::getID(),
-						'phone_number'	=> $_POST['phone'],
-						'address'		=> $_POST['address'],
-						'name_first'	=> $_POST['name_first'],
-						'name_last'		=> $_POST['name_last']
+						'phone_number'	=> Encryption::encrypt($_POST['phone'], ENCRYPTION_SALT),
+						'address'		=> Encryption::encrypt($_POST['address'], ENCRYPTION_SALT),
+						'name_first'	=> Encryption::encrypt($_POST['name_first'], ENCRYPTION_SALT),
+						'name_last'		=> Encryption::encrypt($_POST['name_last'], ENCRYPTION_SALT)
 					]);
 				} else {
 					Database::insert(DATABASE_PREFIX . 'users_data', [
 						'id'			=> NULL,
 						'user_id'		=> Auth::getID(),
-						'phone_number'	=> $_POST['phone'],
-						'address'		=> $_POST['address'],
-						'name_first'	=> $_POST['name_first'],
-						'name_last'		=> $_POST['name_last']
+						'phone_number'	=> Encryption::encrypt($_POST['phone'], ENCRYPTION_SALT),
+						'address'		=> Encryption::encrypt($_POST['address'], ENCRYPTION_SALT),
+						'name_first'	=> Encryption::encrypt($_POST['name_first'], ENCRYPTION_SALT),
+						'name_last'		=> Encryption::encrypt($_POST['name_last'], ENCRYPTION_SALT)
 					]);
 				}
 				

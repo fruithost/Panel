@@ -150,11 +150,21 @@
 					Response::redirect('/');
 				}
 
+				$data = Database::single('SELECT * FROM `' . DATABASE_PREFIX . 'users_data` WHERE `user_id`=:user_id LIMIT 1', [
+					'user_id'	=> Auth::getID()
+				]);
+				
+				foreach($data AS $index => $entry) {
+					if(in_array($index, [ 'id', 'user_id' ])) {
+						continue;
+					}
+					
+					$data->{$index} = Encryption::decrypt($entry, ENCRYPTION_SALT);
+				}
+				
 				$this->template->display('account', [
 					'tab'	=> $tab,
-					'data'	=> Database::single('SELECT * FROM `' . DATABASE_PREFIX . 'users_data` WHERE `user_id`=:user_id LIMIT 1', [
-						'user_id'	=> Auth::getID()
-					])
+					'data'	=> $data
 				]);
 			});
 			
