@@ -362,3 +362,22 @@ ul.sortable li ul.list-unstyled li a div.label {
 	bottom: 0;
 	right: 0;
 }
+
+.module-actions {
+	visibility: hidden;
+}
+
+tr:hover .module-actions {
+	visibility: visible;
+}
+
+.module-badge {
+	opacity: 0.5;
+	height: 16px;
+	width: 16px;
+	margin-top: 3px;
+}
+
+tr:hover .module-badge {
+	opacity: 1;
+}

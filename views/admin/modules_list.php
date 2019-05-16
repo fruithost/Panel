@@ -1,18 +1,20 @@
 <table class="table table-sm table-striped table-hover">
 	<tr>
-		<th colspan="2">Module</th>
+		<th colspan="3">Module</th>
 		<th>Description</th>
-		<th>Status</th>
 	</tr>
 	<?php
 		foreach($modules->getList() AS $module) {
 			$info = $module->getInfo();
 			?>
-			<tr>
+			<tr class="<?php print (isset($upgradeable->{$module->getDirectory()}) ? 'table-warning' : ''); ?>">
 				<td scope="row" width="1px"><input type="checkbox" name="module[]" value="<?php print $info->getName(); ?>" /></td>
 				<td>
+					<span class="d-block badge badge-pill module-badge badge-<?php print ($module->isEnabled() ? 'success' : 'danger');?>" data-toggle="tooltip" title="<?php print ($module->isEnabled() ? 'Module is enabled.' : 'Module is disabled.');?>"></span>
+				</td>
+				<td>
 					<strong><?php print $info->getName(); ?></strong>
-					<p><?php
+					<p class="module-actions"><?php
 						$links = [];
 						
 						if($module->isEnabled()) {
@@ -49,7 +51,6 @@
 					<p><?php print $info->getDescription(); ?></p>
 					<small>Version <?php print $info->getVersion(); ?> | by <a href="<?php print $info->getAuthor()->getWebsite(); ?>" target="_blank"><?php print $info->getAuthor()->getName(); ?></a></small>
 				</td>
-				<td><?php print ($module->isEnabled() ? '<span class="text-success">Enabled</span>' : '<span class="text-danger">Disabled</span>');?></td>
 			</tr>
 			<?php
 		}
