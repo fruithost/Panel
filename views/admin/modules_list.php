@@ -1,4 +1,4 @@
-<table class="table table-sm table-striped table-hover">
+<table class="table table-striped table-hover">
 	<tr>
 		<th colspan="3">Module</th>
 		<th>Description</th>

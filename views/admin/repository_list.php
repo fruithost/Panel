@@ -1,7 +1,7 @@
 <?php
 	use fruithost\Auth;
 ?>
-<table class="table table-sm table-striped table-hover">
+<table class="table table-striped table-hover">
 	<tr>
 		<th colspan="2">Repository</th>
 		<th>Status</th>
