@@ -47,6 +47,10 @@
 			return $this->core;
 		}
 		
+		public function getAssigns() {
+			return $this->assigns;
+		}
+		
 		public function getFiles() {
 			return $this->files;
 		}
@@ -55,14 +59,19 @@
 			$this->assigns[$name] = $value;
 		}
 		
-		public function display($file, $arguments = []) {
+		public function display($file, $arguments = [], $basedir = true) {
 			$template	= $this;
 			
 			foreach($arguments AS $name => $value) {
 				$this->assigns[$name] = $value;
 			}
 			
-			$path		= sprintf('%1$s%2$sthemes%2$s%4$s%2$s%3$s.php', dirname(PATH), DS, $file, $this->theme);
+			if($basedir) {
+				$path		= sprintf('%1$s%2$sthemes%2$s%4$s%2$s%3$s.php', dirname(PATH), DS, $file, $this->theme);
+			} else {
+				$path		= $file;
+			}
+			
 			$handler	= sprintf('%1$s%2$shandler%2$s%3$s.php', PATH, DS, $file);
 			
 			foreach($this->assigns AS $name => $value) {

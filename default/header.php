@@ -1,4 +1,5 @@
 <?php
+	use fruithost\Router;
 	use fruithost\Auth;
 ?>
 <!DOCTYPE html>
@@ -66,7 +67,7 @@
 															foreach($category->getEntries() AS $entry) {
 																?>
 																	<ul class="nav flex-column mb-2">
-																		<li class="nav-item" style="order: <?php print $entry->order; ?>;"><a class="nav-link<?php print ($entry->active ? ' active' : ''); ?>" href="<?php print $template->url($entry->url); ?>"><?php print $entry->icon; ?> <?php print $entry->name; ?></a></li>
+																		<li class="nav-item" style="order: <?php print $entry->order; ?>;"><a class="nav-link<?php print ($entry->active ? ' active' : ''); ?>" href="<?php print (preg_match('/^(http|https):\/\//Uis', $entry->url) ? $entry->url : $template->url($entry->url)); ?>"<?php print (isset($entry->target) ? sprintf(' target="%s"', $entry->target) : ''); ?>><?php print $entry->icon; ?> <?php print $entry->name; ?></a></li>
 																	</ul>
 																<?php
 															}
@@ -79,7 +80,7 @@
 								</div>
 							</nav>
 							<?php
-								if(isset($module) && method_exists($module->getInstance(), 'frame') && !empty($module->getInstance()->frame())) {
+								if(isset($module) && method_exists($module->getInstance(), 'frame') && !empty($module->getInstance()->frame()) && !$template->getCore()->getRouter()->startsWith('/admin')) {
 									?>
 										<main role="main" class="frame col-md-9 ml-sm-auto col-lg-10 px-4">
 									<?php

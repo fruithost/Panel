@@ -12,6 +12,10 @@
 				]);
 			}
 		}
+				
+		public static function getID() {
+			return session_id();
+		}
 		
 		public static function get($name) {
 			self::init();

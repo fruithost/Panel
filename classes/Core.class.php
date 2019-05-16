@@ -85,7 +85,7 @@
 			$this->modules	= new Modules($this);
 			$this->template	= new Template($this);
 			$this->router	= new Router($this);
-			$this->admin	= new CoreAdmin($this);
+			$this->admin	= new CoreAdmin($this, NULL);
 			
 			$this->router->addRoute('/', function() {
 				if(Auth::isLoggedIn()) {

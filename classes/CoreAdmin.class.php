@@ -21,7 +21,7 @@
 					Response::redirect('/');
 				}
 				
-				$this->template->display('admin');
+				$this->getTemplate()->display('admin');
 			});
 			
 			$this->getRouter()->addRoute('^/admin(?:/([a-zA-Z0-9\-_]+))(?:/([a-zA-Z0-9\-_]+))?$', function($destination = null, $tab = NULL) {
@@ -167,14 +167,27 @@
 					case 'modules':
 						$upgradeable		= [];
 						$list				= sprintf('%s%s%s%s%s', dirname(PATH), DS, 'temp', DS, 'update.list');
+						$module				= NULL;
+						$modules			= $this->getModules();
 						
 						if(file_exists($list)) {
 							$upgradeable	= json_decode(file_get_contents($list));
 						}
 						
+						if(isset($_GET['settings'])) {
+							if($modules->hasModule($_GET['settings'])) {
+								$module = $modules->getModule($_GET['settings']);
+								
+								if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST' && method_exists($module->getInstance(), 'onSettings')) {
+									$module->getInstance()->onSettings($_POST);
+								}
+							}
+						}
+						
+						$data['module']			= $module;
 						$data['upgradeable']	= $upgradeable;
 						$data['repositorys']	= Database::fetch('SELECT * FROM `' . DATABASE_PREFIX . 'repositorys`');
-						$data['modules']		= $this->getModules();
+						$data['modules']		= $modules;
 					break;
 				}
 

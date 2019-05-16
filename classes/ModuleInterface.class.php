@@ -2,10 +2,12 @@
 	namespace fruithost;
 	
 	class ModuleInterface {
-		private $core = null;
+		private $core		= null;
+		private $instance	= null;
 		
-		public function __construct($core) {
-			$this->core = $core;
+		public function __construct($core, $instance) {
+			$this->core		= $core;
+			$this->instance	= $instance;
 			
 			$this->init();
 		}
@@ -32,6 +34,18 @@
 		
 		public function getCore() {
 			return $this->core;
+		}
+		
+		public function getInstance() {
+			return $this->instance;
+		}
+		
+		public function setSettings($name, $value = NULL) {
+			$this->instance->setSettings($name, $value);
+		}
+		
+		public function getSettings($name, $default = NULL) {
+			return $this->instance->getSettings($name, $default);			
 		}
 		
 		public function addButton($button) {

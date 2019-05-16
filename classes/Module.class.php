@@ -28,6 +28,49 @@
 			return $this->path;
 		}
 		
+		public function getSettings($name, $default = NULL) {
+			$result = Database::single('SELECT * FROM `' . DATABASE_PREFIX . 'modules_settings` WHERE `module`=:module AND `key`=:key LIMIT 1', [
+				'key'		=> $name,
+				'module'	=> $this->getDirectory()
+			]);
+			
+			if(!empty($result)) {
+				if(!empty($result->value)) {
+					return $result->value;
+				}
+			}
+			
+			return $default;
+		}
+		
+		public function setSettings($name, $value = NULL) {
+			if(Database::exists('SELECT `id` FROM `' . DATABASE_PREFIX . 'modules_settings` WHERE `module`=:module AND `key`=:key LIMIT 1', [
+				'module'	=> $this->getDirectory(),
+				'key'		=> $name
+			])) {
+				Database::update(DATABASE_PREFIX . 'modules_settings', [ 'module', 'key' ], [
+					'module'		=> $this->getDirectory(),
+					'key'			=> $name,
+					'value'			=> $value
+				]);
+			} else {
+				Database::insert(DATABASE_PREFIX . 'modules_settings', [
+					'id'			=> NULL,
+					'module'		=> $this->getDirectory(),
+					'key'			=> $name,
+					'value'			=> $value
+				]);
+			}
+		}
+		
+		public function hasSettingsPath() {
+			return file_exists($this->getSettingsPath());
+		}
+		
+		public function getSettingsPath() {
+			return sprintf('%s%sadmin.php', $this->path, DS);
+		}
+		
 		public function getDirectory() {
 			return basename($this->path);
 		}
@@ -55,7 +98,7 @@
 			foreach(array_diff($new, $old) AS $class) {
 				if(is_subclass_of($class, 'fruithost\\ModuleInterface', true)) {
 					$reflect			= new \ReflectionClass($class);
-					$instance			= $reflect->newInstanceArgs([ $core ]);
+					$instance			= $reflect->newInstanceArgs([ $core, $this ]);
 					$this->instance		= $instance;
 				}
 			}
@@ -66,7 +109,8 @@
 						'name'		=> $this->info->getName(),
 						'icon'		=> $this->info->getIcon(),
 						'order'		=> $this->info->getOrder(),
-						'url'		=> sprintf('/module/%s', basename($this->path)),
+						'target'	=> $core->getHooks()->applyFilter('TARGET_' . $this->info->getName(), NULL),
+						'url'		=> $core->getHooks()->applyFilter('URL_' . $this->info->getName(), sprintf('/module/%s', basename($this->path))),
 						'active'	=> $core->getRouter()->is(sprintf('/module/%s', basename($this->path)))
 					];
 					
