@@ -18,6 +18,18 @@
 			/* Override Me */
 		}
 		
+		public function getRouter() {
+			return $this->core->getRouter();
+		}
+		
+		public function getModules() {
+			return $this->core->getModules();
+		}
+		
+		public function getTemplate() {
+			return $this->core->getTemplate();
+		}
+		
 		public function getCore() {
 			return $this->core;
 		}

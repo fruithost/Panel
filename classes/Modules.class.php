@@ -38,9 +38,9 @@
 				$name	= basename($path);
 				
 				if($this->hasModule($name)) {
-					$modules[] = $this->getModule($name);
+					$modules[$name] = $this->getModule($name);
 				} else {
-					$modules[] = $module;					
+					$modules[$name] = $module;					
 				}
 			}
 			

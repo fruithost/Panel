@@ -24,6 +24,14 @@
 			return $this->instance;
 		}
 		
+		public function getPath() {
+			return $this->path;
+		}
+		
+		public function getDirectory() {
+			return basename($this->path);
+		}
+		
 		public function isEnabled() {
 			return $this->enabled;
 		}
