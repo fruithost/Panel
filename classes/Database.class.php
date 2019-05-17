@@ -2,6 +2,14 @@
 	namespace fruithost;
 	
 	class Database {
+		public static function file($file, $callback) {
+			return DatabaseFactory::getInstance()->file($file, $callback);
+		}
+		
+		public static function getError($object = NULL) {
+			return DatabaseFactory::getInstance()->getError($object);
+		}
+		
 		public static function query($query, $parameters = []) {
 			return DatabaseFactory::getInstance()->query($query, $parameters);
 		}
