@@ -21,7 +21,7 @@
 							$links = [];
 							
 							if($module->isEnabled()) {
-								$links['disable'] = sprintf('<a href="%s" class="text-warning">Disable</a>', $this->url('/admin/modules/?disable=' . $module->getDirectory()));
+								$links['disable'] = sprintf('<a href="%s" data-confirm="Do you really wan\'t to disable the module?" class="text-warning">Disable</a>', $this->url('/admin/modules/?disable=' . $module->getDirectory()));
 							} else {
 								$links['enable'] = sprintf('<a href="%s" class="text-success">Enable</a>', $this->url('/admin/modules/?enable=' . $module->getDirectory()));
 							}
@@ -30,7 +30,7 @@
 								$links['settings'] = sprintf('<a href="%s" class="text-primary">Settings</a>', $this->url('/admin/modules/?settings=' . $module->getDirectory()));
 							}
 							
-							$links['deinstall'] = sprintf('<a href="%s" class="text-danger">Deinstall</a>', $this->url('/admin/modules/?deinstall=' . $module->getDirectory()));
+							$links['deinstall'] = sprintf('<a href="%s" data-confirm="Do you really wan\'t to deinstall the module?" class="text-danger">Deinstall</a>', $this->url('/admin/modules/?deinstall=' . $module->getDirectory()));
 							
 							print implode(' | ', $links);
 						?></p>

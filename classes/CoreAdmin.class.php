@@ -16,6 +16,11 @@
 				(new Button())->setName('create')->setLabel('Create')->addClass('btn-outline-success')
 			])->onSave([ $this, 'onCreateRepository' ]));
 			
+			$this->addModal((new Modal('confirmation', 'Confirmation', NULL))->addButton([
+				(new Button())->setName('cancel')->setLabel('No')->addClass('btn-outline-danger')->setDismissable(),
+				(new Button())->setName('create')->setLabel('Yes')->addClass('btn-outline-success')
+			])->onSave([ $this, 'onConfirmation' ]));
+			
 			$this->getRouter()->addRoute('/admin', function() {
 				if(!Auth::isLoggedIn()) {
 					Response::redirect('/');
@@ -249,6 +254,10 @@
 
 				$this->getTemplate()->display('admin' . (!empty($destination) ? sprintf('/%s', $destination) : ''), $data);
 			});
+		}
+		
+		public function onConfirmation($data = []) {
+			return 'CONFIRMED';
 		}
 		
 		public function onCreateRepository($data = []) {

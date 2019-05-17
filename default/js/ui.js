@@ -62,4 +62,36 @@
 	});
 	
 	$('[data-toggle="tooltip"]').tooltip();
+	
+	$('[data-confirm]').on('click', function(event) {
+		let target	= $(this);
+		let popup	= $('#confirmation');
+		let prevent	= true;
+		
+		$('.modal-body, p', popup).remove();
+		$('.modal-footer', popup).addClass('text-center');
+		$('.modal-footer', popup).css('justify-content', 'center');
+		$('<p class="m-0 text-center p-3">' + target.data('confirm') + '</p>').insertAfter($('.modal-header', popup));
+		$('<p class="modal-body d-none">' + target.data('confirm') + '</p>').insertAfter($('.modal-header', popup));
+		popup.modal('show');
+		
+		let _watcher = setInterval(function() {
+			var state = $('.alert', popup).text();
+			
+			if(state === 'CONFIRMED') {
+				clearInterval(_watcher);
+				window.location.href = target.attr('href');
+			}
+		}, 500);
+		
+		popup.on('hide.bs.modal', function(event) {
+			clearInterval(_watcher);
+		});
+		
+		if(prevent) {
+			event.preventDefault();
+			return false;
+		}
+	});
+	
 }(jQuery));
