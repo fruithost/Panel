@@ -193,7 +193,21 @@
 				}
 				
 				if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST' && method_exists($module->getInstance(), 'onPOST')) {
-					$module->getInstance()->onPOST($_POST);
+					$data = [];
+					
+					foreach($_POST AS $name => $value) {
+						if(is_array($value)) {
+							$data[trim($name)] = [];
+							
+							foreach($value AS $key => $entry) {
+								$data[trim($name)][trim($key)] = trim($entry);
+							}
+						} else {
+							$data[trim($name)] = trim($value);
+						}
+					}
+					
+					$module->getInstance()->onPOST($data);
 				}
 				
 				if(method_exists($module->getInstance(), 'load')) {
@@ -242,7 +256,21 @@
 					foreach($modals AS $modal) {
 						if($modal->getName() === $_POST['modal']) {
 							$callback	= $modal->getCallback('save');
-							$result		= call_user_func_array($callback, [ $_POST ]);
+							$data		= [];
+							
+							foreach($_POST AS $name => $value) {
+								if(is_array($value)) {
+									$data[trim($name)] = [];
+									
+									foreach($value AS $key => $entry) {
+										$data[trim($name)][trim($key)] = trim($entry);
+									}
+								} else {
+									$data[trim($name)] = trim($value);
+								}
+							}
+							
+							$result		= call_user_func_array($callback, [ $data ]);
 							
 							if(is_bool($result)) {
 								print json_encode($result);
