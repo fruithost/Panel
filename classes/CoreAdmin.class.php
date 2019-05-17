@@ -182,12 +182,68 @@
 									$module->getInstance()->onSettings($_POST);
 								}
 							}
+						} else if(isset($_GET['disable'])) {
+							if($modules->hasModule($_GET['disable'], true)) {
+								$module = $modules->getModule($_GET['disable'], true);
+								
+								if(!$module->isEnabled()) {
+									$data['error'] = 'The module is already disabled!';
+								} else {
+									Database::update(DATABASE_PREFIX . 'modules', 'name', [
+										'name'			=> $module->getDirectory(),
+										'state'			=> 'DISABLED'
+									]);
+									
+									$module->setEnabled(false);
+									
+									$data['success']	= 'The module was successfully disabled.';
+								}
+							} else {
+								$data['error'] = 'The module not exists!';
+							}
+						} else if(isset($_GET['enable'])) {
+							if($modules->hasModule($_GET['enable'], true)) {
+								$module = $modules->getModule($_GET['enable'], true);
+								
+								if($module->isEnabled()) {
+									$data['error'] = 'The module is already enabled!';
+								} else {
+									Database::update(DATABASE_PREFIX . 'modules', 'name', [
+										'name'			=> $module->getDirectory(),
+										'state'			=> 'ENABLED'
+									]);
+									
+									$module->setEnabled(true);
+									
+									$data['success']	= 'The module was successfully enabled.';
+								}
+							} else {
+								$data['error'] = 'The module not exists!';
+							}
+						} else if(isset($_GET['deinstall'])) {
+							if($modules->hasModule($_GET['deinstall'], true)) {
+								$module = $modules->getModule($_GET['deinstall'], true);
+								
+								Database::update(DATABASE_PREFIX . 'modules', 'name', [
+									'name'			=> $module->getDirectory(),
+									'state'			=> 'DISABLED',
+									'time_deleted'	=> date('Y-m-d H:i:s', time()),
+								]);
+								
+								if($module->isEnabled()) {
+									$module->setEnabled(false);
+								}
+								
+								$data['success'] = 'The module was successfully deinstalled!';
+							} else {
+								$data['error'] = 'The module not exists!';
+							}
 						}
 						
 						$data['module']			= $module;
 						$data['upgradeable']	= $upgradeable;
 						$data['repositorys']	= Database::fetch('SELECT * FROM `' . DATABASE_PREFIX . 'repositorys`');
-						$data['modules']		= $modules;
+						$data['modules']		= $this->getModules();
 					break;
 				}
 

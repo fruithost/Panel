@@ -21,20 +21,16 @@
 							$links = [];
 							
 							if($module->isEnabled()) {
-								$links['disable'] = '<a href="#" class="text-warning">Disable</a>';
+								$links['disable'] = sprintf('<a href="%s" class="text-warning">Disable</a>', $this->url('/admin/modules/?disable=' . $module->getDirectory()));
 							} else {
-								$links['enable'] = '<a href="#" class="text-success">Enable</a>';
+								$links['enable'] = sprintf('<a href="%s" class="text-success">Enable</a>', $this->url('/admin/modules/?enable=' . $module->getDirectory()));
 							}
 							
 							if($module->hasSettingsPath()) {
 								$links['settings'] = sprintf('<a href="%s" class="text-primary">Settings</a>', $this->url('/admin/modules/?settings=' . $module->getDirectory()));
 							}
 							
-							if(isset($upgradeable->{$module->getDirectory()})) {
-								$links['upgrade'] = '<a href="#" class="text-warning font-weight-bold">Upgrade</a>';
-							}
-							
-							$links['deinstall'] = '<a href="#" class="text-danger">Deinstall</a>';
+							$links['deinstall'] = sprintf('<a href="%s" class="text-danger">Deinstall</a>', $this->url('/admin/modules/?deinstall=' . $module->getDirectory()));
 							
 							print implode(' | ', $links);
 						?></p>
@@ -47,6 +43,7 @@
 									<div class="alert alert-warning d-flex p-2" role="alert">
 										<i class="material-icons text-danger p-0">autorenew</i>
 										<p class="p-0 m-0">The module <strong><?php print $info->getName(); ?></strong> has an new upgrade to <strong>Version <?php print $upgrade->version; ?></strong>!</p>
+											<button class="btn btn-outline-success btn-sm m-0 ml-2 pt-0 pb-0">Upgrade now!</button>
 									</div>
 								<?php
 							}

@@ -9,7 +9,7 @@
 			$this->core = $core;
 			$enabled	= [];
 			
-			foreach(Database::fetch('SELECT `name` FROM `' . DATABASE_PREFIX . 'modules` WHERE `state`=\'ENABLED\'') AS $entry) {
+			foreach(Database::fetch('SELECT `name` FROM `' . DATABASE_PREFIX . 'modules` WHERE `state`=\'ENABLED\' AND `time_deleted` IS NULL') AS $entry) {
 				$enabled[] = $entry->name;
 			}
 			
@@ -37,10 +37,14 @@
 				$module	= new Module($path);
 				$name	= basename($path);
 				
-				if($this->hasModule($name)) {
-					$modules[$name] = $this->getModule($name);
-				} else {
-					$modules[$name] = $module;					
+				if(Database::exists('SELECT `id` FROM `' . DATABASE_PREFIX . 'modules` WHERE `name`=:name AND `time_deleted` IS NULL', [
+					'name'	=> $name
+				])) {
+					if($this->hasModule($name)) {
+						$modules[$name] = $this->getModule($name);
+					} else {
+						$modules[$name] = $module;					
+					}
 				}
 			}
 			
@@ -63,7 +67,17 @@
 			return $this->modules;
 		}
 		
-		public function hasModule($name) {
+		public function hasModule($name, $all = false) {
+			if($all) {
+				$modules = $this->getList();
+				
+				if(!isset($modules[$name])) {
+					return false;
+				}
+				
+				return true;
+			}
+			
 			if(!isset($this->modules[$name])) {
 				return false;
 			}
@@ -71,7 +85,17 @@
 			return true;
 		}
 		
-		public function getModule($name) {
+		public function getModule($name, $all = false) {
+			if($all) {
+				$modules = $this->getList();
+				
+				if(!isset($modules[$name])) {
+					return null;
+				}
+				
+				return $modules[$name];
+			}
+			
 			if(!isset($this->modules[$name])) {
 				return null;
 			}
