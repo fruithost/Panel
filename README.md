@@ -17,5 +17,8 @@ Be a team-player, all feedbacks of our patrons will have the priority. We will b
 # Demonstration
 **Demo:** http://my.fruithost.de/
 
+> Currently we do not offer any public demo users!
+> If you want to watch the demo, write to us - We will set up a personal account for you to test fruithost!
+
 # Screenshot
 ![Backend](https://raw.githubusercontent.com/fruithost/Panel/master/screenshots/preview_backend.png)
