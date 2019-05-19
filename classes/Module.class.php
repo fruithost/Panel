@@ -111,7 +111,7 @@
 						'order'		=> $this->info->getOrder(),
 						'target'	=> $core->getHooks()->applyFilter('TARGET_' . $this->info->getName(), NULL),
 						'url'		=> $core->getHooks()->applyFilter('URL_' . $this->info->getName(), sprintf('/module/%s', basename($this->path))),
-						'active'	=> $core->getRouter()->is(sprintf('/module/%s', basename($this->path)))
+						'active'	=> $core->getRouter()->startsWith(sprintf('/module/%s', basename($this->path)))
 					];
 					
 					return $entries;
