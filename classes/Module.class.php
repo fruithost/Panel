@@ -87,7 +87,6 @@
 			$script = sprintf('%s%smodule.php', $this->path, DS);
 			
 			if(!file_exists($script)) {
-				//throw new \Exception('[Module] had no class: ' . $script);
 				return;
 			}
 			
@@ -111,7 +110,7 @@
 						'order'		=> $this->info->getOrder(),
 						'target'	=> $core->getHooks()->applyFilter('TARGET_' . $this->info->getName(), NULL),
 						'url'		=> $core->getHooks()->applyFilter('URL_' . $this->info->getName(), sprintf('/module/%s', basename($this->path))),
-						'active'	=> $core->getRouter()->startsWith(sprintf('/module/%s', basename($this->path)))
+						'active'	=> $core->getRouter()->is(sprintf('/module/%s', basename($this->path))) || $core->getRouter()->startsWith(sprintf('/module/%s/', basename($this->path)))
 					];
 					
 					return $entries;
