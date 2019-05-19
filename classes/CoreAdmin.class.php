@@ -108,6 +108,11 @@
 						$data['uptime']			= $uptime;
 						$data['memory']			= $memory;
 						$data['disks']			= $disks;
+						$data['daemon']			= [
+							'start'		=> date(Auth::getSettings('TIME_FORMAT', NULL, 'd.m.Y - H:i'), strtotime($this->getCore()->getSettings('DAEMON_TIME_START'))),
+							'end'		=> date(Auth::getSettings('TIME_FORMAT', NULL, 'd.m.Y - H:i'), strtotime($this->getCore()->getSettings('DAEMON_TIME_END'))),
+							'time'		=> number_format($this->getCore()->getSettings('DAEMON_RUNNING_END') - $this->getCore()->getSettings('DAEMON_RUNNING_START'), 4, ',', '.')
+						];
 					break;
 					case 'logs':
 						$logfiles		= [];

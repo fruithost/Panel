@@ -78,6 +78,37 @@
 			return $this->router;
 		}
 		
+		public function getSettings($name, $default = NULL) {
+			$result = Database::single('SELECT * FROM `' . DATABASE_PREFIX . 'settings` WHERE `key`=:key LIMIT 1', [
+				'key'		=> $name
+			]);
+			
+			if(!empty($result)) {
+				if(!empty($result->value)) {
+					return $result->value;
+				}
+			}
+			
+			return $default;
+		}
+		
+		public function setSettings($name, $value = NULL) {
+			if(Database::exists('SELECT `id` FROM `' . DATABASE_PREFIX . 'settings` WHERE `key`=:key LIMIT 1', [
+				'key'		=> $name
+			])) {
+				Database::update(DATABASE_PREFIX . 'settings', [ 'key' ], [
+					'key'			=> $name,
+					'value'			=> $value
+				]);
+			} else {
+				Database::insert(DATABASE_PREFIX . 'settings', [
+					'id'			=> NULL,
+					'key'			=> $name,
+					'value'			=> $value
+				]);
+			}
+		}
+		
 		private function init() {
 			Request::init();
 			

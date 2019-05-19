@@ -61,6 +61,22 @@
 						<td><?php print $uptime; ?></td>
 					</tr>
 				</table>
+				
+				<h4>Daemon</h4>
+				<table class="table">
+					<tr>
+						<th>Last Start</th>
+						<td><?php print $daemon['start']; ?></td>
+					</tr>
+					<tr>
+						<th>Last End</th>
+						<td><?php print $daemon['end']; ?></td>
+					</tr>
+					<tr>
+						<th>Last Time</th>
+						<td><?php print $daemon['time']; ?> Seconds</td>
+					</tr>
+				</table>
 			</div>
 			<div class="col-6">
 				<h4>Mounted Drives</h4>
