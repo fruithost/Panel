@@ -14,6 +14,8 @@ Be a team-player, all feedbacks of our patrons will have the priority. We will b
 
 [![BECOME A PATRON](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/fruithost)
 
+[![Donate via PayPal](https://raw.githubusercontent.com/stefan-niedermann/paypal-donate-button/master/paypal-donate-button.png)](https://paypal.me/pools/c/8eXXYJpWP3)
+
 # Demonstration
 **Demo:** http://my.fruithost.de/
 
