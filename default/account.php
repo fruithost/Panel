@@ -40,11 +40,15 @@
 						<hr class="mb-4" />
 						<div class="form-group row">
 							<label for="name_first" class="col-sm-2 col-form-label">Full Name:</label>
-							<div class="col-sm-5">
-								<input type="text" class="form-control" id="name_first" name="name_first" value="<?php print (!empty($data) && !empty($data->name_first) ? $data->name_first : ''); ?>" />
-							</div>
-							<div class="col-sm-5">
-								<input type="text" class="form-control" id="name_last" name="name_last" value="<?php print (!empty($data) && !empty($data->name_last) ? $data->name_last : ''); ?>" />
+							<div class="col-sm-10 container">
+								<div class="row">
+									<div class="col-6">
+										<input type="text" class="form-control" id="name_first" name="name_first" value="<?php print (!empty($data) && !empty($data->name_first) ? $data->name_first : ''); ?>" />
+									</div>
+									<div class="col-6">
+										<input type="text" class="form-control" id="name_last" name="name_last" value="<?php print (!empty($data) && !empty($data->name_last) ? $data->name_last : ''); ?>" />
+									</div>
+								</div>
 							</div>
 						</div>
 						<div class="form-group row">

@@ -17,27 +17,27 @@
 	
 	?>
 	<div class="container mt-5 mb-5">
-		<div class="row">
-			<div class="col">
+		<ul class="list-unstyled row list-group list-group-horizontal list-group-flush text-center">
+			<li class="col">
 				<img src="<?php print (new Gauge())->render('Memory', $memory['free'], 0, $memory['total'])->base64(); ?>" />
-			</div>
-			<div class="col">
+			</li>
+			<li class="col">
 				<img src="<?php print (new Gauge())->render('CPU Load', $memory['free'], 0, $memory['total'])->base64(); ?>" />
-			</div>
-			<div class="col">
+			</li>
+			<li class="col">
 				<img src="<?php print (new Gauge())->render('Swap', $memory['free_swap'], 0, $memory['total_swap'])->base64(); ?>" />
-			</div>
-			<div class="col">
+			</li>
+			<li class="col">
 				<img src="<?php print (new Gauge())->render('Cache', $memory['cache'], $memory['free'], $memory['total'])->base64(); ?>" />
-			</div>
-			<div class="col">
+			</li>
+			<li class="col">
 				<img src="<?php print (new Gauge())->render('Buffer', $memory['buffer'], 0, $memory['total'])->base64(); ?>" />
-			</div>
-		</div>
+			</li>
+		</ul>
 	</div>
 	<div class="container mt-5">
 		<div class="row">
-			<div class="col-6">
+			<div class="col-md-6">
 				<h4>System Properties</h4>
 				<table class="table">
 					<tr>
@@ -78,7 +78,7 @@
 					</tr>
 				</table>
 			</div>
-			<div class="col-6">
+			<div class="col-md-6">
 				<h4>Mounted Drives</h4>
 				<?php
 					foreach($disks AS $disk) {

@@ -112,6 +112,12 @@ body.sortable {
 	margin: 0.200rem 0 0;
 }
 
+@media (max-width: 576px) {	
+	.navbar-nav .dropdown-menu {
+		margin: -2px 0 0 0;
+	}
+}
+
 .navbar-nav .nav-link img.picture {
 	vertical-align: text-top;
 }
