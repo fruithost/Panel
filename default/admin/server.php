@@ -1,5 +1,6 @@
 <?php
 	use fruithost\Auth;
+	use fruithost\Utils;
 	use Gauge\Gauge;
 	
 	$template->header();
@@ -66,11 +67,11 @@
 				<table class="table">
 					<tr>
 						<th>Last Start</th>
-						<td><?php print $daemon['start']; ?></td>
+						<td><?php print $daemon['start']; ?> (<?php print Utils::getTimeDifference($daemon['started']); ?> ago)</td>
 					</tr>
 					<tr>
 						<th>Last End</th>
-						<td><?php print $daemon['end']; ?></td>
+						<td><?php print $daemon['end']; ?> (<?php print Utils::getTimeDifference($daemon['ended']); ?> ago)</td>
 					</tr>
 					<tr>
 						<th>Last Time</th>
