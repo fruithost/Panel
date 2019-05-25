@@ -3,14 +3,14 @@
 	$template->header();
 	?>
 		<form method="post" action="<?php print $this->url('/account' . (!empty($tab) ? '/' . $tab : '')); ?>">
-			<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+			<header class="page-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 				<h1 class="h2">
-					<a href="<?php print $this->url('/account'); ?>">Account</a>
+					<a class="active" href="<?php print $this->url('/account'); ?>">Account</a>
 				</h1>
 				<div class="btn-toolbar mb-2 mb-md-0">
 					<button type="submit" name="action" value="save" class="btn btn-sm btn-outline-primary">Save</button>
 				</div>
-			</div>
+			</header>
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item"><a class="nav-link<?php print (empty($tab) ? ' active' : ''); ?>" id="details-tab" href="<?php print $this->url('/account'); ?>" role="tab">Account Details</a></li>
 				<li class="nav-item"><a class="nav-link<?php print (!empty($tab) && $tab === 'password' ? ' active' : ''); ?>" id="password-tab" href="<?php print $this->url('/account/password'); ?>" role="tab">Change Password</a></li>

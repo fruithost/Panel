@@ -17,9 +17,9 @@
 	if(isset($_GET['settings'])) {
 		?>
 		<form method="post" action="<?php print $this->url('/admin/modules' . (!empty($tab) ? '/' . $tab : '') . '?settings=' . $_GET['settings']); ?>">
-			<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+			<header class="page-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 				<h1 class="h2">
-					<a href="<?php print $this->url('/admin/modules' . (!empty($tab) ? '/' . $tab : '') . '?settings=' . $_GET['settings']); ?>">
+					<a class="active" href="<?php print $this->url('/admin/modules' . (!empty($tab) ? '/' . $tab : '') . '?settings=' . $_GET['settings']); ?>">
 						<?php print (empty($module) ? 'Module error' : sprintf('Settings for %s', $module->getInfo()->getName())); ?>
 					</a>
 				</h1>
@@ -29,7 +29,7 @@
 						<button type="submit" name="action" value="settings" class="btn btn-sm btn-outline-success">Save</button>
 					</div>
 				</div>
-			</div>
+			</header>
 			<?php
 				if(!$modules->hasModule($_GET['settings'])) {
 					?>
@@ -70,9 +70,9 @@
 	} else {
 	?>
 		<form method="post" action="<?php print $this->url('/admin/modules' . (!empty($tab) ? '/' . $tab : '')); ?>">
-			<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+			<header class="page-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 				<h1 class="h2">
-					<a href="<?php print $this->url('/admin/modules'); ?>">Modules</a>
+					<a class="active" href="<?php print $this->url('/admin/modules'); ?>">Modules</a>
 				</h1>
 				<div class="btn-toolbar mb-2 mb-md-0">				
 					<?php
@@ -97,7 +97,7 @@
 						}
 					?>
 				</div>
-			</div>
+			</header>
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item"><a class="nav-link<?php print (empty($tab) ? ' active' : ''); ?>" id="globals-tab" href="<?php print $this->url('/admin/modules'); ?>" role="tab">Installed Modules<?php
 					$updates = count((array) $upgradeable);

@@ -142,6 +142,23 @@ body.sortable {
     padding-right: 0px !important;
 }
 
+header.page-header h1 {
+	font-size: 22px;
+	display: flex;
+}
+
+header.page-header a {
+	color: #444444;
+}
+
+header.page-header a.active {
+	color: var(--primary);
+}
+
+header.page-header i.material-icons {
+	color: #DDDDDD;
+}
+
 main iframe {
 	width: 100%;
 	border: none;

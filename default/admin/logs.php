@@ -16,14 +16,14 @@
 	}
 	?>
 		
-	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+	<header class="page-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 		<h1 class="h2">
-			<a href="<?php print $this->url('/admin/logs'); ?>">Logfiles</a>
+			<a class="active" href="<?php print $this->url('/admin/logs'); ?>">Logfiles</a>
 		</h1>
 		<div class="btn-toolbar mb-2 mb-md-0">
 			<button type="submit" name="action" value="save" class="btn btn-sm btn-outline-primary">Refresh</button>
 		</div>
-	</div>
+	</header>
 	<div class="d-flex pb-2 mb-3">
 		<div class="flex-fill logfile-container w-100 mr-2">
 			<?php

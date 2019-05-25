@@ -4,14 +4,14 @@
 	$template->header();
 	?>
 		<form method="post" action="<?php print $this->url('/settings' . (!empty($tab) ? '/' . $tab : '')); ?>">
-			<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+			<header class="page-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 				<h1 class="h2">
-					<a href="<?php print $this->url('/settings'); ?>">Settings</a>
+					<a class="active" href="<?php print $this->url('/settings'); ?>">Settings</a>
 				</h1>
 				<div class="btn-toolbar mb-2 mb-md-0">
 					<button type="submit" name="action" value="save" class="btn btn-sm btn-outline-primary">Save</button>
 				</div>
-			</div>
+			</header>
 			
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item"><a class="nav-link<?php print (empty($tab) ? ' active' : ''); ?>" id="globals-tab" href="<?php print $this->url('/settings'); ?>" role="tab">Global Settings</a></li>

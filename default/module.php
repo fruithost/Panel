@@ -8,14 +8,14 @@
 	} else {
 ?>
 	<form method="post" action="<?php print $this->url(true); ?>">
-		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+		<header class="page-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 			<h1 class="h2">
-				<a href="<?php print $this->url(sprintf('/module/%s', $module->getDirectory())); ?>"><?php print $module->getInfo()->getName(); ?></a>
+				<a <?php print (empty($submodule) ? 'class="active" ' : ''); ?>href="<?php print $this->url(sprintf('/module/%s', $module->getDirectory())); ?>"><?php print $module->getInfo()->getName(); ?></a>
 				<?php
 					if(!empty($submodule)) {
 						?>
 							<i class="material-icons">arrow_right</i>
-							<a href="<?php print $this->url(sprintf('/module/%s/%s', $module->getDirectory(), $submodule)); ?>"><?php print $this->getCore()->getHooks()->applyFilter('SUBMODULE_NAME', $submodule); ?></a>
+							<a class="active" href="<?php print $this->url(sprintf('/module/%s/%s', $module->getDirectory(), $submodule)); ?>"><?php print $this->getCore()->getHooks()->applyFilter('SUBMODULE_NAME', $submodule); ?></a>
 						<?php
 					}
 				?>
@@ -53,7 +53,7 @@
 					<?php
 				}
 			?>
-		</div>
+		</header>
 		<?php
 			if(isset($error)) {
 				?>
