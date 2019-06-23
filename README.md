@@ -19,6 +19,8 @@ Be a team-player, all feedbacks of our patrons will have the priority. We will b
 # Demonstration
 **Demo:** http://my.fruithost.de/
 
+**Request:** https://forms.gle/eS7E4MYSVKiiigw77
+
 > Currently we do not offer any public demo users!
 > If you want to watch the demo, write to us - We will set up a personal account for you to test fruithost!
 
