@@ -19,6 +19,8 @@
 			
 			$this->core->getHooks()->addAction('html_head', [ $this, 'head_robots' ]);
 			$this->core->getHooks()->addAction('html_head', [ $this, 'head_scripts' ]);
+			$this->core->getHooks()->addAction('html_head', [ $this, 'theme_color' ]);
+			$this->core->getHooks()->addAction('html_head', [ $this, 'favicon' ]);
 			$this->core->getHooks()->addAction('html_foot', [ $this, 'foot_modals' ]);
 			$this->core->getHooks()->addAction('html_foot', [ $this, 'foot_scripts' ]);
 			
