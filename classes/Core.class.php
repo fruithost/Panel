@@ -16,8 +16,8 @@
 		public function load($class) {
 			$this->require('.security');
 			
-			if(is_readable('config.php')) {
-				$this->require('config');
+			if(is_readable('.config.php')) {
+				$this->require('.config');
 			} else if(is_readable('../.config.php')) {
 				$this->require('../.config');
 			}
