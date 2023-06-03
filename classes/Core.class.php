@@ -15,7 +15,12 @@
 		
 		public function load($class) {
 			$this->require('.security');
-			$this->require('config');
+			
+			if(is_readable('config.php')) {
+				$this->require('config');
+			} else if(is_readable('../.config.php')) {
+				$this->require('../.config');
+			}
 			
 			$file			= trim($class, BS);
 			$file_array		= explode(BS, $file);
