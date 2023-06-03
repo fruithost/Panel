@@ -2,7 +2,7 @@
 	namespace fruithost;
 	
 	class Utils {
-		public static function getTimeDifference($from, $to = NULL) {
+		public static function getTimeDifference(int $from, int $to = NULL) : string {
 			if(empty($to)) {
 				$to = time();
 			}

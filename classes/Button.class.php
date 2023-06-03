@@ -8,47 +8,47 @@
 		private $modal			= null;
 		private $dismissable	= false;
 		
-		public function getName() {
+		public function getName() : string | null {
 			return $this->name;
 		}
 		
-		public function setName($name) {
+		public function setName(string $name) : Button {
 			$this->name = $name;
 			return $this;
 		}
 		
-		public function isDismissable() {
+		public function isDismissable() : bool {
 			return $this->dismissable;
 		}
 		
-		public function setDismissable() {
+		public function setDismissable() : Button {
 			$this->dismissable = true;
 			return $this;
 		}
 		
-		public function hasModal() {
+		public function hasModal() : bool {
 			return !empty($this->modal);
 		}
 		
-		public function getModal() {
+		public function getModal() : string {
 			return $this->modal;
 		}
 		
-		public function setModal($modal) {
+		public function setModal(string $modal) : Button {
 			$this->modal = $modal;
 			return $this;
 		}
 		
-		public function getLabel() {
+		public function getLabel() : string {
 			return $this->label;
 		}
 		
-		public function setLabel($label) {
+		public function setLabel(string $label) : Button {
 			$this->label = $label;
 			return $this;
 		}
 		
-		public function getClasses($raw = true) {
+		public function getClasses(bool $raw = true) : string {
 			if($raw) {
 				return $this->classes;
 			}
@@ -56,7 +56,7 @@
 			return implode(' ', $this->classes);
 		}
 		
-		public function addClass($class) {
+		public function addClass(string $class) : Button {
 			$this->classes[] = $class;
 			return $this;
 		}

@@ -6,18 +6,18 @@
 			if(!isset($_SESSION)) {
 				#@session_save_path(sprintf('%s%stemp', dirname(PATH), DS));
 				
-				@session_start([
+				@session_start(/*[
 					'cookie_lifetime'	=> 3600,
 					'read_and_close'	=> false
-				]);
+				]*/);
 			}
 		}
 				
-		public static function getID() {
+		public static function getID() : string | false {
 			return session_id();
 		}
 		
-		public static function get($name) {
+		public static function get($name) : bool | int | float | string | array | object | null  {
 			self::init();
 			
 			if(isset($_SESSION[$name])) {
@@ -27,13 +27,13 @@
 			return NULL;
 		}
 		
-		public static function set($name, $value) {
+		public static function set(string $name, bool | int | float | string | array | object | null $value) {
 			self::init();
 			
 			$_SESSION[$name] = $value;
 		}
 		
-		public static function remove($name) {
+		public static function remove(string $name) {
 			self::init();
 			
 			$_SESSION[$name] = NULL;

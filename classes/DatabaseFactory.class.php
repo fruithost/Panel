@@ -16,7 +16,7 @@
 			return self::$instance;
 		}
 		
-		public function getError($object = NULL) {
+		public function getError(object $object = NULL) {
 			if(empty($object)) {
 				return $this->errorInfo();
 			}
@@ -24,7 +24,7 @@
 			return $object->errorInfo();
 		}
 		
-		public function file($file, $callback) {
+		public function file(string $file, callable $callback) {
 			if(!file_exists($file)) {
 				call_user_func_array($callback, [ 'Can\'t found file: ' . $file ]);
 				return;
@@ -64,19 +64,19 @@
 			return $stmt;
 		}
 		
-		public function single($query, $parameters = []) {
+		public function single(string $query, array $parameters = []) {
 			return $this->query($query, null, $parameters)->fetch(\PDO::FETCH_OBJ);
 		}
 		
-		public function count($query, $parameters = []) {
+		public function count(string $query, array $parameters = []) {
 			return $this->query($query, null, $parameters)->rowCount();
 		}
 		
-		public function fetch($query, $parameters = []) {
+		public function fetch(string $query, array $parameters = []) {
 			return $this->query($query, null, $parameters)->fetchAll(\PDO::FETCH_OBJ);
 		}
 		
-		public function update($table, $where, $parameters = []) {
+		public function update(string $table, string $where, array $parameters = []) {
 			$fields = '';
 			
 			foreach($parameters AS $name => $value) {
@@ -99,11 +99,11 @@
 			return $this->query($query, null, $parameters)->fetchAll(\PDO::FETCH_OBJ);
 		}
 		
-		public function reset($table, $where, $old, $new) {
+		public function reset(string $table, $where, $old, $new) {
 			return $this->query(sprintf('UPDATE `%1$s` SET %2$s=%4$d WHERE `%2$s`=:%3$d', $table, $where, $old, $new));
 		}
 		
-		public function delete($table, $parameters = []) {
+		public function delete(string $table, array $parameters = []) {
 			$where = [];
 			
 			foreach($parameters AS $name => $value) {
@@ -113,7 +113,7 @@
 			return $this->query(sprintf('DELETE FROM `%s` WHERE %s', $table, implode(' AND ', $where)), null, $parameters);
 		}
 		
-		public function deleteWhereNot($table, $delete_not = [], $parameters = []) {
+		public function deleteWhereNot(string $table, array $delete_not = [], array $parameters = []) {
 			$where				= [];
 			$default_parameters	= [];
 			
@@ -136,7 +136,7 @@
 			return $this->query(sprintf('DELETE FROM `%s` WHERE %s', $table, implode(' AND ', $where)), null, $parameters);
 		}
 		
-		public function insert($table, $parameters = []) {
+		public function insert(string $table, array $parameters = []) {
 			$names		= [];
 			$values		= [];
 			

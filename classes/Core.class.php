@@ -13,7 +13,7 @@
 			$this->init();
 		}
 		
-		public function load($class) {
+		public function load(string $class) {
 			$this->require('.security');
 			
 			if(is_readable('.config.php')) {
@@ -56,7 +56,7 @@
 			require_once($path);
 		}
 		
-		private function require($file) {
+		private function require(string $file) {
 			$path = sprintf('%s%s.php', PATH, $file);
 			
 			if(!file_exists($path)) {
@@ -67,23 +67,23 @@
 			require_once($path);
 		}
 		
-		public function getModules() {
+		public function getModules() : Modules {
 			return $this->modules;
 		}
 		
-		public function getHooks() {
+		public function getHooks() : Hooks {
 			return $this->hooks;
 		}
 		
-		public function getTemplate() {
+		public function getTemplate() : Template {
 			return $this->template;
 		}
 		
-		public function getRouter() {
+		public function getRouter() : Router {
 			return $this->router;
 		}
 		
-		public function getSettings($name, $default = NULL) {
+		public function getSettings(string $name, mixed $default = NULL) : mixed {
 			$result = Database::single('SELECT * FROM `' . DATABASE_PREFIX . 'settings` WHERE `key`=:key LIMIT 1', [
 				'key'		=> $name
 			]);
@@ -97,7 +97,7 @@
 			return $default;
 		}
 		
-		public function setSettings($name, $value = NULL) {
+		public function setSettings(string $name, mixed $value = NULL) {
 			if(Database::exists('SELECT `id` FROM `' . DATABASE_PREFIX . 'settings` WHERE `key`=:key LIMIT 1', [
 				'key'		=> $name
 			])) {
@@ -147,7 +147,7 @@
 				$this->template->display('overview');
 			});
 			
-			$this->router->addRoute('^/settings(?:/([a-zA-Z0-9\-_]+))?$', function($tab = null) {
+			$this->router->addRoute('^/settings(?:/([a-zA-Z0-9\-_]+))?$', function(string | null $tab = null) {
 				if(!Auth::isLoggedIn()) {
 					Response::redirect('/');
 				}
@@ -182,7 +182,7 @@
 				]);
 			});
 			
-			$this->router->addRoute('^/account(?:/([a-zA-Z0-9\-_]+))?$', function($tab = null) {
+			$this->router->addRoute('^/account(?:/([a-zA-Z0-9\-_]+))?$', function(string | null $tab = null) {
 				if(!Auth::isLoggedIn()) {
 					Response::redirect('/');
 				}

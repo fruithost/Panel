@@ -7,11 +7,11 @@
 		private $current	= NULL;
 		private $core;
 		
-		public function __construct($core) {
+		public function __construct(Core $core) {
 			$this->core = $core;
 		}
 		
-		public function addRoute($name, $callback) {
+		public function addRoute(string $name, callable $callback) : Route | null {
 			$route					= new Route();
 			$this->routes[$name]	= $route;
 			$route->setPath($name);
@@ -20,7 +20,7 @@
 			return $route;
 		}
 		
-		public function routeExists($name) {
+		public function routeExists(string $name) : bool {
 			foreach($this->routes AS $route) {
 				if(preg_match('/(\(|\)|\[|\])/Uis', $route->getPath()) && preg_match('#' . $route->getPath() .  '#Uis', $name)) {
 					return true;
@@ -30,7 +30,7 @@
 			return array_key_exists($name, $this->routes);
 		}
 		
-		public function executeRoute($name) {
+		public function executeRoute(string $name) {
 			$this->current	= $name;
 			
 			foreach($this->routes AS $route) {
@@ -48,19 +48,19 @@
 			$callback();
 		}
 		
-		public function getCurrent() {
+		public function getCurrent() : string {
 			return $this->current;
 		}
 		
-		public function is($name) {
+		public function is(string $name) : bool {
 			return (strtolower($this->getCurrent()) === strtolower($name));
 		}
 		
-		public function startsWith($name) {
+		public function startsWith(string $name) : bool {
 			return (strpos(strtolower($this->getCurrent()), strtolower($name)) === 0);
 		}
 		
-		public function redirectTo($redirect) {
+		public function redirectTo(string $redirect) {
 			$this->redirect = $redirect;
 		}
 		

@@ -19,7 +19,7 @@
 			/* do Nothing */
 		}
 		
-		public function addHeader($name, $value) {
+		public function addHeader(string $name, string $value) {
 			$this->headers[$name] = $value;
 		}
 		
@@ -31,7 +31,7 @@
 			}
 		}
 		
-		public function redirect($url) {
+		public function redirect(string $url) {
 			$this->addHeader('Location', $url);
 			$this->header();
 			exit();

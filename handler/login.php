@@ -20,7 +20,7 @@
 						$template->assign('error', 'Your 2FA code is invalid!');
 					} else {
 						Session::set('user_name',	$result->username);
-						Session::set('user_id',		$result->id);
+						Session::set('user_id',		(int) $result->id);
 						Response::redirect('/overview');
 					}
 				} else {
@@ -36,7 +36,7 @@
 				]);
 				
 				Session::set('two_factor',	$code);
-				Session::set('two_id',		$result->id);
+				Session::set('two_id',		(int) $result->id);
 				
 				$mail			= new PHPMailer;
 				$mail->isSendmail();

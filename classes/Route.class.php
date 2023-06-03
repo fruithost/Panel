@@ -5,19 +5,19 @@
 		private $path		= '/';
 		private $callback	= NULL;
 		
-		public function getPath() {
+		public function getPath() : string {
 			return $this->path;
 		}
 		
-		public function setPath($path) {
+		public function setPath(string $path) {
 			$this->path = $path;
 		}
 		
-		public function getCallback() {
+		public function getCallback() : callable {
 			return $this->callback;
 		}
 		
-		public function setCallback($callback) {
+		public function setCallback(callable $callback) {
 			$this->callback = $callback;
 		}
 	}

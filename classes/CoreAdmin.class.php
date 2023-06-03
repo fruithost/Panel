@@ -263,11 +263,11 @@
 			});
 		}
 		
-		public function onConfirmation($data = []) {
+		public function onConfirmation(array $data = []) : string {
 			return 'CONFIRMED';
 		}
 		
-		public function onCreateRepository($data = []) {
+		public function onCreateRepository(array $data = []) : string | bool {
 			if(empty($data['repository_url']) || !filter_var($data['repository_url'], FILTER_VALIDATE_URL)) {
 				return 'Please enter an valid  repository URL!';
 			}
