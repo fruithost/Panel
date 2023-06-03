@@ -137,7 +137,7 @@
 					$b->order = 999;
 				}
 				
-				return $a->order > $b->order;
+				return $a->order > $b->order ? 1 : -1;
 			});
 			
 			return $results;

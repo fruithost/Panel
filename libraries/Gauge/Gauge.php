@@ -29,7 +29,7 @@
 				unset($tmp);
 			}
 
-			$this->image = imagecreatefrompng($this->image_background);
+			$this->image = @imagecreatefrompng($this->image_background); // @ToDO Exception RGB profile
 			
 			imageAlphaBlending($this->image, true);
 			imageSaveAlpha($this->image, true);
@@ -56,7 +56,7 @@
 			}
 
 			$angle	= (($value - $range_bottom) * 260) / ($range_top - $range_bottom);
-			$needle	= imagecreatefrompng($this->image_needle);
+			$needle	= @imagecreatefrompng($this->image_needle); // @ToDO Exception RGB profile
 			$new_x	= 0;
 			$new_y	= 0;
 			
@@ -80,7 +80,7 @@
 				}
 			}
 			
-			$new_img = imagecreatefrompng($this->image_transparent);
+			$new_img = @imagecreatefrompng($this->image_transparent); // @ToDO Exception RGB profile
 			
 			if($new_img) {
 				imageAlphaBlending($new_img, true);
@@ -111,7 +111,7 @@
 			$x				= ($image_width - $text_width) / 2;
 			$y				= ($image_height + $text_height) / 2;
 			
-			imagettftext($this->image, $font_size, $angle, $x, $top, imagecolorallocate($this->image, 0, 0, 0), $font, $text);
+			imagettftext($this->image, (float) $font_size, (float) $angle, (int) $x, (int) $top, imagecolorallocate($this->image, 0, 0, 0), $font, $text); // @ToDo Exception float/int precision
 		}
 		
 		public function display_png() {

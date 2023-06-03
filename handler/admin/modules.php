@@ -8,7 +8,7 @@
 				
 				if(isset($_POST['repository'])) {
 					foreach($_POST['repository'] AS $repository) {
-						$repositorys[] = Database::single('SELECT * FROM `' . DATABASE_PREFIX . 'repositorys`', [
+						$repositorys[] = Database::single('SELECT * FROM `' . DATABASE_PREFIX . 'repositorys` WHERE `id`=:id', [
 							'id'	=> $repository
 						]);
 					}

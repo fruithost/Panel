@@ -6,7 +6,7 @@
 		private static $instance	= NULL;
 		private $permissions		= [];
 		
-		public static function getInstance() {
+		public static function getInstance() : AuthFactory {
 			if(self::$instance === NULL) {
 				self::$instance = new self();
 			}
@@ -14,17 +14,17 @@
 			return self::$instance;
 		}
 		
-		public function isLoggedIn() {
+		public function isLoggedIn() : bool {
 			$user_id = Session::get('user_id');
 			
 			return (!empty($user_id) && $user_id > 0);
 		}
 		
-		public function getID() {
+		public function getID() : int | null {
 			return Session::get('user_id');
 		}
 		
-		public function getUsername() {
+		public function getUsername() : string | null {
 			return Session::get('user_name');
 		}
 		
@@ -47,7 +47,7 @@
 			Session::remove('user_name');
 		}
 		
-		public function login($username, $password) {
+		public function login($username, $password) : bool {
 			$result = Database::single('SELECT `id`, `username`, `password`, UPPER(SHA2(CONCAT(`id`, :salt, :password), 512)) as `crypted` FROM `' . DATABASE_PREFIX . 'users` WHERE `username`=:username LIMIT 1', [
 				'username'	=> $username,
 				'password'	=> $password,
@@ -75,7 +75,7 @@
 			return true;
 		}
 		
-		public function TwoFactorLogin($username, $password) {
+		public function TwoFactorLogin($username, $password) : bool {
 			$result = Database::single('SELECT `id`, `username`, `password`, UPPER(SHA2(CONCAT(`id`, :salt, :password), 512)) as `crypted` FROM `' . DATABASE_PREFIX . 'users` WHERE `username`=:username LIMIT 1', [
 				'username'	=> $username,
 				'password'	=> $password,
@@ -159,11 +159,11 @@
 			}
 		}
 		
-		public function getGravatar() {
+		public function getGravatar() : string {
 			return sprintf('https://www.gravatar.com/avatar/%s?s=%d&d=%s&r=%s', md5(strtolower(trim($this->getData('email')))), 22, 'mp', 'g');
 		}
 		
-		public function hasPermission($name, $user_id = NULL) {
+		public function hasPermission($name, $user_id = NULL) : bool {
 			if(count($this->permissions) > 0) {
 				if($name === '*') {
 					return count($this->permissions) >= 1;
@@ -188,7 +188,7 @@
 	}
 	
 	class Auth {
-		public static function isLoggedIn() {
+		public static function isLoggedIn() : bool {
 			return AuthFactory::getInstance()->isLoggedIn();
 		}
 		
@@ -204,11 +204,11 @@
 			return AuthFactory::getInstance()->logout();
 		}
 		
-		public static function getID() {
+		public static function getID() : int | null {
 			return AuthFactory::getInstance()->getID();
 		}
 		
-		public static function getUsername() {
+		public static function getUsername() : string | null {
 			return AuthFactory::getInstance()->getUsername();
 		}
 		
@@ -216,7 +216,7 @@
 			return AuthFactory::getInstance()->getData('email');
 		}
 		
-		public static function getGravatar() {
+		public static function getGravatar() : string {
 			return AuthFactory::getInstance()->getGravatar();
 		}
 		
@@ -232,7 +232,7 @@
 			return AuthFactory::getInstance()->removeSettings($name, $user_id);
 		}
 		
-		public static function hasPermission($name, $user_id = NULL) {
+		public static function hasPermission($name, $user_id = NULL) : bool {
 			return AuthFactory::getInstance()->hasPermission($name, $user_id);
 		}
 	}

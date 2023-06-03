@@ -53,7 +53,8 @@
 			call_user_func_array($callback, [ NULL ]);
 		}
 		
-		public function query($query, $parameters = []) {
+		public function query(string $query, ?int $fetchMode = null, mixed ...$parameters): \PDOStatement | false {
+			$parameters = $parameters[0];
 			$stmt = $this->prepare($query);
 			
 			if($stmt) {
@@ -64,15 +65,15 @@
 		}
 		
 		public function single($query, $parameters = []) {
-			return $this->query($query, $parameters)->fetch(\PDO::FETCH_OBJ);
+			return $this->query($query, null, $parameters)->fetch(\PDO::FETCH_OBJ);
 		}
 		
 		public function count($query, $parameters = []) {
-			return $this->query($query, $parameters)->rowCount();
+			return $this->query($query, null, $parameters)->rowCount();
 		}
 		
 		public function fetch($query, $parameters = []) {
-			return $this->query($query, $parameters)->fetchAll(\PDO::FETCH_OBJ);
+			return $this->query($query, null, $parameters)->fetchAll(\PDO::FETCH_OBJ);
 		}
 		
 		public function update($table, $where, $parameters = []) {
@@ -95,7 +96,7 @@
 				$query = sprintf('UPDATE `%1$s` SET %2$s WHERE `%3$s`=:%3$s', $table, rtrim($fields, ', '), $where);
 			}
 			
-			return $this->query($query, $parameters)->fetchAll(\PDO::FETCH_OBJ);
+			return $this->query($query, null, $parameters)->fetchAll(\PDO::FETCH_OBJ);
 		}
 		
 		public function reset($table, $where, $old, $new) {
@@ -109,7 +110,7 @@
 				$where[] = sprintf('`%s`=:%s', $name, $name);
 			}
 			
-			return $this->query(sprintf('DELETE FROM `%s` WHERE %s', $table, implode(' AND ', $where)), $parameters);
+			return $this->query(sprintf('DELETE FROM `%s` WHERE %s', $table, implode(' AND ', $where)), null, $parameters);
 		}
 		
 		public function deleteWhereNot($table, $delete_not = [], $parameters = []) {
@@ -132,7 +133,7 @@
 				}
 			}
 			
-			return $this->query(sprintf('DELETE FROM `%s` WHERE %s', $table, implode(' AND ', $where)), $parameters);
+			return $this->query(sprintf('DELETE FROM `%s` WHERE %s', $table, implode(' AND ', $where)), null, $parameters);
 		}
 		
 		public function insert($table, $parameters = []) {
@@ -144,7 +145,7 @@
 				$values[]	= ':' . $name;
 			}
 			
-			$this->query(sprintf('INSERT INTO `%s` (%s) VALUES (%s)', $table, implode(', ', $names), implode(', ', $values)), $parameters);
+			$this->query(sprintf('INSERT INTO `%s` (%s) VALUES (%s)', $table, implode(', ', $names), implode(', ', $values)), null, $parameters);
 			return $this->lastInsertId();
 		}
 	}

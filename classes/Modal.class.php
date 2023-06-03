@@ -55,7 +55,7 @@
 				${$name} = $value;
 			}
 			
-			if(preg_match('/\.php$/', $this->content)) {
+			if(!empty($this->content) && preg_match('/\.php$/', $this->content)) {
 				require_once($this->content);
 				return;
 			}

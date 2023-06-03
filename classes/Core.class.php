@@ -186,12 +186,14 @@
 					'user_id'	=> Auth::getID()
 				]);
 				
-				foreach($data AS $index => $entry) {
-					if(in_array($index, [ 'id', 'user_id' ])) {
-						continue;
+				if($data !== false) {
+					foreach($data AS $index => $entry) {
+						if(in_array($index, [ 'id', 'user_id' ])) {
+							continue;
+						}
+						
+						$data->{$index} = Encryption::decrypt($entry, ENCRYPTION_SALT);
 					}
-					
-					$data->{$index} = Encryption::decrypt($entry, ENCRYPTION_SALT);
 				}
 				
 				$this->template->display('account', [
