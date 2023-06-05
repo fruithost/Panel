@@ -1,6 +1,8 @@
 <?php
 	namespace fruithost;
 	
+	use fruithost\Auth;
+	
 	class Hooks {
 		protected $filters			= [];
 		protected $merged_filters	= [];
@@ -34,7 +36,7 @@
 			
 			do {
 				foreach(current($this->filters['all']) AS $entry) {
-					if(!empty($entry['method'])) {
+					if(!empty($entry['method']) && (isset($entry['logged_in']) && ($entry['logged_in'] == true && Auth::isLoggedIn() || $entry['logged_in'] == false))) {
 						call_user_func_array($entry['method'], $args);
 					}
 				}
@@ -42,9 +44,10 @@
 		}
 
 		/* Filter */
-		public function addFilter($name, $method, $priority = 50) {
+		public function addFilter($name, $method, $priority = 50, $logged_in = true) {
 			$this->filters[$name][$priority][$this->createID($method)] = [
-				'method'     => $method
+				'method'    	=> $method,
+				'logged_in'		=> $logged_in
 			];
 			
 			unset($this->merged_filters[$name]);
@@ -126,7 +129,7 @@
 			
 			do {
 				foreach(current($this->filters[$name]) AS $entry) {
-					if(!empty($entry['method'])) {
+					if(!empty($entry['method']) && (isset($entry['logged_in']) && ($entry['logged_in'] == true && Auth::isLoggedIn() || $entry['logged_in'] == false))) {
 						$args[0]	= $value;
 						$value		= call_user_func_array($entry['method'], $args);
 					}
@@ -139,8 +142,8 @@
 		}
 		
 		/* Actions */
-		public function addAction($name, $method, $priority = 50) {
-			return $this->addFilter($name, $method, $priority);
+		public function addAction($name, $method, $priority = 50, $logged_in = true) {
+			return $this->addFilter($name, $method, $priority, $logged_in);
 		}
 		
 		public function removeAction($name, $method, $priority = 50) {
@@ -202,7 +205,7 @@
 			
 			do {
 				foreach(current($this->filters[$name]) AS $entry) {
-					if(!empty($entry['method'])) {
+					if(!empty($entry['method']) && (isset($entry['logged_in']) && ($entry['logged_in'] == true && Auth::isLoggedIn() || $entry['logged_in'] == false))) {
 						call_user_func_array($entry['method'], $args);
 					}
 				}

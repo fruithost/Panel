@@ -48,18 +48,18 @@
 			return $this->instance->getSettings($name, $default);			
 		}
 		
-		public function addButton($button) {
+		public function addButton($button, $logged_in = false) {
 			$this->addFilter('buttons', function($buttons) use($button) {
 				$buttons[] = $button;
 				return $buttons;
-			});
+			}, 10, $logged_in);
 		}
 		
-		public function addModal($modal) {
+		public function addModal($modal, $logged_in = false) {
 			$this->addFilter('modals', function($modals) use($modal) {
 				$modals[] = $modal;
 				return $modals;
-			});
+			}, 10, $logged_in);
 		}
 		
 		public function assign($name, $value) {
@@ -71,7 +71,7 @@
 		}
 		
 		/* Filter */
-		public function addFilter($name, $method, $priority = 10) {
+		public function addFilter($name, $method, $priority = 10, $logged_in = false) {
 			return $this->core->getHooks()->addFilter($name, $method, $priority);
 		}
 		

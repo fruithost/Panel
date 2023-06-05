@@ -3,7 +3,7 @@
 	
 	class TemplateDefaults {
 		public function head_robots() {
-			printf('<meta name="robots" content="%s" />', $this->getCore()->getHooks()->applyFilter('meta_robots', 'noindex,follow'));
+			printf('<meta name="robots" content="%s" />', $this->getCore()->getHooks()->applyFilter('meta_robots', 'noindex,follow', 10, false));
 		}
 		
 		public function favicon() {
@@ -19,7 +19,7 @@
 		}
 		
 		public function theme_color() {
-			printf('<meta name="theme-color" content="%s" />', $this->getCore()->getHooks()->applyFilter('theme_color', '#007BFF'));
+			printf('<meta name="theme-color" content="%s" />', $this->getCore()->getHooks()->applyFilter('theme_color', '#007BFF', 10, false));
 		}
 		
 		public function head_scripts() {
@@ -73,7 +73,7 @@
 		}
 		
 		public function foot_modals() {
-			$modals = $this->getCore()->getHooks()->applyFilter('modals', []);
+			$modals = $this->getCore()->getHooks()->applyFilter('modals', [], 10, false);
 			$template = $this;
 			
 			foreach($modals AS $modal) {

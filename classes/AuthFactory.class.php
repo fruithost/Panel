@@ -42,9 +42,11 @@
 			return $default;
 		}
 		
-		public function logout() {
+		public static function logout() : bool {
 			Session::remove('user_id');
 			Session::remove('user_name');
+			
+			return true;
 		}
 		
 		public function login(string $username, string $password) : bool {

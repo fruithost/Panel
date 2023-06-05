@@ -17,12 +17,12 @@
 			
 			ob_start('ob_gzhandler');
 			
-			$this->core->getHooks()->addAction('html_head', [ $this, 'head_robots' ]);
-			$this->core->getHooks()->addAction('html_head', [ $this, 'head_scripts' ]);
-			$this->core->getHooks()->addAction('html_head', [ $this, 'theme_color' ]);
-			$this->core->getHooks()->addAction('html_head', [ $this, 'favicon' ]);
-			$this->core->getHooks()->addAction('html_foot', [ $this, 'foot_modals' ]);
-			$this->core->getHooks()->addAction('html_foot', [ $this, 'foot_scripts' ]);
+			$this->core->getHooks()->addAction('html_head', [ $this, 'head_robots' ], 10, false);
+			$this->core->getHooks()->addAction('html_head', [ $this, 'head_scripts' ], 10, false);
+			$this->core->getHooks()->addAction('html_head', [ $this, 'theme_color' ], 10, false);
+			$this->core->getHooks()->addAction('html_head', [ $this, 'favicon' ], 10, false);
+			$this->core->getHooks()->addAction('html_foot', [ $this, 'foot_modals' ], 10, false);
+			$this->core->getHooks()->addAction('html_foot', [ $this, 'foot_scripts' ], 10, false);
 			
 			$this->files->addStylesheet('bootstrap', $this->url('css/bootstrap/bootstrap.min.css'), '4.3.1');
 			$this->files->addStylesheet('jquery-ui', $this->url('css/jquery-ui/jquery-ui.css'), '1.12.1');
