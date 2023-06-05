@@ -7,6 +7,7 @@
 		private $router		= null;
 		private $template	= null;
 		private $admin		= null;
+		
 		public function __construct() {
 			spl_autoload_register([ $this, 'load' ]);
 			
@@ -14,7 +15,11 @@
 		}
 		
 		public function load(string $class) {
-			$this->require('.security');
+			if(is_readable('.security.php')) {
+				$this->require('.security');
+			} else if(is_readable('../.security.php')) {
+				$this->require('../.security');
+			}
 			
 			if(is_readable('.config.php')) {
 				$this->require('.config');
