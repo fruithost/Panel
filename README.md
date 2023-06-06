@@ -25,4 +25,4 @@ Be a team-player, all feedbacks of our patrons will have the priority. We will b
 > If you want to watch the demo, write to us - We will set up a personal account for you to test fruithost!
 
 # Screenshot
-![Backend](https://raw.githubusercontent.com/fruithost/Panel/master/screenshots/preview_backend.png)
+![Backend](https://raw.githubusercontent.com/fruithost/Documentation/main/Images/preview_backend.png)
