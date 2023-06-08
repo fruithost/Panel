@@ -110,10 +110,10 @@
 						$data['disks']			= $disks;
 						$data['daemon']			= [
 							'started'	=> strtotime($this->getCore()->getSettings('DAEMON_TIME_START')),
-							'start'		=> date(Auth::getSettings('TIME_FORMAT', NULL, 'd.m.Y - H:i'), strtotime($this->getCore()->getSettings('DAEMON_TIME_START'))),
-							'end'		=> date(Auth::getSettings('TIME_FORMAT', NULL, 'd.m.Y - H:i'), strtotime($this->getCore()->getSettings('DAEMON_TIME_END'))),
-							'ended'		=> strtotime($this->getCore()->getSettings('DAEMON_TIME_END')),
-							'time'		=> number_format($this->getCore()->getSettings('DAEMON_RUNNING_END') - $this->getCore()->getSettings('DAEMON_RUNNING_START'), 4, ',', '.')
+							'start'		=> date(Auth::getSettings('TIME_FORMAT', NULL, 'd.m.Y - H:i'), strtotime($this->getCore()->getSettings('DAEMON_TIME_START', 0))),
+							'end'		=> date(Auth::getSettings('TIME_FORMAT', NULL, 'd.m.Y - H:i'), strtotime($this->getCore()->getSettings('DAEMON_TIME_END', 0))),
+							'ended'		=> strtotime($this->getCore()->getSettings('DAEMON_TIME_END', 0)),
+							'time'		=> number_format($this->getCore()->getSettings('DAEMON_RUNNING_END', 0) - $this->getCore()->getSettings('DAEMON_RUNNING_START', 0), 4, ',', '.')
 						];
 					break;
 					case 'logs':

@@ -30,7 +30,7 @@
 			return DatabaseFactory::getInstance()->fetch($query, $parameters);
 		}
 		
-		public static function update(string $table, string $where, array $parameters = []) {
+		public static function update(string $table, array $where, array $parameters = []) {
 			return DatabaseFactory::getInstance()->update($table, $where, $parameters);
 		}
 		
