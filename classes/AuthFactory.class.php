@@ -78,7 +78,7 @@
 		}
 		
 		public function TwoFactorLogin(string $username, string $password) : bool {
-			$result = Database::single('SELECT `id`, `username`, `password`, UPPER(SHA2(CONCAT(`id`, :salt, :password), 512)) as `crypted` FROM `' . DATABASE_PREFIX . 'users` WHERE `username`=:username LIMIT 1', [
+			$result = Database::single('SELECT `id`, `username`, `email`, `password`, UPPER(SHA2(CONCAT(`id`, :salt, :password), 512)) as `crypted` FROM `' . DATABASE_PREFIX . 'users` WHERE `username`=:username LIMIT 1', [
 				'username'	=> $username,
 				'password'	=> $password,
 				'salt'		=>	MYSQL_PASSWORTD_SALT
