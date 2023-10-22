@@ -55,6 +55,11 @@
 					return;
 				}
 				
+				if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+					$template->assign('error', 'Please enter a valid E-Mail address.');
+					return;
+				}
+				
 				if(!isset($_POST['name_first']) || empty($_POST['name_first'])) {
 					$template->assign('error', 'Please enter your first name.');
 					return;
@@ -98,6 +103,11 @@
 				
 				$data = Database::single('SELECT * FROM `' . DATABASE_PREFIX . 'users_data` WHERE `user_id`=:user_id LIMIT 1', [
 					'user_id'	=> Auth::getID()
+				]);
+				
+				Database::update(DATABASE_PREFIX . 'users', 'id', [
+					'id'			=> Auth::getID(),
+					'email'			=> $_POST['email']
 				]);
 				
 				foreach($data AS $index => $entry) {

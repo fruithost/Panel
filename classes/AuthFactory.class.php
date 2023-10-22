@@ -94,6 +94,10 @@
 				return false;
 			}
 			
+			if(!filter_var($result->email, FILTER_VALIDATE_EMAIL)) {
+				return false;
+			}
+			
 			if($result->id > 0) {
 				/* Do Nothing */
 			} else {

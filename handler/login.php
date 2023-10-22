@@ -39,7 +39,18 @@
 				Session::set('two_id',		(int) $result->id);
 				
 				$mail			= new PHPMailer;
-				$mail->isSendmail();
+				
+				if(defined('MAIL_EXTERNAL')) {
+					$mail->Host       = MAIL_HOSTNAME;
+					$mail->Port       = MAIL_PORT;
+					$mail->SMTPAuth   = true;
+					$mail->Username   = MAIL_USERNAME;
+					$mail->Password   = MAIL_PASSWORD;
+					$mail->isSMTP();
+				} else {
+					$mail->isSendmail();
+				}			
+				
 				$mail->CharSet	= 'utf-8';
 				$mail->Subject	= '2FA - Code';
 				$mail->setFrom('no-reply@fruithost.de', 'fruithost');

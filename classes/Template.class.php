@@ -1,5 +1,6 @@
 <?php
 	namespace fruithost;
+	use \fruithost\I18N;
 	use \fruithost\Database;
 	
 	class Template extends TemplateDefaults {

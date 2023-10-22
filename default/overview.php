@@ -1,4 +1,5 @@
 <?php
+	use \fruithost\Auth;
 	$template->header();
 	?>
 		<div class="alert alert-secondary alert-dismissible fade show mt-4 welcome" role="alert">
@@ -29,7 +30,16 @@
 				</div>
 			</div>
 		</div>
-		
+		<?php
+			if(Auth::getSettings('2FA_ENABLED', NULL, 'false') === 'true' && !filter_var(Auth::getMail(), FILTER_VALIDATE_EMAIL)) {
+				?>
+					<div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+						Two-Factor authentication (2FA) is <strong>temporarily disabled</strong> because you did not provide a <strong>valid E-Mail address</strong>.
+						<br />Check your E-Mail address in the <a href="<?php print $template->url('/account'); ?>">account settings</a>.
+					</div>
+				<?php
+			}
+		?>
 		<ul class="list-unstyled row sortable">
 			<?php
 				if(!$navigation->isEmpty()) {

@@ -21,6 +21,12 @@
 				$this->require('../.security');
 			}
 			
+			if(is_readable('.mail.php')) {
+				$this->require('.mail');
+			} else if(is_readable('../.mail.php')) {
+				$this->require('../.mail');
+			}
+			
 			if(is_readable('.config.php')) {
 				$this->require('.config');
 			} else if(is_readable('../.config.php')) {

@@ -3,3 +3,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language: German\n"
+
+msgid "Settings"
+msgstr "Einstellungen"

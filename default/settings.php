@@ -1,12 +1,13 @@
 <?php
 	use fruithost\Auth;
+	use fruithost\I18N;
 	
 	$template->header();
 	?>
 		<form method="post" action="<?php print $this->url('/settings' . (!empty($tab) ? '/' . $tab : '')); ?>">
 			<header class="page-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 				<h1 class="h2">
-					<a class="active" href="<?php print $this->url('/settings'); ?>">Settings</a>
+					<a class="active" href="<?php print $this->url('/settings'); ?>"><?php I18N::__('Settings'); ?></a>
 				</h1>
 				<div class="btn-toolbar mb-2 mb-md-0">
 					<button type="submit" name="action" value="save" class="btn btn-sm btn-outline-primary">Save</button>
@@ -87,6 +88,28 @@
 								<input type="checkbox" name="2fa_enabled" id="2fa_enabled" value="true"<?php print (Auth::getSettings('2FA_ENABLED', NULL, 'false') === 'true' ? ' CHECKED' : ''); ?> />
 							</div>
 							<label for="2fa_enabled" class="col-sm-10 col-form-label">Enable Two-factor authentication (2FA)</label>
+						</div>
+						<div class="form-group row">
+							<div class="col-sm-2 text-right"></div>
+							<div class="col-sm-10">
+								<?php
+									if(Auth::getSettings('2FA_ENABLED', NULL, 'false') === 'true' && !filter_var(Auth::getMail(), FILTER_VALIDATE_EMAIL)) {
+										?>
+											<div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+												Two-Factor authentication (2FA) is <strong>temporarily disabled</strong> because you did not provide a <strong>valid E-Mail address</strong>.
+												<br />Check your E-Mail address in the <a href="<?php print $template->url('/account'); ?>">account settings</a>.
+											</div>
+										<?php
+									} else if(!filter_var(Auth::getMail(), FILTER_VALIDATE_EMAIL)) {
+										?>
+											<div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+												Two-Factor authentication (2FA) will be <strong>temporarily disabled</strong> because you did not provide a <strong>valid E-Mail address</strong>.
+												<br />Check your E-Mail address in the <a href="<?php print $template->url('/account'); ?>">account settings</a>.
+											</div>
+										<?php
+									}
+								?>
+							</div>
 						</div>
 						<div class="form-group row">
 							<label for="2fa_type" class="col-sm-2 col-form-label">Type:</label>
