@@ -76,7 +76,7 @@
 			return $this->query($query, null, $parameters)->fetchAll(\PDO::FETCH_OBJ);
 		}
 		
-		public function update(string $table, array $where, array $parameters = []) {
+		public function update(string $table, string|array $where, array $parameters = []) {
 			$fields = '';
 			
 			foreach($parameters AS $name => $value) {
