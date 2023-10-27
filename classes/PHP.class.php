@@ -3,193 +3,182 @@
 	
 	class PHP {
 		private $path		= null;
+		private $socket		= '/run/php/php8.2-fpm.sock';
+		private $file_temp	= '.~fh.tmp.info.php';
 		private $content	= null;
 		private $data		= [];
+		private $error		= false;
 		
 		public function setPath($path) {
 			$this->path = $path;
 		}
 		
 		public function execute() {
-			$this->content = explode("\n", shell_exec(sprintf('echo "<?php phpinfo(); ?>" | (php --php-ini %s)', $this->path)));
+			if(!is_writable(sprintf('%s%s', $this->path, $this->file_temp))) {
+				$this->error = true;
+				return;
+			}
+			
+			file_put_contents(sprintf('%s%s', $this->path, $this->file_temp), '<?php phpinfo(); ?>');
+			
+			$args = '';
+			foreach([
+				'SCRIPTS_DIR'		=> $this->path,
+				'HOME'				=> $this->path,
+				'PWD'				=> $this->path,
+				'DOCUMENT_ROOT'		=> $this->path,
+				'SCRIPT_FILENAME'	=> sprintf('%s%s', $this->path, $this->file_temp),
+				'REQUEST_METHOD'	=> 'GET'
+			] AS $name => $value) {
+				$args .= sprintf('%s=%s \\%s', $name, $value, PHP_EOL);
+			}
+			
+			$result 	= shell_exec(sprintf('%scgi-fcgi -bind -connect "%s" 2>&1', $args, $this->socket));
+			@unlink(sprintf('%s%s', $path, $this->file_temp));
+			
+			$this->content = $result;
+		}
+		
+		public function exploding($name, $data) {
+			if($name == 'Configuration File (php.ini) Path') {
+				return $this->highlight($this->path);
+			}
+			
+			if($name == 'Loaded Configuration File') {
+				return [ $data, sprintf('%sphp.ini', $this->path) ];
+			}
+			
+			if(in_array($name, [
+				'Additional .ini files parsed',
+				'Registered PHP Streams',
+				'Registered Stream Socket Transports',
+				'Registered Stream Filters',
+				'disable_functions'
+			])) {
+				if(is_array($data)) {
+					foreach($data AS $key => $value) {
+						$data[$key] = explode(',', $value);
+					}
+				} else {
+					return explode(',', $data);
+				}
+			}
+			
+			return $this->highlight($data);
+		}
+		
+		public function highlight($data) {
+			if(is_array($data)) {
+				foreach($data AS $name => $value) {
+					$data[$name] = $this->highlight($value);
+				}
+				
+				return $data;
+			}
+			
+			switch(strtolower($data)) {
+				case 'disabled':
+				case 'active':
+				case 'enabled':
+				case 'off':
+				case 'on':
+				case 'no':
+				case 'yes':
+					return sprintf('<strong class="text-info">%s</strong>', $data);
+				break;
+				case 'no value':
+					return sprintf('<i class="text-black-50">%s</i>', $data);
+				break;
+			}
+			
+			if(preg_match('/^#([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?/', $data)) {
+				return sprintf('<i style="color: %1$s;">%1$s</i>', $data);				
+			}
+			
+			if(is_numeric($data)) {
+				return sprintf('<i class="text-warning">%s</i>', $data);				
+			}
+			
+			if(substr($data, 0, 1) == '/' || substr($data, 0, 3) == '.:/') {
+				return sprintf('<span class="badge badge-secondary">%s</span>', $data);
+			}
+			
+			return $data;
+		}
+		
+		public function hasErrors() {
+			return $this->error;
 		}
 		
 		public function parse() {
-			foreach($this->content as $data) {
-				$row = explode("=>", trim($data));
-				
-				if(isset($row[1])) {
-					$this->data[trim($row[0])] = $row[1];
+			if($this->error) {
+				return;
+			}
+			
+			$entitiesToUtf8 = function($input) {
+				// http://php.net/manual/en/function.html-entity-decode.php#104617
+				return preg_replace_callback("/(&#[0-9]+;)/", function($m) {
+					return mb_convert_encoding($m[1], "UTF-8", "HTML-ENTITIES");
+				}, $input);
+			};
+			$plainText = function($input) use ($entitiesToUtf8) {
+				return trim(html_entity_decode($entitiesToUtf8(strip_tags($input))));
+			};
+			
+			$titlePlainText = function($input) use ($plainText) {
+				return '# '.$plainText($input);
+			};
+			
+			if(!preg_match('#(.*<h1[^>]*>\s*Configuration.*)<h1#s', $this->content, $matches)) {
+				return;
+			}
+			
+			$php_logo	= null;
+			$zend_logo	= null;
+			preg_match_all('/src="data:image\/png;base64,([^"]+)" alt="PHP logo"/', $this->content, $logo);
+			$php_logo	= $logo[1][0];
+			preg_match_all('/src="data:image\/png;base64,([^"]+)" alt="Zend logo"/', $this->content, $logo);
+			$zend_logo	= $logo[1][0];
+			
+			$phpinfo 	= [ 'info' => [] ];
+			$input		= $matches[1];
+			$matches	= [];
+
+			if(preg_match_all(
+				'#(?:<h2.*?>(?:<a.*?>)?(.*?)(?:<\/a>)?<\/h2>)|'.
+				'(?:<tr.*?><t[hd].*?>(.*?)\s*</t[hd]>(?:<t[hd].*?>(.*?)\s*</t[hd]>(?:<t[hd].*?>(.*?)\s*</t[hd]>)?)?</tr>)#s',
+				$input, 
+				$matches, 
+				PREG_SET_ORDER
+			)) {
+				foreach($matches as $match) {
+					$fn = strpos($match[0], '<th') === false ? $plainText : $titlePlainText;
+					
+					if(strlen($match[1])) {
+						$phpinfo[$match[1]]						= [];
+					} else if(isset($match[3])) {
+						$keys1 									= array_keys($phpinfo);
+						$phpinfo[end($keys1)][$fn($match[2])]	= $this->exploding($fn($match[2]), isset($match[4]) ? [ $fn($match[3]), $fn($match[4]) ] : $fn($match[3]));
+					} else {
+						$keys1									= array_keys($phpinfo);
+						$phpinfo[end($keys1)][]					= $this->exploding($keys1, $fn($match[2]));
+					}
+
 				}
 			}
-		}
-		
-		private function getByKey($key)
-		{
-			return $this->data[$key];
-		}
-
-		public function getSystem()
-		{
-			return $this->getByKey("System");
-		}
-
-		public function getBuildDate()
-		{
-			return $this->getByKey("Build Date");
-		}
-
-		public function getConfigureCommand()
-		{
-			$result = explode("' '", $this->getByKey("Configure Command"));
-
-			$lastIdx = (count($result) - 1);
-			unset($result[$lastIdx]);
-
-			$lastIdx = (count($result) - 1);
-			unset($result[$lastIdx]);
-
-			unset($result[0]);
-
-			return $result;
-		}
-
-		public function getServerApi()
-		{
-			return $this->getByKey("Server API");
-		}
-
-		public function getVirtualDirectorySupport()
-		{
-			return $this->getByKey("Virtual Directory Support");
-		}
-
-		public function getConfigurationFilePath()
-		{
-			return $this->getByKey("Configuration File (php.ini) Path");
-		}
-
-		public function getLoadedConfigurationFile()
-		{
-			return $this->getByKey("Loaded Configuration File");
-		}
-
-		public function getAdditionalIni()
-		{
-			return $this->getByKey("Scan this dir for additional .ini files");
-		}
-
-		public function getAdditionalIniParsed()
-		{
-			return $this->getByKey("Additional .ini files parsed");
-		}
-
-		public function getPhpApi()
-		{
-			return $this->getByKey("PHP API");
-		}
-
-		public function getPhpExtension()
-		{
-			return $this->getByKey("PHP Extension");
-		}
-
-		public function getZendExtension()
-		{
-			return $this->getByKey("Zend Extension");
-		}
-
-		public function getZendExtensionBuild()
-		{
-			return $this->getByKey("Zend Extension Build");
-		}
-
-		public function getPhpExtensionBuild()
-		{
-			return $this->getByKey("PHP Extension Build");
-		}
-
-		public function getDebugBuild()
-		{
-			return $this->getByKey("Debug Build");
-		}
-
-		public function getThreadSafety()
-		{
-			return $this->getByKey("Thread Safety");
-		}
-
-		public function getZendSignalHandling()
-		{
-			return $this->getByKey("Zend Signal Handling");
-		}
-
-		public function getZendMemoryManager()
-		{
-			return $this->getByKey("Zend Memory Manager");
-		}
-
-		public function getZendMultibyteSupport()
-		{
-			return $this->getByKey("Zend Multibyte Support");
-		}
-
-		public function getIPv6Support()
-		{
-			return $this->getByKey("IPv6 Support");
-		}
-
-		public function getDTraceSupport()
-		{
-			return $this->getByKey("DTrace Support");
-		}
-
-		public function getRegisteredPhpStreams()
-		{
-			return $this->getByKey("Registered PHP Streams");
-		}
-
-		public function getRegisteredStreamSocketTransports()
-		{
-			return $this->getByKey("Registered Stream Socket Transports");
-		}
-
-		public function getRegisteredStreamFilters()
-		{
-			return $this->getByKey("Registered Stream Filters");
+			
+			$this->data			= $phpinfo;
+			$this->data['logo']	= [
+				'PHP' 	=> $php_logo,
+				'Zend' 	=> $zend_logo
+			];
 		}
 		
 		public function getInfo() {			
 			$this->execute();
 			$this->parse();
 			
-			$result = [
-				"System"						=> $this->getSystem(),
-				"BuildDate"						=> $this->getBuildDate(),
-				"CMD" 							=> $this->getConfigureCommand(),
-				"ServerAPI"						=> $this->getServerApi(),
-				"VirtualDirectorySupport"		=> $this->getVirtualDirectorySupport(),
-				"ConfigurationFilePath"			=> $this->getConfigurationFilePath(),
-				"LoadedConfigurationFile"		=> $this->getLoadedConfigurationFile(),
-				"AdditionalIni"					=> $this->getAdditionalIni(),
-				"AdditionalIniParsed"			=> $this->getAdditionalIniParsed(),
-				"API"							=> $this->getPhpApi(),
-				"Extension"						=> $this->getPhpExtension(),
-				"ZEND"							=> $this->getZendExtension(),
-				"ZENDBuild"						=> $this->getZendExtensionBuild(),
-				"DebugBuild"					=> $this->getDebugBuild(),
-				"ThreadSafety"					=> $this->getThreadSafety(),
-				"ZendSignalHandling"			=> $this->getZendSignalHandling(),
-				"ZendMemoryManager"				=> $this->getZendMemoryManager(),
-				"MultibyteSupport"				=> $this->getZendMultibyteSupport(),
-				"IPv6Support"					=> $this->getIPv6Support(),
-				"DTraceSupport"					=> $this->getDTraceSupport(),
-				"RegisteredPhpStreams"			=> $this->getRegisteredPhpStreams(),
-				"RegisteredStreamSocketTransports"			=> $this->getRegisteredStreamSocketTransports(),
-				"RegisteredStreamFilters"			=> $this->getRegisteredStreamFilters(),
-			];
-			
-			return $result;
+			return $this->data;
 		}
 	}
 ?>
