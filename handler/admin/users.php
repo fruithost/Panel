@@ -1,0 +1,4 @@
+<?php
+	use fruithost\Database;
+	
+?>
