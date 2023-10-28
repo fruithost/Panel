@@ -41,6 +41,10 @@
 						$loaded		= 0;
 						
 						foreach($modules AS $name) {
+							if(empty($name)) {
+								continue;
+							}
+							
 							$info = file_get_contents(sprintf('%s/%s/module.package', $entry->url, $name));
 						
 							if(!isset($conflicts[$name])) {
