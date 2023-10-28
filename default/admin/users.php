@@ -14,5 +14,7 @@
 		exit();
 	}
 	
+	require_once(dirname(dirname(__DIR__)) . '/views/admin/users_empty.php');
+	
 	$template->footer();
 ?>
