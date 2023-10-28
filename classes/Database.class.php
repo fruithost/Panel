@@ -11,7 +11,7 @@
 		}
 		
 		public static function query(string $query, array $parameters = []) {
-			return DatabaseFactory::getInstance()->query($query, $parameters);
+			return DatabaseFactory::getInstance()->query($query, null, $parameters);
 		}
 		
 		public static function single(string $query, array $parameters = []) {

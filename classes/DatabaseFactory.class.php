@@ -54,8 +54,8 @@
 		}
 		
 		public function query(string $query, ?int $fetchMode = null, mixed ...$parameters): \PDOStatement | false {
-			$parameters = $parameters[0];
-			$stmt = $this->prepare($query);
+			$parameters	= (isset($parameters[0]) ? $parameters[0] : $parameters);
+			$stmt		= $this->prepare($query);
 			
 			if($stmt) {
 				$stmt->execute($parameters);
