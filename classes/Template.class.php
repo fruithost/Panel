@@ -28,6 +28,7 @@
 			$this->files->addStylesheet('bootstrap', $this->url('css/bootstrap/bootstrap.min.css'), '4.3.1');
 			$this->files->addStylesheet('jquery-ui', $this->url('css/jquery-ui/jquery-ui.css'), '1.12.1');
 			$this->files->addStylesheet('material-icons', $this->url('fonts/material-icons/material-icons.css'), '3.0.1', [ 'bootstrap' ]);
+			$this->files->addStylesheet('cascadia-mono', $this->url('fonts/cascadia-mono/cascadia-mono.css'), '2111.01', [ 'bootstrap' ]);
 			$this->files->addJavascript('popper', $this->url('js/popper/popper.min.js'), '3.3.1', [ 'jquery' ], TemplateFiles::FOOTER);
 			$this->files->addJavascript('jquery', $this->url('js/jquery/jquery-3.3.1.min.js'), '3.3.1', [], TemplateFiles::FOOTER);
 			$this->files->addJavascript('bootstrap', $this->url('js/bootstrap/bootstrap.bundle.min.js'), '4.3.1', [ 'jquery', 'popper' ], TemplateFiles::FOOTER);

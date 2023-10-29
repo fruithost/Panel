@@ -1,0 +1,7 @@
+/* fallback */
+@font-face {
+	font-family: 'Cascadia Mono';
+	font-style: normal;
+	font-weight: 400;
+	src: url('cascadia-mono.woff2') format('woff2');
+}
