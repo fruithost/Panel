@@ -100,7 +100,17 @@
 			]);
 			
 			if(!empty($result)) {
-				if(!empty($result->value)) {
+				// Is Boolean: False
+				if(in_array(strtolower($result->value), [
+					'off', 'false', 'no'
+				])) {
+					return false;
+				// Is Boolean: True
+				} else if(in_array(strtolower($result->value), [
+					'on', 'true', 'yes'
+				])) {
+					return true;
+				} else if(!empty($result->value)) {
 					return $result->value;
 				}
 			}
@@ -109,6 +119,10 @@
 		}
 		
 		public function setSettings(string $name, mixed $value = NULL) {
+			if(is_bool($value)) {
+				$value = ($value ? 'true' : 'false');
+			}
+				
 			if(Database::exists('SELECT `id` FROM `' . DATABASE_PREFIX . 'settings` WHERE `key`=:key LIMIT 1', [
 				'key'		=> $name
 			])) {

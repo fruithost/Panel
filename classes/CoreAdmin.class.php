@@ -41,7 +41,6 @@
 				switch($destination) {
 					case 'server':
 						$uname			= explode(' ', shell_exec('uname -a'));
-
 						$uptime_array	= explode(" ", exec("cat /proc/uptime"));
 						$seconds		= round($uptime_array[0], 0);
 						$minutes		= $seconds / 60;

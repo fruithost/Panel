@@ -1,5 +1,6 @@
 <?php
 	namespace fruithost;
+	
 	use \fruithost\Session;
 	
 	class AuthFactory {
@@ -53,7 +54,7 @@
 			$result = Database::single('SELECT `id`, `username`, `password`, UPPER(SHA2(CONCAT(`id`, :salt, :password), 512)) as `crypted` FROM `' . DATABASE_PREFIX . 'users` WHERE `username`=:username LIMIT 1', [
 				'username'	=> $username,
 				'password'	=> $password,
-				'salt'		=>	MYSQL_PASSWORTD_SALT
+				'salt'		=> MYSQL_PASSWORTD_SALT
 			]);
 			
 			if($result == false) {

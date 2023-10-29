@@ -1,5 +1,6 @@
 <?php
 	use fruithost\I18N;
+	
 	$template->header();
 	?>	
 	<form class="form-signin text-center" method="post" action="<?php print $template->url(true); ?>">
@@ -59,8 +60,13 @@
 			</div>
 		</div>
 		
-		
-		<p class="mt-5 mb-3 text-muted">Powered by <a href="https://fruithost.de/" target="_blank">fruithost</a></p>
+		<?php
+			if($project_copyright) {
+				?>
+					<p class="mt-5 mb-3 text-muted">Powered by <a href="https://fruithost.de/" target="_blank">fruithost</a></p>
+				<?php
+			}
+		?>
 	</form>
 	<?php
 	$template->footer();

@@ -40,7 +40,7 @@
 								<select name="language" name="language" class="form-control">
 								<?php
 									foreach($languages AS $code => $language) {
-										printf('<option value="%1$s"%2$s>%3$s</option>', $code, (Auth::getSettings('LANGUAGE', NULL, 'en_US') === $code ? ' SELECTED' : ''), $language);
+										printf('<option value="%1$s"%2$s>%3$s</option>', $code, (Auth::getSettings('LANGUAGE', NULL, $template->getCore()->getSettings('LANGUAGE', 'en_US')) === $code ? ' SELECTED' : ''), $language);
 									}
 								?>
 								</select>
@@ -50,7 +50,7 @@
 						<div class="form-group row">
 							<label for="time_format" class="col-sm-2 col-form-label"><?php I18N::__('Time Format'); ?>:</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="time_format" name="time_format" value="<?php print Auth::getSettings('TIME_FORMAT', NULL, 'd.m.Y - H:i:s'); ?>" />
+								<input type="text" class="form-control" id="time_format" name="time_format" value="<?php print Auth::getSettings('TIME_FORMAT', NULL, $template->getCore()->getSettings('TIME_FORMAT', 'd.m.Y - H:i:s')); ?>" />
 							</div>
 						</div>
 						<div class="form-group row">
@@ -62,7 +62,7 @@
 											printf('<optgroup label="%s">', $category->group);
 											
 											foreach($category->zones AS $zone) {
-												printf('<option value="%1$s"%2$s>%3$s</option>', $zone->value, (Auth::getSettings('TIME_ZONE', NULL, date_default_timezone_get()) === $zone->value ? ' SELECTED' : ''), $zone->name);
+												printf('<option value="%1$s"%2$s>%3$s</option>', $zone->value, (Auth::getSettings('TIME_ZONE', NULL, $template->getCore()->getSettings('TIME_ZONE', date_default_timezone_get())) === $zone->value ? ' SELECTED' : ''), $zone->name);
 											}
 											
 											print('</optgroup>');

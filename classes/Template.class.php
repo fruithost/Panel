@@ -15,6 +15,10 @@
 			$this->files		= new TemplateFiles();
 			$this->navigation	= new TemplateNavigation($this->core);
 			$this->theme		= $this->core->getHooks()->applyFilter('theme_name', 'default');
+			$this->assigns		= [
+				'project_name' 		=> $this->core->getSettings('PROJECT_NAME', 'fruithost'),
+				'project_copyright' => $this->core->getSettings('PROJECT_COPYRIGHT', true)
+			];
 			
 			ob_start('ob_gzhandler');
 			

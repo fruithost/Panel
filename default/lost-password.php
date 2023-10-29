@@ -65,8 +65,13 @@
 					
 				<?php
 			}
+			
+			if($project_copyright) {
+				?>
+					<p class="mt-5 mb-3 text-muted">Powered by <a href="https://fruithost.de/" target="_blank">fruithost</a></p>
+				<?php
+			}
 		?>
-		<p class="mt-5 mb-3 text-muted">Powered by <a href="https://fruithost.de/" target="_blank">fruithost</a></p>
 	</form>
 	<?php
 	$template->footer();

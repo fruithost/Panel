@@ -2,6 +2,7 @@
 	namespace fruithost;
 	use \fruithost\Request;
 	use \fruithost\Auth;
+	use \fruithost\Database;
 	use \Sepia\PoParser\SourceHandler\FileSystem;
 	use \Sepia\PoParser\Parser;
 
@@ -20,8 +21,32 @@
 			self::load(self::set());			
 		}
 		
+		protected static function getSettings(string $name, mixed $default = NULL) : mixed {
+			$result = Database::single('SELECT * FROM `' . DATABASE_PREFIX . 'settings` WHERE `key`=:key LIMIT 1', [
+				'key'		=> $name
+			]);
+			
+			if(!empty($result)) {
+				// Is Boolean: False
+				if(in_array(strtolower($result->value), [
+					'off', 'false', 'no'
+				])) {
+					return false;
+				// Is Boolean: True
+				} else if(in_array(strtolower($result->value), [
+					'on', 'true', 'yes'
+				])) {
+					return true;
+				} else if(!empty($result->value)) {
+					return $result->value;
+				}
+			}
+			
+			return $default;
+		}
+		
 		protected static function set() {
-			$language = Auth::getSettings('LANGUAGE', NULL, 'en_US');
+			$language = Auth::getSettings('LANGUAGE', NULL, self::getSettings('LANGUAGE', 'en_US'));
 			
 			if(!Auth::isLoggedIn() && Request::has('lang')) {
 				$language = Request::get('lang');

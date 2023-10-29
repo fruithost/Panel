@@ -8,7 +8,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-		<title>fruithost</title>
+		<title><?php print $project_name; ?></title>
 		<?php
 			$template->head();
 		?>
@@ -18,7 +18,7 @@
 			if(Auth::isLoggedIn()) {
 				?>
 					<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0">
-						<a class="navbar-brand col-12 col-sm-4 col-md-3 col-lg-2 mr-0" href="<?php print $template->url('/'); ?>">fruithost</a>
+						<a class="navbar-brand col-12 col-sm-4 col-md-3 col-lg-2 mr-0" href="<?php print $template->url('/'); ?>"><?php print $project_name; ?></a>
 						<button class="d-md-none navbar-toggler p-0 border-0 mr-auto ml-2" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
 						</button>

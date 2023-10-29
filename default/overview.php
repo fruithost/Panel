@@ -7,7 +7,7 @@
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 			</button>
-			<h4 class="alert-heading"><?php sprintf(I18N::get('Welcome to %s!'), 'fruithost'); ?></h4>
+			<h4 class="alert-heading"><?php sprintf(I18N::get('Welcome to %s!'), $project_name); ?></h4>
 			<p><?php I18N::__('We\'ve assembled some links to get you started'); ?>:</p>
 			<div class="row">
 				<div class="col-sm-4 text-center">
