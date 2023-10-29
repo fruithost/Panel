@@ -80,7 +80,18 @@
 			]);
 			
 			$mail			= new PHPMailer;
-			$mail->isSendmail();
+			
+			if(defined('MAIL_EXTERNAL') && MAIL_EXTERNAL) {
+				$mail->Host       = MAIL_HOSTNAME;
+				$mail->Port       = MAIL_PORT;
+				$mail->SMTPAuth   = true;
+				$mail->Username   = MAIL_USERNAME;
+				$mail->Password   = MAIL_PASSWORD;
+				$mail->isSMTP();
+			} else {
+				$mail->isSendmail();
+			}
+			
 			$mail->CharSet	= 'utf-8';
 			$mail->Subject	= I18N::get('Reset your Password');
 			$mail->setFrom('no-reply@fruithost.de', 'fruithost');

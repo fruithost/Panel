@@ -41,7 +41,7 @@
 				
 				$mail			= new PHPMailer;
 				
-				if(defined('MAIL_EXTERNAL')) {
+				if(defined('MAIL_EXTERNAL') && MAIL_EXTERNAL) {
 					$mail->Host       = MAIL_HOSTNAME;
 					$mail->Port       = MAIL_PORT;
 					$mail->SMTPAuth   = true;
@@ -50,7 +50,7 @@
 					$mail->isSMTP();
 				} else {
 					$mail->isSendmail();
-				}			
+				}
 				
 				$mail->CharSet	= 'utf-8';
 				$mail->Subject	= '2FA - Code';

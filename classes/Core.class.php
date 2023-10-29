@@ -255,12 +255,14 @@
 				]);
 			});
 			
-			$this->router->addRoute('/lost-password', function() {
+			$this->router->addRoute('^/lost-password(?:/([a-zA-Z0-9\-_]+))?$', function($token = null) {
 				if(Auth::isLoggedIn()) {
 					Response::redirect('/');
 				}
 				
-				$this->template->display('lost-password');
+				$this->template->display('lost-password', [
+					'token' => $token
+				]);
 			});
 			
 			$this->router->addRoute('/login', function() {
