@@ -1,22 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: fruithost\n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: 2023-10-29 19:38\n"
-"Last-Translator: \n"
-"Language-Team: German\n"
-"Language: de_DE\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.1\n"
-"X-Poedit-SourceCharset: UTF-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: German\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: fruithost\n"
-"X-Crowdin-Project-ID: 624034\n"
-"X-Crowdin-Language: de\n"
-"X-Crowdin-File: de_DE.po\n"
-"X-Crowdin-File-ID: 2\n"
 
 msgid "Account"
 msgstr "Konto"
@@ -129,17 +116,47 @@ msgstr "Dienste"
 msgid "Reboot"
 msgstr "Neustart"
 
+msgid "Repository"
+msgstr "Repository"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Actions"
+msgstr "Aktionen"
+
+msgid "Never updated"
+msgstr "Nie aktualisiert"
+
+msgid "Last updated"
+msgstr "Zuletzt aktualisiert"
+
+msgid "Update"
+msgstr "Aktualisieren"
+
+msgid "Delete"
+msgstr "Löschen"
+
 msgid "No Modules available!"
 msgstr "Keine Module verfügbar!"
 
 msgid "Please install some Modules."
 msgstr "Bitte installieren Sie einige Module."
 
+msgid "No Themes available!"
+msgstr "Keine Themes verfügbar!"
+
+msgid "Please install some Themes."
+msgstr "Bitte installieren Sie Themes."
+
 msgid "Module"
 msgstr "Module"
 
 msgid "Description"
 msgstr "Beschreibung"
+
+msgid "Disable"
+msgstr "Deaktivieren"
 
 msgid "The module <strong>%s<\\/strong> has an new upgrade to <strong>Version %s<\\/strong>!"
 msgstr "Das Modul <strong>%s<\\/strong> hat ein neues Upgrade auf <strong>Version %s<\\/strong>!"
@@ -152,6 +169,24 @@ msgstr "Version"
 
 msgid "by"
 msgstr "von"
+
+msgid "No Users available!"
+msgstr "Keine Benutzer verfügbar!"
+
+msgid "Please add some Users."
+msgstr "Bitte fügen Sie Benutzer hinzu."
+
+msgid "No Repositorys available!"
+msgstr "Keine Repositories verfügbar!"
+
+msgid "Please adding some Repositorys to keep updates."
+msgstr "Bitte fügen Sie einige Repositorys hinzu, um Updates zu erhalten."
+
+msgid "User"
+msgstr "Benutzer"
+
+msgid "Repository URL"
+msgstr "Repository URL"
 
 msgid "The given Token is invalid or was expired."
 msgstr "Das angegebene Token ist ungültig oder ist abgelaufen."
@@ -228,6 +263,12 @@ msgstr "Bitte vervollständigen Sie die Zwei-Faktor-Authentifizierung:"
 msgid "Login was unsuccessful!"
 msgstr "Anmeldung war nicht erfolgreich!"
 
+msgid "You have no permissions for this action!"
+msgstr "Sie haben keine Berechtigungen für diese Aktion!"
+
+msgid "The System will be rebooted now!"
+msgstr "Das System wird jetzt neu gestartet!"
+
 msgid "<strong>%d Repository%s<\\/strong> was updated. Found %d related Update%s!"
 msgstr "<strong>%d Repository%s<\\/strong> wurde aktualisiert. %d verwandtes Update%s gefunden!"
 
@@ -237,8 +278,50 @@ msgstr "<strong>%d Repositorys<\\/strong> wurde erfolgreich entfernt"
 msgid "Please select some entries you want to delete."
 msgstr "Bitte wählen Sie einige Einträge aus, die Sie löschen möchten."
 
+msgid "New Password"
+msgstr "Neues Passwort"
+
+msgid "Password Confirmation"
+msgstr "Passwortbestätigung"
+
+msgid "E-Mail"
+msgstr "E-Mails"
+
+msgid "Back to the login"
+msgstr "Zurück zur Anmeldung"
+
+msgid "Reset Password"
+msgstr "Passwort zurücksetzen"
+
 msgid "Save"
 msgstr "Speichern"
+
+msgid "Account Details"
+msgstr "Kontodetails"
+
+msgid "Change Password"
+msgstr "Passwort ändern"
+
+msgid "Current personal details that you have provided us with, We ask that you keep these upto date in case we require to contact you regarding your hosting package."
+msgstr "Aktuelle persönliche Daten, die Sie uns mitgeteilt haben. Wir bitten Sie, diese auf dem neuesten Stand zu halten, falls wir Sie bezüglich Ihres Hosting-Pakets kontaktieren müssen."
+
+msgid "E-Mail Adresss"
+msgstr "E-Mail Adresse"
+
+msgid "Full Name"
+msgstr "Vor- & Nachname"
+
+msgid "Phone Number"
+msgstr "Telefonnummer"
+
+msgid "Postal Address"
+msgstr "Adresse"
+
+msgid "Change your current control panel password."
+msgstr "Ändern Sie hier Ihr aktuelles Passwort."
+
+msgid "Current Password"
+msgstr "Aktuelles Passwort"
 
 msgid "Global Settings"
 msgstr "Globale Einstellungen"
@@ -273,9 +356,171 @@ msgstr "Smartphone"
 msgid "disabled"
 msgstr "deaktiviert"
 
-msgid "E-Mail"
-msgstr "E-Mails"
-
 msgid "SMS"
 msgstr "SMS"
+
+msgid "Access denied!"
+msgstr "Zugriff verweigert!"
+
+msgid "You have no permissions for this page."
+msgstr "Sie haben keine Berechtigungen für diese Aktion."
+
+msgid "Welcome to %s!"
+msgstr "Willkommen bei %s!"
+
+msgid "Get Started"
+msgstr "Los geht's"
+
+msgid "Create a Domain"
+msgstr "Domain erstellen"
+
+msgid "create a new subdomain"
+msgstr "eine neue Subdomain erstellen"
+
+msgid "Next Steps"
+msgstr "Nächste Schritte"
+
+msgid "Create an FTP Account"
+msgstr "FTP-Konto erstellen"
+
+msgid "Create a new Database"
+msgstr "Neue Datenbank erstellen"
+
+msgid "Create a new Mailbox"
+msgstr "Neues Postfach erstellen"
+
+msgid "More Actions"
+msgstr "Weitere Aktionen"
+
+msgid "Modify your Account settings"
+msgstr "Ändern Sie Ihre Kontoeinstellungen"
+
+msgid "Please sign in"
+msgstr "Bitte anmelden"
+
+msgid "Code"
+msgstr "Code"
+
+msgid "Username"
+msgstr "Benutzername"
+
+msgid "Password"
+msgstr "Passwort"
+
+msgid "Remember me"
+msgstr "Erinnere mich"
+
+msgid "Lost password"
+msgstr "Passwort zurücksetzen"
+
+msgid "Sign in"
+msgstr "Anmelden"
+
+msgid "Package"
+msgstr "Paket"
+
+msgid "Service"
+msgstr "Dienst"
+
+msgid "Info"
+msgstr "Info"
+
+msgid "Command..."
+msgstr "Befehl..."
+
+msgid "System-Reboot"
+msgstr "System-Neustart"
+
+msgid "Do you really want to reboot the complete system?"
+msgstr "Möchten Sie das komplette System wirklich neu starten?"
+
+msgid "Reboot now!"
+msgstr "Jetzt neu starten!"
+
+msgid "Module Error"
+msgstr "Modulfehler"
+
+msgid "Empty module...!"
+msgstr "Leeres Modul...!"
+
+msgid "404 - Not Found"
+msgstr "404 - Nicht gefunden"
+
+msgid "The page you requested could not be found."
+msgstr "Die angeforderte Seite konnte nicht gefunden werden."
+
+msgid "Unknown module...!"
+msgstr "Unbekanntes Modul...!"
+
+msgid "System Properties"
+msgstr "Systemeigenschaften"
+
+msgid "Hostname"
+msgstr "Hostname"
+
+msgid "Time"
+msgstr "Zeit"
+
+msgid "System"
+msgstr "System"
+
+msgid "Kernel"
+msgstr "Kernel"
+
+msgid "Uptime"
+msgstr "Laufzeit"
+
+msgid "Daemon"
+msgstr "Daemon"
+
+msgid "Last Start"
+msgstr "Letzter Start"
+
+msgid "%s ago"
+msgstr "vor %s"
+
+msgid "Last End"
+msgstr "Zuletzt beendet"
+
+msgid "Last Time"
+msgstr "Letzte Zeit"
+
+msgid "%d Seconds"
+msgstr "%d Sekunden"
+
+msgid "Mounted Drives"
+msgstr "Eingehängte Laufwerke"
+
+msgid "Type: %s | FileSystem: %s | Size: %s \\/ %s"
+msgstr "Typ: %s | Dateisystem: %s | Größe: %s \\/ %s"
+
+msgid "Add new"
+msgstr "Neu"
+
+msgid "Module not found!"
+msgstr "Modul nicht gefunden!"
+
+msgid "Unknown module name. Please select an valid Module!"
+msgstr "Unbekannter Modulname. Bitte wählen Sie ein gültiges Modul!"
+
+msgid "No Settings available!"
+msgstr "Keine Einstellungen verfügbar!"
+
+msgid "The Module %s has no settings!"
+msgstr "Das Modul %s hat keine Einstellungen!"
+
+msgid "Upgrade"
+msgstr "Aktualisieren"
+
+msgid "Installed Modules"
+msgstr "Installierte Module"
+
+msgid "Repositorys"
+msgstr "Repositorys"
+
+msgid "Refresh"
+msgstr "Aktualisieren"
+
+msgid "Please select a logfile to view it"
+msgstr "Bitte wählen Sie eine Logdatei aus, um diese anzuzeigen"
 

@@ -116,16 +116,46 @@ msgstr ""
 msgid "Reboot"
 msgstr ""
 
+msgid "Repository"
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "Actions"
+msgstr ""
+
+msgid "Never updated"
+msgstr ""
+
+msgid "Last updated"
+msgstr ""
+
+msgid "Update"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
 msgid "No Modules available!"
 msgstr ""
 
 msgid "Please install some Modules."
 msgstr ""
 
+msgid "No Themes available!"
+msgstr ""
+
+msgid "Please install some Themes."
+msgstr ""
+
 msgid "Module"
 msgstr ""
 
 msgid "Description"
+msgstr ""
+
+msgid "Disable"
 msgstr ""
 
 msgid "The module <strong>%s<\/strong> has an new upgrade to <strong>Version %s<\/strong>!"
@@ -138,6 +168,24 @@ msgid "Version"
 msgstr ""
 
 msgid "by"
+msgstr ""
+
+msgid "No Users available!"
+msgstr ""
+
+msgid "Please add some Users."
+msgstr ""
+
+msgid "No Repositorys available!"
+msgstr ""
+
+msgid "Please adding some Repositorys to keep updates."
+msgstr ""
+
+msgid "User"
+msgstr ""
+
+msgid "Repository URL"
 msgstr ""
 
 msgid "The given Token is invalid or was expired."
@@ -215,6 +263,12 @@ msgstr ""
 msgid "Login was unsuccessful!"
 msgstr ""
 
+msgid "You have no permissions for this action!"
+msgstr ""
+
+msgid "The System will be rebooted now!"
+msgstr ""
+
 msgid "<strong>%d Repository%s<\/strong> was updated. Found %d related Update%s!"
 msgstr ""
 
@@ -224,7 +278,49 @@ msgstr ""
 msgid "Please select some entries you want to delete."
 msgstr ""
 
+msgid "New Password"
+msgstr ""
+
+msgid "Password Confirmation"
+msgstr ""
+
+msgid "E-Mail"
+msgstr ""
+
+msgid "Back to the login"
+msgstr ""
+
+msgid "Reset Password"
+msgstr ""
+
 msgid "Save"
+msgstr ""
+
+msgid "Account Details"
+msgstr ""
+
+msgid "Change Password"
+msgstr ""
+
+msgid "Current personal details that you have provided us with, We ask that you keep these upto date in case we require to contact you regarding your hosting package."
+msgstr ""
+
+msgid "E-Mail Adresss"
+msgstr ""
+
+msgid "Full Name"
+msgstr ""
+
+msgid "Phone Number"
+msgstr ""
+
+msgid "Postal Address"
+msgstr ""
+
+msgid "Change your current control panel password."
+msgstr ""
+
+msgid "Current Password"
 msgstr ""
 
 msgid "Global Settings"
@@ -260,8 +356,170 @@ msgstr ""
 msgid "disabled"
 msgstr ""
 
-msgid "E-Mail"
+msgid "SMS"
 msgstr ""
 
-msgid "SMS"
+msgid "Access denied!"
+msgstr ""
+
+msgid "You have no permissions for this page."
+msgstr ""
+
+msgid "Welcome to %s!"
+msgstr ""
+
+msgid "Get Started"
+msgstr ""
+
+msgid "Create a Domain"
+msgstr ""
+
+msgid "create a new subdomain"
+msgstr ""
+
+msgid "Next Steps"
+msgstr ""
+
+msgid "Create an FTP Account"
+msgstr ""
+
+msgid "Create a new Database"
+msgstr ""
+
+msgid "Create a new Mailbox"
+msgstr ""
+
+msgid "More Actions"
+msgstr ""
+
+msgid "Modify your Account settings"
+msgstr ""
+
+msgid "Please sign in"
+msgstr ""
+
+msgid "Code"
+msgstr ""
+
+msgid "Username"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Remember me"
+msgstr ""
+
+msgid "Lost password"
+msgstr ""
+
+msgid "Sign in"
+msgstr ""
+
+msgid "Package"
+msgstr ""
+
+msgid "Service"
+msgstr ""
+
+msgid "Info"
+msgstr ""
+
+msgid "Command..."
+msgstr ""
+
+msgid "System-Reboot"
+msgstr ""
+
+msgid "Do you really want to reboot the complete system?"
+msgstr ""
+
+msgid "Reboot now!"
+msgstr ""
+
+msgid "Module Error"
+msgstr ""
+
+msgid "Empty module...!"
+msgstr ""
+
+msgid "404 - Not Found"
+msgstr ""
+
+msgid "The page you requested could not be found."
+msgstr ""
+
+msgid "Unknown module...!"
+msgstr ""
+
+msgid "System Properties"
+msgstr ""
+
+msgid "Hostname"
+msgstr ""
+
+msgid "Time"
+msgstr ""
+
+msgid "System"
+msgstr ""
+
+msgid "Kernel"
+msgstr ""
+
+msgid "Uptime"
+msgstr ""
+
+msgid "Daemon"
+msgstr ""
+
+msgid "Last Start"
+msgstr ""
+
+msgid "%s ago"
+msgstr ""
+
+msgid "Last End"
+msgstr ""
+
+msgid "Last Time"
+msgstr ""
+
+msgid "%d Seconds"
+msgstr ""
+
+msgid "Mounted Drives"
+msgstr ""
+
+msgid "Type: %s | FileSystem: %s | Size: %s \/ %s"
+msgstr ""
+
+msgid "Add new"
+msgstr ""
+
+msgid "Module not found!"
+msgstr ""
+
+msgid "Unknown module name. Please select an valid Module!"
+msgstr ""
+
+msgid "No Settings available!"
+msgstr ""
+
+msgid "The Module %s has no settings!"
+msgstr ""
+
+msgid "Upgrade"
+msgstr ""
+
+msgid "Installed Modules"
+msgstr ""
+
+msgid "Repositorys"
+msgstr ""
+
+msgid "Refresh"
+msgstr ""
+
+msgid "Please select a logfile to view it"
 msgstr ""
