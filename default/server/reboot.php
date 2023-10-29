@@ -1,14 +1,15 @@
 <?php
 	use fruithost\Auth;
 	use fruithost\Utils;
+	use fruithost\I18N;
 	
 	$template->header();
 	
 	if(!Auth::hasPermission('SERVER::MANAGE')) {
 		?>
 			<div class="alert alert-danger mt-4" role="alert">
-				<strong>Access denied!</strong>
-				<p class="pb-0 mb-0">You have no permissions for this page.</p>
+				<strong><?php I18N::__('Access denied!'); ?></strong>
+				<p class="pb-0 mb-0"><?php I18N::__('You have no permissions for this page.'); ?></p>
 			</div>
 		<?php
 		$template->footer();
@@ -17,7 +18,7 @@
 	?>
 	<div class="jumbotron text-center bg-transparent text-muted">
 		<i class="material-icons text-warning">warning</i>
-		<h2>System-Reboot</h2>
+		<h2><?php I18N::__('System-Reboot'); ?></h2>
 		<?php
 			if(isset($error)) {
 				?>
@@ -29,9 +30,9 @@
 				<?php
 			} else {
 				?>
-					<p class="lead">Do you really want to reboot the complete system?</p>
+					<p class="lead"><?php I18N::__('Do you really want to reboot the complete system?'); ?></p>
 					<form method="post" action="<?php print $this->url('/server/reboot'); ?>">
-						<button type="submit" name="action" value="reboot" class="btn btn-sm btn-outline-primary">Reboot now!</button>
+						<button type="submit" name="action" value="reboot" class="btn btn-sm btn-outline-primary"><?php I18N::__('Reboot now!'); ?></button>
 					</form>
 				<?php
 			}

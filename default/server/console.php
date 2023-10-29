@@ -1,14 +1,15 @@
 <?php
 	use fruithost\Auth;
 	use fruithost\Utils;
+	use fruithost\I18N;
 	
 	$template->header();
 	
 	if(!Auth::hasPermission('SERVER::MANAGE')) {
 		?>
 			<div class="alert alert-danger mt-4" role="alert">
-				<strong>Access denied!</strong>
-				<p class="pb-0 mb-0">You have no permissions for this page.</p>
+				<strong><?php I18N::__('Access denied!'); ?></strong>
+				<p class="pb-0 mb-0"><?php I18N::__('You have no permissions for this page.'); ?></p>
 			</div>
 		<?php
 		$template->footer();
@@ -17,7 +18,7 @@
 	?>
 	<div class="terminal position-fixed">
 		<div class="output"></div>
-		<input name="command" placeholder="Command..." style="height: 30px; width: 100%;" />
+		<input name="command" placeholder="<?php I18N::__('Command...'); ?>" style="height: 30px; width: 100%;" />
 	</div>
 	<script type="text/javascript">
 		_watcher_console = setInterval(function() {

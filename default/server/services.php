@@ -1,14 +1,15 @@
 <?php
 	use fruithost\Auth;
 	use fruithost\Utils;
+	use fruithost\I18N;
 	
 	$template->header();
 	
 	if(!Auth::hasPermission('SERVER::MANAGE')) {
 		?>
 			<div class="alert alert-danger mt-4" role="alert">
-				<strong>Access denied!</strong>
-				<p class="pb-0 mb-0">You have no permissions for this page.</p>
+				<strong><?php I18N::__('Access denied!'); ?></strong>
+				<p class="pb-0 mb-0"><?php I18N::__('You have no permissions for this page.'); ?></p>
 			</div>
 		<?php
 		$template->footer();
@@ -20,8 +21,8 @@
 	<table class="table table-borderless table-striped table-hover">
 		<thead>
 			<tr>
-				<th scope="col" colspan="2">Service</th>
-				<th scope="col">Actions</th>
+				<th scope="col" colspan="2"><?php I18N::__('Service'); ?></th>
+				<th scope="col"><?php I18N::__('Actions'); ?></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -51,7 +52,7 @@
 										}
 									?>
 								</div>
-								<button type="submit" name="action" value="start" class="btn btn-sm btn-outline-info">Info</button>
+								<button type="submit" name="action" value="start" class="btn btn-sm btn-outline-info"><?php I18N::__('Info'); ?></button>
 							</td>
 						</tr>
 					<?php

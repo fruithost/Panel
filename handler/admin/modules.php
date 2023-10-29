@@ -1,5 +1,6 @@
 <?php
 	use fruithost\Database;
+	use fruithost\I18N;
 	
 	if(isset($_POST['action'])) {
 		switch($_POST['action']) {
@@ -88,7 +89,7 @@
 				
 				file_put_contents(sprintf('%s%s%s%s%s', dirname(PATH), DS, 'temp', DS, 'update.list'), json_encode($updateable));
 				
-				$this->assign('success',		sprintf('<strong>%d Repository%s</strong> was updated. Found %d related Update%s!', $count, ($count === 1 ? '' : 's'), count($updateable), (count($updateable) === 1 ? '' : 's')));
+				$this->assign('success',		sprintf(I18N::get('<strong>%d Repository%s</strong> was updated. Found %d related Update%s!'), $count, ($count === 1 ? '' : 's'), count($updateable), (count($updateable) === 1 ? '' : 's')));
 				$this->assign('repositorys',	Database::fetch('SELECT * FROM `' . DATABASE_PREFIX . 'repositorys`'));
 			break;
 			case 'delete':
@@ -101,7 +102,7 @@
 						]);
 					}
 					
-					$messages[] = sprintf('<strong>%d Repositorys</strong> was successfully removed', count($_POST['repository']));
+					$messages[] = sprintf(I18N::get('<strong>%d Repositorys</strong> was successfully removed'), count($_POST['repository']));
 				
 					$this->assign('repositorys',	Database::fetch('SELECT * FROM `' . DATABASE_PREFIX . 'repositorys`'));
 				}
@@ -109,7 +110,7 @@
 				if(count($messages) > 0) {
 					$this->assign('success', implode(' and ', $messages));
 				} else {
-					$this->assign('error', 'Please select some entries you want to delete.');
+					$this->assign('error', I18N::get('Please select some entries you want to delete.'));
 				}
 			break;
 		}

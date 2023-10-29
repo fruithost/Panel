@@ -163,32 +163,10 @@
 					Response::redirect('/');
 				}
 				
-				$languages = [
-					'en_US' => 'English'
-				];
-				
-				foreach(new \DirectoryIterator(sprintf('%slanguages/', PATH)) AS $info) {
-					if($info->isDot()) {
-						continue;
-					}
-					
-					if(preg_match('/(.*)\.po$/Uis', $info->getFileName(), $matches)) {
-						$language		= new \Sepia\PoParser\Parser(new \Sepia\PoParser\SourceHandler\FileSystem($info->getPathName()));
-						$parsed			= $language->parse();
-						$header			= $parsed->getHeader();
-						
-						foreach($header->asArray() AS $line) {
-							if(preg_match('/Language: (.*)$/Uis', $line, $names)) {
-								$languages[$matches[1]] = $names[1];
-								break;
-							}
-						}
-					}
-				}
 				
 				$this->template->display('settings', [
 					'tab'		=> $tab,
-					'languages'	=> $languages,
+					'languages'	=> I18N::getLanguages(),
 					'timezones'	=> json_decode(file_get_contents(dirname(PATH) . '/config/timezones.json'))
 				]);
 			});
@@ -275,6 +253,14 @@
 					'module'	=> $module,
 					'submodule'	=> $submodule
 				]);
+			});
+			
+			$this->router->addRoute('/lost-password', function() {
+				if(Auth::isLoggedIn()) {
+					Response::redirect('/');
+				}
+				
+				$this->template->display('lost-password');
 			});
 			
 			$this->router->addRoute('/login', function() {

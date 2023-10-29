@@ -1,13 +1,14 @@
 <?php
 	use fruithost\Auth;
+	use fruithost\I18N;
 	
 	$template->header();
 	
 	if(!Auth::hasPermission('MODULES::VIEW')) {
 		?>
 			<div class="alert alert-danger mt-4" role="alert">
-				<strong>Access denied!</strong>
-				<p class="pb-0 mb-0">You have no permissions for this page.</p>
+				<strong><?php I18N::__('Access denied!'); ?></strong>
+				<p class="pb-0 mb-0"><?php I18N::__('You have no permissions for this page.'); ?></p>
 			</div>
 		<?php
 		$template->footer();
@@ -25,8 +26,8 @@
 				</h1>
 				<div class="btn-toolbar mb-2 mb-md-0">
 					<div class="btn-group mr-2">
-						<a name="action" value="cancel" class="btn btn-sm btn-outline-danger" href="<?php print $this->url('/admin/modules' . (!empty($tab) ? '/' . $tab : '')); ?>">Cancel</a>
-						<button type="submit" name="action" value="settings" class="btn btn-sm btn-outline-success">Save</button>
+						<a name="action" value="cancel" class="btn btn-sm btn-outline-danger" href="<?php print $this->url('/admin/modules' . (!empty($tab) ? '/' . $tab : '')); ?>"><?php I18N::__('Cancel'); ?></a>
+						<button type="submit" name="action" value="settings" class="btn btn-sm btn-outline-success"><?php I18N::__('Save'); ?></button>
 					</div>
 				</div>
 			</header>
@@ -34,16 +35,16 @@
 				if(!$modules->hasModule($_GET['settings'])) {
 					?>
 						<div class="alert alert-danger mt-4" role="alert">
-							<strong>Module not found!</strong>
-							<p class="pb-0 mb-0">Unknown module name. Please select an valid Module!</p>
+							<strong><?php I18N::__('Module not found!'); ?></strong>
+							<p class="pb-0 mb-0"><?php I18N::__('Unknown module name. Please select an valid Module!'); ?></p>
 						</div>
 					<?php
 				} else {
 					if(!$module->hasSettingsPath()) {
 						?>
 							<div class="alert alert-danger mt-4" role="alert">
-								<strong>No Settings available!</strong>
-								<p class="pb-0 mb-0">The Module <?php print $module->getInfo()->getName(); ?> has no settings!</p>
+								<strong><?php I18N::__('No Settings available!'); ?></strong>
+								<p class="pb-0 mb-0"><?php sprintf(I18N::get('The Module %s has no settings!'), $module->getInfo()->getName()); ?></p>
 							</div>
 						<?php
 					} else {
@@ -72,7 +73,7 @@
 		<form method="post" action="<?php print $this->url('/admin/modules' . (!empty($tab) ? '/' . $tab : '')); ?>">
 			<header class="page-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 				<h1 class="h2">
-					<a class="active" href="<?php print $this->url('/admin/modules'); ?>">Modules</a>
+					<a class="active" href="<?php print $this->url('/admin/modules'); ?>"><?php I18N::__('Modules'); ?></a>
 				</h1>
 				<div class="btn-toolbar mb-2 mb-md-0">				
 					<?php
@@ -80,17 +81,17 @@
 							case 'repositorys':
 								?>
 									<div class="btn-group mr-2">
-										<button type="button" name="add_repository" data-toggle="modal" data-target="#add_repository" class="btn btn-sm btn-outline-primary">Add new</button>
-										<button type="submit" name="action" value="update" class="btn btn-sm btn-outline-success">Update</button>
-										<button type="submit" name="action" value="delete" class="btn btn-sm btn-outline-danger">Delete</button>
+										<button type="button" name="add_repository" data-toggle="modal" data-target="#add_repository" class="btn btn-sm btn-outline-primary"><?php I18N::__('Add new'); ?></button>
+										<button type="submit" name="action" value="update" class="btn btn-sm btn-outline-success"><?php I18N::__('Update'); ?></button>
+										<button type="submit" name="action" value="delete" class="btn btn-sm btn-outline-danger"><?php I18N::__('Delete'); ?></button>
 									</div>
 								<?php
 							break;
 							default:
 								?>
 									<div class="btn-group mr-2">
-										<button type="submit" name="action" value="upgrade" class="btn btn-sm btn-outline-success">Upgrade</button>
-										<button type="submit" name="action" value="delete" class="btn btn-sm btn-outline-danger">Delete</button>
+										<button type="submit" name="action" value="upgrade" class="btn btn-sm btn-outline-success"><?php I18N::__('Upgrade'); ?></button>
+										<button type="submit" name="action" value="delete" class="btn btn-sm btn-outline-danger"><?php I18N::__('Delete'); ?></button>
 									</div>
 								<?php
 							break;
@@ -99,14 +100,16 @@
 				</div>
 			</header>
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
-				<li class="nav-item"><a class="nav-link<?php print (empty($tab) ? ' active' : ''); ?>" id="globals-tab" href="<?php print $this->url('/admin/modules'); ?>" role="tab">Installed Modules<?php
+				<li class="nav-item"><a class="nav-link<?php print (empty($tab) ? ' active' : ''); ?>" id="globals-tab" href="<?php print $this->url('/admin/modules'); ?>" role="tab"><?php
+					I18N::__('Installed Modules');
+					
 					$updates = count((array) $upgradeable);
 					
 					if($updates > 0) {
 						printf('<span class="badge badge-pill badge-danger ml-1">%d</span>', $updates);
 					}
 				?></a></li>
-				<li class="nav-item"><a class="nav-link<?php print (!empty($tab) && $tab === 'repositorys' ? ' active' : ''); ?>" id="security-tab" href="<?php print $this->url('/admin/modules/repositorys'); ?>" role="tab">Repositorys</a></li>
+				<li class="nav-item"><a class="nav-link<?php print (!empty($tab) && $tab === 'repositorys' ? ' active' : ''); ?>" id="security-tab" href="<?php print $this->url('/admin/modules/repositorys'); ?>" role="tab"><?php I18N::__('Repositorys'); ?></a></li>
 			</ul>
 			<?php
 				if(isset($error)) {

@@ -1,13 +1,14 @@
 <?php
 	use fruithost\Auth;
+	use fruithost\I18N;
 	
 	$template->header();
 	
 	if(!Auth::hasPermission('*')) {
 		?>
 			<div class="alert alert-danger mt-4" role="alert">
-				<strong>Access denied!</strong>
-				<p class="pb-0 mb-0">You have no permissions for this page.</p>
+				<strong><?php I18N::__('Access denied!'); ?></strong>
+				<p class="pb-0 mb-0"><?php I18N::__('You have no permissions for this page.'); ?></p>
 			</div>
 		<?php
 		$template->footer();
@@ -18,8 +19,8 @@
 			if(Auth::getSettings('2FA_ENABLED', NULL, 'false') === 'true' && !filter_var(Auth::getMail(), FILTER_VALIDATE_EMAIL)) {
 				?>
 					<div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
-						Two-Factor authentication (2FA) is <strong>temporarily disabled</strong> because you did not provide a <strong>valid E-Mail address</strong>.
-						<br />Check your E-Mail address in the <a href="<?php print $template->url('/account'); ?>">account settings</a>.
+						<?php I18N::__('Two-Factor authentication (2FA) is <strong>temporarily disabled</strong> because you did not provide a <strong>valid E-Mail address</strong>.'); ?>
+						<br /><?php printf(I18N::get('Check your E-Mail address in the <a href="%s">account settings</a>.'), $template->url('/account')); ?>
 					</div>
 				<?php
 			}

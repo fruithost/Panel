@@ -1,7 +1,10 @@
+<?php
+	use fruithost\I18N;
+?>
 <table class="table table-borderless table-striped table-hover">
 	<thead>
 		<tr>
-			<th scope="col" colspan="3">User</th>
+			<th scope="col" colspan="3"><?php I18N::__('User'); ?></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -17,7 +20,7 @@
 						<p class="module-actions"><?php
 							$links = [];
 							
-							$links['delete'] = sprintf('<a href="%s" data-confirm="Do you really wan\'t to delete the user?" class="text-danger">Delete</a>', $this->url('/admin/users/?delete=' . $user->id));
+							$links['delete'] = sprintf('<a href="%s" data-confirm="%s" class="text-danger">%s</a>', $this->url('/admin/users/?delete=' . $user->id), I18N::get('Do you really wan\'t to delete the user?'), I18N::get('Delete'));
 							
 							print implode(' | ', $links);
 						?></p>

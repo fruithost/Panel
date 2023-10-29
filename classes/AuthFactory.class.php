@@ -57,12 +57,12 @@
 			]);
 			
 			if($result == false) {
-				throw new \Exception('Unknown User');
+				throw new \Exception(I18N::get('Unknown User'));
 				return false;
 			}
 			
 			if($result->password !== $result->crypted) {
-				throw new \Exception('Password mismatched.');
+				throw new \Exception(I18N::get('Password mismatched.'));
 				return false;
 			}
 			
@@ -70,7 +70,7 @@
 				Session::set('user_name',	$result->username);
 				Session::set('user_id',		(int) $result->id);
 			} else {
-				throw new \Exception('Unknown User');
+				throw new \Exception(I18N::get('Unknown User'));
 				return false;				
 			}
 			
@@ -85,12 +85,12 @@
 			]);
 			
 			if($result == false) {
-				throw new \Exception('Unknown User');
+				throw new \Exception(I18N::get('Unknown User'));
 				return false;
 			}
 			
 			if($result->password !== $result->crypted) {
-				throw new \Exception('Password mismatched.');
+				throw new \Exception(I18N::get('Password mismatched.'));
 				return false;
 			}
 			
@@ -101,7 +101,7 @@
 			if($result->id > 0) {
 				/* Do Nothing */
 			} else {
-				throw new \Exception('Unknown User');
+				throw new \Exception(I18N::get('Unknown User'));
 				return false;				
 			}
 			

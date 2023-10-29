@@ -1,6 +1,7 @@
 <?php
 	use fruithost\Router;
 	use fruithost\Auth;
+	use fruithost\I18N;
 ?>
 <!DOCTYPE html>
 <html lang="<?php print $template->getLanguage(true); ?>">
@@ -23,7 +24,7 @@
 						</button>
 						<ul class="navbar-nav px-3">
 							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="picture" src="<?php print Auth::getGravatar(); ?>" /> Account</a>
+								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="picture" src="<?php print Auth::getGravatar(); ?>" /> <?php I18N::__('Account'); ?></a>
 								<div class="dropdown-menu bg-dark">
 									<?php
 										foreach($topbar->getEntries() AS $entry) {

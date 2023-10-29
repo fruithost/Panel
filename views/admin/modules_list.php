@@ -1,8 +1,11 @@
+<?php
+	use fruithost\I18N;
+?>
 <table class="table table-borderless table-striped table-hover">
 	<thead>
 		<tr>
-			<th scope="col" colspan="3">Module</th>
-			<th scope="col">Description</th>
+			<th scope="col" colspan="3"><?php I18N::__('Module'); ?></th>
+			<th scope="col"><?php I18N::__('Description'); ?></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -21,7 +24,7 @@
 							$links = [];
 							
 							if($module->isEnabled()) {
-								$links['disable'] = sprintf('<a href="%s" data-confirm="Do you really wan\'t to disable the module?" class="text-warning">Disable</a>', $this->url('/admin/modules/?disable=' . $module->getDirectory()));
+								$links['disable'] = sprintf('<a href="%s" data-confirm="%s" class="text-warning">%s</a>', $this->url('/admin/modules/?disable=' . $module->getDirectory()), I18N::get('Do you really wan\'t to disable the module?'), I18N::get('Disable'));
 							} else {
 								$links['enable'] = sprintf('<a href="%s" class="text-success">Enable</a>', $this->url('/admin/modules/?enable=' . $module->getDirectory()));
 							}
@@ -42,14 +45,14 @@
 								?>
 									<div class="alert alert-warning d-flex p-2" role="alert">
 										<i class="material-icons text-danger p-0">autorenew</i>
-										<p class="p-0 m-0">The module <strong><?php print $info->getName(); ?></strong> has an new upgrade to <strong>Version <?php print $upgrade->version; ?></strong>!</p>
-											<button class="btn btn-outline-success btn-sm m-0 ml-2 pt-0 pb-0">Upgrade now!</button>
+										<p class="p-0 m-0"><?php printf(I18N::get('The module <strong>%s</strong> has an new upgrade to <strong>Version %s</strong>!'), $info->getName(), $upgrade->version); ?></p>
+										<button class="btn btn-outline-success btn-sm m-0 ml-2 pt-0 pb-0"><?php I18N::__('Upgrade now!'); ?></button>
 									</div>
 								<?php
 							}
 						?>
 						<p><?php print $info->getDescription(); ?></p>
-						<small>Version <?php print $info->getVersion(); ?> | by <a href="<?php print $info->getAuthor()->getWebsite(); ?>" target="_blank"><?php print $info->getAuthor()->getName(); ?></a></small>
+						<small><?php I18N::__('Version'); ?> <?php print $info->getVersion(); ?> | <?php I18N::__('by'); ?> <a href="<?php print $info->getAuthor()->getWebsite(); ?>" target="_blank"><?php print $info->getAuthor()->getName(); ?></a></small>
 					</td>
 				</tr>
 				<?php

@@ -31,21 +31,21 @@
 				case 'account':
 					$hardcoded = [
 						(object) [
-							'name'		=> 'Account',
+							'name'		=> I18N::get('Account'),
 							'icon'		=> '<i class="material-icons">account_circle</i>',
 							'order'		=> 1,
 							'url'		=> '/account',
 							'active'	=> $this->navigation->getCore()->getRouter()->startsWith('/account')
 						],
 						(object) [
-							'name'		=> 'Settings',
+							'name'		=> I18N::get('Settings'),
 							'icon'		=> '<i class="material-icons">settings</i>',
 							'order'		=> 2,
 							'url'		=> '/settings',
 							'active'	=> $this->navigation->getCore()->getRouter()->startsWith('/settings')
 						],
 						(object) [
-							'name'		=> 'Logout',
+							'name'		=> I18N::get('Logout'),
 							'icon'		=> '<i class="material-icons">power_settings_new</i>',
 							'order'		=> 99999,
 							'url'		=> '/logout',
@@ -56,7 +56,7 @@
 				case 'admin':
 					if(Auth::hasPermission('*')) {
 						$hardcoded[] = (object) [
-							'name'		=> 'Overview',
+							'name'		=> I18N::get('Overview'),
 							'icon'		=> '<i class="material-icons">apps</i>',
 							'order'		=> 1,
 							'url'		=> '/admin',
@@ -66,7 +66,7 @@
 					
 					if(Auth::hasPermission('USERS::VIEW')) {
 						$hardcoded[] = (object) [
-							'name'		=> 'Users',
+							'name'		=> I18N::get('Users'),
 							'icon'		=> '<i class="material-icons">supervised_user_circle</i>',
 							'order'		=> 1,
 							'url'		=> '/admin/users',
@@ -76,7 +76,7 @@
 					
 					if(Auth::hasPermission('THEMES::VIEW')) {
 						$hardcoded[] = (object) [
-							'name'		=> 'Themes',
+							'name'		=> I18N::get('Themes'),
 							'icon'		=> '<i class="material-icons">palette</i>',
 							'order'		=> 2,
 							'url'		=> '/admin/themes',
@@ -86,7 +86,7 @@
 					
 					if(Auth::hasPermission('MODULES::VIEW')) {
 						$hardcoded[] = (object) [
-							'name'		=> 'Modules',
+							'name'		=> I18N::get('Modules'),
 							'icon'		=> '<i class="material-icons">extension</i>',
 							'order'		=> 3,
 							'url'		=> '/admin/modules',
@@ -97,7 +97,7 @@
 				case 'server':
 					if(Auth::hasPermission('SERVER::VIEW')) {
 						$hardcoded[] = (object) [
-							'name'		=> 'Server',
+							'name'		=> I18N::get('Server'),
 							'icon'		=> '<i class="material-icons">memory</i>',
 							'order'		=> 1,
 							'url'		=> '/admin/server',
@@ -107,7 +107,7 @@
 					
 					if(Auth::hasPermission('LOGFILES::VIEW')) {
 						$hardcoded[] = (object) [
-							'name'		=> 'Logfiles',
+							'name'		=> I18N::get('Logfiles'),
 							'icon'		=> '<i class="material-icons">insert_drive_file</i>',
 							'order'		=> 2,
 							'url'		=> '/admin/logs',
@@ -117,7 +117,7 @@
 					
 					if(Auth::hasPermission('SERVER::MANAGE')) {
 						$hardcoded[] = (object) [
-							'name'		=> 'Settings',
+							'name'		=> I18N::get('Settings'),
 							'icon'		=> '<i class="material-icons">tune</i>',
 							'order'		=> 1,
 							'url'		=> '/server/settings',
@@ -125,7 +125,7 @@
 						];
 											
 						$hardcoded[] = (object) [
-							'name'		=> 'Console',
+							'name'		=> I18N::get('Console'),
 							'icon'		=> '<i class="material-icons">input</i>',
 							'order'		=> 2,
 							'url'		=> '/server/console',
@@ -133,7 +133,7 @@
 						];
 						
 						$hardcoded[] = (object) [
-							'name'		=> 'Packages',
+							'name'		=> I18N::get('Packages'),
 							'icon'		=> '<i class="material-icons">unarchive</i>',
 							'order'		=> 3,
 							'url'		=> '/server/packages',
@@ -141,7 +141,7 @@
 						];
 						
 						$hardcoded[] = (object) [
-							'name'		=> 'Services',
+							'name'		=> I18N::get('Services'),
 							'icon'		=> '<i class="material-icons">tag</i>',
 							'order'		=> 4,
 							'url'		=> '/server/services',
@@ -149,7 +149,7 @@
 						];
 						
 						$hardcoded[] = (object) [
-							'name'		=> 'Reboot',
+							'name'		=> I18N::get('Reboot'),
 							'icon'		=> '<i class="material-icons">power_settings_new</i>',
 							'order'		=> 5,
 							'url'		=> '/server/reboot',

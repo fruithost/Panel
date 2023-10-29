@@ -1,8 +1,281 @@
 msgid ""
 msgstr ""
-"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: fruithost\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2023-10-29 19:38\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Language: German\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.1\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: fruithost\n"
+"X-Crowdin-Project-ID: 624034\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: de_DE.po\n"
+"X-Crowdin-File-ID: 2\n"
+
+msgid "Account"
+msgstr "Konto"
+
+msgid "Databases"
+msgstr "Datenbanken"
+
+msgid "Domains"
+msgstr "Domains"
+
+msgid "E-Mails"
+msgstr "E-Mails"
+
+msgid "FTP"
+msgstr "FTP"
+
+msgid "Hosting"
+msgstr "Hosting"
+
+msgid "Extended"
+msgstr "Erweitert"
+
+msgid "Support"
+msgstr "Unterstützung"
+
+msgid "Administration"
+msgstr "Verwaltung"
+
+msgid "Server"
+msgstr "Server"
+
+msgid "Unknown User"
+msgstr "Unbekannter Benutzer"
+
+msgid "Password mismatched."
+msgstr "Passwort stimmt nicht überein."
+
+msgid "Add Repository"
+msgstr "Repository hinzufügen"
+
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgid "Create"
+msgstr "Anlegen"
+
+msgid "Confirmation"
+msgstr "Bestätigung"
+
+msgid "No"
+msgstr "Nein"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "The module is already disabled!"
+msgstr "Das Modul ist bereits deaktiviert!"
+
+msgid "The module was successfully disabled."
+msgstr "Das Modul wurde erfolgreich deaktiviert."
+
+msgid "The module not exists!"
+msgstr "Das Modul existiert nicht!"
+
+msgid "The module is already enabled!"
+msgstr "Das Modul ist bereits deaktiviert!"
+
+msgid "The module was successfully enabled."
+msgstr "Das Modul wurde erfolgreich deaktiviert."
+
+msgid "The module was successfully deinstalled!"
+msgstr "Das Modul wurde erfolgreich deaktiviert!"
+
+msgid "Please enter an valid  repository URL!"
+msgstr "Bitte geben Sie eine gültige Repository-URL ein!"
+
+msgid "Repository already exists!"
+msgstr "Repository existiert bereits!"
 
 msgid "Settings"
 msgstr "Einstellungen"
+
+msgid "Logout"
+msgstr "Abmelden"
+
+msgid "Overview"
+msgstr "Übersicht"
+
+msgid "Users"
+msgstr "Benutzer"
+
+msgid "Themes"
+msgstr "Themes"
+
+msgid "Modules"
+msgstr "Module"
+
+msgid "Logfiles"
+msgstr "Logdateien"
+
+msgid "Console"
+msgstr "Konsole"
+
+msgid "Packages"
+msgstr "Pakete"
+
+msgid "Services"
+msgstr "Dienste"
+
+msgid "Reboot"
+msgstr "Neustart"
+
+msgid "No Modules available!"
+msgstr "Keine Module verfügbar!"
+
+msgid "Please install some Modules."
+msgstr "Bitte installieren Sie einige Module."
+
+msgid "Module"
+msgstr "Module"
+
+msgid "Description"
+msgstr "Beschreibung"
+
+msgid "The module <strong>%s<\\/strong> has an new upgrade to <strong>Version %s<\\/strong>!"
+msgstr "Das Modul <strong>%s<\\/strong> hat ein neues Upgrade auf <strong>Version %s<\\/strong>!"
+
+msgid "Upgrade now!"
+msgstr "Jetzt upgraden!"
+
+msgid "Version"
+msgstr "Version"
+
+msgid "by"
+msgstr "von"
+
+msgid "The given Token is invalid or was expired."
+msgstr "Das angegebene Token ist ungültig oder ist abgelaufen."
+
+msgid "Please enter a new password."
+msgstr "Bitte geben Sie ein neues Passwort ein."
+
+msgid "The new password must contain the minimum number of 8 characters."
+msgstr "Das neue Passwort muss mindestens 8 Zeichen lang sein."
+
+msgid "Your password and confirmation password do not match."
+msgstr "Ihr Passwort und Ihr Bestätigungspasswort stimmen nicht überein."
+
+msgid "Your password has been restored."
+msgstr "Ihr Passwort wurde wiederhergestellt."
+
+msgid "Please enter an valid and registred E-Mail address!"
+msgstr "Bitte geben Sie eine gültige und registrierte E-Mail-Adresse ein!"
+
+msgid "Reset your Password"
+msgstr "Passwort zurücksetzen"
+
+msgid "Your request has been sent to your E-Mail adress!"
+msgstr "Ihre Anfrage wurde an Ihre E-Mail-Adresse gesendet!"
+
+msgid "Please enter your current password."
+msgstr "Bitte geben Sie ein neues Passwort ein."
+
+msgid "Please enter your new password."
+msgstr "Bitte geben Sie ein neues Passwort ein."
+
+msgid "Please repeat your new password."
+msgstr "Bitte geben Sie ein neues Passwort ein."
+
+msgid "Your current password is not correct!"
+msgstr "Ihr aktuelles Passwort ist falsch!"
+
+msgid "Your password has been updated."
+msgstr "Ihr Passwort wurde wiederhergestellt."
+
+msgid "Please enter your E-Mail address."
+msgstr "Bitte geben Sie Ihre E-Mail-Adresse ein."
+
+msgid "Please enter a valid E-Mail address."
+msgstr "Bitte geben Sie Ihre E-Mail-Adresse ein."
+
+msgid "Please enter your first name."
+msgstr "Bitte geben Sie Ihren Vornamen an."
+
+msgid "Please enter your last name."
+msgstr "Bitte geben Sie Ihren Vornamen an."
+
+msgid "Please enter your phone  number."
+msgstr "Bitte geben Sie Ihren Vornamen an."
+
+msgid "Please enter your address."
+msgstr "Bitte geben Sie Ihre E-Mail-Adresse ein."
+
+msgid "Your personal data has been updated."
+msgstr "Ihr Passwort wurde wiederhergestellt."
+
+msgid "Your security settings has been updated."
+msgstr "Ihre Sicherheitseinstellungen wurden aktualisiert."
+
+msgid "Your settings has been updated."
+msgstr "Ihr Passwort wurde wiederhergestellt."
+
+msgid "Your 2FA code is invalid!"
+msgstr "Ihr 2FA-Code ist ungültig!"
+
+msgid "Please complete the two factor authentication:"
+msgstr "Bitte vervollständigen Sie die Zwei-Faktor-Authentifizierung:"
+
+msgid "Login was unsuccessful!"
+msgstr "Anmeldung war nicht erfolgreich!"
+
+msgid "<strong>%d Repository%s<\\/strong> was updated. Found %d related Update%s!"
+msgstr "<strong>%d Repository%s<\\/strong> wurde aktualisiert. %d verwandtes Update%s gefunden!"
+
+msgid "<strong>%d Repositorys<\\/strong> was successfully removed"
+msgstr "<strong>%d Repositorys<\\/strong> wurde erfolgreich entfernt"
+
+msgid "Please select some entries you want to delete."
+msgstr "Bitte wählen Sie einige Einträge aus, die Sie löschen möchten."
+
+msgid "Save"
+msgstr "Speichern"
+
+msgid "Global Settings"
+msgstr "Globale Einstellungen"
+
+msgid "Security"
+msgstr "Sicherheit"
+
+msgid "Global settings for your usability"
+msgstr "Globale Einstellungen für Ihre Benutzerfreundlichkeit"
+
+msgid "Language"
+msgstr "Sprache"
+
+msgid "Time Format"
+msgstr "Zeitformat"
+
+msgid "Timezone"
+msgstr "Timezone"
+
+msgid "Some security settings for your safety."
+msgstr "Einige Sicherheitseinstellungen für Ihre Sicherheit."
+
+msgid "Check your E-Mail address in the <a href=\"%s\">account settings<\\/a>."
+msgstr "Überprüfen Sie Ihre E-Mail-Adresse in den <a href=\"%s\">-Kontoeinstellungen<\\/a>."
+
+msgid "Type"
+msgstr "Typ"
+
+msgid "Smartphone"
+msgstr "Smartphone"
+
+msgid "disabled"
+msgstr "deaktiviert"
+
+msgid "E-Mail"
+msgstr "E-Mails"
+
+msgid "SMS"
+msgstr "SMS"
+

@@ -1,0 +1,267 @@
+msgid ""
+msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: $name\n"
+
+
+msgid "Account"
+msgstr ""
+
+msgid "Databases"
+msgstr ""
+
+msgid "Domains"
+msgstr ""
+
+msgid "E-Mails"
+msgstr ""
+
+msgid "FTP"
+msgstr ""
+
+msgid "Hosting"
+msgstr ""
+
+msgid "Extended"
+msgstr ""
+
+msgid "Support"
+msgstr ""
+
+msgid "Administration"
+msgstr ""
+
+msgid "Server"
+msgstr ""
+
+msgid "Unknown User"
+msgstr ""
+
+msgid "Password mismatched."
+msgstr ""
+
+msgid "Add Repository"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Create"
+msgstr ""
+
+msgid "Confirmation"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "The module is already disabled!"
+msgstr ""
+
+msgid "The module was successfully disabled."
+msgstr ""
+
+msgid "The module not exists!"
+msgstr ""
+
+msgid "The module is already enabled!"
+msgstr ""
+
+msgid "The module was successfully enabled."
+msgstr ""
+
+msgid "The module was successfully deinstalled!"
+msgstr ""
+
+msgid "Please enter an valid  repository URL!"
+msgstr ""
+
+msgid "Repository already exists!"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Logout"
+msgstr ""
+
+msgid "Overview"
+msgstr ""
+
+msgid "Users"
+msgstr ""
+
+msgid "Themes"
+msgstr ""
+
+msgid "Modules"
+msgstr ""
+
+msgid "Logfiles"
+msgstr ""
+
+msgid "Console"
+msgstr ""
+
+msgid "Packages"
+msgstr ""
+
+msgid "Services"
+msgstr ""
+
+msgid "Reboot"
+msgstr ""
+
+msgid "No Modules available!"
+msgstr ""
+
+msgid "Please install some Modules."
+msgstr ""
+
+msgid "Module"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "The module <strong>%s<\/strong> has an new upgrade to <strong>Version %s<\/strong>!"
+msgstr ""
+
+msgid "Upgrade now!"
+msgstr ""
+
+msgid "Version"
+msgstr ""
+
+msgid "by"
+msgstr ""
+
+msgid "The given Token is invalid or was expired."
+msgstr ""
+
+msgid "Please enter a new password."
+msgstr ""
+
+msgid "The new password must contain the minimum number of 8 characters."
+msgstr ""
+
+msgid "Your password and confirmation password do not match."
+msgstr ""
+
+msgid "Your password has been restored."
+msgstr ""
+
+msgid "Please enter an valid and registred E-Mail address!"
+msgstr ""
+
+msgid "Reset your Password"
+msgstr ""
+
+msgid "Your request has been sent to your E-Mail adress!"
+msgstr ""
+
+msgid "Please enter your current password."
+msgstr ""
+
+msgid "Please enter your new password."
+msgstr ""
+
+msgid "Please repeat your new password."
+msgstr ""
+
+msgid "Your current password is not correct!"
+msgstr ""
+
+msgid "Your password has been updated."
+msgstr ""
+
+msgid "Please enter your E-Mail address."
+msgstr ""
+
+msgid "Please enter a valid E-Mail address."
+msgstr ""
+
+msgid "Please enter your first name."
+msgstr ""
+
+msgid "Please enter your last name."
+msgstr ""
+
+msgid "Please enter your phone  number."
+msgstr ""
+
+msgid "Please enter your address."
+msgstr ""
+
+msgid "Your personal data has been updated."
+msgstr ""
+
+msgid "Your security settings has been updated."
+msgstr ""
+
+msgid "Your settings has been updated."
+msgstr ""
+
+msgid "Your 2FA code is invalid!"
+msgstr ""
+
+msgid "Please complete the two factor authentication:"
+msgstr ""
+
+msgid "Login was unsuccessful!"
+msgstr ""
+
+msgid "<strong>%d Repository%s<\/strong> was updated. Found %d related Update%s!"
+msgstr ""
+
+msgid "<strong>%d Repositorys<\/strong> was successfully removed"
+msgstr ""
+
+msgid "Please select some entries you want to delete."
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Global Settings"
+msgstr ""
+
+msgid "Security"
+msgstr ""
+
+msgid "Global settings for your usability"
+msgstr ""
+
+msgid "Language"
+msgstr ""
+
+msgid "Time Format"
+msgstr ""
+
+msgid "Timezone"
+msgstr ""
+
+msgid "Some security settings for your safety."
+msgstr ""
+
+msgid "Check your E-Mail address in the <a href=\"%s\">account settings<\/a>."
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Smartphone"
+msgstr ""
+
+msgid "disabled"
+msgstr ""
+
+msgid "E-Mail"
+msgstr ""
+
+msgid "SMS"
+msgstr ""

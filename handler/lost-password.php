@@ -1,6 +1,7 @@
 <?php
 	use fruithost\Database;
 	use fruithost\Encryption;
+	use fruithost\I18N;
 	use PHPMailer\PHPMailer;
 	
 	if(!empty($token)) {
@@ -17,29 +18,29 @@
 		}
 		
 		if(empty($found)) {
-			$template->assign('error', 'The given Token is invalid or was expired.');
+			$template->assign('error', I18N::get('The given Token is invalid or was expired.'));
 		} else {
 			if(isset($_POST['action']) && $_POST['action'] == 'lost-password') {
 				if(!isset($_POST['password_new'])) {
-					$template->assign('error', 'Please enter a new password.');
+					$template->assign('error', I18N::get('Please enter a new password.'));
 					$template->assign('changeable', true);
 					return;
 				}
 				
 				if(!isset($_POST['password_repeated'])) {
-					$template->assign('error', 'Please enter a new password.');
+					$template->assign('error', I18N::get('Please enter a new password.'));
 					$template->assign('changeable', true);
 					return;
 				}
 				
 				if(strlen($_POST['password_new']) < 8) {
-					$template->assign('error', 'The new password must contain the minimum number of 8 characters.');
+					$template->assign('error', I18N::get('The new password must contain the minimum number of 8 characters.'));
 					$template->assign('changeable', true);
 					return;
 				}
 				
 				if($_POST['password_new'] !== $_POST['password_repeated']) {
-					$template->assign('error', 'Your password and confirmation password do not match.');
+					$template->assign('error', I18N::get('Your password and confirmation password do not match.'));
 					$template->assign('changeable', true);
 					return;
 				}
@@ -51,7 +52,7 @@
 					'lost_token'	=> NULL
 				]);
 				
-				$template->assign('success', 'Your password has been restored.');
+				$template->assign('success', I18N::get('Your password has been restored.'));
 				$template->assign('changeable', true);
 				return;
 			}
@@ -65,7 +66,7 @@
 		]);
 		
 		if($result == false) {
-			$template->assign('error', 'Please enter an valid and registred E-Mail address!');
+			$template->assign('error', I18N::get('Please enter an valid and registred E-Mail address!'));
 		} else {
 			$token_raw		= strtoupper(bin2hex(openssl_random_pseudo_bytes(32)));
 			$hash			= Encryption::encrypt($token_raw, $result->crypted_mail);
@@ -81,7 +82,7 @@
 			$mail			= new PHPMailer;
 			$mail->isSendmail();
 			$mail->CharSet	= 'utf-8';
-			$mail->Subject	= 'Reset your Password';
+			$mail->Subject	= I18N::get('Reset your Password');
 			$mail->setFrom('no-reply@fruithost.de', 'fruithost');
 			$mail->addAddress($result->email);
 			
@@ -116,7 +117,7 @@
 			if(!$mail->send()) {
 				$template->assign('error', $mail->ErrorInfo);
 			} else {
-				$template->assign('success', 'Your request has been sent to your E-Mail adress!');
+				$template->assign('success', I18N::get('Your request has been sent to your E-Mail adress!'));
 			}
 		}
 	}

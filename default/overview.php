@@ -1,31 +1,32 @@
 <?php
 	use \fruithost\Auth;
+	use \fruithost\I18N;
 	$template->header();
 	?>
 		<div class="alert alert-secondary alert-dismissible fade show mt-4 welcome" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 			</button>
-			<h4 class="alert-heading">Welcome to fruithost!</h4>
-			<p>We've assembled some links to get you started:</p>
+			<h4 class="alert-heading"><?php sprintf(I18N::get('Welcome to %s!'), 'fruithost'); ?></h4>
+			<p><?php I18N::__('We\'ve assembled some links to get you started'); ?>:</p>
 			<div class="row">
 				<div class="col-sm-4 text-center">
-					<h6 class="text-left">Get Started</h6>
-					<a href="<?php print $template->url('/module/domains'); ?>" class="btn btn-primary btn-lg ml-4 mr-4 mt-2">Create a Domain</a>
-					<p>or <a href="<?php print $template->url('/module/subdomains'); ?>">create a new subdomain</a></p>
+					<h6 class="text-left"><?php I18N::__('Get Started'); ?></h6>
+					<a href="<?php print $template->url('/module/domains'); ?>" class="btn btn-primary btn-lg ml-4 mr-4 mt-2"><?php I18N::__('Create a Domain'); ?></a>
+					<p><?php I18N::__(''); ?>or <a href="<?php print $template->url('/module/subdomains'); ?>"><?php I18N::__('create a new subdomain'); ?></a></p>
 				</div>
 				<div class="col-sm-4">
-					<h6>Next Steps</h6>
+					<h6><?php I18N::__('Next Steps'); ?></h6>
 					<ul class="list-unstyled">
-						<li><i class="material-icons">folder</i> <a href="<?php print $template->url('/module/ftp'); ?>">Create an FTP Account</a></li>
-						<li><i class="material-icons">lock</i> <a href="<?php print $template->url('/module/database'); ?>">Create a new Database</a></li>
-						<li><i class="material-icons">mail_outline</i> <a href="<?php print $template->url('/module/mailserver'); ?>">Create a new Mailbox</a></li>
+						<li><i class="material-icons">folder</i> <a href="<?php print $template->url('/module/ftp'); ?>"><?php I18N::__('Create an FTP Account'); ?></a></li>
+						<li><i class="material-icons">lock</i> <a href="<?php print $template->url('/module/database'); ?>"><?php I18N::__('Create a new Database'); ?></a></li>
+						<li><i class="material-icons">mail_outline</i> <a href="<?php print $template->url('/module/mailserver'); ?>"><?php I18N::__('Create a new Mailbox'); ?></a></li>
 					</ul>
 				</div>
 				<div class="col-sm-4">
-					<h6>More Actions</h6>
+					<h6><?php I18N::__('More Actions'); ?></h6>
 					<ul class="list-unstyled">
-						<li><i class="material-icons">settings</i> <a href="<?php print $template->url('/settings'); ?>">Modify your Account settings</a></li>
+						<li><i class="material-icons">settings</i> <a href="<?php print $template->url('/settings'); ?>"><?php I18N::__('Modify your Account settings'); ?></a></li>
 					</ul>
 				</div>
 			</div>
@@ -34,8 +35,8 @@
 			if(Auth::getSettings('2FA_ENABLED', NULL, 'false') === 'true' && !filter_var(Auth::getMail(), FILTER_VALIDATE_EMAIL)) {
 				?>
 					<div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
-						Two-Factor authentication (2FA) is <strong>temporarily disabled</strong> because you did not provide a <strong>valid E-Mail address</strong>.
-						<br />Check your E-Mail address in the <a href="<?php print $template->url('/account'); ?>">account settings</a>.
+						<?php I18N::__('Two-Factor authentication (2FA) is <strong>temporarily disabled</strong> because you did not provide a <strong>valid E-Mail address</strong>.'); ?>
+						<br /><?php printf(I18N::get('Check your E-Mail address in the <a href="%s">account settings</a>.'), $template->url('/account')); ?>
 					</div>
 				<?php
 			}

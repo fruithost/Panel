@@ -1,6 +1,7 @@
 <?php
 	use fruithost\Auth;
 	use fruithost\Utils;
+	use fruithost\I18N;
 	use Gauge\Gauge;
 	
 	$template->header();
@@ -8,8 +9,8 @@
 	if(!Auth::hasPermission('SERVER::VIEW')) {
 		?>
 			<div class="alert alert-danger mt-4" role="alert">
-				<strong>Access denied!</strong>
-				<p class="pb-0 mb-0">You have no permissions for this page.</p>
+				<strong><?php I18N::__('Access denied!'); ?></strong>
+				<p class="pb-0 mb-0"><?php I18N::__('You have no permissions for this page.'); ?></p>
 			</div>
 		<?php
 		$template->footer();
@@ -39,48 +40,48 @@
 	<div class="container mt-5">
 		<div class="row">
 			<div class="col-md-6">
-				<h4>System Properties</h4>
+				<h4><?php I18N::__('System Properties'); ?></h4>
 				<table class="table">
 					<tr>
-						<th>Hostname</th>
+						<th><?php I18N::__('Hostname'); ?></th>
 						<td><?php print $hostname; ?></td>
 					</tr>
 					<tr>
-						<th>Time</th>
+						<th><?php I18N::__('Time'); ?></th>
 						<td><?php print $time_system; ?></td>
 					</tr>
 					<tr>
-						<th>System</th>
+						<th><?php I18N::__('System'); ?></th>
 						<td><?php print $os; ?></td>
 					</tr>
 					<tr>
-						<th>Kernel</th>
+						<th><?php I18N::__('Kernel'); ?></th>
 						<td><?php print $kernel; ?></td>
 					</tr>
 					<tr>
-						<th>Uptime</th>
+						<th><?php I18N::__('Uptime'); ?></th>
 						<td><?php print $uptime; ?></td>
 					</tr>
 				</table>
 				
-				<h4>Daemon</h4>
+				<h4><?php I18N::__('Daemon'); ?></h4>
 				<table class="table">
 					<tr>
-						<th>Last Start</th>
-						<td><?php print $daemon['start']; ?> (<?php print Utils::getTimeDifference($daemon['started']); ?> ago)</td>
+						<th><?php I18N::__('Last Start'); ?></th>
+						<td><?php print $daemon['start']; ?> (<?php printf(I18N::get('%s ago'), Utils::getTimeDifference($daemon['started'])); ?>)</td>
 					</tr>
 					<tr>
-						<th>Last End</th>
-						<td><?php print $daemon['end']; ?> (<?php print Utils::getTimeDifference($daemon['ended']); ?> ago)</td>
+						<th><?php I18N::__('Last End'); ?></th>
+						<td><?php print $daemon['end']; ?> (<?php printf(I18N::get('%s ago'), Utils::getTimeDifference($daemon['ended'])); ?>)</td>
 					</tr>
 					<tr>
-						<th>Last Time</th>
-						<td><?php print $daemon['time']; ?> Seconds</td>
+						<th><?php I18N::__('Last Time'); ?></th>
+						<td><?php printf(I18N::get('%d Seconds'), $daemon['time']); ?></td>
 					</tr>
 				</table>
 			</div>
 			<div class="col-md-6">
-				<h4>Mounted Drives</h4>
+				<h4><?php I18N::__('Mounted Drives'); ?></h4>
 				<?php
 					foreach($disks AS $disk) {
 						?>
@@ -102,7 +103,7 @@
 							<div class="bg-secondary" style="height: 15px;" data-percentage="<?php printf('%s%s', $disk['percent'], ($disk['used'] === '0' ? '' : sprintf(' (%s)', $disk['used']))); ?>">
 								<div class="bg-success" style="height: 100%; width: <?php print $disk['percent']; ?>"></div>
 							</div>
-							<small class="text-muted">Type: <?php print $disk['type']; ?> | FileSystem: <?php print $disk['filesystem']; ?> | Size: <?php print $disk['avail']; ?> / <?php print $disk['size']; ?></small>
+							<small class="text-muted"><?php printf(I18N::get('Type: %s | FileSystem: %s | Size: %s / %s'), $disk['type'], $disk['filesystem'], $disk['avail'], $disk['size']); ?></small>
 						</div>
 						<?php
 					}

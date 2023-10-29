@@ -10,13 +10,13 @@
 					<a class="active" href="<?php print $this->url('/settings'); ?>"><?php I18N::__('Settings'); ?></a>
 				</h1>
 				<div class="btn-toolbar mb-2 mb-md-0">
-					<button type="submit" name="action" value="save" class="btn btn-sm btn-outline-primary">Save</button>
+					<button type="submit" name="action" value="save" class="btn btn-sm btn-outline-primary"><?php I18N::__('Save'); ?></button>
 				</div>
 			</header>
 			
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
-				<li class="nav-item"><a class="nav-link<?php print (empty($tab) ? ' active' : ''); ?>" id="globals-tab" href="<?php print $this->url('/settings'); ?>" role="tab">Global Settings</a></li>
-				<li class="nav-item"><a class="nav-link<?php print (!empty($tab) && $tab === 'security' ? ' active' : ''); ?>" id="security-tab" href="<?php print $this->url('/settings/security'); ?>" role="tab">Security</a></li>
+				<li class="nav-item"><a class="nav-link<?php print (empty($tab) ? ' active' : ''); ?>" id="globals-tab" href="<?php print $this->url('/settings'); ?>" role="tab"><?php I18N::__('Global Settings'); ?></a></li>
+				<li class="nav-item"><a class="nav-link<?php print (!empty($tab) && $tab === 'security' ? ' active' : ''); ?>" id="security-tab" href="<?php print $this->url('/settings/security'); ?>" role="tab"><?php I18N::__('Security'); ?></a></li>
 			</ul>
 			<?php
 				if(isset($error)) {
@@ -31,11 +31,11 @@
 			?>
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane<?php print (empty($tab) ? ' show active' : ''); ?>" id="globals" role="tabpanel" aria-labelledby="globals-tab">
-					<p class="text-secondary p-4">Global settings for your usability</p>
+					<p class="text-secondary p-4"><?php I18N::__('Global settings for your usability'); ?></p>
 					
 					<div class="container">
 						<div class="form-group row">
-							<label for="language" class="col-sm-2 col-form-label">Language:</label>
+							<label for="language" class="col-sm-2 col-form-label"><?php I18N::__('Language'); ?>:</label>
 							<div class="col-sm-10">
 								<select name="language" name="language" class="form-control">
 								<?php
@@ -48,13 +48,13 @@
 						</div>
 						<hr class="mb-4" />
 						<div class="form-group row">
-							<label for="time_format" class="col-sm-2 col-form-label">Time Format:</label>
+							<label for="time_format" class="col-sm-2 col-form-label"><?php I18N::__('Time Format'); ?>:</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="time_format" name="time_format" value="<?php print Auth::getSettings('TIME_FORMAT', NULL, 'd.m.Y - H:i:s'); ?>" />
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="time_zone" class="col-sm-2 col-form-label">Timezone:</label>
+							<label for="time_zone" class="col-sm-2 col-form-label"><?php I18N::__('Timezone'); ?>:</label>
 							<div class="col-sm-10">
 								<select name="time_zone" id="time_zone" class="form-control">
 									<?php
@@ -75,19 +75,19 @@
 							$template->getCore()->getHooks()->runAction('ACCOUNT_SETTINGS_GLOBAL');
 						?>
 						<div class="form-group text-right">
-							<button type="submit" name="action" value="save" class="btn btn-outline-success">Save</button>
+							<button type="submit" name="action" value="save" class="btn btn-outline-success"><?php I18N::__('Save'); ?></button>
 						</div>
 					</div>
 				</div>
 				<div class="tab-pane<?php print (!empty($tab) && $tab === 'security' ? ' show active' : ''); ?>" id="security" role="tabpanel" aria-labelledby="security-tab">
-					<p class="text-secondary p-4">Some security settings for your safety.</p>
+					<p class="text-secondary p-4"><?php I18N::__('Some security settings for your safety.'); ?></p>
 					
 					<div class="container">
 						<div class="form-group row">
 							<div class="col-sm-2 text-right">
 								<input type="checkbox" name="2fa_enabled" id="2fa_enabled" value="true"<?php print (Auth::getSettings('2FA_ENABLED', NULL, 'false') === 'true' ? ' CHECKED' : ''); ?> />
 							</div>
-							<label for="2fa_enabled" class="col-sm-10 col-form-label">Enable Two-factor authentication (2FA)</label>
+							<label for="2fa_enabled" class="col-sm-10 col-form-label"><?php I18N::__('Enable Two-factor authentication (2FA)'); ?></label>
 						</div>
 						<div class="form-group row">
 							<div class="col-sm-2 text-right"></div>
@@ -96,15 +96,15 @@
 									if(Auth::getSettings('2FA_ENABLED', NULL, 'false') === 'true' && !filter_var(Auth::getMail(), FILTER_VALIDATE_EMAIL)) {
 										?>
 											<div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
-												Two-Factor authentication (2FA) is <strong>temporarily disabled</strong> because you did not provide a <strong>valid E-Mail address</strong>.
-												<br />Check your E-Mail address in the <a href="<?php print $template->url('/account'); ?>">account settings</a>.
+												<?php I18N::__('Two-Factor authentication (2FA) is <strong>temporarily disabled</strong> because you did not provide a <strong>valid E-Mail address</strong>.'); ?>
+												<br /><?php sprintf(I18N::get('Check your E-Mail address in the <a href="%s">account settings</a>.'), $template->url('/account')); ?>
 											</div>
 										<?php
 									} else if(!filter_var(Auth::getMail(), FILTER_VALIDATE_EMAIL)) {
 										?>
 											<div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
-												Two-Factor authentication (2FA) will be <strong>temporarily disabled</strong> because you did not provide a <strong>valid E-Mail address</strong>.
-												<br />Check your E-Mail address in the <a href="<?php print $template->url('/account'); ?>">account settings</a>.
+												<?php I18N::__('Two-Factor authentication (2FA) will be <strong>temporarily disabled</strong> because you did not provide a <strong>valid E-Mail address</strong>.'); ?>
+												<br /><?php sprintf(I18N::get('Check your E-Mail address in the <a href="%s">account settings</a>.'), $template->url('/account')); ?>
 											</div>
 										<?php
 									}
@@ -112,17 +112,17 @@
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="2fa_type" class="col-sm-2 col-form-label">Type:</label>
+							<label for="2fa_type" class="col-sm-2 col-form-label"><?php I18N::__('Type'); ?>:</label>
 							<div class="col-sm-10">
 								<select name="2fa_type" class="form-control">
-									<option value="app" DISABLED>Smartphone (disabled)</option>
-									<option value="mail" SELECTED>E-Mail</option>
-									<option value="sms" DISABLED>SMS (disabled)</option>
+									<option value="app" DISABLED><?php I18N::__('Smartphone'); ?> (<?php I18N::__('disabled'); ?>)</option>
+									<option value="mail" SELECTED><?php I18N::__('E-Mail'); ?></option>
+									<option value="sms" DISABLED><?php I18N::__('SMS'); ?> (<?php I18N::__('disabled'); ?>)</option>
 								</select>
 							</div>
 						</div>
 						<div class="form-group text-right">
-							<button type="submit" name="action" value="save" class="btn btn-outline-success">Save</button>
+							<button type="submit" name="action" value="save" class="btn btn-outline-success"><?php I18N::__('Save'); ?></button>
 						</div>
 					</div>
 				</div>

@@ -33,16 +33,16 @@
 			$this->files->addJavascript('jquery', $this->url('js/jquery/jquery-3.3.1.min.js'), '3.3.1', [], TemplateFiles::FOOTER);
 			$this->files->addJavascript('bootstrap', $this->url('js/bootstrap/bootstrap.bundle.min.js'), '4.3.1', [ 'jquery', 'popper' ], TemplateFiles::FOOTER);
 			
-			$this->navigation->addCategory('account', 'Account');
-			$this->navigation->addCategory('database', 'Databases');
-			$this->navigation->addCategory('domain', 'Domains');
-			$this->navigation->addCategory('mail', 'E-Mails');
-			$this->navigation->addCategory('ftp', 'FTP');
-			$this->navigation->addCategory('hosting', 'Hosting');
-			$this->navigation->addCategory('extended', 'Extended');
-			$this->navigation->addCategory('support', 'Support');
-			$this->navigation->addCategory('admin', 'Administration');
-			$this->navigation->addCategory('server', 'Server');
+			$this->navigation->addCategory('account', I18N::get('Account'));
+			$this->navigation->addCategory('database', I18N::get('Databases'));
+			$this->navigation->addCategory('domain', I18N::get('Domains'));
+			$this->navigation->addCategory('mail', I18N::get('E-Mails'));
+			$this->navigation->addCategory('ftp', I18N::get('FTP'));
+			$this->navigation->addCategory('hosting', I18N::get('Hosting'));
+			$this->navigation->addCategory('extended', I18N::get('Extended'));
+			$this->navigation->addCategory('support', I18N::get('Support'));
+			$this->navigation->addCategory('admin', I18N::get('Administration'));
+			$this->navigation->addCategory('server', I18N::get('Server'));
 			
 			$this->assign('topbar',		$this->navigation->getCategory('account'));
 			$this->assign('navigation', $this->navigation);

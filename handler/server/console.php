@@ -23,7 +23,7 @@
 		switch($_POST['action']) {
 			case 'command':
 				if(!Auth::hasPermission('SERVER::MANAGE')) {
-					$this->assign('error', 'You have no permissions for this action!');
+					$this->assign('error', I18N::get('You have no permissions for this action!'));
 					return;
 				}
 				

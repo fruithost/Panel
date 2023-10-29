@@ -1,14 +1,15 @@
 <?php
 	use fruithost\Auth;
 	use fruithost\Encryption;
+	use fruithost\I18N;
 	
 	$template->header();
 	
 	if(!Auth::hasPermission('LOGFILES::VIEW')) {
 		?>
 			<div class="alert alert-danger mt-4" role="alert">
-				<strong>Access denied!</strong>
-				<p class="pb-0 mb-0">You have no permissions for this page.</p>
+				<strong><?php I18N::__('Access denied!'); ?></strong>
+				<p class="pb-0 mb-0"><?php I18N::__('You have no permissions for this page.'); ?></p>
 			</div>
 		<?php
 		$template->footer();
@@ -18,10 +19,10 @@
 		
 	<header class="page-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 		<h1 class="h2">
-			<a class="active" href="<?php print $this->url('/admin/logs'); ?>">Logfiles</a>
+			<a class="active" href="<?php print $this->url('/admin/logs'); ?>"><?php I18N::__('Logfiles'); ?></a>
 		</h1>
 		<div class="btn-toolbar mb-2 mb-md-0">
-			<button type="submit" name="action" value="save" class="btn btn-sm btn-outline-primary">Refresh</button>
+			<button type="submit" name="action" value="save" class="btn btn-sm btn-outline-primary"><?php I18N::__('Refresh'); ?></button>
 		</div>
 	</header>
 	<div class="d-flex pb-2 mb-3">
@@ -30,7 +31,7 @@
 				if(empty($logfile)) {
 					?>
 						<div class="alert alert-info mt-4" role="alert">
-							Please select a logfile to view it
+							<?php I18N::__('Please select a logfile to view it'); ?>
 						</div>
 					<?php
 				} else {

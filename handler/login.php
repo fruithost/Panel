@@ -3,6 +3,7 @@
 	use fruithost\Response;
 	use fruithost\Session;
 	use PHPMailer\PHPMailer;
+	use fruithost\I18N;
 	use fruithost\Database;
 	
 	if(isset($_POST['action']) && $_POST['action'] == 'login') {
@@ -17,7 +18,7 @@
 					Session::remove('two_id');
 						
 					if(empty($result)) {
-						$template->assign('error', 'Your 2FA code is invalid!');
+						$template->assign('error', I18N::get('Your 2FA code is invalid!'));
 					} else {
 						Session::set('user_name',	$result->username);
 						Session::set('user_id',		(int) $result->id);
@@ -26,7 +27,7 @@
 				} else {
 					Session::remove('two_factor');
 					Session::remove('two_id');
-					$template->assign('error', 'Your 2FA code is invalid!');
+					$template->assign('error', I18N::get('Your 2FA code is invalid!'));
 				}
 			} else if(Auth::getSettings('2FA_ENABLED', $_POST['username'], 'false') === 'true' && Auth::TwoFactorLogin($_POST['username'], $_POST['password'])) {
 				$text	= '';
@@ -87,14 +88,14 @@
 				if(!$mail->send()) {
 					$template->assign('error', $mail->ErrorInfo);
 				} else {
-					$template->assign('error', 'Please complete the two factor authentication:');
+					$template->assign('error', I18N::get('Please complete the two factor authentication:'));
 				}
 				
 				$template->assign('two_factor', true);
 			} else if(Auth::login($_POST['username'], $_POST['password'])) {
 				Response::redirect('/overview');
 			} else {
-				$template->assign('error', 'Login war fehlerhaft!');
+				$template->assign('error', I18N::get('Login was unsuccessful!'));
 			}
 		} catch(\PDOException $e) {
 			$template->assign('error', 'Can\'t connect to database.');
