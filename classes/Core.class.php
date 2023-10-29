@@ -99,7 +99,7 @@
 				'key'		=> $name
 			]);
 			
-			if(!empty($result)) {
+			if(!empty($result) && !empty($result->value)) {
 				// Is Boolean: False
 				if(in_array(strtolower($result->value), [
 					'off', 'false', 'no'
@@ -110,9 +110,9 @@
 					'on', 'true', 'yes'
 				])) {
 					return true;
-				} else if(!empty($result->value)) {
-					return $result->value;
 				}
+				
+				return $result->value;
 			}
 			
 			return $default;

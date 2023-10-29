@@ -34,10 +34,20 @@
 				'id'	=> (empty($id) ? self::getID() : $id)
 			]);
 			
-			if(!empty($result)) {
-				if(!empty($result->{$name})) {
-					return $result->{$name};
+			if(!empty($result) && !empty($result->{$name})) {
+				// Is Boolean: False
+				if(in_array(strtolower($result->{$name}), [
+					'off', 'false', 'no'
+				])) {
+					return false;
+				// Is Boolean: True
+				} else if(in_array(strtolower($result->{$name}), [
+					'on', 'true', 'yes'
+				])) {
+					return true;
 				}
+				
+				return $result->{$name};
 			}
 			
 			return $default;

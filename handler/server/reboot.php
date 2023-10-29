@@ -12,10 +12,14 @@
 				}
 				
 				$this->assign('success', I18N::get('The System will be rebooted now!'));
-					
-				// @ToDo save in DB, execute by daemon!
-				shell_exec('/sbin/shutdown -r now');
+				$template->getCore()->setSettings('REBOOT', date('Y-m-d H:i:s', time()));
+				$template->getCore()->getHooks()->runAction('SERVER_REBOOT', time());
 			break;
 		}
+	}
+	
+	$rebooting = $template->getCore()->getSettings('REBOOT', null);
+	if(!empty($rebooting)) {
+		$this->assign('success', I18N::get('The System will be rebooted now!') . sprintf('<p><small>%s</small></p>', $rebooting));		
 	}
 ?>
