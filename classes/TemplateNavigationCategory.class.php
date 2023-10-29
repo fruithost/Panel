@@ -54,8 +54,6 @@
 					];
 				break;
 				case 'admin':
-					$hardcoded = [];
-					
 					if(Auth::hasPermission('*')) {
 						$hardcoded[] = (object) [
 							'name'		=> 'Overview',
@@ -95,24 +93,67 @@
 							'active'	=> $this->navigation->getCore()->getRouter()->startsWith('/admin/modules')
 						];
 					}
+				break;
+				case 'server':
+					if(Auth::hasPermission('SERVER::VIEW')) {
+						$hardcoded[] = (object) [
+							'name'		=> 'Server',
+							'icon'		=> '<i class="material-icons">memory</i>',
+							'order'		=> 1,
+							'url'		=> '/admin/server',
+							'active'	=> $this->navigation->getCore()->getRouter()->startsWith('/admin/server')
+						];
+					}
 					
 					if(Auth::hasPermission('LOGFILES::VIEW')) {
 						$hardcoded[] = (object) [
 							'name'		=> 'Logfiles',
 							'icon'		=> '<i class="material-icons">insert_drive_file</i>',
-							'order'		=> 4,
+							'order'		=> 2,
 							'url'		=> '/admin/logs',
 							'active'	=> $this->navigation->getCore()->getRouter()->startsWith('/admin/logs')
 						];
 					}
 					
-					if(Auth::hasPermission('SERVER::VIEW')) {
+					if(Auth::hasPermission('SERVER::MANAGE')) {
 						$hardcoded[] = (object) [
-							'name'		=> 'Server',
-							'icon'		=> '<i class="material-icons">memory</i>',
+							'name'		=> 'Settings',
+							'icon'		=> '<i class="material-icons">tune</i>',
+							'order'		=> 1,
+							'url'		=> '/server/settings',
+							'active'	=> $this->navigation->getCore()->getRouter()->startsWith('/server/settings')
+						];
+											
+						$hardcoded[] = (object) [
+							'name'		=> 'Console',
+							'icon'		=> '<i class="material-icons">input</i>',
+							'order'		=> 2,
+							'url'		=> '/server/console',
+							'active'	=> $this->navigation->getCore()->getRouter()->startsWith('/server/console')
+						];
+						
+						$hardcoded[] = (object) [
+							'name'		=> 'Packages',
+							'icon'		=> '<i class="material-icons">unarchive</i>',
+							'order'		=> 3,
+							'url'		=> '/server/packages',
+							'active'	=> $this->navigation->getCore()->getRouter()->startsWith('/server/packages')
+						];
+						
+						$hardcoded[] = (object) [
+							'name'		=> 'Services',
+							'icon'		=> '<i class="material-icons">tag</i>',
+							'order'		=> 4,
+							'url'		=> '/server/services',
+							'active'	=> $this->navigation->getCore()->getRouter()->startsWith('/server/services')
+						];
+						
+						$hardcoded[] = (object) [
+							'name'		=> 'Reboot',
+							'icon'		=> '<i class="material-icons">power_settings_new</i>',
 							'order'		=> 5,
-							'url'		=> '/admin/server',
-							'active'	=> $this->navigation->getCore()->getRouter()->startsWith('/admin/server')
+							'url'		=> '/server/reboot',
+							'active'	=> $this->navigation->getCore()->getRouter()->startsWith('/server/reboot')
 						];
 					}
 				break;

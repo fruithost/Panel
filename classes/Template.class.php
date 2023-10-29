@@ -41,6 +41,7 @@
 			$this->navigation->addCategory('extended', 'Extended');
 			$this->navigation->addCategory('support', 'Support');
 			$this->navigation->addCategory('admin', 'Administration');
+			$this->navigation->addCategory('server', 'Server');
 			
 			$this->assign('topbar',		$this->navigation->getCategory('account'));
 			$this->assign('navigation', $this->navigation);

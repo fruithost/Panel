@@ -265,6 +265,18 @@
 
 				$this->getTemplate()->display('admin' . (!empty($destination) ? sprintf('/%s', $destination) : ''), $data);
 			});
+		
+			$this->getRouter()->addRoute('^/server(?:/([a-zA-Z0-9\-_]+))(?:/([a-zA-Z0-9\-_]+))?$', function($destination = null, $tab = NULL) {
+				$data = [
+					'tab'	=> $tab
+				];
+				
+				if(!Auth::isLoggedIn()) {
+					Response::redirect('/');
+				}
+				
+				$this->getTemplate()->display('server' . (!empty($destination) ? sprintf('/%s', $destination) : ''), $data);
+			});
 		}
 		
 		public function onConfirmation(array $data = []) : string {
