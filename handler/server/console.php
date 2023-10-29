@@ -1,5 +1,6 @@
 <?php
 	use fruithost\Database;
+	use fruithost\Response;
 	use fruithost\Auth;
 	
 	if(isset($_POST['action'])) {
@@ -10,7 +11,9 @@
 					return;
 				}
 				
-				$result = shell_exec($_POST['command'] . ' 2>&1');
+				Response::addHeader('Content-Type', 'text/plain; charset=UTF-8');
+				
+				$result = shell_exec('export TERM=xterm-256color;' . $_POST['command'] . ' 2>&1');
 				print 'fruithost@localhost:~# ';
 				
 				if($result == null) {
@@ -18,7 +21,8 @@
 				} else if($result == false) {
 					print 'Pipe Error';
 				} else {
-					print $result;
+					$result = preg_replace("/\t/", " ", $result);
+					print nl2br($result);
 				}
 				exit();
 			break;

@@ -15,8 +15,8 @@
 		exit();
 	}
 	?>
-	<div style="top: 48px; left: 213px; bottom: 0; right: 0;" class="position-fixed bg-dark text-white-50">
-		<div style="height: calc(100% - 30px);" class="output"></div>
+	<div style="top: 48px; left: 213px; bottom: 0; right: 0; box-shadow: inset 0px 2px 10px rgba(0, 0, 0, .25)" class="position-fixed bg-dark text-white-50">
+		<div style="height: calc(100% - 30px); overflow: auto;" class="output p-4"></div>
 		<input name="command" placeholder="Command..." style="height: 30px; width: 100%;" />
 	</div>
 	<script type="text/javascript">
@@ -42,6 +42,7 @@
 								success: function onSuccess(response) {
 									output.append('<div>' + response + '</div>');
 									command.focus();
+									output.scrollTop(output[0].scrollHeight - output.height());
 								}
 							});
 							
