@@ -165,7 +165,7 @@
 			$this->core->getHooks()->runAction('html_foot');
 		}
 		
-		public function url($path) {
+		public function url($path, $parameters = null) {
 			$scheme = 'http';
 			
 			if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
@@ -187,6 +187,8 @@
 				}
 				
 				$path .= '?' . http_build_query(array_merge($_GET, $parameters));
+			} else if(Request::has('lang') && !strpos($path, '?')) {
+				$path .= '?lang=' . Request::get('lang');
 			}
 			
 			return $scheme . '://' . $_SERVER['HTTP_HOST'] . '/' . $path;

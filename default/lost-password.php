@@ -44,7 +44,25 @@
 		<?php
 			if(!isset($success)) {
 				?>
-					<button class="btn btn-lg btn-primary btn-block" name="action" value="lost-password" type="submit"><?php I18N::__('Reset Password'); ?></button>
+					<div class="btn-group btn-group-lg btn-block container-fluid" role="group">
+						<button class="btn btn-lg btn-primary btn-block" name="action" value="lost-password" type="submit">
+							<?php I18N::__('Reset Password'); ?>
+						</button>
+
+						<div class="btn-group" role="group">
+							<button type="button" class="btn btn-outline-secondary dropdown-toggle btn-sm" data-toggle="dropdown" aria-expanded="false">
+								<i class="material-icons">public</i>
+							</button>
+							<div class="dropdown-menu">
+								<?php
+									foreach(I18N::getLanguages() AS $code => $language) {
+										printf('<a class="dropdown-item" href="%s">%s</a>', $template->url('/lost-password?lang=' . $code), $language);
+									}
+								?>
+							</div>
+						</div>
+					</div>
+					
 				<?php
 			}
 		?>

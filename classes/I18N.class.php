@@ -1,5 +1,6 @@
 <?php
 	namespace fruithost;
+	use \fruithost\Request;
 	use \fruithost\Auth;
 	use \Sepia\PoParser\SourceHandler\FileSystem;
 	use \Sepia\PoParser\Parser;
@@ -12,11 +13,21 @@
 		
 		public function __construct() {
 			self::loadLanguages();
-			self::load(Auth::getSettings('LANGUAGE', NULL, 'en_US'));
+			self::load(self::set());
 		}
 		
 		public static function reload() {
-			self::load(Auth::getSettings('LANGUAGE', NULL, 'en_US'));			
+			self::load(self::set());			
+		}
+		
+		protected static function set() {
+			$language = Auth::getSettings('LANGUAGE', NULL, 'en_US');
+			
+			if(!Auth::isLoggedIn() && Request::has('lang')) {
+				$language = Request::get('lang');
+			}
+			
+			return $language;
 		}
 		
 		protected static function load($language) {
