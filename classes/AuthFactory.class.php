@@ -1,11 +1,13 @@
 <?php
 	namespace fruithost;
 	
+	use \fruithost\User;
 	use \fruithost\Session;
 	
 	class AuthFactory {
 		private static $instance	= NULL;
 		private $permissions		= [];
+		private $user				= NULL;
 		
 		public static function getInstance() : AuthFactory {
 			if(self::$instance === NULL) {
@@ -13,6 +15,14 @@
 			}
 			
 			return self::$instance;
+		}
+		
+		protected function __construct() {
+			$this->user = new User();
+			
+			if(self::isLoggedIn()) {
+				$this->user->fetch(self::getID());
+			}
 		}
 		
 		public function isLoggedIn() : bool {
@@ -29,35 +39,15 @@
 			return Session::get('user_name');
 		}
 		
-		public function getData(string $name, int | null $id = NULL, mixed $default = NULL) : mixed {
-			$result = Database::single('SELECT * FROM `' . DATABASE_PREFIX . 'users` WHERE `id`=:id LIMIT 1', [
-				'id'	=> (empty($id) ? self::getID() : $id)
-			]);
-			
-			if(!empty($result) && !empty($result->{$name})) {
-				// Is Boolean: False
-				if(in_array(strtolower($result->{$name}), [
-					'off', 'false', 'no'
-				])) {
-					return false;
-				// Is Boolean: True
-				} else if(in_array(strtolower($result->{$name}), [
-					'on', 'true', 'yes'
-				])) {
-					return true;
-				}
-				
-				return $result->{$name};
-			}
-			
-			return $default;
-		}
-		
 		public static function logout() : bool {
 			Session::remove('user_id');
 			Session::remove('user_name');
 			
 			return true;
+		}
+		
+		public function getMail() : string | null {
+			return $this->user->getMail();
 		}
 		
 		public function login(string $username, string $password) : bool {
@@ -78,6 +68,7 @@
 			}
 			
 			if($result->id > 0) {
+				$this->user->fetch((int) $result->id);
 				Session::set('user_name',	$result->username);
 				Session::set('user_id',		(int) $result->id);
 			} else {
@@ -120,64 +111,19 @@
 		}
 		
 		public function getSettings(string $name, int | string | null $user_id = NULL, mixed $default = NULL) : mixed {
-			if(!empty($user_id) && is_string($user_id)) {
-				$result = Database::single('SELECT `id` FROM `' . DATABASE_PREFIX . 'users` WHERE `username`=:username LIMIT 1', [
-					'username'	=> $user_id
-				]);
-				
-				if(!empty($result)) {
-					$user_id = $result->id;
-				}
-			}
-			
-			$result = Database::single('SELECT * FROM `' . DATABASE_PREFIX . 'users_settings` WHERE `user_id`=:user_id AND `key`=:key LIMIT 1', [
-				'user_id'	=> (empty($user_id) ? self::getID() : $user_id),
-				'key'		=> $name
-			]);
-			
-			if(!empty($result)) {
-				if(!empty($result->value)) {
-					return $result->value;
-				}
-			}
-			
-			return $default;
+			return $this->user->getSettings($name, $user_id, $default);
 		}
 		
 		public function removeSettings(string $name, int | string | null $user_id = NULL) {
-			if(Database::exists('SELECT `id` FROM `' . DATABASE_PREFIX . 'users_settings` WHERE `user_id`=:user_id AND `key`=:key LIMIT 1', [
-				'user_id'	=> (empty($user_id) ? $this->getID() : $user_id),
-				'key'		=> $name
-			])) {
-				Database::delete(DATABASE_PREFIX . 'users_settings', [
-					'user_id'	=> (empty($user_id) ? $this->getID() : $user_id),
-					'key'		=> $name
-				]);
-			}
+			$this->user->removeSettings($name, $user_id);
 		}
 		
 		public function setSettings(string $name, int | string | null $user_id = NULL, mixed $value = NULL) {
-			if(Database::exists('SELECT `id` FROM `' . DATABASE_PREFIX . 'users_settings` WHERE `user_id`=:user_id AND `key`=:key LIMIT 1', [
-				'user_id'	=> (empty($user_id) ? Auth::getID() : $user_id),
-				'key'		=> $name
-			])) {
-				Database::update(DATABASE_PREFIX . 'users_settings', [ 'user_id', 'key' ], [
-					'user_id'		=> (empty($user_id) ? Auth::getID() : $user_id),
-					'key'			=> $name,
-					'value'			=> $value
-				]);
-			} else {
-				Database::insert(DATABASE_PREFIX . 'users_settings', [
-					'id'			=> NULL,
-					'user_id'		=> (empty($user_id) ? Auth::getID() : $user_id),
-					'key'			=> $name,
-					'value'			=> $value
-				]);
-			}
+			$this->user->setSettings($name, $user_id, $value);
 		}
 		
 		public function getGravatar() : string {
-			return sprintf('https://www.gravatar.com/avatar/%s?s=%d&d=%s&r=%s', md5(strtolower(trim($this->getData('email')))), 22, 'mp', 'g');
+			return $this->user->getGravatar();
 		}
 		
 		public function hasPermission(string $name, int | string | null $user_id = NULL) : bool {

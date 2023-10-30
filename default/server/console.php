@@ -58,31 +58,41 @@
 							case 13:
 								let text = command.val();
 								history.push(text);
-								position = history.length - 1;
+								position = history.length;
 								send(text);
 								command.val('');
 							break;
 							
 							/* Up */
 							case 38:
-								--position;
-								
-								if(position < 0) {
-									position = history.length - 1;
+								if(position > 0) {
+									--position;
+									
+									if(position < 0) {
+										position = history.length - 1;
+									}
+									
+									command.blur();
+									command.val(history[position]);
+									command.focus();
 								}
-								
-								command.val(history[position]);
 							break;
 							
 							/* Down */
 							case 40:
-								++position;
-								
-								if(position > history.length - 1) {
-									position = 0;
+								if(position >= history.length) {
+									break;
 								}
 								
-								command.val(history[position]);
+								position++;
+								
+								if(position === history.length) {
+									command.val('');
+								} else {
+									command.blur();
+									command.focus();
+									command.val(history[position]);
+								}
 							break;
 						}
 					});

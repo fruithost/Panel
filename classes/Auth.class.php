@@ -26,8 +26,8 @@
 			return AuthFactory::getInstance()->getUsername();
 		}
 		
-		public static function getMail() : mixed {
-			return AuthFactory::getInstance()->getData('email');
+		public static function getMail() : string | null {
+			return AuthFactory::getInstance()->getMail();
 		}
 		
 		public static function getGravatar() : string {

@@ -30,7 +30,20 @@
 				Response::addHeader('Content-Type', 'text/plain; charset=UTF-8');
 				
 				$command	= escapeshellcmd($_POST['command']);
-				$process	= proc_open('export TERM=xterm-256color;' . ($command == 'motd' ? 'cat /etc/motd' : $command) . ' 2>&1', [
+				$build		= [
+					'export MAN_KEEP_FORMATTING=1;',
+					'export SHELL=/bin/bash;',
+					'export TERM=xterm-256color;',
+					'export _=/usr/bin/env;',
+					'export USER=fruithost;',
+					'export HOME="' . PATH . '";',
+					#'/bin/bash -c "',
+					($command == 'motd' ? 'cat /etc/motd' : $command),
+					#'"',
+					' 2>&1'
+				];
+				
+				$process	= proc_open(implode('', $build), [
 					[ 'pipe', 'r' ],  // stdin
 					[ 'pipe', 'w' ],  // stdout
 					[ 'pipe', 'w' ]	  // stderr
@@ -65,11 +78,11 @@
 						$outEof = $outEof || feof($stdout);
 						$errEof = $errEof || feof($stderr);
 
-						if (!$outEof) {
+						if(!$outEof) {
 							$result .= fgets($stdout);
 						}
 
-						if (!$errEof) {
+						if(!$errEof) {
 							$error .= fgets($stderr);
 						}
 					} while(!$outEof || !$errEof);
