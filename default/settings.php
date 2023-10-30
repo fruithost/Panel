@@ -84,10 +84,15 @@
 					
 					<div class="container">
 						<div class="form-group row">
-							<div class="col-sm-2 text-right">
-								<input type="checkbox" name="2fa_enabled" id="2fa_enabled" value="true"<?php print (Auth::getSettings('2FA_ENABLED', NULL, 'false') === 'true' ? ' CHECKED' : ''); ?> />
+							<div class="col-sm-2 text-right"></div>
+							<div class="col-sm-10">
+								<div class="custom-control custom-checkbox">
+									<input class="custom-control-input" type="checkbox" name="2fa_enabled" id="2fa_enabled" value="true"<?php print (Auth::getSettings('2FA_ENABLED', NULL, 'false') === 'true' ? ' CHECKED' : ''); ?> />
+									<label class="custom-control-label" for="2fa_enabled">
+										<?php I18N::__('Enable Two-factor authentication (2FA)'); ?>
+									</label>
+								</div>
 							</div>
-							<label for="2fa_enabled" class="col-sm-10 col-form-label"><?php I18N::__('Enable Two-factor authentication (2FA)'); ?></label>
 						</div>
 						<div class="form-group row">
 							<div class="col-sm-2 text-right"></div>

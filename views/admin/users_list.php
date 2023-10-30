@@ -13,7 +13,10 @@
 				?>
 				<tr>
 					<td scope="row" width="1px">
-						<input type="checkbox" name="module[]" value="<?php print $user->id; ?>" />
+						<div class="custom-control custom-checkbox">
+							<input class="custom-control-input" type="checkbox" id="user_<?php print $user->id; ?>" name="user[]" value="<?php print $user->id; ?>" />
+							<label class="custom-control-label" for="user_<?php print $user->id; ?>"></label>
+						</div>
 					</td>
 					<td>
 						<small>#<?php print $user->id; ?></small> <strong><?php print $user->username; ?></strong>

@@ -15,7 +15,12 @@
 			foreach($repositorys AS $repository) {
 				?>
 				<tr>
-					<td scope="row" width="1px"><input type="checkbox" name="repository[]" value="<?php print $repository->id; ?>" /></td>
+					<td scope="row" width="1px">
+						<div class="custom-control custom-checkbox">
+							<input class="custom-control-input" type="checkbox" id="repository_<?php print $repository->id; ?>" name="repository[]" value="<?php print $repository->id; ?>" />
+							<label class="custom-control-label" for="repository_<?php print $repository->id; ?>"></label>
+						</div>
+					</td>
 					<td>
 						<a href="<?php print $repository->url; ?>" target="_blank"><?php print $repository->url; ?></a>
 					</td>

@@ -105,5 +105,4 @@
 	}
 	
 	$template->assign('username', (isset($_POST['username']) ? $_POST['username'] : ''));
-	$template->assign('remember', isset($_POST['remember']));
 ?>

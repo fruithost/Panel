@@ -51,9 +51,9 @@
 						<div class="form-group row">
 							<label for="project_copyright" class="col-sm-2 col-form-label"><?php I18N::__('Show Copyright'); ?>:</label>
 							<div class="col-sm-10">
-								<div class="form-check">
-									<input class="form-check-input" type="checkbox" name="project_copyright" value="true" id="project_copyright"<?php print ($template->getCore()->getSettings('PROJECT_COPYRIGHT', true) ? ' CHECKED' : ''); ?>/>
-									<label class="form-check-label" for="project_copyright">
+								<div class="custom-control custom-checkbox">
+									<input class="custom-control-input" type="checkbox" name="project_copyright" value="true" id="project_copyright"<?php print ($template->getCore()->getSettings('PROJECT_COPYRIGHT', true) ? ' CHECKED' : ''); ?>/>
+									<label class="custom-control-label" for="project_copyright">
 										Shows the copyright in the footer
 									</label>
 								</div>

@@ -14,7 +14,12 @@
 				$info = $module->getInfo();
 				?>
 				<tr class="<?php print (isset($upgradeable->{$module->getDirectory()}) ? 'table-warning' : ''); ?>">
-					<td scope="row" width="1px"><input type="checkbox" name="module[]" value="<?php print $info->getName(); ?>" /></td>
+					<td scope="row" width="1px">
+						<div class="custom-control custom-checkbox">
+							<input class="custom-control-input" type="checkbox" id="module_<?php print $info->getName(); ?>" name="module[]" value="<?php print $info->getName(); ?>" />
+							<label class="custom-control-label" for="module_<?php print $info->getName(); ?>"></label>
+						</div>
+					</td>
 					<td>
 						<span class="d-block badge badge-pill module-badge badge-<?php print ($module->isEnabled() ? 'success' : 'danger');?>" data-toggle="tooltip" title="<?php print ($module->isEnabled() ? 'Module is enabled.' : 'Module is disabled.');?>"></span>
 					</td>

@@ -34,10 +34,7 @@
 			}
 		?>
 		<div class="checkbox mb-3 mt-3 row text-left">
-			<label class="col-6 text-muted">
-				<input type="checkbox" name="remember" value="true"<?php print ($remember ? ' CHECKED' : ''); ?> /> <?php I18N::__('Remember me'); ?>
-			</label>
-			<a class="col-6" href="<?php print $template->url('/lost-password'); ?>"><?php I18N::__('Lost password'); ?> <i class="material-icons right">arrow_right</i></a>
+			<a class="col-12 text-right" href="<?php print $template->url('/lost-password'); ?>"><?php I18N::__('Lost password'); ?> <i class="material-icons right">arrow_right</i></a>
 		</div>
 		
 		
