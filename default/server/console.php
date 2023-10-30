@@ -18,38 +18,48 @@
 	?>
 	<div class="terminal position-fixed">
 		<div class="output"></div>
-		<input name="command" placeholder="<?php I18N::__('Command...'); ?>" style="height: 30px; width: 100%;" />
+		<input name="command" placeholder="<?php I18N::__('Command...'); ?>" />
 	</div>
 	<script type="text/javascript">
 		_watcher_console = setInterval(function() {
 			if(typeof(jQuery) !== 'undefined') {
 				clearInterval(_watcher_console);
 				
-				(function($) {						
+				(function($) {
 					let output	= $('div.output');
 					let command = $('input[name="command"]');
+					
+					function send(command) {
+						$.ajax({
+							type:	'POST',
+							url:	'/server/console',
+							data:	{
+								action:	'command',
+								command: command
+							},
+							success: function onSuccess(response) {
+								if(response == '\u001B[H\u001B[2J\u001B[3J' || response == 'clear') {
+									output.empty();
+									return;
+								}
+								
+								output.append('<div>' + response + '</div>');
+								command.focus();
+								output.scrollTop(output[0].scrollHeight - output.height());
+							}
+						});
+					}
 					
 					command.focus();
 					
 					command.keypress(function(e) {
 						if(e.which == 13) {
-							$.ajax({
-								type:	'POST',
-								url:	'/server/console',
-								data:	{
-									action:	'command',
-									command: command.val()
-								},
-								success: function onSuccess(response) {
-									output.append('<div>' + response + '</div>');
-									command.focus();
-									output.scrollTop(output[0].scrollHeight - output.height());
-								}
-							});
-							
+							send(command.val());
 							command.val('');
 						}
 					});
+					
+					send('motd');
 				}(jQuery));
 			}
 		}, 500);

@@ -5,9 +5,9 @@
 	
 	function format($command, $result) {
 		if($result === null) {
-			print '-bash: ' . $command . ': command not found';
+			return '-bash: ' . $command . ': command not found';
 		} else if($result === false) {
-			print '-bash: piped error';
+			return '-bash: piped error';
 		} else {
 			$result = htmlentities($result);
 			$result = preg_replace_callback('/\\033\[(:?[^m]+)?m([^\\033\[]+)\\033\[39m/', function($matches) {
@@ -15,7 +15,7 @@
 			}, $result, -1, $count);
 			
 			$result = preg_replace('/\\033\[([^m]+)m/Uis', '', $result);
-			print nl2br($result);
+			return nl2br($result);
 		}
 	}
 	
@@ -30,14 +30,15 @@
 				Response::addHeader('Content-Type', 'text/plain; charset=UTF-8');
 				
 				$command	= escapeshellcmd($_POST['command']);
-				#$result	= shell_exec('export TERM=xterm-256color;' . $command . ' 2>&1');
-				$process = proc_open('export TERM=xterm-256color;' . $command . ' 2>&1', [
+				$process	= proc_open('export TERM=xterm-256color;' . ($command == 'motd' ? 'cat /etc/motd' : $command) . ' 2>&1', [
 					[ 'pipe', 'r' ],  // stdin
 					[ 'pipe', 'w' ],  // stdout
 					[ 'pipe', 'w' ]	  // stderr
 				], $pipes);
 				
-				print 'fruithost@localhost:~# ';
+				if($command == 'motd') {
+					$command = '';
+				}
 				
 				if(is_resource($process)) {
 					$stdin	= $pipes[0];
@@ -77,10 +78,14 @@
 					fclose($stderr);
 					proc_close($process);
 					
-					print format($command, $result);
-					print format($command, $error);
+					$output = format($command, $result);
+					if($output == "\x1B[H\x1B[2J\x1B[3J") {
+						print $output;
+					} else {
+						printf('<span data-color="0;32">%s</span><span data-color="1;34">@</span><span data-color="38;5;202">%s</span><span data-color="90">:</span><span data-color="39">~</span><span data-color="90">#</span> %s<br />%s', $_SERVER['USER'], $_SERVER['SERVER_NAME'], $command, $output);
+						print format($command, $error);
+					}
 				}
-				
 				exit();
 			break;
 		}
