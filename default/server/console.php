@@ -29,13 +29,13 @@
 					let output	= $('div.output');
 					let command = $('input[name="command"]');
 					
-					function send(command) {
+					function send(cmd) {
 						$.ajax({
 							type:	'POST',
 							url:	'/server/console',
 							data:	{
 								action:	'command',
-								command: command
+								command: cmd
 							},
 							success: function onSuccess(response) {
 								if(response == '\u001B[H\u001B[2J\u001B[3J' || response == 'clear') {
@@ -50,16 +50,45 @@
 						});
 					}
 					
-					command.focus();
-					
-					command.keypress(function(e) {
-						if(e.which == 13) {
-							send(command.val());
-							command.val('');
+					let history		= [];
+					let position	= 0;
+					command.keydown(function(e) {
+						switch(e.which) {
+							/* Enter */
+							case 13:
+								let text = command.val();
+								history.push(text);
+								position = history.length - 1;
+								send(text);
+								command.val('');
+							break;
+							
+							/* Up */
+							case 38:
+								--position;
+								
+								if(position < 0) {
+									position = history.length - 1;
+								}
+								
+								command.val(history[position]);
+							break;
+							
+							/* Down */
+							case 40:
+								++position;
+								
+								if(position > history.length - 1) {
+									position = 0;
+								}
+								
+								command.val(history[position]);
+							break;
 						}
 					});
 					
 					send('motd');
+					command.focus();
 				}(jQuery));
 			}
 		}, 500);
