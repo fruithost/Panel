@@ -24,12 +24,19 @@
 			case 'command':
 				if(!Auth::hasPermission('SERVER::MANAGE')) {
 					$this->assign('error', I18N::get('You have no permissions for this action!'));
-					return;
+					exit();
 				}
 				
 				Response::addHeader('Content-Type', 'text/plain; charset=UTF-8');
 				
 				$command	= escapeshellcmd($_POST['command']);
+				
+				if(defined('DEMO') && DEMO && $command == 'motd') {					
+					$output = '<span data-color="1;34">Welcome to the Demoversion of fruithost!</span>';
+					printf('<span data-color="0;32">%s</span><span data-color="1;34">@</span><span data-color="38;5;202">%s</span><span data-color="90">:</span><span data-color="39">~</span><span data-color="90">#</span><br />%s', get_current_user(), $_SERVER['SERVER_NAME'], $output);
+					exit();
+				}
+				
 				$build		= [
 					'export MAN_KEEP_FORMATTING=1;',
 					'export SHELL=/bin/bash;',
@@ -95,7 +102,7 @@
 					if($output == "\x1B[H\x1B[2J\x1B[3J") {
 						print $output;
 					} else {
-						printf('<span data-color="0;32">%s</span><span data-color="1;34">@</span><span data-color="38;5;202">%s</span><span data-color="90">:</span><span data-color="39">~</span><span data-color="90">#</span> %s<br />%s', $_SERVER['USER'], $_SERVER['SERVER_NAME'], $command, $output);
+						printf('<span data-color="0;32">%s</span><span data-color="1;34">@</span><span data-color="38;5;202">%s</span><span data-color="90">:</span><span data-color="39">~</span><span data-color="90">#</span> %s<br />%s', get_current_user(), $_SERVER['SERVER_NAME'], $command, $output);
 						print format($command, $error);
 					}
 				}

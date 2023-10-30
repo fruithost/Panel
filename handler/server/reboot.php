@@ -11,6 +11,11 @@
 					return;
 				}
 				
+				if(defined('DEMO') && DEMO) {
+					$this->assign('error', I18N::get('DEMO-VERSION: This action can\'t be used!'));
+					return;
+				}
+				
 				$this->assign('success', I18N::get('The System will be rebooted now!'));
 				$template->getCore()->setSettings('REBOOT', date('Y-m-d H:i:s', time()));
 				$template->getCore()->getHooks()->runAction('SERVER_REBOOT', time());

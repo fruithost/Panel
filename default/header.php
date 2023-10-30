@@ -22,6 +22,17 @@
 						<button class="d-md-none navbar-toggler p-0 border-0 mr-auto ml-2" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
 						</button>
+						<?php 
+							if(defined('DEMO') && DEMO) {
+								?>
+									<ul class="navbar-nav mr-auto">
+										<li class="nav-item p-1">
+											<h3 class="p-0 m-0"><span class="badge badge-danger">DEMO VERSION</span></h3>
+										</li>
+									</ul>
+								<?php
+							}
+						?>
 						<ul class="navbar-nav px-3">
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="picture" src="<?php print Auth::getGravatar(); ?>" /> <?php I18N::__('Account'); ?></a>

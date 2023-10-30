@@ -145,30 +145,32 @@
 							$size		= count($directories);
 							$directory	= $directories[$position++];
 							
-							foreach(new \DirectoryIterator($directory) AS $info) {
-								if($info->isDot()) {
-									continue;
-								}
-								
-								if($info->isDir()) {
-									if($info->isReadable()) {
-										$directories[]	= $info->getPathName();
-										$size			= count($directories);
+							if(is_readable($directory)) {
+								foreach(new \DirectoryIterator($directory) AS $info) {
+									if($info->isDot()) {
+										continue;
 									}
-									continue;
-								}
+									
+									if($info->isDir()) {
+										if($info->isReadable()) {
+											$directories[]	= $info->getPathName();
+											$size			= count($directories);
+										}
+										continue;
+									}
+									
+									if(preg_match('/(\.(gz|\d)$|\-bin\.)/', $info->getPathName())) {
+										continue;
+									}
+									
+									$path = str_replace($info->getFileName(), '', $info->getPathName());
+		
+									if(empty($logfiles[$path])) {
+										$logfiles[$path] = [];
+									}
 								
-								if(preg_match('/(\.(gz|\d)$|\-bin\.)/', $info->getPathName())) {
-									continue;
+									$logfiles[$path][] = $info->getFileName();
 								}
-								
-								$path = str_replace($info->getFileName(), '', $info->getPathName());
-	
-								if(empty($logfiles[$path])) {
-									$logfiles[$path] = [];
-								}
-							
-								$logfiles[$path][] = $info->getFileName();
 							}
 						} while($size > $position);
 						

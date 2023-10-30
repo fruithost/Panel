@@ -9,6 +9,10 @@
 		private $admin		= null;
 		
 		public function __construct() {
+			if(is_readable('~demo')) {
+				define('DEMO', true);
+			}
+			
 			spl_autoload_register([ $this, 'load' ]);
 			
 			$this->init();
@@ -31,6 +35,12 @@
 				$this->require('.config');
 			} else if(is_readable('../.config.php')) {
 				$this->require('../.config');
+			}
+			
+			if(!defined('DATABASE_HOSTNAME')) {
+				header('HTTP/1.1 503 Service Unavailable');
+				require_once(dirname(PATH) . '/placeholder/index.php');
+				exit();
 			}
 			
 			$file			= trim($class, BS);

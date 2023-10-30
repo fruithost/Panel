@@ -15,8 +15,13 @@
 		$template->footer();
 		exit();
 	}
+
 	#systemctl status <name>
-	$result = json_decode(shell_exec('systemctl list-units --type=service --output=json-pretty'));
+	if(defined('DEMO') && DEMO) {
+		$result = [];
+	} else {
+		$result = json_decode(shell_exec('systemctl list-units --type=service --output=json-pretty'));
+	}
 	?>
 	<table class="table table-borderless table-striped table-hover">
 		<thead>
