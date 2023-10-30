@@ -290,13 +290,13 @@
 			$this->router->addRoute('/ajax', function() {
 				if(!Auth::isLoggedIn()) {
 					header('HTTP/1.1 403 Forbidden');
-					require_once(dirname(PATH) . '/placeholder/errors/403.php');
+					require_once(dirname(PATH) . '/placeholder/errors/403.html');
 					exit();
 				}
 				
 				if(empty($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest') {
 					header('HTTP/1.1 405 Method Not Allowed');
-					require_once(dirname(PATH) . '/placeholder/errors/405.php');
+					require_once(dirname(PATH) . '/placeholder/errors/405.html');
 					exit();
 				}
 				
