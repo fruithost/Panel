@@ -169,14 +169,14 @@
 			$this->core->getHooks()->runAction('html_foot');
 		}
 		
-		public function url($path, $parameters = null) {
+		public function url($path = null, $parameters = null) {
 			$scheme = 'http';
 			
 			if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
 				$scheme = 'https';
 			}
 			
-			if($path === true) {
+			if($path === true || $path === null) {
 				$path = $_SERVER['REQUEST_URI'];
 			}
 			
