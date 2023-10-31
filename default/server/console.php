@@ -255,10 +255,6 @@
 					this.tokens(entry).forEach(function(token) {
 						var style	= {};
 						
-						if('reset' in token) {
-							/* Reset Style? */
-						}
-						
 						if('bold' in token) {
 							style.fontWeight = 'bold';
 						}
@@ -293,6 +289,11 @@
 							let background			= style.backgroundColor;
 							style.color				= background;
 							style.backgroundColor	= color;
+						}
+						
+						if('reset' in token) {
+							/* Reset Style? */
+							style	= {};
 						}
 						
 						if(Object.keys(style).length > 0) {
