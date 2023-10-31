@@ -16,7 +16,7 @@
 		exit();
 	}
 	?>
-	<style>
+	<style type="text/css">
 		@keyframes blink {
 			50% {
 				visibility: hidden;
