@@ -9,13 +9,15 @@
 		} else if($result === false) {
 			return '-bash: piped error';
 		} else {
+			return $result;
+			/*
 			$result = htmlentities($result);
 			$result = preg_replace_callback('/\\033\[(:?[^m]+)?m([^\\033\[]+)\\033\[39m/', function($matches) {
 				return '<span data-color="' . $matches[1] .  '">' . $matches[2] . '</span>';
 			}, $result, -1, $count);
 			
 			$result = preg_replace('/\\033\[([^m]+)m/Uis', '', $result);
-			return nl2br($result);
+			return nl2br($result);*/
 		}
 	}
 	
@@ -29,11 +31,74 @@
 				
 				Response::addHeader('Content-Type', 'text/plain; charset=UTF-8');
 				
+				$prefix		= sprintf("\033[0;32m%s\033[34m@\033[38;2;255;100;100m%s\033[90m:\033[39m~\033[90m#", get_current_user(), $_SERVER['SERVER_NAME']);
 				$command	= escapeshellcmd($_POST['command']);
 				
 				if(defined('DEMO') && DEMO && $command == 'motd') {					
 					$output = '<span data-color="1;34">Welcome to the Demoversion of fruithost!</span>';
-					printf('<span data-color="0;32">%s</span><span data-color="1;34">@</span><span data-color="38;5;202">%s</span><span data-color="90">:</span><span data-color="39">~</span><span data-color="90">#</span><br />%s', get_current_user(), $_SERVER['SERVER_NAME'], $output);
+					printf("%s\n\033[39m%s", $prefix, $output);
+					exit();
+				} else if($command == 'ColorTest') {
+					
+					$tests = [
+						'styles' => [
+							0 => 'reset',
+							1 => 'bold',
+							2 => 'faint',
+							3 => 'italic',
+							4 => 'underline',
+							5 => 'blink'
+						],
+						'foreground' => [
+							30 => 'black',
+							31 => 'red',
+							32 => 'green',
+							33 => 'yellow',
+							34 => 'blue',
+							35 => 'magenta',
+							36 => 'cyan',
+							37 => 'white',
+							38 => 'multicolor',
+							90 => 'bright_black',
+							91 => 'bright_red',
+							92 => 'bright_green',
+							93 => 'bright_yellow',
+							94 => 'bright_blue',
+							95 => 'bright_magenta',
+							96 => 'bright_cyan',
+							97 => 'bright_white'
+						],
+						'background' => [
+							40 => 'black',
+							41 => 'red',
+							42 => 'green',
+							43 => 'yellow',
+							44 => 'blue',
+							45 => 'magenta',
+							46 => 'cyan',
+							47 => 'white',
+							48 => 'multicolor',
+							100 => 'bright_black',
+							101 => 'bright_red',
+							102 => 'bright_green',
+							103 => 'bright_yellow',
+							104 => 'bright_blue',
+							105 => 'bright_magenta',
+							106 => 'bright_cyan',
+							107 => 'bright_white',
+						]
+					];
+					
+					foreach($tests AS $name => $values) {
+						printf("--- %s\n", $name);
+						
+						foreach($values AS $code => $color) {
+							printf("\033[%sm%s\n", $code, $color);				
+						}
+						
+						print "\n";
+					}
+					
 					exit();
 				}
 				
@@ -102,7 +167,7 @@
 					if($output == "\x1B[H\x1B[2J\x1B[3J") {
 						print $output;
 					} else {
-						printf('<span data-color="0;32">%s</span><span data-color="1;34">@</span><span data-color="38;5;202">%s</span><span data-color="90">:</span><span data-color="39">~</span><span data-color="90">#</span> %s<br />%s', get_current_user(), $_SERVER['SERVER_NAME'], $command, $output);
+						printf("%s\n\033[39m %s\n%s", $prefix, $command, $output);
 						print format($command, $error);
 					}
 				}
