@@ -19,8 +19,14 @@
 				$prefix		= sprintf("\033[38;2;200;110;110m%s\033[34m@\033[1;32m%s\033[90m:\033[39m%s\033[90m#", $user, $hostname, $directory);
 				$command	= escapeshellcmd($_POST['command']);
 				
-				if(defined('DEMO') && DEMO && $command == 'motd') {					
-					$output = '<span data-color="1;34">Welcome to the Demoversion of fruithost!</span>';
+				if(defined('DEMO') && DEMO) {
+					if($command == 'motd') {
+						$output = 'Welcome to the Demoversion of fruithost!';
+						printf("%s\n\033[39m%s", $prefix, $output);
+						exit();
+					}
+					
+					$output = "\033[31mERROR:\033[39m Your command is forbidden at the demo version.";
 					printf("%s\n\033[39m%s", $prefix, $output);
 					exit();
 				} else if($command == 'ColorTest') {
