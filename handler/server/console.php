@@ -3,24 +3,6 @@
 	use fruithost\Response;
 	use fruithost\Auth;
 	
-	function format($command, $result) {
-		if($result === null) {
-			return '-bash: ' . $command . ': command not found';
-		} else if($result === false) {
-			return '-bash: piped error';
-		} else {
-			return $result;
-			/*
-			$result = htmlentities($result);
-			$result = preg_replace_callback('/\\033\[(:?[^m]+)?m([^\\033\[]+)\\033\[39m/', function($matches) {
-				return '<span data-color="' . $matches[1] .  '">' . $matches[2] . '</span>';
-			}, $result, -1, $count);
-			
-			$result = preg_replace('/\\033\[([^m]+)m/Uis', '', $result);
-			return nl2br($result);*/
-		}
-	}
-	
 	if(isset($_POST['action'])) {
 		switch($_POST['action']) {
 			case 'command':
@@ -31,7 +13,10 @@
 				
 				Response::addHeader('Content-Type', 'text/plain; charset=UTF-8');
 				
-				$prefix		= sprintf("\033[0;32m%s\033[34m@\033[38;2;255;100;100m%s\033[90m:\033[39m~\033[90m#", get_current_user(), $_SERVER['SERVER_NAME']);
+				$user		= trim(shell_exec('whoami'));
+				$directory	= trim(shell_exec('pwd'));
+				$hostname	= $_SERVER['SERVER_NAME'];
+				$prefix		= sprintf("\033[38;2;200;110;110m%s\033[34m@\033[1;32m%s\033[90m:\033[39m%s\033[90m#", $user, $hostname, $directory);
 				$command	= escapeshellcmd($_POST['command']);
 				
 				if(defined('DEMO') && DEMO && $command == 'motd') {					
@@ -39,7 +24,6 @@
 					printf("%s\n\033[39m%s", $prefix, $output);
 					exit();
 				} else if($command == 'ColorTest') {
-					
 					$tests = [
 						'styles' => [
 							0 => 'reset',
@@ -115,6 +99,9 @@
 					' 2>&1'
 				];
 				
+				// @ToDo try to fork it to /dev/ttys000, /dev/pts/0 or other for coloring output?
+				// Or using SSH? https://www.php.net/manual/en/function.ssh2-connect
+				
 				$process	= proc_open(implode('', $build), [
 					[ 'pipe', 'r' ],  // stdin
 					[ 'pipe', 'w' ],  // stdout
@@ -140,6 +127,10 @@
 					$result = '';
 					$error 	= '';
 					
+					if(!posix_isatty($stdout)) {
+						#$result = "NOT TTY : " . posix_ttyname($stdout);
+					}
+					
 					do {
 						$read 	= [ $stdout, $stderr ];
 						$write 	= null;
@@ -163,12 +154,16 @@
 					fclose($stderr);
 					proc_close($process);
 					
-					$output = format($command, $result);
-					if($output == "\x1B[H\x1B[2J\x1B[3J") {
-						print $output;
+					if($result == "\x1B[H\x1B[2J\x1B[3J") {
+						print $result;
 					} else {
-						printf("%s\n\033[39m %s\n%s", $prefix, $command, $output);
-						print format($command, $error);
+						if($result === null) {
+							$result = '-bash: ' . $command . ': command not found';
+						} else if($result === false) {
+							$result = '-bash: piped error';
+						}
+						
+						printf("%s \033[39m %s\n%s", $prefix, $command, $result);
 					}
 				}
 				exit();
