@@ -27,7 +27,7 @@
 					}
 					
 					$output = "\033[31mERROR:\033[39m Your command is forbidden at the demo version.";
-					printf("%s\n\033[39m%s", $prefix, $output);
+					printf("%s %s\n\033[39m%s", $prefix, $command, $output);
 					exit();
 				} else if($command == 'ColorTest') {
 					$tests = [
