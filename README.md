@@ -7,6 +7,11 @@ Security comes first at **fruithost** - that's why we only use up-to-date softwa
 
 **Running a server has never been so easy!**
 
+# Installation
+All informations and installations-instructions can be find in the [Documentation](https://github.com/fruithost/Documentation)!
+
+[![INSTALL_NOW]](https://github.com/fruithost/Documentation/blob/main/Installation.md)
+
 # Support us!
 [Patreon.com](https://www.patreon.com/) is a new way to build and support a community around a project in which you believe.
 
@@ -14,12 +19,12 @@ Be a team-player, all feedbacks of our patrons will have the priority. We will b
 
 [![BECOME A PATRON](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/fruithost)
 
-[![Donate via PayPal](https://raw.githubusercontent.com/stefan-niedermann/paypal-donate-button/master/paypal-donate-button.png)](https://paypal.me/pools/c/8eXXYJpWP3)
-
 # Demonstration
 **Demo:** http://my.fruithost.de/
 
 **Request:** https://forms.gle/eS7E4MYSVKiiigw77
+
+[INSTALL_NOW]: https://img.shields.io/badge/Install_Now!-37a779?style=for-the-badge
 
 > Currently we do not offer any public demo users!
 > If you want to watch the demo, write to us - We will set up a personal account for you to test fruithost!
