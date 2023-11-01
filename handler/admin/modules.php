@@ -2,6 +2,88 @@
 	use fruithost\Database;
 	use fruithost\I18N;
 	
+	
+	$upgradeable		= [];
+	$list				= sprintf('%s%s%s%s%s', dirname(PATH), DS, 'temp', DS, 'update.list');
+	$module				= NULL;
+	$modules			= $template->getCore()->getModules();
+	
+	if(file_exists($list)) {
+		$upgradeable	= json_decode(file_get_contents($list));
+	}
+	
+	if(isset($_GET['settings'])) {
+		if($modules->hasModule($_GET['settings'])) {
+			$module = $modules->getModule($_GET['settings']);
+			
+			if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST' && method_exists($module->getInstance(), 'onSettings')) {
+				$module->getInstance()->onSettings($_POST);
+			}
+		}
+	} else if(isset($_GET['disable'])) {
+		if($modules->hasModule($_GET['disable'], true)) {
+			$module = $modules->getModule($_GET['disable'], true);
+			
+			if(!$module->isEnabled()) {
+				$data['error'] = I18N::get('The module is already disabled!');
+			} else {
+				Database::update(DATABASE_PREFIX . 'modules', 'name', [
+					'name'			=> $module->getDirectory(),
+					'state'			=> 'DISABLED'
+				]);
+				
+				$module->setEnabled(false);
+				
+				$template->assign('success', I18N::get('The module was successfully disabled.'));
+			}
+		} else {
+			$template->assign('error', I18N::get('The module not exists!'));
+		}
+	} else if(isset($_GET['enable'])) {
+		if($modules->hasModule($_GET['enable'], true)) {
+			$module = $modules->getModule($_GET['enable'], true);
+			
+			if($module->isEnabled()) {
+				$template->assign('error', I18N::get('The module is already enabled!'));
+			} else {
+				Database::update(DATABASE_PREFIX . 'modules', 'name', [
+					'name'			=> $module->getDirectory(),
+					'state'			=> 'ENABLED'
+				]);
+				
+				$module->setEnabled(true);
+				
+				$template->assign('success', I18N::get('The module was successfully enabled.'));
+			}
+		} else {
+			$template->assign('error', I18N::get('The module not exists!'));
+		}
+	} else if(isset($_GET['deinstall'])) {
+		if($modules->hasModule($_GET['deinstall'], true)) {
+			$module = $modules->getModule($_GET['deinstall'], true);
+			
+			Database::update(DATABASE_PREFIX . 'modules', 'name', [
+				'name'			=> $module->getDirectory(),
+				'state'			=> 'DISABLED',
+				'time_deleted'	=> date('Y-m-d H:i:s', time()),
+			]);
+			
+			if($module->isEnabled()) {
+				$module->setEnabled(false);
+			}
+			
+			$template->assign('success', I18N::get('The module was successfully deinstalled!'));
+		} else {
+			$template->assign('error', I18N::get('The module not exists!'));
+		}
+	}
+	
+	$template->assign('module',			$module);
+	$template->assign('upgradeable',	$upgradeable);
+	$template->assign('repositorys',	Database::fetch('SELECT * FROM `' . DATABASE_PREFIX . 'repositorys`'));
+	$template->assign('modules',		$template->getCore()->getModules());
+	
+	
 	if(isset($_POST['action'])) {
 		switch($_POST['action']) {
 			case 'update':
