@@ -120,9 +120,6 @@
 						$data['repositorys']	= Database::fetch('SELECT * FROM `' . DATABASE_PREFIX . 'repositorys`');
 						$data['modules']		= $this->getModules();
 					break;
-					case 'users':
-						$data['users'] = Database::fetch('SELECT * FROM `' . DATABASE_PREFIX . 'users`');
-					break;
 				}
 
 				$this->getTemplate()->display('admin' . (!empty($destination) ? sprintf('/%s', $destination) : ''), $data);
