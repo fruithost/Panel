@@ -29,7 +29,11 @@
 		return $list;
     }
 	
-	$list = array_merge(directory_map(LOG_PATH), directory_map('/var/log/'));
+	if(defined('LOG_PATH')) {
+		$list = array_merge(directory_map(LOG_PATH), directory_map('/var/log/'));
+	} else {
+		$list = directory_map('/var/log/');
+	}
 	
 	if(isset($_POST['action'])) {
 		if(!Auth::hasPermission('SERVER::MANAGE')) {
@@ -60,6 +64,14 @@
 						try {
 							$content = @file_get_contents($file);
 						} catch(\Exception $e) {
+							$content = false;
+						}
+					}
+					
+					if($content === false) {
+						$content = shell_exec(sprintf('cat %s 2>&1', $file));
+						
+						if(substr($content, 0, 4) == 'cat:' && preg_match('/Permission denied/', $content)) {
 							$content = false;
 						}
 					}
