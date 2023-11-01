@@ -110,8 +110,8 @@
 							'name'		=> I18N::get('Logfiles'),
 							'icon'		=> '<i class="material-icons">insert_drive_file</i>',
 							'order'		=> 2,
-							'url'		=> '/admin/logs',
-							'active'	=> $this->navigation->getCore()->getRouter()->startsWith('/admin/logs')
+							'url'		=> '/server/logs',
+							'active'	=> $this->navigation->getCore()->getRouter()->startsWith('/server/logs')
 						];
 					}
 					

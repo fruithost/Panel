@@ -443,3 +443,118 @@ div.terminal input[name="command"] {
 	padding: 10px;
 	color: #FFFFFF;
 }
+
+/* Logfile Viewer */
+
+.contentbar {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 100;
+	padding: 48px 0 0;
+	box-shadow: inset 1px 0 0 rgba(0, 0, 0, .1);
+	overflow: auto;
+}
+
+ul.tree {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul.tree ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 20px;
+	flex-direction: column;
+}
+
+ul.tree li.directory {
+	color: green;
+}
+
+ul.tree li.directory.empty {
+	color: red;
+}
+
+ul.tree li.file {
+	color: blue;
+}
+
+.caret {
+  cursor: pointer;
+  user-select: none; /* Prevent text selection */
+  background: rgba(195, 195, 195, 0.5);
+  display: flex;
+  border-radius: 5px;
+	margin: 1px 5px;
+}
+
+.caret i {
+	flex: 1;
+	padding: 10px 10px 10px 0;
+	font-style: normal;
+	color: #444444;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.caret::before {
+	font-family: 'Material Icons';
+	color: black;
+	display: inline-block;
+	margin-right: 6px;
+	font-size: 28px;
+	flex: 0;
+	padding: 0px 0px 0px 8px;
+}
+
+.directory .caret::before {
+  content: "\e2c7";
+  color: #f3c36b;
+}
+.directory.empty .caret::before {
+  content: "\e14b";
+  color: #800000;
+}
+
+.directory .caret-down::before {
+  content: "\e2c8";
+  color: #007bff;
+}
+
+.file .caret::before {
+  content: "\e873";
+  color: #727272;
+}
+
+.file .caret-down::before {
+  content: "\e873";
+}
+
+.nested {
+  display: none;
+}
+
+li.directory::before,
+li.empty::before {
+	content: "\e5da";
+	position: absolute;
+	font-family: 'Material Icons';
+	font-size: 20px;
+	color: #d8d8d8;
+	margin: 5px 0 0 -16px;
+}
+
+li.empty::before {
+  color: rgb(128, 0, 0, 0.5);
+}
+
+.active {
+  display: flex;
+}
+.contentbar-content {
+    margin: 0 260px 0 0;
+}

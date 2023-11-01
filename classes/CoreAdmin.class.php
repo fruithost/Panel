@@ -115,68 +115,6 @@
 							'time'		=> number_format($this->getCore()->getSettings('DAEMON_RUNNING_END', 0) - $this->getCore()->getSettings('DAEMON_RUNNING_START', 0), 4, ',', '.')
 						];
 					break;
-					case 'logs':
-						$logfiles		= [];
-						$position		= 0;
-						$size			= 0;
-						$logfile		= NULL;
-						$directories	= [
-							'/var/fruithost/logs/',
-							'/var/log/'
-						];
-						
-						if(isset($_GET['file']) && !empty($_GET['file'])) {
-							$logfile = Encryption::decrypt($_GET['file'], sprintf('LOGFILE::%s', Auth::getID()));
-							
-							if(!file_exists($logfile)) {
-								$logfile = NULL;
-							}
-							
-							if(!is_readable($logfile)) {
-								$logfile = NULL;
-							}
-							
-							if(!empty($logfile)) {
-								$logfile = explode(PHP_EOL, shell_exec(sprintf('cat %s 2>&1', $logfile)));
-							}
-						}
-						
-						do {
-							$size		= count($directories);
-							$directory	= $directories[$position++];
-							
-							if(is_readable($directory)) {
-								foreach(new \DirectoryIterator($directory) AS $info) {
-									if($info->isDot()) {
-										continue;
-									}
-									
-									if($info->isDir()) {
-										if($info->isReadable()) {
-											$directories[]	= $info->getPathName();
-											$size			= count($directories);
-										}
-										continue;
-									}
-									
-									if(preg_match('/(\.(gz|\d)$|\-bin\.)/', $info->getPathName())) {
-										continue;
-									}
-									
-									$path = str_replace($info->getFileName(), '', $info->getPathName());
-		
-									if(empty($logfiles[$path])) {
-										$logfiles[$path] = [];
-									}
-								
-									$logfiles[$path][] = $info->getFileName();
-								}
-							}
-						} while($size > $position);
-						
-						$data['logfile']	= $logfile;
-						$data['logfiles']	= $logfiles;
-					break;
 					case 'modules':
 						$upgradeable		= [];
 						$list				= sprintf('%s%s%s%s%s', dirname(PATH), DS, 'temp', DS, 'update.list');
@@ -259,7 +197,6 @@
 						$data['modules']		= $this->getModules();
 					break;
 					case 'users':
-						
 						$data['users'] = Database::fetch('SELECT * FROM `' . DATABASE_PREFIX . 'users`');
 					break;
 				}

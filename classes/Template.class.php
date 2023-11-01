@@ -76,12 +76,12 @@
 			}
 			
 			if($basedir) {
-				$path		= sprintf('%1$s%2$sthemes%2$s%4$s%2$s%3$s.php', dirname(PATH), DS, $file, $this->theme);
+				$path		= sprintf('%1$sthemes%2$s%4$s%2$s%3$s.php', dirname(PATH), DS, $file, $this->theme);
 			} else {
 				$path		= $file;
 			}
 			
-			$handler	= sprintf('%1$s%2$shandler%2$s%3$s.php', PATH, DS, $file);
+			$handler	= sprintf('%1$shandler%2$s%3$s.php', PATH, DS, $file);
 			
 			foreach($this->assigns AS $name => $value) {
 				${$name} = $value;
@@ -95,7 +95,7 @@
 				}
 			}
 			
-			if(file_exists($path)) {
+			if(file_exists($path) && is_readable($path)) {
 				require_once($path);
 			} else {
 				if(!Auth::isLoggedIn()) {
@@ -108,7 +108,7 @@
 				
 				$path = sprintf('%1$s%2$sdefault%2$s%3$s.php', PATH, DS, $file);
 				
-				if(file_exists($path)) {
+				if(file_exists($path) && is_readable($path)) {
 					require_once($path);
 				}
 			}
@@ -123,12 +123,12 @@
 			}
 			
 			if(file_exists($path)) {
-				require_once($path);
+				@require_once($path);
 			} else {
 				$path = sprintf('%1$s%2$sdefault%2$s%3$s.php', PATH, DS, 'header');
 				
 				if(file_exists($path)) {
-					require_once($path);
+					@require_once($path);
 				}
 			}
 		}
@@ -147,7 +147,7 @@
 				$path = sprintf('%1$s%2$sdefault%2$s%3$s.php', PATH, DS, 'footer');
 				
 				if(file_exists($path)) {
-					require_once($path);
+					@require_once($path);
 				}
 			}
 		}
