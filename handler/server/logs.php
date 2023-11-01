@@ -5,11 +5,21 @@
 	
 	function directory_map(string $sourceDir): array {
 		$list		= [];
+		$exclude	= [
+			'gz',
+			'xy'
+		];
 		$fp 		= opendir($sourceDir);
 		$sourceDir 	= rtrim($sourceDir, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
 
 		while(false !== ($file = readdir($fp))) {
 			if($file === '.' || $file === '..') {
+				continue;
+			}
+			
+			$parts = pathinfo($file);
+			
+			if(isset($parts['extension']) && in_array($parts['extension'], $exclude)) {
 				continue;
 			}
 
