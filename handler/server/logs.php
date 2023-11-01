@@ -97,5 +97,6 @@
 		}
 	}
 	
-	$template->assign('list', $list); 
+	$template->assign('list', $list);
+	$template->getFiles()->addJavascript('terminal', $this->url('js/terminal.js'), '1.0.0');
 ?>

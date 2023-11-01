@@ -48,11 +48,12 @@
 	</form>
 	<script>
 		_watcher_modules = setInterval(function() {
-			if(typeof(jQuery) !== 'undefined') {
+			if(typeof(jQuery) !== 'undefined' && typeof(Terminal) !== 'undefined') {
 				clearInterval(_watcher_modules);
 				
 				(function($) {					
 					let list	= JSON.parse('<?php print json_encode($list); ?>');
+					let parser	= new Terminal();
 					let result 	= [];
 					let level 	= { result };
 					let paths	= {};
@@ -107,7 +108,11 @@
 									} else if(json.content === false) {
 										editor.innerText		= 'Permission denied!';
 									} else {
-										editor.innerText		= json.content;
+										if(json.content.includes('\033')) {
+											editor.innerHTML	= parser.parse(json.content)
+										} else {										
+											editor.innerText	= json.content;
+										}
 									}
 									
 									loading.style.display	= 'none';
