@@ -100,8 +100,8 @@
 							'name'		=> I18N::get('Server'),
 							'icon'		=> '<i class="material-icons">memory</i>',
 							'order'		=> 1,
-							'url'		=> '/admin/server',
-							'active'	=> $this->navigation->getCore()->getRouter()->startsWith('/admin/server')
+							'url'		=> '/server/server',
+							'active'	=> $this->navigation->getCore()->getRouter()->startsWith('/server/server')
 						];
 					}
 					
