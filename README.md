@@ -24,6 +24,7 @@ Feel free to help us with the developing!
 
 [![CODE_OF_CONDUCT]](https://github.com/fruithost/Panel/blob/master/.github/CODE_OF_CONDUCT.md)
 [![CONTRIBUTING]](https://github.com/fruithost/Panel/blob/master/.github/CONTRIBUTING.md)
+[![STYLING_GUIDELINES]](https://fruithost.de/guidelines/styling)
 
 # Demonstration
 **Demo:** http://my.fruithost.de/
@@ -33,7 +34,7 @@ Feel free to help us with the developing!
 [INSTALL_NOW]: https://img.shields.io/badge/Install_Now!-37a779?style=for-the-badge
 [CODE_OF_CONDUCT]: https://img.shields.io/badge/Code_of_Conduct-37a779?style=for-the-badge
 [CONTRIBUTING]: https://img.shields.io/badge/Contributing-37a779?style=for-the-badge
-
+[STYLING_GUIDELINES]: https://img.shields.io/badge/Styling_Guidelines-37a779?style=for-the-badge
 > Currently we do not offer any public demo users!
 > If you want to watch the demo, write to us - We will set up a personal account for you to test fruithost!
 
