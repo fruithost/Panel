@@ -19,12 +19,20 @@ Be a team-player, all feedbacks of our patrons will have the priority. We will b
 
 [![BECOME A PATRON](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/fruithost)
 
+# Contributing
+Feel free to help us with the developing!
+
+[![CODE_OF_CONDUCT]](https://github.com/fruithost/Panel/.github/CODE_OF_CONDUCT.md)
+[![CONTRIBUTING]](https://github.com/fruithost/Panel/.github/CONTRIBUTING.md)
+
 # Demonstration
 **Demo:** http://my.fruithost.de/
 
 **Request:** https://forms.gle/eS7E4MYSVKiiigw77
 
 [INSTALL_NOW]: https://img.shields.io/badge/Install_Now!-37a779?style=for-the-badge
+[CODE_OF_CONDUCT]: https://img.shields.io/badge/Code_of_Conduct-37a779?style=for-the-badge
+[CONTRIBUTING]: https://img.shields.io/badge/Contributing-37a779?style=for-the-badge
 
 > Currently we do not offer any public demo users!
 > If you want to watch the demo, write to us - We will set up a personal account for you to test fruithost!
