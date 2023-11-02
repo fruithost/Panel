@@ -11,7 +11,7 @@
 	
 	class CoreAdmin extends ModuleInterface {
 		public function init() {
-			$this->addModal((new Modal('add_repository', I18N::get('Add Repository'), dirname(__DIR__) . '/views/admin/repository_create.php'))->addButton([
+			$this->addModal((new Modal('add_repository', I18N::get('Add Repository'), 'admin/modules/repository/create'))->addButton([
 				(new Button())->setName('cancel')->setLabel(I18N::get('Cancel'))->addClass('btn-outline-danger')->setDismissable(),
 				(new Button())->setName('create')->setLabel(I18N::get('Create'))->addClass('btn-outline-success')
 			])->onSave([ $this, 'onCreateRepository' ]));

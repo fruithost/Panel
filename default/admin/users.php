@@ -57,14 +57,10 @@
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane show active" id="globals" role="tabpanel" aria-labelledby="globals-tab">
 					<?php
-						switch($tab) {
-							default:
-								if(count($users) === 0) {
-									require_once(dirname(dirname(__DIR__)) . '/views/admin/users_empty.php');
-								} else {
-									require_once(dirname(dirname(__DIR__)) . '/views/admin/users_list.php');
-								}
-							break;
+						if(count($users) === 0) {
+							$template->display('admin/users/empty');
+						} else {
+							$template->display('admin/users/list');
 						}
 					?>
 				</div>

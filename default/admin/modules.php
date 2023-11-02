@@ -128,16 +128,16 @@
 						switch($tab) {
 							case 'repositorys':
 								if(count($repositorys) === 0) {
-									require_once(dirname(dirname(__DIR__)) . '/views/admin/repository_empty.php');
+									$template->display('admin/modules/repository/empty');
 								} else {
-									require_once(dirname(dirname(__DIR__)) . '/views/admin/repository_list.php');
+									$template->display('admin/modules/repository/list');
 								}
 							break;
 							default:
 								if(count($modules->getList()) === 0) {
-									require_once(dirname(dirname(__DIR__)) . '/views/admin/modules_empty.php');
+									$template->display('admin/modules/empty');
 								} else {
-									require_once(dirname(dirname(__DIR__)) . '/views/admin/modules_list.php');
+									$template->display('admin/modules/list');
 								}
 							break;
 						}

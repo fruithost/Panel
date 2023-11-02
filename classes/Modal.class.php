@@ -55,8 +55,9 @@
 				${$name} = $value;
 			}
 			
-			if(!empty($this->content) && preg_match('/\.php$/', $this->content)) {
-				require_once($this->content);
+			// @ToDo check if is template file
+			if(!empty($this->content)) {
+				$template->display($this->content);
 				return;
 			}
 			

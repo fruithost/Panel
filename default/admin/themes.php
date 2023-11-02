@@ -15,7 +15,7 @@
 		exit();
 	}
 	
-	require_once(dirname(dirname(__DIR__)) . '/views/admin/themes_empty.php');
+	$template->display('admin/themes/empty');
 	
 	$template->footer();
 ?>
