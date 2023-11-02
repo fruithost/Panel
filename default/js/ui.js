@@ -80,6 +80,8 @@
 			
 			if(state === 'CONFIRMED') {
 				clearInterval(_watcher);
+				
+				/* @ToDo Check if target is an link or an button, on button make an form-Submit! */
 				window.location.href = target.attr('href');
 			}
 		}, 500);
