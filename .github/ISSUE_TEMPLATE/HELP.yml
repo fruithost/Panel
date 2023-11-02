@@ -2,9 +2,6 @@ name: Needing Help
 description: Create a help report
 title: "[Help] "
 labels: ["help"]
-projects: ["octo-org/1", "octo-org/44"]
-assignees:
-  - octocat
 body:
   - type: markdown
     attributes:
