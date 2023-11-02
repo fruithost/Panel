@@ -22,8 +22,8 @@ Be a team-player, all feedbacks of our patrons will have the priority. We will b
 # Contributing
 Feel free to help us with the developing!
 
-[![CODE_OF_CONDUCT]](https://github.com/fruithost/Panel/.github/CODE_OF_CONDUCT.md)
-[![CONTRIBUTING]](https://github.com/fruithost/Panel/.github/CONTRIBUTING.md)
+[![CODE_OF_CONDUCT]](https://github.com/fruithost/Panel/blob/master/.github/CODE_OF_CONDUCT.md)
+[![CONTRIBUTING]](https://github.com/fruithost/Panel/blob/master/.github/CONTRIBUTING.md)
 
 # Demonstration
 **Demo:** http://my.fruithost.de/
