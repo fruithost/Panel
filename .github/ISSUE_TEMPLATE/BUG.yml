@@ -1,5 +1,5 @@
 name: 🐞 Bug Report
-description: Make a bug report
+description: Make a bug report and tell us about an error/bug if you found one.
 title: "[Bug] "
 labels: ["bug", "triage"]
 body:
