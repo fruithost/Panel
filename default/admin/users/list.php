@@ -42,8 +42,8 @@
 					<td width="1px">
 						<div class="btn-group" role="group">
 							<?php
-								printf('<a href="%s" class="btn btn-info">%s</a>', $this->url('/admin/users/?edit=' . $user->getID()), I18N::get('Edit'));
-								printf('<a href="%s" data-confirm="%s" class="btn btn-danger">%s</a>', $this->url('/admin/users/?delete=' . $user->getID()), I18N::get('Do you really wan\'t to delete the user?'), I18N::get('Delete'));
+								printf('<a href="%s" class="btn btn-info">%s</a>', $this->url('/admin/users/' . $user->getID()), I18N::get('Edit'));
+								printf('<a href="%s" data-confirm="%s" class="btn btn-danger">%s</a>', $this->url('/admin/users/' . $user->getID() . '/delete'), I18N::get('Do you really wan\'t to delete the user?'), I18N::get('Delete'));
 							?>
 						</div>
 					</td>

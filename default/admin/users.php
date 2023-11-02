@@ -22,23 +22,29 @@
 				</h1>
 				<div class="btn-toolbar mb-2 mb-md-0">				
 					<?php
-						switch($tab) {
-							case 'user':
-								?>
-									<div class="btn-group mr-2">
-										<button type="submit" name="action" value="update" class="btn btn-sm btn-outline-success"><?php I18N::__('Update'); ?></button>
-										<button type="submit" name="action" value="delete" class="btn btn-sm btn-outline-danger"><?php I18N::__('Delete'); ?></button>
-									</div>
-								<?php
-							break;
-							default:
-								?>
-									<div class="btn-group mr-2">
-										<button type="button" name="add_user" data-toggle="modal" data-target="#add_user" class="btn btn-sm btn-outline-primary"><?php I18N::__('Add new'); ?></button>
-										<button type="submit" name="action" value="delete" class="btn btn-sm btn-outline-danger"><?php I18N::__('Delete'); ?></button>
-									</div>
-								<?php
-							break;
+						if(is_numeric($tab) && $tab > 0) {
+							?>
+								<div class="btn-group mr-2">
+									<button type="button" name="action" value="save" class="btn btn-sm btn-outline-primary"><?php I18N::__('Save'); ?></button>
+									<button type="submit" name="action" value="delete" class="btn btn-sm btn-outline-danger"><?php I18N::__('Delete'); ?></button>
+								</div>
+							<?php
+							
+						} else if($tab == 'create') {
+							?>
+								<div class="btn-group mr-2">
+									<button type="button" name="action" value="create" class="btn btn-sm btn-outline-primary"><?php I18N::__('Create'); ?></button>
+									<button type="submit" name="action" value="delete" class="btn btn-sm btn-outline-danger"><?php I18N::__('Delete'); ?></button>
+								</div>
+							<?php
+							
+						} else {
+							?>
+								<div class="btn-group mr-2">
+									<a href="<?php print $this->url('/admin/users/create'); ?>" class="btn btn-sm btn-outline-primary"><?php I18N::__('Add new'); ?></a>
+									<button type="submit" name="action" value="delete" class="btn btn-sm btn-outline-danger"><?php I18N::__('Delete'); ?></button>
+								</div>
+							<?php
 						}
 					?>
 				</div>
@@ -57,7 +63,11 @@
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane show active" id="globals" role="tabpanel" aria-labelledby="globals-tab">
 					<?php
-						if(count($users) === 0) {
+						if(is_numeric($tab) && $tab > 0) {
+							$template->display('admin/users/edit');
+						} else if($tab == 'create') {
+							$template->display('admin/users/create');
+						} else if(count($users) === 0) {
 							$template->display('admin/users/empty');
 						} else {
 							$template->display('admin/users/list');

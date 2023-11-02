@@ -29,13 +29,14 @@
 				$this->getTemplate()->display('admin');
 			});
 			
-			$this->getRouter()->addRoute('^/admin(?:/([a-zA-Z0-9\-_]+))(?:/([a-zA-Z0-9\-_]+))?$', function($destination = null, $tab = NULL) {
+			$this->getRouter()->addRoute('^/admin(?:(?:/([a-zA-Z0-9\-_]+)?)(?:/([a-zA-Z0-9\-_]+)(?:/([a-zA-Z0-9\-_]+))?)?)?$', function($destination = null, $tab = NULL, $action = NULL) {
 				if(!Auth::isLoggedIn()) {
 					Response::redirect('/');
 				}
 				
 				$this->getTemplate()->display('admin' . (!empty($destination) ? sprintf('/%s', $destination) : ''), [
-					'tab'	=> $tab
+					'tab'		=> $tab,
+					'action'	=> $action
 				]);
 			});
 		
