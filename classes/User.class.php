@@ -5,21 +5,24 @@
 	use \fruithost\Database;
 	
 	class User {
-		private $id			= null;
-		private $username	= null;
-		private $email		= null;
-		private $data		= [];
+		private $id				= null;
+		private $username		= null;
+		private $email			= null;
+		private $crypted_mail	= null;
+		private $data			= [];
 		
 		public function __construct() {}
 		
 		public function fetch(int $id) {
-			$result = Database::single('SELECT *, "**********" as `password` FROM `' . DATABASE_PREFIX . 'users` WHERE `id`=:id LIMIT 1', [
-				'id'	=> $id
+			$result = Database::single('SELECT *, "**********" as `password`, UPPER(SHA2(CONCAT(`id`, :salt, `email`), 512)) AS `crypted_mail` FROM `' . DATABASE_PREFIX . 'users` WHERE `id`=:id LIMIT 1', [
+				'id'	=> $id,
+				'salt'	=> RESET_PASSWORD_SALT
 			]);
 			
-			$this->id 		= $result->id;
-			$this->username = $result->username;
-			$this->email 	= $result->email;
+			$this->id 				= $result->id;
+			$this->username 		= $result->username;
+			$this->email 			= $result->email;
+			$this->crypted_mail 	= $result->crypted_mail;
 			
 			$this->data = Database::single('SELECT * FROM `' . DATABASE_PREFIX . 'users_data` WHERE `user_id`=:user_id LIMIT 1', [
 				'user_id'	=> $this->id
@@ -86,6 +89,10 @@
 			}
 			
 			return sprintf('%s %s', $this->data->name_first, $this->data->name_last);
+		}
+		
+		public function getCryptedMail() : string | null {
+			return $this->crypted_mail;
 		}
 		
 		public function getMail() : string | null {

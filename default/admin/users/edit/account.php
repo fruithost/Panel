@@ -13,7 +13,7 @@
 	<div class="form-group row">
 		<label for="username" class="col-sm-2 col-form-label"><?php I18N::__('Username'); ?>:</label>
 		<div class="col-sm-10">
-			<input type="text" class="form-control" id="username" name="username" value="<?php print $user->getUsername(); ?>" />
+			<input type="text" class="form-control" id="username" name="username" value="<?php print $user->getUsername(); ?>" DISABLED />
 		</div>
 	</div>
 	<div class="form-group row">

@@ -12,11 +12,13 @@
 	<?php
 		if(isset($error)) {
 			?>
-				<div class="alert alert-danger mt-4" role="alert"><?php print $error; ?></div>
+				<div class="alert alert-danger mt-4" role="alert"><?php (is_array($error) ? var_dump($error) : print $error); ?></div>
 			<?php
-		} else if(isset($success)) {
+		}
+		
+		if(isset($success)) {
 			?>
-				<div class="alert alert-success mt-4" role="alert"><?php print $success; ?></div>
+				<div class="alert alert-success mt-4" role="alert"><?php (is_array($success) ? var_dump($success) : print $success); ?></div>
 			<?php
 		}
 	?>

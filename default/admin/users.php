@@ -15,7 +15,7 @@
 		exit();
 	}
 	?>
-		<form method="post" action="<?php print $this->url('/admin/users'); ?>">
+		<form method="post" action="<?php print $this->url('/admin/users' . (empty($tab) ? '' : sprintf('/%s', $tab)) . (empty($action) ? '' : sprintf('/%s', $action))); ?>">
 			<header class="page-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 				<h1 class="h2">
 					<a class="active" href="<?php print $this->url('/admin/users'); ?>"><?php I18N::__('Users'); ?></a>
@@ -36,7 +36,6 @@
 									<button type="submit" name="action" value="create" class="btn btn-sm btn-outline-primary"><?php I18N::__('Create'); ?></button>
 								</div>
 							<?php
-							
 						} else {
 							?>
 								<div class="btn-group mr-2">
@@ -49,14 +48,16 @@
 				</div>
 			</header>
 			<?php
-				if(isset($error)) {
-					?>
-						<div class="alert alert-danger mt-4" role="alert"><?php print $error; ?></div>
-					<?php
-				} else if(isset($success)) {
-					?>
-						<div class="alert alert-success mt-4" role="alert"><?php (is_array($success) ? var_dump($success) : print $success); ?></div>
-					<?php
+				if(!is_numeric($tab)) {
+					if(isset($error)) {
+						?>
+							<div class="alert alert-danger mt-4" role="alert"><?php print $error; ?></div>
+						<?php
+					} else if(isset($success)) {
+						?>
+							<div class="alert alert-success mt-4" role="alert"><?php (is_array($success) ? var_dump($success) : print $success); ?></div>
+						<?php
+					}
 				}
 			?>
 			<div class="tab-content" id="myTabContent">
