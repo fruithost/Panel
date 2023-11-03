@@ -82,7 +82,36 @@
 				if(typeof(jQuery) !== 'undefined') {
 					clearInterval(_watcher_modules);
 					
-					(function($) {						
+					(function($) {
+						$('input[name^="password_recovery"]').on('change', function(event) {
+							let name		= $(event.delegateTarget).attr('name');
+							let matches		= /(?<type>[a-zA-Z0-9_-]+)\[(?<name>([a-zA-Z0-9_-]+))\]/gm.exec(name);
+							let elements	= {
+								generate:			$('input[name="password_recovery[generate]"]'),
+								recover:			$('input[name="password_recovery[recover]"]'),
+								password_new:		$('input[name="password_new"]'),
+								password_repeated:	$('input[name="password_repeated"]')
+							};
+
+							if(matches != null && typeof(matches.groups) !== 'undefined' && matches.groups.type == 'password_recovery') {
+								elements.password_new.val('');
+								elements.password_repeated.val('');
+								
+								switch(matches.groups.name) {
+									case 'recover':
+										if(elements.generate.is(':checked')) {
+											elements.generate.prop('checked', false);
+										}
+									break;
+									case 'generate':
+										if(elements.recover.is(':checked')) {
+											elements.recover.prop('checked', false);
+										}
+									break;
+								}
+							}
+						});
+						
 						$('button[name="action"].deletes, button[name="action"].update').on('click', function(event) {
 							$(event.target).parent().parent().find('input[type="checkbox"]').prop('checked', true);
 						});

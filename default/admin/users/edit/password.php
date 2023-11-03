@@ -74,6 +74,15 @@
 				</div>
 				<div class="tab-pane" id="recover" role="tabpanel" aria-labelledby="recover-tab">
 					<p><?php I18N::__('Initiates the password recovery process.'); ?><br /><?php I18N::__('The user receives an E-Mail with instructions on how to reset the password.'); ?></p>
+					<?php
+						if(!filter_var($user->getMail(), FILTER_VALIDATE_EMAIL)) {
+							?>
+								<div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+									<?php I18N::__('The user will probably not receive an E-Mail because the provided <strong>E-Mail address is invalid</strong>.'); ?>
+								</div>
+							<?php
+						}
+					?>
 					<div class="custom-control custom-switch">
 						<input type="checkbox" name="password_recovery[recover]" class="custom-control-input" id="confirm_recover" />
 						<label class="custom-control-label" for="confirm_recover"><?php I18N::__('Activate the reset using password recovery'); ?></label>
@@ -81,6 +90,15 @@
 				</div>
 				<div class="tab-pane" id="generate" role="tabpanel" aria-labelledby="generate-tab">
 					<p><?php I18N::__('The system automatically generates a strong password and sends it to the user by E-Mail.'); ?><br /><?php I18N::__('Please note that the password can only be sent if the user has entered a valid E-Mail address.'); ?></p>
+					<?php
+						if(!filter_var($user->getMail(), FILTER_VALIDATE_EMAIL)) {
+							?>
+								<div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+									<?php I18N::__('The user will probably not receive an E-Mail because the provided <strong>E-Mail address is invalid</strong>.'); ?>
+								</div>
+							<?php
+						}
+					?>
 					<div class="custom-control custom-switch">
 						<input type="checkbox" name="password_recovery[generate]" class="custom-control-input" id="confirm_generate" />
 						<label class="custom-control-label" for="confirm_generate"><?php I18N::__('Activate the reset using password generation'); ?></label>
