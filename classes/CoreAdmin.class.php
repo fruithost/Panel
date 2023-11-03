@@ -6,20 +6,10 @@
 	use fruithost\Database;
 	use fruithost\Response;
 	use fruithost\ModuleInterface;
-	use fruithost\Modal;
-	use fruithost\Button;
 	
 	class CoreAdmin extends ModuleInterface {
 		public function init() {
-			$this->addModal((new Modal('add_repository', I18N::get('Add Repository'), 'admin/modules/repository/create'))->addButton([
-				(new Button())->setName('cancel')->setLabel(I18N::get('Cancel'))->addClass('btn-outline-danger')->setDismissable(),
-				(new Button())->setName('create')->setLabel(I18N::get('Create'))->addClass('btn-outline-success')
-			])->onSave([ $this, 'onCreateRepository' ]));
-			
-			$this->addModal((new Modal('confirmation', I18N::get('Confirmation'), NULL))->addButton([
-				(new Button())->setName('cancel')->setLabel(I18N::get('No'))->addClass('btn-outline-danger')->setDismissable(),
-				(new Button())->setName('create')->setLabel(I18N::get('Yes'))->addClass('btn-outline-success')
-			])->onSave([ $this, 'onConfirmation' ]));
+			$this->getCore()->getHooks()->runAction('core_admin_pre_init');
 			
 			$this->getRouter()->addRoute('/admin', function() {
 				if(!Auth::isLoggedIn()) {
@@ -49,33 +39,6 @@
 					'tab'	=> $tab
 				]);
 			});
-		}
-		
-		public function onConfirmation(array $data = []) : string {
-			// @ToDo Check permissions?
-			return 'CONFIRMED';
-		}
-		
-		public function onCreateRepository(array $data = []) : string | bool {
-			if(empty($data['repository_url']) || !filter_var($data['repository_url'], FILTER_VALIDATE_URL)) {
-				return I18N::get('Please enter an valid  repository URL!');
-			}
-			
-			$repositorys = Database::fetch('SELECT * FROM `' . DATABASE_PREFIX . 'repositorys` WHERE `url`=:url', [
-				'url'	=> $data['repository_url']
-			]);
-			
-			if(count($repositorys) > 0) {
-				return I18N::get('Repository already exists!');
-			} else {
-				Database::insert(DATABASE_PREFIX . 'repositorys', [
-					'id'			=> null,
-					'url'			=> $data['repository_url'],
-					'time_updated'	=> NULL
-				]);
-			}
-			
-			return true;
 		}
 	}
 ?>

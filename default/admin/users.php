@@ -55,7 +55,7 @@
 					<?php
 				} else if(isset($success)) {
 					?>
-						<div class="alert alert-success mt-4" role="alert"><?php print $success; ?></div>
+						<div class="alert alert-success mt-4" role="alert"><?php (is_array($success) ? var_dump($success) : print $success); ?></div>
 					<?php
 				}
 			?>
@@ -63,7 +63,9 @@
 				<div class="tab-pane show active" id="globals" role="tabpanel" aria-labelledby="globals-tab">
 					<?php
 						if(is_numeric($tab) && $tab > 0) {
-							$template->display('admin/users/edit');
+							$template->display('admin/users/edit', [
+								'user'	=> $user
+							]);
 						} else if($tab == 'create') {
 							$template->display('admin/users/create');
 						} else if(count($users) === 0) {

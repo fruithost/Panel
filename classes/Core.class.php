@@ -88,6 +88,10 @@
 			require_once($path);
 		}
 		
+		public function getAdminCore() {
+			return $this->admin;
+		}
+		
 		public function getModules() : Modules {
 			return $this->modules;
 		}
@@ -157,6 +161,8 @@
 			$this->template	= new Template($this);
 			$this->router	= new Router($this);
 			$this->admin	= new CoreAdmin($this, NULL);
+			
+			$this->getHooks()->runAction('core_pre_init');
 			
 			$this->router->addRoute('/', function() {
 				if(Auth::isLoggedIn()) {
@@ -310,10 +316,14 @@
 					exit();
 				}
 				
+				$this->getHooks()->runAction('ajax');
+				$this->router->run(true);
+				
 				// Fire modals
 				if(isset($_POST['modal']) && !empty($_POST['modal'])) {
 					$modals = $this->getHooks()->applyFilter('modals', []);
-			
+					// @ToDo Modals context on handler not working?
+					
 					foreach($modals AS $modal) {
 						if($modal->getName() === $_POST['modal']) {
 							$callback	= $modal->getCallback('save');
@@ -331,6 +341,8 @@
 								}
 							}
 							
+							
+							
 							$result		= call_user_func_array($callback, [ $data ]);
 							
 							if(is_bool($result)) {
@@ -344,6 +356,7 @@
 				}
 			});
 
+			$this->getHooks()->runAction('core_init');
 			$this->router->run();
 		}
 	}

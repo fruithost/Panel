@@ -558,3 +558,33 @@ li.empty::before {
 .contentbar-content {
     margin: 0 260px 0 0;
 }
+
+/* Tabs */
+[aria-orientation="vertical"] {
+	border-bottom: 0;
+}
+
+[aria-orientation="vertical"] .nav-item {
+	border: none;
+}
+
+[aria-orientation="vertical"] .nav-link {
+	width: 100%;
+	text-align: left;
+	border: 1px solid transparent;
+	border-radius: 4px 0 0 4px;
+	background: transparent;
+}
+
+[aria-orientation="vertical"] .nav-link:hover {
+	border-color: transparent;
+	background: #EEEEEE;
+	width: calc(100% + 16px);
+}
+
+[aria-orientation="vertical"] .nav-link.active, [aria-orientation="vertical"] .nav-link.active:hover {
+	width: calc(100% + 16px);
+	background: transparent;
+	font-weight: bold;
+	border-color: #dee2e6 #ffffff #dee2e6 #dee2e6;
+}

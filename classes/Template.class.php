@@ -1,6 +1,7 @@
 <?php
 	namespace fruithost;
 	use \fruithost\I18N;
+	use \fruithost\ModuleInterface;
 	use \fruithost\Database;
 	
 	class Template extends TemplateDefaults {
@@ -56,6 +57,10 @@
 			return $this->core;
 		}
 		
+		public function getAdminCore() {
+			return $this->core->getAdminCore();
+		}
+		
 		public function getAssigns() {
 			return $this->assigns;
 		}
@@ -93,6 +98,10 @@
 				foreach($this->assigns AS $name => $value) {
 					${$name} = $value;
 				}
+			}
+			
+			if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+				exit();
 			}
 			
 			if(file_exists($path) && is_readable($path)) {
@@ -153,12 +162,14 @@
 		}
 		
 		public function getLanguage($short = false) {
-			// @ToDo
+			$language	= $this->getCore()->getSettings('LANGUAGE', 'en_US');
+			$language	= Auth::getSettings('LANGUAGE', NULL, $language);
+			
 			if($short) {
-				return 'en';
+				return explode('_', $language)[0];
 			}
 			
-			return 'en_US';
+			return $language;
 		}
 		
 		public function head() {

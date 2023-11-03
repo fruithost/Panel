@@ -64,8 +64,9 @@
 			$this->redirect = $redirect;
 		}
 		
-		public function run() {
-			$uri	= explode('/',	$_SERVER['REQUEST_URI']);
+		public function run($ajax = false) {
+			// @ToDo is secure?
+			$uri	= explode('/',	($ajax ? preg_replace('#(http|https)://([^/]+)#', '', $_SERVER['HTTP_REFERER']) : $_SERVER['REQUEST_URI']));
 			$name	= explode('/',	$_SERVER['SCRIPT_NAME']);
 			
 			for($i = 0; $i < sizeof($name); $i++) {

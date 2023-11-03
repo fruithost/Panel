@@ -44,7 +44,43 @@
 			return $this->id;
 		}
 		
+		public function getFirstName() : string | null {
+			if($this->data == false) {
+				return null;
+			}
+			
+			return $this->data->name_first;
+		}
+		
+		public function getLastName() : string | null {
+			if($this->data == false) {
+				return null;
+			}
+			
+			return $this->data->name_last;
+		}
+		
+		public function getPhoneNumber() : string | null {
+			if($this->data == false) {
+				return null;
+			}
+			
+			return $this->data->phone_number;
+		}
+		
+		public function getAddress() : string | null {
+			if($this->data == false) {
+				return null;
+			}
+			
+			return $this->data->address;
+		}
+		
 		public function getFullName() : string | null {
+			if($this->data == false) {
+				return '';
+			}
+			
 			if(empty($this->data->name_first)) {
 				return '';
 			}

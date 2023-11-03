@@ -1,6 +1,7 @@
 <?php
 	use fruithost\Database;
 	use fruithost\I18N;
+	use fruithost\User;
 	
 	$users = Database::fetch('SELECT *, \'**********\' AS `password` FROM `' . DATABASE_PREFIX . 'users`');
 	
@@ -11,15 +12,15 @@
 		switch($_POST['action']) {
 			case 'save':
 				/* Save user */
-				$this->assign('success', 'User was successfully updated.');
+				$this->assign('success', $_POST);
 			break;
 			case 'delete':
 				/* delete user */
-				$this->assign('success', 'User was successfully deleted!');
+				$this->assign('success', $_POST);
 			break;
 			case 'create':
 				/* create user */
-				$this->assign('success', 'User was successfully created!');
+				$this->assign('success', $_POST);
 			break;
 			case 'deletes':
 				$messages	= [];
@@ -40,10 +41,13 @@
 	}
 	
 	if(is_numeric($tab) && $tab > 0) {
-		
+		$user = new User();
+		$user->fetch($tab);
+		$template->assign('user',		$user);
+		$template->assign('timezones',	json_decode(file_get_contents(dirname(PATH) . '/config/timezones.json')));
 	} else if($tab == 'create') {
-		
+		$template->assign('timezones',	json_decode(file_get_contents(dirname(PATH) . '/config/timezones.json')));		
+	} else {
+		$template->assign('users', $users);
 	}
-	
-	$template->assign('users', $users);
 ?>
