@@ -28,6 +28,8 @@
 						<?php
 							if(empty($repository->time_updated)) {
 								printf('<span class="text-warning">%s</span>', I18N::get('Never updated'));
+							} else if($repository->time_updated == '0000-00-00 00:00:00') {
+								printf('<span class="text-danger">%s<br />%s (<a href="https://github.com/fruithost/Documentation/blob/main/Repositorys.md" target="_blank">%s</a>)</span>', I18N::get('Error'), I18N::get('Malformed Repository'), I18N::get('More Informations'));
 							} else {
 								printf('<small>%s:</small><br />%s', I18N::get('Last updated'), date(Auth::getSettings('TIME_FORMAT', NULL, 'd.m.Y - H:i'), strtotime($repository->time_updated)));
 							}

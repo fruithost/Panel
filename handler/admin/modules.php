@@ -26,17 +26,7 @@
 			]);
 		}
 		
-		exit();
-		
 		return true;
-	}));
-	
-	$template->getAdminCore()->addModal((new Modal('confirmation', I18N::get('Confirmation'), NULL))->addButton([
-		(new Button())->setName('cancel')->setLabel(I18N::get('No'))->addClass('btn-outline-danger')->setDismissable(),
-		(new Button())->setName('create')->setLabel(I18N::get('Yes'))->addClass('btn-outline-success')
-	])->onSave(function(array $data = []) : string {
-		// @ToDo Check permissions?
-		return 'CONFIRMED';
 	}));
 	
 	$upgradeable		= [];
@@ -153,52 +143,53 @@
 						$list		= @file_get_contents(sprintf('%s/modules.list', $entry->url));
 					
 						if(empty($list)) {
-							continue;
-						}
+							$updated	= '0000-00-00 00:00:00';
+						} else {	
+							$modules	= explode(PHP_EOL, $list);
+							$updated	= date('Y-m-d H:i:s', time());
+							$loaded		= 0;
 						
-						$modules	= explode(PHP_EOL, $list);
-						$loaded		= 0;
-						
-						foreach($modules AS $name) {
-							if(empty($name)) {
-								continue;
-							}
+							foreach($modules AS $name) {
+								if(empty($name)) {
+									continue;
+								}
+								
+								$info = file_get_contents(sprintf('%s/%s/module.package', $entry->url, $name));
 							
-							$info = file_get_contents(sprintf('%s/%s/module.package', $entry->url, $name));
-						
-							if(!isset($conflicts[$name])) {
-								$conflicts[$name] = [];
-							}
-							
-							$conflicts[$name][] = $entry;
-							
-							++$loaded;
-							
-							if(isset($packages[$name])) {
-								continue;
-							}
-							
-							$packages[$name] = $info;
-							
-							if(empty($info)) {
-								continue;
-							}
-							
-							if(!isset($installed[$name])) {
-								continue;
-							}
-							
-							$check	= $installed[$name];
-							$remote	= json_decode($info);
-							
-							if(!empty($check) && !empty($remote) && isset($remote->version) && version_compare($remote->version, $check->getInfo()->getVersion(), '>')) {
-								$updateable[$name]	= $remote;
+								if(!isset($conflicts[$name])) {
+									$conflicts[$name] = [];
+								}
+								
+								$conflicts[$name][] = $entry;
+								
+								++$loaded;
+								
+								if(isset($packages[$name])) {
+									continue;
+								}
+								
+								$packages[$name] = $info;
+								
+								if(empty($info)) {
+									continue;
+								}
+								
+								if(!isset($installed[$name])) {
+									continue;
+								}
+								
+								$check	= $installed[$name];
+								$remote	= json_decode($info);
+								
+								if(!empty($check) && !empty($remote) && isset($remote->version) && version_compare($remote->version, $check->getInfo()->getVersion(), '>')) {
+									$updateable[$name]	= $remote;
+								}
 							}
 						}
 						
 						Database::update(DATABASE_PREFIX . 'repositorys', 'id', [
 							'id'			=> $entry->id,
-							'time_updated'	=> date('Y-m-d H:i:s', time())
+							'time_updated'	=> $updated
 						]);
 						
 						++$count;

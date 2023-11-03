@@ -101,7 +101,7 @@
 			}
 			
 			if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-				exit();
+				return;
 			}
 			
 			if(file_exists($path) && is_readable($path)) {

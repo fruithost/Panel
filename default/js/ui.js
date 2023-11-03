@@ -63,7 +63,7 @@
 	
 	$('[data-toggle="tooltip"]').tooltip();
 	
-	$('[data-confirm]').on('click', function(event) {
+	$('[data-confirm]').on('mousedown', function(event) {
 		let target	= $(this);
 		let popup	= $('#confirmation');
 		let prevent	= true;
@@ -81,8 +81,11 @@
 			if(state === 'CONFIRMED') {
 				clearInterval(_watcher);
 				
-				/* @ToDo Check if target is an link or an button, on button make an form-Submit! */
-				window.location.href = target.attr('href');
+				if(target.prop('tagName') == 'A') {
+					window.location.href = target.attr('href');
+				} else {
+					target.trigger('click');
+				}
 			}
 		}, 500);
 		

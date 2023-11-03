@@ -322,35 +322,38 @@
 				// Fire modals
 				if(isset($_POST['modal']) && !empty($_POST['modal'])) {
 					$modals = $this->getHooks()->applyFilter('modals', []);
-					// @ToDo Modals context on handler not working?
 					
-					foreach($modals AS $modal) {
-						if($modal->getName() === $_POST['modal']) {
-							$callback	= $modal->getCallback('save');
-							$data		= [];
-							
-							foreach($_POST AS $name => $value) {
-								if(is_array($value)) {
-									$data[trim($name)] = [];
-									
-									foreach($value AS $key => $entry) {
-										$data[trim($name)][trim($key)] = trim($entry);
+					if(count($modals) == 0) {
+						print 'No registred modals.';
+					} else {
+						foreach($modals AS $modal) {
+							if($modal->getName() === $_POST['modal']) {
+								$callback	= $modal->getCallback('save');
+								$data		= [];
+								
+								foreach($_POST AS $name => $value) {
+									if(is_array($value)) {
+										$data[trim($name)] = [];
+										
+										foreach($value AS $key => $entry) {
+											$data[trim($name)][trim($key)] = trim($entry);
+										}
+									} else {
+										$data[trim($name)] = trim($value);
 									}
-								} else {
-									$data[trim($name)] = trim($value);
 								}
+								
+								
+								
+								$result		= call_user_func_array($callback, [ $data ]);
+								
+								if(is_bool($result)) {
+									print json_encode($result);
+									return;
+								}
+								
+								print $result;
 							}
-							
-							
-							
-							$result		= call_user_func_array($callback, [ $data ]);
-							
-							if(is_bool($result)) {
-								print json_encode($result);
-								return;
-							}
-							
-							print $result;
 						}
 					}
 				}

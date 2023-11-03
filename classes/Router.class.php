@@ -88,6 +88,11 @@
 				$route	= $split[0];
 			}
 			
+			// Remove "ajax"
+			if($ajax == true) {
+				$route	= str_replace('/ajax', '', $route);
+			}
+			
 			Response::header();
 			
 			if($this->routeExists($route)) {
