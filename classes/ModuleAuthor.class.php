@@ -6,7 +6,7 @@
 		private $email	= null;
 		private $url	= null;
 		
-		public function __construct($object) {
+		public function __construct(object $object) {
 			if(!empty($object->name)) {
 				$this->name = $object->name;
 			}
@@ -20,15 +20,15 @@
 			}
 		}
 		
-		public function getName() {
+		public function getName() : string {
 			return $this->name;
 		}
 		
-		public function getMail() {
+		public function getMail() : string {
 			return $this->email;
 		}
 		
-		public function getWebsite() {
+		public function getWebsite() : string {
 			return $this->url;
 		}
 	}

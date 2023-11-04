@@ -45,7 +45,7 @@
 			return $default;
 		}
 		
-		protected static function set() {
+		protected static function set() : string {
 			$language = Auth::getSettings('LANGUAGE', NULL, self::getSettings('LANGUAGE', 'en_US'));
 			
 			if(!Auth::isLoggedIn() && Request::has('lang')) {
@@ -55,7 +55,7 @@
 			return $language;
 		}
 		
-		protected static function load($language) {
+		protected static function load(string $language) {
 			$file				= sprintf('%slanguages/%s.po', PATH, $language);
 			
 			if(file_exists($file)) {
@@ -87,7 +87,7 @@
 			}
 		}
 		
-		public static function getLanguages() {
+		public static function getLanguages() : array {
 			return self::$languages;
 		}
 		
@@ -95,7 +95,7 @@
 			print self::get($string);
 		}
 		
-		public static function get($string) {
+		public static function get($string) : string {
 			if(self::$translation == null) {
 				return $string;
 			}

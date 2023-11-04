@@ -5,7 +5,7 @@
 		private $core		= null;
 		private $instance	= null;
 		
-		public function __construct($core, $instance) {
+		public function __construct(Core $core, $instance) {
 			$this->core		= $core;
 			$this->instance	= $instance;
 			
@@ -20,7 +20,7 @@
 			/* Override Me */
 		}
 		
-		public function getRouter() {
+		public function getRouter() : Router {
 			return $this->core->getRouter();
 		}
 		
@@ -28,79 +28,79 @@
 			return $this->core->getModules();
 		}
 		
-		public function getTemplate() {
+		public function getTemplate() : Template {
 			return $this->core->getTemplate();
 		}
 		
-		public function getCore() {
+		public function getCore() : Core {
 			return $this->core;
 		}
 		
-		public function getInstance() {
+		public function getInstance() : Module {
 			return $this->instance;
 		}
 		
-		public function setSettings($name, $value = NULL) {
+		public function setSettings(string $name, mixed $value = NULL) {
 			$this->instance->setSettings($name, $value);
 		}
 		
-		public function getSettings($name, $default = NULL) {
+		public function getSettings(string $name, mixed $default = NULL) : mixed {
 			return $this->instance->getSettings($name, $default);			
 		}
 		
-		public function addButton($button, $logged_in = false) {
+		public function addButton(Button $button, bool $logged_in = false) {
 			$this->addFilter('buttons', function($buttons) use($button) {
 				$buttons[] = $button;
 				return $buttons;
 			}, 10, $logged_in);
 		}
 		
-		public function addModal($modal, $logged_in = false) {
+		public function addModal(Modal $modal, bool $logged_in = false) {
 			$this->addFilter('modals', function($modals) use($modal) {
 				$modals[] = $modal;
 				return $modals;
 			}, 10, $logged_in);
 		}
 		
-		public function assign($name, $value) {
+		public function assign(string $name, mixed $value) {
 			$this->getCore()->getTemplate()->assign($name, $value);
 		}
 		
-		public function url($path = '') {
+		public function url(string $path = '') : string {
 			return $this->getCore()->getTemplate()->url($path);
 		}
 		
 		/* Filter */
-		public function addFilter($name, $method, $priority = 10, $logged_in = false) {
+		public function addFilter(string $name, \Closure | array  $method, int $priority = 50, bool $logged_in = true) : bool {
 			return $this->core->getHooks()->addFilter($name, $method, $priority);
 		}
 		
-		public function removeFilter($name, $method, $priority = 10) {
+		public function removeFilter(string $name, \Closure | array $method, int $priority = 50) : bool {
 			return $this->core->getHooks()->removeFilter($name, $method, $priority);
 		}
 		
-		public function hasFilter($name, $method = false) {
+		public function hasFilter(string $name, mixed $method = false) : bool {
 			return $this->core->getHooks()->hasFilter($name, $method);
 		}
 		
-		public function applyFilter($name, $arguments) {
+		public function applyFilter(string $name, mixed $arguments) : mixed {
 			return $this->core->getHooks()->applyFilter($name, $arguments);
 		}
 		
 		/* Actions */
-		public function addAction($name, $method, $priority = 10) {
+		public function addAction(string $name, \Closure | array  $method, int $priority = 50, bool $logged_in = true) : bool {
 			return $this->core->getHooks()->addAction($name, $method, $priority);
 		}
 		
-		public function removeAction($name, $method, $priority = 10) {
+		public function removeAction(string $name, \Closure | array $method, int $priority = 50) : bool {
 			return $this->core->getHooks()->removeAction($name, $method, $priority);
 		}
 		
-		public function hasAction($name, $method = false) {
+		public function hasAction(string $name, mixed $method = false) : bool {
 			return $this->core->getHooks()->hasAction($name, $method);
 		}
 		
-		public function runAction($name, $arguments) {
+		public function runAction(string $name, mixed $arguments = null) : bool {
 			return $this->core->getHooks()->runAction($name, $arguments);
 		}
 	}

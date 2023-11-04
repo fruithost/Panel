@@ -12,7 +12,7 @@
 		private $repository		= null;
 		private $is_valid		= false;
 		
-		public function __construct($path) {
+		public function __construct(string $path) {
 			$file = sprintf('%s%smodule.package', $path, DS);
 			
 			if(!file_exists($file)) {
@@ -73,27 +73,27 @@
 			$this->is_valid = true;
 		}
 		
-		public function isValid() {
+		public function isValid() : bool {
 			return $this->is_valid;
 		}
 		
-		public function getName() {
+		public function getName() : string {
 			return $this->name;
 		}
 		
-		public function getVersion() {
+		public function getVersion() : string {
 			return $this->version;
 		}
 		
-		public function getCategory() {
+		public function getCategory() : string {
 			return $this->category;
 		}
 		
-		public function getOrder() {
+		public function getOrder() : int {
 			return $this->order;
 		}
 		
-		public function getIcon($raw = false) {
+		public function getIcon(bool $raw = false) : string {
 			if($raw) {
 				return $this->icon;
 			}
@@ -103,15 +103,15 @@
 			return sprintf('<i class="material-icons">%s</i>', $this->icon);
 		}
 		
-		public function getDescription() {
+		public function getDescription() : string {
 			return $this->description;
 		}
 		
-		public function getAuthor() {
+		public function getAuthor() : ModuleAuthor {
 			return $this->author;
 		}
 		
-		public function getRepository() {
+		public function getRepository() : string {
 			return $this->repository;
 		}
 	}

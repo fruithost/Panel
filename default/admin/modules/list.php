@@ -21,7 +21,7 @@
 						</div>
 					</td>
 					<td>
-						<span class="d-block badge badge-pill module-badge badge-<?php print ($module->isEnabled() ? 'success' : 'danger');?>" data-toggle="tooltip" title="<?php print ($module->isEnabled() ? 'Module is enabled.' : 'Module is disabled.');?>"></span>
+						<span class="d-block badge badge-pill module-badge badge-<?php print ($module->isEnabled() ? 'success' : 'danger');?>" data-toggle="tooltip" title="<?php ($module->isEnabled() ? I18N::__('Module is enabled.') : I18N::__('Module is disabled.'));?>"></span>
 					</td>
 					<td>
 						<strong><?php print $info->getName(); ?></strong>
@@ -31,14 +31,14 @@
 							if($module->isEnabled()) {
 								$links['disable'] = sprintf('<a href="%s" data-confirm="%s" class="text-warning">%s</a>', $this->url('/admin/modules/?disable=' . $module->getDirectory()), I18N::get('Do you really wan\'t to disable the module?'), I18N::get('Disable'));
 							} else {
-								$links['enable'] = sprintf('<a href="%s" class="text-success">Enable</a>', $this->url('/admin/modules/?enable=' . $module->getDirectory()));
+								$links['enable'] = sprintf('<a href="%s" class="text-success">%s</a>', $this->url('/admin/modules/?enable=' . $module->getDirectory()), I18N::get('Enable'));
 							}
 							
 							if($module->hasSettingsPath()) {
-								$links['settings'] = sprintf('<a href="%s" class="text-primary">Settings</a>', $this->url('/admin/modules/?settings=' . $module->getDirectory()));
+								$links['settings'] = sprintf('<a href="%s" class="text-primary">%s</a>', $this->url('/admin/modules/?settings=' . $module->getDirectory()), I18N::get('Settings'));
 							}
 							
-							$links['deinstall'] = sprintf('<a href="%s" data-confirm="Do you really wan\'t to deinstall the module?" class="text-danger">Deinstall</a>', $this->url('/admin/modules/?deinstall=' . $module->getDirectory()));
+							$links['deinstall'] = sprintf('<a href="%s" data-confirm="%s" class="text-danger">%s</a>', $this->url('/admin/modules/?deinstall=' . $module->getDirectory()), I18N::get('Do you really wan\'t to deinstall the module?'), I18N::get('Deinstall'));
 							
 							print implode(' | ', $links);
 						?></p>

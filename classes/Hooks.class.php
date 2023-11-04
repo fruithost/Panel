@@ -9,7 +9,7 @@
 		protected $actions			= [];
 		protected $current_filter	= [];
 		
-		protected function createID($method) {
+		protected function createID(mixed $method) {
 			if(is_string($method)) {
 				return $method;
 			}
@@ -31,7 +31,7 @@
 			return false;
 		}
 		
-		public function callAllHook($args) {
+		public function callAllHook(array $args) {
 			reset($this->filters['all']);
 			
 			do {
@@ -44,7 +44,7 @@
 		}
 
 		/* Filter */
-		public function addFilter($name, $method, $priority = 50, $logged_in = true) {
+		public function addFilter(string $name, \Closure | array $method, int $priority = 50, bool $logged_in = true) : bool {
 			$this->filters[$name][$priority][$this->createID($method)] = [
 				'method'    	=> $method,
 				'logged_in'		=> $logged_in
@@ -54,7 +54,7 @@
 			return true;
 		}
 		
-		public function removeFilter($name, $method, $priority = 50) {
+		public function removeFilter(string $name, \Closure | array $method, int $priority = 50) : bool {
 			$method = $this->createID($method);
 			
 			if(!isset($this->filters[$name][$priority][$method])) {
@@ -71,7 +71,7 @@
 			return true;
 		}
 		
-		public function hasFilter($name, $method = false) {
+		public function hasFilter(string $name, mixed $method = false) : bool {
 			$exists = isset($this->filters[$name]);
 			
 			if($method === false || !$exists) {
@@ -91,7 +91,7 @@
 			return false;
 		}
 		
-		public function applyFilter($name, $arguments) {
+		public function applyFilter(string $name, mixed $arguments) : mixed {
 			$args	= [];
 			$value	= $arguments;
 			
@@ -142,19 +142,19 @@
 		}
 		
 		/* Actions */
-		public function addAction($name, $method, $priority = 50, $logged_in = true) {
+		public function addAction(string $name, \Closure | array  $method, int $priority = 50, bool $logged_in = true) : bool {
 			return $this->addFilter($name, $method, $priority, $logged_in);
 		}
 		
-		public function removeAction($name, $method, $priority = 50) {
+		public function removeAction(string $name, \Closure | array $method, int $priority = 50) : bool {
 			return $this->removeFilter($name, $method, $priority);
 		}
 		
-		public function hasAction($name, $method = false) {
+		public function hasAction(string $name, mixed $method = false) : bool {
 			return $this->hasFilter($name, $method);
 		}
 		
-		public function runAction($name, $arguments = null) {
+		public function runAction(string $name, mixed $arguments = null) : bool {
 			if(!is_array($this->actions)) {
 				$this->actions = [];
 			}

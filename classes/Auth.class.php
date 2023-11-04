@@ -6,11 +6,11 @@
 			return AuthFactory::getInstance()->isLoggedIn();
 		}
 		
-		public static function TwoFactorLogin(string $username, string $password) : bool {
+		public static function TwoFactorLogin(string $username, #[\SensitiveParameter]  string $password) : bool {
 			return AuthFactory::getInstance()->TwoFactorLogin($username, $password);
 		}
 		
-		public static function login(string $username, string $password) : bool {
+		public static function login(string $username, #[\SensitiveParameter] string $password) : bool {
 			return AuthFactory::getInstance()->login($username, $password);
 		}
 		

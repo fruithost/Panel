@@ -88,7 +88,7 @@
 			require_once($path);
 		}
 		
-		public function getAdminCore() {
+		public function getAdminCore() : CoreAdmin {
 			return $this->admin;
 		}
 		

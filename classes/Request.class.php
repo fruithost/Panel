@@ -11,7 +11,7 @@
 			}
 		}
 		
-		public static function getInstance() {
+		public static function getInstance() : RequestFactory {
 			if(self::$instance === NULL) {
 				self::$instance = new self();
 			}
@@ -37,11 +37,11 @@
 			$this->_get = $_GET;
 		}
 		
-		public function has($name) {
+		public function has(string $name) : bool {
 			return in_array($name, array_keys($this->_get));
 		}
 		
-		public function get($name) {
+		public function get(string $name) : mixed {
 			if(!$this->has($name)) {
 				return null;
 			}
@@ -49,7 +49,7 @@
 			return $this->_get[$name];
 		}
 		
-		public function url() {
+		public function url() : string {
 			return $_SERVER['REQUEST_URI'];
 		}
 	}
@@ -59,15 +59,15 @@
 			RequestFactory::getInstance()->init();
 		}
 		
-		public static function has($name) {
+		public static function has(string $name) : bool {
 			return RequestFactory::getInstance()->has($name);
 		}
 		
-		public static function get($name) {
+		public static function get(string $name) : mixed {
 			return RequestFactory::getInstance()->get($name);
 		}
 		
-		public static function url() {
+		public static function url() : string {
 			return RequestFactory::getInstance()->url();
 		}
 	}

@@ -17,15 +17,15 @@
 			'stylesheets'	=> []
 		];
 		
-		public function addJavaScript($name, $file, $version, $depencies = null, $position = TemplateFiles::HEADER) {
+		public function addJavaScript(string $name, string $file, string $version, array | null $depencies = null, int $position = TemplateFiles::HEADER) {
 			$this->add($name, $file, $version, $depencies, $position, TemplateFiles::JAVASCRIPT);
 		}
 		
-		public function addStyleSheet($name, $file, $version, $depencies = null, $position = TemplateFiles::HEADER) {
+		public function addStyleSheet(string $name, string $file, string $version, array | null $depencies = null, int $position = TemplateFiles::HEADER) {
 			$this->add($name, $file, $version, $depencies, $position, TemplateFiles::STYLESHEET);
 		}
 		
-		private function add($name, $file, $version, $depencies, $position = TemplateFiles::HEADER, $type = null) {
+		private function add(string $name, string $file, string $version, array | null $depencies, int $position = TemplateFiles::HEADER, int $type = null) {
 			if($type === null) {
 				return;
 			}
@@ -65,7 +65,7 @@
 			}
 		}
 		
-		private function sortDepencies($input) {
+		private function sortDepencies(array $input) : array {
 			$cloned		= array_replace([], $input);
 			$depencies	= [];
 			$output		= [];
@@ -96,7 +96,7 @@
 			return $output;
 		}
 		
-		public function getHeaderStylesheets($depency_order = true) {
+		public function getHeaderStylesheets(bool $depency_order = true) : array {
 			if($depency_order) {
 				return $this->sortDepencies($this->header['stylesheets']);
 			}
@@ -104,7 +104,7 @@
 			return $this->header['stylesheets'];
 		}
 		
-		public function getFooterStylesheets($depency_order = true) {
+		public function getFooterStylesheets(bool $depency_order = true) : array {
 			if($depency_order) {
 				return $this->sortDepencies($this->footer['stylesheets']);
 			}
@@ -112,7 +112,7 @@
 			return $this->footer['stylesheets'];
 		}
 		
-		public function getHeaderJavascripts($depency_order = true) {
+		public function getHeaderJavascripts(bool $depency_order = true) : array {
 			if($depency_order) {
 				return $this->sortDepencies($this->header['javascripts']);
 			}
@@ -120,7 +120,7 @@
 			return $this->header['javascripts'];
 		}
 		
-		public function getFooterJavascripts($depency_order = true) {
+		public function getFooterJavascripts(bool $depency_order = true) : array {
 			if($depency_order) {
 				return $this->sortDepencies($this->footer['javascripts']);
 			}
@@ -128,7 +128,7 @@
 			return $this->footer['javascripts'];
 		}
 		
-		public function getFooter() {
+		public function getFooter() : array {
 			return $this->footer;
 		}
 	}

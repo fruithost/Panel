@@ -6,25 +6,25 @@
 		private $id				= null;
 		private $label			= null;
 		
-		public function __construct($navigation, $id, $label) {
+		public function __construct(TemplateNavigation $navigation, string $id, string $label) {
 			$this->navigation	= $navigation;
 			$this->id			= $id;
 			$this->label		= $label;
 		}
 		
-		public function getID() {
+		public function getID() : string {
 			return $this->id;
 		}
 		
-		public function getLabel() {
+		public function getLabel() : string {
 			return $this->label;
 		}
 		
-		public function isEmpty() {
+		public function isEmpty() : bool {
 			return (count($this->getEntries()) === 0);
 		}
 		
-		public function getEntries() {
+		public function getEntries() : array {
 			$hardcoded = [];
 			
 			switch($this->id) {

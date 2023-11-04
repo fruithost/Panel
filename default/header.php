@@ -27,7 +27,7 @@
 								?>
 									<ul class="navbar-nav mr-auto">
 										<li class="nav-item p-1">
-											<h3 class="p-0 m-0"><span class="badge badge-danger">DEMO VERSION</span></h3>
+											<h3 class="p-0 m-0"><span class="badge badge-danger"><?php I18N::__('DEMO VERSION'); ?></span></h3>
 										</li>
 									</ul>
 								<?php

@@ -16,13 +16,6 @@
 		exit();
 	}
 	?>
-	<style type="text/css">
-		@keyframes blink {
-			50% {
-				visibility: hidden;
-			}
-		}
-	</style>
 	<div class="terminal position-fixed">
 		<div class="output"></div>
 		<input name="command" placeholder="<?php I18N::__('Command...'); ?>" />
@@ -40,7 +33,7 @@
 					function send(cmd) {
 						$.ajax({
 							type:	'POST',
-							url:	'/server/console',
+							url:	'<?php print $this->url('/server/console'); ?>',
 							data:	{
 								action:	'command',
 								command: cmd

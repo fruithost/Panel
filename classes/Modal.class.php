@@ -9,7 +9,7 @@
 		private $callbacks	= [];
 		private $variables	= [];
 		
-		public function __construct($name, $title, $content, $variables = []) {
+		public function __construct(string $name, string $title, $content, $variables = []) {
 			$this->name			= $name;
 			$this->title		= $title;
 			$this->variables	= $variables;
@@ -27,30 +27,30 @@
 			return $this->callbacks[$name];
 		}
 		
-		public function onSave($method) {
+		public function onSave($method) : Modal {
 			$this->callbacks['save'] = $method;
 			
 			return $this;
 		}
 		
-		public function getName() {
+		public function getName() : string {
 			return $this->name;
 		}
 		
-		public function getTitle() {
+		public function getTitle() : string {
 			return $this->title;
 		}
 		
-		public function addButton($button) {
+		public function addButton(array $button) : Modal {
 			$this->buttons[] = $button;
 			return $this;
 		}
 		
-		public function getButtons() {
+		public function getButtons() : array {
 			return $this->buttons;
 		}
 		
-		public function getContent($template) {
+		public function getContent(Template $template) {
 			foreach($this->variables AS $name => $value) {
 				${$name} = $value;
 			}

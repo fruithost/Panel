@@ -11,7 +11,7 @@
 		private $files		= null;
 		private $navigation	= null;
 		
-		public function __construct($core) {
+		public function __construct(Core $core) {
 			$this->core			= $core;
 			$this->files		= new TemplateFiles();
 			$this->navigation	= new TemplateNavigation($this->core);
@@ -57,7 +57,7 @@
 			return $this->core;
 		}
 		
-		public function getAdminCore() {
+		public function getAdminCore() : CoreAdmin {
 			return $this->core->getAdminCore();
 		}
 		
@@ -65,11 +65,11 @@
 			return array_key_exists($name, $this->assigns);
 		}
 		
-		public function getAssigns() {
+		public function getAssigns() : array {
 			return $this->assigns;
 		}
 		
-		public function getFiles() {
+		public function getFiles() : TemplateFiles {
 			return $this->files;
 		}
 		
@@ -77,7 +77,7 @@
 			$this->assigns[$name] = $value;
 		}
 		
-		public function display($file, $arguments = [], $basedir = true) {
+		public function display(string $file, array $arguments = [], bool $basedir = true) {
 			$template	= $this;
 			
 			foreach($arguments AS $name => $value) {
@@ -165,7 +165,7 @@
 			}
 		}
 		
-		public function getLanguage($short = false) {
+		public function getLanguage(bool $short = false) : string {
 			$language	= $this->getCore()->getSettings('LANGUAGE', 'en_US');
 			$language	= Auth::getSettings('LANGUAGE', NULL, $language);
 			
@@ -184,7 +184,7 @@
 			$this->core->getHooks()->runAction('html_foot');
 		}
 		
-		public function url($path = null, $parameters = null) {
+		public function url(bool | string $path = null, array $parameters = null) : string {
 			$scheme = 'http';
 			
 			if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {

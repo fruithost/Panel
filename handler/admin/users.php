@@ -7,7 +7,7 @@
 	use fruithost\Response;
 	use PHPMailer\PHPMailer;
 	
-	$users = Database::fetch('SELECT *, \'**********\' AS `password` FROM `' . DATABASE_PREFIX . 'users` WHERE `deleted`=\'NO\'');
+	$users = Database::fetch('SELECT *, \'[*** PROTECTED ***]\' AS `password` FROM `' . DATABASE_PREFIX . 'users` WHERE `deleted`=\'NO\'');
 	
 	if(isset($_POST['action'])) {
 		$user = new User();
@@ -222,7 +222,7 @@
 					}
 				}
 				
-				$users = Database::fetch('SELECT *, \'**********\' AS `password` FROM `' . DATABASE_PREFIX . 'users` WHERE `deleted`=\'NO\'');
+				$users = Database::fetch('SELECT *, \'[*** PROTECTED ***]\' AS `password` FROM `' . DATABASE_PREFIX . 'users` WHERE `deleted`=\'NO\'');
 			break;
 			
 			/* create user */

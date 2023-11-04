@@ -1,3 +1,9 @@
+@keyframes blink {
+	50% {
+		visibility: hidden;
+	}
+}
+
 * {
 	outline: none !important;
 	-webkit-user-select: none;
@@ -408,7 +414,7 @@ tr:hover .module-badge {
 /* Bash Colors */
 div.terminal {
 	top: 48px;
-	left: 266px;
+	left: 256px;
 	bottom: 0;
 	right: 0;
 	background: #282c34;

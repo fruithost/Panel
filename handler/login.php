@@ -32,7 +32,7 @@
 			} else if(Auth::getSettings('2FA_ENABLED', $_POST['username'], 'false') === 'true' && Auth::TwoFactorLogin($_POST['username'], $_POST['password'])) {
 				$text	= '';
 				$code	= rand(100000, 999999);
-				$result = Database::single('SELECT * FROM `' . DATABASE_PREFIX . 'users` WHERE `username`=:username LIMIT 1', [
+				$result = Database::single('SELECT *, \'[*** PROTECTED ***]\' AS `password` FROM `' . DATABASE_PREFIX . 'users` WHERE `username`=:username LIMIT 1', [
 					'username'	=> $_POST['username']
 				]);
 				

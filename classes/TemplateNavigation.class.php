@@ -5,28 +5,28 @@
 		private $core		= null;
 		private $entries	= [];
 		
-		public function __construct($core) {
+		public function __construct(Core $core) {
 			$this->core = $core;
 		}
 		
-		public function addCategory($name, $label) {
+		public function addCategory(string $name, string $label) {
 			$category = new TemplateNavigationCategory($this, $name, $label);
 			$this->entries[$category->getID()] = $category;
 		}
 		
-		public function getCore() {
+		public function getCore() : Core {
 			return $this->core;
 		}
 		
-		public function getCategory($name) {
+		public function getCategory(string $name) : TemplateNavigationCategory {
 			return $this->entries[$name];
 		}
 		
-		public function isEmpty() {
+		public function isEmpty() : bool {
 			return (count($this->entries) === 0);
 		}
 		
-		public function getEntries() {
+		public function getEntries() : array {
 			return $this->entries;
 		}
 	}

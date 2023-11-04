@@ -16,7 +16,6 @@
 		exit();
 	}
 	?>
-	
 		<form method="post" action="<?php print $this->url('/server/settings' . (!empty($tab) ? '/' . $tab : '')); ?>">
 			<header class="page-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 				<h1 class="h2">
@@ -54,7 +53,7 @@
 								<div class="custom-control custom-checkbox">
 									<input class="custom-control-input" type="checkbox" name="project_copyright" value="true" id="project_copyright"<?php print ($template->getCore()->getSettings('PROJECT_COPYRIGHT', true) ? ' CHECKED' : ''); ?>/>
 									<label class="custom-control-label" for="project_copyright">
-										Shows the copyright in the footer
+										<?php I18N::__('Shows the copyright in the footer'); ?>
 									</label>
 								</div>
 							</div>

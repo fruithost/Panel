@@ -5,7 +5,7 @@
 		private $core		= null;
 		private $modules	= [];
 		
-		public function __construct($core) {
+		public function __construct(Core $core) {
 			$this->core = $core;
 			$enabled	= [];
 			
@@ -25,7 +25,7 @@
 			}
 		}
 		
-		public function getList() {
+		public function getList() : array {
 			$modules = [];
 			
 			foreach(new \DirectoryIterator($this->getPath()) AS $info) {
@@ -51,11 +51,11 @@
 			return $modules;
 		}
 		
-		public function getPath() {
+		public function getPath() : string {
 			return sprintf('%s%s%s', dirname(PATH), DS, 'modules');
 		}
 		
-		public function addModule($name, $module) {
+		public function addModule(string $name, Module $module) {
 			if(!$module->isEnabled()) {
 				return;
 			}
@@ -63,11 +63,11 @@
 			$this->modules[$name] = $module->init($this->core);
 		}
 		
-		public function getModules() {
+		public function getModules() : array {
 			return $this->modules;
 		}
 		
-		public function hasModule($name, $all = false) {
+		public function hasModule(string $name, bool $all = false) : bool {
 			if($all) {
 				$modules = $this->getList();
 				
@@ -85,7 +85,7 @@
 			return true;
 		}
 		
-		public function getModule($name, $all = false) {
+		public function getModule(string $name, bool $all = false) : Module | null {
 			if($all) {
 				$modules = $this->getList();
 				

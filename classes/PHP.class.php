@@ -9,7 +9,7 @@
 		private $data		= [];
 		private $error		= false;
 		
-		public function setPath($path) {
+		public function setPath(string $path) {
 			$this->path = $path;
 		}
 		
@@ -39,7 +39,7 @@
 			$this->content = $result;
 		}
 		
-		public function exploding($name, $data) {
+		public function exploding(string $name, mixed $data) : array {
 			if($name == 'Configuration File (php.ini) Path') {
 				return $this->highlight($this->path);
 			}
@@ -67,7 +67,7 @@
 			return $this->highlight($data);
 		}
 		
-		public function highlight($data) {
+		public function highlight(array | string $data) : array | string {
 			if(is_array($data)) {
 				foreach($data AS $name => $value) {
 					$data[$name] = $this->highlight($value);
@@ -106,7 +106,7 @@
 			return $data;
 		}
 		
-		public function hasErrors() {
+		public function hasErrors() : bool {
 			return $this->error;
 		}
 		
@@ -174,7 +174,7 @@
 			];
 		}
 		
-		public function getInfo() {			
+		public function getInfo() : array {			
 			$this->execute();
 			$this->parse();
 			
