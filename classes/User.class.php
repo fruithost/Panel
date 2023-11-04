@@ -163,5 +163,10 @@
 		public function getGravatar() : string {
 			return sprintf('https://www.gravatar.com/avatar/%s?s=%d&d=%s&r=%s', md5(strtolower(trim($this->email))), 22, 'mp', 'g');
 		}
+		
+		public function delete() {
+			/* @ToDo Delete complete files and folders */
+			/* this method will be called, when user will be deleted on admin-user-list */
+		}
 	}
 ?>

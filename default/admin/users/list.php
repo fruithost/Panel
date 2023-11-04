@@ -23,7 +23,7 @@
 				<tr>
 					<td scope="row" width="1px">
 						<div class="custom-control custom-checkbox">
-							<input class="custom-control-input" type="checkbox" id="user_<?php print $user->getID(); ?>" name="user[]" value="<?php print $user->getID(); ?>" />
+							<input class="custom-control-input" type="checkbox" id="user_<?php print $user->getID(); ?>" name="user[]" value="<?php print $user->getID(); ?>"<?php print ($user->getID() == 1 ? ' DISABLED' : ''); ?> />
 							<label class="custom-control-label" for="user_<?php print $user->getID(); ?>"></label>
 						</div>
 					</td>
@@ -43,7 +43,10 @@
 						<div class="btn-group" role="group">
 							<?php
 								printf('<a href="%s" class="btn btn-info">%s</a>', $this->url('/admin/users/' . $user->getID()), I18N::get('Edit'));
-								printf('<a href="%s" data-confirm="%s" class="btn btn-danger">%s</a>', $this->url('/admin/users/' . $user->getID() . '/delete'), I18N::get('Do you really wan\'t to delete the user?'), I18N::get('Delete'));
+								
+								if($user->getID() != 1) {
+									printf('<button name="action" value="deletes" data-confirm="%s" class="btn btn-danger deletes">%s</button>', I18N::get('Do you really wan\'t to delete the user?'), I18N::get('Delete'));
+								}
 							?>
 						</div>
 					</td>

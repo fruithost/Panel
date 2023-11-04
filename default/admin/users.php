@@ -26,7 +26,14 @@
 							?>
 								<div class="btn-group mr-2">
 									<button type="submit" name="action" value="save" class="btn btn-sm btn-outline-primary"><?php I18N::__('Save'); ?></button>
-									<button type="submit" name="action" value="delete" class="btn btn-sm btn-outline-danger"><?php I18N::__('Delete'); ?></button>
+									
+									<?php
+										if($user->getID() != 1) {
+											?>
+												<button type="submit" name="action" value="delete" class="btn btn-sm btn-outline-danger"><?php I18N::__('Delete'); ?></button>
+											<?php
+										}
+									?>
 								</div>
 							<?php
 							
@@ -51,9 +58,11 @@
 				if(!is_numeric($tab)) {
 					if(isset($error)) {
 						?>
-							<div class="alert alert-danger mt-4" role="alert"><?php print $error; ?></div>
+							<div class="alert alert-danger mt-4" role="alert"><?php (is_array($error) ? var_dump($error) : print $error); ?></div>
 						<?php
-					} else if(isset($success)) {
+					}
+					
+					if(isset($success)) {
 						?>
 							<div class="alert alert-success mt-4" role="alert"><?php (is_array($success) ? var_dump($success) : print $success); ?></div>
 						<?php
@@ -113,8 +122,8 @@
 							}
 						});
 						
-						$('button[name="action"].deletes, button[name="action"].update').on('click', function(event) {
-							$(event.target).parent().parent().find('input[type="checkbox"]').prop('checked', true);
+						$('button[name="action"].deletes').on('click', function(event) {
+							$(event.target).parent().parent().parent().find('input[type="checkbox"]').prop('checked', true);
 						});
 					}(jQuery));
 				}

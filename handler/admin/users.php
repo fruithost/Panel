@@ -9,12 +9,15 @@
 	
 	
 	if(isset($_POST['action'])) {
+		$user = new User();
+		
+		if(is_numeric($tab) && $tab > 0) {
+			$user->fetch($tab);
+		}
+		
 		switch($_POST['action']) {
 			/* Save user */
 			case 'save':
-				$user = new User();
-				$user->fetch($tab);
-				
 				switch($action) {
 					case 'settings':
 						if(isset($_POST['language'])) {
@@ -179,9 +182,14 @@
 					break;
 				}
 			break;
+			
+			/* delete user */
 			case 'delete':
-				/* delete user */
-				$this->assign('success', $_POST);
+				if($user->getID() == 1) {
+					$this->assign('error', I18N::get('You cant delete the admin account!'));
+				} else {
+					$user->delete();
+				}
 			break;
 			case 'create':
 				/* create user */
@@ -190,16 +198,26 @@
 			case 'deletes':
 				$messages	= [];
 				
-				if(isset($_POST['user'])) {	
-					$messages[] = sprintf(I18N::get('<strong>%d Users</strong> was successfully deleted'), count($_POST['user']));
-				
-					$users = Database::fetch('SELECT *, \'**********\' AS `password` FROM `' . DATABASE_PREFIX . 'users`');
+				if(isset($_POST['user'])) {
+					foreach($_POST['user'] AS $id) {
+						$user = new User();
+						$user->fetch($id);
+						
+						if($user->getID() == 1) {
+							$this->assign('error', I18N::get('You cant delete the admin account!'));
+						} else {
+							$messages[] = sprintf(I18N::get('<strong>%d</strong> was successfully deleted'), $user->getUsername());
+							$user->delete();
+						}
+					}
 				}
 				
 				if(count($messages) > 0) {
 					$this->assign('success', implode(' and ', $messages));
 				} else {
-					$this->assign('error', I18N::get('Please select some entries you want to delete.'));
+					if(!$this->isAssigned('error')) {
+						$this->assign('error', I18N::get('Please select some entries you want to delete.'));
+					}
 				}
 			break;
 		}

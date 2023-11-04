@@ -61,6 +61,10 @@
 			return $this->core->getAdminCore();
 		}
 		
+		public function isAssigned(string $name) : bool {
+			return array_key_exists($name, $this->assigns);
+		}
+		
 		public function getAssigns() {
 			return $this->assigns;
 		}
@@ -69,7 +73,7 @@
 			return $this->files;
 		}
 		
-		public function assign($name, $value) {
+		public function assign(string $name, mixed $value) {
 			$this->assigns[$name] = $value;
 		}
 		
