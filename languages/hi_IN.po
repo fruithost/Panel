@@ -1,0 +1,700 @@
+msgid ""
+msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: Hindi\n"
+
+
+msgid "Account"
+msgstr "खाता"
+
+msgid "Databases"
+msgstr "डेटाबेस"
+
+msgid "Domains"
+msgstr "डोमेन"
+
+msgid "E-Mails"
+msgstr "ई-मेल"
+
+msgid "FTP"
+msgstr "एफ़टीपी"
+
+msgid "Hosting"
+msgstr "होस्टिंग"
+
+msgid "Extended"
+msgstr "विस्तारित"
+
+msgid "Support"
+msgstr "समर्थन"
+
+msgid "Administration"
+msgstr "प्रशासन"
+
+msgid "Server"
+msgstr "सर्वर"
+
+msgid "Confirmation"
+msgstr "पुष्टि"
+
+msgid "No"
+msgstr "नहीं"
+
+msgid "Yes"
+msgstr "हाँ"
+
+msgid "Unknown User"
+msgstr "अज्ञात उपयोगकर्ता"
+
+msgid "Password mismatched."
+msgstr "पासवर्ड मेल नहीं खाता।"
+
+msgid "Settings"
+msgstr "सेटिंग्स"
+
+msgid "Logout"
+msgstr "लॉगआउट"
+
+msgid "Overview"
+msgstr "अवलोकन"
+
+msgid "Users"
+msgstr "उपयोगकर्ता"
+
+msgid "Themes"
+msgstr "विषय-वस्तु"
+
+msgid "Modules"
+msgstr "मॉड्यूल"
+
+msgid "Logfiles"
+msgstr "लॉगफ़ाइलें"
+
+msgid "Console"
+msgstr "कंसोल"
+
+msgid "Packages"
+msgstr "पैकेज"
+
+msgid "Services"
+msgstr "सेवाएँ"
+
+msgid "Reboot"
+msgstr "रिबूट"
+
+msgid "Access denied!"
+msgstr "प्रवेश निषेध!"
+
+msgid "You have no permissions for this page."
+msgstr "आपके पास इस पृष्ठ के लिए कोई अनुमति नहीं है।"
+
+msgid "edit"
+msgstr "संपादित करें"
+
+msgid "create User"
+msgstr "उपयोगकर्ता बनाएं"
+
+msgid "Save"
+msgstr "बचाओ"
+
+msgid "Delete"
+msgstr "हटाएं"
+
+msgid "Create"
+msgstr "बनाएँ"
+
+msgid "Add new"
+msgstr "नया जोड़ें"
+
+msgid "No Users available!"
+msgstr "कोई उपयोगकर्ता उपलब्ध नहीं!"
+
+msgid "Please add some Users."
+msgstr "कृपया कुछ उपयोगकर्ता जोड़ें।"
+
+msgid "User"
+msgstr "उपयोगकर्ता"
+
+msgid "Name"
+msgstr "नाम"
+
+msgid "E-Mail"
+msgstr "ई-मेल"
+
+msgid "Edit"
+msgstr "संपादित करें"
+
+msgid "Language"
+msgstr "भाषा"
+
+msgid "Time Format"
+msgstr "समय प्रारूप"
+
+msgid "Timezone"
+msgstr "समय क्षेत्र"
+
+msgid "ID"
+msgstr "आईडी"
+
+msgid "Username"
+msgstr "उपयोक्तानाम"
+
+msgid "E-Mail Adress"
+msgstr "ई-मेल पता"
+
+msgid "Full Name"
+msgstr "पूरा नाम"
+
+msgid "Phone Number"
+msgstr "फ़ोन नंबर"
+
+msgid "Postal Address"
+msgstr "डाक पता"
+
+msgid "Security settings"
+msgstr "सुरक्षा सेटिंग्स"
+
+msgid "Change password manually"
+msgstr "पासवर्ड मैन्युअल रूप से बदलें"
+
+msgid "Initiate password reset"
+msgstr "पासवर्ड रीसेट आरंभ करें"
+
+msgid "Generate new password"
+msgstr "नया पासवर्ड जनरेट करें"
+
+msgid "Type"
+msgstr "प्रकार"
+
+msgid "Smartphone"
+msgstr "स्मार्टफोन"
+
+msgid "disabled"
+msgstr "अक्षम"
+
+msgid "SMS"
+msgstr "एसएमएस"
+
+msgid "New Password"
+msgstr "नया पासवर्ड"
+
+msgid "Password Confirmation"
+msgstr "पासवर्ड पुष्टिकरण"
+
+msgid "Initiates the password recovery process."
+msgstr "पासवर्ड पुनर्प्राप्ति प्रक्रिया प्रारंभ करता है।"
+
+msgid "The user receives an E-Mail with instructions on how to reset the password."
+msgstr "उपयोगकर्ता को पासवर्ड रीसेट करने के निर्देशों के साथ एक ई-मेल प्राप्त होता है।"
+
+msgid "The user will probably not receive an E-Mail because the provided <strong>E-Mail address is invalid<\/strong>."
+msgstr "उपयोगकर्ता को संभवतः ई-मेल प्राप्त नहीं होगा क्योंकि प्रदान किया गया <strong>ई-मेल पता अमान्य है</strong>।"
+
+msgid "Activate the reset using password recovery"
+msgstr "पासवर्ड पुनर्प्राप्ति का उपयोग करके रीसेट को सक्रिय करें"
+
+msgid "The system automatically generates a strong password and sends it to the user by E-Mail."
+msgstr "सिस्टम स्वचालित रूप से एक मजबूत पासवर्ड उत्पन्न करता है और इसे ई-मेल द्वारा उपयोगकर्ता को भेजता है।"
+
+msgid "Please note that the password can only be sent if the user has entered a valid E-Mail address."
+msgstr "कृपया ध्यान दें कि पासवर्ड केवल तभी भेजा जा सकता है जब उपयोगकर्ता ने वैध ई-मेल पता दर्ज किया हो।"
+
+msgid "Activate the reset using password generation"
+msgstr "पासवर्ड जनरेशन का उपयोग करके रीसेट को सक्रिय करें"
+
+msgid "Password Settings"
+msgstr "पासवर्ड सेटिंग्स"
+
+msgid "Cancel"
+msgstr "रद्द करें"
+
+msgid "Module not found!"
+msgstr "मॉड्यूल नहीं मिला!"
+
+msgid "Unknown module name. Please select an valid Module!"
+msgstr "अज्ञात मॉड्यूल नाम. "
+
+msgid "No Settings available!"
+msgstr "कोई सेटिंग उपलब्ध नहीं!"
+
+msgid "The Module %s has no settings!"
+msgstr "मॉड्यूल %s में कोई सेटिंग नहीं है!"
+
+msgid "Update"
+msgstr "अद्यतन"
+
+msgid "Upgrade"
+msgstr "अपग्रेड करें"
+
+msgid "Installed Modules"
+msgstr "स्थापित मॉड्यूल"
+
+msgid "Repositorys"
+msgstr "भंडार"
+
+msgid "No Themes available!"
+msgstr "कोई थीम उपलब्ध नहीं!"
+
+msgid "Please install some Themes."
+msgstr "कृपया कुछ थीम्स स्थापित करें।"
+
+msgid "No Modules available!"
+msgstr "कोई मॉड्यूल उपलब्ध नहीं!"
+
+msgid "Please install some Modules."
+msgstr "कृपया कुछ मॉड्यूल स्थापित करें।"
+
+msgid "Module"
+msgstr "मॉड्यूल"
+
+msgid "Description"
+msgstr "विवरण"
+
+msgid "Module is enabled."
+msgstr "मॉड्यूल सक्षम है."
+
+msgid "Module is disabled."
+msgstr "मॉड्यूल अक्षम है."
+
+msgid "Disable"
+msgstr "अक्षम करें"
+
+msgid "Enable"
+msgstr "सक्षम करें"
+
+msgid "Deinstall"
+msgstr "डिइंस्टॉल करें"
+
+msgid "The module <strong>%s<\/strong> has an new upgrade to <strong>Version %s<\/strong>!"
+msgstr "मॉड्यूल <strong>%s<\/strong> को <strong>संस्करण %s</strong> में एक नया अपग्रेड मिला है!"
+
+msgid "Upgrade now!"
+msgstr "अभी अपग्रेड करें!"
+
+msgid "Version"
+msgstr "संस्करण"
+
+msgid "by"
+msgstr "द्वारा"
+
+msgid "No Repositorys available!"
+msgstr "कोई रिपोजिटरी उपलब्ध नहीं!"
+
+msgid "Please adding some Repositorys to keep updates."
+msgstr "कृपया अपडेट रखने के लिए कुछ रिपॉजिटरी जोड़ें।"
+
+msgid "Add Repository"
+msgstr "रिपॉजिटरी जोड़ें"
+
+msgid "Repository"
+msgstr "भंडार"
+
+msgid "Status"
+msgstr "स्थिति"
+
+msgid "Actions"
+msgstr "क्रियाएँ"
+
+msgid "Never updated"
+msgstr "कभी अद्यतन नहीं किया गया"
+
+msgid "Error"
+msgstr "त्रुटि"
+
+msgid "Malformed Repository"
+msgstr "विकृत भंडार"
+
+msgid "More Informations"
+msgstr "अधिक जानकारी"
+
+msgid "Last updated"
+msgstr "अंतिम अद्यतन"
+
+msgid "Repository URL"
+msgstr "रिपॉजिटरी यूआरएल"
+
+msgid "Package"
+msgstr "पैकेज"
+
+msgid "Command..."
+msgstr "कमांड..."
+
+msgid "Refresh"
+msgstr "ताज़ा करें"
+
+msgid "Loading"
+msgstr "लोड हो रहा है"
+
+msgid "No File selected!"
+msgstr "कोई फ़ाइल चयनित नहीं!"
+
+msgid "Please select an Logfile from the List."
+msgstr "कृपया सूची से एक लॉगफ़ाइल चुनें।"
+
+msgid "Directory"
+msgstr "निर्देशिका"
+
+msgid "Path"
+msgstr "पथ"
+
+msgid "No permissions!"
+msgstr "कोई अनुमति नहीं!"
+
+msgid "File"
+msgstr "फ़ाइल"
+
+msgid "Global settings for the Panel"
+msgstr "पैनल के लिए वैश्विक सेटिंग्स"
+
+msgid "Project name"
+msgstr "परियोजना का नाम"
+
+msgid "Show Copyright"
+msgstr "कॉपीराइट दिखाएँ"
+
+msgid "Shows the copyright in the footer"
+msgstr "पादलेख में कॉपीराइट दिखाता है"
+
+msgid "Default Language"
+msgstr "डिफ़ॉल्ट भाषा"
+
+msgid "Default Time Format"
+msgstr "डिफ़ॉल्ट समय प्रारूप"
+
+msgid "Default Timezone"
+msgstr "डिफ़ॉल्ट समयक्षेत्र"
+
+msgid "Service"
+msgstr "सेवा"
+
+msgid "Info"
+msgstr "जानकारी"
+
+msgid "System Properties"
+msgstr "सिस्टम गुण"
+
+msgid "Hostname"
+msgstr "होस्टनाम"
+
+msgid "Time"
+msgstr "समय"
+
+msgid "System"
+msgstr "प्रणाली"
+
+msgid "Kernel"
+msgstr "कर्नेल"
+
+msgid "Uptime"
+msgstr "अपटाइम"
+
+msgid "Daemon"
+msgstr "डेमन"
+
+msgid "Last Start"
+msgstr "अंतिम प्रारंभ"
+
+msgid "%s ago"
+msgstr "%s पहले"
+
+msgid "Last End"
+msgstr "अंतिम अंत"
+
+msgid "Last Time"
+msgstr "पिछली बार"
+
+msgid "%d Seconds"
+msgstr "%d सेकंड"
+
+msgid "Mounted Drives"
+msgstr "माउंटेड ड्राइव"
+
+msgid "Type: %s | FileSystem: %s | Size: %s \/ %s"
+msgstr "प्रकार: %s | "
+
+msgid "System-Reboot"
+msgstr "सिस्टम-रीबूट"
+
+msgid "Do you really want to reboot the complete system?"
+msgstr "क्या आप सचमुच संपूर्ण सिस्टम को रीबूट करना चाहते हैं?"
+
+msgid "Reboot now!"
+msgstr "अभी रिबूट करें!"
+
+msgid "Please sign in"
+msgstr "कृपया साइन इन करें"
+
+msgid "Code"
+msgstr "कोड"
+
+msgid "Password"
+msgstr "पासवर्ड"
+
+msgid "Lost password"
+msgstr "पासवर्ड खो गया"
+
+msgid "Sign in"
+msgstr "साइन इन करें"
+
+msgid "Global Settings"
+msgstr "वैश्विक सेटिंग्स"
+
+msgid "Security"
+msgstr "सुरक्षा"
+
+msgid "Global settings for your usability"
+msgstr "आपकी प्रयोज्यता के लिए वैश्विक सेटिंग्स"
+
+msgid "Some security settings for your safety."
+msgstr "आपकी सुरक्षा के लिए कुछ सुरक्षा सेटिंग्स।"
+
+msgid "Check your E-Mail address in the <a href=\"%s\">account settings<\/a>."
+msgstr "<a href=\"%s\">खाता सेटिंग<\/a> में अपना ई-मेल पता जांचें।"
+
+msgid "Reset your Password"
+msgstr "अपना पासवर्ड रीसेट करें"
+
+msgid "Back to the login"
+msgstr "लॉगिन पर वापस जाएं"
+
+msgid "Reset Password"
+msgstr "पासवर्ड रीसेट करें"
+
+msgid "Account Details"
+msgstr "खाता विवरण"
+
+msgid "Change Password"
+msgstr "पासवर्ड बदलें"
+
+msgid "Current personal details that you have provided us with, We ask that you keep these upto date in case we require to contact you regarding your hosting package."
+msgstr "वर्तमान व्यक्तिगत विवरण जो आपने हमें प्रदान किए हैं, हम अनुरोध करते हैं कि यदि हमें आपके होस्टिंग पैकेज के संबंध में आपसे संपर्क करने की आवश्यकता हो तो आप इन्हें अद्यतन रखें।"
+
+msgid "Change your current control panel password."
+msgstr "अपना वर्तमान नियंत्रण कक्ष पासवर्ड बदलें।"
+
+msgid "Current Password"
+msgstr "वर्तमान पासवर्ड"
+
+msgid "DEMO VERSION"
+msgstr "डेमो संस्करण"
+
+msgid "Reload"
+msgstr "पुनः लोड करें"
+
+msgid "Module Error"
+msgstr "मॉड्यूल त्रुटि"
+
+msgid "The specified module could not be loaded."
+msgstr "निर्दिष्ट मॉड्यूल लोड नहीं किया जा सका।"
+
+msgid "404 - Not Found"
+msgstr "404 - नहीं मिला"
+
+msgid "The page you requested could not be found."
+msgstr "आपके द्वारा अनुरोधित पृष्ठ नहीं मिल सका।"
+
+msgid "Welcome to %s!"
+msgstr "%s में आपका स्वागत है!"
+
+msgid "Get Started"
+msgstr "आरंभ करें"
+
+msgid "Create a Domain"
+msgstr "एक डोमेन बनाएं"
+
+msgid "create a new subdomain"
+msgstr "एक नया उपडोमेन बनाएं"
+
+msgid "Next Steps"
+msgstr "अगले चरण"
+
+msgid "Create an FTP Account"
+msgstr "एक एफ़टीपी खाता बनाएँ"
+
+msgid "Create a new Database"
+msgstr "एक नया डेटाबेस बनाएं"
+
+msgid "Create a new Mailbox"
+msgstr "एक नया मेलबॉक्स बनाएं"
+
+msgid "More Actions"
+msgstr "अधिक क्रियाएँ"
+
+msgid "Modify your Account settings"
+msgstr "अपनी खाता सेटिंग संशोधित करें"
+
+msgid "Settings for <strong>%s<\/strong> was successfully updated."
+msgstr "<strong>%s</strong> के लिए सेटिंग्स सफलतापूर्वक अपडेट की गईं।"
+
+msgid "Please repeat your new password."
+msgstr "कृपया अपना नया पासवर्ड दोहराएं।"
+
+msgid "The new password must contain the minimum number of 8 characters."
+msgstr "नए पासवर्ड में न्यूनतम 8 अक्षर होने चाहिए।"
+
+msgid "Can\\t send recovery instructions, because the user has an <strong>invalid E-Mail address<\/strong>."
+msgstr "पुनर्प्राप्ति निर्देश नहीं भेज सकते, क्योंकि उपयोगकर्ता के पास <strong>अमान्य ई-मेल पता</strong> है।"
+
+msgid "New password for your account"
+msgstr "आपके खाते के लिए नया पासवर्ड"
+
+msgid "The new generated password has been sent to users E-Mail adress!"
+msgstr "नया जनरेट किया गया पासवर्ड उपयोगकर्ताओं के ई-मेल पते पर भेज दिया गया है!"
+
+msgid "Your password request has been sent to users E-Mail adress!"
+msgstr "आपका पासवर्ड अनुरोध उपयोगकर्ताओं के ई-मेल पते पर भेज दिया गया है!"
+
+msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
+msgstr "<strong>%s</strong> के लिए सुरक्षा-सेटिंग्स सफलतापूर्वक अद्यतन की गई।"
+
+msgid "Please enter a valid E-Mail address."
+msgstr "कृपया एक वैध ई-मेल पता दर्ज करें।"
+
+msgid "User <strong>%s<\/strong> was successfully edited."
+msgstr "उपयोगकर्ता <strong>%s</strong> को सफलतापूर्वक संपादित किया गया।"
+
+msgid "You cant delete the admin account!"
+msgstr "आप व्यवस्थापक खाता नहीं हटा सकते!"
+
+msgid "The user <strong>%s<\/strong> was successfully deleted."
+msgstr "उपयोगकर्ता <strong>%s</strong> को सफलतापूर्वक हटा दिया गया।"
+
+msgid "Please select some entries you want to delete."
+msgstr "कृपया कुछ प्रविष्टियाँ चुनें जिन्हें आप हटाना चाहते हैं।"
+
+msgid "Please enter the username."
+msgstr "कृपया उपयोक्तानाम दर्ज करें।"
+
+msgid "The new username must contain the minimum number of 2 characters."
+msgstr "नये उपयोक्तानाम में न्यूनतम 2 अक्षर होने चाहिए।"
+
+msgid "The username is already in use."
+msgstr "उपयोगकर्ता नाम पहले से ही उपयोग में है।"
+
+msgid "Please enter an E-Mail address."
+msgstr "कृपया एक ई-मेल पता दर्ज करें।"
+
+msgid "The E-Mail address is already in use."
+msgstr "ई-मेल पता पहले से ही उपयोग में है।"
+
+msgid "Please enter the password."
+msgstr "कृपया पासवर्ड दर्ज करें।"
+
+msgid "Please repeat the password."
+msgstr "कृपया पासवर्ड दोहराएं।"
+
+msgid "Your password and confirmation password do not match."
+msgstr "आपका पासवर्ड और पुष्टिकरण पासवर्ड मेल नहीं खाता।"
+
+msgid "The user <strong>%s<\/strong> was successfully created."
+msgstr "उपयोगकर्ता <strong>%s</strong> सफलतापूर्वक बनाया गया।"
+
+msgid "Please enter an valid  repository URL!"
+msgstr "कृपया एक वैध रिपोजिटरी यूआरएल दर्ज करें!"
+
+msgid "Repository already exists!"
+msgstr "रिपॉजिटरी पहले से मौजूद है!"
+
+msgid "The module is already disabled!"
+msgstr "मॉड्यूल पहले से ही अक्षम है!"
+
+msgid "The module was successfully disabled."
+msgstr "मॉड्यूल सफलतापूर्वक अक्षम कर दिया गया था।"
+
+msgid "The module not exists!"
+msgstr "मॉड्यूल मौजूद नहीं है!"
+
+msgid "The module is already enabled!"
+msgstr "मॉड्यूल पहले से ही सक्षम है!"
+
+msgid "The module was successfully enabled."
+msgstr "मॉड्यूल सफलतापूर्वक सक्षम किया गया था।"
+
+msgid "The module was successfully deinstalled!"
+msgstr "मॉड्यूल सफलतापूर्वक अनइंस्टॉल किया गया!"
+
+msgid "<strong>%d Repository%s<\/strong> was updated. Found %d related Update%s!"
+msgstr "<strong>%d रिपोजिटरी%s</strong> को अद्यतन किया गया। "
+
+msgid "<strong>%d Repositorys<\/strong> was successfully removed"
+msgstr "<strong>%d रिपॉजिटरी</strong> को सफलतापूर्वक हटा दिया गया"
+
+msgid "You have no permissions for this action!"
+msgstr "आपके पास इस कार्रवाई के लिए कोई अनुमति नहीं है!"
+
+msgid "The system settings has been saved."
+msgstr "सिस्टम सेटिंग्स सहेज ली गई हैं।"
+
+msgid "The System will be rebooted now!"
+msgstr "सिस्टम अब रीबूट हो जाएगा!"
+
+msgid "Your 2FA code is invalid!"
+msgstr "आपका 2एफए कोड अमान्य है!"
+
+msgid "Please complete the two factor authentication:"
+msgstr "कृपया दो कारक प्रमाणीकरण पूरा करें:"
+
+msgid "Login was unsuccessful!"
+msgstr "लॉगिन असफल रहा!"
+
+msgid "Your security settings has been updated."
+msgstr "आपकी सुरक्षा सेटिंग्स अपडेट कर दी गई हैं।"
+
+msgid "Your settings has been updated."
+msgstr "आपकी सेटिंग्स अपडेट कर दी गई हैं।"
+
+msgid "The given Token is invalid or was expired."
+msgstr "दिया गया टोकन अमान्य है या समाप्त हो चुका है।"
+
+msgid "Please enter a new password."
+msgstr "कृपया एक नया पासवर्ड दर्ज करें।"
+
+msgid "Your password has been restored."
+msgstr "आपका पासवर्ड पुनर्स्थापित कर दिया गया है।"
+
+msgid "Please enter an valid and registred E-Mail address!"
+msgstr "कृपया एक वैध और पंजीकृत ई-मेल पता दर्ज करें!"
+
+msgid "Your request has been sent to your E-Mail adress!"
+msgstr "आपका अनुरोध आपके ई-मेल पते पर भेज दिया गया है!"
+
+msgid "Please enter your current password."
+msgstr "कृपया अपना वर्तमान पासवर्ड दर्ज करें।"
+
+msgid "Please enter your new password."
+msgstr "कृपया अपना नया पासवर्ड दर्ज करें।"
+
+msgid "Your current password is not correct!"
+msgstr "आपका वर्तमान पासवर्ड सही नहीं है!"
+
+msgid "Your password has been updated."
+msgstr "आपका पासवर्ड अपडेट कर दिया गया है।"
+
+msgid "Please enter your E-Mail address."
+msgstr "कृपया अपना ई-मेल पता दर्ज करें।"
+
+msgid "Please enter your first name."
+msgstr "कृपया अपना पहला नाम दर्ज करें।"
+
+msgid "Please enter your last name."
+msgstr "कृपया अपना अंतिम नाम दर्ज करें।"
+
+msgid "Please enter your phone  number."
+msgstr "कृपया अपना फ़ोन नंबर दर्ज करें।"
+
+msgid "Please enter your address."
+msgstr "कृपया अपना पता दर्ज करें।"
+
+msgid "Your personal data has been updated."
+msgstr "आपका व्यक्तिगत डेटा अपडेट कर दिया गया है।"
+
+msgid "Enable Two-factor authentication (2FA)"
+msgstr "दो-कारक प्रमाणीकरण सक्षम करें (2एफए)"
+
+msgid "Do you really wan't to delete all selected users?"
+msgstr "क्या आप सचमुच सभी चयनित उपयोगकर्ताओं को हटाना नहीं चाहते?"
+
+msgid "Do you really wan't to delete the user?"
+msgstr "क्या आप सचमुच उपयोगकर्ता को हटाना नहीं चाहते?"
+

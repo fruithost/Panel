@@ -3,7 +3,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language: German\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 
 msgid "Account"
 msgstr "Konto"
@@ -35,21 +35,6 @@ msgstr "Verwaltung"
 msgid "Server"
 msgstr "Server"
 
-msgid "Unknown User"
-msgstr "Unbekannter Benutzer"
-
-msgid "Password mismatched."
-msgstr "Passwort stimmt nicht überein."
-
-msgid "Add Repository"
-msgstr "Repository hinzufügen"
-
-msgid "Cancel"
-msgstr "Abbrechen"
-
-msgid "Create"
-msgstr "Anlegen"
-
 msgid "Confirmation"
 msgstr "Bestätigung"
 
@@ -59,29 +44,11 @@ msgstr "Nein"
 msgid "Yes"
 msgstr "Ja"
 
-msgid "The module is already disabled!"
-msgstr "Das Modul ist bereits deaktiviert!"
+msgid "Unknown User"
+msgstr "Unbekannter Benutzer"
 
-msgid "The module was successfully disabled."
-msgstr "Das Modul wurde erfolgreich deaktiviert."
-
-msgid "The module not exists!"
-msgstr "Das Modul existiert nicht!"
-
-msgid "The module is already enabled!"
-msgstr "Das Modul ist bereits deaktiviert!"
-
-msgid "The module was successfully enabled."
-msgstr "Das Modul wurde erfolgreich deaktiviert."
-
-msgid "The module was successfully deinstalled!"
-msgstr "Das Modul wurde erfolgreich deaktiviert!"
-
-msgid "Please enter an valid  repository URL!"
-msgstr "Bitte geben Sie eine gültige Repository-URL ein!"
-
-msgid "Repository already exists!"
-msgstr "Repository existiert bereits!"
+msgid "Password mismatched."
+msgstr "Passwort stimmt nicht überein."
 
 msgid "Settings"
 msgstr "Einstellungen"
@@ -96,13 +63,13 @@ msgid "Users"
 msgstr "Benutzer"
 
 msgid "Themes"
-msgstr "Themes"
+msgstr "Themen"
 
 msgid "Modules"
 msgstr "Module"
 
 msgid "Logfiles"
-msgstr "Logdateien"
+msgstr "Protokolldateien"
 
 msgid "Console"
 msgstr "Konsole"
@@ -116,6 +83,210 @@ msgstr "Dienste"
 msgid "Reboot"
 msgstr "Neustart"
 
+msgid "Access denied!"
+msgstr "Zugriff verweigert!"
+
+msgid "You have no permissions for this page."
+msgstr "Sie haben keine Berechtigungen für diese Seite."
+
+msgid "edit"
+msgstr "bearbeiten"
+
+msgid "create User"
+msgstr "Benutzer erstellen"
+
+msgid "Save"
+msgstr "Speichern"
+
+msgid "Delete"
+msgstr "Löschen"
+
+msgid "Create"
+msgstr "Erstellen"
+
+msgid "Add new"
+msgstr "Neu hinzufügen"
+
+msgid "No Users available!"
+msgstr "Keine Benutzer verfügbar!"
+
+msgid "Please add some Users."
+msgstr "Bitte fügen Sie einen Benutzer hinzu."
+
+msgid "User"
+msgstr "Benutzer"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "E-Mail"
+msgstr "E-Mail"
+
+msgid "Edit"
+msgstr "Bearbeiten"
+
+msgid "Language"
+msgstr "Sprache"
+
+msgid "Time Format"
+msgstr "Zeitformat"
+
+msgid "Timezone"
+msgstr "Zeitzone"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Username"
+msgstr "Benutzername"
+
+msgid "E-Mail Adress"
+msgstr "E-Mail Adresse"
+
+msgid "Full Name"
+msgstr "Vollständiger Name"
+
+msgid "Phone Number"
+msgstr "Telefonnummer"
+
+msgid "Postal Address"
+msgstr "Postanschrift"
+
+msgid "Security settings"
+msgstr "Sicherheitseinstellungen"
+
+msgid "Change password manually"
+msgstr "Passwort manuell ändern"
+
+msgid "Initiate password reset"
+msgstr "Passwort-Reset einleiten"
+
+msgid "Generate new password"
+msgstr "Neues Passwort generieren"
+
+msgid "Type"
+msgstr "Typ"
+
+msgid "Smartphone"
+msgstr "Handy"
+
+msgid "disabled"
+msgstr "deaktiviert"
+
+msgid "SMS"
+msgstr "SMS"
+
+msgid "New Password"
+msgstr "Neues Passwort"
+
+msgid "Password Confirmation"
+msgstr "Passwortbestätigung"
+
+msgid "Initiates the password recovery process."
+msgstr "Leitet den Passwortwiederherstellungsprozess ein."
+
+msgid "The user receives an E-Mail with instructions on how to reset the password."
+msgstr "Der Benutzer erhält eine E-Mail mit Anweisungen zum Zurücksetzen des Passworts."
+
+msgid "The user will probably not receive an E-Mail because the provided <strong>E-Mail address is invalid<\/strong>."
+msgstr "Der Benutzer wird wahrscheinlich keine E-Mail erhalten, da die angegebene <strong>E-Mail-Adresse ungültig ist<\/strong>."
+
+msgid "Activate the reset using password recovery"
+msgstr "Aktivieren Sie das Zurücksetzen mithilfe der Passwortwiederherstellung"
+
+msgid "The system automatically generates a strong password and sends it to the user by E-Mail."
+msgstr "Das System generiert automatisch ein sicheres Passwort und sendet es per E-Mail an den Benutzer."
+
+msgid "Please note that the password can only be sent if the user has entered a valid E-Mail address."
+msgstr "Bitte beachten Sie, dass das Passwort nur gesendet werden kann, wenn der Benutzer eine gültige E-Mail-Adresse angegeben hat."
+
+msgid "Activate the reset using password generation"
+msgstr "Reset mittels Passwortgenerierung aktivieren"
+
+msgid "Password Settings"
+msgstr "Passworteinstellungen"
+
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgid "Module not found!"
+msgstr "Modul nicht gefunden!"
+
+msgid "Unknown module name. Please select an valid Module!"
+msgstr "Unbekannter Modulname. "
+
+msgid "No Settings available!"
+msgstr "Keine Einstellungen verfügbar!"
+
+msgid "The Module %s has no settings!"
+msgstr "Das Modul %s hat keine Einstellungen!"
+
+msgid "Update"
+msgstr "Aktualisieren"
+
+msgid "Upgrade"
+msgstr "Upgrade"
+
+msgid "Installed Modules"
+msgstr "Installierte Module"
+
+msgid "Repositorys"
+msgstr "Repositorys"
+
+msgid "No Themes available!"
+msgstr "Keine Themes verfügbar!"
+
+msgid "Please install some Themes."
+msgstr "Bitte installieren Sie einige Themes."
+
+msgid "No Modules available!"
+msgstr "Keine Module verfügbar!"
+
+msgid "Please install some Modules."
+msgstr "Bitte installieren Sie Module."
+
+msgid "Module"
+msgstr "Module"
+
+msgid "Description"
+msgstr "Beschreibung"
+
+msgid "Module is enabled."
+msgstr "Modul ist aktiviert."
+
+msgid "Module is disabled."
+msgstr "Modul ist deaktiviert."
+
+msgid "Disable"
+msgstr "Deaktivieren"
+
+msgid "Enable"
+msgstr "Aktivieren"
+
+msgid "Deinstall"
+msgstr "Deinstallieren"
+
+msgid "The module <strong>%s<\/strong> has an new upgrade to <strong>Version %s<\/strong>!"
+msgstr "Das Modul <strong>%s<\/strong> hat ein neues Upgrade auf <strong>Version %s<\/strong>!"
+
+msgid "Upgrade now!"
+msgstr "Jetzt upgraden!"
+
+msgid "Version"
+msgstr "Version"
+
+msgid "by"
+msgstr "von"
+
+msgid "No Repositorys available!"
+msgstr "Keine Repositorys verfügbar!"
+
+msgid "Please adding some Repositorys to keep updates."
+msgstr "Bitte fügen Sie einige Repositorys hinzu, um Updates zu erhalten."
+
+msgid "Add Repository"
+msgstr "Repository hinzufügen"
+
 msgid "Repository"
 msgstr "Repository"
 
@@ -128,329 +299,77 @@ msgstr "Aktionen"
 msgid "Never updated"
 msgstr "Nie aktualisiert"
 
+msgid "Error"
+msgstr "Fehler"
+
+msgid "Malformed Repository"
+msgstr "Fehlerhaftes Repository"
+
+msgid "More Informations"
+msgstr "Weitere Informationen"
+
 msgid "Last updated"
-msgstr "Zuletzt aktualisiert"
-
-msgid "Update"
-msgstr "Aktualisieren"
-
-msgid "Delete"
-msgstr "Löschen"
-
-msgid "No Modules available!"
-msgstr "Keine Module verfügbar!"
-
-msgid "Please install some Modules."
-msgstr "Bitte installieren Sie einige Module."
-
-msgid "No Themes available!"
-msgstr "Keine Themes verfügbar!"
-
-msgid "Please install some Themes."
-msgstr "Bitte installieren Sie Themes."
-
-msgid "Module"
-msgstr "Module"
-
-msgid "Description"
-msgstr "Beschreibung"
-
-msgid "Disable"
-msgstr "Deaktivieren"
-
-msgid "The module <strong>%s<\\/strong> has an new upgrade to <strong>Version %s<\\/strong>!"
-msgstr "Das Modul <strong>%s<\\/strong> hat ein neues Upgrade auf <strong>Version %s<\\/strong>!"
-
-msgid "Upgrade now!"
-msgstr "Jetzt upgraden!"
-
-msgid "Version"
-msgstr "Version"
-
-msgid "by"
-msgstr "von"
-
-msgid "No Users available!"
-msgstr "Keine Benutzer verfügbar!"
-
-msgid "Please add some Users."
-msgstr "Bitte fügen Sie Benutzer hinzu."
-
-msgid "No Repositorys available!"
-msgstr "Keine Repositories verfügbar!"
-
-msgid "Please adding some Repositorys to keep updates."
-msgstr "Bitte fügen Sie einige Repositorys hinzu, um Updates zu erhalten."
-
-msgid "User"
-msgstr "Benutzer"
+msgstr "Letzte Aktualisierung"
 
 msgid "Repository URL"
 msgstr "Repository URL"
 
-msgid "The given Token is invalid or was expired."
-msgstr "Das angegebene Token ist ungültig oder ist abgelaufen."
-
-msgid "Please enter a new password."
-msgstr "Bitte geben Sie ein neues Passwort ein."
-
-msgid "The new password must contain the minimum number of 8 characters."
-msgstr "Das neue Passwort muss mindestens 8 Zeichen lang sein."
-
-msgid "Your password and confirmation password do not match."
-msgstr "Ihr Passwort und Ihr Bestätigungspasswort stimmen nicht überein."
-
-msgid "Your password has been restored."
-msgstr "Ihr Passwort wurde wiederhergestellt."
-
-msgid "Please enter an valid and registred E-Mail address!"
-msgstr "Bitte geben Sie eine gültige und registrierte E-Mail-Adresse ein!"
-
-msgid "Reset your Password"
-msgstr "Passwort zurücksetzen"
-
-msgid "Your request has been sent to your E-Mail adress!"
-msgstr "Ihre Anfrage wurde an Ihre E-Mail-Adresse gesendet!"
-
-msgid "Please enter your current password."
-msgstr "Bitte geben Sie ein neues Passwort ein."
-
-msgid "Please enter your new password."
-msgstr "Bitte geben Sie ein neues Passwort ein."
-
-msgid "Please repeat your new password."
-msgstr "Bitte geben Sie ein neues Passwort ein."
-
-msgid "Your current password is not correct!"
-msgstr "Ihr aktuelles Passwort ist falsch!"
-
-msgid "Your password has been updated."
-msgstr "Ihr Passwort wurde wiederhergestellt."
-
-msgid "Please enter your E-Mail address."
-msgstr "Bitte geben Sie Ihre E-Mail-Adresse ein."
-
-msgid "Please enter a valid E-Mail address."
-msgstr "Bitte geben Sie Ihre E-Mail-Adresse ein."
-
-msgid "Please enter your first name."
-msgstr "Bitte geben Sie Ihren Vornamen an."
-
-msgid "Please enter your last name."
-msgstr "Bitte geben Sie Ihren Vornamen an."
-
-msgid "Please enter your phone  number."
-msgstr "Bitte geben Sie Ihren Vornamen an."
-
-msgid "Please enter your address."
-msgstr "Bitte geben Sie Ihre E-Mail-Adresse ein."
-
-msgid "Your personal data has been updated."
-msgstr "Ihr Passwort wurde wiederhergestellt."
-
-msgid "Your security settings has been updated."
-msgstr "Ihre Sicherheitseinstellungen wurden aktualisiert."
-
-msgid "Your settings has been updated."
-msgstr "Ihr Passwort wurde wiederhergestellt."
-
-msgid "Your 2FA code is invalid!"
-msgstr "Ihr 2FA-Code ist ungültig!"
-
-msgid "Please complete the two factor authentication:"
-msgstr "Bitte vervollständigen Sie die Zwei-Faktor-Authentifizierung:"
-
-msgid "Login was unsuccessful!"
-msgstr "Anmeldung war nicht erfolgreich!"
-
-msgid "You have no permissions for this action!"
-msgstr "Sie haben keine Berechtigungen für diese Aktion!"
-
-msgid "The System will be rebooted now!"
-msgstr "Das System wird jetzt neu gestartet!"
-
-msgid "<strong>%d Repository%s<\\/strong> was updated. Found %d related Update%s!"
-msgstr "<strong>%d Repository%s<\\/strong> wurde aktualisiert. %d verwandtes Update%s gefunden!"
-
-msgid "<strong>%d Repositorys<\\/strong> was successfully removed"
-msgstr "<strong>%d Repositorys<\\/strong> wurde erfolgreich entfernt"
-
-msgid "Please select some entries you want to delete."
-msgstr "Bitte wählen Sie einige Einträge aus, die Sie löschen möchten."
-
-msgid "New Password"
-msgstr "Neues Passwort"
-
-msgid "Password Confirmation"
-msgstr "Passwortbestätigung"
-
-msgid "E-Mail"
-msgstr "E-Mails"
-
-msgid "Back to the login"
-msgstr "Zurück zur Anmeldung"
-
-msgid "Reset Password"
-msgstr "Passwort zurücksetzen"
-
-msgid "Save"
-msgstr "Speichern"
-
-msgid "Account Details"
-msgstr "Kontodetails"
-
-msgid "Change Password"
-msgstr "Passwort ändern"
-
-msgid "Current personal details that you have provided us with, We ask that you keep these upto date in case we require to contact you regarding your hosting package."
-msgstr "Aktuelle persönliche Daten, die Sie uns mitgeteilt haben. Wir bitten Sie, diese auf dem neuesten Stand zu halten, falls wir Sie bezüglich Ihres Hosting-Pakets kontaktieren müssen."
-
-msgid "E-Mail Adresss"
-msgstr "E-Mail Adresse"
-
-msgid "Full Name"
-msgstr "Vor- & Nachname"
-
-msgid "Phone Number"
-msgstr "Telefonnummer"
-
-msgid "Postal Address"
-msgstr "Adresse"
-
-msgid "Change your current control panel password."
-msgstr "Ändern Sie hier Ihr aktuelles Passwort."
-
-msgid "Current Password"
-msgstr "Aktuelles Passwort"
-
-msgid "Global Settings"
-msgstr "Globale Einstellungen"
-
-msgid "Security"
-msgstr "Sicherheit"
-
-msgid "Global settings for your usability"
-msgstr "Globale Einstellungen für Ihre Benutzerfreundlichkeit"
-
-msgid "Language"
-msgstr "Sprache"
-
-msgid "Time Format"
-msgstr "Zeitformat"
-
-msgid "Timezone"
-msgstr "Timezone"
-
-msgid "Some security settings for your safety."
-msgstr "Einige Sicherheitseinstellungen für Ihre Sicherheit."
-
-msgid "Check your E-Mail address in the <a href=\"%s\">account settings<\\/a>."
-msgstr "Überprüfen Sie Ihre E-Mail-Adresse in den <a href=\"%s\">-Kontoeinstellungen<\\/a>."
-
-msgid "Type"
-msgstr "Typ"
-
-msgid "Smartphone"
-msgstr "Smartphone"
-
-msgid "disabled"
-msgstr "deaktiviert"
-
-msgid "SMS"
-msgstr "SMS"
-
-msgid "Access denied!"
-msgstr "Zugriff verweigert!"
-
-msgid "You have no permissions for this page."
-msgstr "Sie haben keine Berechtigungen für diese Aktion."
-
-msgid "Welcome to %s!"
-msgstr "Willkommen bei %s!"
-
-msgid "Get Started"
-msgstr "Los geht's"
-
-msgid "Create a Domain"
-msgstr "Domain erstellen"
-
-msgid "create a new subdomain"
-msgstr "eine neue Subdomain erstellen"
-
-msgid "Next Steps"
-msgstr "Nächste Schritte"
-
-msgid "Create an FTP Account"
-msgstr "FTP-Konto erstellen"
-
-msgid "Create a new Database"
-msgstr "Neue Datenbank erstellen"
-
-msgid "Create a new Mailbox"
-msgstr "Neues Postfach erstellen"
-
-msgid "More Actions"
-msgstr "Weitere Aktionen"
-
-msgid "Modify your Account settings"
-msgstr "Ändern Sie Ihre Kontoeinstellungen"
-
-msgid "Please sign in"
-msgstr "Bitte anmelden"
-
-msgid "Code"
-msgstr "Code"
-
-msgid "Username"
-msgstr "Benutzername"
-
-msgid "Password"
-msgstr "Passwort"
-
-msgid "Remember me"
-msgstr "Erinnere mich"
-
-msgid "Lost password"
-msgstr "Passwort zurücksetzen"
-
-msgid "Sign in"
-msgstr "Anmelden"
-
 msgid "Package"
 msgstr "Paket"
+
+msgid "Command..."
+msgstr "Befehl..."
+
+msgid "Refresh"
+msgstr "Aktualisieren"
+
+msgid "Loading"
+msgstr "Laden"
+
+msgid "No File selected!"
+msgstr "Keine Datei ausgewählt!"
+
+msgid "Please select an Logfile from the List."
+msgstr "Bitte wählen Sie eine Protokolldatei aus der Liste aus."
+
+msgid "Directory"
+msgstr "Ordner"
+
+msgid "Path"
+msgstr "Pfad"
+
+msgid "No permissions!"
+msgstr "Keine Berechtigungen!"
+
+msgid "File"
+msgstr "Datei"
+
+msgid "Global settings for the Panel"
+msgstr "Globale Einstellungen für das Panel"
+
+msgid "Project name"
+msgstr "Projektname"
+
+msgid "Show Copyright"
+msgstr "Urheberrecht anzeigen"
+
+msgid "Shows the copyright in the footer"
+msgstr "Zeigt das Urheberrecht in der Fußzeile an"
+
+msgid "Default Language"
+msgstr "Standardsprache"
+
+msgid "Default Time Format"
+msgstr "Standardzeitformat"
+
+msgid "Default Timezone"
+msgstr "Standardzeitzone"
 
 msgid "Service"
 msgstr "Dienst"
 
 msgid "Info"
 msgstr "Info"
-
-msgid "Command..."
-msgstr "Befehl..."
-
-msgid "System-Reboot"
-msgstr "System-Neustart"
-
-msgid "Do you really want to reboot the complete system?"
-msgstr "Möchten Sie das komplette System wirklich neu starten?"
-
-msgid "Reboot now!"
-msgstr "Jetzt neu starten!"
-
-msgid "Module Error"
-msgstr "Modulfehler"
-
-msgid "Empty module...!"
-msgstr "Leeres Modul...!"
-
-msgid "404 - Not Found"
-msgstr "404 - Nicht gefunden"
-
-msgid "The page you requested could not be found."
-msgstr "Die angeforderte Seite konnte nicht gefunden werden."
-
-msgid "Unknown module...!"
-msgstr "Unbekanntes Modul...!"
 
 msgid "System Properties"
 msgstr "Systemeigenschaften"
@@ -468,7 +387,7 @@ msgid "Kernel"
 msgstr "Kernel"
 
 msgid "Uptime"
-msgstr "Laufzeit"
+msgstr "Betriebszeit"
 
 msgid "Daemon"
 msgstr "Daemon"
@@ -477,50 +396,305 @@ msgid "Last Start"
 msgstr "Letzter Start"
 
 msgid "%s ago"
-msgstr "vor %s"
+msgstr "%s her"
 
 msgid "Last End"
-msgstr "Zuletzt beendet"
+msgstr "Letztes Ende"
 
 msgid "Last Time"
-msgstr "Letzte Zeit"
+msgstr "Letztes Mal"
 
 msgid "%d Seconds"
 msgstr "%d Sekunden"
 
 msgid "Mounted Drives"
-msgstr "Eingehängte Laufwerke"
+msgstr "Gemountete Laufwerke"
 
-msgid "Type: %s | FileSystem: %s | Size: %s \\/ %s"
-msgstr "Typ: %s | Dateisystem: %s | Größe: %s \\/ %s"
+msgid "Type: %s | FileSystem: %s | Size: %s \/ %s"
+msgstr "Typ: %s | Dateisystem: %s | Größe: %s \/ %s"
 
-msgid "Add new"
-msgstr "Neu"
+msgid "System-Reboot"
+msgstr "System-Neustart"
 
-msgid "Module not found!"
-msgstr "Modul nicht gefunden!"
+msgid "Do you really want to reboot the complete system?"
+msgstr "Möchten Sie wirklich das komplette System neu starten?"
 
-msgid "Unknown module name. Please select an valid Module!"
-msgstr "Unbekannter Modulname. Bitte wählen Sie ein gültiges Modul!"
+msgid "Reboot now!"
+msgstr "Jetzt neu starten!"
 
-msgid "No Settings available!"
-msgstr "Keine Einstellungen verfügbar!"
+msgid "Please sign in"
+msgstr "Bitte melden Sie sich an"
 
-msgid "The Module %s has no settings!"
-msgstr "Das Modul %s hat keine Einstellungen!"
+msgid "Code"
+msgstr "Code"
 
-msgid "Upgrade"
-msgstr "Aktualisieren"
+msgid "Password"
+msgstr "Passwort"
 
-msgid "Installed Modules"
-msgstr "Installierte Module"
+msgid "Lost password"
+msgstr "Passwort verloren"
 
-msgid "Repositorys"
-msgstr "Repositorys"
+msgid "Sign in"
+msgstr "Anmelden"
 
-msgid "Refresh"
-msgstr "Aktualisieren"
+msgid "Global Settings"
+msgstr "Globale Einstellungen"
 
-msgid "Please select a logfile to view it"
-msgstr "Bitte wählen Sie eine Logdatei aus, um diese anzuzeigen"
+msgid "Security"
+msgstr "Sicherheit"
+
+msgid "Global settings for your usability"
+msgstr "Globale Einstellungen für Ihre Benutzerfreundlichkeit"
+
+msgid "Some security settings for your safety."
+msgstr "Einige Sicherheitseinstellungen zu Ihrer Sicherheit."
+
+msgid "Check your E-Mail address in the <a href=\"%s\">account settings<\/a>."
+msgstr "Überprüfen Sie Ihre E-Mail-Adresse in den <a href=\"%s\">Kontoeinstellungen<\/a>."
+
+msgid "Reset your Password"
+msgstr "Setzen Sie Ihr Passwort zurück"
+
+msgid "Back to the login"
+msgstr "Zurück zum Login"
+
+msgid "Reset Password"
+msgstr "Passwort zurücksetzen"
+
+msgid "Account Details"
+msgstr "Kontodetails"
+
+msgid "Change Password"
+msgstr "Passwort ändern"
+
+msgid "Current personal details that you have provided us with, We ask that you keep these upto date in case we require to contact you regarding your hosting package."
+msgstr "Aktuelle persönliche Daten, die Sie uns zur Verfügung gestellt haben. Wir bitten Sie, diese auf dem neuesten Stand zu halten, falls wir Sie bezüglich Ihres Hosting-Pakets kontaktieren müssen."
+
+msgid "Change your current control panel password."
+msgstr "Ändern Sie Ihr aktuelles Control Panel-Passwort."
+
+msgid "Current Password"
+msgstr "Aktuelles Passwort"
+
+msgid "DEMO VERSION"
+msgstr "DEMOVERSION"
+
+msgid "Reload"
+msgstr "Neu laden"
+
+msgid "Module Error"
+msgstr "Modulfehler"
+
+msgid "The specified module could not be loaded."
+msgstr "Das angegebene Modul konnte nicht geladen werden."
+
+msgid "404 - Not Found"
+msgstr "404 – Nicht gefunden"
+
+msgid "The page you requested could not be found."
+msgstr "Die von Ihnen angeforderte Seite konnte nicht gefunden werden."
+
+msgid "Welcome to %s!"
+msgstr "Willkommen bei %s!"
+
+msgid "Get Started"
+msgstr "Erste Schritte"
+
+msgid "Create a Domain"
+msgstr "Erstellen Sie eine Domäne"
+
+msgid "create a new subdomain"
+msgstr "Erstelle eine neue Subdomain"
+
+msgid "Next Steps"
+msgstr "Nächste Schritte"
+
+msgid "Create an FTP Account"
+msgstr "Erstellen Sie ein FTP-Konto"
+
+msgid "Create a new Database"
+msgstr "Erstellen Sie eine neue Datenbank"
+
+msgid "Create a new Mailbox"
+msgstr "Erstellen Sie ein neues Postfach"
+
+msgid "More Actions"
+msgstr "Weitere Aktionen"
+
+msgid "Modify your Account settings"
+msgstr "Ändern Sie Ihre Kontoeinstellungen"
+
+msgid "Settings for <strong>%s<\/strong> was successfully updated."
+msgstr "Einstellungen für <strong>%s<\/strong> wurden erfolgreich aktualisiert."
+
+msgid "Please repeat your new password."
+msgstr "Bitte wiederholen Sie Ihr neues Passwort."
+
+msgid "The new password must contain the minimum number of 8 characters."
+msgstr "Das neue Passwort muss mindestens 8 Zeichen enthalten."
+
+msgid "Can\\t send recovery instructions, because the user has an <strong>invalid E-Mail address<\/strong>."
+msgstr "Wiederherstellungsanweisungen können nicht gesendet werden, da der Benutzer eine <strong>ungültige E-Mail-Adresse<\/strong> hat."
+
+msgid "New password for your account"
+msgstr "Neues Passwort für Ihr Konto"
+
+msgid "The new generated password has been sent to users E-Mail adress!"
+msgstr "Das neu generierte Passwort wurde an die E-Mail-Adresse des Benutzers gesendet!"
+
+msgid "Your password request has been sent to users E-Mail adress!"
+msgstr "Ihre Passwortanfrage wurde an die E-Mail-Adresse des Benutzers gesendet!"
+
+msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
+msgstr "Sicherheitseinstellungen für <strong>%s<\/strong> wurden erfolgreich aktualisiert."
+
+msgid "Please enter a valid E-Mail address."
+msgstr "Bitte geben Sie eine gültige E-Mail-Adresse ein."
+
+msgid "User <strong>%s<\/strong> was successfully edited."
+msgstr "Benutzer <strong>%s<\/strong> wurde erfolgreich bearbeitet."
+
+msgid "You cant delete the admin account!"
+msgstr "Sie können das Administratorkonto nicht löschen!"
+
+msgid "The user <strong>%s<\/strong> was successfully deleted."
+msgstr "Der Benutzer <strong>%s<\/strong> wurde erfolgreich gelöscht."
+
+msgid "Please select some entries you want to delete."
+msgstr "Bitte wählen Sie einige Einträge aus, die Sie löschen möchten."
+
+msgid "Please enter the username."
+msgstr "Bitte geben Sie den Benutzernamen ein."
+
+msgid "The new username must contain the minimum number of 2 characters."
+msgstr "Der neue Benutzername muss mindestens 2 Zeichen enthalten."
+
+msgid "The username is already in use."
+msgstr "Der Benutzername wird bereits verwendet."
+
+msgid "Please enter an E-Mail address."
+msgstr "Bitte geben Sie eine E-Mail-Adresse ein."
+
+msgid "The E-Mail address is already in use."
+msgstr "Die E-Mail-Adresse wird bereits verwendet."
+
+msgid "Please enter the password."
+msgstr "Bitte geben Sie das Passwort ein."
+
+msgid "Please repeat the password."
+msgstr "Bitte wiederholen Sie das Passwort."
+
+msgid "Your password and confirmation password do not match."
+msgstr "Ihr Passwort und Ihr Bestätigungspasswort stimmen nicht überein."
+
+msgid "The user <strong>%s<\/strong> was successfully created."
+msgstr "Der Benutzer <strong>%s<\/strong> wurde erfolgreich erstellt."
+
+msgid "Please enter an valid  repository URL!"
+msgstr "Bitte geben Sie eine gültige Repository-URL ein!"
+
+msgid "Repository already exists!"
+msgstr "Repository existiert bereits!"
+
+msgid "The module is already disabled!"
+msgstr "Das Modul ist bereits deaktiviert!"
+
+msgid "The module was successfully disabled."
+msgstr "Das Modul wurde erfolgreich deaktiviert."
+
+msgid "The module not exists!"
+msgstr "Das Modul existiert nicht!"
+
+msgid "The module is already enabled!"
+msgstr "Das Modul ist bereits aktiviert!"
+
+msgid "The module was successfully enabled."
+msgstr "Das Modul wurde erfolgreich aktiviert."
+
+msgid "The module was successfully deinstalled!"
+msgstr "Das Modul wurde erfolgreich deinstalliert!"
+
+msgid "<strong>%d Repository%s<\/strong> was updated. Found %d related Update%s!"
+msgstr "<strong>%d Repository%s<\/strong> wurde aktualisiert. "
+
+msgid "<strong>%d Repositorys<\/strong> was successfully removed"
+msgstr "<strong>%d Repositorys<\/strong> wurde erfolgreich entfernt"
+
+msgid "You have no permissions for this action!"
+msgstr "Sie haben keine Berechtigungen für diese Aktion!"
+
+msgid "The system settings has been saved."
+msgstr "Die Systemeinstellungen wurden gespeichert."
+
+msgid "The System will be rebooted now!"
+msgstr "Das System wird jetzt neu gestartet!"
+
+msgid "Your 2FA code is invalid!"
+msgstr "Ihr 2FA-Code ist ungültig!"
+
+msgid "Please complete the two factor authentication:"
+msgstr "Bitte führen Sie die Zwei-Faktor-Authentifizierung durch:"
+
+msgid "Login was unsuccessful!"
+msgstr "Anmeldung war nicht erfolgreich!"
+
+msgid "Your security settings has been updated."
+msgstr "Ihre Sicherheitseinstellungen wurden aktualisiert."
+
+msgid "Your settings has been updated."
+msgstr "Ihre Einstellungen wurden aktualisiert."
+
+msgid "The given Token is invalid or was expired."
+msgstr "Das angegebene Token ist ungültig oder abgelaufen."
+
+msgid "Please enter a new password."
+msgstr "Bitte geben Sie ein neues Passwort ein."
+
+msgid "Your password has been restored."
+msgstr "Ihr Passwort wurde wiederhergestellt."
+
+msgid "Please enter an valid and registred E-Mail address!"
+msgstr "Bitte geben Sie eine gültige und registrierte E-Mail-Adresse ein!"
+
+msgid "Your request has been sent to your E-Mail adress!"
+msgstr "Ihre Anfrage wurde an Ihre E-Mail-Adresse gesendet!"
+
+msgid "Please enter your current password."
+msgstr "Bitte geben Sie Ihr aktuelles Passwort ein."
+
+msgid "Please enter your new password."
+msgstr "Bitte geben Sie Ihr neues Passwort ein."
+
+msgid "Your current password is not correct!"
+msgstr "Ihr aktuelles Passwort ist nicht korrekt!"
+
+msgid "Your password has been updated."
+msgstr "Ihr Passwort wurde aktualisiert."
+
+msgid "Please enter your E-Mail address."
+msgstr "Bitte geben Sie Ihre E-Mail-Adresse ein."
+
+msgid "Please enter your first name."
+msgstr "Bitte geben Sie Ihren Vornamen ein."
+
+msgid "Please enter your last name."
+msgstr "Bitte geben Sie Ihren Nachnamen ein."
+
+msgid "Please enter your phone  number."
+msgstr "Bitte geben Sie Ihre Telefonnummer ein."
+
+msgid "Please enter your address."
+msgstr "Bitte geben Sie Ihre Adresse ein."
+
+msgid "Your personal data has been updated."
+msgstr "Ihre persönlichen Daten wurden aktualisiert."
+
+msgid "Enable Two-factor authentication (2FA)"
+msgstr "Aktivieren Sie die Zwei-Faktor-Authentifizierung (2FA)"
+
+msgid "Do you really wan't to delete all selected users?"
+msgstr "Möchten Sie wirklich alle ausgewählten Benutzer löschen?"
+
+msgid "Do you really wan't to delete the user?"
+msgstr "Wollen Sie den Benutzer wirklich nicht löschen?"
 

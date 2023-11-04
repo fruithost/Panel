@@ -1,0 +1,700 @@
+msgid ""
+msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: Turkish\n"
+
+
+msgid "Account"
+msgstr "Hesap"
+
+msgid "Databases"
+msgstr "Veritabanları"
+
+msgid "Domains"
+msgstr "Etki Alanları"
+
+msgid "E-Mails"
+msgstr "E-Postalar"
+
+msgid "FTP"
+msgstr ""
+
+msgid "Hosting"
+msgstr "Barındırma"
+
+msgid "Extended"
+msgstr "Genişletilmiş"
+
+msgid "Support"
+msgstr "Destek"
+
+msgid "Administration"
+msgstr "Yönetim"
+
+msgid "Server"
+msgstr "Sunucu"
+
+msgid "Confirmation"
+msgstr "Onay"
+
+msgid "No"
+msgstr "Hayır"
+
+msgid "Yes"
+msgstr "Evet"
+
+msgid "Unknown User"
+msgstr "Bilinmeyen Kullanıcı"
+
+msgid "Password mismatched."
+msgstr "Şifre uyumsuz."
+
+msgid "Settings"
+msgstr "Ayarlar"
+
+msgid "Logout"
+msgstr "Çıkış"
+
+msgid "Overview"
+msgstr "Genel Bakış"
+
+msgid "Users"
+msgstr "Kullanıcılar"
+
+msgid "Themes"
+msgstr "Temalar"
+
+msgid "Modules"
+msgstr "Modüller"
+
+msgid "Logfiles"
+msgstr "Günlük dosyaları"
+
+msgid "Console"
+msgstr "Konsol"
+
+msgid "Packages"
+msgstr "Paketler"
+
+msgid "Services"
+msgstr "Hizmetler"
+
+msgid "Reboot"
+msgstr "Yeniden başlat"
+
+msgid "Access denied!"
+msgstr "Erişim reddedildi!"
+
+msgid "You have no permissions for this page."
+msgstr "Bu sayfa için izniniz yok."
+
+msgid "edit"
+msgstr "düzenle"
+
+msgid "create User"
+msgstr "Kullanıcı oluştur"
+
+msgid "Save"
+msgstr "Kaydet"
+
+msgid "Delete"
+msgstr "Sil"
+
+msgid "Create"
+msgstr "Oluştur"
+
+msgid "Add new"
+msgstr "Yeni ekle"
+
+msgid "No Users available!"
+msgstr "Kullanıcı yok!"
+
+msgid "Please add some Users."
+msgstr "Lütfen birkaç Kullanıcı ekleyin."
+
+msgid "User"
+msgstr "Kullanıcı"
+
+msgid "Name"
+msgstr "İsim"
+
+msgid "E-Mail"
+msgstr "E-Posta"
+
+msgid "Edit"
+msgstr "Düzenle"
+
+msgid "Language"
+msgstr "Dil"
+
+msgid "Time Format"
+msgstr "Saat Formatı"
+
+msgid "Timezone"
+msgstr "Saat Dilimi"
+
+msgid "ID"
+msgstr "Kimlik"
+
+msgid "Username"
+msgstr "Kullanıcı adı"
+
+msgid "E-Mail Adress"
+msgstr "E-Posta Adresi"
+
+msgid "Full Name"
+msgstr "Tam Ad"
+
+msgid "Phone Number"
+msgstr "Telefon Numarası"
+
+msgid "Postal Address"
+msgstr "Posta Adresi"
+
+msgid "Security settings"
+msgstr "Güvenlik ayarları"
+
+msgid "Change password manually"
+msgstr "Şifreyi manuel olarak değiştir"
+
+msgid "Initiate password reset"
+msgstr "Şifre sıfırlamayı başlat"
+
+msgid "Generate new password"
+msgstr "Yeni şifre oluştur"
+
+msgid "Type"
+msgstr "Tür"
+
+msgid "Smartphone"
+msgstr "Akıllı telefon"
+
+msgid "disabled"
+msgstr "devre dışı"
+
+msgid "SMS"
+msgstr ""
+
+msgid "New Password"
+msgstr "Yeni Şifre"
+
+msgid "Password Confirmation"
+msgstr "Şifre Doğrulaması"
+
+msgid "Initiates the password recovery process."
+msgstr "Şifre kurtarma işlemini başlatır."
+
+msgid "The user receives an E-Mail with instructions on how to reset the password."
+msgstr "Kullanıcı, şifrenin nasıl sıfırlanacağına ilişkin talimatları içeren bir E-Posta alır."
+
+msgid "The user will probably not receive an E-Mail because the provided <strong>E-Mail address is invalid<\/strong>."
+msgstr "Sağlanan <strong>E-Posta adresi geçersiz</\/strong> olduğundan kullanıcı muhtemelen bir E-Posta alamayacaktır."
+
+msgid "Activate the reset using password recovery"
+msgstr "Şifre kurtarmayı kullanarak sıfırlamayı etkinleştirin"
+
+msgid "The system automatically generates a strong password and sends it to the user by E-Mail."
+msgstr "Sistem otomatik olarak güçlü bir şifre oluşturarak bunu kullanıcıya E-Posta yoluyla gönderir."
+
+msgid "Please note that the password can only be sent if the user has entered a valid E-Mail address."
+msgstr "Şifrenin yalnızca kullanıcının geçerli bir E-Posta adresi girmesi durumunda gönderilebileceğini lütfen unutmayın."
+
+msgid "Activate the reset using password generation"
+msgstr "Şifre oluşturmayı kullanarak sıfırlamayı etkinleştirin"
+
+msgid "Password Settings"
+msgstr "Şifre Ayarları"
+
+msgid "Cancel"
+msgstr "İptal"
+
+msgid "Module not found!"
+msgstr "Modül bulunamadı!"
+
+msgid "Unknown module name. Please select an valid Module!"
+msgstr "Bilinmeyen modül adı. "
+
+msgid "No Settings available!"
+msgstr "Ayar yok!"
+
+msgid "The Module %s has no settings!"
+msgstr "%s modülünün ayarı yok!"
+
+msgid "Update"
+msgstr "Güncelleme"
+
+msgid "Upgrade"
+msgstr "Yükseltme"
+
+msgid "Installed Modules"
+msgstr "Kurulu Modüller"
+
+msgid "Repositorys"
+msgstr "Depolar"
+
+msgid "No Themes available!"
+msgstr "Tema mevcut değil!"
+
+msgid "Please install some Themes."
+msgstr "Lütfen bazı Temalar yükleyin."
+
+msgid "No Modules available!"
+msgstr "Mevcut modül yok!"
+
+msgid "Please install some Modules."
+msgstr "Lütfen bazı Modülleri yükleyin."
+
+msgid "Module"
+msgstr "Modül"
+
+msgid "Description"
+msgstr "Açıklama"
+
+msgid "Module is enabled."
+msgstr "Modül etkinleştirildi."
+
+msgid "Module is disabled."
+msgstr "Modül devre dışı."
+
+msgid "Disable"
+msgstr "Devre Dışı Bırak"
+
+msgid "Enable"
+msgstr "Etkinleştir"
+
+msgid "Deinstall"
+msgstr "Kaldır"
+
+msgid "The module <strong>%s<\/strong> has an new upgrade to <strong>Version %s<\/strong>!"
+msgstr "<strong>%s</\/strong> modülünde <strong>Sürüm %s</\/strong>'e yeni bir yükseltme yapıldı!"
+
+msgid "Upgrade now!"
+msgstr "Şimdi yükselt!"
+
+msgid "Version"
+msgstr "Sürüm"
+
+msgid "by"
+msgstr "tarafından"
+
+msgid "No Repositorys available!"
+msgstr "Depo mevcut değil!"
+
+msgid "Please adding some Repositorys to keep updates."
+msgstr "Güncellemeleri tutmak için lütfen birkaç Depo ekleyin."
+
+msgid "Add Repository"
+msgstr "Depo Ekle"
+
+msgid "Repository"
+msgstr "Depo"
+
+msgid "Status"
+msgstr "Durum"
+
+msgid "Actions"
+msgstr "Eylemler"
+
+msgid "Never updated"
+msgstr "Hiç güncellenmedi"
+
+msgid "Error"
+msgstr "Hata"
+
+msgid "Malformed Repository"
+msgstr "Hatalı Biçimlendirilmiş Depo"
+
+msgid "More Informations"
+msgstr "Daha Fazla Bilgi"
+
+msgid "Last updated"
+msgstr "Son güncelleme"
+
+msgid "Repository URL"
+msgstr "Depo URL'si"
+
+msgid "Package"
+msgstr "Paket"
+
+msgid "Command..."
+msgstr "Komut..."
+
+msgid "Refresh"
+msgstr "Yenile"
+
+msgid "Loading"
+msgstr "Yükleniyor"
+
+msgid "No File selected!"
+msgstr "Dosya seçilmedi!"
+
+msgid "Please select an Logfile from the List."
+msgstr "Lütfen Listeden bir Günlük Dosyası seçin."
+
+msgid "Directory"
+msgstr "Dizin"
+
+msgid "Path"
+msgstr "Yol"
+
+msgid "No permissions!"
+msgstr "İzin yok!"
+
+msgid "File"
+msgstr "Dosya"
+
+msgid "Global settings for the Panel"
+msgstr "Panel için genel ayarlar"
+
+msgid "Project name"
+msgstr "Proje adı"
+
+msgid "Show Copyright"
+msgstr "Telif Hakkını Göster"
+
+msgid "Shows the copyright in the footer"
+msgstr "Telif hakkını altbilgide gösterir"
+
+msgid "Default Language"
+msgstr "Varsayılan Dil"
+
+msgid "Default Time Format"
+msgstr "Varsayılan Saat Formatı"
+
+msgid "Default Timezone"
+msgstr "Varsayılan Saat Dilimi"
+
+msgid "Service"
+msgstr "Hizmet"
+
+msgid "Info"
+msgstr "Bilgi"
+
+msgid "System Properties"
+msgstr "Sistem Özellikleri"
+
+msgid "Hostname"
+msgstr "Ana bilgisayar adı"
+
+msgid "Time"
+msgstr "Zaman"
+
+msgid "System"
+msgstr "Sistem"
+
+msgid "Kernel"
+msgstr "Çekirdek"
+
+msgid "Uptime"
+msgstr "Çalışma süresi"
+
+msgid "Daemon"
+msgstr "Şeytan"
+
+msgid "Last Start"
+msgstr "Son Başlangıç"
+
+msgid "%s ago"
+msgstr "%s önce"
+
+msgid "Last End"
+msgstr "Son Son"
+
+msgid "Last Time"
+msgstr "Son Kez"
+
+msgid "%d Seconds"
+msgstr "%d Saniye"
+
+msgid "Mounted Drives"
+msgstr "Monteli Sürücüler"
+
+msgid "Type: %s | FileSystem: %s | Size: %s \/ %s"
+msgstr "Tip: %s | "
+
+msgid "System-Reboot"
+msgstr "Sistemin Yeniden Başlatılması"
+
+msgid "Do you really want to reboot the complete system?"
+msgstr "Gerçekten tüm sistemi yeniden başlatmak istiyor musunuz?"
+
+msgid "Reboot now!"
+msgstr "Şimdi yeniden başlat!"
+
+msgid "Please sign in"
+msgstr "Lütfen oturum açın"
+
+msgid "Code"
+msgstr "Kod"
+
+msgid "Password"
+msgstr "Şifre"
+
+msgid "Lost password"
+msgstr "Şifremi kaybettim"
+
+msgid "Sign in"
+msgstr "Giriş yap"
+
+msgid "Global Settings"
+msgstr "Genel Ayarlar"
+
+msgid "Security"
+msgstr "Güvenlik"
+
+msgid "Global settings for your usability"
+msgstr "Kullanılabilirliğiniz için genel ayarlar"
+
+msgid "Some security settings for your safety."
+msgstr "Güvenliğiniz için bazı güvenlik ayarları."
+
+msgid "Check your E-Mail address in the <a href=\"%s\">account settings<\/a>."
+msgstr "<a href=\"%s\">Hesap ayarlarında</\/a> E-Posta adresinizi kontrol edin."
+
+msgid "Reset your Password"
+msgstr "Şifrenizi Sıfırlayın"
+
+msgid "Back to the login"
+msgstr "Girişe geri dön"
+
+msgid "Reset Password"
+msgstr "Şifreyi Sıfırla"
+
+msgid "Account Details"
+msgstr "Hesap Detayları"
+
+msgid "Change Password"
+msgstr "Şifreyi Değiştir"
+
+msgid "Current personal details that you have provided us with, We ask that you keep these upto date in case we require to contact you regarding your hosting package."
+msgstr "Bize sağladığınız güncel kişisel bilgileriniz, Hosting paketinizle ilgili olarak sizinle iletişime geçmemiz gerekebileceği ihtimaline karşı bunları güncel tutmanızı rica ediyoruz."
+
+msgid "Change your current control panel password."
+msgstr "Mevcut kontrol paneli şifrenizi değiştirin."
+
+msgid "Current Password"
+msgstr "Mevcut Şifre"
+
+msgid "DEMO VERSION"
+msgstr "DEMO VERSİYONU"
+
+msgid "Reload"
+msgstr "Yeniden yükle"
+
+msgid "Module Error"
+msgstr "Modül Hatası"
+
+msgid "The specified module could not be loaded."
+msgstr "Belirtilen modül yüklenemedi."
+
+msgid "404 - Not Found"
+msgstr "404 - Bulunamadı"
+
+msgid "The page you requested could not be found."
+msgstr "İstediğiniz sayfa bulunamadı."
+
+msgid "Welcome to %s!"
+msgstr "%s'e hoş geldiniz!"
+
+msgid "Get Started"
+msgstr "Başlayın"
+
+msgid "Create a Domain"
+msgstr "Alan Oluştur"
+
+msgid "create a new subdomain"
+msgstr "yeni bir alt alan adı oluştur"
+
+msgid "Next Steps"
+msgstr "Sonraki Adımlar"
+
+msgid "Create an FTP Account"
+msgstr "FTP Hesabı Oluştur"
+
+msgid "Create a new Database"
+msgstr "Yeni bir Veritabanı Oluştur"
+
+msgid "Create a new Mailbox"
+msgstr "Yeni bir Posta Kutusu oluştur"
+
+msgid "More Actions"
+msgstr "Daha Fazla Eylem"
+
+msgid "Modify your Account settings"
+msgstr "Hesap ayarlarınızı değiştirin"
+
+msgid "Settings for <strong>%s<\/strong> was successfully updated."
+msgstr "<strong>%s</\/strong> ayarları başarıyla güncellendi."
+
+msgid "Please repeat your new password."
+msgstr "Lütfen yeni şifrenizi tekrarlayınız."
+
+msgid "The new password must contain the minimum number of 8 characters."
+msgstr "Yeni şifre en az 8 karakter içermelidir."
+
+msgid "Can\\t send recovery instructions, because the user has an <strong>invalid E-Mail address<\/strong>."
+msgstr "Kullanıcının <strong>geçersiz bir E-Posta adresine</\/strong> sahip olması nedeniyle kurtarma talimatları gönderilemiyor."
+
+msgid "New password for your account"
+msgstr "Hesabınız için yeni şifre"
+
+msgid "The new generated password has been sent to users E-Mail adress!"
+msgstr "Yeni oluşturulan şifre kullanıcıların E-Posta adresine gönderildi!"
+
+msgid "Your password request has been sent to users E-Mail adress!"
+msgstr "Şifre talebiniz kullanıcılarımızın E-Posta adresine gönderildi!"
+
+msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
+msgstr "<strong>%s<\/strong> için Güvenlik Ayarları başarıyla güncellendi."
+
+msgid "Please enter a valid E-Mail address."
+msgstr "Lütfen geçerli bir E-Posta adresi giriniz."
+
+msgid "User <strong>%s<\/strong> was successfully edited."
+msgstr "<strong>%s<\/strong> kullanıcısı başarıyla düzenlendi."
+
+msgid "You cant delete the admin account!"
+msgstr "Yönetici hesabını silemezsiniz!"
+
+msgid "The user <strong>%s<\/strong> was successfully deleted."
+msgstr "<strong>%s<\/strong> kullanıcısı başarıyla silindi."
+
+msgid "Please select some entries you want to delete."
+msgstr "Lütfen silmek istediğiniz bazı girişleri seçin."
+
+msgid "Please enter the username."
+msgstr "Lütfen kullanıcı adınızı giriniz."
+
+msgid "The new username must contain the minimum number of 2 characters."
+msgstr "Yeni kullanıcı adı en az 2 karakter içermelidir."
+
+msgid "The username is already in use."
+msgstr "Kullanıcı adı zaten kullanılıyor."
+
+msgid "Please enter an E-Mail address."
+msgstr "Lütfen bir E-posta adresi girin."
+
+msgid "The E-Mail address is already in use."
+msgstr "E-Posta adresi zaten kullanımda."
+
+msgid "Please enter the password."
+msgstr "Lütfen şifreyi giriniz."
+
+msgid "Please repeat the password."
+msgstr "Lütfen şifreyi tekrar edin."
+
+msgid "Your password and confirmation password do not match."
+msgstr "Şifreniz ve onay şifreniz eşleşmiyor."
+
+msgid "The user <strong>%s<\/strong> was successfully created."
+msgstr "<strong>%s<\/strong> kullanıcısı başarıyla oluşturuldu."
+
+msgid "Please enter an valid  repository URL!"
+msgstr "Lütfen geçerli bir depo URL'si girin!"
+
+msgid "Repository already exists!"
+msgstr "Depo zaten mevcut!"
+
+msgid "The module is already disabled!"
+msgstr "Modül zaten devre dışı!"
+
+msgid "The module was successfully disabled."
+msgstr "Modül başarıyla devre dışı bırakıldı."
+
+msgid "The module not exists!"
+msgstr "Modül mevcut değil!"
+
+msgid "The module is already enabled!"
+msgstr "Modül zaten etkin!"
+
+msgid "The module was successfully enabled."
+msgstr "Modül başarıyla etkinleştirildi."
+
+msgid "The module was successfully deinstalled!"
+msgstr "Modül başarıyla kaldırıldı!"
+
+msgid "<strong>%d Repository%s<\/strong> was updated. Found %d related Update%s!"
+msgstr "<strong>%d Depo%s<\/strong> güncellendi. "
+
+msgid "<strong>%d Repositorys<\/strong> was successfully removed"
+msgstr "<strong>%d Depo<\/strong> başarıyla kaldırıldı"
+
+msgid "You have no permissions for this action!"
+msgstr "Bu eylem için izniniz yok!"
+
+msgid "The system settings has been saved."
+msgstr "Sistem ayarları kaydedildi."
+
+msgid "The System will be rebooted now!"
+msgstr "Sistem şimdi yeniden başlatılacak!"
+
+msgid "Your 2FA code is invalid!"
+msgstr "2FA kodunuz geçersiz!"
+
+msgid "Please complete the two factor authentication:"
+msgstr "Lütfen iki faktörlü kimlik doğrulamayı tamamlayın:"
+
+msgid "Login was unsuccessful!"
+msgstr "Oturum açma başarısız oldu!"
+
+msgid "Your security settings has been updated."
+msgstr "Güvenlik ayarlarınız güncellendi."
+
+msgid "Your settings has been updated."
+msgstr "Ayarlarınız güncellendi."
+
+msgid "The given Token is invalid or was expired."
+msgstr "Verilen Token geçersiz veya süresi dolmuş."
+
+msgid "Please enter a new password."
+msgstr "Lütfen yeni şifrenizi giriniz."
+
+msgid "Your password has been restored."
+msgstr "Şifreniz geri yüklendi."
+
+msgid "Please enter an valid and registred E-Mail address!"
+msgstr "Lütfen geçerli ve kayıtlı bir E-Posta adresi giriniz!"
+
+msgid "Your request has been sent to your E-Mail adress!"
+msgstr "Talebiniz E-Posta adresinize gönderildi!"
+
+msgid "Please enter your current password."
+msgstr "Lütfen mevcut şifrenizi giriniz."
+
+msgid "Please enter your new password."
+msgstr "Lütfen yeni şifrenizi giriniz."
+
+msgid "Your current password is not correct!"
+msgstr "Mevcut şifreniz doğru değil!"
+
+msgid "Your password has been updated."
+msgstr "Şifreniz güncellendi."
+
+msgid "Please enter your E-Mail address."
+msgstr "Lütfen E-Posta adresinizi giriniz."
+
+msgid "Please enter your first name."
+msgstr "Lütfen adınızı giriniz."
+
+msgid "Please enter your last name."
+msgstr "Lütfen soyadınızı giriniz."
+
+msgid "Please enter your phone  number."
+msgstr "Lütfen telefon numaranızı giriniz."
+
+msgid "Please enter your address."
+msgstr "Lütfen adresinizi giriniz."
+
+msgid "Your personal data has been updated."
+msgstr "Kişisel verileriniz güncellendi."
+
+msgid "Enable Two-factor authentication (2FA)"
+msgstr "İki faktörlü kimlik doğrulamayı etkinleştir (2FA)"
+
+msgid "Do you really wan't to delete all selected users?"
+msgstr "Seçilen tüm kullanıcıları gerçekten silmek istemiyor musun?"
+
+msgid "Do you really wan't to delete the user?"
+msgstr "Kullanıcıyı gerçekten silmek istemiyor musun?"
+

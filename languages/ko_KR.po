@@ -1,0 +1,700 @@
+msgid ""
+msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: Korean\n"
+
+
+msgid "Account"
+msgstr "계정"
+
+msgid "Databases"
+msgstr "데이터베이스"
+
+msgid "Domains"
+msgstr "도메인"
+
+msgid "E-Mails"
+msgstr "이메일"
+
+msgid "FTP"
+msgstr ""
+
+msgid "Hosting"
+msgstr "호스팅"
+
+msgid "Extended"
+msgstr "확장"
+
+msgid "Support"
+msgstr "지원"
+
+msgid "Administration"
+msgstr "관리"
+
+msgid "Server"
+msgstr "서버"
+
+msgid "Confirmation"
+msgstr "확인"
+
+msgid "No"
+msgstr "아니요"
+
+msgid "Yes"
+msgstr "예"
+
+msgid "Unknown User"
+msgstr "알 수 없는 사용자"
+
+msgid "Password mismatched."
+msgstr "비밀번호가 일치하지 않습니다."
+
+msgid "Settings"
+msgstr "설정"
+
+msgid "Logout"
+msgstr "로그아웃"
+
+msgid "Overview"
+msgstr "개요"
+
+msgid "Users"
+msgstr "사용자"
+
+msgid "Themes"
+msgstr "테마"
+
+msgid "Modules"
+msgstr "모듈"
+
+msgid "Logfiles"
+msgstr "로그파일"
+
+msgid "Console"
+msgstr "콘솔"
+
+msgid "Packages"
+msgstr "패키지"
+
+msgid "Services"
+msgstr "서비스"
+
+msgid "Reboot"
+msgstr "재부팅"
+
+msgid "Access denied!"
+msgstr "접근이 거부되었습니다!"
+
+msgid "You have no permissions for this page."
+msgstr "이 페이지에 대한 권한이 없습니다."
+
+msgid "edit"
+msgstr "편집"
+
+msgid "create User"
+msgstr "사용자 생성"
+
+msgid "Save"
+msgstr "저장"
+
+msgid "Delete"
+msgstr "삭제"
+
+msgid "Create"
+msgstr "생성"
+
+msgid "Add new"
+msgstr "새로 추가"
+
+msgid "No Users available!"
+msgstr "사용 가능한 사용자가 없습니다!"
+
+msgid "Please add some Users."
+msgstr "사용자를 추가해 주세요."
+
+msgid "User"
+msgstr "사용자"
+
+msgid "Name"
+msgstr "이름"
+
+msgid "E-Mail"
+msgstr "이메일"
+
+msgid "Edit"
+msgstr "편집"
+
+msgid "Language"
+msgstr "언어"
+
+msgid "Time Format"
+msgstr "시간 형식"
+
+msgid "Timezone"
+msgstr "타임존"
+
+msgid "ID"
+msgstr "아이디"
+
+msgid "Username"
+msgstr "사용자 이름"
+
+msgid "E-Mail Adress"
+msgstr "이메일 주소"
+
+msgid "Full Name"
+msgstr "이름"
+
+msgid "Phone Number"
+msgstr "전화번호"
+
+msgid "Postal Address"
+msgstr "우편 주소"
+
+msgid "Security settings"
+msgstr "보안 설정"
+
+msgid "Change password manually"
+msgstr "비밀번호를 수동으로 변경하세요"
+
+msgid "Initiate password reset"
+msgstr "비밀번호 재설정 시작"
+
+msgid "Generate new password"
+msgstr "새 비밀번호 생성"
+
+msgid "Type"
+msgstr "타입"
+
+msgid "Smartphone"
+msgstr "스마트폰"
+
+msgid "disabled"
+msgstr "비활성화"
+
+msgid "SMS"
+msgstr "문자"
+
+msgid "New Password"
+msgstr "새 ​​비밀번호"
+
+msgid "Password Confirmation"
+msgstr "비밀번호 확인"
+
+msgid "Initiates the password recovery process."
+msgstr "비밀번호 복구 프로세스를 시작합니다."
+
+msgid "The user receives an E-Mail with instructions on how to reset the password."
+msgstr "사용자는 비밀번호 재설정 방법에 대한 지침이 포함된 이메일을 받습니다."
+
+msgid "The user will probably not receive an E-Mail because the provided <strong>E-Mail address is invalid<\/strong>."
+msgstr "제공된 <strong>이메일 주소가 유효하지 않습니다<\/strong>. 따라서 사용자는 이메일을 받지 못할 수도 있습니다."
+
+msgid "Activate the reset using password recovery"
+msgstr "비밀번호 복구를 사용하여 재설정 활성화"
+
+msgid "The system automatically generates a strong password and sends it to the user by E-Mail."
+msgstr "시스템은 자동으로 강력한 비밀번호를 생성하여 이메일로 사용자에게 보냅니다."
+
+msgid "Please note that the password can only be sent if the user has entered a valid E-Mail address."
+msgstr "사용자가 유효한 이메일 주소를 입력한 경우에만 비밀번호가 전송될 수 있습니다."
+
+msgid "Activate the reset using password generation"
+msgstr "비밀번호 생성을 사용하여 재설정을 활성화합니다."
+
+msgid "Password Settings"
+msgstr "비밀번호 설정"
+
+msgid "Cancel"
+msgstr "취소"
+
+msgid "Module not found!"
+msgstr "모듈을 찾을 수 없습니다!"
+
+msgid "Unknown module name. Please select an valid Module!"
+msgstr "알 수 없는 모듈 이름입니다. "
+
+msgid "No Settings available!"
+msgstr "사용 가능한 설정이 없습니다!"
+
+msgid "The Module %s has no settings!"
+msgstr "%s 모듈에 설정이 없습니다!"
+
+msgid "Update"
+msgstr "업데이트"
+
+msgid "Upgrade"
+msgstr "업그레이드"
+
+msgid "Installed Modules"
+msgstr "설치된 모듈"
+
+msgid "Repositorys"
+msgstr "저장소"
+
+msgid "No Themes available!"
+msgstr "사용 가능한 테마가 없습니다!"
+
+msgid "Please install some Themes."
+msgstr "몇 가지 테마를 설치해 주세요."
+
+msgid "No Modules available!"
+msgstr "사용 가능한 모듈이 없습니다!"
+
+msgid "Please install some Modules."
+msgstr "일부 모듈을 설치하십시오."
+
+msgid "Module"
+msgstr "모듈"
+
+msgid "Description"
+msgstr "설명"
+
+msgid "Module is enabled."
+msgstr "모듈이 활성화되었습니다."
+
+msgid "Module is disabled."
+msgstr "모듈이 비활성화되었습니다."
+
+msgid "Disable"
+msgstr "비활성화"
+
+msgid "Enable"
+msgstr "활성화"
+
+msgid "Deinstall"
+msgstr "제거"
+
+msgid "The module <strong>%s<\/strong> has an new upgrade to <strong>Version %s<\/strong>!"
+msgstr "<strong>%s<\/strong> 모듈이 <strong>버전 %s<\/strong>로 새롭게 업그레이드되었습니다!"
+
+msgid "Upgrade now!"
+msgstr "지금 업그레이드하세요!"
+
+msgid "Version"
+msgstr "버전"
+
+msgid "by"
+msgstr ""
+
+msgid "No Repositorys available!"
+msgstr "사용 가능한 저장소가 없습니다!"
+
+msgid "Please adding some Repositorys to keep updates."
+msgstr "업데이트를 유지하려면 일부 저장소를 추가하세요."
+
+msgid "Add Repository"
+msgstr "저장소 추가"
+
+msgid "Repository"
+msgstr "저장소"
+
+msgid "Status"
+msgstr "상태"
+
+msgid "Actions"
+msgstr "액션"
+
+msgid "Never updated"
+msgstr "업데이트되지 않음"
+
+msgid "Error"
+msgstr "오류"
+
+msgid "Malformed Repository"
+msgstr "잘못된 저장소"
+
+msgid "More Informations"
+msgstr "추가 정보"
+
+msgid "Last updated"
+msgstr "최종 업데이트"
+
+msgid "Repository URL"
+msgstr "저장소 URL"
+
+msgid "Package"
+msgstr "패키지"
+
+msgid "Command..."
+msgstr "명령..."
+
+msgid "Refresh"
+msgstr "새로고침"
+
+msgid "Loading"
+msgstr "로딩"
+
+msgid "No File selected!"
+msgstr "선택한 파일이 없습니다!"
+
+msgid "Please select an Logfile from the List."
+msgstr "목록에서 로그 파일을 선택하세요."
+
+msgid "Directory"
+msgstr "디렉토리"
+
+msgid "Path"
+msgstr "경로"
+
+msgid "No permissions!"
+msgstr "권한이 없습니다!"
+
+msgid "File"
+msgstr "파일"
+
+msgid "Global settings for the Panel"
+msgstr "패널에 대한 전역 설정"
+
+msgid "Project name"
+msgstr "프로젝트 이름"
+
+msgid "Show Copyright"
+msgstr "저작권 표시"
+
+msgid "Shows the copyright in the footer"
+msgstr "바닥글에 저작권 표시"
+
+msgid "Default Language"
+msgstr "기본 언어"
+
+msgid "Default Time Format"
+msgstr "기본 시간 형식"
+
+msgid "Default Timezone"
+msgstr "기본 시간대"
+
+msgid "Service"
+msgstr "서비스"
+
+msgid "Info"
+msgstr "정보"
+
+msgid "System Properties"
+msgstr "시스템 속성"
+
+msgid "Hostname"
+msgstr "호스트 이름"
+
+msgid "Time"
+msgstr "시간"
+
+msgid "System"
+msgstr "시스템"
+
+msgid "Kernel"
+msgstr "커널"
+
+msgid "Uptime"
+msgstr "가동 시간"
+
+msgid "Daemon"
+msgstr "데몬"
+
+msgid "Last Start"
+msgstr "마지막 시작"
+
+msgid "%s ago"
+msgstr "%s 전"
+
+msgid "Last End"
+msgstr "마지막 끝"
+
+msgid "Last Time"
+msgstr "마지막 시간"
+
+msgid "%d Seconds"
+msgstr "%d초"
+
+msgid "Mounted Drives"
+msgstr "마운트된 드라이브"
+
+msgid "Type: %s | FileSystem: %s | Size: %s \/ %s"
+msgstr "유형: %s | "
+
+msgid "System-Reboot"
+msgstr "시스템 재부팅"
+
+msgid "Do you really want to reboot the complete system?"
+msgstr "정말로 전체 시스템을 재부팅하시겠습니까?"
+
+msgid "Reboot now!"
+msgstr "지금 재부팅하세요!"
+
+msgid "Please sign in"
+msgstr "로그인해주세요"
+
+msgid "Code"
+msgstr "코드"
+
+msgid "Password"
+msgstr "비밀번호"
+
+msgid "Lost password"
+msgstr "비밀번호 분실"
+
+msgid "Sign in"
+msgstr "로그인"
+
+msgid "Global Settings"
+msgstr "전역 설정"
+
+msgid "Security"
+msgstr "보안"
+
+msgid "Global settings for your usability"
+msgstr "유용성을 위한 전역 설정"
+
+msgid "Some security settings for your safety."
+msgstr "귀하의 안전을 위한 일부 보안 설정입니다."
+
+msgid "Check your E-Mail address in the <a href=\"%s\">account settings<\/a>."
+msgstr "<a href=\"%s\">계정 설정<\/a>에서 이메일 주소를 확인하세요."
+
+msgid "Reset your Password"
+msgstr "비밀번호 재설정"
+
+msgid "Back to the login"
+msgstr "로그인으로 돌아가기"
+
+msgid "Reset Password"
+msgstr "비밀번호 재설정"
+
+msgid "Account Details"
+msgstr "계정 세부정보"
+
+msgid "Change Password"
+msgstr "비밀번호 변경"
+
+msgid "Current personal details that you have provided us with, We ask that you keep these upto date in case we require to contact you regarding your hosting package."
+msgstr "귀하가 당사에 제공한 현재 개인 정보. 귀하의 호스팅 패키지와 관련하여 당사가 귀하에게 연락해야 할 경우를 대비하여 이를 최신 상태로 유지하시기 바랍니다."
+
+msgid "Change your current control panel password."
+msgstr "현재 제어판 비밀번호를 변경하세요."
+
+msgid "Current Password"
+msgstr "현재 비밀번호"
+
+msgid "DEMO VERSION"
+msgstr "데모 버전"
+
+msgid "Reload"
+msgstr "리로드"
+
+msgid "Module Error"
+msgstr "모듈 오류"
+
+msgid "The specified module could not be loaded."
+msgstr "지정된 모듈을 로드할 수 없습니다."
+
+msgid "404 - Not Found"
+msgstr "404 - 찾을 수 없음"
+
+msgid "The page you requested could not be found."
+msgstr "요청한 페이지를 찾을 수 없습니다."
+
+msgid "Welcome to %s!"
+msgstr "%s에 오신 것을 환영합니다!"
+
+msgid "Get Started"
+msgstr "시작하기"
+
+msgid "Create a Domain"
+msgstr "도메인 생성"
+
+msgid "create a new subdomain"
+msgstr "새 하위 도메인 생성"
+
+msgid "Next Steps"
+msgstr "다음 단계"
+
+msgid "Create an FTP Account"
+msgstr "FTP 계정 생성"
+
+msgid "Create a new Database"
+msgstr "새 데이터베이스 생성"
+
+msgid "Create a new Mailbox"
+msgstr "새 메일함 생성"
+
+msgid "More Actions"
+msgstr "추가 작업"
+
+msgid "Modify your Account settings"
+msgstr "계정 설정 수정"
+
+msgid "Settings for <strong>%s<\/strong> was successfully updated."
+msgstr "<strong>%s<\/strong>에 대한 설정이 성공적으로 업데이트되었습니다."
+
+msgid "Please repeat your new password."
+msgstr "새 비밀번호를 다시 입력해 주세요."
+
+msgid "The new password must contain the minimum number of 8 characters."
+msgstr "새 비밀번호는 최소 8자 이상이어야 합니다."
+
+msgid "Can\\t send recovery instructions, because the user has an <strong>invalid E-Mail address<\/strong>."
+msgstr "사용자가 <strong>잘못된 이메일 주소<\/strong>를 가지고 있기 때문에 복구 지침을 보낼 수 없습니다."
+
+msgid "New password for your account"
+msgstr "계정의 새 비밀번호"
+
+msgid "The new generated password has been sent to users E-Mail adress!"
+msgstr "새로 생성된 비밀번호가 사용자 이메일 주소로 전송되었습니다!"
+
+msgid "Your password request has been sent to users E-Mail adress!"
+msgstr "귀하의 비밀번호 요청이 사용자 이메일 주소로 전송되었습니다!"
+
+msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
+msgstr "<strong>%s<\/strong>에 대한 보안 설정이 성공적으로 업데이트되었습니다."
+
+msgid "Please enter a valid E-Mail address."
+msgstr "유효한 이메일 주소를 입력하세요."
+
+msgid "User <strong>%s<\/strong> was successfully edited."
+msgstr "<strong>%s<\/strong> 사용자가 성공적으로 편집되었습니다."
+
+msgid "You cant delete the admin account!"
+msgstr "관리자 계정은 삭제할 수 없습니다!"
+
+msgid "The user <strong>%s<\/strong> was successfully deleted."
+msgstr "<strong>%s<\/strong> 사용자가 성공적으로 삭제되었습니다."
+
+msgid "Please select some entries you want to delete."
+msgstr "삭제하고 싶은 항목을 선택하세요."
+
+msgid "Please enter the username."
+msgstr "사용자 이름을 입력하세요."
+
+msgid "The new username must contain the minimum number of 2 characters."
+msgstr "새 사용자 이름은 최소 2자 이상이어야 합니다."
+
+msgid "The username is already in use."
+msgstr "사용자 이름이 이미 사용 중입니다."
+
+msgid "Please enter an E-Mail address."
+msgstr "이메일 주소를 입력해주세요."
+
+msgid "The E-Mail address is already in use."
+msgstr "이메일 주소가 이미 사용 중입니다."
+
+msgid "Please enter the password."
+msgstr "비밀번호를 입력해주세요."
+
+msgid "Please repeat the password."
+msgstr "비밀번호를 다시 입력해주세요."
+
+msgid "Your password and confirmation password do not match."
+msgstr "귀하의 비밀번호와 확인 비밀번호가 일치하지 않습니다."
+
+msgid "The user <strong>%s<\/strong> was successfully created."
+msgstr "<strong>%s<\/strong> 사용자가 성공적으로 생성되었습니다."
+
+msgid "Please enter an valid  repository URL!"
+msgstr "유효한 저장소 URL을 입력하세요!"
+
+msgid "Repository already exists!"
+msgstr "저장소가 이미 존재합니다!"
+
+msgid "The module is already disabled!"
+msgstr "모듈이 이미 비활성화되었습니다!"
+
+msgid "The module was successfully disabled."
+msgstr "모듈이 성공적으로 비활성화되었습니다."
+
+msgid "The module not exists!"
+msgstr "모듈이 존재하지 않습니다!"
+
+msgid "The module is already enabled!"
+msgstr "모듈이 이미 활성화되었습니다!"
+
+msgid "The module was successfully enabled."
+msgstr "모듈이 성공적으로 활성화되었습니다."
+
+msgid "The module was successfully deinstalled!"
+msgstr "모듈이 성공적으로 제거되었습니다!"
+
+msgid "<strong>%d Repository%s<\/strong> was updated. Found %d related Update%s!"
+msgstr "<strong>%d 저장소%s<\/strong>가 업데이트되었습니다. "
+
+msgid "<strong>%d Repositorys<\/strong> was successfully removed"
+msgstr "<strong>%d 저장소<\/strong>가 성공적으로 제거되었습니다."
+
+msgid "You have no permissions for this action!"
+msgstr "이 작업에 대한 권한이 없습니다!"
+
+msgid "The system settings has been saved."
+msgstr "시스템 설정이 저장되었습니다."
+
+msgid "The System will be rebooted now!"
+msgstr "이제 시스템이 재부팅됩니다!"
+
+msgid "Your 2FA code is invalid!"
+msgstr "2FA 코드가 유효하지 않습니다!"
+
+msgid "Please complete the two factor authentication:"
+msgstr "2단계 인증을 완료하세요."
+
+msgid "Login was unsuccessful!"
+msgstr "로그인에 실패했습니다!"
+
+msgid "Your security settings has been updated."
+msgstr "보안 설정이 업데이트되었습니다."
+
+msgid "Your settings has been updated."
+msgstr "설정이 업데이트되었습니다."
+
+msgid "The given Token is invalid or was expired."
+msgstr "주어진 토큰이 유효하지 않거나 만료되었습니다."
+
+msgid "Please enter a new password."
+msgstr "새 비밀번호를 입력해주세요."
+
+msgid "Your password has been restored."
+msgstr "비밀번호가 복원되었습니다."
+
+msgid "Please enter an valid and registred E-Mail address!"
+msgstr "유효하고 등록된 이메일 주소를 입력하세요!"
+
+msgid "Your request has been sent to your E-Mail adress!"
+msgstr "귀하의 요청이 귀하의 이메일 주소로 전송되었습니다!"
+
+msgid "Please enter your current password."
+msgstr "현재 비밀번호를 입력하세요."
+
+msgid "Please enter your new password."
+msgstr "새로운 비밀번호를 입력해주세요."
+
+msgid "Your current password is not correct!"
+msgstr "현재 비밀번호가 올바르지 않습니다!"
+
+msgid "Your password has been updated."
+msgstr "비밀번호가 업데이트되었습니다."
+
+msgid "Please enter your E-Mail address."
+msgstr "이메일 주소를 입력해주세요."
+
+msgid "Please enter your first name."
+msgstr "이름을 입력해주세요."
+
+msgid "Please enter your last name."
+msgstr "성함을 입력해주세요."
+
+msgid "Please enter your phone  number."
+msgstr "전화번호를 입력해주세요."
+
+msgid "Please enter your address."
+msgstr "주소를 입력해주세요."
+
+msgid "Your personal data has been updated."
+msgstr "귀하의 개인 데이터가 업데이트되었습니다."
+
+msgid "Enable Two-factor authentication (2FA)"
+msgstr "2FA(2단계 인증) 활성화"
+
+msgid "Do you really wan't to delete all selected users?"
+msgstr "선택한 사용자를 모두 삭제하시겠습니까?"
+
+msgid "Do you really wan't to delete the user?"
+msgstr "정말로 사용자를 삭제하고 싶지 않으신가요?"
+

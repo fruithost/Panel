@@ -1,0 +1,700 @@
+msgid ""
+msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: Hebrew\n"
+
+
+msgid "Account"
+msgstr "חשבון"
+
+msgid "Databases"
+msgstr "מאגרי מידע"
+
+msgid "Domains"
+msgstr "דומיינים"
+
+msgid "E-Mails"
+msgstr "מיילים"
+
+msgid "FTP"
+msgstr ""
+
+msgid "Hosting"
+msgstr "אירוח"
+
+msgid "Extended"
+msgstr "מורחב"
+
+msgid "Support"
+msgstr "תמיכה"
+
+msgid "Administration"
+msgstr "ניהול"
+
+msgid "Server"
+msgstr "שרת"
+
+msgid "Confirmation"
+msgstr "אישור"
+
+msgid "No"
+msgstr "לא"
+
+msgid "Yes"
+msgstr "כן"
+
+msgid "Unknown User"
+msgstr "משתמש לא ידוע"
+
+msgid "Password mismatched."
+msgstr "הסיסמה לא תואמת."
+
+msgid "Settings"
+msgstr "הגדרות"
+
+msgid "Logout"
+msgstr "התנתק"
+
+msgid "Overview"
+msgstr "סקירה כללית"
+
+msgid "Users"
+msgstr "משתמשים"
+
+msgid "Themes"
+msgstr "ערכות נושא"
+
+msgid "Modules"
+msgstr "מודולים"
+
+msgid "Logfiles"
+msgstr "קבצי יומן"
+
+msgid "Console"
+msgstr "קונסולה"
+
+msgid "Packages"
+msgstr "חבילות"
+
+msgid "Services"
+msgstr "שירותים"
+
+msgid "Reboot"
+msgstr "אתחול מחדש"
+
+msgid "Access denied!"
+msgstr "הגישה נדחתה!"
+
+msgid "You have no permissions for this page."
+msgstr "אין לך הרשאות עבור הדף הזה."
+
+msgid "edit"
+msgstr "עריכה"
+
+msgid "create User"
+msgstr "צור משתמש"
+
+msgid "Save"
+msgstr "שמור"
+
+msgid "Delete"
+msgstr "מחק"
+
+msgid "Create"
+msgstr "צור"
+
+msgid "Add new"
+msgstr "הוסף חדש"
+
+msgid "No Users available!"
+msgstr "אין משתמשים זמינים!"
+
+msgid "Please add some Users."
+msgstr "אנא הוסף כמה משתמשים."
+
+msgid "User"
+msgstr "משתמש"
+
+msgid "Name"
+msgstr "שם"
+
+msgid "E-Mail"
+msgstr "דואר אלקטרוני"
+
+msgid "Edit"
+msgstr "ערוך"
+
+msgid "Language"
+msgstr "שפה"
+
+msgid "Time Format"
+msgstr "פורמט זמן"
+
+msgid "Timezone"
+msgstr "אזור זמן"
+
+msgid "ID"
+msgstr "תעודת זהות"
+
+msgid "Username"
+msgstr "שם משתמש"
+
+msgid "E-Mail Adress"
+msgstr "כתובות דואר אלקטרוני"
+
+msgid "Full Name"
+msgstr "שם מלא"
+
+msgid "Phone Number"
+msgstr "מספר טלפון"
+
+msgid "Postal Address"
+msgstr "כתובת דואר"
+
+msgid "Security settings"
+msgstr "הגדרות אבטחה"
+
+msgid "Change password manually"
+msgstr "שנה סיסמה באופן ידני"
+
+msgid "Initiate password reset"
+msgstr "התחל איפוס סיסמה"
+
+msgid "Generate new password"
+msgstr "צור סיסמה חדשה"
+
+msgid "Type"
+msgstr "סוג"
+
+msgid "Smartphone"
+msgstr "סמארטפון"
+
+msgid "disabled"
+msgstr "נכה"
+
+msgid "SMS"
+msgstr ""
+
+msgid "New Password"
+msgstr "סיסמה חדשה"
+
+msgid "Password Confirmation"
+msgstr "אישור סיסמה"
+
+msgid "Initiates the password recovery process."
+msgstr "מתחיל את תהליך שחזור הסיסמה."
+
+msgid "The user receives an E-Mail with instructions on how to reset the password."
+msgstr "המשתמש מקבל דואר אלקטרוני עם הוראות כיצד לאפס את הסיסמה."
+
+msgid "The user will probably not receive an E-Mail because the provided <strong>E-Mail address is invalid<\/strong>."
+msgstr "כנראה שהמשתמש לא יקבל דואר אלקטרוני מכיוון ש<strong>כתובת הדואר האלקטרוני שסופקה אינה חוקית<\/strong>."
+
+msgid "Activate the reset using password recovery"
+msgstr "הפעל את האיפוס באמצעות שחזור סיסמה"
+
+msgid "The system automatically generates a strong password and sends it to the user by E-Mail."
+msgstr "המערכת מייצרת אוטומטית סיסמה חזקה ושולחת אותה למשתמש בדואר אלקטרוני."
+
+msgid "Please note that the password can only be sent if the user has entered a valid E-Mail address."
+msgstr "שימו לב שניתן לשלוח את הסיסמה רק אם המשתמש הזין כתובת דואר אלקטרוני חוקית."
+
+msgid "Activate the reset using password generation"
+msgstr "הפעל את האיפוס באמצעות יצירת סיסמה"
+
+msgid "Password Settings"
+msgstr "הגדרות סיסמה"
+
+msgid "Cancel"
+msgstr "בטל"
+
+msgid "Module not found!"
+msgstr "המודול לא נמצא!"
+
+msgid "Unknown module name. Please select an valid Module!"
+msgstr "שם מודול לא ידוע. "
+
+msgid "No Settings available!"
+msgstr "אין הגדרות זמינות!"
+
+msgid "The Module %s has no settings!"
+msgstr "למודול %s אין הגדרות!"
+
+msgid "Update"
+msgstr "עדכון"
+
+msgid "Upgrade"
+msgstr "שדרוג"
+
+msgid "Installed Modules"
+msgstr "מודולים מותקנים"
+
+msgid "Repositorys"
+msgstr "מאגרים"
+
+msgid "No Themes available!"
+msgstr "אין ערכות נושא זמינות!"
+
+msgid "Please install some Themes."
+msgstr "אנא התקן כמה ערכות נושא."
+
+msgid "No Modules available!"
+msgstr "אין מודולים זמינים!"
+
+msgid "Please install some Modules."
+msgstr "אנא התקן כמה מודולים."
+
+msgid "Module"
+msgstr "מודול"
+
+msgid "Description"
+msgstr "תיאור"
+
+msgid "Module is enabled."
+msgstr "המודול מופעל."
+
+msgid "Module is disabled."
+msgstr "המודול מושבת."
+
+msgid "Disable"
+msgstr "השבת"
+
+msgid "Enable"
+msgstr "אפשר"
+
+msgid "Deinstall"
+msgstr "הסר את ההתקנה"
+
+msgid "The module <strong>%s<\/strong> has an new upgrade to <strong>Version %s<\/strong>!"
+msgstr "למודול <strong>%s<\/strong> יש שדרוג חדש ל<strong>גרסה %s<\/strong>!"
+
+msgid "Upgrade now!"
+msgstr "שדרג עכשיו!"
+
+msgid "Version"
+msgstr "גרסה"
+
+msgid "by"
+msgstr "על ידי"
+
+msgid "No Repositorys available!"
+msgstr "אין מאגרים זמינים!"
+
+msgid "Please adding some Repositorys to keep updates."
+msgstr "אנא הוסף כמה מאגרים כדי לשמור על עדכונים."
+
+msgid "Add Repository"
+msgstr "הוסף מאגר"
+
+msgid "Repository"
+msgstr "מאגר"
+
+msgid "Status"
+msgstr "סטטוס"
+
+msgid "Actions"
+msgstr "פעולות"
+
+msgid "Never updated"
+msgstr "מעולם לא עודכן"
+
+msgid "Error"
+msgstr "שגיאה"
+
+msgid "Malformed Repository"
+msgstr "מאגר פגום"
+
+msgid "More Informations"
+msgstr "מידע נוסף"
+
+msgid "Last updated"
+msgstr "עודכן לאחרונה"
+
+msgid "Repository URL"
+msgstr "URL של מאגר"
+
+msgid "Package"
+msgstr "חבילה"
+
+msgid "Command..."
+msgstr "פקודה..."
+
+msgid "Refresh"
+msgstr "רענן"
+
+msgid "Loading"
+msgstr "טעינה"
+
+msgid "No File selected!"
+msgstr "לא נבחר קובץ!"
+
+msgid "Please select an Logfile from the List."
+msgstr "אנא בחר קובץ יומן מהרשימה."
+
+msgid "Directory"
+msgstr "ספרייה"
+
+msgid "Path"
+msgstr "נתיב"
+
+msgid "No permissions!"
+msgstr "אין הרשאות!"
+
+msgid "File"
+msgstr "קובץ"
+
+msgid "Global settings for the Panel"
+msgstr "הגדרות גלובליות עבור הפאנל"
+
+msgid "Project name"
+msgstr "שם הפרויקט"
+
+msgid "Show Copyright"
+msgstr "הצג זכויות יוצרים"
+
+msgid "Shows the copyright in the footer"
+msgstr "מציג את זכויות היוצרים בכותרת התחתונה"
+
+msgid "Default Language"
+msgstr "שפת ברירת מחדל"
+
+msgid "Default Time Format"
+msgstr "פורמט זמן ברירת מחדל"
+
+msgid "Default Timezone"
+msgstr "אזור זמן ברירת מחדל"
+
+msgid "Service"
+msgstr "שירות"
+
+msgid "Info"
+msgstr "מידע"
+
+msgid "System Properties"
+msgstr "מאפייני מערכת"
+
+msgid "Hostname"
+msgstr "שם מארח"
+
+msgid "Time"
+msgstr "זמן"
+
+msgid "System"
+msgstr "מערכת"
+
+msgid "Kernel"
+msgstr "גרעין"
+
+msgid "Uptime"
+msgstr "זמן פעולה"
+
+msgid "Daemon"
+msgstr "דימון"
+
+msgid "Last Start"
+msgstr "התחלה אחרונה"
+
+msgid "%s ago"
+msgstr "%s לפני"
+
+msgid "Last End"
+msgstr "סוף אחרון"
+
+msgid "Last Time"
+msgstr "בפעם האחרונה"
+
+msgid "%d Seconds"
+msgstr "%d שניות"
+
+msgid "Mounted Drives"
+msgstr "כוננים רכובים"
+
+msgid "Type: %s | FileSystem: %s | Size: %s \/ %s"
+msgstr "סוג: %s | "
+
+msgid "System-Reboot"
+msgstr "מערכת-אתחול מחדש"
+
+msgid "Do you really want to reboot the complete system?"
+msgstr "האם אתה באמת רוצה לאתחל את המערכת השלמה?"
+
+msgid "Reboot now!"
+msgstr "אתחל עכשיו!"
+
+msgid "Please sign in"
+msgstr "נא להיכנס"
+
+msgid "Code"
+msgstr "קוד"
+
+msgid "Password"
+msgstr "סיסמה"
+
+msgid "Lost password"
+msgstr "סיסמה אבודה"
+
+msgid "Sign in"
+msgstr "היכנס"
+
+msgid "Global Settings"
+msgstr "הגדרות גלובליות"
+
+msgid "Security"
+msgstr "אבטחה"
+
+msgid "Global settings for your usability"
+msgstr "הגדרות גלובליות לשימושיות שלך"
+
+msgid "Some security settings for your safety."
+msgstr "כמה הגדרות אבטחה לבטיחותך."
+
+msgid "Check your E-Mail address in the <a href=\"%s\">account settings<\/a>."
+msgstr "בדוק את כתובת הדואר האלקטרוני שלך ב<a href=\"%s\">הגדרות החשבון<\/a>."
+
+msgid "Reset your Password"
+msgstr "אפס את הסיסמה שלך"
+
+msgid "Back to the login"
+msgstr "חזרה לכניסה"
+
+msgid "Reset Password"
+msgstr "איפוס סיסמה"
+
+msgid "Account Details"
+msgstr "פרטי חשבון"
+
+msgid "Change Password"
+msgstr "שנה סיסמה"
+
+msgid "Current personal details that you have provided us with, We ask that you keep these upto date in case we require to contact you regarding your hosting package."
+msgstr "פרטים אישיים עדכניים שסיפקת לנו, אנו מבקשים ממך לשמור אותם מעודכנים למקרה שנצטרך ליצור איתך קשר בנוגע לחבילת האירוח שלך."
+
+msgid "Change your current control panel password."
+msgstr "שנה את סיסמת לוח הבקרה הנוכחית שלך."
+
+msgid "Current Password"
+msgstr "סיסמה נוכחית"
+
+msgid "DEMO VERSION"
+msgstr "גרסת הדגמה"
+
+msgid "Reload"
+msgstr "טען מחדש"
+
+msgid "Module Error"
+msgstr "שגיאת מודול"
+
+msgid "The specified module could not be loaded."
+msgstr "לא ניתן היה לטעון את המודול שצוין."
+
+msgid "404 - Not Found"
+msgstr "404 - לא נמצא"
+
+msgid "The page you requested could not be found."
+msgstr "הדף שביקשת לא נמצא."
+
+msgid "Welcome to %s!"
+msgstr "ברוכים הבאים ל-%s!"
+
+msgid "Get Started"
+msgstr "התחל"
+
+msgid "Create a Domain"
+msgstr "צור דומיין"
+
+msgid "create a new subdomain"
+msgstr "צור תת-דומיין חדש"
+
+msgid "Next Steps"
+msgstr "השלבים הבאים"
+
+msgid "Create an FTP Account"
+msgstr "צור חשבון FTP"
+
+msgid "Create a new Database"
+msgstr "צור מסד נתונים חדש"
+
+msgid "Create a new Mailbox"
+msgstr "צור תיבת דואר חדשה"
+
+msgid "More Actions"
+msgstr "פעולות נוספות"
+
+msgid "Modify your Account settings"
+msgstr "שנה את הגדרות החשבון שלך"
+
+msgid "Settings for <strong>%s<\/strong> was successfully updated."
+msgstr "הגדרות עבור <strong>%s<\/strong> עודכנו בהצלחה."
+
+msgid "Please repeat your new password."
+msgstr "אנא חזור על הסיסמה החדשה שלך."
+
+msgid "The new password must contain the minimum number of 8 characters."
+msgstr "הסיסמה החדשה חייבת להכיל את המספר המינימלי של 8 תווים."
+
+msgid "Can\\t send recovery instructions, because the user has an <strong>invalid E-Mail address<\/strong>."
+msgstr "לא יכול לשלוח הוראות שחזור, מכיוון שלמשתמש יש <strong>כתובת דואר אלקטרוני לא חוקית<\/strong>."
+
+msgid "New password for your account"
+msgstr "סיסמה חדשה לחשבון שלך"
+
+msgid "The new generated password has been sent to users E-Mail adress!"
+msgstr "הסיסמה החדשה שנוצרה נשלחה לכתובת הדואר האלקטרוני של המשתמש!"
+
+msgid "Your password request has been sent to users E-Mail adress!"
+msgstr "בקשת הסיסמה שלך נשלחה לכתובת הדואר האלקטרוני של המשתמשים!"
+
+msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
+msgstr "הגדרות אבטחה עבור <strong>%s<\/strong> עודכנו בהצלחה."
+
+msgid "Please enter a valid E-Mail address."
+msgstr "נא להזין כתובת דואר אלקטרוני חוקית."
+
+msgid "User <strong>%s<\/strong> was successfully edited."
+msgstr "המשתמש <strong>%s<\/strong> נערך בהצלחה."
+
+msgid "You cant delete the admin account!"
+msgstr "אתה לא יכול למחוק את חשבון הניהול!"
+
+msgid "The user <strong>%s<\/strong> was successfully deleted."
+msgstr "המשתמש <strong>%s<\/strong> נמחק בהצלחה."
+
+msgid "Please select some entries you want to delete."
+msgstr "אנא בחר כמה ערכים שברצונך למחוק."
+
+msgid "Please enter the username."
+msgstr "נא להזין את שם המשתמש."
+
+msgid "The new username must contain the minimum number of 2 characters."
+msgstr "שם ​​המשתמש החדש חייב להכיל את המספר המינימלי של 2 תווים."
+
+msgid "The username is already in use."
+msgstr "שם המשתמש כבר בשימוש."
+
+msgid "Please enter an E-Mail address."
+msgstr "נא להזין כתובת דואר אלקטרוני."
+
+msgid "The E-Mail address is already in use."
+msgstr "כתובת הדואר האלקטרוני כבר בשימוש."
+
+msgid "Please enter the password."
+msgstr "נא להזין את הסיסמה."
+
+msgid "Please repeat the password."
+msgstr "נא לחזור על הסיסמה."
+
+msgid "Your password and confirmation password do not match."
+msgstr "הסיסמה וסיסמת האישור שלך אינן תואמות."
+
+msgid "The user <strong>%s<\/strong> was successfully created."
+msgstr "המשתמש <strong>%s<\/strong> נוצר בהצלחה."
+
+msgid "Please enter an valid  repository URL!"
+msgstr "אנא הזן כתובת אתר חוקית של מאגר!"
+
+msgid "Repository already exists!"
+msgstr "מאגר כבר קיים!"
+
+msgid "The module is already disabled!"
+msgstr "המודול כבר מושבת!"
+
+msgid "The module was successfully disabled."
+msgstr "המודול הושבת בהצלחה."
+
+msgid "The module not exists!"
+msgstr "המודול לא קיים!"
+
+msgid "The module is already enabled!"
+msgstr "המודול כבר מופעל!"
+
+msgid "The module was successfully enabled."
+msgstr "המודול הופעל בהצלחה."
+
+msgid "The module was successfully deinstalled!"
+msgstr "המודול הוסר בהצלחה!"
+
+msgid "<strong>%d Repository%s<\/strong> was updated. Found %d related Update%s!"
+msgstr "<strong>מאגר %d%s<\/strong> עודכן. "
+
+msgid "<strong>%d Repositorys<\/strong> was successfully removed"
+msgstr "<strong>%d מאגרים</strong> הוסרו בהצלחה"
+
+msgid "You have no permissions for this action!"
+msgstr "אין לך הרשאות לפעולה זו!"
+
+msgid "The system settings has been saved."
+msgstr "הגדרות המערכת נשמרו."
+
+msgid "The System will be rebooted now!"
+msgstr "המערכת תאותחל כעת!"
+
+msgid "Your 2FA code is invalid!"
+msgstr "קוד ה-2FA שלך לא חוקי!"
+
+msgid "Please complete the two factor authentication:"
+msgstr "נא להשלים את אימות שני הגורמים:"
+
+msgid "Login was unsuccessful!"
+msgstr "הכניסה לא הצליחה!"
+
+msgid "Your security settings has been updated."
+msgstr "הגדרות האבטחה שלך עודכנו."
+
+msgid "Your settings has been updated."
+msgstr "ההגדרות שלך עודכנו."
+
+msgid "The given Token is invalid or was expired."
+msgstr "האסימון הנתון אינו חוקי או שפג תוקפו."
+
+msgid "Please enter a new password."
+msgstr "נא להזין סיסמה חדשה."
+
+msgid "Your password has been restored."
+msgstr "הסיסמה שלך שוחזרה."
+
+msgid "Please enter an valid and registred E-Mail address!"
+msgstr "נא להזין כתובת דואר אלקטרוני תקפה ורשומה!"
+
+msgid "Your request has been sent to your E-Mail adress!"
+msgstr "בקשתך נשלחה לכתובת הדואר האלקטרוני שלך!"
+
+msgid "Please enter your current password."
+msgstr "אנא הזן את הסיסמה הנוכחית שלך."
+
+msgid "Please enter your new password."
+msgstr "אנא הזן את הסיסמה החדשה שלך."
+
+msgid "Your current password is not correct!"
+msgstr "הסיסמה הנוכחית שלך אינה נכונה!"
+
+msgid "Your password has been updated."
+msgstr "הסיסמה שלך עודכנה."
+
+msgid "Please enter your E-Mail address."
+msgstr "אנא הכנס את כתובת הדואר האלקטרוני שלך."
+
+msgid "Please enter your first name."
+msgstr "אנא הכנס את שמך הפרטי."
+
+msgid "Please enter your last name."
+msgstr "אנא הכנס את שם המשפחה שלך."
+
+msgid "Please enter your phone  number."
+msgstr "נא להזין את מספר הטלפון שלך."
+
+msgid "Please enter your address."
+msgstr "אנא הכנס את כתובתך."
+
+msgid "Your personal data has been updated."
+msgstr "הנתונים האישיים שלך עודכנו."
+
+msgid "Enable Two-factor authentication (2FA)"
+msgstr "אפשר אימות דו-גורמי (2FA)"
+
+msgid "Do you really wan't to delete all selected users?"
+msgstr "האם אתה באמת לא רוצה למחוק את כל המשתמשים שנבחרו?"
+
+msgid "Do you really wan't to delete the user?"
+msgstr "האם אתה באמת לא רוצה למחוק את המשתמש?"
+

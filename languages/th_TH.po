@@ -1,0 +1,700 @@
+msgid ""
+msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: Thai\n"
+
+
+msgid "Account"
+msgstr "บัญชี"
+
+msgid "Databases"
+msgstr "ฐานข้อมูล"
+
+msgid "Domains"
+msgstr "โดเมน"
+
+msgid "E-Mails"
+msgstr "อีเมล"
+
+msgid "FTP"
+msgstr "เอฟทีพี"
+
+msgid "Hosting"
+msgstr "การโฮสต์"
+
+msgid "Extended"
+msgstr "ขยายออกไป"
+
+msgid "Support"
+msgstr "สนับสนุน"
+
+msgid "Administration"
+msgstr "การบริหารงาน"
+
+msgid "Server"
+msgstr "เซิร์ฟเวอร์"
+
+msgid "Confirmation"
+msgstr "การยืนยัน"
+
+msgid "No"
+msgstr "ไม่"
+
+msgid "Yes"
+msgstr "ใช่"
+
+msgid "Unknown User"
+msgstr "ผู้ใช้ที่ไม่รู้จัก"
+
+msgid "Password mismatched."
+msgstr "รหัสผ่านไม่ตรงกัน"
+
+msgid "Settings"
+msgstr "การตั้งค่า"
+
+msgid "Logout"
+msgstr "ออกจากระบบ"
+
+msgid "Overview"
+msgstr "ภาพรวม"
+
+msgid "Users"
+msgstr "ผู้ใช้"
+
+msgid "Themes"
+msgstr "ธีมส์"
+
+msgid "Modules"
+msgstr "โมดูล"
+
+msgid "Logfiles"
+msgstr "ไฟล์บันทึก"
+
+msgid "Console"
+msgstr "คอนโซล"
+
+msgid "Packages"
+msgstr "แพ็คเกจ"
+
+msgid "Services"
+msgstr "บริการ"
+
+msgid "Reboot"
+msgstr "รีบูต"
+
+msgid "Access denied!"
+msgstr "การเข้าถึงถูกปฏิเสธ!"
+
+msgid "You have no permissions for this page."
+msgstr "คุณไม่มีสิทธิ์สำหรับหน้านี้."
+
+msgid "edit"
+msgstr "แก้ไข"
+
+msgid "create User"
+msgstr "สร้างผู้ใช้"
+
+msgid "Save"
+msgstr "บันทึก"
+
+msgid "Delete"
+msgstr "ลบ"
+
+msgid "Create"
+msgstr "สร้าง"
+
+msgid "Add new"
+msgstr "เพิ่มใหม่"
+
+msgid "No Users available!"
+msgstr "ไม่มีผู้ใช้งาน!"
+
+msgid "Please add some Users."
+msgstr "กรุณาเพิ่มผู้ใช้บางส่วน."
+
+msgid "User"
+msgstr "ผู้ใช้"
+
+msgid "Name"
+msgstr "ชื่อ"
+
+msgid "E-Mail"
+msgstr "อีเมล์"
+
+msgid "Edit"
+msgstr "แก้ไข"
+
+msgid "Language"
+msgstr "ภาษา"
+
+msgid "Time Format"
+msgstr "รูปแบบเวลา"
+
+msgid "Timezone"
+msgstr "เขตเวลา"
+
+msgid "ID"
+msgstr "ไอดี"
+
+msgid "Username"
+msgstr "ชื่อผู้ใช้"
+
+msgid "E-Mail Adress"
+msgstr "ที่อยู่อีเมล"
+
+msgid "Full Name"
+msgstr "ชื่อเต็ม"
+
+msgid "Phone Number"
+msgstr "หมายเลขโทรศัพท์"
+
+msgid "Postal Address"
+msgstr "ที่อยู่ทางไปรษณีย์"
+
+msgid "Security settings"
+msgstr "การตั้งค่าความปลอดภัย"
+
+msgid "Change password manually"
+msgstr "เปลี่ยนรหัสผ่านด้วยตนเอง"
+
+msgid "Initiate password reset"
+msgstr "เริ่มต้นการรีเซ็ตรหัสผ่าน"
+
+msgid "Generate new password"
+msgstr "สร้างรหัสผ่านใหม่"
+
+msgid "Type"
+msgstr "ประเภท"
+
+msgid "Smartphone"
+msgstr "สมาร์ทโฟน"
+
+msgid "disabled"
+msgstr "ปิดการใช้งาน"
+
+msgid "SMS"
+msgstr "เอสเอ็มเอส"
+
+msgid "New Password"
+msgstr "รหัสผ่านใหม่"
+
+msgid "Password Confirmation"
+msgstr "การยืนยันรหัสผ่าน"
+
+msgid "Initiates the password recovery process."
+msgstr "เริ่มต้นกระบวนการกู้คืนรหัสผ่าน"
+
+msgid "The user receives an E-Mail with instructions on how to reset the password."
+msgstr "ผู้ใช้ได้รับอีเมลพร้อมคำแนะนำในการรีเซ็ตรหัสผ่าน"
+
+msgid "The user will probably not receive an E-Mail because the provided <strong>E-Mail address is invalid<\/strong>."
+msgstr "ผู้ใช้อาจจะไม่ได้รับอีเมลเนื่องจาก <strong>ที่อยู่อีเมลที่ให้ไว้ไม่ถูกต้อง</\/strong>"
+
+msgid "Activate the reset using password recovery"
+msgstr "เปิดใช้งานการรีเซ็ตโดยใช้การกู้คืนรหัสผ่าน"
+
+msgid "The system automatically generates a strong password and sends it to the user by E-Mail."
+msgstr "ระบบจะสร้างรหัสผ่านที่รัดกุมโดยอัตโนมัติ และส่งให้ผู้ใช้ทางอีเมล"
+
+msgid "Please note that the password can only be sent if the user has entered a valid E-Mail address."
+msgstr "โปรดทราบว่ารหัสผ่านจะถูกส่งได้ก็ต่อเมื่อผู้ใช้ป้อนที่อยู่อีเมลที่ถูกต้องเท่านั้น"
+
+msgid "Activate the reset using password generation"
+msgstr "เปิดใช้งานการรีเซ็ตโดยใช้การสร้างรหัสผ่าน"
+
+msgid "Password Settings"
+msgstr "การตั้งค่ารหัสผ่าน"
+
+msgid "Cancel"
+msgstr "ยกเลิก"
+
+msgid "Module not found!"
+msgstr "ไม่พบโมดูล!"
+
+msgid "Unknown module name. Please select an valid Module!"
+msgstr "ไม่ทราบชื่อโมดูล. "
+
+msgid "No Settings available!"
+msgstr "ไม่มีการตั้งค่า!"
+
+msgid "The Module %s has no settings!"
+msgstr "โมดูล %s ไม่มีการตั้งค่า!"
+
+msgid "Update"
+msgstr "อัพเดต"
+
+msgid "Upgrade"
+msgstr "อัพเกรด"
+
+msgid "Installed Modules"
+msgstr "โมดูลที่ติดตั้งแล้ว"
+
+msgid "Repositorys"
+msgstr "ที่เก็บข้อมูล"
+
+msgid "No Themes available!"
+msgstr "ไม่มีธีมให้ใช้!"
+
+msgid "Please install some Themes."
+msgstr "กรุณาติดตั้งธีมบางส่วน."
+
+msgid "No Modules available!"
+msgstr "ไม่มีโมดูล!"
+
+msgid "Please install some Modules."
+msgstr "กรุณาติดตั้งโมดูลบางตัว."
+
+msgid "Module"
+msgstr "โมดูล"
+
+msgid "Description"
+msgstr "คำอธิบาย"
+
+msgid "Module is enabled."
+msgstr "โมดูลถูกเปิดใช้งาน."
+
+msgid "Module is disabled."
+msgstr "โมดูลถูกปิดใช้งาน"
+
+msgid "Disable"
+msgstr "ปิดการใช้งาน"
+
+msgid "Enable"
+msgstr "เปิดใช้งาน"
+
+msgid "Deinstall"
+msgstr "ถอนการติดตั้ง"
+
+msgid "The module <strong>%s<\/strong> has an new upgrade to <strong>Version %s<\/strong>!"
+msgstr "โมดูล <strong>%s<\/strong> มีการอัพเกรดใหม่เป็น <strong>เวอร์ชัน %s<\/strong>!"
+
+msgid "Upgrade now!"
+msgstr "อัพเกรดเดี๋ยวนี้!"
+
+msgid "Version"
+msgstr "เวอร์ชัน"
+
+msgid "by"
+msgstr "โดย"
+
+msgid "No Repositorys available!"
+msgstr "ไม่มีที่เก็บ!"
+
+msgid "Please adding some Repositorys to keep updates."
+msgstr "กรุณาเพิ่ม Repositorys เพื่ออัพเดต."
+
+msgid "Add Repository"
+msgstr "เพิ่มพื้นที่เก็บข้อมูล"
+
+msgid "Repository"
+msgstr "พื้นที่เก็บข้อมูล"
+
+msgid "Status"
+msgstr "สถานะ"
+
+msgid "Actions"
+msgstr "การกระทำ"
+
+msgid "Never updated"
+msgstr "ไม่เคยอัพเดต"
+
+msgid "Error"
+msgstr "ผิดพลาด"
+
+msgid "Malformed Repository"
+msgstr "พื้นที่เก็บข้อมูลมีรูปแบบไม่ถูกต้อง"
+
+msgid "More Informations"
+msgstr "ข้อมูลเพิ่มเติม"
+
+msgid "Last updated"
+msgstr "อัพเดตล่าสุด"
+
+msgid "Repository URL"
+msgstr "URL ของพื้นที่เก็บข้อมูล"
+
+msgid "Package"
+msgstr "แพ็คเกจ"
+
+msgid "Command..."
+msgstr "คำสั่ง..."
+
+msgid "Refresh"
+msgstr "รีเฟรช"
+
+msgid "Loading"
+msgstr "กำลังโหลด"
+
+msgid "No File selected!"
+msgstr "ไม่ได้เลือกไฟล์!"
+
+msgid "Please select an Logfile from the List."
+msgstr "โปรดเลือกไฟล์บันทึกจากรายการ"
+
+msgid "Directory"
+msgstr "ไดเร็กทอรี"
+
+msgid "Path"
+msgstr "เส้นทาง"
+
+msgid "No permissions!"
+msgstr "ไม่ได้รับอนุญาต!"
+
+msgid "File"
+msgstr "ไฟล์"
+
+msgid "Global settings for the Panel"
+msgstr "การตั้งค่าส่วนกลางสำหรับแผงควบคุม"
+
+msgid "Project name"
+msgstr "ชื่อโครงการ"
+
+msgid "Show Copyright"
+msgstr "แสดงลิขสิทธิ์"
+
+msgid "Shows the copyright in the footer"
+msgstr "แสดงลิขสิทธิ์ในส่วนท้าย"
+
+msgid "Default Language"
+msgstr "ภาษาเริ่มต้น"
+
+msgid "Default Time Format"
+msgstr "รูปแบบเวลาเริ่มต้น"
+
+msgid "Default Timezone"
+msgstr "เขตเวลาเริ่มต้น"
+
+msgid "Service"
+msgstr "การบริการ"
+
+msgid "Info"
+msgstr "ข้อมูล"
+
+msgid "System Properties"
+msgstr "คุณสมบัติของระบบ"
+
+msgid "Hostname"
+msgstr "ชื่อโฮสต์"
+
+msgid "Time"
+msgstr "เวลา"
+
+msgid "System"
+msgstr "ระบบ"
+
+msgid "Kernel"
+msgstr "เคอร์เนล"
+
+msgid "Uptime"
+msgstr "เวลาทำงาน"
+
+msgid "Daemon"
+msgstr "ปีศาจ"
+
+msgid "Last Start"
+msgstr "เริ่มต้นครั้งสุดท้าย"
+
+msgid "%s ago"
+msgstr "%s ที่แล้ว"
+
+msgid "Last End"
+msgstr "จุดจบสุดท้าย"
+
+msgid "Last Time"
+msgstr "ครั้งสุดท้าย"
+
+msgid "%d Seconds"
+msgstr "%d วินาที"
+
+msgid "Mounted Drives"
+msgstr "ไดรฟ์แบบติดตั้ง"
+
+msgid "Type: %s | FileSystem: %s | Size: %s \/ %s"
+msgstr "ประเภท: %s | "
+
+msgid "System-Reboot"
+msgstr "ระบบ-รีบูต"
+
+msgid "Do you really want to reboot the complete system?"
+msgstr "คุณต้องการรีบูททั้งระบบจริงหรือ?"
+
+msgid "Reboot now!"
+msgstr "รีบูตเดี๋ยวนี้!"
+
+msgid "Please sign in"
+msgstr "กรุณาเข้าสู่ระบบ"
+
+msgid "Code"
+msgstr "รหัส"
+
+msgid "Password"
+msgstr "รหัสผ่าน"
+
+msgid "Lost password"
+msgstr "รหัสผ่านหาย"
+
+msgid "Sign in"
+msgstr "เข้าสู่ระบบ"
+
+msgid "Global Settings"
+msgstr "การตั้งค่าส่วนกลาง"
+
+msgid "Security"
+msgstr "ความปลอดภัย"
+
+msgid "Global settings for your usability"
+msgstr "การตั้งค่าส่วนกลางสำหรับการใช้งานของคุณ"
+
+msgid "Some security settings for your safety."
+msgstr "การตั้งค่าความปลอดภัยบางอย่างเพื่อความปลอดภัยของคุณ."
+
+msgid "Check your E-Mail address in the <a href=\"%s\">account settings<\/a>."
+msgstr "ตรวจสอบที่อยู่อีเมลของคุณใน <a href=\"%s\">การตั้งค่าบัญชี<//a>"
+
+msgid "Reset your Password"
+msgstr "รีเซ็ตรหัสผ่านของคุณ"
+
+msgid "Back to the login"
+msgstr "กลับไปที่ล็อกอิน"
+
+msgid "Reset Password"
+msgstr "รีเซ็ตรหัสผ่าน"
+
+msgid "Account Details"
+msgstr "รายละเอียดบัญชี"
+
+msgid "Change Password"
+msgstr "เปลี่ยนรหัสผ่าน"
+
+msgid "Current personal details that you have provided us with, We ask that you keep these upto date in case we require to contact you regarding your hosting package."
+msgstr "รายละเอียดส่วนบุคคลปัจจุบันที่คุณให้ไว้กับเรา เราขอให้คุณอัปเดตข้อมูลเหล่านี้ให้ทันสมัยอยู่เสมอ ในกรณีที่เราต้องการติดต่อคุณเกี่ยวกับแพ็คเกจโฮสติ้งของคุณ"
+
+msgid "Change your current control panel password."
+msgstr "เปลี่ยนรหัสผ่านแผงควบคุมปัจจุบันของคุณ"
+
+msgid "Current Password"
+msgstr "รหัสผ่านปัจจุบัน"
+
+msgid "DEMO VERSION"
+msgstr "เวอร์ชันสาธิต"
+
+msgid "Reload"
+msgstr "โหลดซ้ำ"
+
+msgid "Module Error"
+msgstr "โมดูลเกิดข้อผิดพลาด"
+
+msgid "The specified module could not be loaded."
+msgstr "ไม่สามารถโหลดโมดูลที่ระบุได้"
+
+msgid "404 - Not Found"
+msgstr "404 - ไม่พบ"
+
+msgid "The page you requested could not be found."
+msgstr "ไม่พบเพจที่คุณร้องขอ."
+
+msgid "Welcome to %s!"
+msgstr "ยินดีต้อนรับสู่ %s!"
+
+msgid "Get Started"
+msgstr "เริ่มต้นเลย"
+
+msgid "Create a Domain"
+msgstr "สร้างโดเมน"
+
+msgid "create a new subdomain"
+msgstr "สร้างโดเมนย่อยใหม่"
+
+msgid "Next Steps"
+msgstr "ก้าวต่อไป"
+
+msgid "Create an FTP Account"
+msgstr "สร้างบัญชี FTP"
+
+msgid "Create a new Database"
+msgstr "สร้างฐานข้อมูลใหม่"
+
+msgid "Create a new Mailbox"
+msgstr "สร้างกล่องจดหมายใหม่"
+
+msgid "More Actions"
+msgstr "การดำเนินการเพิ่มเติม"
+
+msgid "Modify your Account settings"
+msgstr "แก้ไขการตั้งค่าบัญชีของคุณ"
+
+msgid "Settings for <strong>%s<\/strong> was successfully updated."
+msgstr "อัปเดตการตั้งค่าสำหรับ <strong>%s<\/strong> สำเร็จแล้ว"
+
+msgid "Please repeat your new password."
+msgstr "กรุณาทำซ้ำรหัสผ่านใหม่ของคุณ."
+
+msgid "The new password must contain the minimum number of 8 characters."
+msgstr "รหัสผ่านใหม่ต้องมีจำนวนอักขระขั้นต่ำ 8 ตัว"
+
+msgid "Can\\t send recovery instructions, because the user has an <strong>invalid E-Mail address<\/strong>."
+msgstr "ไม่สามารถ\\ส่งคำแนะนำในการกู้คืนได้ เนื่องจากผู้ใช้มี<strong>ที่อยู่อีเมลที่ไม่ถูกต้อง</\/strong>"
+
+msgid "New password for your account"
+msgstr "รหัสผ่านใหม่สำหรับบัญชีของคุณ"
+
+msgid "The new generated password has been sent to users E-Mail adress!"
+msgstr "รหัสผ่านที่สร้างขึ้นใหม่ได้ถูกส่งไปยังที่อยู่อีเมลของผู้ใช้แล้ว!"
+
+msgid "Your password request has been sent to users E-Mail adress!"
+msgstr "คำขอรหัสผ่านของคุณถูกส่งไปยังที่อยู่อีเมลของผู้ใช้แล้ว!"
+
+msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
+msgstr "อัปเดตการตั้งค่าความปลอดภัยสำหรับ <strong>%s<\/strong> สำเร็จแล้ว"
+
+msgid "Please enter a valid E-Mail address."
+msgstr "กรุณากรอกที่อยู่อีเมลที่ถูกต้อง."
+
+msgid "User <strong>%s<\/strong> was successfully edited."
+msgstr "แก้ไขผู้ใช้ <strong>%s<//strong> สำเร็จแล้ว"
+
+msgid "You cant delete the admin account!"
+msgstr "คุณไม่สามารถลบบัญชีผู้ดูแลระบบได้!"
+
+msgid "The user <strong>%s<\/strong> was successfully deleted."
+msgstr "ลบผู้ใช้ <strong>%s<//strong> เรียบร้อยแล้ว"
+
+msgid "Please select some entries you want to delete."
+msgstr "กรุณาเลือกบางรายการที่คุณต้องการลบ."
+
+msgid "Please enter the username."
+msgstr "กรุณากรอกชื่อผู้ใช้."
+
+msgid "The new username must contain the minimum number of 2 characters."
+msgstr "ชื่อผู้ใช้ใหม่ต้องมีจำนวนอักขระขั้นต่ำ 2 ตัว"
+
+msgid "The username is already in use."
+msgstr "ชื่อผู้ใช้นี้มีการใช้งานแล้ว."
+
+msgid "Please enter an E-Mail address."
+msgstr "กรุณากรอกที่อยู่อีเมล."
+
+msgid "The E-Mail address is already in use."
+msgstr "ที่อยู่อีเมลถูกใช้แล้ว."
+
+msgid "Please enter the password."
+msgstr "กรุณากรอกรหัสผ่าน."
+
+msgid "Please repeat the password."
+msgstr "กรุณากรอกรหัสผ่านซ้ำ."
+
+msgid "Your password and confirmation password do not match."
+msgstr "รหัสผ่านและรหัสผ่านยืนยันของคุณไม่ตรงกัน"
+
+msgid "The user <strong>%s<\/strong> was successfully created."
+msgstr "สร้างผู้ใช้ <strong>%s<//strong> สำเร็จแล้ว"
+
+msgid "Please enter an valid  repository URL!"
+msgstr "กรุณากรอก URL ที่เก็บที่ถูกต้อง!"
+
+msgid "Repository already exists!"
+msgstr "มีที่เก็บข้อมูลอยู่แล้ว!"
+
+msgid "The module is already disabled!"
+msgstr "โมดูลถูกปิดการใช้งานแล้ว!"
+
+msgid "The module was successfully disabled."
+msgstr "โมดูลถูกปิดใช้งานสำเร็จ"
+
+msgid "The module not exists!"
+msgstr "ไม่มีโมดูลนี้!"
+
+msgid "The module is already enabled!"
+msgstr "โมดูลเปิดใช้งานแล้ว!"
+
+msgid "The module was successfully enabled."
+msgstr "เปิดใช้งานโมดูลสำเร็จแล้ว"
+
+msgid "The module was successfully deinstalled!"
+msgstr "ถอนการติดตั้งโมดูลสำเร็จแล้ว!"
+
+msgid "<strong>%d Repository%s<\/strong> was updated. Found %d related Update%s!"
+msgstr "<strong>%d พื้นที่เก็บข้อมูล%s<\/strong> ได้รับการอัปเดตแล้ว "
+
+msgid "<strong>%d Repositorys<\/strong> was successfully removed"
+msgstr "<strong>%d Repositorys<\/strong> ถูกลบเรียบร้อยแล้ว"
+
+msgid "You have no permissions for this action!"
+msgstr "คุณไม่มีสิทธิ์สำหรับการกระทำนี้!"
+
+msgid "The system settings has been saved."
+msgstr "บันทึกการตั้งค่าระบบแล้ว"
+
+msgid "The System will be rebooted now!"
+msgstr "ระบบจะรีบูตทันที!"
+
+msgid "Your 2FA code is invalid!"
+msgstr "รหัส 2FA ของคุณไม่ถูกต้อง!"
+
+msgid "Please complete the two factor authentication:"
+msgstr "กรุณากรอกการยืนยันตัวตนแบบสองปัจจัย:"
+
+msgid "Login was unsuccessful!"
+msgstr "เข้าสู่ระบบไม่สำเร็จ!"
+
+msgid "Your security settings has been updated."
+msgstr "การตั้งค่าความปลอดภัยของคุณได้รับการอัปเดตแล้ว"
+
+msgid "Your settings has been updated."
+msgstr "การตั้งค่าของคุณได้รับการอัปเดตแล้ว"
+
+msgid "The given Token is invalid or was expired."
+msgstr "โทเค็นที่กำหนดไม่ถูกต้องหรือหมดอายุแล้ว"
+
+msgid "Please enter a new password."
+msgstr "กรุณากรอกรหัสผ่านใหม่."
+
+msgid "Your password has been restored."
+msgstr "รหัสผ่านของคุณถูกกู้คืนแล้ว"
+
+msgid "Please enter an valid and registred E-Mail address!"
+msgstr "กรุณากรอกที่อยู่อีเมลที่ถูกต้องและลงทะเบียน!"
+
+msgid "Your request has been sent to your E-Mail adress!"
+msgstr "คำขอของคุณถูกส่งไปยังที่อยู่อีเมลของคุณแล้ว!"
+
+msgid "Please enter your current password."
+msgstr "กรุณากรอกรหัสผ่านปัจจุบันของคุณ."
+
+msgid "Please enter your new password."
+msgstr "กรุณากรอกรหัสผ่านใหม่ของคุณ."
+
+msgid "Your current password is not correct!"
+msgstr "รหัสผ่านปัจจุบันของคุณไม่ถูกต้อง!"
+
+msgid "Your password has been updated."
+msgstr "รหัสผ่านของคุณได้รับการอัปเดตแล้ว"
+
+msgid "Please enter your E-Mail address."
+msgstr "กรุณากรอกที่อยู่อีเมลของคุณ."
+
+msgid "Please enter your first name."
+msgstr "กรุณากรอกชื่อของคุณ."
+
+msgid "Please enter your last name."
+msgstr "กรุณากรอกนามสกุลของคุณ."
+
+msgid "Please enter your phone  number."
+msgstr "กรุณากรอกหมายเลขโทรศัพท์ของคุณ."
+
+msgid "Please enter your address."
+msgstr "กรุณากรอกที่อยู่ของคุณ."
+
+msgid "Your personal data has been updated."
+msgstr "ข้อมูลส่วนบุคคลของคุณได้รับการอัปเดตแล้ว"
+
+msgid "Enable Two-factor authentication (2FA)"
+msgstr "เปิดใช้งานการรับรองความถูกต้องด้วยสองปัจจัย (2FA)"
+
+msgid "Do you really wan't to delete all selected users?"
+msgstr "คุณไม่ต้องการลบผู้ใช้ที่เลือกทั้งหมดจริงๆหรือ?"
+
+msgid "Do you really wan't to delete the user?"
+msgstr "คุณไม่อยากลบผู้ใช้จริงๆเหรอ?"
+

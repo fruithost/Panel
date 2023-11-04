@@ -2,20 +2,20 @@ msgid ""
 msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Language: $name\n"
+"Language: Dutch\n"
 
 
 msgid "Account"
-msgstr ""
+msgstr "Rekening"
 
 msgid "Databases"
 msgstr ""
 
 msgid "Domains"
-msgstr ""
+msgstr "Domeinen"
 
 msgid "E-Mails"
-msgstr ""
+msgstr "E-mails"
 
 msgid "FTP"
 msgstr ""
@@ -24,268 +24,268 @@ msgid "Hosting"
 msgstr ""
 
 msgid "Extended"
-msgstr ""
+msgstr "Uitgebreid"
 
 msgid "Support"
-msgstr ""
+msgstr "Ondersteuning"
 
 msgid "Administration"
-msgstr ""
+msgstr "Administratie"
 
 msgid "Server"
 msgstr ""
 
 msgid "Confirmation"
-msgstr ""
+msgstr "Bevestiging"
 
 msgid "No"
-msgstr ""
+msgstr "Nee"
 
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 msgid "Unknown User"
-msgstr ""
+msgstr "Onbekende gebruiker"
 
 msgid "Password mismatched."
-msgstr ""
+msgstr "Wachtwoord komt niet overeen."
 
 msgid "Settings"
-msgstr ""
+msgstr "Instellingen"
 
 msgid "Logout"
-msgstr ""
+msgstr "Uitloggen"
 
 msgid "Overview"
-msgstr ""
+msgstr "Overzicht"
 
 msgid "Users"
-msgstr ""
+msgstr "Gebruikers"
 
 msgid "Themes"
-msgstr ""
+msgstr "Thema's"
 
 msgid "Modules"
 msgstr ""
 
 msgid "Logfiles"
-msgstr ""
+msgstr "Logbestanden"
 
 msgid "Console"
 msgstr ""
 
 msgid "Packages"
-msgstr ""
+msgstr "Pakketten"
 
 msgid "Services"
-msgstr ""
+msgstr "Diensten"
 
 msgid "Reboot"
-msgstr ""
+msgstr "Opnieuw opstarten"
 
 msgid "Access denied!"
-msgstr ""
+msgstr "Toegang geweigerd!"
 
 msgid "You have no permissions for this page."
-msgstr ""
+msgstr "Je hebt geen rechten voor deze pagina."
 
 msgid "edit"
-msgstr ""
+msgstr "bewerken"
 
 msgid "create User"
-msgstr ""
+msgstr "gebruiker aanmaken"
 
 msgid "Save"
-msgstr ""
+msgstr "Opslaan"
 
 msgid "Delete"
-msgstr ""
+msgstr "Verwijderen"
 
 msgid "Create"
-msgstr ""
+msgstr "Maken"
 
 msgid "Add new"
-msgstr ""
+msgstr "Nieuw toevoegen"
 
 msgid "No Users available!"
-msgstr ""
+msgstr "Geen gebruikers beschikbaar!"
 
 msgid "Please add some Users."
-msgstr ""
+msgstr "Voeg enkele gebruikers toe."
 
 msgid "User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgid "E-Mail"
-msgstr ""
+msgstr "E-mail"
 
 msgid "Edit"
-msgstr ""
+msgstr "Bewerken"
 
 msgid "Language"
-msgstr ""
+msgstr "Taal"
 
 msgid "Time Format"
-msgstr ""
+msgstr "Tijdformaat"
 
 msgid "Timezone"
-msgstr ""
+msgstr "Tijdzone"
 
 msgid "ID"
 msgstr ""
 
 msgid "Username"
-msgstr ""
+msgstr "Gebruikersnaam"
 
 msgid "E-Mail Adress"
-msgstr ""
+msgstr "E-mailadres"
 
 msgid "Full Name"
-msgstr ""
+msgstr "Volledige naam"
 
 msgid "Phone Number"
-msgstr ""
+msgstr "Telefoonnummer"
 
 msgid "Postal Address"
-msgstr ""
+msgstr "Postadres"
 
 msgid "Security settings"
-msgstr ""
+msgstr "Beveiligingsinstellingen"
 
 msgid "Change password manually"
-msgstr ""
+msgstr "Wachtwoord handmatig wijzigen"
 
 msgid "Initiate password reset"
-msgstr ""
+msgstr "Wachtwoordreset starten"
 
 msgid "Generate new password"
-msgstr ""
+msgstr "Genereer nieuw wachtwoord"
 
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 msgid "Smartphone"
 msgstr ""
 
 msgid "disabled"
-msgstr ""
+msgstr "uitgeschakeld"
 
 msgid "SMS"
 msgstr ""
 
 msgid "New Password"
-msgstr ""
+msgstr "Nieuw wachtwoord"
 
 msgid "Password Confirmation"
-msgstr ""
+msgstr "Wachtwoordbevestiging"
 
 msgid "Initiates the password recovery process."
-msgstr ""
+msgstr "Start het wachtwoordherstelproces."
 
 msgid "The user receives an E-Mail with instructions on how to reset the password."
-msgstr ""
+msgstr "De gebruiker ontvangt een e-mail met instructies voor het opnieuw instellen van het wachtwoord."
 
 msgid "The user will probably not receive an E-Mail because the provided <strong>E-Mail address is invalid<\/strong>."
-msgstr ""
+msgstr "De gebruiker zal waarschijnlijk geen e-mail ontvangen omdat het opgegeven <strong>e-mailadres ongeldig is<\/strong>."
 
 msgid "Activate the reset using password recovery"
-msgstr ""
+msgstr "Activeer de reset met behulp van wachtwoordherstel"
 
 msgid "The system automatically generates a strong password and sends it to the user by E-Mail."
-msgstr ""
+msgstr "Het systeem genereert automatisch een sterk wachtwoord en stuurt dit per e-mail naar de gebruiker."
 
 msgid "Please note that the password can only be sent if the user has entered a valid E-Mail address."
-msgstr ""
+msgstr "Houd er rekening mee dat het wachtwoord alleen kan worden verzonden als de gebruiker een geldig e-mailadres heeft ingevoerd."
 
 msgid "Activate the reset using password generation"
-msgstr ""
+msgstr "Activeer de reset met behulp van het genereren van een wachtwoord"
 
 msgid "Password Settings"
-msgstr ""
+msgstr "Wachtwoordinstellingen"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 msgid "Module not found!"
-msgstr ""
+msgstr "Module niet gevonden!"
 
 msgid "Unknown module name. Please select an valid Module!"
-msgstr ""
+msgstr "Onbekende modulenaam. "
 
 msgid "No Settings available!"
-msgstr ""
+msgstr "Geen instellingen beschikbaar!"
 
 msgid "The Module %s has no settings!"
-msgstr ""
+msgstr "De module %s heeft geen instellingen!"
 
 msgid "Update"
-msgstr ""
+msgstr "Bijwerken"
 
 msgid "Upgrade"
-msgstr ""
+msgstr "Upgraden"
 
 msgid "Installed Modules"
-msgstr ""
+msgstr "Geïnstalleerde modules"
 
 msgid "Repositorys"
-msgstr ""
+msgstr "Opslagplaatsen"
 
 msgid "No Themes available!"
-msgstr ""
+msgstr "Geen thema's beschikbaar!"
 
 msgid "Please install some Themes."
-msgstr ""
+msgstr "Installeer enkele thema's."
 
 msgid "No Modules available!"
-msgstr ""
+msgstr "Geen modules beschikbaar!"
 
 msgid "Please install some Modules."
-msgstr ""
+msgstr "Installeer enkele modules."
 
 msgid "Module"
 msgstr ""
 
 msgid "Description"
-msgstr ""
+msgstr "Beschrijving"
 
 msgid "Module is enabled."
-msgstr ""
+msgstr "Module is ingeschakeld."
 
 msgid "Module is disabled."
-msgstr ""
+msgstr "Module is uitgeschakeld."
 
 msgid "Disable"
-msgstr ""
+msgstr "Uitschakelen"
 
 msgid "Enable"
-msgstr ""
+msgstr "Inschakelen"
 
 msgid "Deinstall"
-msgstr ""
+msgstr "Deïnstalleren"
 
 msgid "The module <strong>%s<\/strong> has an new upgrade to <strong>Version %s<\/strong>!"
-msgstr ""
+msgstr "De module <strong>%s<\/strong> heeft een nieuwe upgrade naar <strong>Versie %s<\/strong>!"
 
 msgid "Upgrade now!"
-msgstr ""
+msgstr "Upgrade nu!"
 
 msgid "Version"
-msgstr ""
+msgstr "Versie"
 
 msgid "by"
-msgstr ""
+msgstr "door"
 
 msgid "No Repositorys available!"
-msgstr ""
+msgstr "Geen opslagplaatsen beschikbaar!"
 
 msgid "Please adding some Repositorys to keep updates."
-msgstr ""
+msgstr "Voeg enkele repository's toe om updates bij te houden."
 
 msgid "Add Repository"
-msgstr ""
+msgstr "Repository toevoegen"
 
 msgid "Repository"
 msgstr ""
@@ -294,94 +294,94 @@ msgid "Status"
 msgstr ""
 
 msgid "Actions"
-msgstr ""
+msgstr "Acties"
 
 msgid "Never updated"
-msgstr ""
+msgstr "Nooit bijgewerkt"
 
 msgid "Error"
-msgstr ""
+msgstr "Fout"
 
 msgid "Malformed Repository"
-msgstr ""
+msgstr "Onjuist opgemaakte opslagplaats"
 
 msgid "More Informations"
-msgstr ""
+msgstr "Meer informatie"
 
 msgid "Last updated"
-msgstr ""
+msgstr "Laatst bijgewerkt"
 
 msgid "Repository URL"
-msgstr ""
+msgstr "Repository-URL"
 
 msgid "Package"
-msgstr ""
+msgstr "Pakket"
 
 msgid "Command..."
-msgstr ""
+msgstr "Opdracht..."
 
 msgid "Refresh"
-msgstr ""
+msgstr "Vernieuwen"
 
 msgid "Loading"
-msgstr ""
+msgstr "Laden"
 
 msgid "No File selected!"
-msgstr ""
+msgstr "Geen bestand geselecteerd!"
 
 msgid "Please select an Logfile from the List."
-msgstr ""
+msgstr "Selecteer een logbestand uit de lijst."
 
 msgid "Directory"
 msgstr ""
 
 msgid "Path"
-msgstr ""
+msgstr "Pad"
 
 msgid "No permissions!"
-msgstr ""
+msgstr "Geen rechten!"
 
 msgid "File"
-msgstr ""
+msgstr "Bestand"
 
 msgid "Global settings for the Panel"
-msgstr ""
+msgstr "Algemene instellingen voor het paneel"
 
 msgid "Project name"
-msgstr ""
+msgstr "Projectnaam"
 
 msgid "Show Copyright"
-msgstr ""
+msgstr "Toon auteursrecht"
 
 msgid "Shows the copyright in the footer"
-msgstr ""
+msgstr "Toont het copyright in de voettekst"
 
 msgid "Default Language"
-msgstr ""
+msgstr "Standaardtaal"
 
 msgid "Default Time Format"
-msgstr ""
+msgstr "Standaard tijdnotatie"
 
 msgid "Default Timezone"
-msgstr ""
+msgstr "Standaardtijdzone"
 
 msgid "Service"
-msgstr ""
+msgstr "Dienst"
 
 msgid "Info"
-msgstr ""
+msgstr "Informatie"
 
 msgid "System Properties"
-msgstr ""
+msgstr "Systeemeigenschappen"
 
 msgid "Hostname"
-msgstr ""
+msgstr "Hostnaam"
 
 msgid "Time"
-msgstr ""
+msgstr "Tijd"
 
 msgid "System"
-msgstr ""
+msgstr "Systeem"
 
 msgid "Kernel"
 msgstr ""
@@ -393,307 +393,307 @@ msgid "Daemon"
 msgstr ""
 
 msgid "Last Start"
-msgstr ""
+msgstr "Laatste start"
 
 msgid "%s ago"
-msgstr ""
+msgstr "%s geleden"
 
 msgid "Last End"
-msgstr ""
+msgstr "Laatste einde"
 
 msgid "Last Time"
-msgstr ""
+msgstr "Laatste keer"
 
 msgid "%d Seconds"
-msgstr ""
+msgstr "%d Seconden"
 
 msgid "Mounted Drives"
-msgstr ""
+msgstr "Gemonteerde schijven"
 
 msgid "Type: %s | FileSystem: %s | Size: %s \/ %s"
-msgstr ""
+msgstr "Type: %s | "
 
 msgid "System-Reboot"
-msgstr ""
+msgstr "Systeem opnieuw opstarten"
 
 msgid "Do you really want to reboot the complete system?"
-msgstr ""
+msgstr "Wilt u echt het volledige systeem opnieuw opstarten?"
 
 msgid "Reboot now!"
-msgstr ""
+msgstr "Start nu opnieuw op!"
 
 msgid "Please sign in"
-msgstr ""
+msgstr "Meld u aan"
 
 msgid "Code"
 msgstr ""
 
 msgid "Password"
-msgstr ""
+msgstr "Wachtwoord"
 
 msgid "Lost password"
-msgstr ""
+msgstr "Wachtwoord kwijt"
 
 msgid "Sign in"
-msgstr ""
+msgstr "Aanmelden"
 
 msgid "Global Settings"
-msgstr ""
+msgstr "Globale instellingen"
 
 msgid "Security"
-msgstr ""
+msgstr "Beveiliging"
 
 msgid "Global settings for your usability"
-msgstr ""
+msgstr "Algemene instellingen voor uw bruikbaarheid"
 
 msgid "Some security settings for your safety."
-msgstr ""
+msgstr "Sommige beveiligingsinstellingen voor uw veiligheid."
 
 msgid "Check your E-Mail address in the <a href=\"%s\">account settings<\/a>."
-msgstr ""
+msgstr "Controleer uw e-mailadres in de <a href=\"%s\">accountinstellingen<\/a>."
 
 msgid "Reset your Password"
-msgstr ""
+msgstr "Stel uw wachtwoord opnieuw in"
 
 msgid "Back to the login"
-msgstr ""
+msgstr "Terug naar inloggen"
 
 msgid "Reset Password"
-msgstr ""
+msgstr "Wachtwoord opnieuw instellen"
 
 msgid "Account Details"
-msgstr ""
+msgstr "Accountgegevens"
 
 msgid "Change Password"
-msgstr ""
+msgstr "Wachtwoord wijzigen"
 
 msgid "Current personal details that you have provided us with, We ask that you keep these upto date in case we require to contact you regarding your hosting package."
-msgstr ""
+msgstr "Huidige persoonlijke gegevens die u ons heeft verstrekt. Wij vragen u deze actueel te houden voor het geval wij contact met u moeten opnemen over uw hostingpakket."
 
 msgid "Change your current control panel password."
-msgstr ""
+msgstr "Wijzig uw huidige wachtwoord voor het controlepaneel."
 
 msgid "Current Password"
-msgstr ""
+msgstr "Huidig ​​wachtwoord"
 
 msgid "DEMO VERSION"
-msgstr ""
+msgstr "DEMO-VERSIE"
 
 msgid "Reload"
-msgstr ""
+msgstr "Herladen"
 
 msgid "Module Error"
-msgstr ""
+msgstr "Modulefout"
 
 msgid "The specified module could not be loaded."
-msgstr ""
+msgstr "De opgegeven module kan niet worden geladen."
 
 msgid "404 - Not Found"
-msgstr ""
+msgstr "404 - Niet gevonden"
 
 msgid "The page you requested could not be found."
-msgstr ""
+msgstr "De door u opgevraagde pagina kon niet worden gevonden."
 
 msgid "Welcome to %s!"
-msgstr ""
+msgstr "Welkom bij %s!"
 
 msgid "Get Started"
-msgstr ""
+msgstr "Aan de slag"
 
 msgid "Create a Domain"
-msgstr ""
+msgstr "Maak een domein aan"
 
 msgid "create a new subdomain"
-msgstr ""
+msgstr "maak een nieuw subdomein aan"
 
 msgid "Next Steps"
-msgstr ""
+msgstr "Volgende stappen"
 
 msgid "Create an FTP Account"
-msgstr ""
+msgstr "Maak een FTP-account aan"
 
 msgid "Create a new Database"
-msgstr ""
+msgstr "Maak een nieuwe database"
 
 msgid "Create a new Mailbox"
-msgstr ""
+msgstr "Maak een nieuwe mailbox"
 
 msgid "More Actions"
-msgstr ""
+msgstr "Meer acties"
 
 msgid "Modify your Account settings"
-msgstr ""
+msgstr "Wijzig uw accountinstellingen"
 
 msgid "Settings for <strong>%s<\/strong> was successfully updated."
-msgstr ""
+msgstr "Instellingen voor <strong>%s<\/strong> zijn succesvol bijgewerkt."
 
 msgid "Please repeat your new password."
-msgstr ""
+msgstr "Herhaal uw nieuwe wachtwoord."
 
 msgid "The new password must contain the minimum number of 8 characters."
-msgstr ""
+msgstr "Het nieuwe wachtwoord moet minimaal 8 tekens bevatten."
 
 msgid "Can\\t send recovery instructions, because the user has an <strong>invalid E-Mail address<\/strong>."
-msgstr ""
+msgstr "Kan geen herstelinstructies verzenden, omdat de gebruiker een <strong>ongeldig e-mailadres<\/strong> heeft."
 
 msgid "New password for your account"
-msgstr ""
+msgstr "Nieuw wachtwoord voor uw account"
 
 msgid "The new generated password has been sent to users E-Mail adress!"
-msgstr ""
+msgstr "Het nieuw gegenereerde wachtwoord is naar het e-mailadres van de gebruiker verzonden!"
 
 msgid "Your password request has been sent to users E-Mail adress!"
-msgstr ""
+msgstr "Uw wachtwoordverzoek is verzonden naar het e-mailadres van de gebruiker!"
 
 msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
-msgstr ""
+msgstr "Beveiligingsinstellingen voor <strong>%s<\/strong> zijn succesvol bijgewerkt."
 
 msgid "Please enter a valid E-Mail address."
-msgstr ""
+msgstr "Voer een geldig e-mailadres in."
 
 msgid "User <strong>%s<\/strong> was successfully edited."
-msgstr ""
+msgstr "Gebruiker <strong>%s<\/strong> is succesvol bewerkt."
 
 msgid "You cant delete the admin account!"
-msgstr ""
+msgstr "Je kunt het beheerdersaccount niet verwijderen!"
 
 msgid "The user <strong>%s<\/strong> was successfully deleted."
-msgstr ""
+msgstr "De gebruiker <strong>%s<\/strong> is succesvol verwijderd."
 
 msgid "Please select some entries you want to delete."
-msgstr ""
+msgstr "Selecteer enkele vermeldingen die u wilt verwijderen."
 
 msgid "Please enter the username."
-msgstr ""
+msgstr "Voer de gebruikersnaam in."
 
 msgid "The new username must contain the minimum number of 2 characters."
-msgstr ""
+msgstr "De nieuwe gebruikersnaam moet minimaal 2 tekens bevatten."
 
 msgid "The username is already in use."
-msgstr ""
+msgstr "De gebruikersnaam is al in gebruik."
 
 msgid "Please enter an E-Mail address."
-msgstr ""
+msgstr "Voer een e-mailadres in."
 
 msgid "The E-Mail address is already in use."
-msgstr ""
+msgstr "Het e-mailadres is al in gebruik."
 
 msgid "Please enter the password."
-msgstr ""
+msgstr "Voer het wachtwoord in."
 
 msgid "Please repeat the password."
-msgstr ""
+msgstr "Herhaal het wachtwoord."
 
 msgid "Your password and confirmation password do not match."
-msgstr ""
+msgstr "Uw wachtwoord en bevestigingswachtwoord komen niet overeen."
 
 msgid "The user <strong>%s<\/strong> was successfully created."
-msgstr ""
+msgstr "De gebruiker <strong>%s<\/strong> is succesvol aangemaakt."
 
 msgid "Please enter an valid  repository URL!"
-msgstr ""
+msgstr "Voer een geldige repository-URL in!"
 
 msgid "Repository already exists!"
-msgstr ""
+msgstr "Repository bestaat al!"
 
 msgid "The module is already disabled!"
-msgstr ""
+msgstr "De module is al uitgeschakeld!"
 
 msgid "The module was successfully disabled."
-msgstr ""
+msgstr "De module is succesvol uitgeschakeld."
 
 msgid "The module not exists!"
-msgstr ""
+msgstr "De module bestaat niet!"
 
 msgid "The module is already enabled!"
-msgstr ""
+msgstr "De module is al ingeschakeld!"
 
 msgid "The module was successfully enabled."
-msgstr ""
+msgstr "De module is succesvol ingeschakeld."
 
 msgid "The module was successfully deinstalled!"
-msgstr ""
+msgstr "De module is succesvol verwijderd!"
 
 msgid "<strong>%d Repository%s<\/strong> was updated. Found %d related Update%s!"
-msgstr ""
+msgstr "<strong>%d Repository%s<\/strong> is bijgewerkt. "
 
 msgid "<strong>%d Repositorys<\/strong> was successfully removed"
-msgstr ""
+msgstr "<strong>%d opslagplaatsen<\/strong> is succesvol verwijderd"
 
 msgid "You have no permissions for this action!"
-msgstr ""
+msgstr "Je hebt geen rechten voor deze actie!"
 
 msgid "The system settings has been saved."
-msgstr ""
+msgstr "De systeeminstellingen zijn opgeslagen."
 
 msgid "The System will be rebooted now!"
-msgstr ""
+msgstr "Het systeem wordt nu opnieuw opgestart!"
 
 msgid "Your 2FA code is invalid!"
-msgstr ""
+msgstr "Uw 2FA-code is ongeldig!"
 
 msgid "Please complete the two factor authentication:"
-msgstr ""
+msgstr "Vul de tweefactorauthenticatie in:"
 
 msgid "Login was unsuccessful!"
-msgstr ""
+msgstr "Inloggen is mislukt!"
 
 msgid "Your security settings has been updated."
-msgstr ""
+msgstr "Uw beveiligingsinstellingen zijn bijgewerkt."
 
 msgid "Your settings has been updated."
-msgstr ""
+msgstr "Je instellingen zijn bijgewerkt."
 
 msgid "The given Token is invalid or was expired."
-msgstr ""
+msgstr "Het opgegeven token is ongeldig of verlopen."
 
 msgid "Please enter a new password."
-msgstr ""
+msgstr "Voer een nieuw wachtwoord in."
 
 msgid "Your password has been restored."
-msgstr ""
+msgstr "Uw wachtwoord is hersteld."
 
 msgid "Please enter an valid and registred E-Mail address!"
-msgstr ""
+msgstr "Voer een geldig en geregistreerd e-mailadres in!"
 
 msgid "Your request has been sent to your E-Mail adress!"
-msgstr ""
+msgstr "Uw verzoek is naar uw e-mailadres verzonden!"
 
 msgid "Please enter your current password."
-msgstr ""
+msgstr "Voer uw huidige wachtwoord in."
 
 msgid "Please enter your new password."
-msgstr ""
+msgstr "Voer uw nieuwe wachtwoord in."
 
 msgid "Your current password is not correct!"
-msgstr ""
+msgstr "Uw huidige wachtwoord is niet correct!"
 
 msgid "Your password has been updated."
-msgstr ""
+msgstr "Uw wachtwoord is bijgewerkt."
 
 msgid "Please enter your E-Mail address."
-msgstr ""
+msgstr "Voer uw e-mailadres in."
 
 msgid "Please enter your first name."
-msgstr ""
+msgstr "Voer uw voornaam in."
 
 msgid "Please enter your last name."
-msgstr ""
+msgstr "Voer uw achternaam in."
 
 msgid "Please enter your phone  number."
-msgstr ""
+msgstr "Voer uw telefoonnummer in."
 
 msgid "Please enter your address."
-msgstr ""
+msgstr "Voer uw adres in."
 
 msgid "Your personal data has been updated."
-msgstr ""
+msgstr "Uw persoonlijke gegevens zijn bijgewerkt."
 
 msgid "Enable Two-factor authentication (2FA)"
-msgstr ""
+msgstr "Tweefactorauthenticatie inschakelen (2FA)"
 
 msgid "Do you really wan't to delete all selected users?"
-msgstr ""
+msgstr "Wilt u echt niet alle geselecteerde gebruikers verwijderen?"
 
 msgid "Do you really wan't to delete the user?"
-msgstr ""
+msgstr "Wilt u de gebruiker echt niet verwijderen?"

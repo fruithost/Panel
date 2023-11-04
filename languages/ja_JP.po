@@ -1,0 +1,700 @@
+msgid ""
+msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: Japanese\n"
+
+
+msgid "Account"
+msgstr "アカウント"
+
+msgid "Databases"
+msgstr "データベース"
+
+msgid "Domains"
+msgstr "ドメイン"
+
+msgid "E-Mails"
+msgstr "メール"
+
+msgid "FTP"
+msgstr ""
+
+msgid "Hosting"
+msgstr "ホスティング"
+
+msgid "Extended"
+msgstr "拡張"
+
+msgid "Support"
+msgstr "サポート"
+
+msgid "Administration"
+msgstr "管理"
+
+msgid "Server"
+msgstr "サーバー"
+
+msgid "Confirmation"
+msgstr "確認"
+
+msgid "No"
+msgstr "いいえ"
+
+msgid "Yes"
+msgstr "はい"
+
+msgid "Unknown User"
+msgstr "不明なユーザー"
+
+msgid "Password mismatched."
+msgstr "パスワードが一致しません。"
+
+msgid "Settings"
+msgstr "設定"
+
+msgid "Logout"
+msgstr "ログアウト"
+
+msgid "Overview"
+msgstr "概要"
+
+msgid "Users"
+msgstr "ユーザー"
+
+msgid "Themes"
+msgstr "テーマ"
+
+msgid "Modules"
+msgstr "モジュール"
+
+msgid "Logfiles"
+msgstr "ログファイル"
+
+msgid "Console"
+msgstr "コンソール"
+
+msgid "Packages"
+msgstr "パッケージ"
+
+msgid "Services"
+msgstr "サービス"
+
+msgid "Reboot"
+msgstr "再起動"
+
+msgid "Access denied!"
+msgstr "アクセスが拒否されました!"
+
+msgid "You have no permissions for this page."
+msgstr "このページに対する権限がありません。"
+
+msgid "edit"
+msgstr "編集"
+
+msgid "create User"
+msgstr "ユーザーの作成"
+
+msgid "Save"
+msgstr "保存"
+
+msgid "Delete"
+msgstr "削除"
+
+msgid "Create"
+msgstr "作成"
+
+msgid "Add new"
+msgstr "新規追加"
+
+msgid "No Users available!"
+msgstr "利用可能なユーザーがいません!"
+
+msgid "Please add some Users."
+msgstr "ユーザーを追加してください。"
+
+msgid "User"
+msgstr "ユーザー"
+
+msgid "Name"
+msgstr "名前"
+
+msgid "E-Mail"
+msgstr "メール"
+
+msgid "Edit"
+msgstr "編集"
+
+msgid "Language"
+msgstr "言語"
+
+msgid "Time Format"
+msgstr "時間フォーマット"
+
+msgid "Timezone"
+msgstr "タイムゾーン"
+
+msgid "ID"
+msgstr ""
+
+msgid "Username"
+msgstr "ユーザー名"
+
+msgid "E-Mail Adress"
+msgstr "メールアドレス"
+
+msgid "Full Name"
+msgstr "フルネーム"
+
+msgid "Phone Number"
+msgstr "電話番号"
+
+msgid "Postal Address"
+msgstr "郵便番号"
+
+msgid "Security settings"
+msgstr "セキュリティ設定"
+
+msgid "Change password manually"
+msgstr "パスワードを手動で変更する"
+
+msgid "Initiate password reset"
+msgstr "パスワードリセットの開始"
+
+msgid "Generate new password"
+msgstr "新しいパスワードを生成する"
+
+msgid "Type"
+msgstr "タイプ"
+
+msgid "Smartphone"
+msgstr "スマートフォン"
+
+msgid "disabled"
+msgstr "無効"
+
+msgid "SMS"
+msgstr ""
+
+msgid "New Password"
+msgstr "新しいパスワード"
+
+msgid "Password Confirmation"
+msgstr "パスワード確認"
+
+msgid "Initiates the password recovery process."
+msgstr "パスワード回復プロセスを開始します。"
+
+msgid "The user receives an E-Mail with instructions on how to reset the password."
+msgstr "ユーザーは、パスワードをリセットする方法が記載された電子メールを受け取ります。"
+
+msgid "The user will probably not receive an E-Mail because the provided <strong>E-Mail address is invalid<\/strong>."
+msgstr "指定された<strong>電子メール アドレスが無効</strong>であるため、ユーザーは電子メールを受信できない可能性があります。"
+
+msgid "Activate the reset using password recovery"
+msgstr "パスワード回復を使用してリセットを有効にする"
+
+msgid "The system automatically generates a strong password and sends it to the user by E-Mail."
+msgstr "システムは強力なパスワードを自動的に生成し、電子メールでユーザーに送信します。"
+
+msgid "Please note that the password can only be sent if the user has entered a valid E-Mail address."
+msgstr "ユーザーが有効な電子メール アドレスを入力した場合にのみパスワードを送信できることに注意してください。"
+
+msgid "Activate the reset using password generation"
+msgstr "パスワード生成を使用してリセットをアクティブ化する"
+
+msgid "Password Settings"
+msgstr "パスワード設定"
+
+msgid "Cancel"
+msgstr "キャンセル"
+
+msgid "Module not found!"
+msgstr "モジュールが見つかりません!"
+
+msgid "Unknown module name. Please select an valid Module!"
+msgstr "不明なモジュール名です。"
+
+msgid "No Settings available!"
+msgstr "利用可能な設定がありません!"
+
+msgid "The Module %s has no settings!"
+msgstr "モジュール %s には設定がありません!"
+
+msgid "Update"
+msgstr "アップデート"
+
+msgid "Upgrade"
+msgstr "アップグレード"
+
+msgid "Installed Modules"
+msgstr "インストールされているモジュール"
+
+msgid "Repositorys"
+msgstr "リポジトリ"
+
+msgid "No Themes available!"
+msgstr "利用可能なテーマがありません!"
+
+msgid "Please install some Themes."
+msgstr "いくつかのテーマをインストールしてください。"
+
+msgid "No Modules available!"
+msgstr "利用可能なモジュールがありません!"
+
+msgid "Please install some Modules."
+msgstr "いくつかのモジュールをインストールしてください。"
+
+msgid "Module"
+msgstr "モジュール"
+
+msgid "Description"
+msgstr "説明"
+
+msgid "Module is enabled."
+msgstr "モジュールが有効になっています。"
+
+msgid "Module is disabled."
+msgstr "モジュールが無効になっています。"
+
+msgid "Disable"
+msgstr "無効にする"
+
+msgid "Enable"
+msgstr "有効にする"
+
+msgid "Deinstall"
+msgstr "アンインストール"
+
+msgid "The module <strong>%s<\/strong> has an new upgrade to <strong>Version %s<\/strong>!"
+msgstr "モジュール <strong>%s</\/st​​rong> は<strong>バージョン %s</strong> に新たにアップグレードされました。"
+
+msgid "Upgrade now!"
+msgstr "今すぐアップグレードしてください!"
+
+msgid "Version"
+msgstr "バージョン"
+
+msgid "by"
+msgstr "による"
+
+msgid "No Repositorys available!"
+msgstr "利用可能なリポジトリがありません!"
+
+msgid "Please adding some Repositorys to keep updates."
+msgstr "更新を維持するためにいくつかのリポジトリを追加してください。"
+
+msgid "Add Repository"
+msgstr "リポジトリの追加"
+
+msgid "Repository"
+msgstr "リポジトリ"
+
+msgid "Status"
+msgstr "ステータス"
+
+msgid "Actions"
+msgstr "アクション"
+
+msgid "Never updated"
+msgstr "更新されない"
+
+msgid "Error"
+msgstr "エラー"
+
+msgid "Malformed Repository"
+msgstr "不正なリポジトリ"
+
+msgid "More Informations"
+msgstr "詳細情報"
+
+msgid "Last updated"
+msgstr "最終更新"
+
+msgid "Repository URL"
+msgstr "リポジトリURL"
+
+msgid "Package"
+msgstr "パッケージ"
+
+msgid "Command..."
+msgstr "コマンド…"
+
+msgid "Refresh"
+msgstr "リフレッシュ"
+
+msgid "Loading"
+msgstr "ローディング"
+
+msgid "No File selected!"
+msgstr "ファイルが選択されていません!"
+
+msgid "Please select an Logfile from the List."
+msgstr "リストからログファイルを選択してください。"
+
+msgid "Directory"
+msgstr "ディレクトリ"
+
+msgid "Path"
+msgstr "パス"
+
+msgid "No permissions!"
+msgstr "権限がありません!"
+
+msgid "File"
+msgstr "ファイル"
+
+msgid "Global settings for the Panel"
+msgstr "パネルのグローバル設定"
+
+msgid "Project name"
+msgstr "プロジェクト名"
+
+msgid "Show Copyright"
+msgstr "著作権表示"
+
+msgid "Shows the copyright in the footer"
+msgstr "フッターに著作権を表示します"
+
+msgid "Default Language"
+msgstr "デフォルト言語"
+
+msgid "Default Time Format"
+msgstr "デフォルトの時刻形式"
+
+msgid "Default Timezone"
+msgstr "デフォルトのタイムゾーン"
+
+msgid "Service"
+msgstr "サービス"
+
+msgid "Info"
+msgstr "情報"
+
+msgid "System Properties"
+msgstr "システムプロパティ"
+
+msgid "Hostname"
+msgstr "ホスト名"
+
+msgid "Time"
+msgstr "時間"
+
+msgid "System"
+msgstr "システム"
+
+msgid "Kernel"
+msgstr "カーネル"
+
+msgid "Uptime"
+msgstr "稼働時間"
+
+msgid "Daemon"
+msgstr "デーモン"
+
+msgid "Last Start"
+msgstr "ラストスタート"
+
+msgid "%s ago"
+msgstr "%s前"
+
+msgid "Last End"
+msgstr "ラストエンド"
+
+msgid "Last Time"
+msgstr "前回"
+
+msgid "%d Seconds"
+msgstr "%d 秒"
+
+msgid "Mounted Drives"
+msgstr "マウントされたドライブ"
+
+msgid "Type: %s | FileSystem: %s | Size: %s \/ %s"
+msgstr "タイプ: %s |"
+
+msgid "System-Reboot"
+msgstr "システムの再起動"
+
+msgid "Do you really want to reboot the complete system?"
+msgstr "本当にシステム全体を再起動しますか?"
+
+msgid "Reboot now!"
+msgstr "今すぐ再起動してください!"
+
+msgid "Please sign in"
+msgstr "サインインしてください"
+
+msgid "Code"
+msgstr "コード"
+
+msgid "Password"
+msgstr "パスワード"
+
+msgid "Lost password"
+msgstr "パスワードを紛失しました"
+
+msgid "Sign in"
+msgstr "サインイン"
+
+msgid "Global Settings"
+msgstr "グローバル設定"
+
+msgid "Security"
+msgstr "セキュリティ"
+
+msgid "Global settings for your usability"
+msgstr "使いやすさのためのグローバル設定"
+
+msgid "Some security settings for your safety."
+msgstr "安全のためのいくつかのセキュリティ設定。"
+
+msgid "Check your E-Mail address in the <a href=\"%s\">account settings<\/a>."
+msgstr "<a href=\"%s\">アカウント設定</\/a>で電子メール アドレスを確認してください。"
+
+msgid "Reset your Password"
+msgstr "パスワードをリセットする"
+
+msgid "Back to the login"
+msgstr "ログインに戻る"
+
+msgid "Reset Password"
+msgstr "パスワードのリセット"
+
+msgid "Account Details"
+msgstr "アカウント詳細"
+
+msgid "Change Password"
+msgstr "パスワード変更"
+
+msgid "Current personal details that you have provided us with, We ask that you keep these upto date in case we require to contact you regarding your hosting package."
+msgstr "お客様が当社に提供した現在の個人情報。ホスティング パッケージに関して当社から連絡する必要がある場合に備えて、これらを最新の状態に保っておいてください。"
+
+msgid "Change your current control panel password."
+msgstr "現在のコントロール パネルのパスワードを変更します。"
+
+msgid "Current Password"
+msgstr "現在のパスワード"
+
+msgid "DEMO VERSION"
+msgstr "デモ版"
+
+msgid "Reload"
+msgstr "リロード"
+
+msgid "Module Error"
+msgstr "モジュールエラー"
+
+msgid "The specified module could not be loaded."
+msgstr "指定されたモジュールをロードできませんでした。"
+
+msgid "404 - Not Found"
+msgstr "404 - 見つかりません"
+
+msgid "The page you requested could not be found."
+msgstr "要求したページが見つかりませんでした。"
+
+msgid "Welcome to %s!"
+msgstr "%s へようこそ!"
+
+msgid "Get Started"
+msgstr "始めましょう"
+
+msgid "Create a Domain"
+msgstr "ドメインの作成"
+
+msgid "create a new subdomain"
+msgstr "新しいサブドメインを作成する"
+
+msgid "Next Steps"
+msgstr "次のステップ"
+
+msgid "Create an FTP Account"
+msgstr "FTPアカウントの作成"
+
+msgid "Create a new Database"
+msgstr "新しいデータベースの作成"
+
+msgid "Create a new Mailbox"
+msgstr "新しいメールボックスの作成"
+
+msgid "More Actions"
+msgstr "その他のアクション"
+
+msgid "Modify your Account settings"
+msgstr "アカウント設定を変更する"
+
+msgid "Settings for <strong>%s<\/strong> was successfully updated."
+msgstr "<strong>%s</strong> の設定は正常に更新されました。"
+
+msgid "Please repeat your new password."
+msgstr "新しいパスワードを繰り返してください。"
+
+msgid "The new password must contain the minimum number of 8 characters."
+msgstr "新しいパスワードには少なくとも 8 文字を含める必要があります。"
+
+msgid "Can\\t send recovery instructions, because the user has an <strong>invalid E-Mail address<\/strong>."
+msgstr "ユーザーの電子メール アドレスが<strong>無効</strong>であるため、回復指示を送信できません。"
+
+msgid "New password for your account"
+msgstr "アカウントの新しいパスワード"
+
+msgid "The new generated password has been sent to users E-Mail adress!"
+msgstr "新しく生成されたパスワードがユーザーの電子メール アドレスに送信されました。"
+
+msgid "Your password request has been sent to users E-Mail adress!"
+msgstr "パスワード要求がユーザーの電子メール アドレスに送信されました。"
+
+msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
+msgstr "<strong>%s</\/st​​rong> のセキュリティ設定が正常に更新されました。"
+
+msgid "Please enter a valid E-Mail address."
+msgstr "有効な電子メール アドレスを入力してください。"
+
+msgid "User <strong>%s<\/strong> was successfully edited."
+msgstr "ユーザー <strong>%s</\/st​​rong> は正常に編集されました。"
+
+msgid "You cant delete the admin account!"
+msgstr "管理者アカウントは削除できません!"
+
+msgid "The user <strong>%s<\/strong> was successfully deleted."
+msgstr "ユーザー <strong>%s</strong> は正常に削除されました。"
+
+msgid "Please select some entries you want to delete."
+msgstr "削除したいエントリをいくつか選択してください。"
+
+msgid "Please enter the username."
+msgstr "ユーザー名を入力してください。"
+
+msgid "The new username must contain the minimum number of 2 characters."
+msgstr "新しいユーザー名には少なくとも 2 文字を含める必要があります。"
+
+msgid "The username is already in use."
+msgstr "ユーザー名はすでに使用されています。"
+
+msgid "Please enter an E-Mail address."
+msgstr "メールアドレスを入力してください。"
+
+msgid "The E-Mail address is already in use."
+msgstr "メールアドレスは既に使用されています。"
+
+msgid "Please enter the password."
+msgstr "パスワードを入力してください。"
+
+msgid "Please repeat the password."
+msgstr "パスワードをもう一度入力してください。"
+
+msgid "Your password and confirmation password do not match."
+msgstr "パスワードと確認用パスワードが一致しません。"
+
+msgid "The user <strong>%s<\/strong> was successfully created."
+msgstr "ユーザー <strong>%s</strong> は正常に作成されました。"
+
+msgid "Please enter an valid  repository URL!"
+msgstr "有効なリポジトリ URL を入力してください。"
+
+msgid "Repository already exists!"
+msgstr "リポジトリはすでに存在します!"
+
+msgid "The module is already disabled!"
+msgstr "モジュールはすでに無効になっています!"
+
+msgid "The module was successfully disabled."
+msgstr "モジュールは正常に無効になりました。"
+
+msgid "The module not exists!"
+msgstr "モジュールが存在しません!"
+
+msgid "The module is already enabled!"
+msgstr "モジュールはすでに有効になっています。"
+
+msgid "The module was successfully enabled."
+msgstr "モジュールは正常に有効になりました。"
+
+msgid "The module was successfully deinstalled!"
+msgstr "モジュールは正常にアンインストールされました。"
+
+msgid "<strong>%d Repository%s<\/strong> was updated. Found %d related Update%s!"
+msgstr "<strong>%d リポジトリ%s</\/st​​rong> が更新されました。 "
+
+msgid "<strong>%d Repositorys<\/strong> was successfully removed"
+msgstr "<strong>%d リポジトリ</\/st​​rong> は正常に削除されました"
+
+msgid "You have no permissions for this action!"
+msgstr "このアクションに対する権限がありません!"
+
+msgid "The system settings has been saved."
+msgstr "システム設定が保存されました。"
+
+msgid "The System will be rebooted now!"
+msgstr "システムは今から再起動されます!"
+
+msgid "Your 2FA code is invalid!"
+msgstr "2FA コードが無効です!"
+
+msgid "Please complete the two factor authentication:"
+msgstr "2 要素認証を完了してください:"
+
+msgid "Login was unsuccessful!"
+msgstr "ログインに失敗しました!"
+
+msgid "Your security settings has been updated."
+msgstr "セキュリティ設定が更新されました。"
+
+msgid "Your settings has been updated."
+msgstr "設定が更新されました。"
+
+msgid "The given Token is invalid or was expired."
+msgstr "指定されたトークンは無効であるか、期限切れです。"
+
+msgid "Please enter a new password."
+msgstr "新しいパスワードを入力してください。"
+
+msgid "Your password has been restored."
+msgstr "パスワードが復元されました。"
+
+msgid "Please enter an valid and registred E-Mail address!"
+msgstr "有効な登録済みの電子メール アドレスを入力してください。"
+
+msgid "Your request has been sent to your E-Mail adress!"
+msgstr "あなたのリクエストはあなたのメールアドレスに送信されました！"
+
+msgid "Please enter your current password."
+msgstr "現在のパスワードを入力してください。"
+
+msgid "Please enter your new password."
+msgstr "新しいパスワードを入力してください。"
+
+msgid "Your current password is not correct!"
+msgstr "現在のパスワードが正しくありません!"
+
+msgid "Your password has been updated."
+msgstr "パスワードが更新されました。"
+
+msgid "Please enter your E-Mail address."
+msgstr "メールアドレスを入力してください。"
+
+msgid "Please enter your first name."
+msgstr "あなたの名前を入力してください。"
+
+msgid "Please enter your last name."
+msgstr "姓を入力してください。"
+
+msgid "Please enter your phone  number."
+msgstr "電話番号を入力してください。"
+
+msgid "Please enter your address."
+msgstr "住所を入力してください。"
+
+msgid "Your personal data has been updated."
+msgstr "あなたの個人データが更新されました。"
+
+msgid "Enable Two-factor authentication (2FA)"
+msgstr "2要素認証(2FA)を有効にする"
+
+msgid "Do you really wan't to delete all selected users?"
+msgstr "選択したユーザーをすべて削除しませんか?"
+
+msgid "Do you really wan't to delete the user?"
+msgstr "本当にユーザーを削除したくないですか?"
+

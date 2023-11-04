@@ -1,0 +1,700 @@
+msgid ""
+msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: Russian\n"
+
+
+msgid "Account"
+msgstr "Аккаунт"
+
+msgid "Databases"
+msgstr "Базы данных"
+
+msgid "Domains"
+msgstr "Домены"
+
+msgid "E-Mails"
+msgstr "Электронная почта"
+
+msgid "FTP"
+msgstr ""
+
+msgid "Hosting"
+msgstr "Хостинг"
+
+msgid "Extended"
+msgstr "Расширенный"
+
+msgid "Support"
+msgstr "Поддержка"
+
+msgid "Administration"
+msgstr "Администрация"
+
+msgid "Server"
+msgstr "Сервер"
+
+msgid "Confirmation"
+msgstr "Подтверждение"
+
+msgid "No"
+msgstr "Нет"
+
+msgid "Yes"
+msgstr "Да"
+
+msgid "Unknown User"
+msgstr "Неизвестный пользователь"
+
+msgid "Password mismatched."
+msgstr "Пароль не соответствует."
+
+msgid "Settings"
+msgstr "Настройки"
+
+msgid "Logout"
+msgstr "Выход"
+
+msgid "Overview"
+msgstr "Обзор"
+
+msgid "Users"
+msgstr "Пользователи"
+
+msgid "Themes"
+msgstr "Темы"
+
+msgid "Modules"
+msgstr "Модули"
+
+msgid "Logfiles"
+msgstr "Журналы"
+
+msgid "Console"
+msgstr "Консоль"
+
+msgid "Packages"
+msgstr "Пакеты"
+
+msgid "Services"
+msgstr "Услуги"
+
+msgid "Reboot"
+msgstr "Перезагрузка"
+
+msgid "Access denied!"
+msgstr "Доступ запрещен!"
+
+msgid "You have no permissions for this page."
+msgstr "У вас нет разрешений для этой страницы."
+
+msgid "edit"
+msgstr "править"
+
+msgid "create User"
+msgstr "создать пользователя"
+
+msgid "Save"
+msgstr "Сохранить"
+
+msgid "Delete"
+msgstr "Удалить"
+
+msgid "Create"
+msgstr "Создать"
+
+msgid "Add new"
+msgstr "Добавить новый"
+
+msgid "No Users available!"
+msgstr "Нет доступных пользователей!"
+
+msgid "Please add some Users."
+msgstr "Пожалуйста, добавьте несколько пользователей."
+
+msgid "User"
+msgstr "Пользователь"
+
+msgid "Name"
+msgstr "Имя"
+
+msgid "E-Mail"
+msgstr "Электронная почта"
+
+msgid "Edit"
+msgstr "Править"
+
+msgid "Language"
+msgstr "Язык"
+
+msgid "Time Format"
+msgstr "Формат времени"
+
+msgid "Timezone"
+msgstr "Часовой пояс"
+
+msgid "ID"
+msgstr "ИД"
+
+msgid "Username"
+msgstr "Имя пользователя"
+
+msgid "E-Mail Adress"
+msgstr "Адреса электронной почты"
+
+msgid "Full Name"
+msgstr "Полное имя"
+
+msgid "Phone Number"
+msgstr "Номер телефона"
+
+msgid "Postal Address"
+msgstr "Почтовый адрес"
+
+msgid "Security settings"
+msgstr "Настройки безопасности"
+
+msgid "Change password manually"
+msgstr "Изменить пароль вручную"
+
+msgid "Initiate password reset"
+msgstr "Инициировать сброс пароля"
+
+msgid "Generate new password"
+msgstr "Сгенерировать новый пароль"
+
+msgid "Type"
+msgstr "Тип"
+
+msgid "Smartphone"
+msgstr "Смартфон"
+
+msgid "disabled"
+msgstr "отключено"
+
+msgid "SMS"
+msgstr "СМС"
+
+msgid "New Password"
+msgstr "Новый пароль"
+
+msgid "Password Confirmation"
+msgstr "Подтверждение пароля"
+
+msgid "Initiates the password recovery process."
+msgstr "Инициирует процесс восстановления пароля."
+
+msgid "The user receives an E-Mail with instructions on how to reset the password."
+msgstr "Пользователь получает электронное письмо с инструкциями по сбросу пароля."
+
+msgid "The user will probably not receive an E-Mail because the provided <strong>E-Mail address is invalid<\/strong>."
+msgstr "Пользователь, вероятно, не получит электронное письмо, поскольку указанный <strong>адрес электронной почты недействителен<\/strong>."
+
+msgid "Activate the reset using password recovery"
+msgstr "Активировать сброс с помощью восстановления пароля."
+
+msgid "The system automatically generates a strong password and sends it to the user by E-Mail."
+msgstr "Система автоматически генерирует надежный пароль и отправляет его пользователю по электронной почте."
+
+msgid "Please note that the password can only be sent if the user has entered a valid E-Mail address."
+msgstr "Обратите внимание, что пароль может быть отправлен только в том случае, если пользователь ввел действительный адрес электронной почты."
+
+msgid "Activate the reset using password generation"
+msgstr "Активируйте сброс с помощью генерации пароля."
+
+msgid "Password Settings"
+msgstr "Настройки пароля"
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "Module not found!"
+msgstr "Модуль не найден!"
+
+msgid "Unknown module name. Please select an valid Module!"
+msgstr "Неизвестное имя модуля. "
+
+msgid "No Settings available!"
+msgstr "Нет доступных настроек!"
+
+msgid "The Module %s has no settings!"
+msgstr "У модуля %s нет настроек!"
+
+msgid "Update"
+msgstr "Обновить"
+
+msgid "Upgrade"
+msgstr "Обновление"
+
+msgid "Installed Modules"
+msgstr "Установленные модули"
+
+msgid "Repositorys"
+msgstr "Репозитории"
+
+msgid "No Themes available!"
+msgstr "Нет доступных тем!"
+
+msgid "Please install some Themes."
+msgstr "Пожалуйста, установите несколько тем."
+
+msgid "No Modules available!"
+msgstr "Нет доступных модулей!"
+
+msgid "Please install some Modules."
+msgstr "Пожалуйста, установите несколько модулей."
+
+msgid "Module"
+msgstr "Модуль"
+
+msgid "Description"
+msgstr "Описание"
+
+msgid "Module is enabled."
+msgstr "Модуль включен."
+
+msgid "Module is disabled."
+msgstr "Модуль отключен."
+
+msgid "Disable"
+msgstr "Отключить"
+
+msgid "Enable"
+msgstr "Включить"
+
+msgid "Deinstall"
+msgstr "Удалить"
+
+msgid "The module <strong>%s<\/strong> has an new upgrade to <strong>Version %s<\/strong>!"
+msgstr "Модуль <strong>%s<\/strong> обновлен до <strong>версии %s<\/strong>!"
+
+msgid "Upgrade now!"
+msgstr "Обновите сейчас!"
+
+msgid "Version"
+msgstr "Версия"
+
+msgid "by"
+msgstr "по"
+
+msgid "No Repositorys available!"
+msgstr "Нет доступных репозиториев!"
+
+msgid "Please adding some Repositorys to keep updates."
+msgstr "Пожалуйста, добавьте несколько репозиториев, чтобы получать обновления."
+
+msgid "Add Repository"
+msgstr "Добавить репозиторий"
+
+msgid "Repository"
+msgstr "Репозиторий"
+
+msgid "Status"
+msgstr "Статус"
+
+msgid "Actions"
+msgstr "Действия"
+
+msgid "Never updated"
+msgstr "Никогда не обновлялся"
+
+msgid "Error"
+msgstr "Ошибка"
+
+msgid "Malformed Repository"
+msgstr "Неверный репозиторий"
+
+msgid "More Informations"
+msgstr "Дополнительная информация"
+
+msgid "Last updated"
+msgstr "Последнее обновление"
+
+msgid "Repository URL"
+msgstr "URL-адрес репозитория"
+
+msgid "Package"
+msgstr "Пакет"
+
+msgid "Command..."
+msgstr "Команда..."
+
+msgid "Refresh"
+msgstr "Обновить"
+
+msgid "Loading"
+msgstr "Загрузка"
+
+msgid "No File selected!"
+msgstr "Файл не выбран!"
+
+msgid "Please select an Logfile from the List."
+msgstr "Пожалуйста, выберите файл журнала из списка."
+
+msgid "Directory"
+msgstr "Каталог"
+
+msgid "Path"
+msgstr "Путь"
+
+msgid "No permissions!"
+msgstr "Нет разрешений!"
+
+msgid "File"
+msgstr "Файл"
+
+msgid "Global settings for the Panel"
+msgstr "Глобальные настройки панели."
+
+msgid "Project name"
+msgstr "Название проекта"
+
+msgid "Show Copyright"
+msgstr "Показать авторские права"
+
+msgid "Shows the copyright in the footer"
+msgstr "Показывает авторские права в нижнем колонтитуле."
+
+msgid "Default Language"
+msgstr "Язык по умолчанию"
+
+msgid "Default Time Format"
+msgstr "Формат времени по умолчанию"
+
+msgid "Default Timezone"
+msgstr "Часовой пояс по умолчанию"
+
+msgid "Service"
+msgstr "Сервис"
+
+msgid "Info"
+msgstr "Информация"
+
+msgid "System Properties"
+msgstr "Свойства системы"
+
+msgid "Hostname"
+msgstr "Имя хоста"
+
+msgid "Time"
+msgstr "Время"
+
+msgid "System"
+msgstr "Система"
+
+msgid "Kernel"
+msgstr "Ядро"
+
+msgid "Uptime"
+msgstr "Время безотказной работы"
+
+msgid "Daemon"
+msgstr "Демон"
+
+msgid "Last Start"
+msgstr "Последний старт"
+
+msgid "%s ago"
+msgstr "%s назад"
+
+msgid "Last End"
+msgstr "Последний Конец"
+
+msgid "Last Time"
+msgstr "В последний раз"
+
+msgid "%d Seconds"
+msgstr "%d секунд"
+
+msgid "Mounted Drives"
+msgstr "Навесные диски"
+
+msgid "Type: %s | FileSystem: %s | Size: %s \/ %s"
+msgstr "Тип: %s | "
+
+msgid "System-Reboot"
+msgstr "Перезагрузка системы"
+
+msgid "Do you really want to reboot the complete system?"
+msgstr "Вы действительно хотите перезагрузить всю систему?"
+
+msgid "Reboot now!"
+msgstr "Перезагрузитесь сейчас!"
+
+msgid "Please sign in"
+msgstr "Пожалуйста, войдите в систему"
+
+msgid "Code"
+msgstr "Код"
+
+msgid "Password"
+msgstr "Пароль"
+
+msgid "Lost password"
+msgstr "Утерян пароль"
+
+msgid "Sign in"
+msgstr "Войти"
+
+msgid "Global Settings"
+msgstr "Глобальные настройки"
+
+msgid "Security"
+msgstr "Безопасность"
+
+msgid "Global settings for your usability"
+msgstr "Глобальные настройки для удобства использования."
+
+msgid "Some security settings for your safety."
+msgstr "Некоторые настройки безопасности для вашей безопасности."
+
+msgid "Check your E-Mail address in the <a href=\"%s\">account settings<\/a>."
+msgstr "Проверьте свой адрес электронной почты в <a href=\"%s\">настройках учетной записи<\/a>."
+
+msgid "Reset your Password"
+msgstr "Сбросить пароль"
+
+msgid "Back to the login"
+msgstr "Вернуться к входу в систему"
+
+msgid "Reset Password"
+msgstr "Сбросить пароль"
+
+msgid "Account Details"
+msgstr "Детали учетной записи"
+
+msgid "Change Password"
+msgstr "Изменить пароль"
+
+msgid "Current personal details that you have provided us with, We ask that you keep these upto date in case we require to contact you regarding your hosting package."
+msgstr "Текущие личные данные, которые вы нам предоставили. Мы просим вас поддерживать их в актуальном состоянии на случай, если нам потребуется связаться с вами по поводу вашего пакета хостинга."
+
+msgid "Change your current control panel password."
+msgstr "Измените текущий пароль панели управления."
+
+msgid "Current Password"
+msgstr "Текущий пароль"
+
+msgid "DEMO VERSION"
+msgstr "ДЕМО-ВЕРСИЯ"
+
+msgid "Reload"
+msgstr "Перезагрузить"
+
+msgid "Module Error"
+msgstr "Ошибка модуля"
+
+msgid "The specified module could not be loaded."
+msgstr "Не удалось загрузить указанный модуль."
+
+msgid "404 - Not Found"
+msgstr "404 — Не найдено"
+
+msgid "The page you requested could not be found."
+msgstr "Запрошенная вами страница не найдена."
+
+msgid "Welcome to %s!"
+msgstr "Добро пожаловать в %s!"
+
+msgid "Get Started"
+msgstr "Начать"
+
+msgid "Create a Domain"
+msgstr "Создать домен"
+
+msgid "create a new subdomain"
+msgstr "создать новый поддомен"
+
+msgid "Next Steps"
+msgstr "Следующие шаги"
+
+msgid "Create an FTP Account"
+msgstr "Создать учетную запись FTP"
+
+msgid "Create a new Database"
+msgstr "Создать новую базу данных"
+
+msgid "Create a new Mailbox"
+msgstr "Создать новый почтовый ящик."
+
+msgid "More Actions"
+msgstr "Дополнительные действия"
+
+msgid "Modify your Account settings"
+msgstr "Измените настройки своей учетной записи."
+
+msgid "Settings for <strong>%s<\/strong> was successfully updated."
+msgstr "Настройки для <strong>%s<\/strong> успешно обновлены."
+
+msgid "Please repeat your new password."
+msgstr "Пожалуйста, повторите новый пароль."
+
+msgid "The new password must contain the minimum number of 8 characters."
+msgstr "Новый пароль должен содержать минимум 8 символов."
+
+msgid "Can\\t send recovery instructions, because the user has an <strong>invalid E-Mail address<\/strong>."
+msgstr "Невозможно отправить инструкции по восстановлению, поскольку у пользователя <strong>неверный адрес электронной почты<\/strong>."
+
+msgid "New password for your account"
+msgstr "Новый пароль для вашей учетной записи."
+
+msgid "The new generated password has been sent to users E-Mail adress!"
+msgstr "Новый сгенерированный пароль был отправлен на адрес электронной почты пользователя!"
+
+msgid "Your password request has been sent to users E-Mail adress!"
+msgstr "Запрос пароля отправлен на адрес электронной почты пользователя!"
+
+msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
+msgstr "Настройки безопасности для <strong>%s<\/strong> успешно обновлены."
+
+msgid "Please enter a valid E-Mail address."
+msgstr "Пожалуйста, введите действительный адрес электронной почты."
+
+msgid "User <strong>%s<\/strong> was successfully edited."
+msgstr "Пользователь <strong>%s<\/strong> успешно отредактирован."
+
+msgid "You cant delete the admin account!"
+msgstr "Вы не можете удалить учетную запись администратора!"
+
+msgid "The user <strong>%s<\/strong> was successfully deleted."
+msgstr "Пользователь <strong>%s<\/strong> успешно удален."
+
+msgid "Please select some entries you want to delete."
+msgstr "Пожалуйста, выберите несколько записей, которые вы хотите удалить."
+
+msgid "Please enter the username."
+msgstr "Пожалуйста, введите имя пользователя."
+
+msgid "The new username must contain the minimum number of 2 characters."
+msgstr "Новое имя пользователя должно содержать минимум 2 символа."
+
+msgid "The username is already in use."
+msgstr "Имя пользователя уже используется."
+
+msgid "Please enter an E-Mail address."
+msgstr "Пожалуйста, введите адрес электронной почты."
+
+msgid "The E-Mail address is already in use."
+msgstr "Адрес электронной почты уже используется."
+
+msgid "Please enter the password."
+msgstr "Пожалуйста, введите пароль."
+
+msgid "Please repeat the password."
+msgstr "Пожалуйста, повторите пароль."
+
+msgid "Your password and confirmation password do not match."
+msgstr "Ваш пароль и пароль подтверждения не совпадают."
+
+msgid "The user <strong>%s<\/strong> was successfully created."
+msgstr "Пользователь <strong>%s<\/strong> успешно создан."
+
+msgid "Please enter an valid  repository URL!"
+msgstr "Пожалуйста, введите действительный URL-адрес репозитория!"
+
+msgid "Repository already exists!"
+msgstr "Репозиторий уже существует!"
+
+msgid "The module is already disabled!"
+msgstr "Модуль уже отключен!"
+
+msgid "The module was successfully disabled."
+msgstr "Модуль успешно отключен."
+
+msgid "The module not exists!"
+msgstr "Модуль не существует!"
+
+msgid "The module is already enabled!"
+msgstr "Модуль уже включен!"
+
+msgid "The module was successfully enabled."
+msgstr "Модуль успешно включен."
+
+msgid "The module was successfully deinstalled!"
+msgstr "Модуль успешно удален!"
+
+msgid "<strong>%d Repository%s<\/strong> was updated. Found %d related Update%s!"
+msgstr "<strong>Репозиторий %d%s<\/strong> обновлен. "
+
+msgid "<strong>%d Repositorys<\/strong> was successfully removed"
+msgstr "<strong>Репозитории %d<\/strong> успешно удалены."
+
+msgid "You have no permissions for this action!"
+msgstr "У вас нет разрешения на это действие!"
+
+msgid "The system settings has been saved."
+msgstr "Системные настройки сохранены."
+
+msgid "The System will be rebooted now!"
+msgstr "Система будет перезагружена!"
+
+msgid "Your 2FA code is invalid!"
+msgstr "Ваш код 2FA недействителен!"
+
+msgid "Please complete the two factor authentication:"
+msgstr "Пожалуйста, пройдите двухфакторную аутентификацию:"
+
+msgid "Login was unsuccessful!"
+msgstr "Не удалось войти в систему!"
+
+msgid "Your security settings has been updated."
+msgstr "Ваши настройки безопасности обновлены."
+
+msgid "Your settings has been updated."
+msgstr "Ваши настройки обновлены."
+
+msgid "The given Token is invalid or was expired."
+msgstr "Указанный токен недействителен или срок его действия истек."
+
+msgid "Please enter a new password."
+msgstr "Пожалуйста, введите новый пароль."
+
+msgid "Your password has been restored."
+msgstr "Ваш пароль восстановлен."
+
+msgid "Please enter an valid and registred E-Mail address!"
+msgstr "Пожалуйста, введите действительный и зарегистрированный адрес электронной почты!"
+
+msgid "Your request has been sent to your E-Mail adress!"
+msgstr "Ваш запрос отправлен на ваш адрес электронной почты!"
+
+msgid "Please enter your current password."
+msgstr "Пожалуйста, введите текущий пароль."
+
+msgid "Please enter your new password."
+msgstr "Пожалуйста, введите новый пароль."
+
+msgid "Your current password is not correct!"
+msgstr "Ваш текущий пароль неверен!"
+
+msgid "Your password has been updated."
+msgstr "Ваш пароль обновлен."
+
+msgid "Please enter your E-Mail address."
+msgstr "Пожалуйста, введите свой адрес электронной почты."
+
+msgid "Please enter your first name."
+msgstr "Пожалуйста, введите свое имя."
+
+msgid "Please enter your last name."
+msgstr "Пожалуйста, введите свою фамилию."
+
+msgid "Please enter your phone  number."
+msgstr "Пожалуйста, введите свой номер телефона."
+
+msgid "Please enter your address."
+msgstr "Пожалуйста, введите свой адрес."
+
+msgid "Your personal data has been updated."
+msgstr "Ваши персональные данные обновлены."
+
+msgid "Enable Two-factor authentication (2FA)"
+msgstr "Включить двухфакторную аутентификацию (2FA)."
+
+msgid "Do you really wan't to delete all selected users?"
+msgstr "Вы действительно не хотите удалить всех выбранных пользователей?"
+
+msgid "Do you really wan't to delete the user?"
+msgstr "Вы действительно не хотите удалять пользователя?"
+
