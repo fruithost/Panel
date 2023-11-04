@@ -1,5 +1,6 @@
 <?php
 	use fruithost\Auth;
+	use fruithost\Session;
 	use fruithost\I18N;
 	
 	$template->header();
@@ -19,6 +20,20 @@
 			<header class="page-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 				<h1 class="h2">
 					<a class="active" href="<?php print $this->url('/admin/users'); ?>"><?php I18N::__('Users'); ?></a>
+					<?php
+						if(is_numeric($tab) && $tab > 0) {
+							?>
+								<i class="material-icons">arrow_right</i>
+								<a class="active" href="<?php print $this->url('/admin/users/' . $user->getID()); ?>"><?php printf('%s %s', I18N::get('edit'), $user->getUsername()); ?></a>
+							<?php
+						} else if($tab == 'create') {
+							?>
+								<i class="material-icons">arrow_right</i>
+								<a class="active" href="<?php print $this->url('/admin/users/create'); ?>"><?php I18N::__('create User'); ?></a>
+							<?php
+						}
+					?>
+					
 				</h1>
 				<div class="btn-toolbar mb-2 mb-md-0">				
 					<?php
@@ -55,7 +70,12 @@
 				</div>
 			</header>
 			<?php
-				if(!is_numeric($tab)) {
+				if(Session::has('success')) {
+					?>
+						<div class="alert alert-success mt-4" role="alert"><?php print Session::get('success'); ?></div>
+					<?php
+					Session::remove('success');
+				} else if(!is_numeric($tab) && $tab !== 'create') {
 					if(isset($error)) {
 						?>
 							<div class="alert alert-danger mt-4" role="alert"><?php (is_array($error) ? var_dump($error) : print $error); ?></div>

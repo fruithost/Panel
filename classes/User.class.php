@@ -165,8 +165,10 @@
 		}
 		
 		public function delete() {
-			/* @ToDo Delete complete files and folders */
-			/* this method will be called, when user will be deleted on admin-user-list */
+			Database::update(DATABASE_PREFIX . 'users', [ 'id' ], [
+				'id'		=> (empty($user_id) ? $this->getID() : $user_id),
+				'deleted'	=> 'Yes'
+			]);
 		}
 	}
 ?>

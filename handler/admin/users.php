@@ -3,10 +3,11 @@
 	use fruithost\I18N;
 	use fruithost\User;
 	use fruithost\Encryption;
+	use fruithost\Session;
+	use fruithost\Response;
 	use PHPMailer\PHPMailer;
 	
-	$users = Database::fetch('SELECT *, \'**********\' AS `password` FROM `' . DATABASE_PREFIX . 'users`');
-	
+	$users = Database::fetch('SELECT *, \'**********\' AS `password` FROM `' . DATABASE_PREFIX . 'users` WHERE `deleted`=\'NO\'');
 	
 	if(isset($_POST['action'])) {
 		$user = new User();
@@ -156,7 +157,7 @@
 							}
 						}
 						
-						$this->assign('success', sprintf(I18N::get('Security-Settings for <strong>%s</strong> was successfully updated.'), $user->getUsername()));
+						$template->assign('success', sprintf(I18N::get('Security-Settings for <strong>%s</strong> was successfully updated.'), $user->getUsername()));
 					break;
 					default:
 						if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
@@ -178,7 +179,7 @@
 						
 						/* @ToDo rename User, with all hosted files! */
 						
-						$this->assign('success', sprintf(I18N::get('User <strong>%s</strong> was successfully edited.'), $user->getUsername()));
+						$template->assign('success', sprintf(I18N::get('User <strong>%s</strong> was successfully edited.'), $user->getUsername()));
 					break;
 				}
 			break;
@@ -186,15 +187,16 @@
 			/* delete user */
 			case 'delete':
 				if($user->getID() == 1) {
-					$this->assign('error', I18N::get('You cant delete the admin account!'));
+					$template->assign('error', I18N::get('You cant delete the admin account!'));
 				} else {
 					$user->delete();
+					Session::set('success', sprintf(I18N::get('The user <strong>%s</strong> was successfully deleted.'), $user->getUsername()));
+					Response::redirect('/admin/users');
+					exit();
 				}
 			break;
-			case 'create':
-				/* create user */
-				$this->assign('success', $_POST);
-			break;
+			
+			/* Delete users */
 			case 'deletes':
 				$messages	= [];
 				
@@ -204,21 +206,104 @@
 						$user->fetch($id);
 						
 						if($user->getID() == 1) {
-							$this->assign('error', I18N::get('You cant delete the admin account!'));
+							$template->assign('error', I18N::get('You cant delete the admin account!'));
 						} else {
-							$messages[] = sprintf(I18N::get('<strong>%d</strong> was successfully deleted'), $user->getUsername());
+							$messages[] = sprintf(I18N::get('<strong>%s</strong> (%s)'), $user->getUsername(), $user->getMail());
 							$user->delete();
 						}
 					}
 				}
 				
 				if(count($messages) > 0) {
-					$this->assign('success', implode(' and ', $messages));
+					$template->assign('success', sprintf('Following users was successfully deleted:<br />%s', implode(', ', $messages)));
 				} else {
-					if(!$this->isAssigned('error')) {
-						$this->assign('error', I18N::get('Please select some entries you want to delete.'));
+					if(!$template->isAssigned('error')) {
+						$template->assign('error', I18N::get('Please select some entries you want to delete.'));
 					}
 				}
+				
+				$users = Database::fetch('SELECT *, \'**********\' AS `password` FROM `' . DATABASE_PREFIX . 'users` WHERE `deleted`=\'NO\'');
+			break;
+			
+			/* create user */
+			case 'create':
+				/* Username */
+				if(!isset($_POST['username']) || empty($_POST['username'])) {
+					$template->assign('error', I18N::get('Please enter the username.'));
+					return;
+				}
+				
+				$template->assign('username', $_POST['username']);
+				
+				if(strlen($_POST['username']) < 2) {
+					$template->assign('error', I18N::get('The new username must contain the minimum number of 2 characters.'));
+					return;
+				}
+				
+				if(Database::exists('SELECT `id` FROM `' . DATABASE_PREFIX . 'users` WHERE `username`=:username LIMIT 1', [
+					'username'	=> $_POST['username']
+				])) {
+					$template->assign('error', I18N::get('The username is already in use.'));
+					return;
+				}
+				
+				/* E-Mail */
+				if(!isset($_POST['email']) || empty($_POST['email'])) {
+					$template->assign('error', I18N::get('Please enter an E-Mail address.'));
+					return;
+				}
+				
+				$template->assign('email', $_POST['email']);
+				
+				if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+					$template->assign('error', I18N::get('Please enter a valid E-Mail address.'));
+					return;
+				}
+				
+				if(Database::exists('SELECT `id` FROM `' . DATABASE_PREFIX . 'users` WHERE `email`=:email LIMIT 1', [
+					'email'	=> $_POST['email']
+				])) {
+					$template->assign('error', I18N::get('The E-Mail address is already in use.'));
+					return;
+				}
+				
+				if(!isset($_POST['password_new']) || empty($_POST['password_new'])) {
+					$template->assign('error', I18N::get('Please enter the password.'));
+					return;
+				}
+				
+				if(!isset($_POST['password_repeated']) || empty($_POST['password_repeated'])) {
+					$template->assign('error', I18N::get('Please repeat the password.'));
+					return;
+				}
+				
+				if(strlen($_POST['password_new']) < 8) {
+					$template->assign('error', I18N::get('The new password must contain the minimum number of 8 characters.'));
+					return;
+				}
+				
+				if($_POST['password_new'] !== $_POST['password_repeated']) {
+					$template->assign('error', I18N::get('Your password and confirmation password do not match.'));
+					return;
+				}
+				
+				$id = Database::insert(DATABASE_PREFIX . 'users', [
+					'id'			=> NULL,
+					'username'		=> $_POST['username'],
+					'email'			=> $_POST['email'],
+					'lost_enabled'	=> 'NO',
+					'lost_token'	=> NULL,
+					'lost_time'		=> NULL
+				]);
+				
+				Database::update(DATABASE_PREFIX . 'users', 'id', [
+					'id'			=> $id,
+					'password'		=> strtoupper(hash('sha512', sprintf('%s%s%s', $id, MYSQL_PASSWORTD_SALT, $_POST['password_new'])))
+				]);
+				
+				Session::set('success', sprintf(I18N::get('The user <strong>%s</strong> was successfully created.'), $_POST['username']));
+				Response::redirect('/admin/users');
+				exit();
 			break;
 		}
 	}

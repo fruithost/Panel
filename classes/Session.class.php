@@ -17,6 +17,16 @@
 			return session_id();
 		}
 		
+		public static function has($name) : bool {
+			self::init();
+			
+			if(isset($_SESSION[$name])) {
+				return true;
+			}
+			
+			return false;
+		}
+		
 		public static function get($name) : bool | int | float | string | array | object | null  {
 			self::init();
 			
