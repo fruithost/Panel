@@ -1,3 +1,9 @@
+/* DEBUG */
+.xdebug-error {
+	z-index: 9999999999;
+	position: relative;
+}
+
 @keyframes blink {
 	50% {
 		visibility: hidden;

@@ -42,6 +42,10 @@
 			return DatabaseFactory::getInstance()->delete($table, $parameters);
 		}
 		
+		public static function tableExists(string $table) : bool {
+			return DatabaseFactory::getInstance()->tableExists($table);
+		}
+		
 		public static function deleteWhereNot(string $table, array $delete_not = [], array $parameters = []) {
 			return DatabaseFactory::getInstance()->deleteWhereNot($table, $delete_not, $parameters);
 		}

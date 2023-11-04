@@ -6,6 +6,7 @@
 		private $info		= null;
 		private $instance	= null;
 		private $enabled	= false;
+		private $locked		= false;
 		
 		public function __construct($path) {
 			$this->path = $path;
@@ -75,6 +76,14 @@
 			return basename($this->path);
 		}
 		
+		public function isFrame() : bool {
+			if($this->getInstance() == null) {
+				return false;
+			}
+			
+			return method_exists($this->getInstance(), 'frame') && !empty($this->getInstance()->frame());
+		}
+		
 		public function isEnabled() : bool {
 			return $this->enabled;
 		}
@@ -83,11 +92,19 @@
 			$this->enabled = $state;
 		}
 		
-		public function init(Core $core) : Module {
+		public function isLocked() : bool {
+			return $this->locked;
+		}
+		
+		public function setLocked(bool $state) {
+			$this->locked = $state;
+		}
+		
+		public function init(Core $core) : Module | null {
 			$script = sprintf('%s%smodule.php', $this->path, DS);
 			
 			if(!file_exists($script)) {
-				return;
+				return null;
 			}
 			
 			$old = get_declared_classes();
@@ -102,7 +119,7 @@
 				}
 			}
 			
-			if(!empty($this->info->getCategory())) {
+			if(!empty($this->info->getCategory()) && !$this->isLocked()) {
 				$core->getHooks()->addFilter($this->info->getCategory(), function($entries) use ($core) {
 					$entries[] = (object) [
 						'name'		=> $this->info->getName(),

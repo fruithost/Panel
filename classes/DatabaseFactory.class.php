@@ -24,6 +24,16 @@
 			return $object->errorInfo();
 		}
 		
+		public function tableExists(string $table) : bool {
+			$row = $this->single('SELECT count(*) AS `result` FROM information_schema.TABLES WHERE (TABLE_SCHEMA=\'' . DATABASE_NAME . '\') AND (TABLE_NAME=\'' . $table . '\')');
+			
+			if(isset($result) && $result !== null) {
+				return $result->result == 1;
+			}
+			
+			return false;
+		}
+		
 		public function file(string $file, callable $callback) {
 			if(!file_exists($file)) {
 				call_user_func_array($callback, [ 'Can\'t found file: ' . $file ]);

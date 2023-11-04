@@ -10,6 +10,7 @@
 		private $description	= null;
 		private $author			= null;
 		private $repository		= null;
+		private $depencies		= null;
 		private $is_valid		= false;
 		
 		public function __construct(string $path) {
@@ -70,6 +71,10 @@
 				$this->repository = $data->repository;
 			}
 			
+			if(!empty($data->depencies)) {
+				$this->depencies = $data->depencies;
+			}
+			
 			$this->is_valid = true;
 		}
 		
@@ -113,6 +118,10 @@
 		
 		public function getRepository() : string {
 			return $this->repository;
+		}
+		
+		public function getDepencies() : object {
+			return $this->depencies;
 		}
 	}
 ?>

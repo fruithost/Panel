@@ -92,7 +92,7 @@
 								</div>
 							</nav>
 							<?php
-								if(isset($module) && method_exists($module->getInstance(), 'frame') && !empty($module->getInstance()->frame()) && !$template->getCore()->getRouter()->startsWith('/admin')) {
+								if(isset($module) && $module->isFrame() && !$template->getCore()->getRouter()->startsWith('/admin')) {
 									?>
 										<main role="main" class="frame col-md-9 ml-sm-auto col-lg-10 px-4">
 									<?php

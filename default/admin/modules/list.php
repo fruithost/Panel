@@ -21,7 +21,7 @@
 						</div>
 					</td>
 					<td>
-						<span class="d-block badge badge-pill module-badge badge-<?php print ($module->isEnabled() ? 'success' : 'danger');?>" data-toggle="tooltip" title="<?php ($module->isEnabled() ? I18N::__('Module is enabled.') : I18N::__('Module is disabled.'));?>"></span>
+						<span class="d-block badge badge-pill module-badge badge-<?php print ($module->isLocked() ? 'warning' : ($module->isEnabled() ? 'success' : 'danger'));?>" data-toggle="tooltip" title="<?php ($module->isLocked() ? I18N::__('Module has depencies.') : ($module->isEnabled() ? I18N::__('Module is enabled.') : I18N::__('Module is disabled.')));?>"></span>
 					</td>
 					<td>
 						<strong><?php print $info->getName(); ?></strong>
@@ -41,7 +41,16 @@
 							$links['deinstall'] = sprintf('<a href="%s" data-confirm="%s" class="text-danger">%s</a>', $this->url('/admin/modules/?deinstall=' . $module->getDirectory()), I18N::get('Do you really wan\'t to deinstall the module?'), I18N::get('Deinstall'));
 							
 							print implode(' | ', $links);
-						?></p>
+						?></p><?php
+							if($module->isLocked()) {
+								$list = [];
+								foreach($module->getInfo()->getDepencies() AS $name => $version) {
+									$list[] = sprintf('%s (%s)', $name, $version);
+								}
+								
+								printf('<small>Unresolved Depencies: %s</small>', implode(',', $list));
+							}
+						?>
 					</td>
 					<td>
 						<?php

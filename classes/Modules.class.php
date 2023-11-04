@@ -20,6 +20,13 @@
 
 				$path	= sprintf('%s%s%s', $this->getPath(), DS, $info->getFilename());
 				$module	= new Module($path);
+				
+				foreach($module->getInfo()->getDepencies() AS $name => $version) {
+					if(!in_array($name, $enabled)) {
+						$module->setLocked(true);
+					}
+				}
+				
 				$module->setEnabled(in_array(basename($path), $enabled));
 				$this->addModule(basename($path), $module);
 			}
