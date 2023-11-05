@@ -121,6 +121,10 @@
 		}
 		
 		public function getDepencies() : object {
+			if($this->depencies == null) {
+				return (object) [];
+			}
+			
 			return $this->depencies;
 		}
 	}
