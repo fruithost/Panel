@@ -7,8 +7,8 @@
 		public static function getInstance() {
 			if(self::$instance === NULL) {
 				self::$instance = new self(sprintf('mysql:host=%s;port=%d;dbname=%s', DATABASE_HOSTNAME, DATABASE_PORT, DATABASE_NAME), DATABASE_USERNAME, DATABASE_PASSWORD, [
-					\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
-					#\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+					\PDO::MYSQL_ATTR_INIT_COMMAND	=> 'SET NAMES utf8',
+					\PDO::ATTR_ERRMODE				=> \PDO::ERRMODE_EXCEPTION,
 					#\PDO::ATTR_EMULATE_PREPARES => false
 				]);
 			}
@@ -34,33 +34,51 @@
 			return false;
 		}
 		
-		public function file(string $file, callable $callback) {
-			if(!file_exists($file)) {
-				call_user_func_array($callback, [ 'Can\'t found file: ' . $file ]);
-				return;
-			}
-			
-			$sql = file_get_contents($file);
-			
-			if(empty(trim($sql))) {
-				call_user_func_array($callback, [ 'File is empty: ' . $file ]);
-				return;
-			}
-			
-			$sql = str_replace([
-				'[DATABASE_PREFIX]'
-			], [
-				DATABASE_PREFIX
-			], $sql);
-			
-			$stmt = $this->query($sql);
-			
-			if(!$stmt) {
-				call_user_func_array($callback, [ $this->getError() ]);
-				return;
-			}
-			
-			call_user_func_array($callback, [ NULL ]);
+		public function file(string $file, callable $callback, $temporary_use_root = false) {
+			try {
+				$root = null;
+				
+				if(!file_exists($file)) {
+					call_user_func_array($callback, [ 'Can\'t found file: ' . $file ]);
+					return;
+				}
+				
+				$sql = file_get_contents($file);
+				
+				if(empty(trim($sql))) {
+					call_user_func_array($callback, [ 'File is empty: ' . $file ]);
+					return;
+				}
+				
+				if($temporary_use_root) {
+					$root = self::$instance;
+					self::$instance = new self(sprintf('mysql:host=%s;port=%d;dbname=%s', DATABASE_HOSTNAME, DATABASE_PORT, DATABASE_NAME), 'root', '', [
+						\PDO::MYSQL_ATTR_INIT_COMMAND	=> 'SET NAMES utf8',
+						\PDO::ATTR_ERRMODE				=> \PDO::ERRMODE_EXCEPTION,
+						#\PDO::ATTR_EMULATE_PREPARES => false
+					]);
+				}
+				
+				
+				$sql = str_replace([
+					'[DATABASE_PREFIX]'
+				], [
+					DATABASE_PREFIX
+				], $sql);
+				
+				$stmt = $this->query($sql);
+				
+				if(!$stmt) {
+					call_user_func_array($callback, [ $this->errorInfo() ]);
+					return;
+				}
+				
+				call_user_func_array($callback, [ NULL ]);
+				
+				if($root == null) {
+					self::$instance = $root;
+				}
+			} catch(\Exception) {}
 		}
 		
 		public function query(string $query, ?int $fetchMode = null, mixed ...$parameters): \PDOStatement | false {
