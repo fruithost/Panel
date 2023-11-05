@@ -65,7 +65,7 @@
 						
 						if(isset($_POST['password_recovery']) && count($_POST['password_recovery']) == 1) {
 							if(!filter_var($user->getMail(), FILTER_VALIDATE_EMAIL)) {
-								$template->assign('error', I18N::get('Can\t send recovery instructions, because the user has an <strong>invalid E-Mail address</strong>.'));
+								$template->assign('error', I18N::get('Can\'t send recovery instructions, because the user has an <strong>invalid E-Mail address</strong>.'));
 							} else {
 								$token_raw		= strtoupper(bin2hex(openssl_random_pseudo_bytes(32)));
 								$hash			= Encryption::encrypt($token_raw, $user->getCryptedMail());
