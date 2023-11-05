@@ -14,6 +14,10 @@
 			return $output;
 		}
 		
+		public static function zeroize(int $number, int $threshold = 2) : string {
+			return sprintf('%0' . $threshold . 's', $number);
+		}
+		
 		public static function getTimeDifference(int $from, int $to = NULL) : string {
 			if(empty($to)) {
 				$to = time();

@@ -77,7 +77,7 @@
 			$this->assigns[$name] = $value;
 		}
 		
-		public function display(string $file, array $arguments = [], bool $basedir = true) {
+		public function display(string $file, array $arguments = [], bool $basedir = true, bool $once = true) {
 			$template	= $this;
 			
 			foreach($arguments AS $name => $value) {
@@ -97,7 +97,11 @@
 			}
 			
 			if(file_exists($handler)) {
-				require_once($handler);
+				if($once) {
+					require_once($handler);
+				} else {
+					require($handler);
+				}
 				
 				foreach($this->assigns AS $name => $value) {
 					${$name} = $value;
@@ -109,7 +113,11 @@
 			}
 			
 			if(file_exists($path) && is_readable($path)) {
-				require_once($path);
+				if($once) {
+					require_once($path);
+				} else {
+					require($path);
+				}
 			} else {
 				if(!Auth::isLoggedIn()) {
 					$this->getFiles()->addStylesheet('login', $this->url('css/login.css'), '1.0.0', [ 'bootstrap', 'material-icons' ]);
@@ -122,7 +130,11 @@
 				$path = sprintf('%1$s%2$sdefault%2$s%3$s.php', PATH, DS, $file);
 				
 				if(file_exists($path) && is_readable($path)) {
-					require_once($path);
+					if($once) {
+						require_once($path);
+					} else {
+						require($path);
+					}
 				}
 			}
 		}
