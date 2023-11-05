@@ -41,6 +41,11 @@
 			</select>
 		</div>
 	</div>
+	<?php
+		$template->getCore()->getHooks()->runAction('ACCOUNT_SETTINGS_GLOBAL', [
+			'user' => $user
+		]);
+	?>
 	<div class="form-group text-right">
 		<button type="submit" name="action" value="save" class="btn btn-outline-success"><?php I18N::__('Save'); ?></button>
 	</div>

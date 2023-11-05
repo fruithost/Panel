@@ -249,12 +249,6 @@
 					return;
 				}
 				
-				if(method_exists($module->getInstance(), 'init')) {
-					if(file_exists(sprintf('%s/languages/', $module->getPath()))) {
-						I18N::addPath(sprintf('%s/languages/', $module->getPath()));
-					}
-				}
-				
 				if(method_exists($module->getInstance(), 'load')) {
 					$module->getInstance()->load($submodule);
 				}
