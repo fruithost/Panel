@@ -14,7 +14,7 @@
 		}
 		
 		public function execute() {
-			if(!is_writable(sprintf('%s%s', $this->path, $this->file_temp))) {
+			if(!is_writable($this->path)) {
 				$this->error = true;
 				return;
 			}
@@ -34,12 +34,12 @@
 			}
 			
 			$result 	= shell_exec(sprintf('%scgi-fcgi -bind -connect "%s" 2>&1', $args, $this->socket));
-			@unlink(sprintf('%s%s', $path, $this->file_temp));
+			@unlink(sprintf('%s%s', $this->path, $this->file_temp));
 			
 			$this->content = $result;
 		}
 		
-		public function exploding(string $name, mixed $data) : array {
+		public function exploding(string | array $name, mixed $data) : array | string {
 			if($name == 'Configuration File (php.ini) Path') {
 				return $this->highlight($this->path);
 			}
