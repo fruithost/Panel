@@ -255,26 +255,12 @@
 					}
 				}
 				
-				if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST' && method_exists($module->getInstance(), 'onPOST')) {
-					$data = [];
-					
-					foreach($_POST AS $name => $value) {
-						if(is_array($value)) {
-							$data[trim($name)] = [];
-							
-							foreach($value AS $key => $entry) {
-								$data[trim($name)][trim($key)] = trim($entry);
-							}
-						} else {
-							$data[trim($name)] = trim($value);
-						}
-					}
-					
-					$module->getInstance()->onPOST($data);
-				}
-				
 				if(method_exists($module->getInstance(), 'load')) {
 					$module->getInstance()->load($submodule);
+				}
+				
+				if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST' && method_exists($module->getInstance(), 'onPOST')) {
+					$module->getInstance()->onPOST($_POST);
 				}
 				
 				if(!method_exists($module->getInstance(), 'content') && !method_exists($module->getInstance(), 'frame')) {

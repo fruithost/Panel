@@ -57,7 +57,7 @@
 			
 			// @ToDo check if is template file
 			if(!empty($this->content)) {
-				$template->display($this->content);
+				$template->display($this->content, [], false);
 				return;
 			}
 			

@@ -25,7 +25,7 @@
 		}
 		
 		public function tableExists(string $table) : bool {
-			$row = $this->single('SELECT count(*) AS `result` FROM information_schema.TABLES WHERE (TABLE_SCHEMA=\'' . DATABASE_NAME . '\') AND (TABLE_NAME=\'' . $table . '\')');
+			$result = $this->single('SELECT count(*) AS `result` FROM information_schema.TABLES WHERE (TABLE_SCHEMA=\'' . DATABASE_NAME . '\') AND (TABLE_NAME=\'' . $table . '\')');
 			
 			if(isset($result) && $result !== null) {
 				return $result->result == 1;

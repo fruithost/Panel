@@ -1,7 +1,8 @@
 /* DEBUG */
-.xdebug-error {
+.xdebug-error, .xdebug-var-dump {
 	z-index: 9999999999;
 	position: relative;
+	background: #FEFEFE;
 }
 
 @keyframes blink {

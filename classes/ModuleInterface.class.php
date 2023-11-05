@@ -48,7 +48,7 @@
 			return $this->instance->getSettings($name, $default);			
 		}
 		
-		public function addButton(Button $button, bool $logged_in = false) {
+		public function addButton(Button | array $button, bool $logged_in = false) {
 			$this->addFilter('buttons', function($buttons) use($button) {
 				$buttons[] = $button;
 				return $buttons;

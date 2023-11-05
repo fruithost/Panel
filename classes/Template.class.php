@@ -97,11 +97,7 @@
 			}
 			
 			if(file_exists($handler)) {
-				try {
-					require_once($handler);
-				} catch(\Exception $e) {
-					var_dump($e);
-				}
+				require_once($handler);
 				
 				foreach($this->assigns AS $name => $value) {
 					${$name} = $value;

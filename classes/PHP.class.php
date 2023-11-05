@@ -42,6 +42,11 @@
 			$result 	= shell_exec(sprintf('%scgi-fcgi -bind -connect "%s" 2>&1', $args, $this->socket));
 			@unlink(sprintf('%s%s', $this->path, $file));
 			
+			if($result == null){
+				$this->error = true;
+				return;
+			}
+			
 			$this->content = $result;
 		}
 		
