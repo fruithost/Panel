@@ -17,6 +17,15 @@
 			self::load(self::set());
 		}
 		
+		public static function addPath($path) {
+			$file					= sprintf('%s%s.po', $path, self::set());
+			
+			if(file_exists($file)) {
+				$language			= new Parser(new FileSystem($file));
+				self::$translation	= $language->parse(self::$translation);
+			}
+		}
+		
 		public static function reload() {
 			self::load(self::set());			
 		}

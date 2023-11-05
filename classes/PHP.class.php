@@ -1,10 +1,12 @@
 <?php
 	namespace fruithost;
 	
+	use fruithost\Encryption;
+	use fruithost\Utils;
+	
 	class PHP {
 		private $path		= null;
 		private $socket		= '/run/php/php8.2-fpm.sock';
-		private $file_temp	= '.~fh.tmp.info.php';
 		private $content	= null;
 		private $data		= [];
 		private $error		= false;
@@ -19,22 +21,26 @@
 				return;
 			}
 			
-			file_put_contents(sprintf('%s%s', $this->path, $this->file_temp), '<?php phpinfo(); ?>');
+			$args	= '';
+			$file	= sprintf('.fruithost.%s.php', Utils::randomString(5));
+			$hash	= Encryption::encrypt(Utils::randomString(28), ENCRYPTION_SALT);
 			
-			$args = '';
+			file_put_contents(sprintf('%s%s', $this->path, $file), sprintf('<?php if(isset($_SERVER[\'FRUITHOST\']) && $_SERVER[\'FRUITHOST\'] == \'%s\') { phpinfo(); } ?>', $hash));
+			
 			foreach([
+				'FRUITHOST'			=> $hash,
 				'SCRIPTS_DIR'		=> $this->path,
 				'HOME'				=> $this->path,
 				'PWD'				=> $this->path,
 				'DOCUMENT_ROOT'		=> $this->path,
-				'SCRIPT_FILENAME'	=> sprintf('%s%s', $this->path, $this->file_temp),
+				'SCRIPT_FILENAME'	=> sprintf('%s%s', $this->path, $file),
 				'REQUEST_METHOD'	=> 'GET'
 			] AS $name => $value) {
 				$args .= sprintf('%s=%s \\%s', $name, $value, PHP_EOL);
 			}
 			
 			$result 	= shell_exec(sprintf('%scgi-fcgi -bind -connect "%s" 2>&1', $args, $this->socket));
-			@unlink(sprintf('%s%s', $this->path, $this->file_temp));
+			@unlink(sprintf('%s%s', $this->path, $file));
 			
 			$this->content = $result;
 		}
@@ -84,10 +90,10 @@
 				case 'on':
 				case 'no':
 				case 'yes':
-					return sprintf('<strong class="text-info">%s</strong>', $data);
+					return sprintf('<strong class="text-info">%s</strong>', I18N::get($data));
 				break;
 				case 'no value':
-					return sprintf('<i class="text-black-50">%s</i>', $data);
+					return sprintf('<i class="text-black-50">%s</i>', I18N::get($data));
 				break;
 			}
 			
@@ -181,4 +187,17 @@
 			return $this->data;
 		}
 	}
+	
+	/*
+		Provide dynamical I18N language strings, do not remove!
+		
+		I18N::__('disabled')
+		I18N::__('active')
+		I18N::__('enabled')
+		I18N::__('off')
+		I18N::__('on')
+		I18N::__('no')
+		I18N::__('yes')
+		I18N::__('no value')
+	*/
 ?>

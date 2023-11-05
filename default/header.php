@@ -17,7 +17,7 @@
 		<?php
 			if(Auth::isLoggedIn()) {
 				?>
-					<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0">
+					<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 user-select-none">
 						<a class="navbar-brand col-12 col-sm-4 col-md-3 col-lg-2 mr-0" href="<?php print $template->url('/'); ?>"><?php print $project_name; ?></a>
 						<button class="d-md-none navbar-toggler p-0 border-0 mr-auto ml-2" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
@@ -48,7 +48,7 @@
 					</nav>
 					<div class="container-fluid">
 						<div class="row">
-							<nav class="col-12 col-sm-4 col-md-3 col-lg-2 bg-light sidebar d-md-none d-md-block collapse navbar-collapse" id="sidebar">
+							<nav class="col-12 col-sm-4 col-md-3 col-lg-2 bg-light sidebar d-md-none d-md-block collapse navbar-collapse user-select-none" id="sidebar">
 								<div class="sidebar-sticky">
 									<?php
 										if(!$navigation->isEmpty()) {

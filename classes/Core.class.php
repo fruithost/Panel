@@ -249,6 +249,12 @@
 					return;
 				}
 				
+				if(method_exists($module->getInstance(), 'init')) {
+					if(file_exists(sprintf('%s/languages/', $module->getPath()))) {
+						I18N::addPath(sprintf('%s/languages/', $module->getPath()));
+					}
+				}
+				
 				if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST' && method_exists($module->getInstance(), 'onPOST')) {
 					$data = [];
 					

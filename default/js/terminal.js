@@ -282,7 +282,7 @@ const Terminal = (function() {
 				}
 			}.bind(this));
 			
-			output += '<div>' + line + '</div>';
+			output += '<div class="user-select-all">' + line + '</div>';
 		}.bind(this));
 
 		return output;

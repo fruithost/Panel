@@ -2,6 +2,18 @@
 	namespace fruithost;
 	
 	class Utils {
+		public static function randomString(int $length = 10) : string {
+			$characters			= 'abcdefghijklmonpqrstuvwxyz-_ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+			$charactersLength	= strlen($characters);
+			$output				= '';
+			
+			for($position = 0; $position < $length; $position++) {
+				$output .= $characters[random_int(0, $charactersLength - 1)];
+			}
+			
+			return $output;
+		}
+		
 		public static function getTimeDifference(int $from, int $to = NULL) : string {
 			if(empty($to)) {
 				$to = time();
