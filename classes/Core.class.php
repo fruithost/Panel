@@ -226,7 +226,7 @@
 				]);
 			});
 			
-			$this->router->addRoute('^/module(?:/([a-zA-Z0-9\-_]+)(?:/([a-zA-Z0-9\-_]+))?)?$', function($module = null, $submodule = null) {
+			$this->router->addRoute('^/module(?:(?:/([a-zA-Z0-9\-_]+)?)(?:/([a-zA-Z0-9\-_]+)(?:/([a-zA-Z0-9\-_]+))?)?)?$', function($module = null, $submodule = null, $action = NULL) {
 				if(!Auth::isLoggedIn()) {
 					Response::redirect('/');
 				}
@@ -240,7 +240,8 @@
 				if(empty($module)) {
 					$this->template->display('error/module', [
 						'module'	=> $module,
-						'submodule'	=> $submodule
+						'submodule'	=> $submodule,
+						'action'	=> $action
 					]);
 					return;
 				}
@@ -250,7 +251,8 @@
 				if(empty($module)) {
 					$this->template->display('error/module', [
 						'module'	=> $module,
-						'submodule'	=> $submodule
+						'submodule'	=> $submodule,
+						'action'	=> $action
 					]);
 					return;
 				}
@@ -266,14 +268,16 @@
 				if(!method_exists($module->getInstance(), 'content') && !method_exists($module->getInstance(), 'frame')) {
 					$this->template->display('error/module_empty', [
 						'module'	=> $module,
-						'submodule'	=> $submodule
+						'submodule'	=> $submodule,
+						'action'	=> $action
 					]);
 					return;
 				}
 				
 				$this->template->display('module', [
 					'module'	=> $module,
-					'submodule'	=> $submodule
+					'submodule'	=> $submodule,
+					'action'	=> $action
 				]);
 			});
 			
