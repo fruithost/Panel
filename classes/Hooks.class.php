@@ -10,7 +10,11 @@
 			$this->args = func_get_args();
 		}
 		
-		public function get() {
+		public function get($postion = null) {
+			if($postion !== null) {
+				return $this->args[$postion];				
+			}
+			
 			return $this->args;
 		}
 	}
