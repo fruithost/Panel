@@ -8,9 +8,11 @@
 		public function __construct(Core $core) {
 			$this->core = $core;
 			$enabled	= [];
+			$versions	= [];
 			
 			foreach(Database::fetch('SELECT `name` FROM `' . DATABASE_PREFIX . 'modules` WHERE `state`=\'ENABLED\' AND `time_deleted` IS NULL') AS $entry) {
-				$enabled[] = $entry->name;
+				$enabled[]				= $entry->name;
+				$versions[$entry->name]	= $this->getVersion($entry->name);
 			}
 			
 			foreach(new \DirectoryIterator($this->getPath()) AS $info) {
@@ -22,7 +24,7 @@
 				$module	= new Module($path);
 				
 				foreach($module->getInfo()->getDepencies() AS $name => $version) {
-					if(!in_array($name, $enabled)) {
+					if(!in_array($name, $enabled) || version_compare($versions[$name], $version, '>=') === false) {
 						$module->setLocked(true);
 					}
 				}
@@ -30,6 +32,34 @@
 				$module->setEnabled(in_array(basename($path), $enabled));
 				$this->addModule(basename($path), $module);
 			}
+		}
+		
+		public function getVersion($name) : string {
+			$path = sprintf('%s%s%s', $this->getPath(), DS, $name);
+			$file = sprintf('%s%smodule.package', $path, DS);
+			
+			if(!file_exists($file)) {
+				return null;
+			}
+			
+			$content = file_get_contents($file);
+			
+			if(empty($file)) {
+				return null;
+			}
+			
+			$data = json_decode($content);
+			
+			if(json_last_error() !== JSON_ERROR_NONE) {
+				return null;
+			}
+			
+			
+			if(!empty($data->version)) {
+				return $data->version;
+			}
+			
+			return null;
 		}
 		
 		public function getList() : array {
