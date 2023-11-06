@@ -232,7 +232,7 @@
 				}
 				
 				foreach(($this->getModules()->getList()) AS $m) {
-					if(method_exists($m->getInstance(), 'preLoad')) {
+					if($m != null && $m->getInstance() != null && method_exists($m->getInstance(), 'preLoad')) {
 						$m->getInstance()->preLoad();
 					}
 				}
