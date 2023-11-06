@@ -16,6 +16,10 @@
 			/* Override Me */
 		}
 		
+		public function preLoad() {
+			/* Override Me */
+		}
+		
 		public function load() {
 			/* Override Me */
 		}

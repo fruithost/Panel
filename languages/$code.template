@@ -50,6 +50,30 @@ msgstr ""
 msgid "Password mismatched."
 msgstr ""
 
+msgid "disabled"
+msgstr ""
+
+msgid "active"
+msgstr ""
+
+msgid "enabled"
+msgstr ""
+
+msgid "off"
+msgstr ""
+
+msgid "on"
+msgstr ""
+
+msgid "no"
+msgstr ""
+
+msgid "yes"
+msgstr ""
+
+msgid "no value"
+msgstr ""
+
 msgid "Settings"
 msgstr ""
 
@@ -107,6 +131,9 @@ msgstr ""
 msgid "Add new"
 msgstr ""
 
+msgid "Do you really wan't to delete all selected users?"
+msgstr ""
+
 msgid "No Users available!"
 msgstr ""
 
@@ -123,6 +150,9 @@ msgid "E-Mail"
 msgstr ""
 
 msgid "Edit"
+msgstr ""
+
+msgid "Do you really wan't to delete the user?"
 msgstr ""
 
 msgid "Language"
@@ -164,13 +194,19 @@ msgstr ""
 msgid "Generate new password"
 msgstr ""
 
+msgid "Enable Two-factor authentication (2FA)"
+msgstr ""
+
+msgid "Two-Factor authentication (2FA) is <strong>temporarily disabled<\/strong> because you did not provide a <strong>valid E-Mail address<\/strong>."
+msgstr ""
+
+msgid "Two-Factor authentication (2FA) will be <strong>temporarily disabled<\/strong> because you did not provide a <strong>valid E-Mail address<\/strong>."
+msgstr ""
+
 msgid "Type"
 msgstr ""
 
 msgid "Smartphone"
-msgstr ""
-
-msgid "disabled"
 msgstr ""
 
 msgid "SMS"
@@ -201,6 +237,9 @@ msgid "Please note that the password can only be sent if the user has entered a 
 msgstr ""
 
 msgid "Activate the reset using password generation"
+msgstr ""
+
+msgid "E-Mail Adresss"
 msgstr ""
 
 msgid "Password Settings"
@@ -251,16 +290,25 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
+msgid "Module has depencies."
+msgstr ""
+
 msgid "Module is enabled."
 msgstr ""
 
 msgid "Module is disabled."
 msgstr ""
 
+msgid "Do you really wan't to disable the module?"
+msgstr ""
+
 msgid "Disable"
 msgstr ""
 
 msgid "Enable"
+msgstr ""
+
+msgid "Do you really wan't to deinstall the module?"
 msgstr ""
 
 msgid "Deinstall"
@@ -497,6 +545,9 @@ msgstr ""
 msgid "Welcome to %s!"
 msgstr ""
 
+msgid "We've assembled some links to get you started"
+msgstr ""
+
 msgid "Get Started"
 msgstr ""
 
@@ -533,7 +584,7 @@ msgstr ""
 msgid "The new password must contain the minimum number of 8 characters."
 msgstr ""
 
-msgid "Can\\t send recovery instructions, because the user has an <strong>invalid E-Mail address<\/strong>."
+msgid "Can't send recovery instructions, because the user has an <strong>invalid E-Mail address<\/strong>."
 msgstr ""
 
 msgid "New password for your account"
@@ -558,6 +609,9 @@ msgid "You cant delete the admin account!"
 msgstr ""
 
 msgid "The user <strong>%s<\/strong> was successfully deleted."
+msgstr ""
+
+msgid "<strong>%s<\/strong> (%s)"
 msgstr ""
 
 msgid "Please select some entries you want to delete."
@@ -626,6 +680,9 @@ msgstr ""
 msgid "The system settings has been saved."
 msgstr ""
 
+msgid "DEMO-VERSION: This action can't be used!"
+msgstr ""
+
 msgid "The System will be rebooted now!"
 msgstr ""
 
@@ -687,13 +744,4 @@ msgid "Please enter your address."
 msgstr ""
 
 msgid "Your personal data has been updated."
-msgstr ""
-
-msgid "Enable Two-factor authentication (2FA)"
-msgstr ""
-
-msgid "Do you really wan't to delete all selected users?"
-msgstr ""
-
-msgid "Do you really wan't to delete the user?"
 msgstr ""

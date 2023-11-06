@@ -3,6 +3,18 @@
 	
 	use fruithost\Auth;
 	
+	class HookParameters {
+		private $args = [];
+		
+		public function __construct() {
+			$this->args = func_get_args();
+		}
+		
+		public function get() {
+			return $this->args;
+		}
+	}
+	
 	class Hooks {
 		protected $filters			= [];
 		protected $merged_filters	= [];
@@ -130,7 +142,12 @@
 			do {
 				foreach(current($this->filters[$name]) AS $entry) {
 					if(!empty($entry['method']) && (isset($entry['logged_in']) && ($entry['logged_in'] == true && Auth::isLoggedIn() || $entry['logged_in'] == false))) {
-						$args[0]	= $value;
+						if($value instanceof HookParameters) {
+							$args		= $value->get();
+						} else {
+							$args[0]	= $value;
+						}
+			
 						$value		= call_user_func_array($entry['method'], $args);
 					}
 				}

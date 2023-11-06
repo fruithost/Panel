@@ -63,6 +63,11 @@
 	
 	$('[data-toggle="tooltip"]').tooltip();
 	
+	$('[data-toggle="hover"]').popover({
+		trigger:	'hover',
+		html:		true
+	});
+	
 	$('[data-confirm]').on('mousedown', function(event) {
 		let target	= $(this);
 		let popup	= $('#confirmation');

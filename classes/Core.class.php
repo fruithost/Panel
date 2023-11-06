@@ -231,6 +231,12 @@
 					Response::redirect('/');
 				}
 				
+				foreach(($this->getModules()->getList()) AS $m) {
+					if(method_exists($m->getInstance(), 'preLoad')) {
+						$m->getInstance()->preLoad();
+					}
+				}
+				
 				if(empty($module)) {
 					$this->template->display('error/module', [
 						'module'	=> $module,
