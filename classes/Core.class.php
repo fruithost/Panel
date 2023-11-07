@@ -258,7 +258,7 @@
 				}
 				
 				if(method_exists($module->getInstance(), 'load')) {
-					$module->getInstance()->load($submodule);
+					$module->getInstance()->load($submodule, $action);
 				}
 				
 				if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST' && method_exists($module->getInstance(), 'onPOST')) {
