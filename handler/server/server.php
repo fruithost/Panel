@@ -72,7 +72,7 @@
 	$template->assign('memory',			$memory);
 	$template->assign('disks',			$disks);
 	$template->assign('daemon',			[
-		'started'	=> strtotime($this->getCore()->getSettings('DAEMON_TIME_START')),
+		'started'	=> strtotime($this->getCore()->getSettings('DAEMON_TIME_START', 0)),
 		'start'		=> date(Auth::getSettings('TIME_FORMAT', NULL, 'd.m.Y - H:i'), strtotime($this->getCore()->getSettings('DAEMON_TIME_START', 0))),
 		'end'		=> date(Auth::getSettings('TIME_FORMAT', NULL, 'd.m.Y - H:i'), strtotime($this->getCore()->getSettings('DAEMON_TIME_END', 0))),
 		'ended'		=> strtotime($this->getCore()->getSettings('DAEMON_TIME_END', 0)),
