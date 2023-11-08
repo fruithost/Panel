@@ -21,7 +21,9 @@
 				'project_copyright' => $this->core->getSettings('PROJECT_COPYRIGHT', true)
 			];
 			
-			ob_start('ob_gzhandler');
+			if(defined('DEBUG') && !DEBUG) {
+				ob_start('ob_gzhandler');
+			}
 			
 			$this->core->getHooks()->addAction('html_head', [ $this, 'head_robots' ], 10, false);
 			$this->core->getHooks()->addAction('html_head', [ $this, 'head_scripts' ], 10, false);
