@@ -251,6 +251,10 @@ ul.sortable li ul.list-unstyled li a div.label {
 	font-size: 100px;
 }
 
+.jumbotron .material-icons.small {
+	font-size: 22px;
+}
+
 .jumbotron .btn-lg {
 	padding: 15px 50px;
 }
