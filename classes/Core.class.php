@@ -231,6 +231,16 @@
 					Response::redirect('/');
 				}
 				
+				if(Session::has('success')) {
+					$this->template->assign('success', Session::get('success'));
+					Session::remove('success');
+				}
+				
+				if(Session::has('error')) {
+					$this->template->assign('error', Session::get('error'));
+					Session::remove('error');
+				}
+				
 				foreach(($this->getModules()->getList()) AS $m) {
 					if($m != null && $m->getInstance() != null && method_exists($m->getInstance(), 'preLoad')) {
 						$m->getInstance()->preLoad();
