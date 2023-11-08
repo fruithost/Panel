@@ -16,7 +16,9 @@
 		}
 	
 		private function __construct() {
-			/* do Nothing */
+			if(defined('DEBUG') && DEBUG) {
+				$this->addHeader('DEBUG', DEBUG);
+			}
 		}
 		
 		public function addHeader(string $name, string $value) {

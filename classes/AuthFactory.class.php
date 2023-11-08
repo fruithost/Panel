@@ -2,6 +2,7 @@
 	namespace fruithost;
 	
 	use \fruithost\User;
+	use \fruithost\Response;
 	use \fruithost\Session;
 	
 	class AuthFactory {
@@ -22,6 +23,22 @@
 			
 			if(self::isLoggedIn()) {
 				$this->user->fetch(self::getID());
+				
+				foreach(Database::fetch('SELECT * FROM `' . DATABASE_PREFIX . 'users_permissions` WHERE `user_id`=:user_id', [
+					'user_id'	=> self::getID()
+				]) AS $entry) {
+					$this->permissions[] = $entry->permission;
+				}
+				
+				if(defined('DEBUG') && DEBUG) {
+					Response::addHeader('USER', json_encode([
+						'ID' 			=> $this->user->getID(),
+						'Username'		=> $this->user->getUsername(),
+						'IsLoggedIn'	=> $this->isLoggedIn()
+					]));
+					
+					Response::addHeader('PERMISSIONS', json_encode($this->permissions));
+				}
 			}
 		}
 		
@@ -126,7 +143,7 @@
 			return $this->user->getGravatar();
 		}
 		
-		public function hasPermission(string $name, int | string | null $user_id = NULL) : bool {
+		public function hasPermission(string $name) : bool {
 			if(count($this->permissions) > 0) {
 				if($name === '*') {
 					return count($this->permissions) >= 1;
@@ -134,13 +151,6 @@
 				
 				return in_array($name, $this->permissions);
 			}
-			
-			foreach(Database::fetch('SELECT * FROM `' . DATABASE_PREFIX . 'users_permissions` WHERE `user_id`=:user_id', [
-				'user_id'	=> (empty($user_id) ? self::getID() : $user_id)
-			]) AS $entry) {
-				$this->permissions[] = $entry->permission;
-			}
-			
 			
 			if($name === '*') {
 				return count($this->permissions) >= 1;

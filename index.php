@@ -1,8 +1,12 @@
 <?php
-	# DEBUG - Start
+	if(is_readable('.DEBUG') || is_readable('../.DEBUG')) {
+		define('DEBUG', true);
+	}
+	
+	if(defined('DEBUG') && DEBUG) {
 		@ini_set('display_errors', true);
 		error_reporting(E_ALL);
-	# DEBUG - End
+	}
 	
 	if(!defined('PATH')) {
 		define('PATH', sprintf('%s/', dirname(__FILE__)));

@@ -23,6 +23,8 @@
 			
 			if(defined('DEBUG') && !DEBUG) {
 				ob_start('ob_gzhandler');
+			} else {
+				ob_start();
 			}
 			
 			$this->core->getHooks()->addAction('html_head', [ $this, 'head_robots' ], 10, false);

@@ -14,7 +14,7 @@
 		public function __construct() {}
 		
 		public function fetch(int $id) {
-			$result = Database::single('SELECT *, "**********" as `password`, UPPER(SHA2(CONCAT(`id`, :salt, `email`), 512)) AS `crypted_mail` FROM `' . DATABASE_PREFIX . 'users` WHERE `id`=:id LIMIT 1', [
+			$result = Database::single('SELECT *, "[*** PROTECTED ***]" as `password`, UPPER(SHA2(CONCAT(`id`, :salt, `email`), 512)) AS `crypted_mail` FROM `' . DATABASE_PREFIX . 'users` WHERE `id`=:id LIMIT 1', [
 				'id'	=> $id,
 				'salt'	=> RESET_PASSWORD_SALT
 			]);
