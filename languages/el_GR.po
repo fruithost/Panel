@@ -516,8 +516,8 @@ msgstr "Διαχείριση Ρυθμίσεων για καλύτερη χρήσ
 msgid "Some security settings for your safety."
 msgstr "Ρυθμίσεις ασφαλείας για την προστασία του λογαριασμού σας"
 
-msgid "Check your E-Mail address in the <a href="%s">account settings</a>."
-msgstr "Ελέγξτε τη διεύθυνση ηλεκτρονικού ταχυδρομείου σας στις <a href="%s">ρυθμίσεις του λογαριασμού σας</a>."
+msgid "Check your E-Mail address in the <a href='%s'>account settings</a>."
+msgstr "Ελέγξτε τη διεύθυνση ηλεκτρονικού ταχυδρομείου σας στις <a href='%s'>ρυθμίσεις του λογαριασμού σας</a>."
 
 msgid "Reset your Password"
 msgstr "Επαναφορά Κωδικού Πρόσβασης"
@@ -541,154 +541,154 @@ msgid "Change your current control panel password."
 msgstr "Αλλάξτε τον τρέχοντα κωδικό πρόσβασης του Πίνακα Ελέγχου σας."
 
 msgid "Your password request has been sent to users E-Mail adress!"
-msgstr ""
+msgstr "Το αίτημα κωδικού πρόσβασης σας έχει σταλεί στη διεύθυνση ηλεκτρονικού ταχυδρομείου του χρήστη!"
 
 msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
-msgstr ""
+msgstr "Οι ρυθμίσεις ασφαλείας για τον <strong>%s<\/strong> ενημερώθηκαν με επιτυχία."
 
 msgid "Please enter a valid E-Mail address."
-msgstr ""
+msgstr "Παρακαλώ εισάγετε μια έγκυρη διεύθυνση ηλεκτρονικού ταχυδρομείου."
 
 msgid "User <strong>%s<\/strong> was successfully edited."
-msgstr ""
+msgstr "Ο χρήστης <strong>%s<\/strong> επεξεργάστηκε με επιτυχία."
 
 msgid "You cant delete the admin account!"
-msgstr ""
+msgstr "Δεν μπορείτε να διαγράψετε τον λογαριασμό διαχειριστή!"
 
 msgid "The user <strong>%s<\/strong> was successfully deleted."
-msgstr ""
+msgstr "Ο χρήστης <strong>%s<\/strong> διαγράφηκε με επιτυχία."
 
 msgid "<strong>%s<\/strong> (%s)"
-msgstr ""
+msgstr "<strong>%s<\/strong> (%s)"
 
 msgid "Please select some entries you want to delete."
-msgstr ""
+msgstr "Επιλέξτε μερικές καταχωρήσεις που θέλετε να διαγράψετε."
 
 msgid "Please enter the username."
-msgstr ""
+msgstr "Παρακαλώ εισάγετε το όνομα χρήστη."
 
 msgid "The new username must contain the minimum number of 2 characters."
-msgstr ""
+msgstr "Το νέο όνομα χρήστη πρέπει να περιέχει τον ελάχιστο αριθμό 2 χαρακτήρων."
 
 msgid "The username is already in use."
-msgstr ""
+msgstr "Το όνομα χρήστη χρησιμοποιείται ήδη."
 
 msgid "Please enter an E-Mail address."
-msgstr ""
+msgstr "Παρακαλώ εισάγετε μια διεύθυνση ηλεκτρονικού ταχυδρομείου."
 
 msgid "The E-Mail address is already in use."
-msgstr ""
+msgstr "Η διεύθυνση ηλεκτρονικού ταχυδρομείου χρησιμοποιείται ήδη."
 
 msgid "Please enter the password."
-msgstr ""
+msgstr "Παρακαλώ εισάγετε τον κωδικό πρόσβασης."
 
 msgid "Please repeat the password."
-msgstr ""
+msgstr "Παρακαλώ επαναλάβετε τον κωδικό πρόσβασης."
 
 msgid "Your password and confirmation password do not match."
-msgstr ""
+msgstr "Ο κωδικός πρόσβασης και ο κωδικός επιβεβαίωσης δεν ταιριάζουν."
 
 msgid "The user <strong>%s<\/strong> was successfully created."
-msgstr ""
+msgstr "Ο χρήστης <strong>%s<\/strong> δημιουργήθηκε με επιτυχία."
 
 msgid "Please enter an valid  repository URL!"
-msgstr ""
+msgstr "Παρακαλώ εισάγετε μια έγκυρη διεύθυνση URL αποθήκης!"
 
 msgid "Repository already exists!"
-msgstr ""
+msgstr "Η Αποθήκη υπάρχει ήδη!"
 
 msgid "The module is already disabled!"
-msgstr ""
+msgstr "Η Ενότητα είναι ήδη απενεργοποιημένη!"
 
 msgid "The module was successfully disabled."
-msgstr ""
+msgstr "Η Ενότητα απενεργοποιήθηκε με επιτυχία."
 
 msgid "The module not exists!"
-msgstr ""
+msgstr "To module δεν υπάρχει!"
 
 msgid "The module is already enabled!"
-msgstr ""
+msgstr "To module είναι ήδη ενεργοποιημένη!"
 
 msgid "The module was successfully enabled."
-msgstr ""
+msgstr "To module ενεργοποιήθηκε με επιτυχία."
 
 msgid "The module was successfully deinstalled!"
-msgstr ""
+msgstr "To module απεγκαταστάθηκε με επιτυχία!"
 
 msgid "<strong>%d Repository%s<\/strong> was updated. Found %d related Update%s!"
-msgstr ""
+msgstr "<strong>%d Αποθήκη%s<\/strong> ενημερώθηκε. Βρέθηκαν %d σχετικές ενημερώσεις%s!"
 
 msgid "<strong>%d Repositorys<\/strong> was successfully removed"
-msgstr ""
+msgstr "<strong>%d Αποθήκης<\/strong> απεγκαταστάθηκαν με επιτυχία"
 
 msgid "You have no permissions for this action!"
-msgstr ""
+msgstr "Δεν έχετε δικαιώματα για αυτή την ενέργεια!"
 
 msgid "The system settings has been saved."
-msgstr ""
+msgstr "Οι ρυθμίσεις συστήματος αποθηκεύτηκαν."
 
 msgid "DEMO-VERSION: This action can't be used!"
-msgstr ""
+msgstr "ΔΟΚΙΜΑΣΤΙΚΗ ΕΚΔΟΣΗ: Αυτή η ενέργεια δεν μπορεί να χρησιμοποιηθεί!"
 
 msgid "The System will be rebooted now!"
-msgstr ""
+msgstr "Το Σύστημα θα επανεκκινηθεί τώρα!"
 
 msgid "Your 2FA code is invalid!"
-msgstr ""
+msgstr "Ο κωδικός 2FA σας δεν είναι έγκυρος!"
 
 msgid "Please complete the two factor authentication:"
-msgstr ""
+msgstr "Παρακαλώ ολοκληρώστε την επαλήθευση δύο παραγόντων:"
 
 msgid "Login was unsuccessful!"
-msgstr ""
+msgstr "Η σύνδεση δεν ήταν επιτυχής!"
 
 msgid "Your security settings has been updated."
-msgstr ""
+msgstr "Οι ρυθμίσεις ασφαλείας σας ενημερώθηκαν."
 
 msgid "Your settings has been updated."
-msgstr ""
+msgstr "Οι ρυθμίσεις σας ενημερώθηκαν."
 
 msgid "The given Token is invalid or was expired."
-msgstr ""
+msgstr "Το δεδομένο Token δεν είναι έγκυρο ή έχει λήξει."
 
 msgid "Please enter a new password."
-msgstr ""
+msgstr "Παρακαλώ εισάγετε ένα νέο κωδικό πρόσβασης."
 
 msgid "Your password has been restored."
-msgstr ""
+msgstr "Ο κωδικός πρόσβασης σας έχει επαναφερθεί."
 
 msgid "Please enter an valid and registred E-Mail address!"
-msgstr ""
+msgstr "Παρακαλώ εισάγετε μια έγκυρη και εγγεγραμμένη διεύθυνση ηλεκτρονικού ταχυδρομείου!"
 
 msgid "Your request has been sent to your E-Mail adress!"
-msgstr ""
+msgstr "Το αίτημα σας στάλθηκε στη διεύθυνση ηλεκτρονικού ταχυδρομείου σας!"
 
 msgid "Please enter your current password."
-msgstr ""
+msgstr "Παρακαλώ εισάγετε τον τρέχοντα κωδικό πρόσβασης."
 
 msgid "Please enter your new password."
-msgstr ""
+msgstr "Παρακαλώ εισάγετε τον νέο κωδικό πρόσβασης."
 
 msgid "Your current password is not correct!"
-msgstr ""
+msgstr "Ο τρέχον κωδικός πρόσβασης δεν είναι σωστός!"
 
 msgid "Your password has been updated."
-msgstr ""
+msgstr "Ο κωδικός πρόσβασης σας ενημερώθηκε."
 
 msgid "Please enter your E-Mail address."
-msgstr ""
+msgstr "Παρακαλώ εισάγετε τη διεύθυνση ηλεκτρονικού ταχυδρομείου σας."
 
 msgid "Please enter your first name."
-msgstr ""
+msgstr "Παρακαλώ εισάγετε το όνομα σας."
 
 msgid "Please enter your last name."
-msgstr ""
+msgstr "Παρακαλώ εισάγετε το επώνυμό σας."
 
 msgid "Please enter your phone  number."
-msgstr ""
+msgstr "Παρακαλώ εισάγετε τον αριθμό τηλεφώνου σας."
 
 msgid "Please enter your address."
-msgstr ""
+msgstr "Παρακαλώ εισάγετε τη διεύθυνσή σας."
 
 msgid "Your personal data has been updated."
-msgstr ""
+msgstr "Τα προσωπικά σας δεδομένα ενημερώθηκαν."
