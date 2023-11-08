@@ -1,0 +1,694 @@
+msgid ""
+msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: Greek\n"
+
+
+msgid "Account"
+msgstr "Λογαριασμός"
+
+msgid "Databases"
+msgstr "Βάσεις Δεδομένων"
+
+msgid "Domains"
+msgstr "Τομείς"
+
+msgid "E-Mails"
+msgstr "Ηλεκτρονικά Μηνύματα"
+
+msgid "FTP"
+msgstr "FTP"
+
+msgid "Hosting"
+msgstr "Φιλοξενία"
+
+msgid "Extended"
+msgstr "Επέκταση"
+
+msgid "Support"
+msgstr "Υποστήριξη"
+
+msgid "Administration"
+msgstr "Διαχείριση"
+
+msgid "Server"
+msgstr "Διακομιστής"
+
+msgid "Confirmation"
+msgstr "Επιβεβαίωση"
+
+msgid "No"
+msgstr "Όχι"
+
+msgid "Yes"
+msgstr "Ναι"
+
+msgid "Unknown User"
+msgstr "Άγνωστος Χρήστης"
+
+msgid "Password mismatched."
+msgstr "Αναντιστοίχιση Κωδικού."
+
+msgid "%s mins"
+msgstr "%s λεπτά"
+
+msgid "%s hours"
+msgstr "%s ώρες"
+
+msgid "%s days"
+msgstr "%s ημέρες"
+
+msgid "%s weeks"
+msgstr "%s εβδομάδες"
+
+msgid "%s months"
+msgstr "%s μήνες"
+
+msgid "%s years"
+msgstr "%s χρόνια"
+
+msgid "disabled"
+msgstr "απενεργοποιημένο"
+
+msgid "active"
+msgstr "ενεργό"
+
+msgid "enabled"
+msgstr "ενεργοποιημένο"
+
+msgid "off"
+msgstr "απενεργοποιημένο"
+
+msgid "on"
+msgstr "ενεργοποιημένο"
+
+msgid "no"
+msgstr "όχι"
+
+msgid "yes"
+msgstr "ναι"
+
+msgid "no value"
+msgstr "καμία τιμή"
+
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+msgid "Logout"
+msgstr "Αποσύνδεση"
+
+msgid "Overview"
+msgstr "Επισκόπηση"
+
+msgid "Users"
+msgstr "Χρήστες"
+
+msgid "Themes"
+msgstr "Θέματα"
+
+msgid "Modules"
+msgstr "Ενότητες"
+
+msgid "Logfiles"
+msgstr "Αρχεία Καταγραφής"
+
+msgid "Console"
+msgstr "Κονσόλα"
+
+msgid "Packages"
+msgstr "Πακέτα"
+
+msgid "Services"
+msgstr "Υπηρεσίες"
+
+msgid "Reboot"
+msgstr "Επανεκκίνηση"
+
+msgid "Access denied!"
+msgstr "Πρόσβαση απορρίφθηκε!"
+
+msgid "You have no permissions for this page."
+msgstr "Δεν έχετε δικαιώματα για αυτήν τη σελίδα."
+
+msgid "edit"
+msgstr "επεξεργασία"
+
+msgid "create User"
+msgstr "δημιουργία χρήστη"
+
+msgid "Save"
+msgstr "Αποθήκευση"
+
+msgid "Delete"
+msgstr "Διαγραφή"
+
+msgid "Create"
+msgstr "Δημιουργία"
+
+msgid "Add new"
+msgstr "Προσθήκη νέου"
+
+msgid "Do you really wan't to delete all selected users?"
+msgstr "Θέλετε πραγματικά να διαγράψετε όλους τους επιλεγμένους χρήστες;"
+
+msgid "No Users available!"
+msgstr "Δεν υπάρχουν διαθέσιμοι χρήστες!"
+
+msgid "Please add some Users."
+msgstr "Παρακαλώ προσθέστε μερικούς χρήστες."
+
+msgid "User"
+msgstr "Χρήστης"
+
+msgid "Name"
+msgstr "Όνομα"
+
+msgid "E-Mail"
+msgstr "Ηλεκτρονικό ταχυδρομείο"
+
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+msgid "Do you really wan't to delete the user?"
+msgstr "Θέλετε πραγματικά να διαγράψετε τον χρήστη;"
+
+msgid "Language"
+msgstr "Γλώσσα"
+
+msgid "Time Format"
+msgstr "Μορφή ώρας"
+
+msgid "Timezone"
+msgstr "Ζώνη ώρας"
+
+msgid "ID"
+msgstr "Ταυτότητα"
+
+msgid "Username"
+msgstr "Όνομα χρήστη"
+
+msgid "E-Mail Adress"
+msgstr "Διεύθυνση ηλεκτρονικού ταχυδρομείου"
+
+msgid "Full Name"
+msgstr "Ονοματεπώνυμο"
+
+msgid "Phone Number"
+msgstr "Αριθμός τηλεφώνου"
+
+msgid "Postal Address"
+msgstr "Ταχυδρομική διεύθυνση"
+
+msgid "Security settings"
+msgstr "Ρυθμίσεις ασφαλείας"
+
+msgid "Change password manually"
+msgstr "Αλλαγή κωδικού πρόσβασης χειροκίνητα"
+
+msgid "Initiate password reset"
+msgstr "Επαναφορά κωδικού πρόσβασης"
+
+msgid "Generate new password"
+msgstr "Δημιουργία νέου κωδικού πρόσβασης"
+
+msgid "Enable Two-factor authentication (2FA)"
+msgstr "Ενεργοποίηση επαλήθευσης δύο παραγόντων (2FA)"
+
+msgid "Two-Factor authentication (2FA) is <strong>temporarily disabled</strong> because you did not provide a <strong>valid E-Mail address</strong>."
+msgstr "Η επαλήθευση δύο παραγόντων (2FA) είναι <strong>προσωρινά απενεργοποιημένη</strong> επειδή δεν παρείχατε μια <strong>έγκυρη διεύθυνση ηλεκτρονικού ταχυδρομείου</strong>."
+
+msgid "Two-Factor authentication (2FA) will be <strong>temporarily disabled</strong> because you did not provide a <strong>valid E-Mail address</strong>."
+msgstr "Η επαλήθευση δύο παραγόντων (2FA) θα <strong>προσωρινά απενεργοποιηθεί</strong> επειδή δεν παρείχατε μια <strong>έγκυρη διεύθυνση ηλεκτρονικού ταχυδρομείου</strong>."
+
+msgid "Type"
+msgstr "Τύπος"
+
+msgid "Smartphone"
+msgstr "Έξυπνο τηλέφωνο"
+
+msgid "SMS"
+msgstr "SMS"
+
+msgid "New Password"
+msgstr "Νέος κωδικός πρόσβασης"
+
+msgid "Password Confirmation"
+msgstr "Επιβεβαίωση κωδικού πρόσβασης"
+
+msgid "Initiates the password recovery process."
+msgstr "Αρχίζει τη διαδικασία ανάκτησης κωδικού πρόσβασης."
+
+msgid "The user receives an E-Mail with instructions on how to reset the password."
+msgstr "Ο χρήστης λαμβάνει ένα μήνυμα ηλεκτρονικού ταχυδρομείου με οδηγίες για την επαναφορά του κωδικού πρόσβασης."
+
+msgid "The user will probably not receive an E-Mail because the provided <strong>E-Mail address is invalid</strong>."
+msgstr "Ο χρήστης πιθανώς δεν θα λάβει μήνυμα ηλεκτρονικού ταχυδρομείου επειδή η παρεχόμενη διεύθυνση ηλεκτρονικού ταχυδρομείου είναι άκυρη."
+
+msgid "Activate the reset using password recovery"
+msgstr "Ενεργοποιήστε την επαναφορά χρησιμοποιώντας την ανάκτηση κωδικού πρόσβασης"
+
+msgid "The system automatically generates a strong password and sends it to the user by E-Mail."
+msgstr "Το σύστημα δημιουργεί αυτόματα έναν ισχυρό κωδικό πρόσβασης και τον στέλνει στον χρήστη μέσω ηλεκτρονικού ταχυδρομείου."
+
+msgid "Please note that the password can only be sent if the user has entered a valid E-Mail address."
+msgstr "Λάβετε υπόψη ότι ο κωδικός πρόσβασης μπορεί να αποσταλεί μόνο εάν ο χρήστης έχει εισαγάγει έγκυρη διεύθυνση ηλεκτρονικού ταχυδρομείου."
+
+msgid "Activate the reset using password generation"
+msgstr "Ενεργοποιήστε την επαναφορά χρησιμοποιώντας δημιουργία κωδικού πρόσβασης"
+
+msgid "E-Mail Adresss"
+msgstr "Διεύθυνση ηλεκτρονικού ταχυδρομείου"
+
+msgid "Password Settings"
+msgstr "Ρυθμίσεις κωδικού πρόσβασης"
+
+msgid "Cancel"
+msgstr "Άκυρο"
+
+msgid "Module not found!"
+msgstr "Το πρόγραμμα δεν βρέθηκε!"
+
+msgid "Unknown module name. Please select an valid Module!"
+msgstr "Άγνωστο όνομα προγράμματος. Επιλέξτε ένα έγκυρο πρόγραμμα!"
+
+msgid "No Settings available!"
+msgstr "Δεν υπάρχουν διαθέσιμες ρυθμίσεις!"
+
+msgid "The Module %s has no settings!"
+msgstr "Το πρόγραμμα %s δεν έχει ρυθμίσεις!"
+
+msgid "Update"
+msgstr "Ενημέρωση"
+
+msgid "Upgrade"
+msgstr "Αναβάθμιση"
+
+msgid "Installed Modules"
+msgstr "Εγκατεστημένα προγράμματα"
+
+msgid "Repositorys"
+msgstr "Αποθήκες"
+
+msgid "No Themes available!"
+msgstr "Δεν υπάρχουν διαθέσιμες Θέματα!"
+
+msgid "Please install some Themes."
+msgstr "Εγκαταστήστε μερικά Θέματα."
+
+msgid "No Modules available!"
+msgstr "Δεν υπάρχουν διαθέσιμες Ενότητες!"
+
+msgid "Please install some Modules."
+msgstr "Εγκαταστήστε μερικές Ενότητες."
+
+msgid "Module"
+msgstr "Ενότητα"
+
+msgid "Description"
+msgstr "Περιγραφή"
+
+msgid "Module has depencies."
+msgstr "Η Ενότητα έχει εξαρτήσεις."
+
+msgid "Module is enabled."
+msgstr "Η Ενότητα είναι ενεργοποιημένη."
+
+msgid "Module is disabled."
+msgstr "Η Ενότητα είναι απενεργοποιημένη."
+
+msgid "Do you really wan't to disable the module?"
+msgstr "Θέλετε πραγματικά να απενεργοποιήσετε την Ενότητα;"
+
+msgid "Disable"
+msgstr "Απενεργοποίηση"
+
+msgid "Enable"
+msgstr "Ενεργοποίηση"
+
+msgid "Do you really wan't to deinstall the module?"
+msgstr "Θέλετε πραγματικά να απεγκαταστήσετε την Ενότητα;"
+
+msgid "Deinstall"
+msgstr "Απεγκατάσταση"
+
+msgid "The module <strong>%s</strong> has an new upgrade to <strong>Version %s</strong>!"
+msgstr "Η Ενότητα <strong>%s</strong> έχει μια νέα ενημέρωση στην <strong>Έκδοση %s</strong>!"
+
+msgid "Upgrade now!"
+msgstr "Ενημέρωση τώρα!"
+
+msgid "Version"
+msgstr "Έκδοση"
+
+msgid "by"
+msgstr "από"
+
+msgid "No Repositorys available!"
+msgstr "Δεν υπάρχουν διαθέσιμες Αποθήκες!"
+
+msgid "Please adding some Repositorys to keep updates."
+msgstr "Προσθέστε κάποιες Αποθήκες για να διατηρείτε ενημερωμένους τους πρόσθετους συνδεσμούς."
+
+msgid "Add Repository"
+msgstr "Προσθήκη Αποθήκης"
+
+msgid "Repository"
+msgstr "Αποθήκη"
+
+msgid "Status"
+msgstr "Κατάσταση"
+
+msgid "Actions"
+msgstr "Ενέργειες"
+
+msgid "Never updated"
+msgstr "Δεν έχει ποτέ ενημερωθεί"
+
+msgid "Error"
+msgstr "Σφάλμα"
+
+msgid "Malformed Repository"
+msgstr "Σφάλμα στη δομή της Αποθήκης"
+
+msgid "More Informations"
+msgstr "Περισσότερες πληροφορίες"
+
+msgid "Last updated"
+msgstr "Τελευταία ενημέρωση"
+
+msgid "Repository URL"
+msgstr "URL Αποθήκης"
+
+msgid "Package"
+msgstr "Πακέτο"
+
+msgid "Command..."
+msgstr "Εντολή..."
+
+msgid "Refresh"
+msgstr "Ανανέωση"
+
+msgid "Loading"
+msgstr "Φόρτωση"
+
+msgid "No File selected!"
+msgstr "Δεν έχει επιλεγεί κανένα αρχείο!"
+
+msgid "Please select an Logfile from the List."
+msgstr "Επιλέξτε ένα αρχείο καταγραφής από τη λίστα."
+
+msgid "Directory"
+msgstr "Κατάλογος"
+
+msgid "Path"
+msgstr "Διαδρομή"
+
+msgid "No permissions!"
+msgstr "Δεν υπάρχουν δικαιώματα!"
+
+msgid "File"
+msgstr "Αρχείο"
+
+msgid "Global settings for the Panel"
+msgstr "Γενικά ρυθμίσεις για το Panel"
+
+msgid "Project name"
+msgstr "Όνομα Προγράμματος"
+
+
+msgid "Show Copyright"
+msgstr "Εμφάνιση Συλλογικών Δικαιωμάτων"
+
+msgid "Shows the copyright in the footer"
+msgstr "Εμφανίζει τα πνευματικά δικαιώματα στο υποσέλιδο"
+
+msgid "Default Language"
+msgstr "Προκαθορισμένη Γλώσσα"
+
+msgid "Default Time Format"
+msgstr "Προκαθορισμένος Χρονικός Νορματισμός"
+
+msgid "Default Timezone"
+msgstr "Προκαθορισμένη Ζώνη Ώρας"
+
+msgid "Service"
+msgstr "Υπηρεσία"
+
+msgid "Info"
+msgstr "Πληροφορίες"
+
+msgid "System Properties"
+msgstr "Στοιχεία Συστήματος"
+
+msgid "Hostname"
+msgstr "Όνομα Υπολογιστή"
+
+msgid "Time"
+msgstr "Ώρα"
+
+msgid "System"
+msgstr "Σύστημα"
+
+msgid "Kernel"
+msgstr "Καρπός"
+
+msgid "Uptime"
+msgstr "Επιβίβαση"
+
+msgid "Daemon"
+msgstr "Δαίμων"
+
+msgid "Last Start"
+msgstr "Τελευταία Εκκίνηση"
+
+msgid "%s ago"
+msgstr "%s πριν"
+
+msgid "Last End"
+msgstr "Τελευταίο Τέλος"
+
+msgid "Last Time"
+msgstr "Τελευταία φορά"
+
+msgid "%d Seconds"
+msgstr "%d Δεύτερα"
+
+msgid "Mounted Drives"
+msgstr "Συνδεσμένες Εγκαταστάσεις"
+
+msgid "Type: %s | FileSystem: %s | Size: %s / %s"
+msgstr "Τύπος: %s | Σύστημα Αρχείων: %s | Μέγεθος: %s / %s"
+
+msgid "System-Reboot"
+msgstr "Επανεκκίνηση Συστήματος"
+
+msgid "Do you really want to reboot the complete system?"
+msgstr "Θέλετε πραγματικά να επανεκκινήσετε ολόκληρο το σύστημα;"
+
+msgid "Reboot now!"
+msgstr "Επανεκκίνηση Τώρα!"
+
+msgid "Please sign in"
+msgstr "Παρακαλούμε συνδεθείτε"
+
+msgid "Code"
+msgstr "Κωδικός"
+
+msgid "Password"
+msgstr "Κωδικός Πρόσβασης"
+
+msgid "Lost password"
+msgstr "Lost password"
+
+msgid "Sign in"
+msgstr "Σύνδεση"
+
+msgid "Global Settings"
+msgstr "Διαχείριση Ρυθμίσεων"
+
+msgid "Security"
+msgstr "Ασφάλεια"
+
+msgid "Global settings for your usability"
+msgstr "Διαχείριση Ρυθμίσεων για καλύτερη χρήση του ιστοχώρου"
+
+msgid "Some security settings for your safety."
+msgstr "Ρυθμίσεις ασφαλείας για την προστασία του λογαριασμού σας"
+
+msgid "Check your E-Mail address in the <a href='%s'>account settings</a>."
+msgstr "Ελέγξτε τη διεύθυνση ηλεκτρονικού ταχυδρομείου σας στις <a href='%s'>ρυθμίσεις του λογαριασμού σας</a>."
+
+msgid "Reset your Password"
+msgstr "Επαναφορά Κωδικού Πρόσβασης"
+
+msgid "Back to the login"
+msgstr "Πίσω στην Πρωταρχική Σελίδα Σύνδεσης"
+
+msgid "Reset Password"
+msgstr "Επαναφορά Κωδικού Πρόσβασης"
+
+msgid "Account Details"
+msgstr "Στοιχεία Λογαριασμού"
+
+msgid "Change Password"
+msgstr "Αλλαγή Κωδικού Πρόσβασης"
+
+msgid "Current personal details that you have provided us with, We ask that you keep these upto date in case we require to contact you regarding your hosting package."
+msgstr "Τα τρέχοντα προσωπικά στοιχεία που μας έχετε παράσχει. Παρακαλούμε να τα κρατάτε ενημερωμένα για να μπορέσουμε να επικοινωνήσουμε μαζί σας σχετικά με το πακέτο φιλοξενίας σας."
+
+msgid "Change your current control panel password."
+msgstr "Αλλάξτε τον τρέχοντα κωδικό πρόσβασης του Πίνακα Ελέγχου σας."
+
+msgid "Your password request has been sent to users E-Mail adress!"
+msgstr "Το αίτημα κωδικού πρόσβασης σας έχει σταλεί στη διεύθυνση ηλεκτρονικού ταχυδρομείου του χρήστη!"
+
+msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
+msgstr "Οι ρυθμίσεις ασφαλείας για τον <strong>%s<\/strong> ενημερώθηκαν με επιτυχία."
+
+msgid "Please enter a valid E-Mail address."
+msgstr "Παρακαλώ εισάγετε μια έγκυρη διεύθυνση ηλεκτρονικού ταχυδρομείου."
+
+msgid "User <strong>%s<\/strong> was successfully edited."
+msgstr "Ο χρήστης <strong>%s<\/strong> επεξεργάστηκε με επιτυχία."
+
+msgid "You cant delete the admin account!"
+msgstr "Δεν μπορείτε να διαγράψετε τον λογαριασμό διαχειριστή!"
+
+msgid "The user <strong>%s<\/strong> was successfully deleted."
+msgstr "Ο χρήστης <strong>%s<\/strong> διαγράφηκε με επιτυχία."
+
+msgid "<strong>%s<\/strong> (%s)"
+msgstr "<strong>%s<\/strong> (%s)"
+
+msgid "Please select some entries you want to delete."
+msgstr "Επιλέξτε μερικές καταχωρήσεις που θέλετε να διαγράψετε."
+
+msgid "Please enter the username."
+msgstr "Παρακαλώ εισάγετε το όνομα χρήστη."
+
+msgid "The new username must contain the minimum number of 2 characters."
+msgstr "Το νέο όνομα χρήστη πρέπει να περιέχει τον ελάχιστο αριθμό 2 χαρακτήρων."
+
+msgid "The username is already in use."
+msgstr "Το όνομα χρήστη χρησιμοποιείται ήδη."
+
+msgid "Please enter an E-Mail address."
+msgstr "Παρακαλώ εισάγετε μια διεύθυνση ηλεκτρονικού ταχυδρομείου."
+
+msgid "The E-Mail address is already in use."
+msgstr "Η διεύθυνση ηλεκτρονικού ταχυδρομείου χρησιμοποιείται ήδη."
+
+msgid "Please enter the password."
+msgstr "Παρακαλώ εισάγετε τον κωδικό πρόσβασης."
+
+msgid "Please repeat the password."
+msgstr "Παρακαλώ επαναλάβετε τον κωδικό πρόσβασης."
+
+msgid "Your password and confirmation password do not match."
+msgstr "Ο κωδικός πρόσβασης και ο κωδικός επιβεβαίωσης δεν ταιριάζουν."
+
+msgid "The user <strong>%s<\/strong> was successfully created."
+msgstr "Ο χρήστης <strong>%s<\/strong> δημιουργήθηκε με επιτυχία."
+
+msgid "Please enter an valid  repository URL!"
+msgstr "Παρακαλώ εισάγετε μια έγκυρη διεύθυνση URL αποθήκης!"
+
+msgid "Repository already exists!"
+msgstr "Η Αποθήκη υπάρχει ήδη!"
+
+msgid "The module is already disabled!"
+msgstr "Η Ενότητα είναι ήδη απενεργοποιημένη!"
+
+msgid "The module was successfully disabled."
+msgstr "Η Ενότητα απενεργοποιήθηκε με επιτυχία."
+
+msgid "The module not exists!"
+msgstr "To module δεν υπάρχει!"
+
+msgid "The module is already enabled!"
+msgstr "To module είναι ήδη ενεργοποιημένη!"
+
+msgid "The module was successfully enabled."
+msgstr "To module ενεργοποιήθηκε με επιτυχία."
+
+msgid "The module was successfully deinstalled!"
+msgstr "To module απεγκαταστάθηκε με επιτυχία!"
+
+msgid "<strong>%d Repository%s<\/strong> was updated. Found %d related Update%s!"
+msgstr "<strong>%d Αποθήκη%s<\/strong> ενημερώθηκε. Βρέθηκαν %d σχετικές ενημερώσεις%s!"
+
+msgid "<strong>%d Repositorys<\/strong> was successfully removed"
+msgstr "<strong>%d Αποθήκης<\/strong> απεγκαταστάθηκαν με επιτυχία"
+
+msgid "You have no permissions for this action!"
+msgstr "Δεν έχετε δικαιώματα για αυτή την ενέργεια!"
+
+msgid "The system settings has been saved."
+msgstr "Οι ρυθμίσεις συστήματος αποθηκεύτηκαν."
+
+msgid "DEMO-VERSION: This action can't be used!"
+msgstr "ΔΟΚΙΜΑΣΤΙΚΗ ΕΚΔΟΣΗ: Αυτή η ενέργεια δεν μπορεί να χρησιμοποιηθεί!"
+
+msgid "The System will be rebooted now!"
+msgstr "Το Σύστημα θα επανεκκινηθεί τώρα!"
+
+msgid "Your 2FA code is invalid!"
+msgstr "Ο κωδικός 2FA σας δεν είναι έγκυρος!"
+
+msgid "Please complete the two factor authentication:"
+msgstr "Παρακαλώ ολοκληρώστε την επαλήθευση δύο παραγόντων:"
+
+msgid "Login was unsuccessful!"
+msgstr "Η σύνδεση δεν ήταν επιτυχής!"
+
+msgid "Your security settings has been updated."
+msgstr "Οι ρυθμίσεις ασφαλείας σας ενημερώθηκαν."
+
+msgid "Your settings has been updated."
+msgstr "Οι ρυθμίσεις σας ενημερώθηκαν."
+
+msgid "The given Token is invalid or was expired."
+msgstr "Το δεδομένο Token δεν είναι έγκυρο ή έχει λήξει."
+
+msgid "Please enter a new password."
+msgstr "Παρακαλώ εισάγετε ένα νέο κωδικό πρόσβασης."
+
+msgid "Your password has been restored."
+msgstr "Ο κωδικός πρόσβασης σας έχει επαναφερθεί."
+
+msgid "Please enter an valid and registred E-Mail address!"
+msgstr "Παρακαλώ εισάγετε μια έγκυρη και εγγεγραμμένη διεύθυνση ηλεκτρονικού ταχυδρομείου!"
+
+msgid "Your request has been sent to your E-Mail adress!"
+msgstr "Το αίτημα σας στάλθηκε στη διεύθυνση ηλεκτρονικού ταχυδρομείου σας!"
+
+msgid "Please enter your current password."
+msgstr "Παρακαλώ εισάγετε τον τρέχοντα κωδικό πρόσβασης."
+
+msgid "Please enter your new password."
+msgstr "Παρακαλώ εισάγετε τον νέο κωδικό πρόσβασης."
+
+msgid "Your current password is not correct!"
+msgstr "Ο τρέχον κωδικός πρόσβασης δεν είναι σωστός!"
+
+msgid "Your password has been updated."
+msgstr "Ο κωδικός πρόσβασης σας ενημερώθηκε."
+
+msgid "Please enter your E-Mail address."
+msgstr "Παρακαλώ εισάγετε τη διεύθυνση ηλεκτρονικού ταχυδρομείου σας."
+
+msgid "Please enter your first name."
+msgstr "Παρακαλώ εισάγετε το όνομα σας."
+
+msgid "Please enter your last name."
+msgstr "Παρακαλώ εισάγετε το επώνυμό σας."
+
+msgid "Please enter your phone  number."
+msgstr "Παρακαλώ εισάγετε τον αριθμό τηλεφώνου σας."
+
+msgid "Please enter your address."
+msgstr "Παρακαλώ εισάγετε τη διεύθυνσή σας."
+
+msgid "Your personal data has been updated."
+msgstr "Τα προσωπικά σας δεδομένα ενημερώθηκαν."
