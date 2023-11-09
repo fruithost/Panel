@@ -119,12 +119,14 @@
 						<div class="form-group row">
 							<label for="2fa_type" class="col-sm-2 col-form-label"><?php I18N::__('Type'); ?>:</label>
 							<div class="col-sm-10">
-								<select name="2fa_type" class="form-control">
-									<option value="app" DISABLED><?php I18N::__('Smartphone'); ?> (<?php I18N::__('disabled'); ?>)</option>
-									<option value="mail" SELECTED><?php I18N::__('E-Mail'); ?></option>
-									<option value="sms" DISABLED><?php I18N::__('SMS'); ?> (<?php I18N::__('disabled'); ?>)</option>
-								</select>
-							</div>
+                                <label>
+                                    <select name="2fa_type" class="form-control">
+                                        <option value="app" DISABLED><?php I18N::__('Smartphone'); ?> (<?php I18N::__('disabled'); ?>)</option>
+                                        <option value="mail" SELECTED><?php I18N::__('E-Mail'); ?></option>
+                                        <option value="sms" DISABLED><?php I18N::__('SMS'); ?> (<?php I18N::__('disabled'); ?>)</option>
+                                    </select>
+                                </label>
+                            </div>
 						</div>
 						<div class="form-group text-right">
 							<button type="submit" name="action" value="save" class="btn btn-outline-success"><?php I18N::__('Save'); ?></button>
