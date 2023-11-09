@@ -2,13 +2,13 @@
 	namespace fruithost;
 	
 	class Module {
-		private $path		= null;
-		private $info		= null;
-		private $instance	= null;
-		private $enabled	= false;
-		private $locked		= false;
+		private ?string $path				= null;
+		private ?ModuleInfo $info			= null;
+		private ?ModuleInterface $instance	= null;
+		private bool $enabled				= false;
+		private bool$locked					= false;
 		
-		public function __construct($path) {
+		public function __construct(string $path) {
 			$this->path = $path;
 			$this->info = new ModuleInfo($path);
 		}
@@ -21,7 +21,7 @@
 			return $this->info;
 		}
 		
-		public function getInstance() {
+		public function getInstance() : ModuleInterface {
 			return $this->instance;
 		}
 		
@@ -29,7 +29,7 @@
 			return $this->path;
 		}
 		
-		public function getSettings(string $name, mixed $default = NULL) : mixed {
+		public function getSettings(string $name, mixed $default = null) : mixed {
 			$result = Database::single('SELECT * FROM `' . DATABASE_PREFIX . 'modules_settings` WHERE `module`=:module AND `key`=:key LIMIT 1', [
 				'key'		=> $name,
 				'module'	=> $this->getDirectory()
@@ -44,7 +44,7 @@
 			return $default;
 		}
 		
-		public function setSettings(string $name, mixed $value = NULL) {
+		public function setSettings(string $name, mixed $value = null) {
 			if(Database::exists('SELECT `id` FROM `' . DATABASE_PREFIX . 'modules_settings` WHERE `module`=:module AND `key`=:key LIMIT 1', [
 				'module'	=> $this->getDirectory(),
 				'key'		=> $name
@@ -56,7 +56,7 @@
 				]);
 			} else {
 				Database::insert(DATABASE_PREFIX . 'modules_settings', [
-					'id'			=> NULL,
+					'id'			=> null,
 					'module'		=> $this->getDirectory(),
 					'key'			=> $name,
 					'value'			=> $value
@@ -100,7 +100,7 @@
 			$this->locked = $state;
 		}
 		
-		public function init(Core $core) : Module | null {
+		public function init(Core $core) : ?Module {
 			$script = sprintf('%s%smodule.php', $this->path, DS);
 			
 			if(!file_exists($script)) {
@@ -125,7 +125,7 @@
 						'name'		=> $this->info->getName(),
 						'icon'		=> $this->info->getIcon(),
 						'order'		=> $this->info->getOrder(),
-						'target'	=> $core->getHooks()->applyFilter('TARGET_' . $this->info->getName(), NULL),
+						'target'	=> $core->getHooks()->applyFilter('TARGET_' . $this->info->getName(), null),
 						'url'		=> $core->getHooks()->applyFilter('URL_' . $this->info->getName(), sprintf('/module/%s', basename($this->path))),
 						'active'	=> $core->getRouter()->is(sprintf('/module/%s', basename($this->path))) || $core->getRouter()->startsWith(sprintf('/module/%s/', basename($this->path)))
 					];

@@ -4,13 +4,13 @@
 	use fruithost\Auth;
 	
 	class HookParameters {
-		private $args = [];
+		private array $args = [];
 		
 		public function __construct() {
 			$this->args = func_get_args();
 		}
 		
-		public function get($postion = null) {
+		public function get(?int $postion = null) {
 			if($postion !== null) {
 				return $this->args[$postion];				
 			}
@@ -20,12 +20,12 @@
 	}
 	
 	class Hooks {
-		protected $filters			= [];
-		protected $merged_filters	= [];
-		protected $actions			= [];
-		protected $current_filter	= [];
+		protected array $filters			= [];
+		protected array $merged_filters		= [];
+		protected array $actions			= [];
+		protected array $current_filter		= [];
 		
-		protected function createID(mixed $method) {
+		protected function createID(mixed $method) : string | false {
 			if(is_string($method)) {
 				return $method;
 			}

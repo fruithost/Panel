@@ -2,14 +2,14 @@
 	namespace fruithost;
 	
 	class Modal {
-		private $name		= null;
-		private $title		= null;
-		private $content	= null;
-		private $buttons	= [];
-		private $callbacks	= [];
-		private $variables	= [];
+		private ?string $name		= null;
+		private ?string $title		= null;
+		private mixed $content		= null;
+		private array $buttons		= [];
+		private array $callbacks	= [];
+		private array $variables	= [];
 		
-		public function __construct(string $name, string $title, $content, $variables = []) {
+		public function __construct(string $name, string $title, mixed $content = null, $variables = []) {
 			$this->name			= $name;
 			$this->title		= $title;
 			$this->variables	= $variables;
@@ -19,7 +19,7 @@
 			}
 		}
 		
-		public function getCallback($name) {
+		public function getCallback(string $name) : mixed  {
 			if(!isset($this->callbacks[$name])) {
 				return null;
 			}
@@ -27,17 +27,17 @@
 			return $this->callbacks[$name];
 		}
 		
-		public function onSave($method) : Modal {
+		public function onSave(mixed $method) : Modal {
 			$this->callbacks['save'] = $method;
 			
 			return $this;
 		}
 		
-		public function getName() : string {
+		public function getName() : ?string {
 			return $this->name;
 		}
 		
-		public function getTitle() : string {
+		public function getTitle() : ?string {
 			return $this->title;
 		}
 		
@@ -50,7 +50,7 @@
 			return $this->buttons;
 		}
 		
-		public function getContent(Template $template) {
+		public function getContent(Template $template) : mixed {
 			foreach($this->variables AS $name => $value) {
 				${$name} = $value;
 			}
@@ -58,7 +58,7 @@
 			// @ToDo check if is template file
 			if(!empty($this->content)) {
 				$template->display($this->content, $this->variables, false, false);
-				return;
+				return null;
 			}
 			
 			return $this->content;

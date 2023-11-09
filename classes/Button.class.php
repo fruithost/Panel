@@ -2,13 +2,13 @@
 	namespace fruithost;
 	
 	class Button {
-		private $name			= null;
-		private $label			= null;
-		private $classes		= [];
-		private $modal			= null;
-		private $dismissable	= false;
+		private ?string $name		= null;
+		private ?string $label		= null;
+		private array $classes		= [];
+		private ?string $modal		= null;
+		private bool $dismissable	= false;
 		
-		public function getName() : string | null {
+		public function getName() : ?string {
 			return $this->name;
 		}
 		
@@ -30,7 +30,7 @@
 			return !empty($this->modal);
 		}
 		
-		public function getModal() : string {
+		public function getModal() : ?string {
 			return $this->modal;
 		}
 		
@@ -39,7 +39,7 @@
 			return $this;
 		}
 		
-		public function getLabel() : string {
+		public function getLabel() : ?string {
 			return $this->label;
 		}
 		

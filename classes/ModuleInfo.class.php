@@ -2,16 +2,16 @@
 	namespace fruithost;
 	
 	class ModuleInfo {
-		private $name			= null;
-		private $version		= null;
-		private $category		= null;
-		private $icon			= null;
-		private $order			= null;
-		private $description	= null;
-		private $author			= null;
-		private $repository		= null;
-		private $depencies		= null;
-		private $is_valid		= false;
+		private ?string $name			= null;
+		private ?string $version		= null;
+		private ?string $category		= null;
+		private ?string $icon			= null;
+		private int $order				= 999;
+		private ?string  $description	= null;
+		private ?ModuleAuthor $author	= null;
+		private ?string $repository		= null;
+		private ?object $depencies		= null;
+		private bool $is_valid			= false;
 		
 		public function __construct(string $path) {
 			$file = sprintf('%s%smodule.package', $path, DS);
@@ -82,15 +82,15 @@
 			return $this->is_valid;
 		}
 		
-		public function getName() : string {
+		public function getName() : ?string {
 			return $this->name;
 		}
 		
-		public function getVersion() : string {
+		public function getVersion() : ?string {
 			return $this->version;
 		}
 		
-		public function getCategory() : string {
+		public function getCategory() : ?string {
 			return $this->category;
 		}
 		
@@ -98,12 +98,17 @@
 			return $this->order;
 		}
 		
-		public function getIcon(bool $raw = false) : string {
+		public function getIcon(bool $raw = false) : ?string {
 			if($raw) {
 				return $this->icon;
 			}
 			
-			// @ToDo If starts with http/https or slash or base64
+			/* When the Icon is an URL or an embedded Image (Base64) */
+			if(preg_match('/^(http|https|data):/', $this->icon)) {
+				return sprintf('<img src="%s" />', $this->icon);
+			}
+			
+			// @ToDo check if its an local file
 			
 			return sprintf('<i class="material-icons">%s</i>', $this->icon);
 		}
@@ -112,11 +117,11 @@
 			return $this->description;
 		}
 		
-		public function getAuthor() : ModuleAuthor {
+		public function getAuthor() : ?ModuleAuthor {
 			return $this->author;
 		}
 		
-		public function getRepository() : string {
+		public function getRepository() : ?string {
 			return $this->repository;
 		}
 		

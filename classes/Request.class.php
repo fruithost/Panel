@@ -2,8 +2,8 @@
 	namespace fruithost;
 	
 	class RequestFactory {
-		private static $instance	= NULL;
-		private $_get				= [];
+		private static ?RequestFactory $instance	= null;
+		private array $_get							= [];
 		
 		public function __construct() {
 			if(empty($this->_get)) {
@@ -12,7 +12,7 @@
 		}
 		
 		public static function getInstance() : RequestFactory {
-			if(self::$instance === NULL) {
+			if(self::$instance === null) {
 				self::$instance = new self();
 			}
 			

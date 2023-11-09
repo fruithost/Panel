@@ -2,8 +2,8 @@
 	namespace fruithost;
 	
 	class ModuleInterface {
-		private $core		= null;
-		private $instance	= null;
+		private ?Core $core			= null;
+		private ?Module $instance	= null;
 		
 		public function __construct(Core $core, $instance) {
 			$this->core		= $core;
@@ -24,31 +24,31 @@
 			/* Override Me */
 		}
 		
-		public function getRouter() : Router {
+		public function getRouter() : ?Router {
 			return $this->core->getRouter();
 		}
 		
-		public function getModules() {
+		public function getModules() : ?Modules {
 			return $this->core->getModules();
 		}
 		
-		public function getTemplate() : Template {
+		public function getTemplate() : ?Template {
 			return $this->core->getTemplate();
 		}
 		
-		public function getCore() : Core {
+		public function getCore() : ?Core {
 			return $this->core;
 		}
 		
-		public function getInstance() : Module {
+		public function getInstance() : ?Module {
 			return $this->instance;
 		}
 		
-		public function setSettings(string $name, mixed $value = NULL) {
+		public function setSettings(string $name, mixed $value = null) {
 			$this->instance->setSettings($name, $value);
 		}
 		
-		public function getSettings(string $name, mixed $default = NULL) : mixed {
+		public function getSettings(string $name, mixed $default = null) : mixed {
 			return $this->instance->getSettings($name, $default);			
 		}
 		

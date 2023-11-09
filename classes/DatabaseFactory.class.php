@@ -2,21 +2,21 @@
 	namespace fruithost;
 	
 	class DatabaseFactory extends \PDO {
-		private static $instance = NULL;
+		private static ?DatabaseFactory $instance = null;
 		
 		public static function getInstance() {
-			if(self::$instance === NULL) {
+			if(self::$instance === null) {
 				self::$instance = new self(sprintf('mysql:host=%s;port=%d;dbname=%s', DATABASE_HOSTNAME, DATABASE_PORT, DATABASE_NAME), DATABASE_USERNAME, DATABASE_PASSWORD, [
 					\PDO::MYSQL_ATTR_INIT_COMMAND	=> 'SET NAMES utf8',
 					#\PDO::ATTR_ERRMODE				=> \PDO::ERRMODE_EXCEPTION,
-					#\PDO::ATTR_EMULATE_PREPARES		=> false
+					#\PDO::ATTR_EMULATE_PREPARES	=> false
 				]);
 			}
 			
 			return self::$instance;
 		}
 		
-		public function getError(object $object = NULL) {
+		public function getError(?object $object = null) {
 			if(empty($object)) {
 				return $this->errorInfo();
 			}
@@ -34,10 +34,8 @@
 			return false;
 		}
 		
-		public function file(string $file, callable $callback, $temporary_use_root = false) {
+		public function file(string $file, callable $callback) {
 			try {
-				$root = null;
-				
 				if(!file_exists($file)) {
 					call_user_func_array($callback, [ 'Can\'t found file: ' . $file ]);
 					return;
@@ -49,16 +47,6 @@
 					call_user_func_array($callback, [ 'File is empty: ' . $file ]);
 					return;
 				}
-				
-				if($temporary_use_root) {
-					$root = self::$instance;
-					self::$instance = new self(sprintf('mysql:host=%s;port=%d;dbname=%s', DATABASE_HOSTNAME, DATABASE_PORT, DATABASE_NAME), 'root', '', [
-						\PDO::MYSQL_ATTR_INIT_COMMAND	=> 'SET NAMES utf8',
-						\PDO::ATTR_ERRMODE				=> \PDO::ERRMODE_EXCEPTION,
-						#\PDO::ATTR_EMULATE_PREPARES => false
-					]);
-				}
-				
 				
 				$sql = str_replace([
 					'[DATABASE_PREFIX]'
@@ -73,15 +61,11 @@
 					return;
 				}
 				
-				call_user_func_array($callback, [ NULL ]);
-				
-				if($root == null) {
-					self::$instance = $root;
-				}
+				call_user_func_array($callback, [ null ]);
 			} catch(\Exception) {}
 		}
 		
-		public function query(string $query, ?int $fetchMode = null, mixed ...$parameters): \PDOStatement | false {
+		public function query(string $query, ?int $fetchMode = null, mixed ...$parameters) : \PDOStatement | false {
 			$parameters	= (isset($parameters[0]) ? $parameters[0] : $parameters);
 			$stmt		= $this->prepare($query);
 			
@@ -92,19 +76,19 @@
 			return $stmt;
 		}
 		
-		public function single(string $query, array $parameters = []) {
+		public function single(string $query, array $parameters = []) : mixed {
 			return $this->query($query, null, $parameters)->fetch(\PDO::FETCH_OBJ);
 		}
 		
-		public function count(string $query, array $parameters = []) {
+		public function count(string $query, array $parameters = []) : int {
 			return $this->query($query, null, $parameters)->rowCount();
 		}
 		
-		public function fetch(string $query, array $parameters = []) {
+		public function fetch(string $query, array $parameters = []) : mixed {
 			return $this->query($query, null, $parameters)->fetchAll(\PDO::FETCH_OBJ);
 		}
 		
-		public function update(string $table, string|array $where, array $parameters = []) {
+		public function update(string $table, string | array $where, array $parameters = []) {
 			$fields = '';
 			
 			foreach($parameters AS $name => $value) {
@@ -127,11 +111,11 @@
 			return $this->query($query, null, $parameters)->fetchAll(\PDO::FETCH_OBJ);
 		}
 		
-		public function reset(string $table, $where, $old, $new) {
+		public function reset(string $table, string $where, string $old, string $new) : \PDOStatement | false {
 			return $this->query(sprintf('UPDATE `%1$s` SET %2$s=%4$d WHERE `%2$s`=:%3$d', $table, $where, $old, $new));
 		}
 		
-		public function delete(string $table, array $parameters = []) {
+		public function delete(string $table, array $parameters = []) : \PDOStatement | false {
 			$where = [];
 			
 			foreach($parameters AS $name => $value) {
@@ -141,7 +125,7 @@
 			return $this->query(sprintf('DELETE FROM `%s` WHERE %s', $table, implode(' AND ', $where)), null, $parameters);
 		}
 		
-		public function deleteWhereNot(string $table, array $delete_not = [], array $parameters = []) {
+		public function deleteWhereNot(string $table, array $delete_not = [], array $parameters = []) : \PDOStatement | false {
 			$where				= [];
 			$default_parameters	= [];
 			
@@ -164,7 +148,7 @@
 			return $this->query(sprintf('DELETE FROM `%s` WHERE %s', $table, implode(' AND ', $where)), null, $parameters);
 		}
 		
-		public function insert(string $table, array $parameters = []) {
+		public function insert(string $table, array $parameters = []) : int {
 			$names		= [];
 			$values		= [];
 			
@@ -174,6 +158,7 @@
 			}
 			
 			$this->query(sprintf('INSERT INTO `%s` (%s) VALUES (%s)', $table, implode(', ', $names), implode(', ', $values)), null, $parameters);
+			
 			return $this->lastInsertId();
 		}
 	}

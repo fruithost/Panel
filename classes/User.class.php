@@ -5,11 +5,11 @@
 	use \fruithost\Database;
 	
 	class User {
-		private $id				= null;
-		private $username		= null;
-		private $email			= null;
-		private $crypted_mail	= null;
-		private $data			= [];
+		private ?int $id				= null;
+		private ?string $username		= null;
+		private ?string $email			= null;
+		private ?string $crypted_mail	= null;
+		private array | false $data		= [];
 		
 		public function __construct() {}
 		
@@ -39,7 +39,7 @@
 			}
 		}
 		
-		public function getID() : int | null {
+		public function getID() : ?int {
 			/*if($this->id == null && Auth::getID() != null) {
 				return Auth::getID();
 			}*/
@@ -47,7 +47,7 @@
 			return $this->id;
 		}
 		
-		public function getFirstName() : string | null {
+		public function getFirstName() : ?string {
 			if($this->data == false) {
 				return null;
 			}
@@ -55,7 +55,7 @@
 			return $this->data->name_first;
 		}
 		
-		public function getLastName() : string | null {
+		public function getLastName() : ?string {
 			if($this->data == false) {
 				return null;
 			}
@@ -63,7 +63,7 @@
 			return $this->data->name_last;
 		}
 		
-		public function getPhoneNumber() : string | null {
+		public function getPhoneNumber() : ?string {
 			if($this->data == false) {
 				return null;
 			}
@@ -71,7 +71,7 @@
 			return $this->data->phone_number;
 		}
 		
-		public function getAddress() : string | null {
+		public function getAddress() : ?string {
 			if($this->data == false) {
 				return null;
 			}
@@ -79,7 +79,7 @@
 			return $this->data->address;
 		}
 		
-		public function getFullName() : string | null {
+		public function getFullName() : ?string {
 			if($this->data == false) {
 				return '';
 			}
@@ -91,19 +91,19 @@
 			return sprintf('%s %s', $this->data->name_first, $this->data->name_last);
 		}
 		
-		public function getCryptedMail() : string | null {
+		public function getCryptedMail() : ?string {
 			return $this->crypted_mail;
 		}
 		
-		public function getMail() : string | null {
+		public function getMail() : ?string {
 			return $this->email;
 		}
 		
-		public function getUsername() : string | null {
+		public function getUsername() : ?string {
 			return $this->username;
 		}
 		
-		public function getSettings(string $name, int | string | null $user_id = NULL, mixed $default = NULL) : mixed {
+		public function getSettings(string $name, int | string | null $user_id = null, mixed $default = null) : mixed {
 			if(!empty($user_id) && is_string($user_id)) {
 				$result = Database::single('SELECT `id` FROM `' . DATABASE_PREFIX . 'users` WHERE `username`=:username LIMIT 1', [
 					'username'	=> $user_id
@@ -128,7 +128,7 @@
 			return $default;
 		}
 		
-		public function removeSettings(string $name, int | string | null $user_id = NULL) {
+		public function removeSettings(string $name, int | string | null $user_id = null) {
 			if(Database::exists('SELECT `id` FROM `' . DATABASE_PREFIX . 'users_settings` WHERE `user_id`=:user_id AND `key`=:key LIMIT 1', [
 				'user_id'	=> (empty($user_id) ? $this->getID() : $user_id),
 				'key'		=> $name
@@ -140,7 +140,7 @@
 			}
 		}
 		
-		public function setSettings(string $name, int | string | null $user_id = NULL, mixed $value = NULL) {
+		public function setSettings(string $name, int | string | null $user_id = null, mixed $value = null) {
 			if(Database::exists('SELECT `id` FROM `' . DATABASE_PREFIX . 'users_settings` WHERE `user_id`=:user_id AND `key`=:key LIMIT 1', [
 				'user_id'	=> (empty($user_id) ? $this->getID() : $user_id),
 				'key'		=> $name

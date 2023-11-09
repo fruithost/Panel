@@ -6,12 +6,12 @@
 	use \fruithost\Session;
 	
 	class AuthFactory {
-		private static $instance	= NULL;
-		private $permissions		= [];
-		private $user				= NULL;
+		private static ?AuthFactory $instance	= null;
+		private array $permissions				= [];
+		private ?User $user						= null;
 		
 		public static function getInstance() : AuthFactory {
-			if(self::$instance === NULL) {
+			if(self::$instance === null) {
 				self::$instance = new self();
 			}
 			
@@ -48,11 +48,11 @@
 			return (!empty($user_id) && $user_id > 0);
 		}
 		
-		public function getID() : int | null {
+		public function getID() : ?int {
 			return Session::get('user_id');
 		}
 		
-		public function getUsername() : string | null {
+		public function getUsername() : ?string {
 			return Session::get('user_name');
 		}
 		
@@ -63,7 +63,7 @@
 			return true;
 		}
 		
-		public function getMail() : string | null {
+		public function getMail() : ?string {
 			return $this->user->getMail();
 		}
 		
@@ -127,15 +127,15 @@
 			return true;
 		}
 		
-		public function getSettings(string $name, int | string | null $user_id = NULL, mixed $default = NULL) : mixed {
+		public function getSettings(string $name, int | string | null $user_id = null, mixed $default = null) : mixed {
 			return $this->user->getSettings($name, $user_id, $default);
 		}
 		
-		public function removeSettings(string $name, int | string | null $user_id = NULL) {
+		public function removeSettings(string $name, int | string | null $user_id = null) {
 			$this->user->removeSettings($name, $user_id);
 		}
 		
-		public function setSettings(string $name, int | string | null $user_id = NULL, mixed $value = NULL) {
+		public function setSettings(string $name, int | string | null $user_id = null, mixed $value = null) {
 			$this->user->setSettings($name, $user_id, $value);
 		}
 		

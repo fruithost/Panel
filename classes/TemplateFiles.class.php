@@ -7,25 +7,25 @@
 		const STYLESHEET	= 3;
 		const JAVASCRIPT	= 4;
 		
-		private $header 	= [
+		private array $header 	= [
 			'javascripts'	=> [],
 			'stylesheets'	=> []
 		];
 		
-		private $footer		= [
+		private array $footer		= [
 			'javascripts'	=> [],
 			'stylesheets'	=> []
 		];
 		
-		public function addJavaScript(string $name, string $file, string $version, array | null $depencies = null, int $position = TemplateFiles::HEADER) {
+		public function addJavaScript(string $name, string $file, string $version, ?array $depencies = null, int $position = TemplateFiles::HEADER) {
 			$this->add($name, $file, $version, $depencies, $position, TemplateFiles::JAVASCRIPT);
 		}
 		
-		public function addStyleSheet(string $name, string $file, string $version, array | null $depencies = null, int $position = TemplateFiles::HEADER) {
+		public function addStyleSheet(string $name, string $file, string $version, ?array $depencies = null, int $position = TemplateFiles::HEADER) {
 			$this->add($name, $file, $version, $depencies, $position, TemplateFiles::STYLESHEET);
 		}
 		
-		private function add(string $name, string $file, string $version, array | null $depencies, int $position = TemplateFiles::HEADER, int $type = null) {
+		private function add(string $name, string $file, string $version, ?array $depencies, int $position = TemplateFiles::HEADER, ?int $type = null) {
 			if($type === null) {
 				return;
 			}

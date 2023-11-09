@@ -2,11 +2,11 @@
 	namespace fruithost;
 	
 	class Core extends Loader {
-		private $modules	= null;
-		private $hooks		= null;
-		private $router		= null;
-		private $template	= null;
-		private $admin		= null;
+		private ?Modules $modules	= null;
+		private ?Hooks $hooks		= null;
+		private ?Router $router		= null;
+		private ?Template $template	= null;
+		private ?CoreAdmin $admin	= null;
 		
 		public function __construct() {
 			parent::__construct();
@@ -18,27 +18,27 @@
 			$this->init();
 		}
 		
-		public function getAdminCore() : CoreAdmin {
+		public function getAdminCore() : ?CoreAdmin {
 			return $this->admin;
 		}
 		
-		public function getModules() : Modules {
+		public function getModules() : ?Modules {
 			return $this->modules;
 		}
 		
-		public function getHooks() : Hooks {
+		public function getHooks() : ?Hooks {
 			return $this->hooks;
 		}
 		
-		public function getTemplate() : Template {
+		public function getTemplate() : ?Template {
 			return $this->template;
 		}
 		
-		public function getRouter() : Router {
+		public function getRouter() : ?Router {
 			return $this->router;
 		}
 		
-		public function getSettings(string $name, mixed $default = NULL) : mixed {
+		public function getSettings(string $name, mixed $default = null) : mixed {
 			$result = Database::single('SELECT * FROM `' . DATABASE_PREFIX . 'settings` WHERE `key`=:key LIMIT 1', [
 				'key'		=> $name
 			]);
@@ -62,7 +62,7 @@
 			return $default;
 		}
 		
-		public function setSettings(string $name, mixed $value = NULL) {
+		public function setSettings(string $name, mixed $value = null) {
 			if(is_bool($value)) {
 				$value = ($value ? 'true' : 'false');
 			}
@@ -76,7 +76,7 @@
 				]);
 			} else {
 				Database::insert(DATABASE_PREFIX . 'settings', [
-					'id'			=> NULL,
+					'id'			=> null,
 					'key'			=> $name,
 					'value'			=> $value
 				]);
@@ -90,7 +90,7 @@
 			$this->modules	= new Modules($this);
 			$this->template	= new Template($this);
 			$this->router	= new Router($this);
-			$this->admin	= new CoreAdmin($this, NULL);
+			$this->admin	= new CoreAdmin($this, null);
 			
 			$this->getHooks()->runAction('core_pre_init');
 			
@@ -118,7 +118,7 @@
 				$this->template->display('overview');
 			});
 			
-			$this->router->addRoute('^/settings(?:/([a-zA-Z0-9\-_]+))?$', function(string | null $tab = null) {
+			$this->router->addRoute('^/settings(?:/([a-zA-Z0-9\-_]+))?$', function(?string $tab = null) {
 				if(!Auth::isLoggedIn()) {
 					Response::redirect('/');
 				}
@@ -131,7 +131,7 @@
 				]);
 			});
 			
-			$this->router->addRoute('^/account(?:/([a-zA-Z0-9\-_]+))?$', function(string | null $tab = null) {
+			$this->router->addRoute('^/account(?:/([a-zA-Z0-9\-_]+))?$', function(?string $tab = null) {
 				if(!Auth::isLoggedIn()) {
 					Response::redirect('/');
 				}
@@ -156,7 +156,7 @@
 				]);
 			});
 			
-			$this->router->addRoute('^/module(?:(?:/([a-zA-Z0-9\-_]+)?)(?:/([a-zA-Z0-9\-_]+)(?:/([a-zA-Z0-9\-_]+))?)?)?$', function($module = null, $submodule = null, $action = NULL) {
+			$this->router->addRoute('^/module(?:(?:/([a-zA-Z0-9\-_]+)?)(?:/([a-zA-Z0-9\-_]+)(?:/([a-zA-Z0-9\-_]+))?)?)?$', function(?string $module = null, ?string $submodule = null, ?string $action = null) {
 				if(!Auth::isLoggedIn()) {
 					Response::redirect('/');
 				}
@@ -221,7 +221,7 @@
 				]));
 			});
 			
-			$this->router->addRoute('^/lost-password(?:/([a-zA-Z0-9\-_]+))?$', function($token = null) {
+			$this->router->addRoute('^/lost-password(?:/([a-zA-Z0-9\-_]+))?$', function(?string $token = null) {
 				if(Auth::isLoggedIn()) {
 					Response::redirect('/');
 				}

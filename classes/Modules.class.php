@@ -2,8 +2,8 @@
 	namespace fruithost;
 	
 	class Modules {
-		private $core		= null;
-		private $modules	= [];
+		private ?Core $core		= null;
+		private array $modules	= [];
 		
 		public function __construct(Core $core) {
 			$this->core = $core;
@@ -34,7 +34,7 @@
 			}
 		}
 		
-		public function getVersion($name) : string {
+		public function getVersion($name) : ?string {
 			$path = sprintf('%s%s%s', $this->getPath(), DS, $name);
 			$file = sprintf('%s%smodule.package', $path, DS);
 			
@@ -126,7 +126,7 @@
 			return true;
 		}
 		
-		public function getModule(string $name, bool $all = false) : Module | null {
+		public function getModule(string $name, bool $all = false) : ?Module {
 			if($all) {
 				$modules = $this->getList();
 				

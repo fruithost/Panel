@@ -18,15 +18,15 @@
 			return AuthFactory::getInstance()->logout();
 		}
 		
-		public static function getID() : int | null {
+		public static function getID() : ?int {
 			return AuthFactory::getInstance()->getID();
 		}
 		
-		public static function getUsername() : string | null {
+		public static function getUsername() : ?string {
 			return AuthFactory::getInstance()->getUsername();
 		}
 		
-		public static function getMail() : string | null {
+		public static function getMail() : ?string {
 			return AuthFactory::getInstance()->getMail();
 		}
 		
@@ -34,19 +34,19 @@
 			return AuthFactory::getInstance()->getGravatar();
 		}
 		
-		public static function setSettings(string $name, int | string | null $user_id = NULL, mixed $value = NULL) {
+		public static function setSettings(string $name, int | string | null $user_id = null, mixed $value = null) {
 			return AuthFactory::getInstance()->setSettings($name, $user_id, $value);			
 		}
 		
-		public static function getSettings(string $name, int | string | null $user_id = NULL, mixed $default = NULL) : mixed {
+		public static function getSettings(string $name, int | string | null $user_id = null, mixed $default = null) : mixed {
 			return AuthFactory::getInstance()->getSettings($name, $user_id, $default);
 		}
 		
-		public static function removeSettings(string $name, int | string | null $user_id = NULL) {
+		public static function removeSettings(string $name, int | string | null $user_id = null) {
 			return AuthFactory::getInstance()->removeSettings($name, $user_id);
 		}
 		
-		public static function hasPermission(string $name, int | string | null $user_id = NULL) : bool {
+		public static function hasPermission(string $name, int | string | null $user_id = null) : bool {
 			return AuthFactory::getInstance()->hasPermission($name, $user_id);
 		}
 	}

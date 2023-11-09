@@ -2,10 +2,10 @@
 	namespace fruithost;
 	
 	class Router {
-		private $routes		= [];
-		private $redirect	= NULL;
-		private $current	= NULL;
-		private $core;
+		private array $routes		= [];
+		private ?string $redirect	= null;
+		private ?string $current	= null;
+		private Core $core;
 		
 		public function __construct(Core $core) {
 			$this->core = $core;
@@ -48,7 +48,7 @@
 			$callback();
 		}
 		
-		public function getCurrent() : string {
+		public function getCurrent() : ?string {
 			return $this->current;
 		}
 		
@@ -65,7 +65,7 @@
 		}
 		
 		public function run(bool $ajax = false) {
-			// @ToDo is secure?
+			// @ToDo is it secure?
 			$uri	= explode('/',	($ajax ? preg_replace('#(http|https)://([^/]+)#', '', $_SERVER['HTTP_REFERER']) : $_SERVER['REQUEST_URI']));
 			$name	= explode('/',	$_SERVER['SCRIPT_NAME']);
 			

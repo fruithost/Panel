@@ -5,11 +5,11 @@
 	use \fruithost\Database;
 	
 	class Template extends TemplateDefaults {
-		private $core;
-		private $theme		= null;
-		private $assigns	= [];
-		private $files		= null;
-		private $navigation	= null;
+		private Core $core;
+		private ?string $theme					= null;
+		private array $assigns					= [];
+		private ?TemplateFiles $files			= null;
+		private ?TemplateNavigation $navigation	= null;
 		
 		public function __construct(Core $core) {
 			$this->core			= $core;
@@ -57,7 +57,7 @@
 			$this->assign('navigation', $this->navigation);
 		}
 		
-		public function getCore() {
+		public function getCore() : Core {
 			return $this->core;
 		}
 		
