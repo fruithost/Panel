@@ -46,7 +46,7 @@
 			}
 		}
 		
-		public function getVersion($name) : ?string {
+		public function getVersion($name) : string | null {
 			$path = sprintf('%s%s%s', $this->getPath(), DS, $name);
 			$file = sprintf('%s%smodule.package', $path, DS);
 			
