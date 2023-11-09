@@ -2,9 +2,9 @@
 	namespace fruithost;
 	
 	class TemplateNavigationCategory {
-		private $navigation		= null;
-		private $id				= null;
-		private $label			= null;
+		private ?TemplateNavigation $navigation		= null;
+		private ?string $id							= null;
+		private ?string $label						= null;
 		
 		public function __construct(TemplateNavigation $navigation, string $id, string $label) {
 			$this->navigation	= $navigation;
@@ -12,11 +12,11 @@
 			$this->label		= $label;
 		}
 		
-		public function getID() : string {
+		public function getID() : ?string {
 			return $this->id;
 		}
 		
-		public function getLabel() : string {
+		public function getLabel() : ?string {
 			return $this->label;
 		}
 		

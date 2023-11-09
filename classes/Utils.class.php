@@ -20,7 +20,7 @@
 			return sprintf('%0' . $threshold . 's', $number);
 		}
 		
-		public static function getTimeDifference(int $from, int $to = NULL) : string {
+		public static function getTimeDifference(int $from, int $to = null) : string {
 			if(empty($to)) {
 				$to = time();
 			}

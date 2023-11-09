@@ -2,16 +2,16 @@
 	namespace fruithost;
 	
 	class TemplateNavigation {
-		private $core		= null;
-		private $entries	= [];
+		private ?Core $core		= null;
+		private array $entries	= [];
 		
 		public function __construct(Core $core) {
 			$this->core = $core;
 		}
 		
 		public function addCategory(string $name, string $label) {
-			$category = new TemplateNavigationCategory($this, $name, $label);
-			$this->entries[$category->getID()] = $category;
+			$category							= new TemplateNavigationCategory($this, $name, $label);
+			$this->entries[$category->getID()]	= $category;
 		}
 		
 		public function getCore() : Core {

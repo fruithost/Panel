@@ -5,29 +5,29 @@
 	use fruithost\Utils;
 	
 	class PHP {
-		private $path		= null;
-		private $socket		= '/run/php/php8.2-fpm.sock'; // @ToDo HARD CODED value, we should find a way to get this value from the system
-		private $content	= null;
-		private $data		= [];
-		private $error		= false;
+		private ?string $path		= null;
+		private string $socket		= '/run/php/php8.2-fpm.sock'; // @ToDo HARD CODED value, we should find a way to get this value from the system
+		private ?string $content	= null;
+		private array $data			= [];
+		private bool $error			= false;
 		
 		public function setPath(string $path) {
 			$this->path = $path;
 		}
 		
-		public function getHeader() : string | null {
+		public function getHeader() : ?string {
 			return explode("\r\n\r\n", $this->content)[0];
 		}
 		
-		public function getBody() : string | null {
+		public function getBody() : ?string {
 			return explode("\r\n\r\n", $this->content)[1];
 		}
 		
-		public function getContent() : string | null {
+		public function getContent() : ?string {
 			return $this->content;
 		}
 		
-		public function execute($file, $arguments = []) {
+		public function execute(string $file, array $arguments = []) {
 			if(!is_writable($this->path)) {
 				$this->error = true;
 				return;

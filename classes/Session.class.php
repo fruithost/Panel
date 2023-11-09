@@ -27,17 +27,17 @@
 			return false;
 		}
 		
-		public static function get(string $name) : bool | int | float | string | array | object | null  {
+		public static function get(string $name) : mixed  {
 			self::init();
 			
 			if(isset($_SESSION[$name])) {
 				return $_SESSION[$name];
 			}
 			
-			return NULL;
+			return null;
 		}
 		
-		public static function set(string $name, bool | int | float | string | array | object | null $value) {
+		public static function set(string $name, mixed $value) {
 			self::init();
 			
 			$_SESSION[$name] = $value;
@@ -46,7 +46,7 @@
 		public static function remove(string $name) {
 			self::init();
 			
-			$_SESSION[$name] = NULL;
+			$_SESSION[$name] = null;
 			unset($_SESSION[$name]);
 		}
 	}

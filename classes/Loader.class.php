@@ -123,8 +123,9 @@
 			if(!file_exists($path)) {
 				// Check it's a Library
 				$file_array		= explode(BS, $file);
+				$file_array	= explode(BS, $file);
 				array_unshift($file_array, 'libraries');
-				$path	= sprintf('%s%s.php', PATH, implode(DS, $file_array));
+				$path		= sprintf('%s%s.php', PATH, implode(DS, $file_array));
 				
 				if(!is_readable($path)) {
 					if(defined('DAEMON') && DAEMON) {

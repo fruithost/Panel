@@ -2,8 +2,8 @@
 	namespace fruithost;
 	
 	class Route {
-		private $path		= '/';
-		private $callback	= NULL;
+		private string $path		= '/';
+		private ?\Closure $callback	= null;
 		
 		public function getPath() : string {
 			return $this->path;
@@ -13,11 +13,11 @@
 			$this->path = $path;
 		}
 		
-		public function getCallback() : callable {
+		public function getCallback() : ?\Closure {
 			return $this->callback;
 		}
 		
-		public function setCallback(callable $callback) {
+		public function setCallback(?\Closure $callback) {
 			$this->callback = $callback;
 		}
 	}

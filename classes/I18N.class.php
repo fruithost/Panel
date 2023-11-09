@@ -7,8 +7,8 @@
 	use \Sepia\PoParser\Parser;
 
 	class I18N {
-		protected static $translation	= null;
-		protected static $languages		= [
+		protected static ?Parser $translation	= null;
+		protected static array $languages		= [
 			'en_US' => 'English'
 		];
 		
@@ -30,7 +30,8 @@
 			self::load(self::set());			
 		}
 		
-		protected static function getSettings(string $name, mixed $default = NULL) : mixed {
+		/* @ToDo Remove, its core-method, but must be added for the Daemon. Check if we can remove these now */
+		protected static function getSettings(string $name, mixed $default = null) : mixed {
 			$result = Database::single('SELECT * FROM `' . DATABASE_PREFIX . 'settings` WHERE `key`=:key LIMIT 1', [
 				'key'		=> $name
 			]);
@@ -55,7 +56,7 @@
 		}
 		
 		protected static function set() : string {
-			$language = Auth::getSettings('LANGUAGE', NULL, self::getSettings('LANGUAGE', 'en_US'));
+			$language = Auth::getSettings('LANGUAGE', null, self::getSettings('LANGUAGE', 'en_US'));
 			
 			if(!Auth::isLoggedIn() && Request::has('lang')) {
 				$language = Request::get('lang');

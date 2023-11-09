@@ -73,6 +73,7 @@
 		}
 		
 		public function foot_modals() {
+			// @ToDo export as an Template file, because its currently fix for Bootstrap, but other frameworks can be used?
 			$modals		= $this->getCore()->getHooks()->applyFilter('modals', [], 10, false);
 			$template	= $this;
 			
@@ -135,7 +136,6 @@
 					foreach($entry->depencies AS $needed) {
 						if(!in_array($needed, $loaded, true)) {
 							$continue = false;
-							
 						}
 					}
 					

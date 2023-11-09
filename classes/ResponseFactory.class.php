@@ -2,13 +2,13 @@
 	namespace fruithost;
 	
 	class ResponseFactory {
-		private static $instance	= NULL;
-		private $headers			= [
+		private static ?ResponseFactory $instance	= null;
+		private array $headers						= [
 			'Content-Type'	=> 'text/html; charset=UTF-8'
 		];
 		
 		public static function getInstance() {
-			if(self::$instance === NULL) {
+			if(self::$instance === null) {
 				self::$instance = new self();
 			}
 			
