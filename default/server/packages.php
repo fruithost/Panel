@@ -17,8 +17,12 @@
 	}
 	
 	$result = shell_exec('dpkg-query -W -f=\'${binary:Package};${Version};${binary:Summary};${Maintainer}\n\'');
-	$lines	= explode(PHP_EOL, $result);
-	// @ToDo group by names (for sample php-*)
+    if (empty($result)) {
+        $lines = [];
+    } else {
+        $lines = explode(PHP_EOL, $result);
+    }
+    // @ToDo group by names (for sample php-*)
 	?>
 	<table class="table table-borderless table-striped table-hover">
 		<thead>
@@ -29,6 +33,13 @@
 		</thead>
 		<tbody>	
 			<?php
+                if (empty($lines)) {
+                    ?>
+                        <tr>
+                            <td scope="col" colspan="2"><?php I18N::__('No packages found.'); ?></td>
+                        </tr>
+                    <?php
+                }
 				foreach($lines AS $line) {
 					if(empty($line)) {
 						continue;
@@ -38,9 +49,9 @@
 						<tr>
 							<td scope="col">
 								<?php print $info[0]; ?>
-								<p><small><?php print (isset($info[2]) ? $info[2] : ''); ?></small></p>
-							</th>
-							<td scope="col" class="text-right"><span class="badge badge-secondary"><?php print (isset($info[1]) ? $info[1] : ''); ?></span></th>
+								<p><small><?php print ($info[2] ?? ''); ?></small></p>
+							</td>
+							<td scope="col" class="text-right"><span class="badge badge-secondary"><?php print ($info[1] ?? ''); ?></span></td>
 						</tr>
 					<?php
 				}
