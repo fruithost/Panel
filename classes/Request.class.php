@@ -38,7 +38,7 @@
 		}
 		
 		public function has(string $name) : bool {
-			return in_array($name, array_keys($this->_get));
+			return array_key_exists($name, $this->_get);
 		}
 		
 		public function get(string $name) : mixed {

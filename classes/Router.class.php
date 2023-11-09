@@ -57,7 +57,7 @@
 		}
 		
 		public function startsWith(string $name) : bool {
-			return (strpos(strtolower($this->getCurrent()), strtolower($name)) === 0);
+			return (str_starts_with(strtolower($this->getCurrent()), strtolower($name)));
 		}
 		
 		public function redirectTo(string $redirect) {
@@ -70,7 +70,7 @@
 			$name	= explode('/',	$_SERVER['SCRIPT_NAME']);
 			
 			for($i = 0; $i < sizeof($name); $i++) {
-				if($uri[$i] == $name[$i]) {
+				if($uri[$i] === $name[$i]) {
 					unset($uri[$i]);
 				}
 			}
@@ -83,7 +83,7 @@
 			}
 			
 			// Remove "GET"
-			if(preg_match('/\?/Uis', $route)) {
+			if(str_contains($route, "?")) {
 				$split	= explode('?', $route);
 				$route	= $split[0];
 			}
@@ -97,13 +97,11 @@
 			
 			if($this->routeExists($route)) {
 				$this->executeRoute($route);
-			} else {
-				if(empty($this->redirect)) {
-					$this->core->getTemplate()->display('error/404');
-				} else {
-					Response::redirect($this->redirect);
-				}
-			}
+			} else if(empty($this->redirect)) {
+                $this->core->getTemplate()->display('error/404');
+            } else {
+                Response::redirect($this->redirect);
+            }
 		}
 	}
 ?>

@@ -16,14 +16,14 @@
 	
 	class Loader {
 		public function __construct() {
-			if(defined('DAEMON') && DAEMON || isset($_SERVER['DAEMON']) && !empty($_SERVER['DAEMON'])) {
+			if((defined('DAEMON') && DAEMON) || (!empty($_SERVER['DAEMON']))) {
 				if(!defined('DAEMON')) {
 					define('DAEMON', true);
 				}
 			}
 			
 			if(!defined('PATH')) {
-				define('PATH', sprintf('%s/', dirname(dirname(__FILE__))));
+				define('PATH', sprintf('%s/', dirname(__FILE__, 2)));
 			}
 			
 			if($this->readable('.security')) {
@@ -67,7 +67,7 @@
 			spl_autoload_register([ $this, 'load' ]);
 			
 			// @ToDo Hash verify?
-			if(isset($_SERVER['MODULE']) && !empty($_SERVER['MODULE'])) {
+			if(!empty($_SERVER['MODULE'])) {
 				if(file_exists($_SERVER['MODULE'])) {
 					$this->require('libraries/skoerfgen/ACMECert');
 					
@@ -121,7 +121,7 @@
 			$path			= sprintf('%s%s.class.php', PATH, implode(DS, $file_array));
 
 			if(!file_exists($path)) {
-				// Check it's an Library
+				// Check it's a Library
 				$file_array		= explode(BS, $file);
 				array_unshift($file_array, 'libraries');
 				$path	= sprintf('%s%s.php', PATH, implode(DS, $file_array));
@@ -143,7 +143,7 @@
 					require_once($path);
 					return;
 				}
-				// Check it's an Library on an module!
+				// Check it's a Library on a module!
 				/*} else if(preg_match('/\/module\//Uis', $_SERVER['REQUEST_URI'])) {
 					$file_array		= explode(BS, $file);
 					array_unshift($file_array, 'www');
@@ -170,7 +170,7 @@
 		}
 	}
 	
-	if(defined('DAEMON') && DAEMON || isset($_SERVER['DAEMON']) && !empty($_SERVER['DAEMON'])) {
+	if((defined('DAEMON') && DAEMON) || (!empty($_SERVER['DAEMON']))) {
 		new Loader();
 	}
 ?>

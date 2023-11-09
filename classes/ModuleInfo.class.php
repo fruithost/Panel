@@ -30,7 +30,7 @@
 				return;
 			}
 			
-			$data = json_decode($content);
+			$data = json_decode($content, false);
 			
 			if(json_last_error() !== JSON_ERROR_NONE) {
 				// throw new \Exception('[Module] module.package is broken: ' . $path);
@@ -121,7 +121,7 @@
 		}
 		
 		public function getDepencies() : object {
-			if($this->depencies == null) {
+			if($this->depencies === null) {
 				return (object) [];
 			}
 			

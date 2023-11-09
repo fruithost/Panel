@@ -141,19 +141,11 @@
 		public function getModule(string $name, bool $all = false) : Module | null {
 			if($all) {
 				$modules = $this->getList();
-				
-				if(!isset($modules[$name])) {
-					return null;
-				}
-				
-				return $modules[$name];
-			}
-			
-			if(!isset($this->modules[$name])) {
-				return null;
-			}
-			
-			return $this->modules[$name];
-		}
+
+                return $modules[$name] ?? null;
+            }
+
+            return $this->modules[$name] ?? null;
+        }
 	}
 ?>
