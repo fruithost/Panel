@@ -13,6 +13,7 @@
 				define('DEMO', true);
 			}
 			
+			// @ToDo export to Loader.class.php
 			spl_autoload_register([ $this, 'load' ]);
 			
 			$this->init();
@@ -248,22 +249,22 @@
 				}
 				
 				if(empty($module)) {
-					$this->template->display('error/module', [
+					$this->template->display('error/module', array_merge($this->template->getAssigns(), [
 						'module'	=> $module,
 						'submodule'	=> $submodule,
 						'action'	=> $action
-					]);
+					]));
 					return;
 				}
 
 				$module = $this->getModules()->getModule($module);
 				
 				if(empty($module)) {
-					$this->template->display('error/module', [
+					$this->template->display('error/module', array_merge($this->template->getAssigns(), [
 						'module'	=> $module,
 						'submodule'	=> $submodule,
 						'action'	=> $action
-					]);
+					]));
 					return;
 				}
 				
@@ -276,19 +277,19 @@
 				}
 				
 				if(!method_exists($module->getInstance(), 'content') && !method_exists($module->getInstance(), 'frame')) {
-					$this->template->display('error/module_empty', [
+					$this->template->display('error/module_empty', array_merge($this->template->getAssigns(), [
 						'module'	=> $module,
 						'submodule'	=> $submodule,
 						'action'	=> $action
-					]);
+					]));
 					return;
 				}
 				
-				$this->template->display('module', [
+				$this->template->display('module', array_merge($this->template->getAssigns(), [
 					'module'	=> $module,
 					'submodule'	=> $submodule,
 					'action'	=> $action
-				]);
+				]));
 			});
 			
 			$this->router->addRoute('^/lost-password(?:/([a-zA-Z0-9\-_]+))?$', function($token = null) {

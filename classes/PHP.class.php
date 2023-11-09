@@ -15,33 +15,41 @@
 			$this->path = $path;
 		}
 		
-		public function execute() {
+		public function getHeader() : string | null {
+			return explode("\r\n\r\n", $this->content)[0];
+		}
+		
+		public function getBody() : string | null {
+			return explode("\r\n\r\n", $this->content)[1];
+		}
+		
+		public function getContent() : string | null {
+			return $this->content;
+		}
+		
+		public function execute($file, $arguments = []) {
 			if(!is_writable($this->path)) {
 				$this->error = true;
 				return;
 			}
 			
 			$args	= '';
-			$file	= sprintf('.fruithost.%s.php', Utils::randomString(5));
-			$hash	= Encryption::encrypt(Utils::randomString(28), ENCRYPTION_SALT);
 			
-			file_put_contents(sprintf('%s%s', $this->path, $file), sprintf('<?php if(isset($_SERVER[\'FRUITHOST\']) && $_SERVER[\'FRUITHOST\'] == \'%s\') { phpinfo(); } ?>', $hash));
-			
-			foreach([
-				'FRUITHOST'			=> $hash,
+			foreach(array_merge([
 				'SCRIPTS_DIR'		=> $this->path,
 				'HOME'				=> $this->path,
 				'PWD'				=> $this->path,
+				'USER'				=> 'www-data',
 				'DOCUMENT_ROOT'		=> $this->path,
 				'SCRIPT_FILENAME'	=> sprintf('%s%s', $this->path, $file),
 				'REQUEST_METHOD'	=> 'GET'
-			] AS $name => $value) {
+			], $arguments) AS $name => $value) {
 				$args .= sprintf('%s=%s \\%s', $name, $value, PHP_EOL);
 			}
 			
-			$result 	= shell_exec(sprintf('%scgi-fcgi -bind -connect "%s" 2>&1', $args, $this->socket));
-			@unlink(sprintf('%s%s', $this->path, $file));
-			
+			$command	= sprintf('%scgi-fcgi -bind -connect "%s" 2>&1', $args, $this->socket);
+			$result 	= shell_exec($command);
+						
 			if($result == null){
 				$this->error = true;
 				return;
@@ -185,8 +193,18 @@
 			];
 		}
 		
-		public function getInfo() : array {			
-			$this->execute();
+		public function getInfo() : array {
+			$file	= sprintf('.fruithost.%s.php', Utils::randomString(5));
+			$hash	= Encryption::encrypt(Utils::randomString(28), ENCRYPTION_SALT);
+			
+			file_put_contents(sprintf('%s%s', $this->path, $file), sprintf('<?php if(isset($_SERVER[\'FRUITHOST\']) && $_SERVER[\'FRUITHOST\'] == \'%s\') { phpinfo(); } ?>', $hash));
+			
+			$this->execute($file, [
+				'FRUITHOST'			=> $hash
+			]);
+			
+			@unlink(sprintf('%s%s', $this->path, $file));
+			
 			$this->parse();
 			
 			return $this->data;

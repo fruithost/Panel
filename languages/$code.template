@@ -5,6 +5,213 @@ msgstr ""
 "Language: $name\n"
 
 
+msgid "Your security settings has been updated."
+msgstr ""
+
+msgid "Your settings has been updated."
+msgstr ""
+
+msgid "Add Repository"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Create"
+msgstr ""
+
+msgid "Please enter an valid  repository URL!"
+msgstr ""
+
+msgid "Repository already exists!"
+msgstr ""
+
+msgid "The module is already disabled!"
+msgstr ""
+
+msgid "The module was successfully disabled."
+msgstr ""
+
+msgid "The module not exists!"
+msgstr ""
+
+msgid "The module is already enabled!"
+msgstr ""
+
+msgid "The module was successfully enabled."
+msgstr ""
+
+msgid "The module was successfully deinstalled!"
+msgstr ""
+
+msgid "<strong>%d Repository%s<\/strong> was updated. Found %d related Update%s!"
+msgstr ""
+
+msgid "<strong>%d Repositorys<\/strong> was successfully removed"
+msgstr ""
+
+msgid "Please select some entries you want to delete."
+msgstr ""
+
+msgid "Settings for <strong>%s<\/strong> was successfully updated."
+msgstr ""
+
+msgid "Please repeat your new password."
+msgstr ""
+
+msgid "The new password must contain the minimum number of 8 characters."
+msgstr ""
+
+msgid "Can't send recovery instructions, because the user has an <strong>invalid E-Mail address<\/strong>."
+msgstr ""
+
+msgid "New password for your account"
+msgstr ""
+
+msgid "Reset your Password"
+msgstr ""
+
+msgid "The new generated password has been sent to users E-Mail adress!"
+msgstr ""
+
+msgid "Your password request has been sent to users E-Mail adress!"
+msgstr ""
+
+msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
+msgstr ""
+
+msgid "Please enter a valid E-Mail address."
+msgstr ""
+
+msgid "User <strong>%s<\/strong> was successfully edited."
+msgstr ""
+
+msgid "You cant delete the admin account!"
+msgstr ""
+
+msgid "The user <strong>%s<\/strong> was successfully deleted."
+msgstr ""
+
+msgid "<strong>%s<\/strong> (%s)"
+msgstr ""
+
+msgid "Please enter the username."
+msgstr ""
+
+msgid "The new username must contain the minimum number of 2 characters."
+msgstr ""
+
+msgid "The username is already in use."
+msgstr ""
+
+msgid "Please enter an E-Mail address."
+msgstr ""
+
+msgid "The E-Mail address is already in use."
+msgstr ""
+
+msgid "Please enter the password."
+msgstr ""
+
+msgid "Please repeat the password."
+msgstr ""
+
+msgid "Your password and confirmation password do not match."
+msgstr ""
+
+msgid "The user <strong>%s<\/strong> was successfully created."
+msgstr ""
+
+msgid "You have no permissions for this action!"
+msgstr ""
+
+msgid "The system settings has been saved."
+msgstr ""
+
+msgid "DEMO-VERSION: This action can't be used!"
+msgstr ""
+
+msgid "The System will be rebooted now!"
+msgstr ""
+
+msgid "Please enter your current password."
+msgstr ""
+
+msgid "Please enter your new password."
+msgstr ""
+
+msgid "Your current password is not correct!"
+msgstr ""
+
+msgid "Your password has been updated."
+msgstr ""
+
+msgid "Please enter your E-Mail address."
+msgstr ""
+
+msgid "Please enter your first name."
+msgstr ""
+
+msgid "Please enter your last name."
+msgstr ""
+
+msgid "Please enter your phone  number."
+msgstr ""
+
+msgid "Please enter your address."
+msgstr ""
+
+msgid "Your personal data has been updated."
+msgstr ""
+
+msgid "Your 2FA code is invalid!"
+msgstr ""
+
+msgid "Please complete the two factor authentication:"
+msgstr ""
+
+msgid "Login was unsuccessful!"
+msgstr ""
+
+msgid "The given Token is invalid or was expired."
+msgstr ""
+
+msgid "Please enter a new password."
+msgstr ""
+
+msgid "Your password has been restored."
+msgstr ""
+
+msgid "Please enter an valid and registred E-Mail address!"
+msgstr ""
+
+msgid "Your request has been sent to your E-Mail adress!"
+msgstr ""
+
+msgid "disabled"
+msgstr ""
+
+msgid "active"
+msgstr ""
+
+msgid "enabled"
+msgstr ""
+
+msgid "off"
+msgstr ""
+
+msgid "on"
+msgstr ""
+
+msgid "no"
+msgstr ""
+
+msgid "yes"
+msgstr ""
+
+msgid "no value"
+msgstr ""
+
 msgid "Account"
 msgstr ""
 
@@ -35,21 +242,6 @@ msgstr ""
 msgid "Server"
 msgstr ""
 
-msgid "Confirmation"
-msgstr ""
-
-msgid "No"
-msgstr ""
-
-msgid "Yes"
-msgstr ""
-
-msgid "Unknown User"
-msgstr ""
-
-msgid "Password mismatched."
-msgstr ""
-
 msgid "%s mins"
 msgstr ""
 
@@ -68,28 +260,19 @@ msgstr ""
 msgid "%s years"
 msgstr ""
 
-msgid "disabled"
+msgid "Confirmation"
 msgstr ""
 
-msgid "active"
+msgid "No"
 msgstr ""
 
-msgid "enabled"
+msgid "Yes"
 msgstr ""
 
-msgid "off"
+msgid "Unknown User"
 msgstr ""
 
-msgid "on"
-msgstr ""
-
-msgid "no"
-msgstr ""
-
-msgid "yes"
-msgstr ""
-
-msgid "no value"
+msgid "Password mismatched."
 msgstr ""
 
 msgid "Settings"
@@ -125,52 +308,34 @@ msgstr ""
 msgid "Reboot"
 msgstr ""
 
-msgid "Access denied!"
+msgid "Error"
 msgstr ""
 
-msgid "You have no permissions for this page."
+msgid "Reload"
 msgstr ""
 
-msgid "edit"
+msgid "Module Error"
 msgstr ""
 
-msgid "create User"
+msgid "The specified module could not be loaded."
+msgstr ""
+
+msgid "404 - Not Found"
+msgstr ""
+
+msgid "The page you requested could not be found."
 msgstr ""
 
 msgid "Save"
 msgstr ""
 
-msgid "Delete"
+msgid "Global Settings"
 msgstr ""
 
-msgid "Create"
+msgid "Security"
 msgstr ""
 
-msgid "Add new"
-msgstr ""
-
-msgid "Do you really wan't to delete all selected users?"
-msgstr ""
-
-msgid "No Users available!"
-msgstr ""
-
-msgid "Please add some Users."
-msgstr ""
-
-msgid "User"
-msgstr ""
-
-msgid "Name"
-msgstr ""
-
-msgid "E-Mail"
-msgstr ""
-
-msgid "Edit"
-msgstr ""
-
-msgid "Do you really wan't to delete the user?"
+msgid "Global settings for your usability"
 msgstr ""
 
 msgid "Language"
@@ -182,40 +347,16 @@ msgstr ""
 msgid "Timezone"
 msgstr ""
 
-msgid "ID"
-msgstr ""
-
-msgid "Username"
-msgstr ""
-
-msgid "E-Mail Adress"
-msgstr ""
-
-msgid "Full Name"
-msgstr ""
-
-msgid "Phone Number"
-msgstr ""
-
-msgid "Postal Address"
-msgstr ""
-
-msgid "Security settings"
-msgstr ""
-
-msgid "Change password manually"
-msgstr ""
-
-msgid "Initiate password reset"
-msgstr ""
-
-msgid "Generate new password"
+msgid "Some security settings for your safety."
 msgstr ""
 
 msgid "Enable Two-factor authentication (2FA)"
 msgstr ""
 
 msgid "Two-Factor authentication (2FA) is <strong>temporarily disabled<\/strong> because you did not provide a <strong>valid E-Mail address<\/strong>."
+msgstr ""
+
+msgid "Check your E-Mail address in the <a href=\"%s\">account settings<\/a>."
 msgstr ""
 
 msgid "Two-Factor authentication (2FA) will be <strong>temporarily disabled<\/strong> because you did not provide a <strong>valid E-Mail address<\/strong>."
@@ -227,43 +368,16 @@ msgstr ""
 msgid "Smartphone"
 msgstr ""
 
+msgid "E-Mail"
+msgstr ""
+
 msgid "SMS"
 msgstr ""
 
-msgid "New Password"
+msgid "Access denied!"
 msgstr ""
 
-msgid "Password Confirmation"
-msgstr ""
-
-msgid "Initiates the password recovery process."
-msgstr ""
-
-msgid "The user receives an E-Mail with instructions on how to reset the password."
-msgstr ""
-
-msgid "The user will probably not receive an E-Mail because the provided <strong>E-Mail address is invalid<\/strong>."
-msgstr ""
-
-msgid "Activate the reset using password recovery"
-msgstr ""
-
-msgid "The system automatically generates a strong password and sends it to the user by E-Mail."
-msgstr ""
-
-msgid "Please note that the password can only be sent if the user has entered a valid E-Mail address."
-msgstr ""
-
-msgid "Activate the reset using password generation"
-msgstr ""
-
-msgid "E-Mail Adresss"
-msgstr ""
-
-msgid "Password Settings"
-msgstr ""
-
-msgid "Cancel"
+msgid "You have no permissions for this page."
 msgstr ""
 
 msgid "Module not found!"
@@ -278,7 +392,13 @@ msgstr ""
 msgid "The Module %s has no settings!"
 msgstr ""
 
+msgid "Add new"
+msgstr ""
+
 msgid "Update"
+msgstr ""
+
+msgid "Delete"
 msgstr ""
 
 msgid "Upgrade"
@@ -288,12 +408,6 @@ msgid "Installed Modules"
 msgstr ""
 
 msgid "Repositorys"
-msgstr ""
-
-msgid "No Themes available!"
-msgstr ""
-
-msgid "Please install some Themes."
 msgstr ""
 
 msgid "No Modules available!"
@@ -344,13 +458,13 @@ msgstr ""
 msgid "by"
 msgstr ""
 
+msgid "Repository URL"
+msgstr ""
+
 msgid "No Repositorys available!"
 msgstr ""
 
 msgid "Please adding some Repositorys to keep updates."
-msgstr ""
-
-msgid "Add Repository"
 msgstr ""
 
 msgid "Repository"
@@ -365,9 +479,6 @@ msgstr ""
 msgid "Never updated"
 msgstr ""
 
-msgid "Error"
-msgstr ""
-
 msgid "Malformed Repository"
 msgstr ""
 
@@ -377,37 +488,100 @@ msgstr ""
 msgid "Last updated"
 msgstr ""
 
-msgid "Repository URL"
+msgid "Username"
 msgstr ""
 
-msgid "Package"
+msgid "E-Mail Adresss"
 msgstr ""
 
-msgid "Command..."
+msgid "New Password"
 msgstr ""
 
-msgid "Refresh"
+msgid "Password Confirmation"
 msgstr ""
 
-msgid "Loading"
+msgid "Security settings"
 msgstr ""
 
-msgid "No File selected!"
+msgid "Change password manually"
 msgstr ""
 
-msgid "Please select an Logfile from the List."
+msgid "Initiate password reset"
 msgstr ""
 
-msgid "Directory"
+msgid "Generate new password"
 msgstr ""
 
-msgid "Path"
+msgid "Initiates the password recovery process."
 msgstr ""
 
-msgid "No permissions!"
+msgid "The user receives an E-Mail with instructions on how to reset the password."
 msgstr ""
 
-msgid "File"
+msgid "The user will probably not receive an E-Mail because the provided <strong>E-Mail address is invalid<\/strong>."
+msgstr ""
+
+msgid "Activate the reset using password recovery"
+msgstr ""
+
+msgid "The system automatically generates a strong password and sends it to the user by E-Mail."
+msgstr ""
+
+msgid "Please note that the password can only be sent if the user has entered a valid E-Mail address."
+msgstr ""
+
+msgid "Activate the reset using password generation"
+msgstr ""
+
+msgid "ID"
+msgstr ""
+
+msgid "E-Mail Adress"
+msgstr ""
+
+msgid "Full Name"
+msgstr ""
+
+msgid "Phone Number"
+msgstr ""
+
+msgid "Postal Address"
+msgstr ""
+
+msgid "No Users available!"
+msgstr ""
+
+msgid "Please add some Users."
+msgstr ""
+
+msgid "Password Settings"
+msgstr ""
+
+msgid "User"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Do you really wan't to delete the user?"
+msgstr ""
+
+msgid "edit"
+msgstr ""
+
+msgid "create User"
+msgstr ""
+
+msgid "Do you really wan't to delete all selected users?"
+msgstr ""
+
+msgid "No Themes available!"
+msgstr ""
+
+msgid "Please install some Themes."
 msgstr ""
 
 msgid "Global settings for the Panel"
@@ -429,12 +603,6 @@ msgid "Default Time Format"
 msgstr ""
 
 msgid "Default Timezone"
-msgstr ""
-
-msgid "Service"
-msgstr ""
-
-msgid "Info"
 msgstr ""
 
 msgid "System Properties"
@@ -488,43 +656,40 @@ msgstr ""
 msgid "Reboot now!"
 msgstr ""
 
-msgid "Please sign in"
+msgid "Command..."
 msgstr ""
 
-msgid "Code"
+msgid "Refresh"
 msgstr ""
 
-msgid "Password"
+msgid "Loading"
 msgstr ""
 
-msgid "Lost password"
+msgid "No File selected!"
 msgstr ""
 
-msgid "Sign in"
+msgid "Please select an Logfile from the List."
 msgstr ""
 
-msgid "Global Settings"
+msgid "Directory"
 msgstr ""
 
-msgid "Security"
+msgid "Path"
 msgstr ""
 
-msgid "Global settings for your usability"
+msgid "No permissions!"
 msgstr ""
 
-msgid "Some security settings for your safety."
+msgid "File"
 msgstr ""
 
-msgid "Check your E-Mail address in the <a href=\"%s\">account settings<\/a>."
+msgid "Service"
 msgstr ""
 
-msgid "Reset your Password"
+msgid "Info"
 msgstr ""
 
-msgid "Back to the login"
-msgstr ""
-
-msgid "Reset Password"
+msgid "Package"
 msgstr ""
 
 msgid "Account Details"
@@ -542,22 +707,25 @@ msgstr ""
 msgid "Current Password"
 msgstr ""
 
-msgid "DEMO VERSION"
+msgid "Please sign in"
 msgstr ""
 
-msgid "Reload"
+msgid "Code"
 msgstr ""
 
-msgid "Module Error"
+msgid "Password"
 msgstr ""
 
-msgid "The specified module could not be loaded."
+msgid "Lost password"
 msgstr ""
 
-msgid "404 - Not Found"
+msgid "Sign in"
 msgstr ""
 
-msgid "The page you requested could not be found."
+msgid "Back to the login"
+msgstr ""
+
+msgid "Reset Password"
 msgstr ""
 
 msgid "Welcome to %s!"
@@ -593,173 +761,5 @@ msgstr ""
 msgid "Modify your Account settings"
 msgstr ""
 
-msgid "Settings for <strong>%s<\/strong> was successfully updated."
-msgstr ""
-
-msgid "Please repeat your new password."
-msgstr ""
-
-msgid "The new password must contain the minimum number of 8 characters."
-msgstr ""
-
-msgid "Can't send recovery instructions, because the user has an <strong>invalid E-Mail address<\/strong>."
-msgstr ""
-
-msgid "New password for your account"
-msgstr ""
-
-msgid "The new generated password has been sent to users E-Mail adress!"
-msgstr ""
-
-msgid "Your password request has been sent to users E-Mail adress!"
-msgstr ""
-
-msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
-msgstr ""
-
-msgid "Please enter a valid E-Mail address."
-msgstr ""
-
-msgid "User <strong>%s<\/strong> was successfully edited."
-msgstr ""
-
-msgid "You cant delete the admin account!"
-msgstr ""
-
-msgid "The user <strong>%s<\/strong> was successfully deleted."
-msgstr ""
-
-msgid "<strong>%s<\/strong> (%s)"
-msgstr ""
-
-msgid "Please select some entries you want to delete."
-msgstr ""
-
-msgid "Please enter the username."
-msgstr ""
-
-msgid "The new username must contain the minimum number of 2 characters."
-msgstr ""
-
-msgid "The username is already in use."
-msgstr ""
-
-msgid "Please enter an E-Mail address."
-msgstr ""
-
-msgid "The E-Mail address is already in use."
-msgstr ""
-
-msgid "Please enter the password."
-msgstr ""
-
-msgid "Please repeat the password."
-msgstr ""
-
-msgid "Your password and confirmation password do not match."
-msgstr ""
-
-msgid "The user <strong>%s<\/strong> was successfully created."
-msgstr ""
-
-msgid "Please enter an valid  repository URL!"
-msgstr ""
-
-msgid "Repository already exists!"
-msgstr ""
-
-msgid "The module is already disabled!"
-msgstr ""
-
-msgid "The module was successfully disabled."
-msgstr ""
-
-msgid "The module not exists!"
-msgstr ""
-
-msgid "The module is already enabled!"
-msgstr ""
-
-msgid "The module was successfully enabled."
-msgstr ""
-
-msgid "The module was successfully deinstalled!"
-msgstr ""
-
-msgid "<strong>%d Repository%s<\/strong> was updated. Found %d related Update%s!"
-msgstr ""
-
-msgid "<strong>%d Repositorys<\/strong> was successfully removed"
-msgstr ""
-
-msgid "You have no permissions for this action!"
-msgstr ""
-
-msgid "The system settings has been saved."
-msgstr ""
-
-msgid "DEMO-VERSION: This action can't be used!"
-msgstr ""
-
-msgid "The System will be rebooted now!"
-msgstr ""
-
-msgid "Your 2FA code is invalid!"
-msgstr ""
-
-msgid "Please complete the two factor authentication:"
-msgstr ""
-
-msgid "Login was unsuccessful!"
-msgstr ""
-
-msgid "Your security settings has been updated."
-msgstr ""
-
-msgid "Your settings has been updated."
-msgstr ""
-
-msgid "The given Token is invalid or was expired."
-msgstr ""
-
-msgid "Please enter a new password."
-msgstr ""
-
-msgid "Your password has been restored."
-msgstr ""
-
-msgid "Please enter an valid and registred E-Mail address!"
-msgstr ""
-
-msgid "Your request has been sent to your E-Mail adress!"
-msgstr ""
-
-msgid "Please enter your current password."
-msgstr ""
-
-msgid "Please enter your new password."
-msgstr ""
-
-msgid "Your current password is not correct!"
-msgstr ""
-
-msgid "Your password has been updated."
-msgstr ""
-
-msgid "Please enter your E-Mail address."
-msgstr ""
-
-msgid "Please enter your first name."
-msgstr ""
-
-msgid "Please enter your last name."
-msgstr ""
-
-msgid "Please enter your phone  number."
-msgstr ""
-
-msgid "Please enter your address."
-msgstr ""
-
-msgid "Your personal data has been updated."
+msgid "DEMO VERSION"
 msgstr ""
