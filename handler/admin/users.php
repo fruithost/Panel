@@ -152,9 +152,9 @@
 									$template->assign('error', $mail->ErrorInfo);
 								} else {
 									if(array_key_exists('generate', $_POST['password_recovery'])) {
-										$template->assign('success', I18N::get('The new generated password has been sent to users E-Mail adress!'));
+										$template->assign('success', I18N::get('The new generated password has been sent to users E-Mail address!'));
 									} else {
-										$template->assign('success', I18N::get('Your password request has been sent to users E-Mail adress!'));
+										$template->assign('success', I18N::get('Your password request has been sent to users E-Mail address!'));
 									}
 								}
 							}

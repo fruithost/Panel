@@ -140,7 +140,7 @@ msgstr "아이디"
 msgid "Username"
 msgstr "사용자 이름"
 
-msgid "E-Mail Adress"
+msgid "E-Mail Address"
 msgstr "이메일 주소"
 
 msgid "Full Name"
@@ -539,10 +539,10 @@ msgstr "사용자가 <strong>잘못된 이메일 주소<\/strong>를 가지고 �
 msgid "New password for your account"
 msgstr "계정의 새 비밀번호"
 
-msgid "The new generated password has been sent to users E-Mail adress!"
+msgid "The new generated password has been sent to users E-Mail address!"
 msgstr "새로 생성된 비밀번호가 사용자 이메일 주소로 전송되었습니다!"
 
-msgid "Your password request has been sent to users E-Mail adress!"
+msgid "Your password request has been sent to users E-Mail address!"
 msgstr "귀하의 비밀번호 요청이 사용자 이메일 주소로 전송되었습니다!"
 
 msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
@@ -656,7 +656,7 @@ msgstr "비밀번호가 복원되었습니다."
 msgid "Please enter an valid and registred E-Mail address!"
 msgstr "유효하고 등록된 이메일 주소를 입력하세요!"
 
-msgid "Your request has been sent to your E-Mail adress!"
+msgid "Your request has been sent to your E-Mail address!"
 msgstr "귀하의 요청이 귀하의 이메일 주소로 전송되었습니다!"
 
 msgid "Please enter your current password."

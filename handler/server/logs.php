@@ -9,6 +9,11 @@
 			'gz',
 			'xy'
 		];
+
+        if(!is_dir($sourceDir)) {
+            return $list;
+        }
+
 		$fp 		= opendir($sourceDir);
 		$sourceDir 	= rtrim($sourceDir, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
 
@@ -81,7 +86,7 @@
 					if($content === false) {
 						$content = shell_exec(sprintf('cat %s 2>&1', $file));
 						
-						if(substr($content, 0, 4) == 'cat:' && preg_match('/Permission denied/', $content)) {
+						if(str_starts_with($content, 'cat:') && str_contains($content, 'Permission denied')) {
 							$content = false;
 						}
 					}

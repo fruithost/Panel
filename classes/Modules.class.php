@@ -14,7 +14,16 @@
 				$enabled[]				= $entry->name;
 				$versions[$entry->name]	= $this->getVersion($entry->name);
 			}
-			
+
+            //if folder $this->getPath() does not exist, create it
+            if(
+                !file_exists($this->getPath()) &&
+                !mkdir($concurrentDirectory = $this->getPath(), 0755, true) &&
+                !is_dir($concurrentDirectory)
+            ) {
+                throw new \RuntimeException(sprintf('Directory "%s" was not created', $concurrentDirectory));
+            }
+
 			foreach(new \DirectoryIterator($this->getPath()) AS $info) {
 				if($info->isDot()) {
 					continue;
@@ -24,12 +33,15 @@
 				$module	= new Module($path);
 				
 				foreach($module->getInfo()->getDepencies() AS $name => $version) {
-					if(!in_array($name, $enabled) || version_compare($versions[$name], $version, '>=') === false) {
+					if(
+                        !in_array($name, $enabled, true) ||
+                        version_compare($versions[$name], $version, '>=') === false
+                    ) {
 						$module->setLocked(true);
 					}
 				}
 				
-				$module->setEnabled(in_array(basename($path), $enabled));
+				$module->setEnabled(in_array(basename($path), $enabled, true));
 				$this->addModule(basename($path), $module);
 			}
 		}
@@ -48,7 +60,7 @@
 				return null;
 			}
 			
-			$data = json_decode($content);
+			$data = json_decode($content, false);
 			
 			if(json_last_error() !== JSON_ERROR_NONE) {
 				return null;
@@ -129,19 +141,11 @@
 		public function getModule(string $name, bool $all = false) : ?Module {
 			if($all) {
 				$modules = $this->getList();
-				
-				if(!isset($modules[$name])) {
-					return null;
-				}
-				
-				return $modules[$name];
-			}
-			
-			if(!isset($this->modules[$name])) {
-				return null;
-			}
-			
-			return $this->modules[$name];
-		}
+
+                return $modules[$name] ?? null;
+            }
+
+            return $this->modules[$name] ?? null;
+        }
 	}
 ?>

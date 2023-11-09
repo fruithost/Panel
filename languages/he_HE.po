@@ -140,7 +140,7 @@ msgstr "תעודת זהות"
 msgid "Username"
 msgstr "שם משתמש"
 
-msgid "E-Mail Adress"
+msgid "E-Mail Address"
 msgstr "כתובות דואר אלקטרוני"
 
 msgid "Full Name"
@@ -539,10 +539,10 @@ msgstr "לא יכול לשלוח הוראות שחזור, מכיוון שלמש�
 msgid "New password for your account"
 msgstr "סיסמה חדשה לחשבון שלך"
 
-msgid "The new generated password has been sent to users E-Mail adress!"
+msgid "The new generated password has been sent to users E-Mail address!"
 msgstr "הסיסמה החדשה שנוצרה נשלחה לכתובת הדואר האלקטרוני של המשתמש!"
 
-msgid "Your password request has been sent to users E-Mail adress!"
+msgid "Your password request has been sent to users E-Mail address!"
 msgstr "בקשת הסיסמה שלך נשלחה לכתובת הדואר האלקטרוני של המשתמשים!"
 
 msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
@@ -656,7 +656,7 @@ msgstr "הסיסמה שלך שוחזרה."
 msgid "Please enter an valid and registred E-Mail address!"
 msgstr "נא להזין כתובת דואר אלקטרוני תקפה ורשומה!"
 
-msgid "Your request has been sent to your E-Mail adress!"
+msgid "Your request has been sent to your E-Mail address!"
 msgstr "בקשתך נשלחה לכתובת הדואר האלקטרוני שלך!"
 
 msgid "Please enter your current password."

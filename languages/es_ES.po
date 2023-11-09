@@ -140,7 +140,7 @@ msgstr "identificación"
 msgid "Username"
 msgstr "nombre de usuario"
 
-msgid "E-Mail Adress"
+msgid "E-Mail Address"
 msgstr "Dirección de correo electrónico"
 
 msgid "Full Name"
@@ -539,10 +539,10 @@ msgstr "No se pueden enviar instrucciones de recuperación porque el usuario tie
 msgid "New password for your account"
 msgstr "Nueva contraseña para tu cuenta"
 
-msgid "The new generated password has been sent to users E-Mail adress!"
+msgid "The new generated password has been sent to users E-Mail address!"
 msgstr "¡La nueva contraseña generada ha sido enviada a la dirección de correo electrónico de los usuarios!"
 
-msgid "Your password request has been sent to users E-Mail adress!"
+msgid "Your password request has been sent to users E-Mail address!"
 msgstr "¡Su solicitud de contraseña ha sido enviada a la dirección de correo electrónico de los usuarios!"
 
 msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
@@ -656,7 +656,7 @@ msgstr "Tu contraseña ha sido restaurada."
 msgid "Please enter an valid and registred E-Mail address!"
 msgstr "¡Ingrese una dirección de correo electrónico válida y registrada!"
 
-msgid "Your request has been sent to your E-Mail adress!"
+msgid "Your request has been sent to your E-Mail address!"
 msgstr "¡Su solicitud ha sido enviada a su dirección de correo electrónico!"
 
 msgid "Please enter your current password."

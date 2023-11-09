@@ -6,7 +6,7 @@
 	
 	class PHP {
 		private ?string $path		= null;
-		private string $socket		= '/run/php/php8.2-fpm.sock';
+		private string $socket		= '/run/php/php8.2-fpm.sock'; // @ToDo HARD CODED value, we should find a way to get this value from the system
 		private ?string $content	= null;
 		private array $data			= [];
 		private bool $error			= false;
@@ -50,7 +50,7 @@
 			$command	= sprintf('%scgi-fcgi -bind -connect "%s" 2>&1', $args, $this->socket);
 			$result 	= shell_exec($command);
 						
-			if($result == null){
+			if($result === null){
 				$this->error = true;
 				return;
 			}
@@ -118,7 +118,7 @@
 				return sprintf('<i class="text-warning">%s</i>', $data);				
 			}
 			
-			if(substr($data, 0, 1) == '/' || substr($data, 0, 3) == '.:/') {
+			if($data[0] === '/' || str_starts_with($data, '.:/')) {
 				return sprintf('<span class="badge badge-secondary">%s</span>', $data);
 			}
 			
@@ -171,9 +171,9 @@
 				PREG_SET_ORDER
 			)) {
 				foreach($matches as $match) {
-					$fn = strpos($match[0], '<th') === false ? $plainText : $titlePlainText;
+					$fn = !str_contains($match[0], '<th') ? $plainText : $titlePlainText;
 					
-					if(strlen($match[1])) {
+					if($match[1] !== '') {
 						$phpinfo[$match[1]]						= [];
 					} else if(isset($match[3])) {
 						$keys1 									= array_keys($phpinfo);

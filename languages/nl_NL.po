@@ -140,7 +140,7 @@ msgstr ""
 msgid "Username"
 msgstr "Gebruikersnaam"
 
-msgid "E-Mail Adress"
+msgid "E-Mail Address"
 msgstr "E-mailadres"
 
 msgid "Full Name"
@@ -539,10 +539,10 @@ msgstr "Kan geen herstelinstructies verzenden, omdat de gebruiker een <strong>on
 msgid "New password for your account"
 msgstr "Nieuw wachtwoord voor uw account"
 
-msgid "The new generated password has been sent to users E-Mail adress!"
+msgid "The new generated password has been sent to users E-Mail address!"
 msgstr "Het nieuw gegenereerde wachtwoord is naar het e-mailadres van de gebruiker verzonden!"
 
-msgid "Your password request has been sent to users E-Mail adress!"
+msgid "Your password request has been sent to users E-Mail address!"
 msgstr "Uw wachtwoordverzoek is verzonden naar het e-mailadres van de gebruiker!"
 
 msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
@@ -656,7 +656,7 @@ msgstr "Uw wachtwoord is hersteld."
 msgid "Please enter an valid and registred E-Mail address!"
 msgstr "Voer een geldig en geregistreerd e-mailadres in!"
 
-msgid "Your request has been sent to your E-Mail adress!"
+msgid "Your request has been sent to your E-Mail address!"
 msgstr "Uw verzoek is naar uw e-mailadres verzonden!"
 
 msgid "Please enter your current password."

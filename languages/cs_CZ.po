@@ -140,7 +140,7 @@ msgstr ""
 msgid "Username"
 msgstr "Uživatelské jméno"
 
-msgid "E-Mail Adress"
+msgid "E-Mail Address"
 msgstr "E-mailová adresa"
 
 msgid "Full Name"
@@ -539,10 +539,10 @@ msgstr "Nelze odeslat pokyny k obnovení, protože uživatel má <strong>neplatn
 msgid "New password for your account"
 msgstr "Nové heslo pro váš účet"
 
-msgid "The new generated password has been sent to users E-Mail adress!"
+msgid "The new generated password has been sent to users E-Mail address!"
 msgstr "Nově vygenerované heslo bylo odesláno na e-mailovou adresu uživatele!"
 
-msgid "Your password request has been sent to users E-Mail adress!"
+msgid "Your password request has been sent to users E-Mail address!"
 msgstr "Váš požadavek na heslo byl odeslán na e-mailovou adresu uživatelů!"
 
 msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
@@ -656,7 +656,7 @@ msgstr "Vaše heslo bylo obnoveno."
 msgid "Please enter an valid and registred E-Mail address!"
 msgstr "Zadejte prosím platnou a registrovanou e-mailovou adresu!"
 
-msgid "Your request has been sent to your E-Mail adress!"
+msgid "Your request has been sent to your E-Mail address!"
 msgstr "Váš požadavek byl odeslán na vaši e-mailovou adresu!"
 
 msgid "Please enter your current password."

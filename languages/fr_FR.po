@@ -140,8 +140,8 @@ msgstr ""
 msgid "Username"
 msgstr "Nom d'utilisateur"
 
-msgid "E-Mail Adress"
-msgstr "Adresse e-mail"
+msgid "E-Mail Address"
+msgstr "Addresse e-mail"
 
 msgid "Full Name"
 msgstr "Nom complet"
@@ -150,7 +150,7 @@ msgid "Phone Number"
 msgstr "numéro de téléphone"
 
 msgid "Postal Address"
-msgstr "Adresse postale"
+msgstr "Addresse postale"
 
 msgid "Security settings"
 msgstr "Paramètres de sécurité"
@@ -189,7 +189,7 @@ msgid "The user receives an E-Mail with instructions on how to reset the passwor
 msgstr "L'utilisateur reçoit un e-mail contenant des instructions sur la manière de réinitialiser le mot de passe."
 
 msgid "The user will probably not receive an E-Mail because the provided <strong>E-Mail address is invalid<\/strong>."
-msgstr "L'utilisateur ne recevra probablement pas d'e-mail car l'<strong>adresse e-mail fournie n'est pas valide<\/strong>."
+msgstr "L'utilisateur ne recevra probablement pas d'e-mail car l'<strong>addresse e-mail fournie n'est pas valide<\/strong>."
 
 msgid "Activate the reset using password recovery"
 msgstr "Activer la réinitialisation à l'aide de la récupération du mot de passe"
@@ -198,7 +198,7 @@ msgid "The system automatically generates a strong password and sends it to the 
 msgstr "Le système génère automatiquement un mot de passe fort et l'envoie à l'utilisateur par e-mail."
 
 msgid "Please note that the password can only be sent if the user has entered a valid E-Mail address."
-msgstr "Veuillez noter que le mot de passe ne peut être envoyé que si l'utilisateur a saisi une adresse e-mail valide."
+msgstr "Veuillez noter que le mot de passe ne peut être envoyé que si l'utilisateur a saisi une addresse e-mail valide."
 
 msgid "Activate the reset using password generation"
 msgstr "Activer la réinitialisation à l'aide de la génération de mot de passe"
@@ -450,7 +450,7 @@ msgid "Some security settings for your safety."
 msgstr "Quelques paramètres de sécurité pour votre sécurité."
 
 msgid "Check your E-Mail address in the <a href=\"%s\">account settings<\/a>."
-msgstr "Vérifiez votre adresse e-mail dans les <a href=\"%s\">paramètres du compte<\/a>."
+msgstr "Vérifiez votre addresse e-mail dans les <a href=\"%s\">paramètres du compte<\/a>."
 
 msgid "Reset your Password"
 msgstr "Réinitialisez votre mot de passe"
@@ -534,22 +534,22 @@ msgid "The new password must contain the minimum number of 8 characters."
 msgstr "Le nouveau mot de passe doit contenir au minimum 8 caractères."
 
 msgid "Can\\t send recovery instructions, because the user has an <strong>invalid E-Mail address<\/strong>."
-msgstr "Impossible d'envoyer des instructions de récupération, car l'utilisateur possède une <strong>adresse e-mail invalide<\/strong>."
+msgstr "Impossible d'envoyer des instructions de récupération, car l'utilisateur possède une <strong>addresse e-mail invalide<\/strong>."
 
 msgid "New password for your account"
 msgstr "Nouveau mot de passe pour votre compte"
 
-msgid "The new generated password has been sent to users E-Mail adress!"
-msgstr "Le nouveau mot de passe généré a été envoyé à l'adresse e-mail des utilisateurs !"
+msgid "The new generated password has been sent to users E-Mail address!"
+msgstr "Le nouveau mot de passe généré a été envoyé à l'addresse e-mail des utilisateurs !"
 
-msgid "Your password request has been sent to users E-Mail adress!"
-msgstr "Votre demande de mot de passe a été envoyée à l'adresse e-mail des utilisateurs !"
+msgid "Your password request has been sent to users E-Mail address!"
+msgstr "Votre demande de mot de passe a été envoyée à l'addresse e-mail des utilisateurs !"
 
 msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
 msgstr "Les paramètres de sécurité pour <strong>%s<\/strong> ont été mis à jour avec succès."
 
 msgid "Please enter a valid E-Mail address."
-msgstr "Veuillez saisir une adresse e-mail valide."
+msgstr "Veuillez saisir une addresse e-mail valide."
 
 msgid "User <strong>%s<\/strong> was successfully edited."
 msgstr "L'utilisateur <strong>%s<\/strong> a été modifié avec succès."
@@ -573,10 +573,10 @@ msgid "The username is already in use."
 msgstr "Le nom d'utilisateur est déjà utilisé."
 
 msgid "Please enter an E-Mail address."
-msgstr "Veuillez saisir une adresse e-mail."
+msgstr "Veuillez saisir une addresse e-mail."
 
 msgid "The E-Mail address is already in use."
-msgstr "L'adresse e-mail est déjà utilisée."
+msgstr "L'addresse e-mail est déjà utilisée."
 
 msgid "Please enter the password."
 msgstr "Veuillez saisir le mot de passe."
@@ -654,10 +654,10 @@ msgid "Your password has been restored."
 msgstr "Votre mot de passe a été restauré."
 
 msgid "Please enter an valid and registred E-Mail address!"
-msgstr "Veuillez saisir une adresse e-mail valide et enregistrée !"
+msgstr "Veuillez saisir une addresse e-mail valide et enregistrée !"
 
-msgid "Your request has been sent to your E-Mail adress!"
-msgstr "Votre demande a été envoyée à votre adresse e-mail !"
+msgid "Your request has been sent to your E-Mail address!"
+msgstr "Votre demande a été envoyée à votre addresse e-mail !"
 
 msgid "Please enter your current password."
 msgstr "Veuillez saisir votre mot de passe actuel."
@@ -672,7 +672,7 @@ msgid "Your password has been updated."
 msgstr "Votre mot de passe a été mis à jour."
 
 msgid "Please enter your E-Mail address."
-msgstr "Veuillez saisir votre adresse e-mail."
+msgstr "Veuillez saisir votre addresse e-mail."
 
 msgid "Please enter your first name."
 msgstr "Veuillez saisir votre prénom."
@@ -684,7 +684,7 @@ msgid "Please enter your phone  number."
 msgstr "Veuillez saisir votre numéro de téléphone."
 
 msgid "Please enter your address."
-msgstr "Veuillez saisir votre adresse."
+msgstr "Veuillez saisir votre addresse."
 
 msgid "Your personal data has been updated."
 msgstr "Vos données personnelles ont été mises à jour."

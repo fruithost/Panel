@@ -128,7 +128,7 @@
 			if(!$mail->send()) {
 				$template->assign('error', $mail->ErrorInfo);
 			} else {
-				$template->assign('success', I18N::get('Your request has been sent to your E-Mail adress!'));
+				$template->assign('success', I18N::get('Your request has been sent to your E-Mail address!'));
 			}
 		}
 	}

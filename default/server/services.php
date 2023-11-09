@@ -20,7 +20,12 @@
 	if(defined('DEMO') && DEMO) {
 		$result = [];
 	} else {
-		$result = json_decode(shell_exec('systemctl list-units --type=service --output=json-pretty'));
+        $json = shell_exec('systemctl list-units --type=service --output=json-pretty'); //TODO convert for other OS envs as well
+        if (empty($json)) {
+            $result = [];
+        } else {
+            $result = json_decode($json, false);
+        }
 	}
 	?>
 	<table class="table table-borderless table-striped table-hover">
@@ -31,12 +36,19 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php
+            <?php
+            if (empty($result)) {
+                ?>
+                <tr>
+                    <td scope="col" colspan="3"><?php I18N::__('No services found.'); ?></td>
+                </tr>
+                <?php
+            }
 				foreach($result AS $service) {
 					?>
 						<tr>
 							<td>
-								<span class="d-block badge badge-pill module-badge badge-<?php print ($service->sub == 'running' ? 'success' : 'danger');?>" data-toggle="tooltip" title="<?php print ($service->sub == 'running' ? 'Service is running.' : 'Service is stopped.');?>"></span>
+								<span class="d-block badge badge-pill module-badge badge-<?php print ($service->sub === 'running' ? 'success' : 'danger');?>" data-toggle="tooltip" title="<?php print ($service->sub == 'running' ? 'Service is running.' : 'Service is stopped.');?>"></span>
 							</td>
 							<td>
 								<?php print $service->unit; ?>
@@ -45,7 +57,7 @@
 							<td class="text-right">
 								<div class="btn-group mr-2">
 									<?php
-										if($service->sub == 'running') {
+										if($service->sub === 'running') {
 											?>
 												<button type="submit" name="action" value="restart" class="btn btn-sm btn-outline-warning p-0 m-0"><i class="material-icons">loop</i></button>
 												<button type="submit" name="action" value="stop" class="btn btn-sm btn-outline-danger p-0 m-0"><i class="material-icons">stop</i></button>
