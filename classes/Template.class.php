@@ -152,12 +152,12 @@
 			}
 			
 			if(file_exists($path)) {
-				@require_once($path);
+				@require($path);
 			} else {
 				$path = sprintf('%1$s%2$sdefault%2$s%3$s.php', PATH, DS, 'header');
 				
 				if(file_exists($path)) {
-					@require_once($path);
+					@require($path);
 				}
 			}
 		}
@@ -176,7 +176,7 @@
 				$path = sprintf('%1$s%2$sdefault%2$s%3$s.php', PATH, DS, 'footer');
 				
 				if(file_exists($path)) {
-					@require_once($path);
+					@require($path);
 				}
 			}
 		}
