@@ -2,7 +2,6 @@
 	use fruithost\Auth;
 	use fruithost\Utils;
 	use fruithost\I18N;
-	use Gauge\Gauge;
 	
 	$template->header();
 	
@@ -18,25 +17,6 @@
 	}
 	
 	?>
-	<div class="container mt-5 mb-5">
-		<ul class="list-unstyled row list-group list-group-horizontal list-group-flush text-center">
-			<li class="col">
-				<img src="<?php print (new Gauge())->render('Memory', $memory['free'], 0, $memory['total'])->base64(); ?>" />
-			</li>
-			<li class="col">
-				<img src="<?php print (new Gauge())->render('CPU Load', $memory['free'], 0, $memory['total'])->base64(); ?>" />
-			</li>
-			<li class="col">
-				<img src="<?php print (new Gauge())->render('Swap', $memory['free_swap'], 0, $memory['total_swap'])->base64(); ?>" />
-			</li>
-			<li class="col">
-				<img src="<?php print (new Gauge())->render('Cache', $memory['cache'], $memory['free'], $memory['total'])->base64(); ?>" />
-			</li>
-			<li class="col">
-				<img src="<?php print (new Gauge())->render('Buffer', $memory['buffer'], 0, $memory['total'])->base64(); ?>" />
-			</li>
-		</ul>
-	</div>
 	<div class="container mt-5">
 		<div class="row">
 			<div class="col-md-6">
