@@ -140,7 +140,7 @@ msgstr "ไอดี"
 msgid "Username"
 msgstr "ชื่อผู้ใช้"
 
-msgid "E-Mail Adress"
+msgid "E-Mail Address"
 msgstr "ที่อยู่อีเมล"
 
 msgid "Full Name"
@@ -539,10 +539,10 @@ msgstr "ไม่สามารถ\\ส่งคำแนะนำในกา�
 msgid "New password for your account"
 msgstr "รหัสผ่านใหม่สำหรับบัญชีของคุณ"
 
-msgid "The new generated password has been sent to users E-Mail adress!"
+msgid "The new generated password has been sent to users E-Mail address!"
 msgstr "รหัสผ่านที่สร้างขึ้นใหม่ได้ถูกส่งไปยังที่อยู่อีเมลของผู้ใช้แล้ว!"
 
-msgid "Your password request has been sent to users E-Mail adress!"
+msgid "Your password request has been sent to users E-Mail address!"
 msgstr "คำขอรหัสผ่านของคุณถูกส่งไปยังที่อยู่อีเมลของผู้ใช้แล้ว!"
 
 msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
@@ -656,7 +656,7 @@ msgstr "รหัสผ่านของคุณถูกกู้คืนแ
 msgid "Please enter an valid and registred E-Mail address!"
 msgstr "กรุณากรอกที่อยู่อีเมลที่ถูกต้องและลงทะเบียน!"
 
-msgid "Your request has been sent to your E-Mail adress!"
+msgid "Your request has been sent to your E-Mail address!"
 msgstr "คำขอของคุณถูกส่งไปยังที่อยู่อีเมลของคุณแล้ว!"
 
 msgid "Please enter your current password."

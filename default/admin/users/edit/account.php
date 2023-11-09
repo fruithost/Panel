@@ -17,7 +17,7 @@
 		</div>
 	</div>
 	<div class="form-group row">
-		<label for="email" class="col-sm-2 col-form-label"><?php I18N::__('E-Mail Adress'); ?>:</label>
+		<label for="email" class="col-sm-2 col-form-label"><?php I18N::__('E-Mail Address'); ?>:</label>
 		<div class="col-sm-10">
 			<input type="email" class="form-control" id="email" name="email" value="<?php print $user->getMail(); ?>" />
 		</div>

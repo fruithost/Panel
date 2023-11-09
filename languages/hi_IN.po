@@ -140,7 +140,7 @@ msgstr "आईडी"
 msgid "Username"
 msgstr "उपयोक्तानाम"
 
-msgid "E-Mail Adress"
+msgid "E-Mail Address"
 msgstr "ई-मेल पता"
 
 msgid "Full Name"
@@ -539,10 +539,10 @@ msgstr "पुनर्प्राप्ति निर्देश नही�
 msgid "New password for your account"
 msgstr "आपके खाते के लिए नया पासवर्ड"
 
-msgid "The new generated password has been sent to users E-Mail adress!"
+msgid "The new generated password has been sent to users E-Mail address!"
 msgstr "नया जनरेट किया गया पासवर्ड उपयोगकर्ताओं के ई-मेल पते पर भेज दिया गया है!"
 
-msgid "Your password request has been sent to users E-Mail adress!"
+msgid "Your password request has been sent to users E-Mail address!"
 msgstr "आपका पासवर्ड अनुरोध उपयोगकर्ताओं के ई-मेल पते पर भेज दिया गया है!"
 
 msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
@@ -656,7 +656,7 @@ msgstr "आपका पासवर्ड पुनर्स्थापित 
 msgid "Please enter an valid and registred E-Mail address!"
 msgstr "कृपया एक वैध और पंजीकृत ई-मेल पता दर्ज करें!"
 
-msgid "Your request has been sent to your E-Mail adress!"
+msgid "Your request has been sent to your E-Mail address!"
 msgstr "आपका अनुरोध आपके ई-मेल पते पर भेज दिया गया है!"
 
 msgid "Please enter your current password."

@@ -140,7 +140,7 @@ msgstr "ИД"
 msgid "Username"
 msgstr "Имя пользователя"
 
-msgid "E-Mail Adress"
+msgid "E-Mail Address"
 msgstr "Адреса электронной почты"
 
 msgid "Full Name"
@@ -539,10 +539,10 @@ msgstr "Невозможно отправить инструкции по вос
 msgid "New password for your account"
 msgstr "Новый пароль для вашей учетной записи."
 
-msgid "The new generated password has been sent to users E-Mail adress!"
+msgid "The new generated password has been sent to users E-Mail address!"
 msgstr "Новый сгенерированный пароль был отправлен на адрес электронной почты пользователя!"
 
-msgid "Your password request has been sent to users E-Mail adress!"
+msgid "Your password request has been sent to users E-Mail address!"
 msgstr "Запрос пароля отправлен на адрес электронной почты пользователя!"
 
 msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
@@ -656,7 +656,7 @@ msgstr "Ваш пароль восстановлен."
 msgid "Please enter an valid and registred E-Mail address!"
 msgstr "Пожалуйста, введите действительный и зарегистрированный адрес электронной почты!"
 
-msgid "Your request has been sent to your E-Mail adress!"
+msgid "Your request has been sent to your E-Mail address!"
 msgstr "Ваш запрос отправлен на ваш адрес электронной почты!"
 
 msgid "Please enter your current password."

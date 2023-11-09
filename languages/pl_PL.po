@@ -140,7 +140,7 @@ msgstr ""
 msgid "Username"
 msgstr "Nazwa użytkownika"
 
-msgid "E-Mail Adress"
+msgid "E-Mail Address"
 msgstr "Adres e-mail"
 
 msgid "Full Name"
@@ -539,10 +539,10 @@ msgstr "Nie można wysłać instrukcji odzyskiwania, ponieważ użytkownik ma <s
 msgid "New password for your account"
 msgstr "Nowe hasło do Twojego konta"
 
-msgid "The new generated password has been sent to users E-Mail adress!"
+msgid "The new generated password has been sent to users E-Mail address!"
 msgstr "Nowo wygenerowane hasło zostało wysłane na adres e-mail użytkownika!"
 
-msgid "Your password request has been sent to users E-Mail adress!"
+msgid "Your password request has been sent to users E-Mail address!"
 msgstr "Twoja prośba o hasło została wysłana na adres e-mail użytkownika!"
 
 msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
@@ -656,7 +656,7 @@ msgstr "Twoje hasło zostało przywrócone."
 msgid "Please enter an valid and registred E-Mail address!"
 msgstr "Proszę podać ważny i zarejestrowany adres e-mail!"
 
-msgid "Your request has been sent to your E-Mail adress!"
+msgid "Your request has been sent to your E-Mail address!"
 msgstr "Twoje zapytanie zostało wysłane na Twój adres e-mail!"
 
 msgid "Please enter your current password."

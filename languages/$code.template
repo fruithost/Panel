@@ -71,10 +71,10 @@ msgstr ""
 msgid "Reset your Password"
 msgstr ""
 
-msgid "The new generated password has been sent to users E-Mail adress!"
+msgid "The new generated password has been sent to users E-Mail address!"
 msgstr ""
 
-msgid "Your password request has been sent to users E-Mail adress!"
+msgid "Your password request has been sent to users E-Mail address!"
 msgstr ""
 
 msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
@@ -185,7 +185,7 @@ msgstr ""
 msgid "Please enter an valid and registred E-Mail address!"
 msgstr ""
 
-msgid "Your request has been sent to your E-Mail adress!"
+msgid "Your request has been sent to your E-Mail address!"
 msgstr ""
 
 msgid "disabled"
@@ -491,7 +491,7 @@ msgstr ""
 msgid "Username"
 msgstr ""
 
-msgid "E-Mail Adresss"
+msgid "E-Mail Addresss"
 msgstr ""
 
 msgid "New Password"
@@ -536,7 +536,7 @@ msgstr ""
 msgid "ID"
 msgstr ""
 
-msgid "E-Mail Adress"
+msgid "E-Mail Address"
 msgstr ""
 
 msgid "Full Name"

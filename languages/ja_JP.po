@@ -140,7 +140,7 @@ msgstr ""
 msgid "Username"
 msgstr "ユーザー名"
 
-msgid "E-Mail Adress"
+msgid "E-Mail Address"
 msgstr "メールアドレス"
 
 msgid "Full Name"
@@ -539,10 +539,10 @@ msgstr "ユーザーの電子メール アドレスが<strong>無効</strong>で
 msgid "New password for your account"
 msgstr "アカウントの新しいパスワード"
 
-msgid "The new generated password has been sent to users E-Mail adress!"
+msgid "The new generated password has been sent to users E-Mail address!"
 msgstr "新しく生成されたパスワードがユーザーの電子メール アドレスに送信されました。"
 
-msgid "Your password request has been sent to users E-Mail adress!"
+msgid "Your password request has been sent to users E-Mail address!"
 msgstr "パスワード要求がユーザーの電子メール アドレスに送信されました。"
 
 msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
@@ -656,7 +656,7 @@ msgstr "パスワードが復元されました。"
 msgid "Please enter an valid and registred E-Mail address!"
 msgstr "有効な登録済みの電子メール アドレスを入力してください。"
 
-msgid "Your request has been sent to your E-Mail adress!"
+msgid "Your request has been sent to your E-Mail address!"
 msgstr "あなたのリクエストはあなたのメールアドレスに送信されました！"
 
 msgid "Please enter your current password."

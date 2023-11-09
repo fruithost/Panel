@@ -140,7 +140,7 @@ msgstr ""
 msgid "Username"
 msgstr "Nome utente"
 
-msgid "E-Mail Adress"
+msgid "E-Mail Address"
 msgstr "Indirizzi di posta elettronica"
 
 msgid "Full Name"
@@ -539,10 +539,10 @@ msgstr "Impossibile inviare istruzioni di ripristino perché l'utente ha un <str
 msgid "New password for your account"
 msgstr "Nuova password per il tuo account"
 
-msgid "The new generated password has been sent to users E-Mail adress!"
+msgid "The new generated password has been sent to users E-Mail address!"
 msgstr "La nuova password generata è stata inviata all'indirizzo e-mail degli utenti!"
 
-msgid "Your password request has been sent to users E-Mail adress!"
+msgid "Your password request has been sent to users E-Mail address!"
 msgstr "La tua richiesta di password è stata inviata all'indirizzo e-mail dell'utente!"
 
 msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
@@ -656,7 +656,7 @@ msgstr "La tua password è stata ripristinata."
 msgid "Please enter an valid and registred E-Mail address!"
 msgstr "Inserisci un indirizzo e-mail valido e registrato!"
 
-msgid "Your request has been sent to your E-Mail adress!"
+msgid "Your request has been sent to your E-Mail address!"
 msgstr "La tua richiesta è stata inviata al tuo indirizzo e-mail!"
 
 msgid "Please enter your current password."

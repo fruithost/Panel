@@ -140,7 +140,7 @@ msgstr "Kimlik"
 msgid "Username"
 msgstr "Kullanıcı adı"
 
-msgid "E-Mail Adress"
+msgid "E-Mail Address"
 msgstr "E-Posta Adresi"
 
 msgid "Full Name"
@@ -539,10 +539,10 @@ msgstr "Kullanıcının <strong>geçersiz bir E-Posta adresine</\/strong> sahip 
 msgid "New password for your account"
 msgstr "Hesabınız için yeni şifre"
 
-msgid "The new generated password has been sent to users E-Mail adress!"
+msgid "The new generated password has been sent to users E-Mail address!"
 msgstr "Yeni oluşturulan şifre kullanıcıların E-Posta adresine gönderildi!"
 
-msgid "Your password request has been sent to users E-Mail adress!"
+msgid "Your password request has been sent to users E-Mail address!"
 msgstr "Şifre talebiniz kullanıcılarımızın E-Posta adresine gönderildi!"
 
 msgid "Security-Settings for <strong>%s<\/strong> was successfully updated."
@@ -656,7 +656,7 @@ msgstr "Şifreniz geri yüklendi."
 msgid "Please enter an valid and registred E-Mail address!"
 msgstr "Lütfen geçerli ve kayıtlı bir E-Posta adresi giriniz!"
 
-msgid "Your request has been sent to your E-Mail adress!"
+msgid "Your request has been sent to your E-Mail address!"
 msgstr "Talebiniz E-Posta adresinize gönderildi!"
 
 msgid "Please enter your current password."

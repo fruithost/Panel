@@ -467,7 +467,7 @@ public array ACMECert::register ( bool $termsOfServiceAgreed = FALSE [, mixed $c
 >
 > can be one of the following:
 > 1. A string containing an e-mail address
-> 2. Array of e-mail adresses
+> 2. Array of e-mail addresses
 ###### Return Values
 > Returns an array containing the account information.
 ###### Errors/Exceptions
@@ -500,7 +500,7 @@ public array ACMECert::registerEAB ( bool $termsOfServiceAgreed, string $eab_kid
 >
 > can be one of the following:
 > 1. A string containing an e-mail address
-> 2. Array of e-mail adresses
+> 2. Array of e-mail addresses
 ###### Return Values
 > Returns an array containing the account information.
 ###### Errors/Exceptions
@@ -519,7 +519,7 @@ public array ACMECert::update ( mixed $contacts = array() )
 >
 > can be one of the following:
 > * A string containing an e-mail address
-> * Array of e-mail adresses
+> * Array of e-mail addresses
 ###### Return Values
 > Returns an array containing the account information.
 ###### Errors/Exceptions
