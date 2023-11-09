@@ -15,15 +15,6 @@
 				$versions[$entry->name]	= $this->getVersion($entry->name);
 			}
 
-            //if folder $this->getPath() does not exist, create it
-            if(
-                !file_exists($this->getPath()) &&
-                !mkdir($concurrentDirectory = $this->getPath(), 0755, true) &&
-                !is_dir($concurrentDirectory)
-            ) {
-                throw new \RuntimeException(sprintf('Directory "%s" was not created', $concurrentDirectory));
-            }
-
 			foreach(new \DirectoryIterator($this->getPath()) AS $info) {
 				if($info->isDot()) {
 					continue;
