@@ -1,9 +1,9 @@
 # Panel
-**fruithost** is an OpenSource Hosting-Panel for some Linux Distributions (later maybe also for Windows). With **fruithost** you get a real alternative to confixx/Plesk, ISPConfig, froxlor and other derivatives.
+![](https://raw.githubusercontent.com/fruithost/Documentation/main/Images/LOGO_TEXT.png) **fruithost** is an OpenSource Hosting-Panel for some Linux Distributions (later maybe also for Windows). With ![](https://raw.githubusercontent.com/fruithost/Documentation/main/Images/LOGO_TEXT.png) **fruithost**  you get a real alternative to confixx/Plesk, ISPConfig, froxlor and other derivatives.
 
-Whether **private or professional**, with **fruithost** you get a clean and simple solution to manage your servers.
+Whether **private or professional**, with ![](https://raw.githubusercontent.com/fruithost/Documentation/main/Images/LOGO_TEXT.png) **fruithost**  you get a clean and simple solution to manage your servers.
 
-Security comes first at **fruithost** - that's why we only use up-to-date software and do without miserable old solutions. If you have an [MIT license](https://github.com/fruithost/Panel/blob/master/LICENSE), you can use **fruithost** for any scenario!
+Security comes first at **fruithost** - that's why we only use up-to-date software and do without miserable old solutions. If you have an [MIT license](https://github.com/fruithost/Panel/blob/master/LICENSE), you can use ![](https://raw.githubusercontent.com/fruithost/Documentation/main/Images/LOGO_TEXT.png) **fruithost**  for any scenario!
 
 **Running a server has never been so easy!**
 
