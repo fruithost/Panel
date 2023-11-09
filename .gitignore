@@ -1,3 +1,5 @@
 .security.php
-config.php
+.mail.php
+.config.php
+.DEBUG
 .idea/*
