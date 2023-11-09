@@ -105,7 +105,7 @@
 			
 			/* When the Icon is an URL or an embedded Image (Base64) */
 			if(preg_match('/^(http|https|data):/', $this->icon)) {
-				return sprintf('<img src="%s" />', $this->icon);
+				return sprintf('<img alt="Icon" src="%s" />', $this->icon);
 			}
 			
 			// @ToDo check if its an local file

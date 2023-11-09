@@ -62,15 +62,13 @@
 						<div class="form-group row">
 							<label for="language" class="col-sm-2 col-form-label"><?php I18N::__('Default Language'); ?>:</label>
 							<div class="col-sm-10">
-                                <label>
-                                    <select name="language" name="language" class="form-control">
-                                    <?php
-                                        foreach(I18N::getLanguages() AS $code => $language) {
-                                            printf('<option value="%1$s"%2$s>%3$s</option>', $code, ($template->getCore()->getSettings('LANGUAGE', 'en_US') === $code ? ' SELECTED' : ''), $language);
-                                        }
-                                    ?>
-                                    </select>
-                                </label>
+								<select name="language" class="form-control">
+								<?php
+									foreach(I18N::getLanguages() AS $code => $language) {
+										printf('<option value="%1$s"%2$s>%3$s</option>', $code, ($template->getCore()->getSettings('LANGUAGE', 'en_US') === $code ? ' SELECTED' : ''), $language);
+									}
+								?>
+								</select>
                             </div>
 						</div>
 						<hr class="mb-4" />
