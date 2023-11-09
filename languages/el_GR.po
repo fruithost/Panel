@@ -257,7 +257,7 @@ msgstr "Λάβετε υπόψη ότι ο κωδικός πρόσβασης μπ
 msgid "Activate the reset using password generation"
 msgstr "Ενεργοποιήστε την επαναφορά χρησιμοποιώντας δημιουργία κωδικού πρόσβασης"
 
-msgid "E-Mail Addresss"
+msgid "E-Mail Address"
 msgstr "Διεύθυνση ηλεκτρονικού ταχυδρομείου"
 
 msgid "Password Settings"
