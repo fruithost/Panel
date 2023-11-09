@@ -7,17 +7,17 @@
 	if(isset($_POST['action']) && $_POST['action'] === 'save') {
 		switch($tab) {
 			case 'password':
-				if(!isset($_POST['password_current']) || empty($_POST['password_current'])) {
+				if(empty($_POST['password_current'])) {
 					$template->assign('error', I18N::get('Please enter your current password.'));
 					return;
 				}
 				
-				if(!isset($_POST['password_new']) || empty($_POST['password_new'])) {
+				if(empty($_POST['password_new'])) {
 					$template->assign('error', I18N::get('Please enter your new password.'));
 					return;
 				}
 				
-				if(!isset($_POST['password_repeated']) || empty($_POST['password_repeated'])) {
+				if(empty($_POST['password_repeated'])) {
 					$template->assign('error', I18N::get('Please repeat your new password.'));
 					return;
 				}
@@ -51,7 +51,7 @@
 				$template->assign('success', I18N::get('Your password has been updated.'));
 			break;
 			default:
-				if(!isset($_POST['email']) || empty($_POST['email'])) {
+				if(empty($_POST['email'])) {
 					$template->assign('error', I18N::get('Please enter your E-Mail address.'));
 					return;
 				}
@@ -61,22 +61,22 @@
 					return;
 				}
 				
-				if(!isset($_POST['name_first']) || empty($_POST['name_first'])) {
+				if(empty($_POST['name_first'])) {
 					$template->assign('error', I18N::get('Please enter your first name.'));
 					return;
 				}
 				
-				if(!isset($_POST['name_last']) || empty($_POST['name_last'])) {
+				if(empty($_POST['name_last'])) {
 					$template->assign('error', I18N::get('Please enter your last name.'));
 					return;
 				}
 				
-				if(!isset($_POST['phone']) || empty($_POST['phone'])) {
+				if(empty($_POST['phone'])) {
 					$template->assign('error', I18N::get('Please enter your phone  number.'));
 					return;
 				}
 				
-				if(!isset($_POST['address']) || empty($_POST['address'])) {
+				if(empty($_POST['address'])) {
 					$template->assign('error', I18N::get('Please enter your address.'));
 					return;
 				}
