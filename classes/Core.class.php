@@ -1,7 +1,7 @@
 <?php
 	namespace fruithost;
 	
-	class Core {
+	class Core extends Loader {
 		private $modules	= null;
 		private $hooks		= null;
 		private $router		= null;
@@ -9,84 +9,13 @@
 		private $admin		= null;
 		
 		public function __construct() {
+			parent::__construct();
+			
 			if(is_readable('~demo')) {
 				define('DEMO', true);
 			}
 			
-			// @ToDo export to Loader.class.php
-			spl_autoload_register([ $this, 'load' ]);
-			
 			$this->init();
-		}
-		
-		public function load(string $class) {
-			if(is_readable('.security.php')) {
-				$this->require('.security');
-			} else if(is_readable('../.security.php')) {
-				$this->require('../.security');
-			}
-			
-			if(is_readable('.mail.php')) {
-				$this->require('.mail');
-			} else if(is_readable('../.mail.php')) {
-				$this->require('../.mail');
-			}
-			
-			if(is_readable('.config.php')) {
-				$this->require('.config');
-			} else if(is_readable('../.config.php')) {
-				$this->require('../.config');
-			}
-			
-			if(!defined('DATABASE_HOSTNAME')) {
-				header('HTTP/1.1 503 Service Unavailable');
-				require_once(dirname(PATH) . '/placeholder/index.php');
-				exit();
-			}
-			
-			$file			= trim($class, BS);
-			$file_array		= explode(BS, $file);
-			array_shift($file_array);
-			array_unshift($file_array, 'classes');
-			
-			$path			= sprintf('%s%s.class.php', PATH, implode(DS, $file_array));
-
-			if(!file_exists($path)) {
-				// Check it's an Library
-				$file_array		= explode(BS, $file);
-				array_unshift($file_array, 'libraries');
-				$path	= sprintf('%s%s.php', PATH, implode(DS, $file_array));
-				
-				if(file_exists($path)) {
-					require_once($path);
-					return;
-				}
-				// Check it's an Library on an module!
-				/*} else if(preg_match('/\/module\//Uis', $_SERVER['REQUEST_URI'])) {
-					$file_array		= explode(BS, $file);
-					array_unshift($file_array, 'www');
-					array_unshift($file_array, str_replace('module', 'modules', $_SERVER['REQUEST_URI']));
-					$path	= sprintf('%s%s.php', dirname(PATH), implode(DS, $file_array));
-					require_once($path);
-					return;
-				}*/
-				
-				print 'Error Loading: ' . $path;
-				return;
-			}
-			
-			require_once($path);
-		}
-		
-		private function require(string $file) {
-			$path = sprintf('%s%s.php', PATH, $file);
-			
-			if(!file_exists($path)) {
-				print 'ERROR loading: ' . $path;
-				return;
-			}
-			
-			require_once($path);
 		}
 		
 		public function getAdminCore() : CoreAdmin {
