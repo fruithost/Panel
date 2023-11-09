@@ -17,11 +17,7 @@
 	}
 	
 	$result = shell_exec('dpkg-query -W -f=\'${binary:Package};${Version};${binary:Summary};${Maintainer}\n\'');
-    if (empty($result)) {
-        $lines = [];
-    } else {
-        $lines = explode(PHP_EOL, $result);
-    }
+    $lines = (empty($result) ? [] : explode(PHP_EOL, $result));
     // @ToDo group by names (for sample php-*)
 	?>
 	<table class="table table-borderless table-striped table-hover">
