@@ -1,16 +1,15 @@
 <?php
-	namespace fruithost;
-	
-	use fruithost\Encryption;
-	use fruithost\Accounting\Auth;
-	use fruithost\Database;
-	use fruithost\Response;
-	use fruithost\ModuleInterface;
-	use fruithost\UI\Modal;
-	use fruithost\UI\Button;
-	
-	class CoreAdmin extends ModuleInterface {
-		public function init() {
+    namespace fruithost\System;
+
+    use fruithost\Accounting\Auth;
+    use fruithost\Modules\ModuleInterface;
+    use fruithost\UI\Button;
+    use fruithost\UI\Modal;
+    use fruithost\Network\Response;
+    use fruithost\Localization\I18N;
+
+    class CoreAdmin extends ModuleInterface {
+		public function init() : void {
 			$this->getCore()->getHooks()->runAction('core_admin_pre_init');
 			
 			$this->addModal((new Modal('confirmation', I18N::get('Confirmation'), null))->addButton([

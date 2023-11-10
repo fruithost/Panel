@@ -1,5 +1,5 @@
 <?php
-	use fruithost\Accounting\Auth;
+    use fruithost\Accounting\Auth;
 
 	if(Auth::isLoggedIn()) {
 		?>

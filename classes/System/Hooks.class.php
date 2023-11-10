@@ -1,24 +1,8 @@
 <?php
-	namespace fruithost;
+    namespace fruithost\System;
 	
 	use fruithost\Accounting\Auth;
-	
-	class HookParameters {
-		private array $args = [];
-		
-		public function __construct() {
-			$this->args = func_get_args();
-		}
-		
-		public function get(?int $position = null) {
-			if($position !== null) {
-				return $this->args[$position];
-			}
-			
-			return $this->args;
-		}
-	}
-	
+
 	class Hooks {
 		protected array $filters			= [];
 		protected array $merged_filters		= [];
@@ -47,7 +31,7 @@
 			return false;
 		}
 		
-		public function callAllHook(array $args) {
+		public function callAllHook(array $args) : void {
 			reset($this->filters['all']);
 			
 			do {

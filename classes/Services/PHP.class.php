@@ -1,17 +1,18 @@
 <?php
-	namespace fruithost;
-	
-	use fruithost\Encryption;
-	use fruithost\Utils;
-	
-	class PHP {
+    namespace fruithost\Services;
+
+    use fruithost\Localization\I18N;
+    use fruithost\System\Utils;
+    use fruithost\Security\Encryption;
+
+    class PHP {
 		private ?string $path		= null;
 		private string $socket		= '/run/php/php8.2-fpm.sock'; // @ToDo HARD CODED value, we should find a way to get this value from the system
 		private ?string $content	= null;
 		private array $data			= [];
 		private bool $error			= false;
 		
-		public function setPath(string $path) {
+		public function setPath(string $path) : void {
 			$this->path = $path;
 		}
 		
@@ -27,7 +28,7 @@
 			return $this->content;
 		}
 		
-		public function execute(string $file, array $arguments = []) {
+		public function execute(string $file, array $arguments = []) : void {
 			if(!is_writable($this->path)) {
 				$this->error = true;
 				return;
@@ -104,10 +105,8 @@
 				case 'no':
 				case 'yes':
 					return sprintf('<strong class="text-info">%s</strong>', I18N::get($data));
-				break;
 				case 'no value':
 					return sprintf('<i class="text-black-50">%s</i>', I18N::get($data));
-				break;
 			}
 			
 			if(preg_match('/^#([a-f]|[A-F]|[0-9]){3}(([a-f]|[A-F]|[0-9]){3})?/', $data)) {
@@ -117,8 +116,9 @@
 			if(is_numeric($data)) {
 				return sprintf('<i class="text-warning">%s</i>', $data);				
 			}
-			
-			if($data[0] === '/' || str_starts_with($data, '.:/')) {
+
+            // $data[0] gives hier Errors!
+			if(substr($data, 0, 1) === '/' || str_starts_with($data, '.:/')) {
 				return sprintf('<span class="badge badge-secondary">%s</span>', $data);
 			}
 			
@@ -129,7 +129,7 @@
 			return $this->error;
 		}
 		
-		public function parse() {
+		public function parse() : void {
 			if($this->error) {
 				return;
 			}
@@ -151,13 +151,11 @@
 			if(!preg_match('#(.*<h1[^>]*>\s*Configuration.*)<h1#s', $this->content, $matches)) {
 				return;
 			}
-			
-			$php_logo	= null;
-			$zend_logo	= null;
+
 			preg_match_all('/src="data:image\/png;base64,([^"]+)" alt="PHP logo"/', $this->content, $logo);
-			$php_logo	= $logo[1][0];
+			$php_logo	= (!empty($logo[1][0]) ? $logo[1][0] : null);
 			preg_match_all('/src="data:image\/png;base64,([^"]+)" alt="Zend logo"/', $this->content, $logo);
-			$zend_logo	= $logo[1][0];
+			$zend_logo	= (!empty($logo[1][0]) ? $logo[1][0] : null);
 			
 			$phpinfo 	= [ 'info' => [] ];
 			$input		= $matches[1];

@@ -1,12 +1,11 @@
 <?php
 	namespace fruithost\Accounting;
 	
-	use \fruithost\Accounting\User;
-	use \fruithost\Response;
-	use \fruithost\Session;
-    use \fruithost\Database;
-	
-	class AuthFactory {
+	use fruithost\Storage\Database;
+    use fruithost\Network\Response;
+    use fruithost\Localization\I18N;
+
+    class AuthFactory {
 		private static ?AuthFactory $instance	= null;
 		private array $permissions				= [];
 		private ?User $user						= null;
@@ -75,14 +74,12 @@
 				'salt'		=> MYSQL_PASSWORTD_SALT
 			]);
 			
-			if($result == false) {
+			if(!$result) {
 				throw new \Exception(I18N::get('Unknown User'));
-				return false;
 			}
 			
 			if($result->password !== $result->crypted) {
 				throw new \Exception(I18N::get('Password mismatched.'));
-				return false;
 			}
 			
 			if($result->id > 0) {
@@ -91,7 +88,6 @@
 				Session::set('user_id',		(int) $result->id);
 			} else {
 				throw new \Exception(I18N::get('Unknown User'));
-				return false;				
 			}
 			
 			return true;
@@ -104,25 +100,20 @@
 				'salt'		=>	MYSQL_PASSWORTD_SALT
 			]);
 			
-			if($result == false) {
+			if(!$result) {
 				throw new \Exception(I18N::get('Unknown User'));
-				return false;
 			}
 			
 			if($result->password !== $result->crypted) {
 				throw new \Exception(I18N::get('Password mismatched.'));
-				return false;
 			}
 			
 			if(!filter_var($result->email, FILTER_VALIDATE_EMAIL)) {
 				return false;
 			}
 			
-			if($result->id > 0) {
-				/* Do Nothing */
-			} else {
+			if($result->id <= 0) {
 				throw new \Exception(I18N::get('Unknown User'));
-				return false;				
 			}
 			
 			return true;
@@ -143,8 +134,8 @@
 		public function getGravatar() : string {
 			return $this->user->getGravatar();
 		}
-		
-		public function hasPermission(string $name) : bool {
+
+        public function hasPermission(string $name) : bool {
 			if(count($this->permissions) > 0) {
 				if($name === '*') {
 					return count($this->permissions) >= 1;
@@ -154,7 +145,7 @@
 			}
 			
 			if($name === '*') {
-				return count($this->permissions) >= 1;
+				return (count($this->permissions) >= 1);
 			}
 			
 			return in_array($name, $this->permissions);

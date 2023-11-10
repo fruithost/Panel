@@ -1,8 +1,8 @@
 <?php
-	use fruithost\Accounting\Auth;
-	use fruithost\I18N;
-	
-	$template->header();
+    use fruithost\Localization\I18N;
+    use fruithost\Accounting\Auth;
+
+    $template->header();
 	?>
 		<form method="post" action="<?php print $this->url('/settings' . (!empty($tab) ? '/' . $tab : '')); ?>">
 			<header class="page-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">

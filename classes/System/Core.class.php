@@ -1,9 +1,18 @@
 <?php
-	namespace fruithost;
+    namespace fruithost\System;
 
     use fruithost\Accounting\Auth;
-	
-	class Core extends Loader {
+    use fruithost\Accounting\Session;
+    use fruithost\Modules\Modules;
+    use fruithost\Templating\Template;
+    use fruithost\Security\Encryption;
+    use fruithost\Storage\Database;
+    use fruithost\Network\Router;
+    use fruithost\Network\Response;
+    use fruithost\Network\Request;
+    use fruithost\Localization\I18N;
+
+    class Core extends Loader {
 		private ?Modules $modules	= null;
 		private ?Hooks $hooks		= null;
 		private ?Router $router		= null;
@@ -11,7 +20,7 @@
 		private ?CoreAdmin $admin	= null;
 		
 		public function __construct() {
-			parent::__construct();
+            parent::__construct();
 			
 			if(is_readable('~demo')) {
 				define('DEMO', true);
@@ -280,9 +289,7 @@
 										$data[trim($name)] = trim($value);
 									}
 								}
-								
-								
-								
+
 								$result		= call_user_func_array($callback, [ $data ]);
 								
 								if(is_bool($result)) {

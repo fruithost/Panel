@@ -1,8 +1,8 @@
 <?php
-	use fruithost\Accounting\Auth;
-	use fruithost\I18N;
-	
-	$template->header();
+    use fruithost\Localization\I18N;
+    use fruithost\Accounting\Auth;
+
+    $template->header();
 	
 	if(!Auth::hasPermission('MODULES::VIEW')) {
 		?>
@@ -26,7 +26,7 @@
 				</h1>
 				<div class="btn-toolbar mb-2 mb-md-0">
 					<div class="btn-group mr-2">
-						<a name="action" value="cancel" class="btn btn-sm btn-outline-danger" href="<?php print $this->url('/admin/modules' . (!empty($tab) ? '/' . $tab : '')); ?>"><?php I18N::__('Cancel'); ?></a>
+						<a class="btn btn-sm btn-outline-danger" href="<?php print $this->url('/admin/modules' . (!empty($tab) ? '/' . $tab : '')); ?>"><?php I18N::__('Cancel'); ?></a>
 						<button type="submit" name="action" value="settings" class="btn btn-sm btn-outline-success"><?php I18N::__('Save'); ?></button>
 					</div>
 				</div>

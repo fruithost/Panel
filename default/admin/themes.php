@@ -1,8 +1,8 @@
 <?php
-	use fruithost\Accounting\Auth;
-	use fruithost\I18N;
-	
-	$template->header();
+    use fruithost\Accounting\Auth;
+    use fruithost\Localization\I18N;
+
+    $template->header();
 	
 	if(!Auth::hasPermission('THEMES::VIEW')) {
 		?>

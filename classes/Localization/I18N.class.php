@@ -1,13 +1,14 @@
 <?php
-	namespace fruithost;
-	use \fruithost\Request;
-	use \fruithost\Accounting\Auth;
-	use \fruithost\Database;
-	use \Sepia\PoParser\SourceHandler\FileSystem;
-	use \Sepia\PoParser\Parser;
+    namespace fruithost\Localization;
+    use fruithost\Accounting\Auth;
+    use fruithost\Network\Request;
+    use fruithost\Storage\Database;
+    use Sepia\PoParser\Parser;
+    use Sepia\PoParser\SourceHandler\FileSystem;
+    use Sepia\PoParser\Catalog\CatalogArray;
 
-	class I18N {
-		protected static ?Parser $translation	= null;
+    class I18N {
+		protected static ?CatalogArray $translation	= null;
 		protected static array $languages		= [
 			'en_US' => 'English'
 		];
@@ -17,7 +18,7 @@
 			self::load(self::set());
 		}
 		
-		public static function addPath($path) {
+		public static function addPath($path) : void {
 			$file					= sprintf('%s%s.po', $path, self::set());
 			
 			if(file_exists($file)) {
@@ -26,7 +27,7 @@
 			}
 		}
 		
-		public static function reload() {
+		public static function reload() : void {
 			self::load(self::set());			
 		}
 		
@@ -65,7 +66,7 @@
 			return $language;
 		}
 		
-		protected static function load(string $language) {
+		protected static function load(string $language) : void {
 			$file				= sprintf('%slanguages/%s.po', PATH, $language);
 			
 			if(file_exists($file)) {
@@ -76,7 +77,7 @@
 			}
 		}
 		
-		protected static function loadLanguages() {
+		protected static function loadLanguages() : void {
 			foreach(new \DirectoryIterator(sprintf('%slanguages/', PATH)) AS $info) {
 				if($info->isDot()) {
 					continue;
@@ -101,7 +102,7 @@
 			return self::$languages;
 		}
 		
-		public static function __($string) {
+		public static function __($string) : void {
 			print self::get($string);
 		}
 		

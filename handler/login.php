@@ -1,12 +1,12 @@
 <?php
-	use fruithost\Accounting\Auth;
-	use fruithost\Response;
-	use fruithost\Session;
-	use PHPMailer\PHPMailer;
-	use fruithost\I18N;
-	use fruithost\Database;
-	
-	if(isset($_POST['action']) && $_POST['action'] == 'login') {
+    use fruithost\Accounting\Auth;
+    use fruithost\Accounting\Session;
+    use fruithost\Network\Response;
+    use fruithost\Localization\I18N;
+    use fruithost\Storage\Database;
+    use PHPMailer\PHPMailer;
+
+    if(isset($_POST['action']) && $_POST['action'] == 'login') {
 		try {
 			if(isset($_POST['code'])) {
 				if(Session::get('two_factor') === intval(trim($_POST['code']))) {

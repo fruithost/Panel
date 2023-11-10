@@ -1,5 +1,5 @@
 <?php
-	use fruithost\I18N;
+    use fruithost\Localization\I18N;
 ?>
 <table class="table table-borderless table-striped table-hover">
 	<thead>

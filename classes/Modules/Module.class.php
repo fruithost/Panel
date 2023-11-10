@@ -1,7 +1,10 @@
 <?php
-	namespace fruithost;
+	namespace fruithost\Modules;
 	
-	class Module {
+	use fruithost\System\Core;
+    use fruithost\Storage\Database;
+
+    class Module {
 		private ?string $path				= null;
 		private ?ModuleInfo $info			= null;
 		private ?ModuleInterface $instance	= null;
@@ -17,11 +20,11 @@
 			return (!empty($this->info) && !$this->info->isValid());
 		}
 		
-		public function getInfo() : ModuleInfo {
+		public function getInfo() : ?ModuleInfo {
 			return $this->info;
 		}
 		
-		public function getInstance() : ModuleInterface {
+		public function getInstance() : ?ModuleInterface {
 			return $this->instance;
 		}
 		
@@ -44,7 +47,7 @@
 			return $default;
 		}
 		
-		public function setSettings(string $name, mixed $value = null) {
+		public function setSettings(string $name, mixed $value = null) : void {
 			if(Database::exists('SELECT `id` FROM `' . DATABASE_PREFIX . 'modules_settings` WHERE `module`=:module AND `key`=:key LIMIT 1', [
 				'module'	=> $this->getDirectory(),
 				'key'		=> $name
@@ -88,7 +91,7 @@
 			return $this->enabled;
 		}
 		
-		public function setEnabled(bool $state) {
+		public function setEnabled(bool $state) : void  {
 			$this->enabled = $state;
 		}
 		
@@ -96,7 +99,7 @@
 			return $this->locked;
 		}
 		
-		public function setLocked(bool $state) {
+		public function setLocked(bool $state) : void  {
 			$this->locked = $state;
 		}
 		
@@ -112,7 +115,7 @@
 			$new = get_declared_classes();
 			
 			foreach(array_diff($new, $old) AS $class) {
-				if(is_subclass_of($class, 'fruithost\\ModuleInterface', true)) {
+				if(is_subclass_of($class, 'fruithost\\Modules\\ModuleInterface', true)) {
 					$reflect			= new \ReflectionClass($class);
 					$instance			= $reflect->newInstanceArgs([ $core, $this ]);
 					$this->instance		= $instance;

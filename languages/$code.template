@@ -212,34 +212,10 @@ msgstr ""
 msgid "no value"
 msgstr ""
 
-msgid "Account"
+msgid "Unknown User"
 msgstr ""
 
-msgid "Databases"
-msgstr ""
-
-msgid "Domains"
-msgstr ""
-
-msgid "E-Mails"
-msgstr ""
-
-msgid "FTP"
-msgstr ""
-
-msgid "Hosting"
-msgstr ""
-
-msgid "Extended"
-msgstr ""
-
-msgid "Support"
-msgstr ""
-
-msgid "Administration"
-msgstr ""
-
-msgid "Server"
+msgid "Password mismatched."
 msgstr ""
 
 msgid "%s mins"
@@ -269,10 +245,34 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-msgid "Unknown User"
+msgid "Account"
 msgstr ""
 
-msgid "Password mismatched."
+msgid "Databases"
+msgstr ""
+
+msgid "Domains"
+msgstr ""
+
+msgid "E-Mails"
+msgstr ""
+
+msgid "FTP"
+msgstr ""
+
+msgid "Hosting"
+msgstr ""
+
+msgid "Extended"
+msgstr ""
+
+msgid "Support"
+msgstr ""
+
+msgid "Administration"
+msgstr ""
+
+msgid "Server"
 msgstr ""
 
 msgid "Settings"
@@ -536,9 +536,6 @@ msgstr ""
 msgid "ID"
 msgstr ""
 
-msgid "E-Mail Address"
-msgstr ""
-
 msgid "Full Name"
 msgstr ""
 
@@ -686,10 +683,16 @@ msgstr ""
 msgid "Service"
 msgstr ""
 
+msgid "No services found."
+msgstr ""
+
 msgid "Info"
 msgstr ""
 
 msgid "Package"
+msgstr ""
+
+msgid "No packages found."
 msgstr ""
 
 msgid "Account Details"

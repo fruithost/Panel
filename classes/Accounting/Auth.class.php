@@ -1,5 +1,5 @@
 <?php
-	namespace fruithost\Accounting;
+    namespace fruithost\Accounting;
 	
 	class Auth {
 		public static function isLoggedIn() : bool {
@@ -46,8 +46,8 @@
 			AuthFactory::getInstance()->removeSettings($name, $user_id);
 		}
 		
-		public static function hasPermission(string $name, int | string | null $user_id = null) : bool {
-			return AuthFactory::getInstance()->hasPermission($name, $user_id);
+		public static function hasPermission(string $name) : bool {
+			return AuthFactory::getInstance()->hasPermission($name);
 		}
 	}
 ?>

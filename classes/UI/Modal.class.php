@@ -1,9 +1,9 @@
 <?php
 	namespace fruithost\UI;
 	
-	use fruithost\Template;
-	
-	class Modal {
+	use fruithost\Templating\Template;
+
+    class Modal {
 		private ?string $name		= null;
 		private ?string $title		= null;
 		private mixed $content		= null;

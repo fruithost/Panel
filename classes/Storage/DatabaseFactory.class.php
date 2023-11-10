@@ -1,6 +1,6 @@
 <?php
-	namespace fruithost;
-	
+	namespace fruithost\Storage;
+
 	class DatabaseFactory extends \PDO {
 		private static ?DatabaseFactory $instance = null;
 		
@@ -84,11 +84,11 @@
 			return $this->query($query, null, $parameters)->rowCount();
 		}
 		
-		public function fetch(string $query, array $parameters = []) : mixed {
+		public function fetch(string $query, array $parameters = []) : array | false {
 			return $this->query($query, null, $parameters)->fetchAll(\PDO::FETCH_OBJ);
 		}
 		
-		public function update(string $table, string | array $where, array $parameters = []) {
+		public function update(string $table, string | array $where, array $parameters = []) : array | false {
 			$fields = '';
 			
 			foreach($parameters AS $name => $value) {

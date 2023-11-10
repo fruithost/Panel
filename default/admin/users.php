@@ -1,9 +1,9 @@
 <?php
-	use fruithost\Accounting\Auth;
-	use fruithost\Session;
-	use fruithost\I18N;
-	
-	$template->header();
+    use fruithost\Accounting\Auth;
+    use fruithost\Accounting\Session;
+    use fruithost\Localization\I18N;
+
+    $template->header();
 	
 	if(!Auth::hasPermission('USERS::VIEW')) {
 		?>

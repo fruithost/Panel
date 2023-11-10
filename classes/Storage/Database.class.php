@@ -1,6 +1,6 @@
 <?php
-	namespace fruithost;
-	
+	namespace fruithost\Storage;
+
 	class Database {
 		public static function file(string $file, callable $callback) : void {
 			DatabaseFactory::getInstance()->file($file, $callback);

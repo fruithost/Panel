@@ -1,5 +1,5 @@
 <?php	
-	namespace fruithost;
+	namespace fruithost\Network;
 	
 	class Route {
 		private string $path		= '/';
@@ -9,7 +9,7 @@
 			return $this->path;
 		}
 		
-		public function setPath(string $path) {
+		public function setPath(string $path) : void {
 			$this->path = $path;
 		}
 		
@@ -17,7 +17,7 @@
 			return $this->callback;
 		}
 		
-		public function setCallback(?\Closure $callback) {
+		public function setCallback(?\Closure $callback) : void {
 			$this->callback = $callback;
 		}
 	}

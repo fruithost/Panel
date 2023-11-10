@@ -1,6 +1,7 @@
 <?php
-	use fruithost\I18N;
-	$template->header();
+    use fruithost\Localization\I18N;
+
+    $template->header();
 	?>
 		<header class="page-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 			<h1 class="h2">

@@ -1,9 +1,8 @@
 <?php
-	use fruithost\Database;
-	use fruithost\Accounting\Auth;
-	use fruithost\I18N;
-	
-	if(isset($_POST['action'])) {
+    use fruithost\Localization\I18N;
+    use fruithost\Accounting\Auth;
+
+    if(isset($_POST['action'])) {
 		switch($_POST['action']) {
 			case 'reboot':
 				if(!Auth::hasPermission('SERVER::MANAGE')) {

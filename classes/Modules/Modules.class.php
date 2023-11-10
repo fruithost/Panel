@@ -1,7 +1,11 @@
 <?php
-	namespace fruithost;
+	namespace fruithost\Modules;
 	
-	class Modules {
+	use fruithost\System\Core;
+    use fruithost\Storage\Database;
+    use fruithost\Localization\I18N;
+
+    class Modules {
 		private ?Core $core		= null;
 		private array $modules	= [];
 		
@@ -92,7 +96,7 @@
 			return sprintf('%s%s%s', dirname(PATH), DS, 'modules');
 		}
 		
-		public function addModule(string $name, Module $module) {
+		public function addModule(string $name, Module $module) : void {
 			if(!$module->isEnabled()) {
 				return;
 			}

@@ -1,9 +1,10 @@
 <?php
-	namespace fruithost;
+	namespace fruithost\Templating;
 
     use fruithost\Accounting\Auth;
-	
-	class TemplateNavigationCategory {
+    use fruithost\Localization\I18N;
+
+    class TemplateNavigationCategory {
 		private ?TemplateNavigation $navigation		= null;
 		private ?string $id							= null;
 		private ?string $label						= null;

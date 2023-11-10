@@ -1,7 +1,9 @@
 <?php
-	namespace fruithost;
+	namespace fruithost\Network;
 	
-	class Router {
+	use fruithost\System\Core;
+
+    class Router {
 		private array $routes		= [];
 		private ?string $redirect	= null;
 		private ?string $current	= null;
@@ -30,7 +32,7 @@
 			return array_key_exists($name, $this->routes);
 		}
 		
-		public function executeRoute(string $name) {
+		public function executeRoute(string $name) : void {
 			$this->current	= $name;
 			
 			foreach($this->routes AS $route) {
@@ -60,11 +62,11 @@
 			return (str_starts_with(strtolower($this->getCurrent()), strtolower($name)));
 		}
 		
-		public function redirectTo(string $redirect) {
+		public function redirectTo(string $redirect) : void {
 			$this->redirect = $redirect;
 		}
 		
-		public function run(bool $ajax = false) {
+		public function run(bool $ajax = false) : void {
 			// @ToDo is it secure?
 			$uri	= explode('/',	($ajax ? preg_replace('#(http|https)://([^/]+)#', '', $_SERVER['HTTP_REFERER']) : $_SERVER['REQUEST_URI']));
 			$name	= explode('/',	$_SERVER['SCRIPT_NAME']);
@@ -89,7 +91,7 @@
 			}
 			
 			// Remove "ajax"
-			if($ajax == true) {
+			if($ajax) {
 				$route	= str_replace('/ajax', '', $route);
 			}
 			

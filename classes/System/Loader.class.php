@@ -1,5 +1,5 @@
 <?php
-	namespace fruithost;
+    namespace fruithost\System;
 	
 	if(is_readable('.DEBUG') || is_readable('../.DEBUG')) {
 		define('DEBUG', true);
@@ -23,13 +23,15 @@
 			}
 			
 			if(!defined('PATH')) {
-				define('PATH', sprintf('%s/', dirname(__FILE__, 2)));
+				define('PATH', sprintf('%s/', dirname(__FILE__, 3)));
 			}
 			
 			if($this->readable('.security')) {
 				$this->require('.security');
 			} else if($this->readable('../.security')) {
 				$this->require('../.security');
+			} else if($this->readable('../../.security')) {
+				$this->require('../../.security');
 			} else {
 				if(defined('DAEMON') && DAEMON) {
 					print "\033[31;31m";
@@ -46,12 +48,16 @@
 				$this->require('.mail');
 			} else if($this->readable('../.mail')) {
 				$this->require('../.mail');
+			} else if($this->readable('../../.mail')) {
+				$this->require('../../.mail');
 			}
 			
 			if($this->readable('.config')) {
 				$this->require('.config');
 			} else if($this->readable('../.config')) {
 				$this->require('../.config');
+            } else if($this->readable('../../.config')) {
+                $this->require('../../.config');
 			} else {
 				if(defined('DAEMON') && DAEMON) {
 					print "\033[31;31m";
@@ -92,7 +98,7 @@
 			return is_readable($path);
 		}
 		
-		private function require(string $file) {
+		private function require(string $file) : void {
 			$path = sprintf('%s%s.php', PATH, $file);
 			
 			if(!file_exists($path)) {
@@ -111,19 +117,18 @@
 			require_once($path);
 		}
 		
-		public function load(string $class) {			
+		public function load(string $class) : void {
 			$file			= trim($class, BS);
 			$file_array		= explode(BS, $file);
 			
 			array_shift($file_array);
 			array_unshift($file_array, 'classes');
-			
+
 			$path			= sprintf('%s%s.class.php', PATH, implode(DS, $file_array));
 
 			if(!file_exists($path)) {
 				// Check it's a Library
-				$file_array		= explode(BS, $file);
-				$file_array	= explode(BS, $file);
+				$file_array = explode(BS, $file);
 				array_unshift($file_array, 'libraries');
 				$path		= sprintf('%s%s.php', PATH, implode(DS, $file_array));
 				

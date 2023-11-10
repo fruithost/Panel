@@ -1,9 +1,7 @@
 <?php
-	use fruithost\Database;
-	use fruithost\Accounting\Auth;
-	use fruithost\I18N;
-	
-	$uname			= explode(' ', shell_exec('uname -a'));
+    use fruithost\Accounting\Auth;
+
+    $uname			= explode(' ', shell_exec('uname -a'));
 	$uptime_array	= explode(" ", exec("cat /proc/uptime"));
 	$seconds		= round($uptime_array[0], 0);
 	$minutes		= $seconds / 60;
@@ -61,8 +59,7 @@
 			'mount'			=> (isset($matches['mount']) ? $matches['mount'] : NULL)
 		];
 	}
-	
-	
+
 	$template->assign('hostname',		exec('hostname'));
 	$template->assign('time_system',	exec('date +\'%d %b %Y %T %Z\''));
 	$template->assign('time_php',		date('d M Y H:i:s T'));

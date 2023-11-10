@@ -1,6 +1,5 @@
 <?php
-	use fruithost\Accounting\Auth;
-	use fruithost\I18N;
+    use fruithost\Localization\I18N;
 ?>
 <p></p>
 <div class="container">
@@ -50,7 +49,7 @@
 					<div class="form-group row">
 						<label for="2fa_type" class="col-sm-2 col-form-label"><?php I18N::__('Type'); ?>:</label>
 						<div class="col-sm-10">
-							<select name="2fa_type" class="form-control">
+							<select name="2fa_type" id="2fa_type" class="form-control">
 								<option value="app" DISABLED><?php I18N::__('Smartphone'); ?> (<?php I18N::__('disabled'); ?>)</option>
 								<option value="mail" SELECTED><?php I18N::__('E-Mail'); ?></option>
 								<option value="sms" DISABLED><?php I18N::__('SMS'); ?> (<?php I18N::__('disabled'); ?>)</option>

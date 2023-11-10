@@ -1,9 +1,8 @@
 <?php
-	use fruithost\Accounting\Auth;
-	use fruithost\Database;
-	use fruithost\I18N;
-	
-	if(isset($_POST['action']) && $_POST['action'] === 'save') {
+    use fruithost\Localization\I18N;
+    use fruithost\Accounting\Auth;
+
+    if(isset($_POST['action']) && $_POST['action'] === 'save') {
 		switch($tab) {
 			case 'security':
 				if(isset($_POST['2fa_enabled'])) {

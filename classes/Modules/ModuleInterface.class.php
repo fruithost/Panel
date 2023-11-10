@@ -1,10 +1,13 @@
 <?php
-	namespace fruithost;
+	namespace fruithost\Modules;
 	
-	use fruithost\UI\Button;
-	use fruithost\UI\Modal;
-	
-	class ModuleInterface {
+	use fruithost\System\Core;
+    use fruithost\Network\Router;
+    use fruithost\Templating\Template;
+    use fruithost\UI\Button;
+    use fruithost\UI\Modal;
+
+    class ModuleInterface {
 		private ?Core $core			= null;
 		private ?Module $instance	= null;
 		
@@ -47,7 +50,7 @@
 			return $this->instance;
 		}
 		
-		public function setSettings(string $name, mixed $value = null) {
+		public function setSettings(string $name, mixed $value = null) : void {
 			$this->instance->setSettings($name, $value);
 		}
 		
@@ -55,21 +58,21 @@
 			return $this->instance->getSettings($name, $default);			
 		}
 		
-		public function addButton(Button | array $button, bool $logged_in = false) {
+		public function addButton(Button | array $button) : void {
 			$this->addFilter('buttons', function($buttons) use($button) {
 				$buttons[] = $button;
 				return $buttons;
-			}, 10, $logged_in);
+			}, 10);
 		}
 		
-		public function addModal(Modal $modal, bool $logged_in = false) {
+		public function addModal(Modal $modal) : void {
 			$this->addFilter('modals', function($modals) use($modal) {
 				$modals[] = $modal;
 				return $modals;
-			}, 10, $logged_in);
+			}, 10);
 		}
 		
-		public function assign(string $name, mixed $value) {
+		public function assign(string $name, mixed $value) : void {
 			$this->getCore()->getTemplate()->assign($name, $value);
 		}
 		
@@ -78,7 +81,7 @@
 		}
 		
 		/* Filter */
-		public function addFilter(string $name, \Closure | array  $method, int $priority = 50, bool $logged_in = true) : bool {
+		public function addFilter(string $name, \Closure | array  $method, int $priority = 50) : bool {
 			return $this->core->getHooks()->addFilter($name, $method, $priority);
 		}
 		
@@ -95,7 +98,7 @@
 		}
 		
 		/* Actions */
-		public function addAction(string $name, \Closure | array  $method, int $priority = 50, bool $logged_in = true) : bool {
+		public function addAction(string $name, \Closure | array  $method, int $priority = 50) : bool {
 			return $this->core->getHooks()->addAction($name, $method, $priority);
 		}
 		

@@ -1,9 +1,9 @@
 <?php
-	use fruithost\Response;
-	use fruithost\Accounting\Auth;
-	use fruithost\Encryption;
-	
-	function directory_map(string $sourceDir): array {
+    use fruithost\Accounting\Auth;
+    use fruithost\Network\Response;
+    use fruithost\Localization\I18N;
+
+    function directory_map(string $sourceDir): array {
 		$list		= [];
 		$exclude	= [
 			'gz',

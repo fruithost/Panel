@@ -1,11 +1,13 @@
 <?php
-	namespace fruithost;
-	use fruithost\I18N;
-	use fruithost\ModuleInterface;
-	use fruithost\Database;
+	namespace fruithost\Templating;
+
     use fruithost\Accounting\Auth;
-	
-	class Template extends TemplateDefaults {
+    use fruithost\System\Core;
+    use fruithost\System\CoreAdmin;
+    use fruithost\Localization\I18N;
+    use fruithost\Network\Request;
+
+    class Template extends TemplateDefaults {
 		private Core $core;
 		private ?string $theme					= null;
 		private array $assigns					= [];

@@ -1,15 +1,16 @@
 <?php
-	namespace fruithost;
-	
-	use \fruithost\I18N;
-	
-	class Utils {
+    namespace fruithost\System;
+
+    use fruithost\Localization\I18N;
+
+    class Utils {
 		public static function randomString(int $length = 10) : string {
 			$characters			= 'abcdefghijklmonpqrstuvwxyz-_ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 			$charactersLength	= strlen($characters);
 			$output				= '';
 			
 			for($position = 0; $position < $length; $position++) {
+                // @ToDo Exception handling?
 				$output .= $characters[random_int(0, $charactersLength - 1)];
 			}
 			
@@ -25,8 +26,9 @@
 				$to = time();
 			}
 			
-			$diff = (int) abs($to - $from);
-			
+			$diff   = (int) abs($to - $from);
+			$since  = '';
+
 			if($diff < (60 * 60)) {
 				$mins = round($diff / 60);
 				

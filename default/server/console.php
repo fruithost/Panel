@@ -1,9 +1,8 @@
 <?php
-	use fruithost\Accounting\Auth;
-	use fruithost\Utils;
-	use fruithost\I18N;
-	
-	$template->header();
+    use fruithost\Localization\I18N;
+    use fruithost\Accounting\Auth;
+
+    $template->header();
 	
 	if(!Auth::hasPermission('SERVER::MANAGE')) {
 		?>
@@ -39,7 +38,7 @@
 								command: cmd
 							},
 							success: function onSuccess(response) {
-								if(response == '\u001B[H\u001B[2J\u001B[3J' || response == 'clear') {
+								if(response === '\u001B[H\u001B[2J\u001B[3J' || response === 'clear') {
 									output.empty();
 									return;
 								}

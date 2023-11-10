@@ -1,7 +1,9 @@
 <?php
-	namespace fruithost;
-	
-	class TemplateNavigation {
+	namespace fruithost\Templating;
+
+    use fruithost\System\Core;
+
+    class TemplateNavigation {
 		private ?Core $core		= null;
 		private array $entries	= [];
 		
@@ -9,7 +11,7 @@
 			$this->core = $core;
 		}
 		
-		public function addCategory(string $name, string $label) {
+		public function addCategory(string $name, string $label) : void {
 			$category							= new TemplateNavigationCategory($this, $name, $label);
 			$this->entries[$category->getID()]	= $category;
 		}

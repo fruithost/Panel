@@ -1,5 +1,5 @@
 <?php
-	namespace fruithost;
+	namespace fruithost\Templating;
 	
 	class TemplateFiles {
 		const HEADER		= 1;
@@ -17,15 +17,15 @@
 			'stylesheets'	=> []
 		];
 		
-		public function addJavaScript(string $name, string $file, string $version, ?array $depencies = null, int $position = TemplateFiles::HEADER) {
+		public function addJavaScript(string $name, string $file, string $version, ?array $depencies = null, int $position = TemplateFiles::HEADER) : void {
 			$this->add($name, $file, $version, $depencies, $position, TemplateFiles::JAVASCRIPT);
 		}
 		
-		public function addStyleSheet(string $name, string $file, string $version, ?array $depencies = null, int $position = TemplateFiles::HEADER) {
+		public function addStyleSheet(string $name, string $file, string $version, ?array $depencies = null, int $position = TemplateFiles::HEADER) : void {
 			$this->add($name, $file, $version, $depencies, $position, TemplateFiles::STYLESHEET);
 		}
 		
-		private function add(string $name, string $file, string $version, ?array $depencies, int $position = TemplateFiles::HEADER, ?int $type = null) {
+		private function add(string $name, string $file, string $version, ?array $depencies, int $position = TemplateFiles::HEADER, ?int $type = null) : void {
 			if($type === null) {
 				return;
 			}
@@ -85,9 +85,9 @@
 				}
 			} while($added);
 
-			if(count($cloned)) {
-				//trigger_error("unable to resolve a dependency",E_USER_ERROR);
-			}
+			/*if(count($cloned)) {
+				trigger_error("unable to resolve a dependency",E_USER_ERROR);
+			}*/
 
 			foreach($depencies AS $name) {
 				$output[$name] = $input[$name];

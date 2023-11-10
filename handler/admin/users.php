@@ -1,13 +1,13 @@
 <?php
-	use fruithost\Database;
-	use fruithost\I18N;
-	use fruithost\Accounting\User;
-	use fruithost\Encryption;
-	use fruithost\Session;
-	use fruithost\Response;
-	use PHPMailer\PHPMailer;
-	
-	$users = Database::fetch('SELECT *, \'[*** PROTECTED ***]\' AS `password` FROM `' . DATABASE_PREFIX . 'users` WHERE `deleted`=\'NO\'');
+    use fruithost\Storage\Database;
+    use fruithost\Network\Response;
+    use fruithost\Accounting\Session;
+    use fruithost\Accounting\User;
+    use fruithost\Localization\I18N;
+    use fruithost\Security\Encryption;
+    use PHPMailer\PHPMailer;
+
+    $users = Database::fetch('SELECT *, \'[*** PROTECTED ***]\' AS `password` FROM `' . DATABASE_PREFIX . 'users` WHERE `deleted`=\'NO\'');
 	
 	if(isset($_POST['action'])) {
 		$user = new User();
@@ -88,7 +88,7 @@
 									]);
 								}
 								
-								$mail			= new PHPMailer;
+								$mail = new PHPMailer;
 								
 								if(defined('MAIL_EXTERNAL') && MAIL_EXTERNAL) {
 									$mail->Host       = MAIL_HOSTNAME;

@@ -1,20 +1,18 @@
 <?php
-	use fruithost\Accounting\Auth;
-	use fruithost\I18N;
-	$template->header();
-	?>
-	
-	<?php
-		if(isset($error)) {
-			?>
-				<div class="alert alert-danger mt-4" role="alert"><?php (is_array($error) ? var_dump($error) : print $error); ?></div>
-			<?php
-		} else if(isset($success)) {
-			?>
-				<div class="alert alert-success mt-4" role="alert"><?php (is_array($success) ? var_dump($success) : print $success); ?></div>
-			<?php
-		}
-	?>
+    use fruithost\Localization\I18N;
+
+    $template->header();
+
+    if(isset($error)) {
+        ?>
+            <div class="alert alert-danger mt-4" role="alert"><?php (is_array($error) ? var_dump($error) : print $error); ?></div>
+        <?php
+    } else if(isset($success)) {
+        ?>
+            <div class="alert alert-success mt-4" role="alert"><?php (is_array($success) ? var_dump($success) : print $success); ?></div>
+        <?php
+    }
+?>
 	<div class="container">
 		<div class="form-group row">
 			<label for="username" class="col-sm-2 col-form-label"><?php I18N::__('Username'); ?>:</label>

@@ -1,7 +1,6 @@
 <?php
-	use fruithost\Router;
-	use fruithost\Accounting\Auth;
-	use fruithost\I18N;
+    use fruithost\Localization\I18N;
+    use fruithost\Accounting\Auth;
 ?>
 <!DOCTYPE html>
 <html lang="<?php print $template->getLanguage(true); ?>">

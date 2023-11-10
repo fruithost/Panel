@@ -1,8 +1,8 @@
 <?php
-	use fruithost\Accounting\Auth;
-	use fruithost\I18N;
-	
-	$template->header();
+    use fruithost\Localization\I18N;
+    use fruithost\Accounting\Auth;
+
+    $template->header();
 	
 	if(!Auth::hasPermission('*')) {
 		?>

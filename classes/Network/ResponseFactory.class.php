@@ -1,5 +1,5 @@
 <?php
-	namespace fruithost;
+	namespace fruithost\Network;
 	
 	class ResponseFactory {
 		private static ?ResponseFactory $instance	= null;
@@ -7,7 +7,7 @@
 			'Content-Type'	=> 'text/html; charset=UTF-8'
 		];
 		
-		public static function getInstance() {
+		public static function getInstance() : ResponseFactory {
 			if(self::$instance === null) {
 				self::$instance = new self();
 			}
@@ -21,11 +21,11 @@
 			}
 		}
 		
-		public function addHeader(string $name, string $value) {
+		public function addHeader(string $name, string $value) : void {
 			$this->headers[$name] = $value;
 		}
 		
-		public function header() {
+		public function header() : void {
 			if(count($this->headers) > 0) {
 				foreach($this->headers AS $name => $value) {
 					header(sprintf('%s: %s', $name, $value));
@@ -33,7 +33,7 @@
 			}
 		}
 		
-		public function redirect(string $url) {
+		public function redirect(string $url) : void {
 			$this->addHeader('Location', $url);
 			$this->header();
 			exit();

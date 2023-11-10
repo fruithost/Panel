@@ -1,5 +1,5 @@
 <?php
-	namespace fruithost;
+	namespace fruithost\Modules;
 	
 	class ModuleInfo {
 		private ?string $name			= null;

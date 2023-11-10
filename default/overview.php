@@ -1,7 +1,8 @@
 <?php
-	use \fruithost\Accounting\Auth;
-	use \fruithost\I18N;
-	$template->header();
+    use fruithost\Localization\I18N;
+    use fruithost\Accounting\Auth;
+
+    $template->header();
 	?>
 		<div class="alert alert-secondary alert-dismissible fade show mt-4 welcome" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">

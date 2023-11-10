@@ -1,5 +1,5 @@
 <?php
-	use fruithost\I18N;
+    use fruithost\Localization\I18N;
 ?>
 <div class="jumbotron text-center bg-transparent text-muted">
 	<i class="material-icons">sentiment_very_dissatisfied</i>

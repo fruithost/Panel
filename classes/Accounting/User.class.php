@@ -1,10 +1,9 @@
 <?php
 	namespace fruithost\Accounting;
 	
-	use \fruithost\Accounting\Auth;
-	use \fruithost\Database;
-	
-	class User {
+	use fruithost\Storage\Database;
+
+    class User {
 		private ?int $id				= null;
 		private ?string $username		= null;
 		private ?string $email			= null;
@@ -13,7 +12,7 @@
 		
 		public function __construct() {}
 		
-		public function fetch(int $id) {
+		public function fetch(int $id)  : void {
 			$result = Database::single('SELECT *, "[*** PROTECTED ***]" as `password`, UPPER(SHA2(CONCAT(`id`, :salt, `email`), 512)) AS `crypted_mail` FROM `' . DATABASE_PREFIX . 'users` WHERE `id`=:id LIMIT 1', [
 				'id'	=> $id,
 				'salt'	=> RESET_PASSWORD_SALT
@@ -48,7 +47,7 @@
 		}
 		
 		public function getFirstName() : ?string {
-			if($this->data == false) {
+			if(!$this->data) {
 				return null;
 			}
 			
@@ -56,7 +55,7 @@
 		}
 		
 		public function getLastName() : ?string {
-			if($this->data == false) {
+            if(!$this->data) {
 				return null;
 			}
 			
@@ -64,7 +63,7 @@
 		}
 		
 		public function getPhoneNumber() : ?string {
-			if($this->data == false) {
+            if(!$this->data) {
 				return null;
 			}
 			
@@ -72,7 +71,7 @@
 		}
 		
 		public function getAddress() : ?string {
-			if($this->data == false) {
+            if(!$this->data) {
 				return null;
 			}
 			
@@ -80,7 +79,7 @@
 		}
 		
 		public function getFullName() : ?string {
-			if($this->data == false) {
+            if(!$this->data) {
 				return '';
 			}
 			
@@ -128,7 +127,7 @@
 			return $default;
 		}
 		
-		public function removeSettings(string $name, int | string | null $user_id = null) {
+		public function removeSettings(string $name, int | string | null $user_id = null) : void {
 			if(Database::exists('SELECT `id` FROM `' . DATABASE_PREFIX . 'users_settings` WHERE `user_id`=:user_id AND `key`=:key LIMIT 1', [
 				'user_id'	=> (empty($user_id) ? $this->getID() : $user_id),
 				'key'		=> $name
@@ -140,7 +139,7 @@
 			}
 		}
 		
-		public function setSettings(string $name, int | string | null $user_id = null, mixed $value = null) {
+		public function setSettings(string $name, int | string | null $user_id = null, mixed $value = null) : void {
 			if(Database::exists('SELECT `id` FROM `' . DATABASE_PREFIX . 'users_settings` WHERE `user_id`=:user_id AND `key`=:key LIMIT 1', [
 				'user_id'	=> (empty($user_id) ? $this->getID() : $user_id),
 				'key'		=> $name
@@ -164,7 +163,7 @@
 			return sprintf('https://www.gravatar.com/avatar/%s?s=%d&d=%s&r=%s', md5(strtolower(trim($this->email))), 22, 'mp', 'g');
 		}
 		
-		public function delete() {
+		public function delete() : void {
 			Database::update(DATABASE_PREFIX . 'users', [ 'id' ], [
 				'id'		=> (empty($user_id) ? $this->getID() : $user_id),
 				'deleted'	=> 'Yes'

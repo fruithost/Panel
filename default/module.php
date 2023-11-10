@@ -1,4 +1,5 @@
 <?php
+
 	$template->header();
 	
 	if(method_exists($module->getInstance(), 'frame') && !empty($module->getInstance()->frame())) {

@@ -1,8 +1,8 @@
 <?php
-	namespace fruithost;
+	namespace fruithost\Accounting;
 	
 	class Session {
-		public static function init() {
+		public static function init() : void {
 			if(!isset($_SESSION)) {
 				#@session_save_path(sprintf('%s%stemp', dirname(PATH), DS));
 				
@@ -37,13 +37,13 @@
 			return null;
 		}
 		
-		public static function set(string $name, mixed $value) {
+		public static function set(string $name, mixed $value) : void {
 			self::init();
 			
 			$_SESSION[$name] = $value;
 		}
 		
-		public static function remove(string $name) {
+		public static function remove(string $name) : void {
 			self::init();
 			
 			$_SESSION[$name] = null;

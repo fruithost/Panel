@@ -1,9 +1,8 @@
 <?php
-	use fruithost\Accounting\Auth;
-	use fruithost\I18N;
-	
-	$template->header();
-	?>
+    use fruithost\Localization\I18N;
+
+    $template->header();
+?>
 	<ul class="nav nav-tabs" id="myTab" role="tablist">
 		<li class="nav-item"><a class="nav-link<?php print (empty($action) ? ' active' : ''); ?>" id="account-tab" href="<?php print $this->url(sprintf('/admin/users/%s', $tab)); ?>" role="tab"><?php I18N::__('Account'); ?></a></li>
 		<li class="nav-item"><a class="nav-link<?php print (!empty($action) && $action === 'password' ? ' active' : ''); ?>" id="password-tab" href="<?php print $this->url(sprintf('/admin/users/%s/password', $tab)); ?>" role="tab"><?php I18N::__('Password Settings'); ?></a></li>

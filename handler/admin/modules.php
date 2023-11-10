@@ -1,10 +1,10 @@
 <?php
-	use fruithost\Database;
-	use fruithost\I18N;
-	use fruithost\UI\Button;
-	use fruithost\UI\Modal;
-	
-	$template->getAdminCore()->addModal((new Modal('add_repository', I18N::get('Add Repository'), 'admin/modules/repository/create'))->addButton([
+    use fruithost\Localization\I18N;
+    use fruithost\Storage\Database;
+    use fruithost\UI\Button;
+    use fruithost\UI\Modal;
+
+    $template->getAdminCore()->addModal((new Modal('add_repository', I18N::get('Add Repository'), 'admin/modules/repository/create'))->addButton([
 		(new Button())->setName('cancel')->setLabel(I18N::get('Cancel'))->addClass('btn-outline-danger')->setDismissable(),
 		(new Button())->setName('create')->setLabel(I18N::get('Create'))->addClass('btn-outline-success')
 	])->onSave(function(array $data = []) : string | bool {
