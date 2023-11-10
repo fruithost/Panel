@@ -9,7 +9,7 @@
         }
 
         public function get(?int $position = null) : mixed {
-            if($position !== null) {
+            if(!empty($position)) {
                 return $this->args[$position];
             }
 

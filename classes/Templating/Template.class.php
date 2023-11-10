@@ -79,6 +79,10 @@
 		public function getFiles() : TemplateFiles {
 			return $this->files;
 		}
+
+        public function getTheme() : ?string {
+            return $this->theme;
+        }
 		
 		public function assign(string $name, mixed $value) : void {
 			$this->assigns[$name] = $value;
@@ -92,7 +96,7 @@
 			}
 			
 			if($basedir) {
-				$path		= sprintf('%1$sthemes%2$s%4$s%2$s%3$s.php', dirname(PATH), DS, $file, $this->theme);
+				$path		= sprintf('%1$s%2$sthemes%2$s%4$s%2$s%3$s.php', dirname(PATH), DS, $file, $this->theme);
 			} else {
 				$path		= $file;
 			}
@@ -153,7 +157,8 @@
 			foreach($this->assigns AS $name => $value) {
 				${$name} = $value;
 			}
-			
+
+
 			if(file_exists($path)) {
 				@require_once($path);
 			} else {
