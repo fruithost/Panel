@@ -26,7 +26,7 @@
 			return DatabaseFactory::getInstance()->count($query, $parameters) > 0;
 		}
 		
-		public static function fetch(string $query, array $parameters = []) : mixed {
+		public static function fetch(string $query, array $parameters = []) : array | false {
 			return DatabaseFactory::getInstance()->fetch($query, $parameters);
 		}
 		

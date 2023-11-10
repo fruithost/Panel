@@ -81,8 +81,6 @@
                 ${$name} = $value;
             }
 
-            print $path;
-
             if(file_exists($path)) {
                 require_once($path);
             } else {

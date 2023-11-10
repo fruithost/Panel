@@ -66,34 +66,36 @@
 		}
 		
 		private function sortDepencies(array $input) : array {
-			$cloned		= array_replace([], $input);
-			$depencies	= [];
-			$output		= [];
-			
-			do {
-				$added = false;
+			$sorted = [];
 
-				foreach($cloned AS $name => $entry) {
-					$depencies = empty($entry->depencies) ? [] : $entry->depencies;
-					
-					if(count(array_diff($depencies, $depencies)) === 0) {
-						$depencies[]	= $name;
-						$added			= true;
-						unset($cloned[$name]);
-						break;
-					}
-				}
-			} while($added);
+            while($count = count($input)) {
+                foreach($input AS $name => $script) {
+                    if(isset($script->depencies)) {
+                        foreach($script->depencies as $index => $depency) {
+                            if(isset($sorted[$depency])) {
+                                unset($script->depencies[$index]);
+                            }
+                        }
 
-			/*if(count($cloned)) {
-				trigger_error("unable to resolve a dependency",E_USER_ERROR);
-			}*/
+                        if(!count($script->depencies)) {
+                            unset($script->depencies);
+                        }
+                    }
+                }
 
-			foreach($depencies AS $name) {
-				$output[$name] = $input[$name];
-			}
-			
-			return $output;
+                foreach($input AS $name => $script) {
+                    if(!isset($script->depencies)) {
+                        $sorted[$script->name] = $script;
+                        unset($input[$name]);
+                    }
+                }
+
+                /*if(count($input) == $count) {
+                    die("Unresolvable dependency");
+                }*/
+            }
+
+            return $sorted;
 		}
 		
 		public function getHeaderStylesheets(bool $depency_order = true) : array {

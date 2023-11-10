@@ -8,7 +8,7 @@
 		private ?string $username		= null;
 		private ?string $email			= null;
 		private ?string $crypted_mail	= null;
-		private array | false $data		= [];
+		private mixed $data				= [];
 		
 		public function __construct() {}
 		
