@@ -1,6 +1,9 @@
 <?php
 	namespace fruithost;
 	
+	use fruithost\UI\Button;
+	use fruithost\UI\Modal;
+	
 	class ModuleInterface {
 		private ?Core $core			= null;
 		private ?Module $instance	= null;

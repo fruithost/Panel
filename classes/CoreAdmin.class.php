@@ -6,6 +6,8 @@
 	use fruithost\Database;
 	use fruithost\Response;
 	use fruithost\ModuleInterface;
+	use fruithost\UI\Modal;
+	use fruithost\UI\Button;
 	
 	class CoreAdmin extends ModuleInterface {
 		public function init() {

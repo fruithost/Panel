@@ -1,5 +1,5 @@
 <?php
-	namespace fruithost;
+	namespace fruithost\UI;
 	
 	class Button {
 		private ?string $name		= null;

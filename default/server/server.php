@@ -16,7 +16,67 @@
 		exit();
 	}
 	
+	$ip_address = $_SERVER['SERVER_ADDR'];
+	
 	?>
+	<div class="container-fluid mt-5">
+		<div class="row">
+			<div class="col-2 col-sm-6 col-md-2">
+				<div class="card">
+					<div class="card-header d-flex flex-row p-0">
+						<span class="align-self-start flex-shrink-1 material-icons bg-dark rounded text-light p-2 m-2" style="font-size: 30px">router</span>
+						<span class="align-self-start flex-fill p-0 ml-2 mt-1">
+							<small>IP Address</small>
+							<h4 class="p-0 m-o"><?php print $ip_address; ?></h4>
+						</span>
+					</div>
+					<div class="card-body p-1 text-center">
+						<a href="">Network settings</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-4 col-sm-6 col-md-3 row">
+				<div class="col-6 col-sm-12">
+					<div class="card">
+						<div class="card-header d-flex flex-row p-0">
+							<span class="align-self-start flex-shrink-1 material-icons bg-dark rounded text-light p-2 m-2" style="font-size: 30px">watch_later</span>
+							<span class="align-self-start flex-fill p-0 ml-2 mt-1">
+								<small>Uptime</small>
+								<h6 class="p-0 m-o">00:00</h6>
+							</span>
+						</div>
+						<div class="card-body p-1 text-center">
+							<a href="">Restart</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-6 col-sm-12">
+					<div class="card">
+						<div class="card-header d-flex flex-row p-0">
+							<span class="align-self-start flex-shrink-1 material-icons bg-dark rounded text-light p-2 m-2" style="font-size: 30px">watch_later</span>
+							<span class="align-self-start flex-fill p-0 ml-2 mt-1">
+								<small>Uptime</small>
+								<h4 class="p-0 m-o">xx</h4>
+							</span>
+						</div>
+						<div class="card-body p-1 text-center">
+							<a href="">Network settings</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-5 col-sm-12">
+				<div class="card">
+					<div class="card-header d-flex flex-row">
+						Hi
+					</div>
+					<div class="card-body">
+						CONTENT
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="container mt-5">
 		<div class="row">
 			<div class="col-md-6">

@@ -1,5 +1,7 @@
 <?php
-	namespace fruithost;
+	namespace fruithost\UI;
+	
+	use fruithost\Template;
 	
 	class Modal {
 		private ?string $name		= null;

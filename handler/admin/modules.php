@@ -1,8 +1,8 @@
 <?php
 	use fruithost\Database;
 	use fruithost\I18N;
-	use fruithost\Button;
-	use fruithost\Modal;
+	use fruithost\UI\Button;
+	use fruithost\UI\Modal;
 	
 	$template->getAdminCore()->addModal((new Modal('add_repository', I18N::get('Add Repository'), 'admin/modules/repository/create'))->addButton([
 		(new Button())->setName('cancel')->setLabel(I18N::get('Cancel'))->addClass('btn-outline-danger')->setDismissable(),
