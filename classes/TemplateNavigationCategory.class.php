@@ -1,5 +1,7 @@
 <?php
 	namespace fruithost;
+
+    use fruithost\Accounting\Auth;
 	
 	class TemplateNavigationCategory {
 		private ?TemplateNavigation $navigation		= null;

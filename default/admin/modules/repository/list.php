@@ -1,5 +1,5 @@
 <?php
-	use fruithost\Auth;
+	use fruithost\Accounting\Auth;
 	use fruithost\I18N;
 ?>
 <table class="table table-borderless table-striped table-hover">

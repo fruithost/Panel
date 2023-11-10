@@ -2,7 +2,7 @@
 	namespace fruithost;
 	
 	use fruithost\Encryption;
-	use fruithost\Auth;
+	use fruithost\Accounting\Auth;
 	use fruithost\Database;
 	use fruithost\Response;
 	use fruithost\ModuleInterface;

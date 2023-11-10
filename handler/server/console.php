@@ -1,7 +1,7 @@
 <?php
 	use fruithost\Database;
 	use fruithost\Response;
-	use fruithost\Auth;
+	use fruithost\Accounting\Auth;
 	
 	if(isset($_POST['action']) && $_POST['action'] === 'command') {
         if (!Auth::hasPermission('SERVER::MANAGE')) {

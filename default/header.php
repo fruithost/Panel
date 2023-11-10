@@ -1,6 +1,6 @@
 <?php
 	use fruithost\Router;
-	use fruithost\Auth;
+	use fruithost\Accounting\Auth;
 	use fruithost\I18N;
 ?>
 <!DOCTYPE html>

@@ -1,5 +1,5 @@
 <?php
-	use fruithost\Auth;
+	use fruithost\Accounting\Auth;
 	use fruithost\Database;
 	use fruithost\Encryption;
 	use fruithost\I18N;

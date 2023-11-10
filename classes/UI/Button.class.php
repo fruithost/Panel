@@ -48,7 +48,7 @@
 			return $this;
 		}
 		
-		public function getClasses(bool $raw = true) : string {
+		public function getClasses(bool $raw = true) : string | array {
 			if($raw) {
 				return $this->classes;
 			}

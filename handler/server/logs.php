@@ -1,6 +1,6 @@
 <?php
 	use fruithost\Response;
-	use fruithost\Auth;
+	use fruithost\Accounting\Auth;
 	use fruithost\Encryption;
 	
 	function directory_map(string $sourceDir): array {

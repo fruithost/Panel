@@ -1,8 +1,9 @@
 <?php
 	namespace fruithost;
-	use \fruithost\I18N;
-	use \fruithost\ModuleInterface;
-	use \fruithost\Database;
+	use fruithost\I18N;
+	use fruithost\ModuleInterface;
+	use fruithost\Database;
+    use fruithost\Accounting\Auth;
 	
 	class Template extends TemplateDefaults {
 		private Core $core;
@@ -77,11 +78,11 @@
 			return $this->files;
 		}
 		
-		public function assign(string $name, mixed $value) {
+		public function assign(string $name, mixed $value) : void {
 			$this->assigns[$name] = $value;
 		}
 		
-		public function display(string $file, array $arguments = [], bool $basedir = true, bool $once = true) {
+		public function display(string $file, array $arguments = [], bool $basedir = true, bool $once = true) : void {
 			$template	= $this;
 			
 			foreach($arguments AS $name => $value) {
@@ -143,7 +144,7 @@
 			}
 		}
 		
-		public function header() {
+		public function header() : void {
 			$template	= $this;
 			$path		= sprintf('%1$s%2$sthemes%2$s%4$s%2$s%3$s.php', dirname(PATH), DS, 'header', $this->theme);
 			
@@ -162,7 +163,7 @@
 			}
 		}
 		
-		public function footer() {
+		public function footer() : void {
 			$template	= $this;
 			$path		= sprintf('%1$s%2$sthemes%2$s%4$s%2$s%3$s.php', dirname(PATH), DS, 'footer', $this->theme);
 			
@@ -192,11 +193,11 @@
 			return $language;
 		}
 		
-		public function head() {
+		public function head() : void {
 			$this->core->getHooks()->runAction('html_head');
 		}
 		
-		public function foot() {
+		public function foot() : void {
 			$this->core->getHooks()->runAction('html_foot');
 		}
 		

@@ -1,7 +1,7 @@
 <?php
-	namespace fruithost;
+	namespace fruithost\Accounting;
 	
-	use \fruithost\Auth;
+	use \fruithost\Accounting\Auth;
 	use \fruithost\Database;
 	
 	class User {

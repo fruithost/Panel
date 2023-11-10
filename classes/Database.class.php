@@ -2,11 +2,11 @@
 	namespace fruithost;
 	
 	class Database {
-		public static function file(string $file, callable $callback) {
-			return DatabaseFactory::getInstance()->file($file, $callback);
+		public static function file(string $file, callable $callback) : void {
+			DatabaseFactory::getInstance()->file($file, $callback);
 		}
 		
-		public static function getError(?object $object = null) {
+		public static function getError(?object $object = null): array {
 			return DatabaseFactory::getInstance()->getError($object);
 		}
 		
@@ -30,7 +30,7 @@
 			return DatabaseFactory::getInstance()->fetch($query, $parameters);
 		}
 		
-		public static function update(string $table, string | array $where, array $parameters = []) {
+		public static function update(string $table, string | array $where, array $parameters = []) : array | false {
 			return DatabaseFactory::getInstance()->update($table, $where, $parameters);
 		}
 		
@@ -46,7 +46,7 @@
 			return DatabaseFactory::getInstance()->tableExists($table);
 		}
 		
-		public static function deleteWhereNot(string $table, array $delete_not = [], array $parameters = []) {
+		public static function deleteWhereNot(string $table, array $delete_not = [], array $parameters = []) : \PDOStatement | false {
 			return DatabaseFactory::getInstance()->deleteWhereNot($table, $delete_not, $parameters);
 		}
 	}

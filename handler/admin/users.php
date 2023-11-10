@@ -1,7 +1,7 @@
 <?php
 	use fruithost\Database;
 	use fruithost\I18N;
-	use fruithost\User;
+	use fruithost\Accounting\User;
 	use fruithost\Encryption;
 	use fruithost\Session;
 	use fruithost\Response;

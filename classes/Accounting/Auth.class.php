@@ -1,5 +1,5 @@
 <?php
-	namespace fruithost;
+	namespace fruithost\Accounting;
 	
 	class Auth {
 		public static function isLoggedIn() : bool {
@@ -34,16 +34,16 @@
 			return AuthFactory::getInstance()->getGravatar();
 		}
 		
-		public static function setSettings(string $name, int | string | null $user_id = null, mixed $value = null) {
-			return AuthFactory::getInstance()->setSettings($name, $user_id, $value);			
+		public static function setSettings(string $name, int | string | null $user_id = null, mixed $value = null) : void {
+			AuthFactory::getInstance()->setSettings($name, $user_id, $value);
 		}
 		
 		public static function getSettings(string $name, int | string | null $user_id = null, mixed $default = null) : mixed {
 			return AuthFactory::getInstance()->getSettings($name, $user_id, $default);
 		}
 		
-		public static function removeSettings(string $name, int | string | null $user_id = null) {
-			return AuthFactory::getInstance()->removeSettings($name, $user_id);
+		public static function removeSettings(string $name, int | string | null $user_id = null) : void {
+			AuthFactory::getInstance()->removeSettings($name, $user_id);
 		}
 		
 		public static function hasPermission(string $name, int | string | null $user_id = null) : bool {

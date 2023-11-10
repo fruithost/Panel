@@ -4,7 +4,7 @@
 	class DatabaseFactory extends \PDO {
 		private static ?DatabaseFactory $instance = null;
 		
-		public static function getInstance() {
+		public static function getInstance() : DatabaseFactory {
 			if(self::$instance === null) {
 				self::$instance = new self(sprintf('mysql:host=%s;port=%d;dbname=%s', DATABASE_HOSTNAME, DATABASE_PORT, DATABASE_NAME), DATABASE_USERNAME, DATABASE_PASSWORD, [
 					\PDO::MYSQL_ATTR_INIT_COMMAND	=> 'SET NAMES utf8',
@@ -16,7 +16,7 @@
 			return self::$instance;
 		}
 		
-		public function getError(?object $object = null) {
+		public function getError(?object $object = null) : array | false {
 			if(empty($object)) {
 				return $this->errorInfo();
 			}
@@ -34,7 +34,7 @@
 			return false;
 		}
 		
-		public function file(string $file, callable $callback) {
+		public function file(string $file, callable $callback) :void {
 			try {
 				if(!file_exists($file)) {
 					call_user_func_array($callback, [ 'Can\'t found file: ' . $file ]);

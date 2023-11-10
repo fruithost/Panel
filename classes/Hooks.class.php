@@ -1,7 +1,7 @@
 <?php
 	namespace fruithost;
 	
-	use fruithost\Auth;
+	use fruithost\Accounting\Auth;
 	
 	class HookParameters {
 		private array $args = [];
@@ -10,9 +10,9 @@
 			$this->args = func_get_args();
 		}
 		
-		public function get(?int $postion = null) {
-			if($postion !== null) {
-				return $this->args[$postion];				
+		public function get(?int $position = null) {
+			if($position !== null) {
+				return $this->args[$position];
 			}
 			
 			return $this->args;

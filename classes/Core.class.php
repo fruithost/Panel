@@ -1,5 +1,7 @@
 <?php
 	namespace fruithost;
+
+    use fruithost\Accounting\Auth;
 	
 	class Core extends Loader {
 		private ?Modules $modules	= null;
@@ -62,7 +64,7 @@
 			return $default;
 		}
 		
-		public function setSettings(string $name, mixed $value = null) {
+		public function setSettings(string $name, mixed $value = null) : void {
 			if(is_bool($value)) {
 				$value = ($value ? 'true' : 'false');
 			}
@@ -83,7 +85,7 @@
 			}
 		}
 		
-		private function init() {
+		private function init() : void {
 			Request::init();
 			
 			$this->hooks	= new Hooks();
@@ -256,7 +258,7 @@
 				$this->router->run(true);
 				
 				// Fire modals
-				if(isset($_POST['modal']) && !empty($_POST['modal'])) {
+				if(!empty($_POST['modal'])) {
 					$modals = $this->getHooks()->applyFilter('modals', []);
 					
 					if(count($modals) == 0) {

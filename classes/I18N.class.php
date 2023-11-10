@@ -1,7 +1,7 @@
 <?php
 	namespace fruithost;
 	use \fruithost\Request;
-	use \fruithost\Auth;
+	use \fruithost\Accounting\Auth;
 	use \fruithost\Database;
 	use \Sepia\PoParser\SourceHandler\FileSystem;
 	use \Sepia\PoParser\Parser;

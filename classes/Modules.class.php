@@ -24,10 +24,7 @@
 				$module	= new Module($path);
 				
 				foreach($module->getInfo()->getDepencies() AS $name => $version) {
-					if(
-                        !in_array($name, $enabled, true) ||
-                        version_compare($versions[$name], $version, '>=') === false
-                    ) {
+					if(!in_array($name, $enabled, true) || version_compare($versions[$name], $version, '>=') === false) {
 						$module->setLocked(true);
 					}
 				}

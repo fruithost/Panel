@@ -1,6 +1,6 @@
 <?php
 	use fruithost\Database;
-	use fruithost\Auth;
+	use fruithost\Accounting\Auth;
 	use fruithost\I18N;
 	
 	if(isset($_POST['action'])) {

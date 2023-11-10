@@ -1,5 +1,5 @@
 <?php
-	use fruithost\Auth;
+	use fruithost\Accounting\Auth;
 	use fruithost\I18N;
 ?>
 <div class="container">

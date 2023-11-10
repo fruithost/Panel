@@ -1,5 +1,5 @@
 <?php
-	use fruithost\Auth;
+	use fruithost\Accounting\Auth;
 	use fruithost\Response;
 	use fruithost\Session;
 	use PHPMailer\PHPMailer;

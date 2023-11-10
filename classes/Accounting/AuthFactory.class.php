@@ -1,9 +1,10 @@
 <?php
-	namespace fruithost;
+	namespace fruithost\Accounting;
 	
-	use \fruithost\User;
+	use \fruithost\Accounting\User;
 	use \fruithost\Response;
 	use \fruithost\Session;
+    use \fruithost\Database;
 	
 	class AuthFactory {
 		private static ?AuthFactory $instance	= null;
@@ -131,11 +132,11 @@
 			return $this->user->getSettings($name, $user_id, $default);
 		}
 		
-		public function removeSettings(string $name, int | string | null $user_id = null) {
+		public function removeSettings(string $name, int | string | null $user_id = null) : void {
 			$this->user->removeSettings($name, $user_id);
 		}
 		
-		public function setSettings(string $name, int | string | null $user_id = null, mixed $value = null) {
+		public function setSettings(string $name, int | string | null $user_id = null, mixed $value = null) : void {
 			$this->user->setSettings($name, $user_id, $value);
 		}
 		
