@@ -37,13 +37,9 @@
 			$this->core->getHooks()->addAction('html_foot', [ $this, 'foot_modals' ], 10, false);
 			$this->core->getHooks()->addAction('html_foot', [ $this, 'foot_scripts' ], 10, false);
 			
-			$this->files->addStylesheet('bootstrap', $this->url('css/bootstrap/bootstrap.min.css'), '4.3.1');
-			$this->files->addStylesheet('jquery-ui', $this->url('css/jquery-ui/jquery-ui.css'), '1.12.1');
-			$this->files->addStylesheet('material-icons', $this->url('fonts/material-icons/material-icons.css'), '3.0.1', [ 'bootstrap' ]);
-			$this->files->addStylesheet('cascadia-mono', $this->url('fonts/cascadia-mono/cascadia-mono.css'), '2111.01', [ 'bootstrap' ]);
-			$this->files->addJavascript('popper', $this->url('js/popper/popper.min.js'), '3.3.1', [ 'jquery' ], TemplateFiles::FOOTER);
-			$this->files->addJavascript('jquery', $this->url('js/jquery/jquery-3.3.1.min.js'), '3.3.1', [], TemplateFiles::FOOTER);
-			$this->files->addJavascript('bootstrap', $this->url('js/bootstrap/bootstrap.bundle.min.js'), '4.3.1', [ 'jquery', 'popper' ], TemplateFiles::FOOTER);
+			$this->files->addStylesheet('bootstrap', $this->url('css/bootstrap/bootstrap.min.css'), '5.3.2');
+            $this->files->addStylesheet('cascadia-mono', $this->url('fonts/cascadia-mono/cascadia-mono.css'), '2111.01', [ 'bootstrap' ]);
+			$this->files->addJavascript('bootstrap', $this->url('js/bootstrap/bootstrap.bundle.min.js'), '5.3.2', [], TemplateFiles::FOOTER);
 			
 			$this->navigation->addCategory('account', I18N::get('Account'));
 			$this->navigation->addCategory('database', I18N::get('Databases'));
@@ -131,11 +127,11 @@
 				}
 			} else {
 				if(!Auth::isLoggedIn()) {
-					$this->getFiles()->addStylesheet('login', $this->url('css/login.css'), '1.0.0', [ 'bootstrap', 'material-icons' ]);
-				} else {
-					$this->getFiles()->addStylesheet('style', $this->url('css/style.css'), '1.0.0', [ 'bootstrap', 'material-icons' ]);
-					$this->getFiles()->addJavascript('jquery-ui', $this->url('js/jquery-ui/jquery-ui.min.js'), '1.12.1', [ 'jquery' ], TemplateFiles::FOOTER);
-					$this->getFiles()->addJavascript('ui', $template->url('js/ui.js'), '1.0.0', [ 'jquery', 'jquery-ui', 'popper', 'bootstrap' ], TemplateFiles::FOOTER);
+					$this->getFiles()->addStylesheet('login', $this->url('css/login.css'), '2.0.0', [ 'bootstrap' ]);
+                    $this->getFiles()->addJavascript('login', $this->url('js/login.js'), '1.0.0', [ 'bootstrap' ], TemplateFiles::FOOTER);
+                } else {
+					$this->getFiles()->addStylesheet('style', $this->url('css/style.css'), '2.0.0', [ 'bootstrap' ]);
+					$this->getFiles()->addJavascript('ui', $this->url('js/ui.js'), '2.0.0', [ 'bootstrap' ], TemplateFiles::FOOTER);
 				}
 				
 				$path = sprintf('%1$s%2$sdefault%2$s%3$s.php', PATH, DS, $file);

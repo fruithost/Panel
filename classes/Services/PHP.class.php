@@ -2,8 +2,8 @@
     namespace fruithost\Services;
 
     use fruithost\Localization\I18N;
-    use fruithost\System\Utils;
     use fruithost\Security\Encryption;
+    use fruithost\System\Utils;
 
     class PHP {
 		private ?string $path		= null;

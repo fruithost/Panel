@@ -3,14 +3,14 @@
 
     use fruithost\Accounting\Auth;
     use fruithost\Accounting\Session;
+    use fruithost\Localization\I18N;
     use fruithost\Modules\Modules;
-    use fruithost\Templating\Template;
+    use fruithost\Network\Request;
+    use fruithost\Network\Response;
+    use fruithost\Network\Router;
     use fruithost\Security\Encryption;
     use fruithost\Storage\Database;
-    use fruithost\Network\Router;
-    use fruithost\Network\Response;
-    use fruithost\Network\Request;
-    use fruithost\Localization\I18N;
+    use fruithost\Templating\Template;
 
     class Core extends Loader {
 		private ?Modules $modules	= null;

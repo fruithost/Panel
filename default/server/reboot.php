@@ -16,7 +16,7 @@
 	}
 	?>
 	<div class="jumbotron text-center bg-transparent text-muted">
-		<i class="material-icons text-warning">warning</i>
+		<i class="bi bi-exclamation-triangle-fill text-warning"></i>
 		<h2><?php I18N::__('System-Reboot'); ?></h2>
 		<?php
 			if(isset($error)) {

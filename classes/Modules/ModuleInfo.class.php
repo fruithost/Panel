@@ -110,7 +110,7 @@
 			
 			// @ToDo check if its an local file
 			
-			return sprintf('<i class="material-icons">%s</i>', $this->icon);
+			return sprintf('<i class="bi bi-%s"></i>', $this->icon);
 		}
 		
 		public function getDescription() : string {

@@ -1,10 +1,11 @@
 <?php
-    use fruithost\Storage\Database;
-    use fruithost\Localization\I18N;
-    use fruithost\Security\Encryption;
-    use PHPMailer\PHPMailer;
 
-    if(!empty($token)) {
+use fruithost\Localization\I18N;
+use fruithost\Security\Encryption;
+use fruithost\Storage\Database;
+use PHPMailer\PHPMailer;
+
+if(!empty($token)) {
 		$found	= null;
 		$result = Database::fetch('SELECT `id`, `username`, \'[*** PROTECTED ***]\' AS `password`, `email`, `lost_token`, UPPER(SHA2(CONCAT(`id`, :salt, `email`), 512)) AS `crypted_mail` FROM `' . DATABASE_PREFIX . 'users` WHERE `lost_enabled`=\'YES\' AND `lost_time` > DATE_SUB(NOW(), INTERVAL 24 HOUR)', [
 			'salt'	=> RESET_PASSWORD_SALT
