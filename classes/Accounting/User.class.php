@@ -2,7 +2,8 @@
 	namespace fruithost\Accounting;
 	
 	use fruithost\Storage\Database;
-
+	use fruithost\Security\Encryption;
+	
     class User {
 		private ?int $id				= null;
 		private ?string $username		= null;
