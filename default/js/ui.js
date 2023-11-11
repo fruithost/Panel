@@ -1,92 +1,41 @@
 (() => {
-	'use strict'
+	function show(event) {
+		[].map.call(document.querySelectorAll('.bi[data-bs-toggle="collapse"][data-bs-target="#' + event.target.id + '"], [data-bs-toggle="collapse"][data-bs-target="#' + event.target.id + '"] .bi'), function(icon) {
+			icon.classList.remove('bi-caret-up-square-fill');
+			icon.classList.remove('bi-caret-down-square-fill');
+			icon.classList.add('bi-caret-up-square-fill');
+		});
+	};
 
-	const getStoredTheme = () => localStorage.getItem('theme')
-	const setStoredTheme = theme => localStorage.setItem('theme', theme)
+	function hide(event) {
+		[].map.call(document.querySelectorAll('.bi[data-bs-toggle="collapse"][data-bs-target="#' + event.target.id + '"], [data-bs-toggle="collapse"][data-bs-target="#' + event.target.id + '"] .bi'), function(icon) {
+			icon.classList.remove('bi-caret-up-square-fill');
+			icon.classList.remove('bi-caret-down-square-fill');
+			icon.classList.add('bi-caret-down-square-fill');
+		});
+	};
 
-	const getPreferredTheme = () => {
-		const storedTheme = getStoredTheme()
+	[].map.call(document.querySelectorAll('.collapse'), function(collapse) {
+		collapse.addEventListener('show.bs.collapse', show);
+		collapse.addEventListener('shown.bs.collapse', show);
+		collapse.addEventListener('hide.bs.collapse', hide);
+		collapse.addEventListener('hidden.bs.collapse', hide);
+	});
 		
-		if (storedTheme) {
-			return storedTheme
-		}
-
-		return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-	}
-
-	const setTheme = theme => {
-		if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-			document.documentElement.setAttribute('data-bs-theme', 'dark')
-		} else {
-			document.documentElement.setAttribute('data-bs-theme', theme)
-		}
-	}
-
-	setTheme(getPreferredTheme())
-
-	const showActiveTheme = (theme, focus = false) => {
-		const themeSwitcher = document.querySelector('#bd-theme')
-
-		if (!themeSwitcher) {
-			return
-		}
-
-		const themeSwitcherText = document.querySelector('#bd-theme-text')
-		const activeThemeIcon = document.querySelector('.theme-icon-active')
-		const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
-		const svgOfActiveBtn = btnToActive.querySelector('i')
-
-		document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
-			element.classList.remove('active')
-			element.setAttribute('aria-pressed', 'false')
-		})
-		
-		btnToActive.classList.add('active')
-		btnToActive.setAttribute('aria-pressed', 'true')
-		activeThemeIcon.classList.remove(...activeThemeIcon.classList);
-		activeThemeIcon.classList.add(svgOfActiveBtn.classList[0]);
-		activeThemeIcon.classList.add('theme-icon-active');
-		const themeSwitcherLabel = `${themeSwitcherText.textContent} (${btnToActive.dataset.bsThemeValue})`
-		themeSwitcher.setAttribute('aria-label', themeSwitcherLabel)
-
-		if (focus) {
-			themeSwitcher.focus()
-		}
-	}
-
-	window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-		const storedTheme = getStoredTheme()
-		
-		if (storedTheme !== 'light' && storedTheme !== 'dark') {
-			setTheme(getPreferredTheme())
-		}
+	const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+	const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+	
+	const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+	const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl), {
+		trigger:	'hover',
+		html:		true
 	})
-
-	window.addEventListener('DOMContentLoaded', () => {
-		showActiveTheme(getPreferredTheme())
-
-		document.querySelectorAll('[data-bs-theme-value]').forEach(toggle => {
-			toggle.addEventListener('click', () => {
-				const theme = toggle.getAttribute('data-bs-theme-value')
-				setStoredTheme(theme)
-				setTheme(theme)
-				showActiveTheme(theme, true)
-			})
-		})
-	})
-})()
+})();
 
 
+/*
 
 (function($) {
-	$('.collapse').on('show.bs.collapse, shown.bs.collapse', function(event) {
-		$('.material-icons[data-toggle="collapse"][data-target="#' + $(this).attr('id') + '"], [data-toggle="collapse"][data-target="#' + $(this).attr('id') + '"] .material-icons').text('arrow_drop_up');
-	});
-	
-	$('.collapse').on('hide.bs.collapse, hidden.bs.collapse', function(event) {
-		$('.material-icons[data-toggle="collapse"][data-target="#' + $(this).attr('id') + '"], [data-toggle="collapse"][data-target="#' + $(this).attr('id') + '"] .material-icons').text('arrow_drop_down');
-	});
-	
 	$('.ajax').submit(function(event) {
 		event.preventDefault();
 		
@@ -114,7 +63,6 @@
 		return false;
 	});
 	
-	$('[data-toggle="tooltip"]').tooltip();
 	
 	$('[data-toggle="hover"]').popover({
 		trigger:	'hover',
@@ -183,4 +131,4 @@
 			ui.placeholder.addClass('col-6');
 		}
 	});
-}(jQuery));
+}(jQuery));*/

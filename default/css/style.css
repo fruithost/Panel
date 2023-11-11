@@ -13,6 +13,10 @@
 }
 
 /* Globals */
+:root {
+
+}
+
 * {
 	outline: none !important;
 }
@@ -21,19 +25,19 @@ body {
 	font-size: .875rem;
 }
 
-body.sortable {
-	overflow: hidden;
-}
-
-
-.sidebar {
-   
-}
-
-.offcanvas-body {
+main {
+	padding-top: 34px;
 	height: 100vh;
 }
 
+main .container-fluid, main .container-fluid .row {
+	height: 100%;
+}
+
+.sidebar {
+	overflow-x: hidden;
+    overflow-y: auto;
+}
 
 .sidebar .nav-link {
 	font-weight: 500;
@@ -64,7 +68,64 @@ body.sortable {
 .sidebar-heading {
 	font-size: .75rem;
 	text-transform: uppercase;
+	cursor: pointer;
 }
+
+/* Welcome */
+.welcome .bi {
+	font-size: 24px;
+	vertical-align: sub;
+}
+
+.welcome a {
+	text-decoration: none;
+	vertical-align: baseline;
+}
+
+.card-body .nav-pills .nav-item {
+	margin: 0 5px;
+	border-radius: var(--bs-nav-pills-border-radius);
+}
+
+.card-body .nav-pills .nav-item:hover {
+	background: var(--bs-card-cap-bg);
+}
+
+.card-body .nav-pills .nav-item .nav-link {
+	color: inherit;
+}
+
+.card-body .nav-pills .nav-item .nav-link:hover {
+	color: var(--bs-nav-link-color);
+}
+/*
+
+.jumbotron .bi {
+	font-size: 100px;
+}
+
+.jumbotron .bi.small {
+	font-size: 22px;
+}
+
+.jumbotron .btn-lg {
+	padding: 15px 50px;
+}
+
+
+body.sortable {
+	overflow: hidden;
+}
+
+
+.sidebar {
+   
+}
+
+.offcanvas-body {
+	height: 100vh;
+}
+
 
 .navbar-brand {
 	padding-top: .75rem;
@@ -216,17 +277,8 @@ ul.sortable li ul.list-unstyled li a div.label {
 	font-size: 12px;
 }
 
-.jumbotron .bi {
-	font-size: 100px;
-}
 
-.jumbotron .bi.small {
-	font-size: 22px;
-}
-
-.jumbotron .btn-lg {
-	padding: 15px 50px;
-}
+*/
 
 /* Logfile Viewer */
 .filetree {

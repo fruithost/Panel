@@ -24,7 +24,7 @@
 			if(Auth::isLoggedIn()) {
 				?>
 				<body>
-					<nav class="navbar sticky-top flex-md-nowrap p-0 bg-dark" data-bs-theme="dark">
+					<nav class="navbar fixed-top flex-md-nowrap p-0 bg-dark user-select-none" data-bs-theme="dark">
 						<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="<?php print $template->url('/'); ?>"><?php print $project_name; ?></a>
 						
 						<!-- Small -->
@@ -37,67 +37,67 @@
 						</ul>
 					</nav>
 					
-					<!-- Navigation -->
-					<div class="container-fluid">
-						<div class="row">
-							<nav class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
-								<div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
-									<div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
-										<?php
-											if(!$navigation->isEmpty()) {
-												foreach($navigation->getEntries() AS $category) {
-													if($category->isEmpty()) {
-														continue;
-													}
-													
-													$visible = false;
-													
-													foreach($category->getEntries() AS $entry) {
-														if($visible) {
-															break;
+					<main>
+						<!-- Navigation -->
+						<div class="container-fluid user-select-none">
+							<div class="row">
+								<nav class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
+									<div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+										<div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
+											<?php
+												if(!$navigation->isEmpty()) {
+													foreach($navigation->getEntries() AS $category) {
+														if($category->isEmpty()) {
+															continue;
 														}
 														
-														if($entry->active) {
-															$visible = true;
+														$visible = false;
+														
+														foreach($category->getEntries() AS $entry) {
+															if($visible) {
+																break;
+															}
+															
+															if($entry->active) {
+																$visible = true;
+															}
 														}
+														?>
+															<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-2 text-muted" data-bs-toggle="collapse" data-bs-target="#collapse_<?php print $category->getID(); ?>" aria-expanded="<?php print ($visible ? 'true' : 'false'); ?>" aria-controls="collapse_<?php print $category->getID(); ?>">
+																<span><?php print $category->getLabel(); ?></span>
+																<i class="bi bi-caret-down-square-fill d-flex text-muted"></i>
+															</h6>
+															<div class="collapse<?php print ($visible ? ' show' : ''); ?>" id="collapse_<?php print $category->getID(); ?>">
+																<?php
+																	foreach($category->getEntries() AS $entry) {
+																		?>
+																			<ul class="nav flex-column mb-2">
+																				<li class="nav-item" style="order: <?php print $entry->order; ?>;">
+																					<a class="nav-link<?php print ($entry->active ? ' active' : ''); ?>" href="<?php print (preg_match('/^(http|https):\/\//Uis', $entry->url) ? $entry->url : $template->url($entry->url)); ?>"<?php print (isset($entry->target) ? sprintf(' target="%s"', $entry->target) : ''); ?>>
+																						<?php print $entry->icon; ?> <?php print $entry->name; ?>
+																					</a>
+																				</li>
+																			</ul>
+																		<?php
+																	}
+																?>
+															</div>
+														<?php
 													}
-													?>
-														<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-2 text-muted" data-bs-toggle="collapse" data-bs-target="#collapse_<?php print $category->getID(); ?>" aria-expanded="<?php print ($visible ? 'true' : 'false'); ?>" aria-controls="collapse_<?php print $category->getID(); ?>">
-															<span><?php print $category->getLabel(); ?></span>
-															<!--<a class="d-flex align-items-center text-muted" href="#"><span data-feather="plus-circle"></span></a>-->
-															<i class="bi bi-caret-down-square-fill d-flex text-muted"></i>
-														</h6>
-														<div class="collapse<?php print ($visible ? ' show' : ''); ?>" id="collapse_<?php print $category->getID(); ?>">
-															<?php
-																foreach($category->getEntries() AS $entry) {
-																	?>
-																		<ul class="nav flex-column mb-2">
-																			<li class="nav-item" style="order: <?php print $entry->order; ?>;">
-																				<a class="nav-link<?php print ($entry->active ? ' active' : ''); ?>" href="<?php print (preg_match('/^(http|https):\/\//Uis', $entry->url) ? $entry->url : $template->url($entry->url)); ?>"<?php print (isset($entry->target) ? sprintf(' target="%s"', $entry->target) : ''); ?>>
-																					<?php print $entry->icon; ?> <?php print $entry->name; ?>
-																				</a>
-																			</li>
-																		</ul>
-																	<?php
-																}
-															?>
-														</div>
-													<?php
 												}
-											}
-										?>
+											?>
+										</div>
 									</div>
-								</div>
-							</nav>
-							<?php
-								if(isset($module) && $module->isFrame() && !$template->getCore()->getRouter()->startsWith('/admin')) {
-									?>
-										<main role="main" class="frame col-md-9 ms-sm-auto col-lg-10 px-md-4">
-									<?php
-								} else {
-									?>
-										<main role="main" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-									<?php
-								}
-			}
+								</nav>
+								<?php
+									if(isset($module) && $module->isFrame() && !$template->getCore()->getRouter()->startsWith('/admin')) {
+										?>
+											<section class="frame col-md-9 ms-sm-auto col-lg-10 px-md-4">
+										<?php
+									} else {
+										?>
+											<section class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+										<?php
+									}
+				}
 		?>

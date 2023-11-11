@@ -1,0 +1,10 @@
+html, body {
+	height: 100%;
+}
+
+textarea:focus,
+textarea:focus, 
+input:focus {
+	outline: none;
+    box-shadow:none !important;
+}

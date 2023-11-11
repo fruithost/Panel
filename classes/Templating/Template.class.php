@@ -39,7 +39,9 @@
 			
 			$this->files->addStylesheet('bootstrap', $this->url('css/bootstrap/bootstrap.min.css'), '5.3.2');
             $this->files->addStylesheet('cascadia-mono', $this->url('fonts/cascadia-mono/cascadia-mono.css'), '2111.01', [ 'bootstrap' ]);
+            $this->files->addStylesheet('global', $this->url('css/global.css'), '1.0.0', [ 'bootstrap' ]);
 			$this->files->addJavascript('bootstrap', $this->url('js/bootstrap/bootstrap.bundle.min.js'), '5.3.2', [], TemplateFiles::FOOTER);
+			$this->files->addJavascript('global', $this->url('js/global.js'), '1.0.0', [ 'bootstrap' ], TemplateFiles::FOOTER);
 			
 			$this->navigation->addCategory('account', I18N::get('Account'));
 			$this->navigation->addCategory('database', I18N::get('Databases'));
