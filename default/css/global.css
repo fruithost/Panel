@@ -8,3 +8,8 @@ input:focus {
 	outline: none;
     box-shadow:none !important;
 }
+
+/* Theme Switch */
+.theme-switch {
+	z-index: 99999;
+}

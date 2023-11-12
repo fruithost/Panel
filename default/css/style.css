@@ -489,12 +489,12 @@ ul.tree li.directory.empty {
 }
 
 ul.tree li.file {
-	color: blue;
+	color: var(--bs-text-primary);
 }
 
 .caret {
 	cursor: pointer;
-	background: rgba(195, 195, 195, 0.5);
+	background: var(--bs-dark-bg-subtle);
 	display: flex;
 	border-radius: 5px;
 	margin: 1px 5px;
@@ -504,7 +504,7 @@ ul.tree li.file {
 	flex: 1;
 	padding: 10px 10px 10px 0;
 	font-style: normal;
-	color: #444444;
+	color: var(--bs-dark-text-emphasis);
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
@@ -524,6 +524,7 @@ ul.tree li.file {
   content: "\F3D9";
   color: #f3c36b;
 }
+
 .directory.empty .caret::before {
   content: "\F6B6";
   color: #800000;
@@ -536,7 +537,7 @@ ul.tree li.file {
 
 .file .caret::before {
   content: "\F38B";
-  color: #727272;
+	color: var(--bs-dark-text-emphasis);
 }
 
 .file .caret-down::before {
@@ -555,6 +556,10 @@ li.empty::before {
 	font-size: 20px;
 	color: #d8d8d8;
 	margin: 5px 0 0 -16px;
+}
+
+ul.tree > li:first-child::before {
+	content: "";
 }
 
 li.empty::before {

@@ -43,7 +43,7 @@
 			</div>
 			<article class="editor" style="display: none;"></article>
 		</section>
-		<aside class="bg-light contentbar d-md-block">
+		<aside class="bg-body-tertiary border-start contentbar d-md-block">
 			<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-2 text-muted" data-toggle="collapse" data-target="#collapse_account" aria-expanded="false" aria-controls="collapse_account">
 				<span><?php I18N::__('Logfiles'); ?></span>
 			</h6>
