@@ -40,7 +40,7 @@ main {
 .sidebar {
 	position: fixed;
 	height: calc(100% - 34px) !important;
-	width: 280px;
+	width: 320px;
 }
 
 .sidebar .nav-link {
