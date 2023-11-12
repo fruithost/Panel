@@ -1,6 +1,7 @@
 <?php
     use fruithost\Localization\I18N;
     use fruithost\Accounting\Auth;
+    use fruithost\UI\Icon;
 ?>
 <!DOCTYPE html>
 <html lang="<?php print $template->getLanguage(true); ?>" data-bs-theme="auto">
@@ -31,7 +32,7 @@
 						<ul class="navbar-nav flex-row d-md-none">
 							<li class="nav-item text-nowrap">
 								<button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-									<i class="bi bi-list"></i>
+									<?php Icon::show('list'); ?>
 								</button>
 							</li>
 						</ul>
@@ -62,7 +63,11 @@
 											?>
 												<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-2 text-muted" data-bs-toggle="collapse" data-bs-target="#collapse_<?php print $category->getID(); ?>" aria-expanded="<?php print ($visible ? 'true' : 'false'); ?>" aria-controls="collapse_<?php print $category->getID(); ?>">
 													<span><?php print $category->getLabel(); ?></span>
-													<i class="bi bi-caret-down-square-fill d-flex text-muted"></i>
+													<?php
+														Icon::show('arrow-down', [
+															'classes'	=> [ 'd-flex', 'text-muted' ]
+														]);
+													?>
 												</h6>
 												<div class="collapse<?php print ($visible ? ' show' : ''); ?>" id="collapse_<?php print $category->getID(); ?>">
 													<?php

@@ -72,6 +72,9 @@
 					case 'class':
 						$classes[] = sprintf($template->content->html, $icons->{$icon});
 					break;
+					default:
+						throw new \Exception('Unknown icon definition: ' . $template->content->type);
+					break;
 				}
 				
 				return sprintf(self::$core->getHooks()->applyFilter('icons_html', '<%1$s class="%2$s"%3$s></%1$s>'), $template->element, implode(' ', $classes), implode(' ', $attr));

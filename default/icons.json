@@ -9,6 +9,12 @@
 	},
 	"definitions": {
 		"language":		"translate",
+		
+		"theme-light":	"sun-fill",
+		"theme-dark":	"moon-stars-fill",
+		"theme-auto":	"circle-half",
+		"check":		"check2",
+		
 		"ftp":			"folder",
 		"database":		"database",
 		"mailbox":		"envelope",
