@@ -27,7 +27,7 @@
         }
 	}
 	?>
-	<table class="table table-borderless table-striped table-hover">
+	<table class="table table-borderless border table-striped table-hover">
 		<thead>
 			<tr>
 				<th scope="col" colspan="2"><?php I18N::__('Service'); ?></th>
