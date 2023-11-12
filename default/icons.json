@@ -22,6 +22,10 @@
 		"file":			"card-heading",
 		
 		"arrow-down":	"caret-down-square-fill",
-		"arrow-right":	"chevron-compact-right"
+		"arrow-right":	"chevron-compact-right",
+		
+		"start":	"play-fill",
+		"stop":		"stop-fill",
+		"restart":	"arrow-clockwise"
 	}
 }

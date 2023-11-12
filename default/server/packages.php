@@ -33,8 +33,8 @@
 			</div>
 		</header>
 	
-		<div class="border rounded overflow-hidden">
-			<table class="table table-borderless table-striped table-hover">
+		<div class="border rounded overflow-hidden mb-5">
+			<table class="table table-borderless table-striped table-hover mb-0">
 				<thead>
 					<tr>
 						<th class="bg-secondary-subtle" scope="col"><?php I18N::__('Package'); ?></th>
@@ -54,7 +54,12 @@
 							if(empty($line)) {
 								continue;
 							}
+							
 							$info = explode(';', $line);
+							
+							if(empty(trim($info[0]))) {
+								continue;
+							}
 							?>
 								<tr>
 									<td scope="col">
