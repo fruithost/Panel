@@ -25,7 +25,9 @@
 					Response::redirect('/');
 				}
 				
-				$this->getTemplate()->display('admin');
+				$this->getTemplate()->display('overview', [
+					'admin' => true
+				]);
 			});
 			
 			$this->getRouter()->addRoute('^/admin(?:(?:/([a-zA-Z0-9\-_]+)?)(?:/([a-zA-Z0-9\-_]+)(?:/([a-zA-Z0-9\-_]+))?)?)?$', function(?string $destination = null, ?string $tab = null, ?string $action = null) {
@@ -33,9 +35,10 @@
 					Response::redirect('/');
 				}
 				
-				$this->getTemplate()->display('admin' . (!empty($destination) ? sprintf('/%s', $destination) : ''), [
+				$this->getTemplate()->display((!empty($destination) ? sprintf('/admin/%s', $destination) : 'overview'), [
 					'tab'		=> $tab,
-					'action'	=> $action
+					'action'	=> $action,
+					'admin'		=> true
 				]);
 			});
 		
