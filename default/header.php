@@ -93,9 +93,8 @@
 					</nav>
 					
 					<!-- Content -->
-					<div class="container-fluid h-100">
-						<div class="row h-100">
-							
+					<div class="container-fluid h-100-head">
+						<div class="row h-100-head">
 							<?php
 								if(isset($module) && $module->isFrame() && !$template->getCore()->getRouter()->startsWith('/admin')) {
 									?>

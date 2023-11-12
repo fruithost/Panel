@@ -26,7 +26,11 @@ body {
 }
 
 main {
-	height: calc(100vh - 10px);
+	height: calc(100vh - 50px);
+}
+
+.h-100-head {
+	height: calc(100% - 50px);
 }
 
 .navbar {	
