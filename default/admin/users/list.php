@@ -30,7 +30,7 @@
 							</div>
 						</td>
 						<td width="1px">
-							<img src="<?php print $user->getGravatar(); ?>" />
+							<img src="<?php print $user->getGravatar(); ?>" class="object-fit-cover bg-dark border rounded" alt="" />
 						</td>
 						<td>
 							<small>#<?php print $user->getID(); ?></small> <strong><?php print $user->getUsername(); ?></strong>
