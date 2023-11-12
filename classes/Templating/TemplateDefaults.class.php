@@ -66,7 +66,7 @@
 				}
 				
 				if(!in_array($name, $loaded, true)) {
-					printf('<script type="text/javascript" src="%s%sv=%s"></script>', $entry->file, (strpos($entry->file, '?') === false ? '?' : '&'), $entry->version);
+					printf('<script type="text/javascript" src="%s%sv=%s"></script>', $entry->file, (strpos($entry->file, '?') === false ? '?t=' . time() . '&' : '&t=' . time() . '&'), $entry->version);
 					$loaded[] = $name;
 				}
 			}

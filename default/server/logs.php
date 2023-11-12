@@ -83,6 +83,16 @@
 					}, level);
 				});
 				
+				function highlight(content) {
+					let lines	= [];
+					
+					content.split('\n').forEach(function(line, index ) {
+						lines.push('<div class="line"><div class="number">' + (index + 1) + '</div><div class="data">' + line + '</div></div>');
+					});
+					
+					return '<div class="content">' + lines.join('') + '</div>';
+				}
+				
 				function openFile(path) {
 					let no_file = document.querySelector('div.no-file');
 					let loading = document.querySelector('div.loading');
@@ -106,19 +116,19 @@
 							} else {
 								if(json.content.includes('\\033')) {
 									editor.innerHTML	= parser.parse(json.content)
-								} else {										
-									editor.innerText	= json.content;
+								} else {
+									editor.innerHTML	= highlight(json.content);
 								}
 							}
 							
 							loading.style.display	= 'none';
-							editor.style.display	= 'block';
+							editor.style.display	= 'flex';
 						} catch(e) {
 							console.warn(e);
 						}
 					}).post({	
 						action:	'file',
-							file:	path
+						file:	path
 					});
 				}
 

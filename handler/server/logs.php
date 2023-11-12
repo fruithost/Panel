@@ -90,7 +90,7 @@
 							$content = false;
 						}
 					}
-					
+										
 					print json_encode([
 						'file'		=> $file,
 						'content'	=> $content

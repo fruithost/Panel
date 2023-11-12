@@ -278,7 +278,7 @@ ul.sortable li ul.list-unstyled li a div.label {
 	color: #999999;
 }
 
-.filetree li.folder a i.material-icons {
+.filetree li.folder a i.bi {
 	margin: 0 5px 0 0;
 	color: #ff9b00;
 	text-shadow: 1px 1px 0 #000000;
@@ -319,7 +319,7 @@ ul.sortable li ul.list-unstyled li a div.label {
 	cursor: pointer;
 }
 
-.filetree li.folder ul.files li.file a i.material-icons {
+.filetree li.folder ul.files li.file a i.bi {
 	margin: 0 5px 0 0;
 	color: #DDDDDD;
 	font-size: 18px;
@@ -381,6 +381,25 @@ ul.sortable li ul.list-unstyled li a div.label {
 .logfile.log-success {
 	color: var(--success);
 	background: #e1ffe9;
+}
+
+article.editor div.content div.line {
+	display: flex;
+	flex-direction: row;
+}
+
+article.editor div.content div.line div.number {
+	flex: 0;
+	text-align: right;
+	background: var(--bs-tertiary-bg);
+	color: var(--bs-emphasis-color);
+	padding: 5px;
+}
+
+article.editor div.content div.line div.data {
+	flex: 1;
+	background: var(--bs-light-emphasis);
+	padding: 5px;
 }
 
 [data-percentage] {
@@ -576,6 +595,8 @@ li.empty::before {
 
 .contentbar-content {
     margin: 0 280px 0 0;
+	max-width: 100vw;
+	overflow: hidden;
 }
 
 /* Tabs */
