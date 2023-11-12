@@ -614,17 +614,19 @@ li.empty::before {
 	border: 1px solid transparent;
 	border-radius: 4px 0 0 4px;
 	background: transparent;
+	color: var(--bs-emphasis-color);
 }
 
 [aria-orientation="vertical"] .nav-link:hover {
-	border-color: transparent;
-	background: #EEEEEE;
-	width: calc(100% + 16px);
+	border-color: transparent var(--bs-primary) transparent transparent;
+	background: var(--bs-primary);
+	color: var(--bs-emphasis-color);
+	width: calc(100% + 12px);
 }
 
 [aria-orientation="vertical"] .nav-link.active, [aria-orientation="vertical"] .nav-link.active:hover {
-	width: calc(100% + 16px);
-	background: transparent;
+	width: calc(100% + 13px);
+	background: var(--bs-body-bg);
 	font-weight: bold;
-	border-color: #dee2e6 #ffffff #dee2e6 #dee2e6;
+	border-color: var(--bs-border-color) var(--bs-body-bg) var(--bs-border-color) var(--bs-border-color);
 }
