@@ -5,7 +5,7 @@
 
     $template->header();
 	
-	if($admin) {
+	if(!empty($admin) && $admin) {
 		if(!Auth::hasPermission('*')) {
 			?>
 				<div class="alert alert-danger mt-4" role="alert">
@@ -16,9 +16,7 @@
 			$template->footer();
 			exit();
 		}
-	}
-	
-	if(!$admin) {
+	} else if(empty($admin)) {
 		?>
 			<div class="alert alert-secondary alert-dismissible fade show mt-4 welcome" role="alert">
 				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?php I18N::__('Close'); ?>"></button>
