@@ -25,8 +25,8 @@
 			if(Auth::isLoggedIn()) {
 				?>
 				<body>
-					<nav class="navbar sticky-top flex-md-nowrap p-0 bg-dark user-select-none" data-bs-theme="dark">
-						<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="<?php print $template->url('/'); ?>"><?php print $project_name; ?></a>
+					<nav class="navbar sticky-top flex-md-nowrap p-0 border-bottom user-select-none">
+						<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 text-light fs-6" href="<?php print $template->url('/'); ?>"><?php print $project_name; ?></a>
 						
 						<!-- Small -->
 						<ul class="navbar-nav flex-row d-md-none">
@@ -39,8 +39,8 @@
 					</nav>
 					
 					<!-- Navigation -->
-					<nav class="sidebar user-select-none h-100 border h-100 border-right p-0 bg-body-tertiary">
-						<div class="bg-body-tertiary h-100 overflow-auto" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+					<nav class="sidebar user-select-none h-100 h-100 p-0 bg-body-tertiary">
+						<div class="h-100 overflow-auto border-end" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
 							<div class="d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
 								<?php
 									if(!$navigation->isEmpty()) {
@@ -61,7 +61,7 @@
 												}
 											}
 											?>
-												<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-2 text-muted" data-bs-toggle="collapse" data-bs-target="#collapse_<?php print $category->getID(); ?>" aria-expanded="<?php print ($visible ? 'true' : 'false'); ?>" aria-controls="collapse_<?php print $category->getID(); ?>">
+												<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-2" data-bs-toggle="collapse" data-bs-target="#collapse_<?php print $category->getID(); ?>" aria-expanded="<?php print ($visible ? 'true' : 'false'); ?>" aria-controls="collapse_<?php print $category->getID(); ?>">
 													<span><?php print $category->getLabel(); ?></span>
 													<?php
 														Icon::show('arrow-down', [

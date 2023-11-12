@@ -29,6 +29,10 @@ main {
 	height: calc(100vh - 10px);
 }
 
+.navbar {	
+	background: var(--bs-dark);
+}
+
 .sidebar {
 	position: fixed;
 	height: calc(100% - 34px) !important;
@@ -37,7 +41,7 @@ main {
 
 .sidebar .nav-link {
 	font-weight: 500;
-	color: #333;
+	color: var(--bs-dark-text-emphasis);
 	display: flex;
 	flex-direction: row;
 	padding: .2rem 2rem;
@@ -53,12 +57,16 @@ main {
 }
 
 .sidebar .nav-link.active {
-	color: #007bff;
+	color: var(--bs-primary);
 }
 
 .sidebar .nav-link:hover .bi,
 .sidebar .nav-link.active .bi {
 	color: inherit;
+}
+
+.sidebar .nav-link:hover .bi {
+	color: var(--bs-primary);	
 }
 
 .sidebar-heading {
