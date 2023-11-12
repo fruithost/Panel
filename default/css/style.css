@@ -66,13 +66,28 @@ main {
 }
 
 .sidebar .nav-link:hover .bi {
-	color: var(--bs-primary);	
+	color: var(--bs-primary);
 }
 
 .sidebar-heading {
 	font-size: .75rem;
 	text-transform: uppercase;
 	cursor: pointer;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+	font-size: 24px;
+	margin: 0;
+}
+
+.breadcrumb a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.breadcrumb li.active a {
+	color: var(--bs-primary);
 }
 
 /* Welcome */

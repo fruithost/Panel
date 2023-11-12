@@ -19,6 +19,8 @@
 		"database":		"database",
 		"mailbox":		"envelope",
 		"account":		"gear",
-		"arrow-down":	"caret-down-square-fill"
+		
+		"arrow-down":	"caret-down-square-fill",
+		"arrow-right":	"chevron-compact-right"
 	}
 }

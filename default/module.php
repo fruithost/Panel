@@ -1,4 +1,5 @@
 <?php
+    use fruithost\UI\Icon;
 
 	$template->header();
 	
@@ -10,17 +11,22 @@
 ?>
 	<form method="post" action="<?php print $this->url(true); ?>">
 		<header class="page-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-			<h1 class="h2">
-				<a <?php print (empty($submodule) ? 'class="active" ' : ''); ?>href="<?php print $this->url(sprintf('/module/%s', $module->getDirectory())); ?>"><?php print $module->getInfo()->getName(); ?></a>
-				<?php
-					if(!empty($submodule)) {
-						?>
-							<i class="material-icons">arrow_right</i>
-							<a class="active" href="<?php print $this->url(sprintf('/module/%s/%s', $module->getDirectory(), $submodule)); ?>"><?php print $this->getCore()->getHooks()->applyFilter('SUBMODULE_NAME', $submodule); ?></a>
-						<?php
-					}
-				?>
-			</h1>
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb" style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z' fill='%236c757d'/%3E%3C/svg%3E&#34;);">
+					<li class="breadcrumb-item<?php print (empty($submodule) ? ' active" aria-current="page' : ''); ?>">
+						<a href="<?php print $this->url(sprintf('/module/%s', $module->getDirectory())); ?>"><?php print $module->getInfo()->getName(); ?></a>
+					</li>
+					<?php
+						if(!empty($submodule)) {
+							?>
+								<li class="breadcrumb-item active" aria-current="page">
+									<a href="<?php print $this->url(sprintf('/module/%s/%s', $module->getDirectory(), $submodule)); ?>"><?php print $this->getCore()->getHooks()->applyFilter('SUBMODULE_NAME', $submodule); ?></a>
+								</li>
+							<?php
+						}
+					?>
+				</ol>
+			</nav>
 			<?php
 				$buttons = $this->getCore()->getHooks()->applyFilter('buttons', []);
 				
