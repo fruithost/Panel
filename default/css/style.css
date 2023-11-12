@@ -75,6 +75,15 @@ main {
 	cursor: pointer;
 }
 
+/* Topbar */
+.navbar-brand {
+	padding-top: .75rem;
+	padding-bottom: .75rem;
+	font-size: 1rem;
+	background-color: rgba(0, 0, 0, .25);
+	box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+}
+
 /* Breadcrumb */
 .breadcrumb {
 	font-size: 24px;
@@ -134,71 +143,10 @@ main {
 
 body.sortable {
 	overflow: hidden;
-}
 
-
-.sidebar {
-   
-}
 
 .offcanvas-body {
 	height: 100vh;
-}
-
-
-.navbar-brand {
-	padding-top: .75rem;
-	padding-bottom: .75rem;
-	font-size: 1rem;
-	background-color: rgba(0, 0, 0, .25);
-	box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
-}
-
-.navbar .form-control {
-	padding: .75rem 1rem;
-	border-width: 0;
-	border-radius: 0;
-}
-
-.navbar-nav .dropdown-menu {
-	position: absolute;
-	right: 0;
-	left: inherit;
-	border-radius: 0px;
-	padding: 0px;
-	margin: 0.200rem 0 0;
-}
-
-@media (max-width: 576px) {	
-	.navbar-nav .dropdown-menu {
-		margin: -2px 0 0 0;
-	}
-}
-
-.navbar-nav .nav-link img.picture {
-	vertical-align: text-top;
-}
-
-.navbar-nav .dropdown-menu .dropdown-item {
-	color: var(--light);
-}
-
-.navbar-nav .dropdown-menu .dropdown-item:focus,
-.navbar-nav .dropdown-menu .dropdown-item:hover {
-	background-color: var(--gray);
-}
-
-.navbar-nav .dropdown-menu .dropdown-divider {
-	border-color: var(--gray);
-	margin: 0px;
-}
-
-.navbar-nav .dropdown-menu .dropdown-item .bi {
-	margin-right: 4px;
-	color: #999;
-	font-size: 20px;
-	vertical-align: text-bottom;
-}
 
 [role="main"].frame {
 	padding-left: 0px !important;
@@ -298,6 +246,11 @@ ul.sortable li ul.list-unstyled li a div.label {
 
 
 */
+
+/* Forms */
+.form-group {
+	margin-bottom: 1rem !important;
+}
 
 /* Logfile Viewer */
 .filetree {
