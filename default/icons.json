@@ -19,6 +19,7 @@
 		"database":		"database",
 		"mailbox":		"envelope",
 		"account":		"gear",
+		"file":			"card-heading",
 		
 		"arrow-down":	"caret-down-square-fill",
 		"arrow-right":	"chevron-compact-right"

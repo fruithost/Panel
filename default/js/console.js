@@ -75,5 +75,5 @@
 		
 		send('motd');
 		command.focus();
-	})
+	});
 })();

@@ -126,8 +126,8 @@ main {
 .card-body .nav-pills .nav-item .nav-link:hover {
 	color: var(--bs-nav-link-color);
 }
-/*
 
+/* Jumbotron */
 .jumbotron .bi {
 	font-size: 100px;
 }
@@ -139,6 +139,10 @@ main {
 .jumbotron .btn-lg {
 	padding: 15px 50px;
 }
+
+
+/*
+
 
 
 body.sortable {
@@ -451,7 +455,6 @@ div.terminal input[name="command"] {
 }
 
 /* Logfile Viewer */
-
 .contentbar {
 	position: fixed;
 	top: 0;
@@ -459,6 +462,7 @@ div.terminal input[name="command"] {
 	right: 0;
 	z-index: 100;
 	padding: 48px 0 0;
+	width: 280px;
 	box-shadow: inset 1px 0 0 rgba(0, 0, 0, .1);
 	overflow: auto;
 }
@@ -489,11 +493,10 @@ ul.tree li.file {
 }
 
 .caret {
-  cursor: pointer;
-  user-select: none; /* Prevent text selection */
-  background: rgba(195, 195, 195, 0.5);
-  display: flex;
-  border-radius: 5px;
+	cursor: pointer;
+	background: rgba(195, 195, 195, 0.5);
+	display: flex;
+	border-radius: 5px;
 	margin: 1px 5px;
 }
 
@@ -508,36 +511,36 @@ ul.tree li.file {
 }
 
 .caret::before {
-	font-family: 'Material Icons';
+	font-family: 'bootstrap-icons';
 	color: black;
 	display: inline-block;
 	margin-right: 6px;
-	font-size: 28px;
+	font-size: 24px;
 	flex: 0;
 	padding: 0px 0px 0px 8px;
 }
 
 .directory .caret::before {
-  content: "\e2c7";
+  content: "\F3D9";
   color: #f3c36b;
 }
 .directory.empty .caret::before {
-  content: "\e14b";
+  content: "\F6B6";
   color: #800000;
 }
 
 .directory .caret-down::before {
-  content: "\e2c8";
+  content: "\F3D8";
   color: #007bff;
 }
 
 .file .caret::before {
-  content: "\e873";
+  content: "\F38B";
   color: #727272;
 }
 
 .file .caret-down::before {
-  content: "\e873";
+  content: "?";
 }
 
 .nested {
@@ -546,9 +549,9 @@ ul.tree li.file {
 
 li.directory::before,
 li.empty::before {
-	content: "\e5da";
+	content: "\F132";
 	position: absolute;
-	font-family: 'Material Icons';
+	font-family: 'bootstrap-icons';
 	font-size: 20px;
 	color: #d8d8d8;
 	margin: 5px 0 0 -16px;
@@ -561,8 +564,9 @@ li.empty::before {
 .active {
   display: flex;
 }
+
 .contentbar-content {
-    margin: 0 260px 0 0;
+    margin: 0 280px 0 0;
 }
 
 /* Tabs */
