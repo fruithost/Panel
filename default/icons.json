@@ -1,0 +1,18 @@
+{
+	"template": {
+		"element":	"i",
+		"classes":	[ "bi" ],
+		"content":	{
+			"type":	"class",
+			"html":	"bi-%s"
+		}
+	},
+	"definitions": {
+		"language":		"translate",
+		"ftp":			"folder",
+		"database":		"database",
+		"mailbox":		"envelope",
+		"account":		"gear",
+		"arrow-down":	"caret-down-square-fill"
+	}
+}

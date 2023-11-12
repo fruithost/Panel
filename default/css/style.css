@@ -26,17 +26,13 @@ body {
 }
 
 main {
-	padding-top: 34px;
-	height: 100vh;
-}
-
-main .container-fluid, main .container-fluid .row {
-	height: 100%;
+	height: calc(100vh - 10px);
 }
 
 .sidebar {
-	overflow-x: hidden;
-    overflow-y: auto;
+	position: fixed;
+	height: calc(100% - 34px) !important;
+	width: 280px;
 }
 
 .sidebar .nav-link {

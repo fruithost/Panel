@@ -1,6 +1,7 @@
 <?php
     use fruithost\Localization\I18N;
     use fruithost\Accounting\Auth;
+    use fruithost\UI\Icon;
 
     $template->header();
 	?>
@@ -12,20 +13,20 @@
 				<div class="col-sm-4 text-center">
 					<h6 class="text-left"><?php I18N::__('Get Started'); ?></h6>
 					<a href="<?php print $template->url('/module/domains'); ?>" class="btn btn-primary btn-lg ml-4 mr-4 mt-2"><?php I18N::__('Create a Domain'); ?></a>
-					<p><?php I18N::__(''); ?>or <a href="<?php print $template->url('/module/subdomains'); ?>"><?php I18N::__('create a new subdomain'); ?></a></p>
+					<p><?php I18N::__('or'); ?> <a href="<?php print $template->url('/module/subdomains'); ?>"><?php I18N::__('create a new subdomain'); ?></a></p>
 				</div>
 				<div class="col-sm-4">
 					<h6><?php I18N::__('Next Steps'); ?></h6>
 					<ul class="list-unstyled">
-						<li><i class="bi bi-folder"></i> <a href="<?php print $template->url('/module/ftp'); ?>"><?php I18N::__('Create an FTP Account'); ?></a></li>
-						<li><i class="bi bi-database"></i> <a href="<?php print $template->url('/module/database'); ?>"><?php I18N::__('Create a new Database'); ?></a></li>
-						<li><i class="bi bi-envelope"></i> <a href="<?php print $template->url('/module/mailserver'); ?>"><?php I18N::__('Create a new Mailbox'); ?></a></li>
+						<li><?php Icon::show('ftp'); ?> <a href="<?php print $template->url('/module/ftp'); ?>"><?php I18N::__('Create an FTP Account'); ?></a></li>
+						<li><?php Icon::show('database'); ?> <a href="<?php print $template->url('/module/database'); ?>"><?php I18N::__('Create a new Database'); ?></a></li>
+						<li><?php Icon::show('mailbox'); ?> <a href="<?php print $template->url('/module/mailserver'); ?>"><?php I18N::__('Create a new Mailbox'); ?></a></li>
 					</ul>
 				</div>
 				<div class="col-sm-4">
 					<h6><?php I18N::__('More Actions'); ?></h6>
 					<ul class="list-unstyled">
-						<li><i class="bi bi-gear"></i> <a href="<?php print $template->url('/settings'); ?>"><?php I18N::__('Modify your Account settings'); ?></a></li>
+						<li><?php Icon::show('account'); ?> <a href="<?php print $template->url('/settings'); ?>"><?php I18N::__('Modify your Account settings'); ?></a></li>
 					</ul>
 				</div>
 			</div>
@@ -68,7 +69,17 @@
 												<?php print $category->getLabel(); ?>
 											</div>
 											<div class="col-2 text-end actions mr-0 pr-0">
-												<i class="bi bi-caret-down-square-fill text-muted" data-bs-toggle="collapse" data-bs-target="#overview_<?php print $category->getID(); ?>" aria-expanded="false" aria-controls="overview_<?php print $category->getID(); ?>"></i>
+												<?php
+													Icon::show('arrow-down', [
+														'classes' 		=> [ 'text-muted ' ],
+														'attributes'	=> [
+															'data-bs-toggle'	=> 'collapse',
+															'data-bs-target'	=> sprintf('#overview_%s', $category->getID()),
+															'aria-expanded'		=> false,
+															'aria-controls'		=> sprintf('#overview_%s', $category->getID())
+														]
+													]);
+												?>
 											</div>
 										</div>
 									</div>

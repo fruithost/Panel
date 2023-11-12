@@ -1,5 +1,6 @@
 <?php
     use fruithost\Localization\I18N;
+    use fruithost\UI\Icon;
 
     $template->header();
 	?>
@@ -48,7 +49,7 @@
 					<?php I18N::__('Sign in'); ?>
 				</button>
 				<button type="button" class="col-3 btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-					<i class="bi-translate"></i>
+					<?php Icon::show('language'); ?>
 					<span class="visually-hidden">Toggle Dropdown</span>
 				</button>
 				<ul class="dropdown-menu">

@@ -11,6 +11,7 @@
     use fruithost\Security\Encryption;
     use fruithost\Storage\Database;
     use fruithost\Templating\Template;
+    use fruithost\UI\Icon;
 
     class Core extends Loader {
 		private ?Modules $modules	= null;
@@ -102,6 +103,8 @@
 			$this->template	= new Template($this);
 			$this->router	= new Router($this);
 			$this->admin	= new CoreAdmin($this, null);
+			
+			Icon::init($this);
 			
 			$this->getHooks()->runAction('core_pre_init');
 			
