@@ -42,6 +42,7 @@
             $this->files->addStylesheet('global', $this->url('css/global.css'), '1.0.0', [ 'bootstrap' ]);
 			$this->files->addJavascript('bootstrap', $this->url('js/bootstrap/bootstrap.bundle.min.js'), '5.3.2', [], TemplateFiles::FOOTER);
 			$this->files->addJavascript('global', $this->url('js/global.js'), '1.0.0', [ 'bootstrap' ], TemplateFiles::FOOTER);
+			$this->files->addJavascript('ajax', $this->url('js/ajax.js'), '1.0.0', [ 'bootstrap' ], TemplateFiles::FOOTER);
 			
 			$this->navigation->addCategory('account', I18N::get('Account'));
 			$this->navigation->addCategory('database', I18N::get('Databases'));
