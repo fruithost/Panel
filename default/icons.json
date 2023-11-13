@@ -35,6 +35,7 @@
 		"start":	"play-fill",
 		"stop":		"stop-fill",
 		"restart":	"arrow-clockwise",
-		"warning":	"exclamation-triangle-fill"
+		"warning":	"exclamation-triangle-fill",
+		"update":	"arrow-repeat"
 	}
 }

@@ -1,5 +1,6 @@
 <?php
     use fruithost\Localization\I18N;
+    use fruithost\UI\Icon;
 ?>
 <div class="border rounded overflow-hidden mt-5 mb-5">
 	<table class="table table-borderless table-striped table-hover mb-0">
@@ -59,7 +60,11 @@
 									$upgrade = $upgradeable->{$module->getDirectory()};
 									?>
 										<div class="alert alert-warning d-flex p-2" role="alert">
-											<i class="material-icons text-danger p-0">autorenew</i>
+											<?php
+												Icon::show('update', [
+													'classes' 		=> [ 'text-danger', 'p-0' ]
+												]);
+											?>
 											<p class="p-0 m-0"><?php printf(I18N::get('The module <strong>%s</strong> has an new upgrade to <strong>Version %s</strong>!'), $info->getName(), $upgrade->version); ?></p>
 											<button class="btn btn-outline-success btn-sm m-0 ml-2 pt-0 pb-0"><?php I18N::__('Upgrade now!'); ?></button>
 										</div>
