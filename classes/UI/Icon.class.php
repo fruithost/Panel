@@ -77,7 +77,29 @@
 					break;
 				}
 				
-				return sprintf(self::$core->getHooks()->applyFilter('icons_html', '<%1$s class="%2$s"%3$s></%1$s>'), $template->element, implode(' ', $classes), implode(' ', $attr));
+				return sprintf(self::$core->getHooks()->applyFilter('icons_html', '<%1$s class="%2$s" %3$s></%1$s>'), $template->element, implode(' ', $classes), implode(' ', $attr));
+			}
+			
+			return sprintf('[Icon %s]', $icon);
+		}
+		
+		public static function get(string $icon) : string {
+			$json		= self::$definition;
+			$icons		= $json->definitions;
+			$template 	= $json->template;
+			$class		= [];
+			
+			if(!empty($icons->{$icon})) {
+				switch($template->content->type) {
+					case 'class':
+						$class = sprintf($template->content->html, $icons->{$icon});
+					break;
+					default:
+						throw new \Exception('Unknown icon definition: ' . $template->content->type);
+					break;
+				}
+				
+				return $class;
 			}
 			
 			return sprintf('[Icon %s]', $icon);

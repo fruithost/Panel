@@ -12,4 +12,7 @@ input:focus {
 /* Theme Switch */
 .theme-switch {
 	z-index: 99999;
+	border-radius: 35%;
+	color: var(--bs-emphasis-color);
+	background-color: var(--bs-secondary-bg-subtle);
 }

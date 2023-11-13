@@ -14,7 +14,7 @@
 	
 	<!-- Theme Switch -->
 	<div class="theme-switch dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-		<button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="<?php I18N::__('Toggle theme'); ?> (<?php I18N::__('Auto'); ?>)">
+		<button class="btn border-0 py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="<?php I18N::__('Toggle theme'); ?> (<?php I18N::__('Auto'); ?>)">
 			<?php
 				Icon::show('theme-auto', [
 					'classes' 		=> [ 'theme-icon-active' ]
@@ -27,7 +27,8 @@
 				<button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
 					<?php
 						Icon::show('theme-light', [
-							'classes' 		=> [ 'me-2', 'opacity-50', 'theme-icon' ]
+							'classes' 		=> [ 'me-2', 'opacity-50', 'theme-icon' ],
+							'attributes'	=> [ 'data-name' => Icon::get('theme-light') ]
 						]);
 						
 						I18N::__('Light');
@@ -42,7 +43,8 @@
 				<button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
 					<?php
 						Icon::show('theme-dark', [
-							'classes' 		=> [ 'me-2', 'opacity-50', 'theme-icon' ]
+							'classes' 		=> [ 'me-2', 'opacity-50', 'theme-icon' ],
+							'attributes'	=> [ 'data-name' => Icon::get('theme-dark') ]
 						]);
 						
 						I18N::__('Dark');
@@ -57,7 +59,8 @@
 				<button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
 					<?php
 						Icon::show('theme-auto', [
-							'classes' 		=> [ 'me-2', 'opacity-50', 'theme-icon' ]
+							'classes' 		=> [ 'me-2', 'opacity-50', 'theme-icon' ],
+							'attributes'	=> [ 'data-name' => Icon::get('theme-auto') ]
 						]);
 						
 						I18N::__('Auto');
