@@ -87,7 +87,7 @@
 					let lines	= [];
 					
 					content.split('\n').forEach(function(line, index ) {
-						lines.push('<div class="line"><div class="number">' + (index + 1) + '</div><div class="data">' + line + '</div></div>');
+						lines.push('<div class="line user-select-all"><div class="number">' + (index + 1) + '</div><div class="data">' + line + '</div></div>');
 					});
 					
 					return '<div class="content">' + lines.join('') + '</div>';
