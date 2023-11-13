@@ -28,19 +28,34 @@
 					<nav class="navbar sticky-top flex-md-nowrap p-0 border-bottom user-select-none">
 						<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 text-light fs-6" href="<?php print $template->url('/'); ?>"><?php print $project_name; ?></a>
 						
-						<!-- Small -->
-						<ul class="navbar-nav flex-row d-md-none">
-							<li class="nav-item text-nowrap">
-								<button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-									<?php Icon::show('list'); ?>
-								</button>
-							</li>
-						</ul>
+						<div class="d-flex w-100 justify-content-between">
+							<ul class="navbar-nav justify-content-start flex-row">
+								<li class="nav-item text-nowrap">
+									<button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+										<?php Icon::show('list'); ?>
+									</button>
+								</li>
+							</ul>
+							<ul class="navbar-nav justify-content-end flex-row">
+								<li class="nav-item nav-account drodown-center">
+									<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+										<img class="object-fit-cover bg-dark border rounded picture" alt="Profile Picture" src="<?php print Auth::getGravatar(); ?>" /> <?php I18N::__('Account'); ?>
+									</a>
+									<div class="dropdown-menu bg-dark">
+										<?php
+											foreach($topbar->getEntries() AS $entry) {
+												printf('<a class="dropdown-item" href="%s">%s %s</a>', $entry->url, $entry->icon, $entry->name);
+											}
+										?>
+									</div>
+								</li>
+							</ul>
+						</div>
 					</nav>
 					
 					<!-- Navigation -->
-					<nav class="sidebar user-select-none h-100 h-100 p-0 bg-body-tertiary">
-						<div class="h-100 overflow-auto border-end" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+					<nav class="sidebar user-select-none h-100 h-100 p-0 bg-body-tertiary" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+						<div class="h-100 overflow-auto border-end" tabindex="-1">
 							<div class="d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
 								<?php
 									if(!$navigation->isEmpty()) {

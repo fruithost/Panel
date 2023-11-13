@@ -10,6 +10,7 @@
 	"definitions": {
 		"language":		"translate",
 		"smiley-bad":	"emoji-frown",
+		"list":			"list",
 		
 		"theme-light":	"sun-fill",
 		"theme-dark":	"moon-stars-fill",
