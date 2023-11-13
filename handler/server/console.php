@@ -93,9 +93,14 @@
             exit();
         }
 
+		setlocale(LC_ALL, I18N::set() . '.UTF-8');
+		putenv('LC_ALL=' . I18N::set() . '.UTF-8');
+		
+
         $build = [
             'export MAN_KEEP_FORMATTING=1;',
             'export SHELL=/bin/bash;',
+            sprintf('export LANG=%s.UTF-8;', I18N::set()),
             'export TERM=xterm-256color;',
             'export _=/usr/bin/env;',
             'export USER=fruithost;',

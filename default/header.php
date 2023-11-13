@@ -24,12 +24,13 @@
 			
 			if(Auth::isLoggedIn()) {
 				?>
-				<body>
-					<nav class="navbar sticky-top flex-md-nowrap p-0 border-bottom user-select-none">
+				<body class="d-flex flex-column p-0 m-0 align-items-stretch">
+					<nav class="navbar sticky-top flex-nowrap p-0 border-bottom user-select-none">
 						<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 text-light fs-6" href="<?php print $template->url('/'); ?>"><?php print $project_name; ?></a>
 						
 						<div class="d-flex w-100 justify-content-between">
-							<ul class="navbar-nav justify-content-start flex-row">
+							<div class="navbar-nav justify-content-start flex-row d-md-block d-sm-none"></div>
+							<ul class="navbar-nav justify-content-start flex-row d-md-none">
 								<li class="nav-item text-nowrap">
 									<button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
 										<?php Icon::show('list'); ?>
@@ -53,72 +54,74 @@
 						</div>
 					</nav>
 					
-					<!-- Navigation -->
-					<nav class="sidebar user-select-none h-100 h-100 p-0 bg-body-tertiary" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
-						<div class="h-100 overflow-auto border-end" tabindex="-1">
-							<div class="d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
-								<?php
-									if(!$navigation->isEmpty()) {
-										foreach($navigation->getEntries() AS $category) {
-											if($category->isEmpty()) {
-												continue;
-											}
-											
-											$visible = false;
-											
-											foreach($category->getEntries() AS $entry) {
-												if($visible) {
-													break;
+					<div class="d-flex flex-row h-100 align-items-stretch p-0 m-0">
+						<!-- Navigation -->
+						<nav class="sidebar overflow-auto user-select-none align-items-stretch p-0 m-0 h-100 bg-body-tertiary d-sm-none d-md-block" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+							<div class="h-100 border-end" tabindex="-1">
+								<div class="d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
+									<?php
+										if(!$navigation->isEmpty()) {
+											foreach($navigation->getEntries() AS $category) {
+												if($category->isEmpty()) {
+													continue;
 												}
 												
-												if($entry->active) {
-													$visible = true;
+												$visible = false;
+												
+												foreach($category->getEntries() AS $entry) {
+													if($visible) {
+														break;
+													}
+													
+													if($entry->active) {
+														$visible = true;
+													}
 												}
+												?>
+													<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-2" data-bs-toggle="collapse" data-bs-target="#collapse_<?php print $category->getID(); ?>" aria-expanded="<?php print ($visible ? 'true' : 'false'); ?>" aria-controls="collapse_<?php print $category->getID(); ?>">
+														<span><?php print $category->getLabel(); ?></span>
+														<?php
+															Icon::show('arrow-down', [
+																'classes'	=> [ 'd-flex', 'text-muted' ]
+															]);
+														?>
+													</h6>
+													<div class="collapse<?php print ($visible ? ' show' : ''); ?>" id="collapse_<?php print $category->getID(); ?>">
+														<?php
+															foreach($category->getEntries() AS $entry) {
+																?>
+																	<ul class="nav flex-column mb-2">
+																		<li class="nav-item" style="order: <?php print $entry->order; ?>;">
+																			<a class="nav-link<?php print ($entry->active ? ' active' : ''); ?>" href="<?php print (preg_match('/^(http|https):\/\//Uis', $entry->url) ? $entry->url : $template->url($entry->url)); ?>"<?php print (isset($entry->target) ? sprintf(' target="%s"', $entry->target) : ''); ?>>
+																				<?php print $entry->icon; ?> <?php print $entry->name; ?>
+																			</a>
+																		</li>
+																	</ul>
+																<?php
+															}
+														?>
+													</div>
+												<?php
 											}
+										}
+									?>
+								</div>
+							</div>
+						</nav>
+						
+						<!-- Content -->
+						<div class="h-100 flex-fill overflow-auto">
+							<div class="container-fluid h-100">
+								<div class="row h-100">
+									<?php
+										if(isset($module) && $module->isFrame() && !$template->getCore()->getRouter()->startsWith('/admin')) {
 											?>
-												<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-2" data-bs-toggle="collapse" data-bs-target="#collapse_<?php print $category->getID(); ?>" aria-expanded="<?php print ($visible ? 'true' : 'false'); ?>" aria-controls="collapse_<?php print $category->getID(); ?>">
-													<span><?php print $category->getLabel(); ?></span>
-													<?php
-														Icon::show('arrow-down', [
-															'classes'	=> [ 'd-flex', 'text-muted' ]
-														]);
-													?>
-												</h6>
-												<div class="collapse<?php print ($visible ? ' show' : ''); ?>" id="collapse_<?php print $category->getID(); ?>">
-													<?php
-														foreach($category->getEntries() AS $entry) {
-															?>
-																<ul class="nav flex-column mb-2">
-																	<li class="nav-item" style="order: <?php print $entry->order; ?>;">
-																		<a class="nav-link<?php print ($entry->active ? ' active' : ''); ?>" href="<?php print (preg_match('/^(http|https):\/\//Uis', $entry->url) ? $entry->url : $template->url($entry->url)); ?>"<?php print (isset($entry->target) ? sprintf(' target="%s"', $entry->target) : ''); ?>>
-																			<?php print $entry->icon; ?> <?php print $entry->name; ?>
-																		</a>
-																	</li>
-																</ul>
-															<?php
-														}
-													?>
-												</div>
+												<main class="frame col px-md-4">
+											<?php
+										} else {
+											?>
+												<main class="col px-md-4">
 											<?php
 										}
-									}
-								?>
-							</div>
-						</div>
-					</nav>
-					
-					<!-- Content -->
-					<div class="container-fluid h-100-head">
-						<div class="row h-100-head">
-							<?php
-								if(isset($module) && $module->isFrame() && !$template->getCore()->getRouter()->startsWith('/admin')) {
-									?>
-										<main class="frame col-md-9 ms-sm-auto col-lg-10 px-md-4">
-									<?php
-								} else {
-									?>
-										<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-									<?php
-								}
-				}
-		?>
+					}
+			?>

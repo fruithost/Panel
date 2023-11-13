@@ -5,8 +5,10 @@
 
 	if(Auth::isLoggedIn()) {
 		?>
-				</main>
+					</main>
+				</div>
 			</div>
+		</div>
 		</div>
 		<?php
 	}
