@@ -32,7 +32,6 @@
 					</ol>
 				</nav>
 			
-			
 				<div class="btn-toolbar mb-2 mb-md-0">
 					<div class="btn-group mr-2">
 						<a class="btn btn-sm btn-outline-danger" href="<?php print $this->url('/admin/modules' . (!empty($tab) ? '/' . $tab : '')); ?>"><?php I18N::__('Cancel'); ?></a>
