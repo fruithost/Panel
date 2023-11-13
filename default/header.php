@@ -24,7 +24,7 @@
 			
 			if(Auth::isLoggedIn()) {
 				?>
-				<body class="d-flex flex-column p-0 m-0 align-items-stretch">
+				<body class="d-flex overflow-hidden flex-column p-0 m-0 align-items-stretch">
 					<nav class="navbar sticky-top flex-nowrap p-0 border-bottom user-select-none">
 						<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 text-light fs-6" href="<?php print $template->url('/'); ?>"><?php print $project_name; ?></a>
 						
