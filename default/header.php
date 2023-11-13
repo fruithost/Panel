@@ -38,10 +38,10 @@
 							</ul>
 							<ul class="navbar-nav justify-content-end flex-row">
 								<li class="nav-item nav-account drodown-center">
-									<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+									<a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
 										<img class="object-fit-cover bg-dark border rounded picture" alt="Profile Picture" src="<?php print Auth::getGravatar(); ?>" /> <?php I18N::__('Account'); ?>
 									</a>
-									<div class="dropdown-menu bg-dark">
+									<div class="dropdown-menu">
 										<?php
 											foreach($topbar->getEntries() AS $entry) {
 												printf('<a class="dropdown-item" href="%s">%s %s</a>', $entry->url, $entry->icon, $entry->name);
