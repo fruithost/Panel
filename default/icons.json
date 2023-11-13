@@ -22,12 +22,19 @@
 		"mailbox":		"envelope",
 		"account":		"gear",
 		"file":			"card-heading",
+		"ip":			"router",
+		"uptime":		"clock",
+		"unknown":		"question",
+		"memory":		"memory",
+		"storage":		"hdd",
+		"network":		"pci-card-network",
 		
 		"arrow-down":	"caret-down-square-fill",
 		"arrow-right":	"chevron-compact-right",
 		
 		"start":	"play-fill",
 		"stop":		"stop-fill",
-		"restart":	"arrow-clockwise"
+		"restart":	"arrow-clockwise",
+		"warning":	"exclamation-triangle-fill"
 	}
 }

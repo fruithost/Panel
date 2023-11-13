@@ -2,7 +2,12 @@
 .xdebug-error, .xdebug-var-dump {
 	z-index: 9999999999;
 	position: relative;
+	overflow: visible !important;
 	background: #FEFEFE;
+}
+
+[data-bs-theme="dark"] .xdebug-error, [data-bs-theme="dark"] .xdebug-var-dump {
+	background: #444444;
 }
 
 /* Animations & Effects */

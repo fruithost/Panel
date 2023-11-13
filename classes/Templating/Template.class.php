@@ -87,7 +87,7 @@
 			$this->assigns[$name] = $value;
 		}
 		
-		public function display(string $file, array $arguments = [], bool $basedir = true, bool $once = true) : void {
+		public function display(string $file, array $arguments = [], bool $basedir = true, bool $once = true) : ?bool {
 			$template	= $this;
 			
 			foreach($arguments AS $name => $value) {
@@ -119,7 +119,7 @@
 			}
 			
 			if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-				return;
+				return null;
 			}
 			
 			if(file_exists($path) && is_readable($path)) {
@@ -128,6 +128,8 @@
 				} else {
 					require($path);
 				}
+					
+				return true;
 			} else {
 				if(!Auth::isLoggedIn()) {
 					$this->getFiles()->addStylesheet('login', $this->url('css/login.css'), '2.0.0', [ 'bootstrap' ]);
@@ -145,8 +147,12 @@
 					} else {
 						require($path);
 					}
+					
+					return true;
 				}
 			}
+			
+			return false;
 		}
 		
 		public function header() : void {

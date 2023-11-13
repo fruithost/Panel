@@ -35,11 +35,13 @@
 					Response::redirect('/');
 				}
 				
-				$this->getTemplate()->display((!empty($destination) ? sprintf('/admin/%s', $destination) : 'overview'), [
+				if($this->getTemplate()->display((!empty($destination) ? sprintf('/admin/%s', $destination) : 'overview'), [
 					'tab'		=> $tab,
 					'action'	=> $action,
 					'admin'		=> true
-				]);
+				]) == false) {
+					$this->getTemplate()->display('error/404');
+				}
 			});
 		
 			$this->getRouter()->addRoute('^/server(?:/([a-zA-Z0-9\-_]+))(?:/([a-zA-Z0-9\-_]+))?$', function(?string $destination = null, ?string $tab = null) {
@@ -47,9 +49,11 @@
 					Response::redirect('/');
 				}
 				
-				$this->getTemplate()->display('server' . (!empty($destination) ? sprintf('/%s', $destination) : ''), [
+				if($this->getTemplate()->display('server' . (!empty($destination) ? sprintf('/%s', $destination) : ''), [
 					'tab'	=> $tab
-				]);
+				]) == false) {
+					$this->getTemplate()->display('error/404');
+				}
 			});
 		}
 	}

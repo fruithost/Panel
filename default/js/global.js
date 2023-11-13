@@ -44,10 +44,9 @@
 		btnToActive.classList.add('active')
 		btnToActive.setAttribute('aria-pressed', 'true')
 		
-		console.log(activeThemeIcon.dataset.current);
 		activeThemeIcon.classList.remove(activeThemeIcon.dataset.current);
 		activeThemeIcon.dataset.current = svgOfActiveBtn.dataset.name;
-		activeThemeIcon.classList.add(activeThemeIcon.dataset.current);
+		activeThemeIcon.classList.add(svgOfActiveBtn.dataset.name);
 		activeThemeIcon.classList.add('theme-icon-active');
 		
 		const themeSwitcherLabel = `${themeSwitcherText.textContent} (${btnToActive.dataset.bsThemeValue})`
