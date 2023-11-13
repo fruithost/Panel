@@ -454,10 +454,9 @@ tr:hover .module-badge {
 
 /* Bash Colors */
 div.terminal {
-	top: 48px;
-	left: 320px;
-	bottom: 0;
-	right: 0;
+	position: relative;
+	margin: 0 -1.5rem !important;
+	width: calc(100% + 3rem);
 	background: #282c34;
 	color: #dcdfe4;
 	box-shadow: inset 0px 2px 10px rgba(0, 0, 0, .25);

@@ -78,7 +78,7 @@
 						?>
 							<li class="col-md-6">
 								<div class="card m-2">
-									<div class="card-header container">
+									<div class="card-header container-fluid">
 										<div class="row">
 											<div class="col-10 pt-1">
 												<?php print $category->getLabel(); ?>

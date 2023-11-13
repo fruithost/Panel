@@ -15,7 +15,7 @@
 		exit();
 	}
 	?>
-		<div class="terminal position-fixed">
+		<div class="terminal p-0 m-0 h-100">
 			<div class="output"></div>
 			<input name="command" placeholder="<?php I18N::__('Command...'); ?>" />
 		</div>
