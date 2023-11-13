@@ -82,14 +82,14 @@
 					<div class="card-body p-0">
 						<table class="table m-0 table-borderless table-striped">
 							<tr>
-								<td rowspan="3" class="text-center align-middle border-end">
+								<td rowspan="4" class="text-center align-middle border-end">
 									<img height="50px" class="m-2" src="<?php print $template->url('/assets/systems/debian.svg'); ?>" alt="Debian" />
 								</td>
 								<td>
 									<strong><?php I18N::__('System'); ?></strong>
 								</td>
 								<td>
-									<?php print $os; ?>
+									<?php print $os; ?>, <?php print $machine_type; ?>
 								</td>
 							</tr>
 							<tr>

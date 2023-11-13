@@ -1,21 +1,6 @@
 <?php
     use fruithost\Accounting\Auth;
-
-	/* Uptime */
-    $uname			= explode(' ', shell_exec('uname -a'));
-	$uptime_array	= explode(' ', shell_exec('cat /proc/uptime'));
-	$seconds		= round($uptime_array[0], 0);
-	$minutes		= $seconds / 60;
-	$hours			= $minutes / 60;
-	$days			= floor($hours / 24);
-	$hours			= sprintf('%02d', floor($hours - ($days * 24)));
-	$minutes		= sprintf('%02d', floor($minutes - ($days * 24 * 60) - ($hours * 60)));
-	
-	if($days == 0) {
-		$uptime = sprintf('%s:%s', $hours, $minutes);
-	} else {
-		$uptime = sprintf('%s:%s:%s', $days, $hours, $minutes);
-	}
+	use fruithost\OS\OperatingSystem;
 
 	/* Memory */
 	$memory		= [];
@@ -90,11 +75,12 @@
 	$template->assign('hostname',			shell_exec('hostname'));
 	$template->assign('hostname_panel',		$_SERVER['HTTP_HOST']);
 	$template->assign('ip_address',			$_SERVER['SERVER_ADDR']);
-	$template->assign('time_system',		shell_exec('date +\'%d %b %Y %T %Z\''));
 	$template->assign('time_php',			date('d M Y H:i:s T'));
-	$template->assign('os',					$uname[0]);
-	$template->assign('kernel',				$uname[2]);
-	$template->assign('uptime',				$uptime);
+	$template->assign('time_system',		OperatingSystem::getTime());
+	$template->assign('os',					OperatingSystem::getPrettyName());
+	$template->assign('kernel',				OperatingSystem::getKernel());
+	$template->assign('machine_type',		OperatingSystem::getMachineType());
+	$template->assign('uptime',				OperatingSystem::getUptime(true));
 	$template->assign('memory',				$memory);
 	$template->assign('disks',				$disks);
 	$template->assign('daemon',			[
