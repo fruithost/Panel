@@ -16,7 +16,7 @@
 					return;
 				}
 				
-				output.innerHTML += (parser.parse(response));
+				output.innerHTML += parser.parse(response);
 				command.focus();
 				output.scrollTo(0, output.scrollHeight);
 			}).post({	

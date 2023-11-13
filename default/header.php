@@ -120,7 +120,7 @@
 											<?php
 										} else {
 											?>
-												<main class="col px-md-4">
+												<main class="col px-md-4 d-block">
 											<?php
 										}
 					}

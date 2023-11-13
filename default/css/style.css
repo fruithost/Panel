@@ -397,6 +397,11 @@ ul.sortable li ul.list-unstyled li a div.label {
 	background: #e1ffe9;
 }
 
+article.editor {
+	display: flex;
+	flex-direction: column;
+}
+
 article.editor div.content div.line {
 	display: flex;
 	flex-direction: row;
@@ -470,7 +475,6 @@ div.terminal div.output {
 	font-size: 12px;
 	font-family: 'Cascadia Mono';
 }
-
 
 div.terminal div.output span[data-color="0;32"] {
 	color: #9bc67c;
