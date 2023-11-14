@@ -24,10 +24,10 @@
 				'project_copyright' => $this->core->getSettings('PROJECT_COPYRIGHT', true)
 			];
 			
-			if(defined('DEBUG') && !DEBUG) {
-				ob_start('ob_gzhandler');
-			} else {
+			if(defined('DEBUG') && DEBUG) {
 				ob_start();
+			} else {
+				ob_start('ob_gzhandler');
 			}
 			
 			$this->core->getHooks()->addAction('html_head', [ $this, 'head_robots' ], 10, false);

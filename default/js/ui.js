@@ -30,6 +30,63 @@
 		trigger:	'hover',
 		html:		true
 	}))
+	
+	function serialize(form) {
+		var obj = {};
+		var formData = new FormData(form);
+		for (var key of formData.keys()) {
+			obj[key] = formData.get(key);
+		}
+		return obj;
+	};
+
+	function ajaxSubmit(event) {
+		event.preventDefault();
+		
+		try {
+			let form = this;
+			
+			// @ToDo add onError?
+			
+			new Ajax(form.action).onSuccess(function(response) {
+				if(response.toLowerCase() === 'true') {
+					//form.closest('.modal').modal('hide');
+					window.location.reload();
+					return;
+				} else if(response.toLowerCase() === 'false') {
+					response = 'An unknown error has occurred.';
+				}
+				
+				let content	= form.querySelector('.modal-body');
+				let alert	= content.querySelector('.alert');
+				
+				if(alert) {
+					content.removeChild(alert);
+				}
+				
+				alert = document.createElement('div');
+				alert.classList.add('alert');
+				alert.classList.add('alert-danger');
+				alert.setAttribute('role', 'alert');
+				alert.innerHTML = response;
+				content.prepend(alert);
+			}).post(serialize(form));
+		} catch(e) {
+			
+		}
+		
+		return false;
+	};
+	
+	[].map.call(document.querySelectorAll('.ajax'), function(form) {
+		form.addEventListener('click', function(event) {
+			ajaxSubmit.apply(form, [ event ]);
+		});
+		
+		form.addEventListener('submit', function(event) {
+			ajaxSubmit.apply(form, [ event ]);
+		});
+	});
 })();
 
 
@@ -46,17 +103,7 @@
 			url:	form.attr('action'),
 			data:	form.serialize(),
 			success: function onSuccess(response) {
-				if(response.toLowerCase() === 'true') {
-					form.closest('.modal').modal('hide');
-					window.location.reload();
-					return;
-				} else if(response.toLowerCase() === 'false') {
-					response = 'An unknown error has occurred.';
-				}
 				
-				let content = form.closest('.modal').find('.modal-body');
-				content.find('.alert').remove();
-				content.prepend('<div class="alert alert-danger" role="alert">' + response + '</div>');
 			}
 		});
 		

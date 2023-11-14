@@ -93,7 +93,7 @@
 							case 'repositorys':
 								?>
 									<div class="btn-group mr-2">
-										<button type="button" name="add_repository" data-toggle="modal" data-target="#add_repository" class="btn btn-sm btn-outline-primary"><?php I18N::__('Add new'); ?></button>
+										<button type="button" name="add_repository" data-bs-toggle="modal" data-bs-target="#add_repository" class="btn btn-sm btn-outline-primary"><?php I18N::__('Add new'); ?></button>
 										<button type="submit" name="action" value="update" class="btn btn-sm btn-outline-success"><?php I18N::__('Update'); ?></button>
 										<button type="submit" name="action" value="delete" class="btn btn-sm btn-outline-danger"><?php I18N::__('Delete'); ?></button>
 									</div>
