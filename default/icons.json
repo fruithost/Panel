@@ -20,7 +20,7 @@
 		"ftp":			"folder",
 		"database":		"database",
 		"mailbox":		"envelope",
-		"account":		"gear",
+		"settings":		"gear",
 		"file":			"card-heading",
 		"ip":			"router",
 		"uptime":		"clock",
@@ -28,6 +28,18 @@
 		"memory":		"memory",
 		"storage":		"hdd",
 		"network":		"pci-card-network",
+		"account":		"person-circle",
+		"logout":		"power",
+		"overview":		"speedometer",
+		"users":		"people-fill",
+		"themes":		"palette",
+		"modules":		"boxes",
+		"server":		"device-hdd",
+		"logfiles":		"file-earmark-text",
+		"options":		"sliders",
+		"console":		"terminal-fill",
+		"packages":		"archive-fill",
+		"services":		"activity",
 		
 		"arrow-down":	"caret-down-square-fill",
 		"arrow-right":	"chevron-compact-right",
@@ -36,6 +48,7 @@
 		"stop":		"stop-fill",
 		"restart":	"arrow-clockwise",
 		"warning":	"exclamation-triangle-fill",
-		"update":	"arrow-repeat"
+		"update":	"arrow-repeat",
+		"reboot":	"arrow-repeat"
 	}
 }

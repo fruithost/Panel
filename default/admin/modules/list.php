@@ -15,7 +15,7 @@
 				foreach($modules->getList() AS $module) {
 					$info = $module->getInfo();
 					?>
-					<tr class="<?php print (isset($upgradeable->{$module->getDirectory()}) ? 'table-warning' : ''); ?>">
+					<tr>
 						<td scope="row" width="1px">
 							<div class="form-check">
 								<input class="form-check-input" type="checkbox" id="module_<?php print $info->getName(); ?>" name="module[]" value="<?php print $info->getName(); ?>" />
@@ -59,14 +59,14 @@
 								if(isset($upgradeable->{$module->getDirectory()})) {
 									$upgrade = $upgradeable->{$module->getDirectory()};
 									?>
-										<div class="alert alert-warning d-flex p-2" role="alert">
+										<div class="text-bg-warning d-flex p-2 opacity-50" role="alert">
 											<?php
 												Icon::show('update', [
-													'classes' 		=> [ 'text-danger', 'p-0' ]
+													'classes' 		=> [ 'text-danger', 'p-0', 'mr-2' ]
 												]);
 											?>
 											<p class="p-0 m-0"><?php printf(I18N::get('The module <strong>%s</strong> has an new upgrade to <strong>Version %s</strong>!'), $info->getName(), $upgrade->version); ?></p>
-											<button class="btn btn-outline-success btn-sm m-0 ml-2 pt-0 pb-0"><?php I18N::__('Upgrade now!'); ?></button>
+											<button class="btn btn-outline-success btn-sm m-0 ml-3 pt-0 pb-0"><?php I18N::__('Upgrade now!'); ?></button>
 										</div>
 									<?php
 								}

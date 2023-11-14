@@ -111,17 +111,25 @@
 					?>
 				</div>
 			</header>
-			<ul class="nav nav-tabs" id="myTab" role="tablist">
-				<li class="nav-item"><a class="nav-link<?php print (empty($tab) ? ' active' : ''); ?>" id="globals-tab" href="<?php print $this->url('/admin/modules'); ?>" role="tab"><?php
-					I18N::__('Installed Modules');
-					
-					$updates = count((array) $upgradeable);
-					
-					if($updates > 0) {
-						printf('<span class="badge badge-pill badge-danger ml-1">%d</span>', $updates);
-					}
-				?></a></li>
-				<li class="nav-item"><a class="nav-link<?php print (!empty($tab) && $tab === 'repositorys' ? ' active' : ''); ?>" id="security-tab" href="<?php print $this->url('/admin/modules/repositorys'); ?>" role="tab"><?php I18N::__('Repositorys'); ?></a></li>
+			<ul class="nav nav-tabs" role="tablist">
+				<li class="nav-item">
+					<a class="nav-link<?php print (empty($tab) ? ' active' : ''); ?>" id="globals-tab" href="<?php print $this->url('/admin/modules'); ?>" role="tab">
+						<?php
+							I18N::__('Installed Modules');
+							
+							$updates = count((array) $upgradeable);
+							
+							if($updates > 0) {
+								printf('<span class="badge rounded-pill text-bg-warning">%d</span>', $updates);
+							}
+						?>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link<?php print (!empty($tab) && $tab === 'repositorys' ? ' active' : ''); ?>" id="security-tab" href="<?php print $this->url('/admin/modules/repositorys'); ?>" role="tab">
+						<?php I18N::__('Repositorys'); ?>
+					</a>
+				</li>
 			</ul>
 			<?php
 				if(isset($error)) {

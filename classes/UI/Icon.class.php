@@ -43,7 +43,7 @@
 			self::$definition = $json;
 		}
 		
-		protected static function render(string $icon, ?array $options = []) : string {
+		public static function render(string $icon, ?array $options = []) : string {
 			$json		= self::$definition;
 			$icons		= $json->definitions;
 			$template 	= $json->template;

@@ -136,12 +136,33 @@
 					
 					foreach($repositorys AS $entry) {
 						// Load GitHub by RAW
-						if(preg_match('/github\.com\/([^\/]+)\/(.*)(?:\/)?$/Uis', $entry->url, $matches)) {
+						if(preg_match('/github\.com\/([^\/]+)\/(.*)(?:[^\/]+)?$/Uis', $entry->url, $matches)) {
 							$entry->url = sprintf('https://raw.githubusercontent.com/%s/%s/master', $matches[1], rtrim($matches[2], '/'));
+						} else if(str_starts_with($entry->url, 'git:')) {
+							$parts	= explode(' ', $entry->url);
+							$user	= null;
+							$repo	= null;
+							$branch = null;
+							
+							foreach($parts AS $part) {
+								if(str_starts_with($part, 'user:')) {
+									$user = str_replace('user:', '', $part);
+								} else if(str_starts_with($part, 'repo:')) {
+									$repo = str_replace('repo:', '', $part);									
+								} else if(str_starts_with($part, 'branch:')) {
+									$branch = str_replace('branch:', '', $part);									
+								}
+							}
+							
+							if(empty($branch)) {
+								$branch = 'master'; 
+							}
+							
+							$entry->url = sprintf('https://raw.githubusercontent.com/%s/%s/%s', $user, $repo, $branch);
 						}
 						
 						$list		= @file_get_contents(sprintf('%s/modules.list', $entry->url));
-					
+						
 						if(empty($list)) {
 							$updated	= '0000-00-00 00:00:00';
 						} else {	
@@ -165,7 +186,7 @@
 								++$loaded;
 								
 								if(isset($packages[$name])) {
-									continue;
+									//continue;
 								}
 								
 								$packages[$name] = $info;
