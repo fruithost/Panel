@@ -40,7 +40,7 @@
 										
 										foreach($button AS $entry) {
 											if($entry->hasModal()) {
-												printf('<button type="button" name="%1$s" data-toggle="modal" data-target="#%4$s" class="btn btn-sm %3$s">%2$s</button>', $entry->getName(), $entry->getLabel(), $entry->getClasses(false), $entry->getModal());
+												printf('<button type="button" name="%1$s" data-bs-toggle="modal" data-bs-target="#%4$s" class="btn btn-sm %3$s">%2$s</button>', $entry->getName(), $entry->getLabel(), $entry->getClasses(false), $entry->getModal());
 											} else {
 												printf('<button type="submit" name="action" value="%1$s" class="btn btn-sm %3$s">%2$s</button>', $entry->getName(), $entry->getLabel(), $entry->getClasses(false));
 											}
@@ -49,7 +49,7 @@
 										printf('</div>');
 									} else {
 										if($button->hasModal()) {
-											printf('<button type="button" name="%1$s" data-toggle="modal" data-target="#%4$s" class="btn mr-2 btn-sm %3$s">%2$s</button>', $button->getName(), $button->getLabel(), $button->getClasses(false), $button->getModal());
+											printf('<button type="button" name="%1$s" data-bs-toggle="modal" data-bs-target="#%4$s" class="btn mr-2 btn-sm %3$s">%2$s</button>', $button->getName(), $button->getLabel(), $button->getClasses(false), $button->getModal());
 										} else {
 											printf('<button type="submit" name="action" value="%1$s" class="btn mr-2 btn-sm %3$s">%2$s</button>', $button->getName(), $button->getLabel(), $button->getClasses(false));
 										}

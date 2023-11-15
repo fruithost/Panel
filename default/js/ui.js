@@ -49,7 +49,7 @@
 			// @ToDo add onError?
 			
 			new Ajax(form.action).onSuccess(function(response) {
-				if(response.toLowerCase() === 'true') {
+				if(response.toLowerCase() === 'true' || response.toLowerCase() === '1') {
 					//form.closest('.modal').modal('hide');
 					window.location.reload();
 					return;
@@ -79,9 +79,9 @@
 	};
 	
 	[].map.call(document.querySelectorAll('.ajax'), function(form) {
-		form.addEventListener('click', function(event) {
+		/*form.addEventListener('click', function(event) {
 			ajaxSubmit.apply(form, [ event ]);
-		});
+		});*/
 		
 		form.addEventListener('submit', function(event) {
 			ajaxSubmit.apply(form, [ event ]);
@@ -93,29 +93,6 @@
 /*
 
 (function($) {
-	$('.ajax').submit(function(event) {
-		event.preventDefault();
-		
-		let form = $(this);
-		
-		$.ajax({
-			type:	'POST',
-			url:	form.attr('action'),
-			data:	form.serialize(),
-			success: function onSuccess(response) {
-				
-			}
-		});
-		
-		return false;
-	});
-	
-	
-	$('[data-toggle="hover"]').popover({
-		trigger:	'hover',
-		html:		true
-	});
-	
 	$('[data-confirm]').on('mousedown', function(event) {
 		let target	= $(this);
 		let popup	= $('#confirmation');
