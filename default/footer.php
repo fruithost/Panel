@@ -5,10 +5,10 @@
 
 	if(Auth::isLoggedIn()) {
 		?>
-					</main>
+						</main>
+					</div>
 				</div>
 			</div>
-		</div>
 		</div>
 		<?php
 	}
@@ -19,8 +19,10 @@
 		<button class="btn border-0 py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="<?php I18N::__('Toggle theme'); ?> (<?php I18N::__('Auto'); ?>)">
 			<?php
 				Icon::show('theme-auto', [
-					'classes' 		=> [ 'theme-icon-active' ],
-					'data-current'	=> 'theme-auto'
+					'classes' 		=> [ 'me-2', 'opacity-50', 'theme-icon' ],
+					'attributes'	=> [
+						'data-current'	=> 'theme-auto'
+					]					
 				]);
 			?>
 			<span class="visually-hidden" id="bd-theme-text"><?php I18N::__('Toggle theme'); ?></span>
