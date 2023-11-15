@@ -24,10 +24,10 @@
 				'project_copyright' => $this->core->getSettings('PROJECT_COPYRIGHT', true)
 			];
 			
-			if(defined('DEBUG') && !DEBUG) {
-				ob_start('ob_gzhandler');
-			} else {
+			if(defined('DEBUG') && DEBUG) {
 				ob_start();
+			} else {
+				ob_start('ob_gzhandler');
 			}
 			
 			$this->core->getHooks()->addAction('html_head', [ $this, 'head_robots' ], 10, false);
@@ -37,13 +37,12 @@
 			$this->core->getHooks()->addAction('html_foot', [ $this, 'foot_modals' ], 10, false);
 			$this->core->getHooks()->addAction('html_foot', [ $this, 'foot_scripts' ], 10, false);
 			
-			$this->files->addStylesheet('bootstrap', $this->url('css/bootstrap/bootstrap.min.css'), '4.3.1');
-			$this->files->addStylesheet('jquery-ui', $this->url('css/jquery-ui/jquery-ui.css'), '1.12.1');
-			$this->files->addStylesheet('material-icons', $this->url('fonts/material-icons/material-icons.css'), '3.0.1', [ 'bootstrap' ]);
-			$this->files->addStylesheet('cascadia-mono', $this->url('fonts/cascadia-mono/cascadia-mono.css'), '2111.01', [ 'bootstrap' ]);
-			$this->files->addJavascript('popper', $this->url('js/popper/popper.min.js'), '3.3.1', [ 'jquery' ], TemplateFiles::FOOTER);
-			$this->files->addJavascript('jquery', $this->url('js/jquery/jquery-3.3.1.min.js'), '3.3.1', [], TemplateFiles::FOOTER);
-			$this->files->addJavascript('bootstrap', $this->url('js/bootstrap/bootstrap.bundle.min.js'), '4.3.1', [ 'jquery', 'popper' ], TemplateFiles::FOOTER);
+			$this->files->addStylesheet('bootstrap', $this->url('css/bootstrap/bootstrap.min.css'), '5.3.2');
+            $this->files->addStylesheet('cascadia-mono', $this->url('fonts/cascadia-mono/cascadia-mono.css'), '2111.01', [ 'bootstrap' ]);
+            $this->files->addStylesheet('global', $this->url('css/global.css'), '1.0.0', [ 'bootstrap' ]);
+			$this->files->addJavascript('bootstrap', $this->url('js/bootstrap/bootstrap.bundle.min.js'), '5.3.2', [], TemplateFiles::FOOTER);
+			$this->files->addJavascript('global', $this->url('js/global.js'), '1.0.0', [ 'bootstrap' ], TemplateFiles::FOOTER);
+			$this->files->addJavascript('ajax', $this->url('js/ajax.js'), '1.0.0', [ 'bootstrap' ], TemplateFiles::FOOTER);
 			
 			$this->navigation->addCategory('account', I18N::get('Account'));
 			$this->navigation->addCategory('database', I18N::get('Databases'));
@@ -88,7 +87,7 @@
 			$this->assigns[$name] = $value;
 		}
 		
-		public function display(string $file, array $arguments = [], bool $basedir = true, bool $once = true) : void {
+		public function display(string $file, array $arguments = [], bool $basedir = true, bool $once = true) : ?bool {
 			$template	= $this;
 			
 			foreach($arguments AS $name => $value) {
@@ -120,7 +119,7 @@
 			}
 			
 			if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-				return;
+				return null;
 			}
 			
 			if(file_exists($path) && is_readable($path)) {
@@ -129,13 +128,15 @@
 				} else {
 					require($path);
 				}
+					
+				return true;
 			} else {
 				if(!Auth::isLoggedIn()) {
-					$this->getFiles()->addStylesheet('login', $this->url('css/login.css'), '1.0.0', [ 'bootstrap', 'material-icons' ]);
-				} else {
-					$this->getFiles()->addStylesheet('style', $this->url('css/style.css'), '1.0.0', [ 'bootstrap', 'material-icons' ]);
-					$this->getFiles()->addJavascript('jquery-ui', $this->url('js/jquery-ui/jquery-ui.min.js'), '1.12.1', [ 'jquery' ], TemplateFiles::FOOTER);
-					$this->getFiles()->addJavascript('ui', $template->url('js/ui.js'), '1.0.0', [ 'jquery', 'jquery-ui', 'popper', 'bootstrap' ], TemplateFiles::FOOTER);
+					$this->getFiles()->addStylesheet('login', $this->url('css/login.css'), '2.0.0', [ 'bootstrap' ]);
+                    $this->getFiles()->addJavascript('login', $this->url('js/login.js'), '1.0.0', [ 'bootstrap' ], TemplateFiles::FOOTER);
+                } else {
+					$this->getFiles()->addStylesheet('style', $this->url('css/style.css'), '2.0.0', [ 'bootstrap' ]);
+					$this->getFiles()->addJavascript('ui', $this->url('js/ui.js'), '2.0.0', [ 'bootstrap' ], TemplateFiles::FOOTER);
 				}
 				
 				$path = sprintf('%1$s%2$sdefault%2$s%3$s.php', PATH, DS, $file);
@@ -146,8 +147,12 @@
 					} else {
 						require($path);
 					}
+					
+					return true;
 				}
 			}
+			
+			return false;
 		}
 		
 		public function header() : void {

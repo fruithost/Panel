@@ -1,46 +1,98 @@
-(function($) {
-	$('.collapse').on('show.bs.collapse, shown.bs.collapse', function(event) {
-		$('.material-icons[data-toggle="collapse"][data-target="#' + $(this).attr('id') + '"], [data-toggle="collapse"][data-target="#' + $(this).attr('id') + '"] .material-icons').text('arrow_drop_up');
+(() => {
+	function show(event) {
+		[].map.call(document.querySelectorAll('.bi[data-bs-toggle="collapse"][data-bs-target="#' + event.target.id + '"], [data-bs-toggle="collapse"][data-bs-target="#' + event.target.id + '"] .bi'), function(icon) {
+			icon.classList.remove('bi-caret-up-square-fill');
+			icon.classList.remove('bi-caret-down-square-fill');
+			icon.classList.add('bi-caret-up-square-fill');
+		});
+	};
+
+	function hide(event) {
+		[].map.call(document.querySelectorAll('.bi[data-bs-toggle="collapse"][data-bs-target="#' + event.target.id + '"], [data-bs-toggle="collapse"][data-bs-target="#' + event.target.id + '"] .bi'), function(icon) {
+			icon.classList.remove('bi-caret-up-square-fill');
+			icon.classList.remove('bi-caret-down-square-fill');
+			icon.classList.add('bi-caret-down-square-fill');
+		});
+	};
+
+	[].map.call(document.querySelectorAll('.collapse'), function(collapse) {
+		collapse.addEventListener('show.bs.collapse', show);
+		collapse.addEventListener('shown.bs.collapse', show);
+		collapse.addEventListener('hide.bs.collapse', hide);
+		collapse.addEventListener('hidden.bs.collapse', hide);
 	});
+		
+	const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+	const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 	
-	$('.collapse').on('hide.bs.collapse, hidden.bs.collapse', function(event) {
-		$('.material-icons[data-toggle="collapse"][data-target="#' + $(this).attr('id') + '"], [data-toggle="collapse"][data-target="#' + $(this).attr('id') + '"] .material-icons').text('arrow_drop_down');
-	});
+	const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"], [data-bs-toggle="hover"]')
+	const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl, {
+		trigger:	'hover',
+		html:		true
+	}))
 	
-	$('.ajax').submit(function(event) {
+	function serialize(form) {
+		var obj = {};
+		var formData = new FormData(form);
+		for (var key of formData.keys()) {
+			obj[key] = formData.get(key);
+		}
+		return obj;
+	};
+
+	function ajaxSubmit(event) {
 		event.preventDefault();
 		
-		let form = $(this);
-		
-		$.ajax({
-			type:	'POST',
-			url:	form.attr('action'),
-			data:	form.serialize(),
-			success: function onSuccess(response) {
-				if(response.toLowerCase() === 'true') {
-					form.closest('.modal').modal('hide');
+		try {
+			let form = this;
+			
+			// @ToDo add onError?
+			
+			new Ajax(form.action).onSuccess(function(response) {
+				if(response.toLowerCase() === 'true' || response.toLowerCase() === '1') {
+					//form.closest('.modal').modal('hide');
 					window.location.reload();
 					return;
 				} else if(response.toLowerCase() === 'false') {
 					response = 'An unknown error has occurred.';
 				}
 				
-				let content = form.closest('.modal').find('.modal-body');
-				content.find('.alert').remove();
-				content.prepend('<div class="alert alert-danger" role="alert">' + response + '</div>');
-			}
-		});
+				let content	= form.querySelector('.modal-body');
+				let alert	= content.querySelector('.alert');
+				
+				if(alert) {
+					content.removeChild(alert);
+				}
+				
+				alert = document.createElement('div');
+				alert.classList.add('alert');
+				alert.classList.add('alert-danger');
+				alert.setAttribute('role', 'alert');
+				alert.innerHTML = response;
+				content.prepend(alert);
+			}).post(serialize(form));
+		} catch(e) {
+			
+		}
 		
 		return false;
+	};
+	
+	[].map.call(document.querySelectorAll('.ajax'), function(form) {
+		/*form.addEventListener('click', function(event) {
+			ajaxSubmit.apply(form, [ event ]);
+		});*/
+		
+		form.addEventListener('submit', function(event) {
+			ajaxSubmit.apply(form, [ event ]);
+		});
 	});
-	
-	$('[data-toggle="tooltip"]').tooltip();
-	
-	$('[data-toggle="hover"]').popover({
-		trigger:	'hover',
-		html:		true
-	});
-	
+})();
+
+
+/*
+
+(function($) {
 	$('[data-confirm]').on('mousedown', function(event) {
 		let target	= $(this);
 		let popup	= $('#confirmation');
@@ -103,4 +155,4 @@
 			ui.placeholder.addClass('col-6');
 		}
 	});
-}(jQuery));
+}(jQuery));*/

@@ -1,0 +1,65 @@
+{
+	"template": {
+		"element":	"i",
+		"classes":	[ "bi" ],
+		"content":	{
+			"type":	"class",
+			"html":	"bi-%s"
+		}
+	},
+	"definitions": {
+		"language":		"translate",
+		"smiley-bad":	"emoji-frown",
+		"list":			"list",
+		
+		"theme-light":	"sun-fill",
+		"theme-dark":	"moon-stars-fill",
+		"theme-auto":	"circle-half",
+		"check":		"check2",
+		
+		"ftp":			"folder",
+		"database":		"database",
+		"mailbox":		"envelope",
+		"settings":		"gear",
+		"file":			"card-heading",
+		"ip":			"router",
+		"uptime":		"clock",
+		"unknown":		"question",
+		"memory":		"memory",
+		"storage":		"hdd",
+		"network":		"pci-card-network",
+		"account":		"person-circle",
+		"logout":		"power",
+		"overview":		"speedometer",
+		"users":		"people-fill",
+		"themes":		"palette",
+		"modules":		"boxes",
+		"server":		"device-hdd",
+		"logfiles":		"file-earmark-text",
+		"options":		"sliders",
+		"console":		"terminal-fill",
+		"packages":		"archive-fill",
+		"services":		"activity",
+		"certificate":	"file-medical",
+		"self-signed":	"highlighter",
+		"domains":		"globe-europe-africa",
+		"ssl-valid":	"shield-fill-check",
+		"ssl-invalid":	"shield-fill-x",
+		
+		"arrow-down":	"caret-down-square-fill",
+		"arrow-right":	"chevron-compact-right",
+		"secure":		"file-lock2",
+		"insecure":		"shield-lock",
+		"show":			"eye",
+		"hide":			"eye-slash-fill",
+		
+		"start":		"play-fill",
+		"stop":			"stop-fill",
+		"restart":		"arrow-clockwise",
+		"warning":		"exclamation-triangle-fill",
+		"update":		"arrow-repeat",
+		"reboot":		"arrow-repeat",
+		"delete":		"trash-fill",
+		"info":			"info-circle-fill"
+	}
+}

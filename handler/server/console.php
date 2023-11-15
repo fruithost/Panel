@@ -2,6 +2,7 @@
     use fruithost\Accounting\Auth;
     use fruithost\Network\Response;
     use fruithost\Localization\I18N;
+    use fruithost\Templating\TemplateFiles;
 
     if(isset($_POST['action']) && $_POST['action'] === 'command') {
         if (!Auth::hasPermission('SERVER::MANAGE')) {
@@ -92,9 +93,14 @@
             exit();
         }
 
+		setlocale(LC_ALL, I18N::set() . '.UTF-8');
+		putenv('LC_ALL=' . I18N::set() . '.UTF-8');
+		
+
         $build = [
             'export MAN_KEEP_FORMATTING=1;',
             'export SHELL=/bin/bash;',
+            sprintf('export LANG=%s.UTF-8;', I18N::set()),
             'export TERM=xterm-256color;',
             'export _=/usr/bin/env;',
             'export USER=fruithost;',
@@ -175,5 +181,6 @@
         exit();
     }
 	
-	$template->getFiles()->addJavascript('terminal', $this->url('js/terminal.js'), '1.0.0');
+	$template->getFiles()->addJavascript('terminal', $this->url('js/terminal.js'), '1.0.0', [ 'ajax' ], TemplateFiles::FOOTER);
+	$template->getFiles()->addJavascript('console', $this->url('js/console.js'), '1.0.0', [ 'terminal' ], TemplateFiles::FOOTER);
 ?>

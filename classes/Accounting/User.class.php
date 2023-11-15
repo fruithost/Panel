@@ -1,15 +1,15 @@
 <?php
 	namespace fruithost\Accounting;
 	
-	use fruithost\Storage\Database;
-	use fruithost\Security\Encryption;
-	
+    use fruithost\Security\Encryption;
+    use fruithost\Storage\Database;
+
     class User {
 		private ?int $id				= null;
 		private ?string $username		= null;
 		private ?string $email			= null;
 		private ?string $crypted_mail	= null;
-		private mixed $data				= [];
+		private mixed $data		        = [];
 		
 		public function __construct() {}
 		

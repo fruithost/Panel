@@ -18,16 +18,38 @@
 			$this->init();
 		}
 		
-		protected function init() {
+		protected function init() : void {
 			/* Override Me */
 		}
 		
-		public function preLoad() {
+		public function preLoad() : void {
 			/* Override Me */
 		}
 		
-		public function load() {
+		public function load() : void {
 			/* Override Me */
+		}
+
+		public function onPOST(mixed $data = null) : void {
+			/* Override Me */
+		}
+
+        public function onUpdate($data = []) : ?string {
+            /* Override Me */
+
+            return null;
+        }
+
+        public function onSave($data = []) : ?string {
+            /* Override Me */
+
+            return null;
+        }
+
+		public function frame() : bool {
+			/* Override Me */
+
+            return false;
 		}
 		
 		public function getRouter() : ?Router {

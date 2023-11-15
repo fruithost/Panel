@@ -1,149 +1,41 @@
-html, body {
-	height: 100%;
-	padding: 0px;
-	margin: 0;
-}
-
-body {
-	display: -ms-flexbox;
-	display: flex;
-	-ms-flex-align: center;
-	align-items: center;
-	background-color: #f5f5f5;
-}
-
-a .material-icons {
-	margin: -2px 0 0 0;
-    font-size: 30px;
-    float: left;
-}
-
-a .material-icons.right {
-    float: right;	
-}
-
-.form-signin, .form-password {
-	width: 100%;
+.form-signin {
 	max-width: 330px;
-	padding: 0 15px;
-	margin: auto;
+	padding: 1rem;
 }
 
-.form-signin .checkbox, .form-password .checkbox {
-	font-weight: 400;
-}
-
-.form-signin .form-control, .form-password .form-control {
-	box-sizing: border-box;
-	height: auto;
-	padding: 10px 10px 10px 12px;
-}
-
-.form-signin .form-control:focus, .form-password .form-control:focus {
+.form-signin .form-floating:focus-within {
 	z-index: 2;
-	border-color: #ced4da;
-	box-shadow: inherit;
 }
 
-.form-signin input[type="text"], .form-password input[name="password_new"] {
+.form-signin input[name="username"],
+.form-signin input[name="password_new"] {
+	margin-bottom: -1px;
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
 }
 
-.form-signin input[type="password"], .form-password input[name="password_repeated"] {
+.form-signin input[name="password"],
+.form-signin input[name="password_repeated"] {
+	margin-bottom: 10px;
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
-	border-top: none;
 }
 
-.bd-placeholder-img {
-	font-size: 1.125rem;
-	text-anchor: middle;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
+/* Theme Switch */
+.bi {
+	vertical-align: -.125em;
+	fill: currentColor;
 }
 
-@media (min-width: 768px) {
-	.bd-placeholder-img-lg {
-		font-size: 3.5rem;
-	}
+.btn-bd-primary:active,
+.btn-bd-primary:focus {
+	--bs-btn-active-border-color: transparent;
 }
 
-.form-label-group {
-	position: relative;
+.bd-mode-toggle {
+	z-index: 1500;
 }
 
-.form-label-group > input, .form-label-group > label {
-	height: 3.125rem;
-	padding: .75rem;
-}
-
-.form-label-group > label {
-	position: absolute;
-	top: 0;
-	left: 0;
-	display: block;
-	width: 100%;
-	margin-bottom: 0;
-	line-height: 1.5;
-	color: #777;
-	pointer-events: none;
-	cursor: text;
-	border: 1px solid transparent;
-	border-radius: .25rem;
-	transition: all .1s ease-in-out;
-}
-
-.form-label-group input::-webkit-input-placeholder {
-	color: transparent;
-}
-
-.form-label-group input:-ms-input-placeholder {
-	color: transparent;
-}
-
-.form-label-group input::-ms-input-placeholder {
-	color: transparent;
-}
-
-.form-label-group input::-moz-placeholder {
-	color: transparent;
-}
-
-.form-label-group input::placeholder {
-	color: transparent;
-}
-
-.form-label-group input:not(:placeholder-shown) {
-	padding-top: 1.25rem;
-	padding-bottom: .25rem;
-}
-
-.form-label-group input:not(:placeholder-shown) ~ label, .form-label-group input:-webkit-autofill ~ label {
-	padding-top: .25rem;
-	padding-bottom: .25rem;
-	font-size: 12px;
-	color: #777;
-}
-
-@supports (-ms-ime-align: auto) {
-	.form-label-group > label {
-		display: none;
-	}
-
-	.form-label-group input::-ms-input-placeholder {
-		color: #777;
-	}
-}
-
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-	.form-label-group > label {
-		display: none;
-	}
-
-	.form-label-group input:-ms-input-placeholder {
-		color: #777;
-	}
+.bd-mode-toggle .dropdown-menu .active .bi {
+	display: block !important;
 }

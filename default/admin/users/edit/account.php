@@ -18,7 +18,7 @@
 	<div class="form-group row">
 		<label for="email" class="col-sm-2 col-form-label"><?php I18N::__('E-Mail Address'); ?>:</label>
 		<div class="col-sm-10">
-			<input type="email" class="form-control" id="email" name="email" value="<?php print $user->getMail(); ?>" />
+			<input type="email" class="form-control" id="email" name="email" value="<?php print $user->getMail(); ?>" placeholder="your.mail@example.com" />
 		</div>
 	</div>
 	<hr class="mb-4" />
@@ -47,7 +47,7 @@
 			<textarea class="form-control" id="address" name="address"><?php print $user->getAddress(); ?></textarea>
 		</div>
 	</div>
-	<div class="form-group text-right">
+	<div class="form-group text-end">
 		<button type="submit" name="action" value="save" class="btn btn-outline-success"><?php I18N::__('Save'); ?></button>
 	</div>
 </div>

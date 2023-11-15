@@ -1,6 +1,7 @@
 <?php
     use fruithost\Localization\I18N;
     use fruithost\Accounting\Auth;
+	use fruithost\UI\Icon;
 
     $template->header();
 	
@@ -16,7 +17,11 @@
 	}
 	?>
 	<div class="jumbotron text-center bg-transparent text-muted">
-		<i class="material-icons text-warning">warning</i>
+		<?php
+			Icon::show('warning', [
+				'classes'	=> [ 'text-warning' ]
+			]);
+		?>
 		<h2><?php I18N::__('System-Reboot'); ?></h2>
 		<?php
 			if(isset($error)) {

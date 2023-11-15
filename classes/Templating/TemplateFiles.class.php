@@ -12,7 +12,7 @@
 			'stylesheets'	=> []
 		];
 		
-		private array $footer		= [
+		private array $footer	= [
 			'javascripts'	=> [],
 			'stylesheets'	=> []
 		];
@@ -66,7 +66,7 @@
 		}
 		
 		private function sortDepencies(array $input) : array {
-			$sorted = [];
+            $sorted = [];
 
             while($count = count($input)) {
                 foreach($input AS $name => $script) {

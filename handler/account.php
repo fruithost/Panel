@@ -1,10 +1,11 @@
 <?php
-    use fruithost\Localization\I18N;
-    use fruithost\Storage\Database;
-    use fruithost\Security\Encryption;
-    use fruithost\Accounting\Auth;
 
-    if(isset($_POST['action']) && $_POST['action'] === 'save') {
+use fruithost\Accounting\Auth;
+use fruithost\Localization\I18N;
+use fruithost\Security\Encryption;
+use fruithost\Storage\Database;
+
+if(isset($_POST['action']) && $_POST['action'] === 'save') {
 		switch($tab) {
 			case 'password':
 				if(empty($_POST['password_current'])) {

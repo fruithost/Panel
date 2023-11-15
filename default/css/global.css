@@ -1,0 +1,18 @@
+html, body {
+	height: 100%;
+}
+
+textarea:focus,
+textarea:focus, 
+input:focus {
+	outline: none;
+    box-shadow:none !important;
+}
+
+/* Theme Switch */
+.theme-switch {
+	z-index: 99999;
+	border-radius: 35%;
+	color: var(--bs-emphasis-color);
+	background-color: var(--bs-secondary-bg-subtle);
+}

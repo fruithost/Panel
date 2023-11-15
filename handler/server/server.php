@@ -1,23 +1,8 @@
 <?php
     use fruithost\Accounting\Auth;
+	use fruithost\OS\OperatingSystem;
 
-    $uname			= explode(' ', shell_exec('uname -a'));
-	$uptime_array	= explode(" ", exec("cat /proc/uptime"));
-	$seconds		= round($uptime_array[0], 0);
-	$minutes		= $seconds / 60;
-	$hours			= $minutes / 60;
-	$days			= floor($hours / 24);
-	$hours			= sprintf('%02d', floor($hours - ($days * 24)));
-	$minutes		= sprintf('%02d', floor($minutes - ($days * 24 * 60) - ($hours * 60)));
-	
-	if($days == 0) {
-		$uptime = $hours . ":" .  $minutes . " (hh:mm)";
-	} elseif($days == 1) {
-		$uptime = $days . " day, " .  $hours . ":" .  $minutes . " (hh:mm)";
-	} else {
-		$uptime = $days . " days, " .  $hours . ":" .  $minutes . " (hh:mm)";
-	}
-
+	/* Memory */
 	$memory		= [];
 	$meminfo	= file('/proc/meminfo', \FILE_SKIP_EMPTY_LINES);
 	
@@ -37,6 +22,7 @@
 		}
 	}
 
+	/* Discs */
 	$disks		= [];
 	$output		= shell_exec('df -T -h');
 	$search		= [ 'G', 'M' ];
@@ -49,29 +35,58 @@
 		
 		preg_match('/^(?P<filesystem>[\da-zA-Z\/]+)\s+(?P<type>[\da-zA-Z\/]+)\s+(?P<size>[0-9A-Z\.]+)\s+(?P<used>[0-9A-Z\.]+)\s+(?P<avail>[0-9A-Z\.]+)\s+(?P<percent>\d+%)\s+(?P<mount>[\da-zA-Z\/]+)$/', $line, $matches);
 		
-		$disks[] = [
-			'filesystem'	=> (isset($matches['filesystem']) ? $matches['filesystem'] : NULL),
-			'type'			=> (isset($matches['type']) ? $matches['type'] : NULL),
-			'size'			=> (isset($matches['size']) ? str_replace($search, $replace, $matches['size']) : NULL),
-			'used'			=> (isset($matches['used']) ? str_replace($search, $replace, $matches['used']) : NULL),
-			'avail'			=> (isset($matches['avail']) ? str_replace($search, $replace, $matches['avail']) : NULL),
-			'percent'		=> (isset($matches['percent']) ? $matches['percent'] : NULL),
-			'mount'			=> (isset($matches['mount']) ? $matches['mount'] : NULL)
+		$filesystem =  null;
+	
+		switch((isset($matches['type']) ? $matches['type'] : null)) {
+			case 'rootfs':
+			case 'ext2':
+			case 'ext3':
+			case 'ext4':
+			case 'fat12':
+			case 'fat16':
+			case 'fat32':
+				$filesystem = 'storage';
+			break;
+			case 'tmpfs':
+			case 'devtmpfs':
+				$filesystem = 'memory';
+			break;
+		}
+		
+		if(empty($filesystem)) {
+			continue;
+		}
+		
+		if(!isset($disks[$filesystem])) {
+			$disks[$filesystem] = [];
+		}
+		
+		$disks[$filesystem][] = [
+			'filesystem'	=> (isset($matches['filesystem']) ? $matches['filesystem'] : null),
+			'type'			=> (isset($matches['type']) ? $matches['type'] : null),
+			'size'			=> (isset($matches['size']) ? str_replace($search, $replace, $matches['size']) : null),
+			'used'			=> (isset($matches['used']) ? str_replace($search, $replace, $matches['used']) : null),
+			'avail'			=> (isset($matches['avail']) ? str_replace($search, $replace, $matches['avail']) : null),
+			'percent'		=> (isset($matches['percent']) ? $matches['percent'] : null),
+			'mount'			=> (isset($matches['mount']) ? $matches['mount'] : null)
 		];
 	}
 
-	$template->assign('hostname',		exec('hostname'));
-	$template->assign('time_system',	exec('date +\'%d %b %Y %T %Z\''));
-	$template->assign('time_php',		date('d M Y H:i:s T'));
-	$template->assign('os',				$uname[0]);
-	$template->assign('kernel',			$uname[2]);
-	$template->assign('uptime',			$uptime);
-	$template->assign('memory',			$memory);
-	$template->assign('disks',			$disks);
+	$template->assign('hostname',			shell_exec('hostname'));
+	$template->assign('hostname_panel',		$_SERVER['HTTP_HOST']);
+	$template->assign('ip_address',			$_SERVER['SERVER_ADDR']);
+	$template->assign('time_php',			date('d M Y H:i:s T'));
+	$template->assign('time_system',		OperatingSystem::getTime());
+	$template->assign('os',					OperatingSystem::getPrettyName());
+	$template->assign('kernel',				OperatingSystem::getKernel());
+	$template->assign('machine_type',		OperatingSystem::getMachineType());
+	$template->assign('uptime',				OperatingSystem::getUptime(true));
+	$template->assign('memory',				$memory);
+	$template->assign('disks',				$disks);
 	$template->assign('daemon',			[
 		'started'	=> strtotime($this->getCore()->getSettings('DAEMON_TIME_START', 0)),
-		'start'		=> date(Auth::getSettings('TIME_FORMAT', NULL, 'd.m.Y - H:i'), strtotime($this->getCore()->getSettings('DAEMON_TIME_START', 0))),
-		'end'		=> date(Auth::getSettings('TIME_FORMAT', NULL, 'd.m.Y - H:i'), strtotime($this->getCore()->getSettings('DAEMON_TIME_END', 0))),
+		'start'		=> date(Auth::getSettings('TIME_FORMAT', null, 'd.m.Y - H:i'), strtotime($this->getCore()->getSettings('DAEMON_TIME_START', 0))),
+		'end'		=> date(Auth::getSettings('TIME_FORMAT', null, 'd.m.Y - H:i'), strtotime($this->getCore()->getSettings('DAEMON_TIME_END', 0))),
 		'ended'		=> strtotime($this->getCore()->getSettings('DAEMON_TIME_END', 0)),
 		'time'		=> number_format($this->getCore()->getSettings('DAEMON_RUNNING_END', 0) - $this->getCore()->getSettings('DAEMON_RUNNING_START', 0), 4, ',', '.')
 	]);

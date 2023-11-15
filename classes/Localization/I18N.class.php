@@ -56,7 +56,7 @@
 			return $default;
 		}
 		
-		protected static function set() : string {
+		public static function set() : string {
 			$language = Auth::getSettings('LANGUAGE', null, self::getSettings('LANGUAGE', 'en_US'));
 			
 			if(!Auth::isLoggedIn() && Request::has('lang')) {

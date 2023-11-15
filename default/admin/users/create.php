@@ -23,7 +23,7 @@
 		<div class="form-group row">
 			<label for="email" class="col-sm-2 col-form-label"><?php I18N::__('E-Mail Address'); ?>:</label>
 			<div class="col-sm-10">
-				<input type="email" class="form-control" id="email" name="email" value="<?php print (!empty($email) ? $email : ''); ?>" />
+				<input type="email" class="form-control" id="email" name="email" value="<?php print (!empty($email) ? $email : ''); ?>" placeholder="your.mail@example.com" />
 			</div>
 		</div>
 		
@@ -42,7 +42,7 @@
 			</div>
 		</div>
 		
-		<div class="form-group text-right">
+		<div class="form-group text-end">
 			<button type="submit" name="action" value="create" class="btn btn-outline-primary"><?php I18N::__('Create'); ?></button>
 		</div>
 	</div>
