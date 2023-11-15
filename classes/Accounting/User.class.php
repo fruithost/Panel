@@ -1,7 +1,7 @@
 <?php
 	namespace fruithost\Accounting;
 	
-	use fruithost\Security\Encryption;
+    use fruithost\Security\Encryption;
     use fruithost\Storage\Database;
 
     class User {
