@@ -3,6 +3,7 @@
 	use fruithost\Templating\TemplateFiles;
 	use fruithost\Hardware\OperatingSystem;
 	use fruithost\Hardware\PhysicalDrives;
+	use fruithost\Hardware\NetworkInterfaces;
 	use fruithost\Hardware\Memory;
 	use fruithost\Network\Response;
 	use fruithost\System\Utils;
@@ -30,9 +31,6 @@
 		exit();
 	}
 
-	$template->assign('hostname',			shell_exec('hostname'));
-	$template->assign('hostname_panel',		$_SERVER['HTTP_HOST']);
-	$template->assign('ip_address',			$_SERVER['SERVER_ADDR']);
 	$template->assign('time_php',			date('d M Y H:i:s T'));
 	$template->assign('time_system',		OperatingSystem::getTime());
 	$template->assign('os',					OperatingSystem::getPrettyName());
@@ -40,6 +38,7 @@
 	$template->assign('machine_type',		OperatingSystem::getMachineType());
 	$template->assign('uptime',				OperatingSystem::getUptime(true));
 	$template->assign('memory',				Memory::get());
+	$template->assign('network',			NetworkInterfaces::get());
 	$template->assign('disks',				PhysicalDrives::getDevices());
 	$template->assign('daemon',			[
 		'started'	=> strtotime($this->getCore()->getSettings('DAEMON_TIME_START', 0)),

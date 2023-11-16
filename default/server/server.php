@@ -31,7 +31,7 @@
 						?>
 						<span class="align-self-start flex-fill p-0 ml-2 mt-1">
 							<small><?php I18N::__('IP Address'); ?></small>
-							<h4 class="p-0 m-o"><?php print $ip_address; ?></h4>
+							<h4 class="p-0 m-o"><?php print $network->getIPAddress(); ?></h4>
 						</span>
 					</div>
 					<div class="card-body p-1 text-center">
@@ -131,14 +131,14 @@
 								</td>
 								<td>
 									<?php
-										print $hostname;
+										print $network->getHostname();
 										
-										if($hostname !== $hostname_panel) {
+										if($network->getHostname() !== $network->getPanelHostname()) {
 											Icon::show('warning', [
 												'classes'		=> [ 'text-warning', 'ml-1' ],
 												'attributes'	=> [
 													'data-bs-toggle'	=> 'hover',
-													'data-bs-content'	=> sprintf(I18N::get('The hostname <strong>%s</strong> does not match the panel domain (<strong>%s</strong>).'), $hostname, $hostname_panel),
+													'data-bs-content'	=> sprintf(I18N::get('The hostname <strong>%s</strong> does not match the panel domain (<strong>%s</strong>).'), $network->getHostname(), $network->getPanelHostname()),
 													'data-bs-title'		=> sprintf('<small class=\'text-warning\'>%s</small>', I18N::get('Warning!'))
 												]
 											]);
@@ -254,7 +254,7 @@
 									?>
 								</div>
 								<div class="p-2 flex-fill">
-									<strong class="ml-2">RAM</strong>
+									<strong class="ml-2"><?php I18N::__('RAM'); ?></strong>
 								</div>
 							</div>
 							<div data-name="mem_visual" class="bg-secondary" style="height: 15px;" data-percentage="<?php print $memory->getPercentage(); ?> %">
@@ -265,10 +265,10 @@
 						<table class="mt-4">
 							<tr>
 								<td style="min-width: 150px;">
-									<strong><small>In Verwendung</small></strong>
+									<strong><small><?php I18N::__('In use'); ?></small></strong>
 								</td>
 								<td style="min-width: 150px;">
-									<strong><small>Verfügbar</small></strong>
+									<strong><small><?php I18N::__('Available'); ?></small></strong>
 								</td>
 							</tr>
 							<tr>
@@ -281,10 +281,10 @@
 							</tr>
 							<tr>
 								<td>
-									<strong><small>Zugesichert</small></strong>
+									<strong><small><?php I18N::__('Assured'); ?></small></strong>
 								</td>
 								<td>
-									<strong><small>Im Cache</small></strong>
+									<strong><small><?php I18N::__('In cache'); ?></small></strong>
 								</td>
 							</tr>
 							<tr>
