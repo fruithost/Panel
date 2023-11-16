@@ -18,6 +18,9 @@
 	
 	print "<pre>";
 	print_r(`lshw -C network -json`);
+	print_r(json_decode(`ip --json address show`));
+	print_r(json_decode(`ip --json link show`));
+	print_r(json_decode(`ip --json route show`));
 	
 	$this->footer();
 ?>

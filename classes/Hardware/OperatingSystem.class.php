@@ -1,5 +1,5 @@
 <?php
-	namespace fruithost\OS;
+	namespace fruithost\Hardware;
 	
 	class OperatingSystemFactory {
 		private static ?OperatingSystemFactory $instance = null;

@@ -198,14 +198,14 @@
 		</div>
 		<div class="row">
 			<!-- Storage -->
-			<div class="col-xl-6 col-md-12 mt-sm-12 mt-2">
+			<div class="col-xl-6 col-md-12 mt-sm-12 mt-2 mb-2">
 				<div class="card">
 					<div class="card-header d-flex flex-row">
 						<?php I18N::__('Mounted Drives'); ?>
 					</div>
 					<div class="card-body p-3">
 						<?php
-							foreach($disks['storage'] AS $disk) {
+							foreach($disks AS $disk) {
 								?>
 								<div class="mb-2">
 									<div class="d-flex">
@@ -217,13 +217,13 @@
 											?>
 										</div>
 										<div class="p-2 flex-fill">
-											<strong class="ml-2"><?php print $disk['mount']; ?></strong>
+											<strong class="ml-2"><?php print $disk['name']; ?></strong>
 										</div>
 									</div>
-									<div class="bg-secondary" style="height: 15px;" data-percentage="<?php printf('%s%s', $disk['percent'], ($disk['used'] === '0' ? '' : sprintf(' (%s)', $disk['used']))); ?>">
-										<div class="bg-success" style="height: 100%; width: <?php print $disk['percent']; ?>"></div>
+									<div class="bg-secondary" style="height: 15px;" data-percentage="<?php printf('%s%s', $disk['percent'], ($disk['available'] === '0' ? ' %' : sprintf(' %% (%s)', Utils::getFileSize($disk['used'])))); ?>">
+										<div class="bg-success" style="height: 100%; width: <?php print $disk['percent']; ?>%"></div>
 									</div>
-									<small class="text-muted"><?php printf(I18N::get('Type: %s | FileSystem: %s | Size: %s / %s'), $disk['type'], $disk['filesystem'], $disk['avail'], $disk['size']); ?></small>
+									<small class="text-muted"><?php printf(I18N::get('Type: %s | FileSystem: %s | Size: %s / %s'), $disk['type'], $disk['filesystem'], Utils::getFileSize($disk['used']), Utils::getFileSize($disk['size'])); ?></small>
 								</div>
 								<?php
 							}
@@ -232,42 +232,109 @@
 				</div>
 			</div>
 			
-			<!-- Memory -->
+			<!-- Memory Utilization -->
 			<div class="col-xl-6 col-md-12 mt-sm-12 mt-2">
 				<div class="card">
 					<div class="card-header d-flex flex-row">
-						<?php I18N::__('Memory'); ?>
+						<div class="text-start"><?php I18N::__('Memory'); ?></div>
+						
+						<div class="ms-auto form-check form-switch flex-end">
+							<input class="form-check-input" type="checkbox" role="switch" id="live_memory" checked />
+							<label class="form-check-label" for="live_memory"></label>
+						</div>
 					</div>
 					<div class="card-body p-3">
-						<?php
-							foreach($disks['memory'] AS $disk) {
-								?>
-								<div class="mb-2">
-									<div class="d-flex">
-										<div class="p-2 flex-shrink-1">
-											<?php
-												Icon::show('memory', [
-													'classes' 		=> [ 'mr' ]
-												]);
-											?>
-										</div>
-										<div class="p-2 flex-fill">
-											<strong class="ml-2"><?php print $disk['mount']; ?></strong>
-										</div>
-									</div>
-									<div class="bg-secondary" style="height: 15px;" data-percentage="<?php printf('%s%s', $disk['percent'], ($disk['used'] === '0' ? '' : sprintf(' (%s)', $disk['used']))); ?>">
-										<div class="bg-success" style="height: 100%; width: <?php print $disk['percent']; ?>"></div>
-									</div>
-									<small class="text-muted"><?php printf(I18N::get('Type: %s | FileSystem: %s | Size: %s / %s'), $disk['type'], $disk['filesystem'], $disk['avail'], $disk['size']); ?></small>
+						<div class="mb-2">
+							<div class="d-flex">
+								<div class="p-2 flex-shrink-1">
+									<?php
+										Icon::show('memory', [
+											'classes' 		=> [ 'mr' ]
+										]);
+									?>
 								</div>
-								<?php
-							}
-						?>
+								<div class="p-2 flex-fill">
+									<strong class="ml-2">RAM</strong>
+								</div>
+							</div>
+							<div data-name="mem_visual" class="bg-secondary" style="height: 15px;" data-percentage="<?php print $memory->getPercentage(); ?> %">
+								<div class="bg-success" style="height: 100%; width: <?php print $memory->getPercentage(); ?>%"></div>
+							</div>
+						</div>
+						<div id="memory" class="bg-light-subtle overflow-hidden"></div>
+						<table class="mt-4">
+							<tr>
+								<td style="min-width: 150px;">
+									<strong><small>In Verwendung</small></strong>
+								</td>
+								<td style="min-width: 150px;">
+									<strong><small>Verfügbar</small></strong>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h4 data-name="mem_used"><?php print Utils::getFileSize($memory->getUsed()); ?></h4>
+								</td>
+								<td>
+									<h4 data-name="mem_total"><?php print Utils::getFileSize($memory->getTotal()); ?></h4>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<strong><small>Zugesichert</small></strong>
+								</td>
+								<td>
+									<strong><small>Im Cache</small></strong>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h4 data-name="mem_assured"><?php print Utils::getFileSize($memory->getAssured()); ?></h4>
+								</td>
+								<td>
+									<h4 data-name="mem_cache"><?php print Utils::getFileSize($memory->getInCache()); ?></h4>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<script>
+		(() => {
+			window.addEventListener('DOMContentLoaded', () => {
+				let interval	= 1000;
+				let stats		= new Statistics('#memory');
+				
+				stats.setColor([ 200, 18, 174, 1 ]);
+				stats.render(interval);
+				
+				setInterval(function() {
+					stats.start();
+					
+					if(!document.querySelector('#live_memory').checked) {
+						stats.stop();
+						return;
+					}
+					
+					new Ajax('<?php print $template->url('/server/server'); ?>').onSuccess(function(response) {
+						stats.add(response.percentage, [ 139, 18, 174, 0.6 ]);
+						
+						document.querySelector('[data-name="mem_visual"]').dataset.percentage = response.percentage + ' %';
+						document.querySelector('[data-name="mem_visual"] .bg-success').style.width = response.percentage + '%';
+						document.querySelector('[data-name="mem_used"]').innerText = response.used;
+						document.querySelector('[data-name="mem_total"]').innerText = response.total;
+						document.querySelector('[data-name="mem_assured"]').innerText = response.assured;
+						document.querySelector('[data-name="mem_cache"]').innerText = response.cache;
+					}).post({	
+						action:	'command',
+						command: 'get_live_usage'
+					});
+				}, interval);
+			});
+		})();
+	</script>
 	<?php
 	$template->footer();
 ?>
