@@ -43,7 +43,7 @@ Feel free to help us with the developing!
 > If you want to watch the demo, write to us - We will set up a personal account for you to test fruithost!
 
 # Screenshot
-[Light Theme](#gh-light-mode-only) or [Dark Theme](#gh-dark-mode-only)
-
-![Dark](https://raw.githubusercontent.com/fruithost/Documentation/main/Images/Dark.png#gh-dark-mode-only)
-![Light](https://raw.githubusercontent.com/fruithost/Documentation/main/Images/Light.png#gh-light-mode-only)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/fruithost/Documentation/main/Images/Dark.png#gh-dark-mode-only">
+  <img alt="" src="https://raw.githubusercontent.com/fruithost/Documentation/main/Images/Light.png">
+</picture>
