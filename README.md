@@ -43,4 +43,8 @@ Feel free to help us with the developing!
 > If you want to watch the demo, write to us - We will set up a personal account for you to test fruithost!
 
 # Screenshot
-![Backend](https://raw.githubusercontent.com/fruithost/Documentation/main/Images/preview_backend.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/fruithost/Documentation/main/Images/Dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/fruithost/Documentation/main/Images/Light.png">
+  <img alt="Backend" src="https://raw.githubusercontent.com/fruithost/Documentation/main/Images/Light.png">
+</picture>
