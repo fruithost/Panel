@@ -46,7 +46,7 @@ Feel free to help us with the developing!
 [Light Theme](#gh-light-mode-only) or [Dark Theme](#gh-dark-mode-only)
  
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/fruithost/Documentation/main/Images/Dark.png">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/fruithost/Documentation/main/Images/Light.png">
+  <source id="gh-dark-mode-only" name="gh-dark-mode-only" media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/fruithost/Documentation/main/Images/Dark.png">
+  <source id="gh-light-mode-only" name="gh-light-mode-only" media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/fruithost/Documentation/main/Images/Light.png">
   <img alt="Backend" src="https://raw.githubusercontent.com/fruithost/Documentation/main/Images/Light.png">
 </picture>
