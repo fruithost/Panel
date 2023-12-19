@@ -27,7 +27,7 @@
 					$this->devices[] = [
 						'name'			=> $matches[3],
 						'text'			=> trim(shell_exec(sprintf('cat /sys/block/%s/device/model', $matches[3]))),
-						'type'			=> trim(shell_exec(sprintf('blkid -o value -s TYPE /dev/%s', $matches[3]))),
+						'type'			=> shell_exec(sprintf('blkid -o value -s TYPE /dev/%s 2>&1', $matches[3])),
 						'blocks'		=> trim(shell_exec(sprintf('cat /sys/class/block/%s/queue/logical_block_size', $matches[3]))),
 						'size'			=> $df[1],
 						'used'			=> $df[2],

@@ -281,6 +281,16 @@ ul.sortable li ul.list-unstyled li a div.label {
 
 */
 
+/* Module Icons */
+img.module-icon {
+	max-width: 20px;
+	filter: invert(1) contrast(0);
+}
+
+img.module-icon path {
+	fill: red;
+}
+
 /* Forms */
 .form-group {
 	margin-bottom: 1rem !important;
