@@ -25,7 +25,7 @@
             }
 
             // Fix bad behavior of Apache's Alias configguration
-            if(empty($_SERVER['QUERY_STRING']) && strtok($_SERVER['REQUEST_URI'], '?') !== false) {
+            if(empty($_SERVER['QUERY_STRING']) && isset($_SERVER['REQUEST_URI']) && strtok($_SERVER['REQUEST_URI'], '?') !== false) {
                 $split = explode('?', $_SERVER['REQUEST_URI']);
 
                 if(count($split) > 1) {
