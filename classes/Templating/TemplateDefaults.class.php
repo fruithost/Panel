@@ -41,8 +41,8 @@
 					}
 				}
 				
-				if(!in_array($name, $loaded, true)) {
-					printf('<link rel="stylesheet" type="text/css" href="%s%sv=%s" />', $entry->file, (strpos($entry->file, '?') === false ? '?t=' . time() . '&' : '&t=' . time() . '&'), $entry->version);
+				if(!in_array($name, $loaded, true)) {					
+					printf('<link rel="stylesheet" type="text/css" href="%s%sv=%s" />', $entry->file, (defined('DEBUG') && DEBUG ? (strpos($entry->file, '?') === false ? '?t=' . time() . '&' : '&t=' . time() . '&') : '?'), $entry->version);
 					$loaded[] = $name;
 				}
 			}
@@ -66,7 +66,7 @@
 				}
 				
 				if(!in_array($name, $loaded, true)) {
-					printf('<script type="text/javascript" src="%s%sv=%s"></script>', $entry->file, (strpos($entry->file, '?') === false ? '?t=' . time() . '&' : '&t=' . time() . '&'), $entry->version);
+					printf('<script type="text/javascript" src="%s%sv=%s"></script>', $entry->file, (defined('DEBUG') && DEBUG ? (strpos($entry->file, '?') === false ? '?t=' . time() . '&' : '&t=' . time() . '&') : '?'), $entry->version);
 					$loaded[] = $name;
 				}
 			}
@@ -111,7 +111,7 @@
 				}
 				
 				if(!in_array($name, $loaded, true)) {
-					printf('<link rel="stylesheet" type="text/css" href="%s%sv=%s" />', $entry->file, (strpos($entry->file, '?') === false ? '?' : '&'), $entry->version);
+					printf('<link rel="stylesheet" type="text/css" href="%s%sv=%s" />', $entry->file, (defined('DEBUG') && DEBUG ? (strpos($entry->file, '?') === false ? '?' : '&') : '?'), $entry->version);
 					$loaded[] = $name;
 				}
 			}
@@ -134,7 +134,7 @@
 				}
 				
 				if(!in_array($name, $loaded, true)) {
-					printf('<script type="text/javascript" src="%s%sv=%s"></script>', $entry->file, (strpos($entry->file, '?') === false ? '?' : '&'), $entry->version);
+					printf('<script type="text/javascript" src="%s%sv=%s"></script>', $entry->file, (defined('DEBUG') && DEBUG ? (strpos($entry->file, '?') === false ? '?' : '&') : '?'), $entry->version);
 					$loaded[] = $name;
 				}
 			}

@@ -9,8 +9,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<title><?php print $project_name; ?></title>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-		 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+		<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">-->
 		<?php
 			$template->head();
 		?>

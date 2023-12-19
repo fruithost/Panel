@@ -6,7 +6,7 @@
 	FileETag None
 
 	<FilesMatch "\.(js|css|jpg|png)$">
-		Header set Cache-Control "max-age=604800"
+		Header set Cache-Control "max-age=31536000"
 	</FilesMatch>
 </IfModule>
 

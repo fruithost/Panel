@@ -19,6 +19,10 @@
 			if(defined('DEBUG') && DEBUG) {
 				$this->addHeader('DEBUG', DEBUG);
 			}
+			
+			if(substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')) {
+				$this->addHeader('Content-Encoding', 'gzip');
+			}
 		}
 		
 		public function addHeader(string $name, string $value) : void {
