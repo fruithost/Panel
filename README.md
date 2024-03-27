@@ -41,7 +41,7 @@ Feel free to help us with the developing!
 # Demonstration
 **Demo:** http://my.fruithost.de/
 
-**Request:** https://forms.gle/eS7E4MYSVKiiigw77
+~~**Request:** https://forms.gle/eS7E4MYSVKiiigw77 (**Currently not maintained!**)~~
 
 > Currently we do not offer any public demo users!
 > If you want to watch the demo, write to us - We will set up a personal account for you to test fruithost!
