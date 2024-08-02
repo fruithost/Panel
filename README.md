@@ -19,6 +19,8 @@ Be a team-player, all feedbacks of our donations will have the priority. We will
 
 [![PAYPAL]](https://paypal.me/debitdirect) [![PATREON]](https://www.patreon.com/fruithost) [![GITHUB]](https://github.com/sponsors/fruithost)
 
+![BANK]
+
 # Community
 [![DISCORD]](https://discord.gg/8pTWckusSC)
 
@@ -37,6 +39,7 @@ Feel free to help us with the developing!
 [CONTRIBUTING]: https://img.shields.io/badge/Contributing-37a779?style=for-the-badge
 [STYLING_GUIDELINES]: https://img.shields.io/badge/Styling_Guidelines-37a779?style=for-the-badge
 [DISCORD]: https://img.shields.io/badge/Discord-37a779?style=for-the-badge&logo=discord&color=%230d1117
+[BANK]: https://github.com/fruithost/Documentation/blob/main/Images/donation_bank.png?raw=true
 
 # Demonstration
 **Demo:** http://my.fruithost.de/
