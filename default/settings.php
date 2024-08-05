@@ -1,22 +1,19 @@
 <?php
-    use fruithost\Localization\I18N;
-    use fruithost\Accounting\Auth;
-
-    $template->header();
+	use fruithost\Auth;
+	use fruithost\I18N;
+	
+	$template->header();
 	?>
 		<form method="post" action="<?php print $this->url('/settings' . (!empty($tab) ? '/' . $tab : '')); ?>">
-			<header class="page-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb" style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z' fill='%236c757d'/%3E%3C/svg%3E&#34;);">
-						<li class="breadcrumb-item active" aria-current="page">
-							<a href="<?php print $this->url('/settings'); ?>"><?php I18N::__('Settings'); ?></a>
-						</li>
-					</ol>
-				</nav>
+			<header class="page-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+				<h1 class="h2">
+					<a class="active" href="<?php print $this->url('/settings'); ?>"><?php I18N::__('Settings'); ?></a>
+				</h1>
 				<div class="btn-toolbar mb-2 mb-md-0">
 					<button type="submit" name="action" value="save" class="btn btn-sm btn-outline-primary"><?php I18N::__('Save'); ?></button>
 				</div>
 			</header>
+			
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item"><a class="nav-link<?php print (empty($tab) ? ' active' : ''); ?>" id="globals-tab" href="<?php print $this->url('/settings'); ?>" role="tab"><?php I18N::__('Global Settings'); ?></a></li>
 				<li class="nav-item"><a class="nav-link<?php print (!empty($tab) && $tab === 'security' ? ' active' : ''); ?>" id="security-tab" href="<?php print $this->url('/settings/security'); ?>" role="tab"><?php I18N::__('Security'); ?></a></li>
@@ -40,7 +37,7 @@
 						<div class="form-group row">
 							<label for="language" class="col-sm-2 col-form-label"><?php I18N::__('Language'); ?>:</label>
 							<div class="col-sm-10">
-								<select name="language" name="language" class="form-select">
+								<select name="language" name="language" class="form-control">
 								<?php
 									foreach($languages AS $code => $language) {
 										printf('<option value="%1$s"%2$s>%3$s</option>', $code, (Auth::getSettings('LANGUAGE', NULL, $template->getCore()->getSettings('LANGUAGE', 'en_US')) === $code ? ' SELECTED' : ''), $language);
@@ -59,7 +56,7 @@
 						<div class="form-group row">
 							<label for="time_zone" class="col-sm-2 col-form-label"><?php I18N::__('Timezone'); ?>:</label>
 							<div class="col-sm-10">
-								<select name="time_zone" id="time_zone" class="form-select">
+								<select name="time_zone" id="time_zone" class="form-control">
 									<?php
 										foreach($timezones AS $category) {
 											printf('<optgroup label="%s">', $category->group);
@@ -77,7 +74,7 @@
 						<?php
 							$template->getCore()->getHooks()->runAction('ACCOUNT_SETTINGS_GLOBAL');
 						?>
-						<div class="form-group text-end">
+						<div class="form-group text-right">
 							<button type="submit" name="action" value="save" class="btn btn-outline-success"><?php I18N::__('Save'); ?></button>
 						</div>
 					</div>
@@ -87,18 +84,18 @@
 					
 					<div class="container">
 						<div class="form-group row">
-							<div class="col-sm-2"></div>
+							<div class="col-sm-2 text-right"></div>
 							<div class="col-sm-10">
-								<div class="form-check">
-									<input class="form-check-input" type="checkbox" name="2fa_enabled" id="2fa_enabled" value="true"<?php print (Auth::getSettings('2FA_ENABLED', NULL, 'false') === 'true' ? ' CHECKED' : ''); ?> />
-									<label class="form-check-label" for="2fa_enabled">
+								<div class="custom-control custom-checkbox">
+									<input class="custom-control-input" type="checkbox" name="2fa_enabled" id="2fa_enabled" value="true"<?php print (Auth::getSettings('2FA_ENABLED', NULL, 'false') === 'true' ? ' CHECKED' : ''); ?> />
+									<label class="custom-control-label" for="2fa_enabled">
 										<?php I18N::__('Enable Two-factor authentication (2FA)'); ?>
 									</label>
 								</div>
 							</div>
 						</div>
 						<div class="form-group row">
-							<div class="col-sm-2"></div>
+							<div class="col-sm-2 text-right"></div>
 							<div class="col-sm-10">
 								<?php
 									if(Auth::getSettings('2FA_ENABLED', NULL, 'false') === 'true' && !filter_var(Auth::getMail(), FILTER_VALIDATE_EMAIL)) {
@@ -122,14 +119,22 @@
 						<div class="form-group row">
 							<label for="2fa_type" class="col-sm-2 col-form-label"><?php I18N::__('Type'); ?>:</label>
 							<div class="col-sm-10">
-								<select name="2fa_type" class="form-select">
-									<option value="app" DISABLED><?php I18N::__('Smartphone'); ?> (<?php I18N::__('disabled'); ?>)</option>
-									<option value="mail" SELECTED><?php I18N::__('E-Mail'); ?></option>
-									<option value="sms" DISABLED><?php I18N::__('SMS'); ?> (<?php I18N::__('disabled'); ?>)</option>
+								<select name="2fa_type" class="form-control">
+									<?php
+										foreach($template->getCore()->getHooks()->applyFilter('2FA_METHODS', [
+											(object) [
+												'id'		=> 'mail',
+												'name'		=> I18N::get('E-Mail'),
+												'enabled'	=> true
+											]
+										]) AS $index => $method) {
+											printf('<option value="%1$s"%3$s>%2$s%4$s</option>', $method->id, $method->name, (!$method->enabled ? ' DISABLED' : ''), (!$method->enabled ? sprintf(' (%s)', I18N::get('disabled')) : ''));
+										}
+									?>
 								</select>
-                            </div>
+							</div>
 						</div>
-						<div class="form-group text-end">
+						<div class="form-group text-right">
 							<button type="submit" name="action" value="save" class="btn btn-outline-success"><?php I18N::__('Save'); ?></button>
 						</div>
 					</div>

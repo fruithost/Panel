@@ -1,10 +1,36 @@
 <?php
-    use fruithost\Localization\I18N;
-    use fruithost\Accounting\Auth;
-
-    if(isset($_POST['action']) && $_POST['action'] === 'save') {
+	use fruithost\Auth;
+	use fruithost\Database;
+	use fruithost\I18N;
+	
+	if(isset($_POST['action']) && $_POST['action'] === 'save') {
 		switch($tab) {
 			case 'security':
+				$selected = null;
+				
+				foreach($template->getCore()->getHooks()->applyFilter('2FA_METHODS', [
+					(object) [
+						'id'		=> 'mail',
+						'name'		=> I18N::get('E-Mail'),
+						'enabled'	=> true
+					]
+				]) AS $index => $method) {
+					if($method->id == $_POST['2fa_type']) {
+						$selected = $method;
+						break;
+					}
+				}
+			
+				if($selected == null) {
+					$template->assign('error', I18N::get('The selected 2FA method is not known.'));
+					return;
+				}
+			
+				if(!$selected->enabled) {
+					$template->assign('error', sprintf(I18N::get('The 2FA method "%s" is currently deactivated and can therefore not be used.'), $selected->name));
+					return;
+				}
+				
 				if(isset($_POST['2fa_enabled'])) {
 					Auth::setSettings('2FA_ENABLED', NULL, 'true');
 				} else {
