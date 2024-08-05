@@ -20,8 +20,9 @@
 				$this->addHeader('DEBUG', DEBUG);
 			}
 			
-			if(substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')) {
-				$this->addHeader('Content-Encoding', 'gzip');
+			if(isset($_SERVER['HTTP_ACCEPT_ENCODING']) && substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')) {
+				//$this->addHeader('Content-Encoding', 'gzip');
+				// @ToDo Debug output encoding
 			}
 		}
 		

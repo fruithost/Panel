@@ -26,8 +26,10 @@
 			
 			if(defined('DEBUG') && DEBUG) {
 				ob_start();
-			} else if(substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')) {
-				ob_start('ob_gzhandler');
+			} else if(isset($_SERVER['HTTP_ACCEPT_ENCODING']) && substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')) {
+				if(!ob_start('ob_gzhandler')) {
+					ob_start();
+				}
 			}
 			
 			$this->core->getHooks()->addAction('html_head', [ $this, 'head_robots' ], 10, false);
@@ -147,6 +149,10 @@
 						require_once($path);
 					} else {
 						require($path);
+					}
+					
+					if(isset($_SERVER['HTTP_ACCEPT_ENCODING']) && substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')) {
+						ob_flush();
 					}
 					
 					return true;
