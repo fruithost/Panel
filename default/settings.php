@@ -121,6 +121,8 @@
 							<div class="col-sm-10">
 								<select name="2fa_type" class="form-select">
 									<?php
+										$selected = Auth::getSettings('2FA_TYPE', NULL, 'mail');
+										
 										foreach($template->getCore()->getHooks()->applyFilter('2FA_METHODS', [
 											(object) [
 												'id'		=> 'mail',
@@ -128,7 +130,7 @@
 												'enabled'	=> true
 											]
 										]) AS $index => $method) {
-											printf('<option value="%1$s"%3$s>%2$s%4$s</option>', $method->id, $method->name, (!$method->enabled ? ' DISABLED' : ''), (!$method->enabled ? sprintf(' (%s)', I18N::get('disabled')) : ''));
+											printf('<option value="%1$s"%3$s>%2$s%4$s</option>', $method->id, $method->name, (!$method->enabled ? ' DISABLED' : ($selected == $method->id ? ' SELECTED' : '')), (!$method->enabled ? sprintf(' (%s)', I18N::get('disabled')) : ''));
 										}
 									?>
 								</select>
