@@ -1,6 +1,6 @@
 <?php
-	use fruithost\Auth;
-	use fruithost\I18N;
+	use fruithost\Accounting\Auth;
+	use fruithost\Localization\I18N;
 	
 	$template->header();
 	?>
@@ -37,7 +37,7 @@
 						<div class="form-group row">
 							<label for="language" class="col-sm-2 col-form-label"><?php I18N::__('Language'); ?>:</label>
 							<div class="col-sm-10">
-								<select name="language" name="language" class="form-control">
+								<select name="language" name="language" class="form-select">
 								<?php
 									foreach($languages AS $code => $language) {
 										printf('<option value="%1$s"%2$s>%3$s</option>', $code, (Auth::getSettings('LANGUAGE', NULL, $template->getCore()->getSettings('LANGUAGE', 'en_US')) === $code ? ' SELECTED' : ''), $language);
@@ -56,7 +56,7 @@
 						<div class="form-group row">
 							<label for="time_zone" class="col-sm-2 col-form-label"><?php I18N::__('Timezone'); ?>:</label>
 							<div class="col-sm-10">
-								<select name="time_zone" id="time_zone" class="form-control">
+								<select name="time_zone" id="time_zone" class="form-select">
 									<?php
 										foreach($timezones AS $category) {
 											printf('<optgroup label="%s">', $category->group);
@@ -119,7 +119,7 @@
 						<div class="form-group row">
 							<label for="2fa_type" class="col-sm-2 col-form-label"><?php I18N::__('Type'); ?>:</label>
 							<div class="col-sm-10">
-								<select name="2fa_type" class="form-control">
+								<select name="2fa_type" class="form-select">
 									<?php
 										foreach($template->getCore()->getHooks()->applyFilter('2FA_METHODS', [
 											(object) [

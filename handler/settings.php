@@ -1,7 +1,7 @@
 <?php
-	use fruithost\Auth;
-	use fruithost\Database;
-	use fruithost\I18N;
+	use fruithost\Accounting\Auth;
+	use fruithost\Localization\I18N;
+	use fruithost\Storage\Database;
 	
 	if(isset($_POST['action']) && $_POST['action'] === 'save') {
 		switch($tab) {
