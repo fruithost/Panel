@@ -60,6 +60,8 @@
 			
 			$this->assign('topbar',		$this->navigation->getCategory('account'));
 			$this->assign('navigation', $this->navigation);
+			
+			$this->core->getHooks()->runAction('template_init');
 		}
 		
 		public function getCore() : Core {
@@ -92,6 +94,8 @@
 		
 		public function display(string $file, array $arguments = [], bool $basedir = true, bool $once = true) : ?bool {
 			$template	= $this;
+			
+			$this->core->getHooks()->runAction('html_render');
 			
 			foreach($arguments AS $name => $value) {
 				$this->assigns[$name] = $value;

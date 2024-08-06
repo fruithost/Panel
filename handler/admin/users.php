@@ -1,15 +1,14 @@
 <?php
+	use fruithost\Accounting\Session;
+	use fruithost\Accounting\User;
+	use fruithost\Localization\I18N;
+	use fruithost\Network\Response;
+	use fruithost\Security\Encryption;
+	use fruithost\Storage\Database;
+	use PHPMailer\PHPMailer;
 
-use fruithost\Accounting\Session;
-use fruithost\Accounting\User;
-use fruithost\Localization\I18N;
-use fruithost\Network\Response;
-use fruithost\Security\Encryption;
-use fruithost\Storage\Database;
-use PHPMailer\PHPMailer;
-
-$users = Database::fetch('SELECT *, \'[*** PROTECTED ***]\' AS `password` FROM `' . DATABASE_PREFIX . 'users` WHERE `deleted`=\'NO\'');
-	
+	$users = Database::fetch('SELECT *, \'[*** PROTECTED ***]\' AS `password` FROM `' . DATABASE_PREFIX . 'users` WHERE `deleted`=\'NO\' ORDER BY `id`');
+		
 	if(isset($_POST['action'])) {
 		$user = new User();
 		

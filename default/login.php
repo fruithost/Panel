@@ -23,10 +23,12 @@
 							<label for="code"><?php I18N::__('Code'); ?></label>
 						</div>
 					<?php
+				} else if(isset($two_factor_unknown) && $two_factor_unknown) {
+					
 				} else {
 					?>
 						<div class="form-floating">
-							<input type="text" class="form-control" id="username" name="username" placeholder="<?php I18N::__('Username'); ?>" value="<?php print $username; ?>" required autofocus />
+							<input type="text" class="form-control" id="username" name="username" placeholder="<?php I18N::__('Username'); ?>" value="<?php print (isset($username) ? $username : ''); ?>" required autofocus />
 							<label for="username"><?php I18N::__('Username'); ?></label>
 						</div>
 						<div class="form-floating">
@@ -45,9 +47,21 @@
 			?>
 			
 			<div class="btn-group btn-group-lg" style="width: 100%;">
-				<button class="btn btn-primary col-9" name="action" value="login" type="submit">
-					<?php I18N::__('Sign in'); ?>
-				</button>
+				<?php
+					if(isset($two_factor_unknown) && $two_factor_unknown) {
+						?>
+							<button class="btn btn-primary col-9" name="action" value="back" type="submit">
+								<?php I18N::__('Back'); ?>
+							</button>
+						<?php
+					} else {
+						?>
+							<button class="btn btn-primary col-9" name="action" value="login" type="submit">
+								<?php I18N::__('Sign in'); ?>
+							</button>
+						<?php
+					}
+				?>
 				<button type="button" class="col-3 btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
 					<?php Icon::show('language'); ?>
 					<span class="visually-hidden">Toggle Dropdown</span>

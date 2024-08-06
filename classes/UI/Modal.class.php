@@ -6,6 +6,7 @@
     class Modal {
 		private ?string $name		= null;
 		private ?string $title		= null;
+		private bool $show			= false;
 		private mixed $content		= null;
 		private array $buttons		= [];
 		private array $callbacks	= [];
@@ -43,6 +44,10 @@
 			return $this->title;
 		}
 		
+		public function isShowing() : bool {
+			return $this->show;
+		}
+		
 		public function addButton(array $button) : Modal {
 			$this->buttons[] = $button;
 			return $this;
@@ -64,6 +69,11 @@
 			}
 			
 			return $this->content;
+		}
+		
+		public function show($variables = []) {
+			$this->variables	= array_merge($this->variables, $variables);
+			$this->show			= true;
 		}
 	}
 ?>

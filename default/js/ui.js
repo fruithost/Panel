@@ -50,8 +50,14 @@
 			
 			new Ajax(form.action).onSuccess(function(response) {
 				if(response.toLowerCase() === 'true' || response.toLowerCase() === '1') {
-					//form.closest('.modal').modal('hide');
 					window.location.reload();
+					return;
+				} else if(response.toLowerCase() == 'close') {
+					let node = form.parentNode.closest('.modal');
+					node.classList.remove('fade');
+					var modal = bootstrap.Modal.getInstance(node);
+					modal.hide();
+					event.stopPropagation();
 					return;
 				} else if(response.toLowerCase() === 'false') {
 					response = 'An unknown error has occurred.';
@@ -86,6 +92,11 @@
 		form.addEventListener('submit', function(event) {
 			ajaxSubmit.apply(form, [ event ]);
 		});
+	});
+	
+	
+	window.showing.forEach((modal) => {
+		new bootstrap.Modal('#' + modal, {}).show();
 	});
 })();
 

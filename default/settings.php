@@ -6,17 +6,54 @@
 	?>
 		<form method="post" action="<?php print $this->url('/settings' . (!empty($tab) ? '/' . $tab : '')); ?>">
 			<header class="page-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-				<h1 class="h2">
-					<a class="active" href="<?php print $this->url('/settings'); ?>"><?php I18N::__('Settings'); ?></a>
-				</h1>
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb" style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z' fill='%236c757d'/%3E%3C/svg%3E&#34;);">
+						<li class="breadcrumb-item<?php print (empty($submodule) ? ' active" aria-current="page' : ''); ?>">
+							<a class="active" href="<?php print $this->url('/settings'); ?>"><?php I18N::__('Settings'); ?></a>
+						</li>
+						<?php
+							if($tab == 'security') {
+								?>
+									<li class="breadcrumb-item active" aria-current="page">
+										<a href="<?php print $this->url('/settings/security'); ?>"><?php I18N::__('Security'); ?></a>
+									</li>
+								<?php
+							} else {
+								?>
+									<li class="breadcrumb-item active" aria-current="page">
+										<a href="<?php print $this->url('/settings'); ?>"><?php I18N::__('Global Settings'); ?></a>
+									</li>
+								<?php
+							}
+						?>
+					</ol>
+				</nav>
 				<div class="btn-toolbar mb-2 mb-md-0">
 					<button type="submit" name="action" value="save" class="btn btn-sm btn-outline-primary"><?php I18N::__('Save'); ?></button>
 				</div>
 			</header>
 			
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
-				<li class="nav-item"><a class="nav-link<?php print (empty($tab) ? ' active' : ''); ?>" id="globals-tab" href="<?php print $this->url('/settings'); ?>" role="tab"><?php I18N::__('Global Settings'); ?></a></li>
-				<li class="nav-item"><a class="nav-link<?php print (!empty($tab) && $tab === 'security' ? ' active' : ''); ?>" id="security-tab" href="<?php print $this->url('/settings/security'); ?>" role="tab"><?php I18N::__('Security'); ?></a></li>
+				<?php
+					foreach($template->getCore()->getHooks()->applyFilter('SETTINGS_TABS', [
+						(object) [
+							'id'		=> 'settings',
+							'name'		=> I18N::get('Global Settings')
+						], (object) [
+							'id'		=> 'security',
+							'name'		=> I18N::get('Security')
+						]
+					]) AS $index => $method) {
+						$active = false;
+						if(empty($tab) && $index == 0) {
+							$active = true;
+						} else if(!empty($tab) && $tab === $method->id) {
+							$active = true;
+						}
+						
+						printf('<li class="nav-item"><a class="nav-link%1$s" id="%2$s-tab" href="%3$s" role="tab">%4$s</a></li>', ($active ? ' active' : ''), $method->id, $this->url(sprintf('/%s%s', ($index == 0 ? '' : 'settings/'), $method->id)), $method->name);
+					}
+				?>
 			</ul>
 			<?php
 				if(isset($error)) {
@@ -141,6 +178,36 @@
 						</div>
 					</div>
 				</div>
+				<?php
+					foreach($template->getCore()->getHooks()->applyFilter('SETTINGS_TABS', [
+						(object) [
+							'id'			=> 'settings',
+							'name'			=> I18N::get('Global Settings'),
+							'__build_in'	=> true
+						], (object) [
+							'id'			=> 'security',
+							'name'			=> I18N::get('Security'),
+							'__build_in'	=> true
+						]
+					]) AS $index => $method) {
+						if(isset($method->__build_in) && $method->__build_in) {
+							continue;
+						}
+						
+						$active = false;
+						if(empty($tab) && $index == 0) {
+							$active = true;
+						} else if(!empty($tab) && $tab === $method->id) {
+							$active = true;
+						}
+						
+						?>
+							<div class="tab-pane<?php print ($active ? ' show active' : ''); ?>" id="<?php print $method->id; ?>" role="tabpanel" aria-labelledby="<?php print $method->id; ?>-tab">
+								<?php require_once($method->content); ?>
+							</div>
+						<?php
+					}
+				?>
 			</div>
 		</form>
 	<?php

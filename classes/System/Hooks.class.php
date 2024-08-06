@@ -91,7 +91,7 @@
 			return false;
 		}
 		
-		public function applyFilter(string $name, mixed $arguments) : mixed {
+		public function applyFilter(string $name, mixed $arguments, bool $logged_in = true) : mixed {
 			$args	= [];
 			$value	= $arguments;
 			
@@ -129,7 +129,7 @@
 			
 			do {
 				foreach(current($this->filters[$name]) AS $entry) {
-					if(!empty($entry['method']) && (isset($entry['logged_in']) && ($entry['logged_in'] == true && Auth::isLoggedIn() || $entry['logged_in'] == false))) {
+					if(!empty($entry['method']) && (!$logged_in || (isset($entry['logged_in']) && $logged_in && ($entry['logged_in'] == true && Auth::isLoggedIn() || $entry['logged_in'] == false)))) {
 						if($value instanceof HookParameters) {
 							$args		= $value->get();
 						} else {
@@ -159,7 +159,7 @@
 			return $this->hasFilter($name, $method);
 		}
 		
-		public function runAction(string $name, mixed $arguments = null) : bool {
+		public function runAction(string $name, mixed $arguments = null, bool $logged_in = true) : bool {
 			if(!is_array($this->actions)) {
 				$this->actions = [];
 			}
@@ -192,7 +192,7 @@
 			$args = [];
 			
 			if(is_array($arguments) && isset($arguments[0]) && is_object($arguments[0]) && count($arguments) == 1) {
-				$args[] =& $arguments[0];
+				$args[] = &$arguments[0];
 			} else {
 				$args[] = $arguments;
 			}
@@ -210,7 +210,7 @@
 			
 			do {
 				foreach(current($this->filters[$name]) AS $entry) {
-					if(!empty($entry['method']) && (isset($entry['logged_in']) && ($entry['logged_in'] == true && Auth::isLoggedIn() || $entry['logged_in'] == false))) {
+					if(!empty($entry['method']) && (!$logged_in || (isset($entry['logged_in']) && $logged_in && ($entry['logged_in'] == true && Auth::isLoggedIn() || $entry['logged_in'] == false)))) {
 						call_user_func_array($entry['method'], $args);
 					}
 				}
