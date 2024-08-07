@@ -213,7 +213,7 @@
 								</td>
 								<td>
 									<span class="d-inline-block badge badge-pill module-badge text-bg-<?php print ($daemon['status'] ? 'success' : 'danger');?>" data-toggle="tooltip" title="<?php ($daemon['status'] ? I18N::__('Running normally.') : I18N::__('Error during execution!'));?>"></span>
-									<span class="text-<?php print ($daemon['status'] ? 'success' : 'danger');?>">
+									<span class="d-inline-block text-<?php print ($daemon['status'] ? 'success' : 'danger fw-bolder');?>">
 										<?php
 											if($daemon['status']) {
 												I18N::__('Okay');
