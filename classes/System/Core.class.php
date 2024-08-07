@@ -106,6 +106,8 @@
 			
 			Icon::init($this);
 			
+			Update::check();
+			
 			$this->getHooks()->runAction('core_pre_init');
 			
 			$this->router->addRoute('/', function() {

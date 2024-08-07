@@ -10,6 +10,10 @@
 		error_reporting(E_ALL);
 	}
 	
+	if(!defined('UPDATE_ENDPOINT')) {
+		define('UPDATE_ENDPOINT', 'update.fruithost.de');
+	}
+	
 	define('TAB',	"\t");
 	define('BS',	'\\');
 	define('DS',	DIRECTORY_SEPARATOR);

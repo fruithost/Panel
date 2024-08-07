@@ -2,6 +2,7 @@
     use fruithost\Localization\I18N;
     use fruithost\Accounting\Auth;
     use fruithost\System\Utils;
+    use fruithost\System\Update;
     use fruithost\UI\Icon;
 
     $template->header();
@@ -139,7 +140,7 @@
 												'attributes'	=> [
 													'data-bs-toggle'	=> 'hover',
 													'data-bs-content'	=> sprintf(I18N::get('The hostname <strong>%s</strong> does not match the panel domain (<strong>%s</strong>).'), $network->getHostname(), $network->getPanelHostname()),
-													'data-bs-title'		=> sprintf('<small class=\'text-warning\'>%s</small>', I18N::get('Warning!'))
+													'data-bs-title'		=> sprintf('<small class=\'text-warning fw-bolder\'>%s</small>', I18N::get('Warning!'))
 												]
 											]);
 										}
@@ -152,6 +153,45 @@
 								</td>
 								<td>
 									<?php print $time_system; ?>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<strong><?php I18N::__('License Key'); ?></strong>
+								</td>
+								<td>
+									<?php print Update::getLicense(); ?>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<strong><?php I18N::__('Version'); ?></strong>
+								</td>
+								<td>
+									<?php
+										if(version_compare($version, $template->getCore()->getSettings('UPDATE_VERSION'), '>')) {
+											Icon::show('error', [
+												'classes'		=> [ 'text-danger', 'mr-2' ]
+											]);
+										} else {
+											Icon::show('okay', [
+												'classes'		=> [ 'text-success', 'mr-2' ]
+											]);
+										}
+										
+										print ' ' . $version;
+											
+										if(version_compare($version, $template->getCore()->getSettings('UPDATE_VERSION'), '>')) {
+											Icon::show('warning', [
+												'classes'		=> [ 'text-warning', 'ml-1' ],
+												'attributes'	=> [
+													'data-bs-toggle'	=> 'hover',
+													'data-bs-content'	=> sprintf(I18N::get('Please update the system to <strong>Version %s</strong> via the fruithost daemon.'), $template->getCore()->getSettings('UPDATE_VERSION')),
+													'data-bs-title'		=> sprintf('<small class=\'text-warning fw-bolder\'>%s</small>', I18N::get('Update available!'))
+												]
+											]);
+										}
+									?>
 								</td>
 							</tr>
 						</table>
@@ -167,6 +207,23 @@
 					</div>
 					<div class="card-body p-0">
 						<table class="table m-0 table-borderless table-striped">
+							<tr>
+								<td>
+									<strong><?php I18N::__('Status'); ?></strong>
+								</td>
+								<td>
+									<span class="d-inline-block badge badge-pill module-badge text-bg-<?php print ($daemon['status'] ? 'success' : 'danger');?>" data-toggle="tooltip" title="<?php ($daemon['status'] ? I18N::__('Running normally.') : I18N::__('Error during execution!'));?>"></span>
+									<span class="text-<?php print ($daemon['status'] ? 'success' : 'danger');?>">
+										<?php
+											if($daemon['status']) {
+												I18N::__('Okay');
+											} else {
+												I18N::__('Error');
+											}
+										?>
+									</span>
+								</td>
+							</tr>
 							<tr>
 								<td>
 									<strong><?php I18N::__('Last Start'); ?></strong>

@@ -16,6 +16,8 @@
 		"theme-dark":	"moon-stars-fill",
 		"theme-auto":	"circle-half",
 		"check":		"check2",
+		"okay":			"check-circle",
+		"error":		"x-circle-fill",
 		
 		"ftp":			"folder",
 		"database":		"database",

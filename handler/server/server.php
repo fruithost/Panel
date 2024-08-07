@@ -40,7 +40,9 @@
 	$template->assign('memory',				Memory::get());
 	$template->assign('network',			NetworkInterfaces::get());
 	$template->assign('disks',				PhysicalDrives::getDevices());
-	$template->assign('daemon',			[
+	$template->assign('version',			file_get_contents('.version'));
+	$template->assign('daemon',				[
+		'status'	=> time() - strtotime(date(Auth::getSettings('TIME_FORMAT', null, 'd.m.Y - H:i'), strtotime($this->getCore()->getSettings('DAEMON_TIME_END', 0)))) < 15 * 60,
 		'started'	=> strtotime($this->getCore()->getSettings('DAEMON_TIME_START', 0)),
 		'start'		=> date(Auth::getSettings('TIME_FORMAT', null, 'd.m.Y - H:i'), strtotime($this->getCore()->getSettings('DAEMON_TIME_START', 0))),
 		'end'		=> date(Auth::getSettings('TIME_FORMAT', null, 'd.m.Y - H:i'), strtotime($this->getCore()->getSettings('DAEMON_TIME_END', 0))),
