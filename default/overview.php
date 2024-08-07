@@ -23,19 +23,67 @@
 				<h4 class="alert-heading"><?php printf(I18N::get('Welcome to %s!'), $project_name); ?></h4>
 				<p><?php I18N::__('We\'ve assembled some links to get you started'); ?>:</p>
 				<div class="row">
-					<div class="col-sm-4 text-center">
-						<h6 class="text-left"><?php I18N::__('Get Started'); ?></h6>
-						<a href="<?php print $template->url('/module/domains'); ?>" class="btn btn-primary btn-lg ml-4 mr-4 mt-2"><?php I18N::__('Create a Domain'); ?></a>
-						<p><?php I18N::__('or'); ?> <a href="<?php print $template->url('/module/subdomains'); ?>"><?php I18N::__('create a new subdomain'); ?></a></p>
-					</div>
-					<div class="col-sm-4">
-						<h6><?php I18N::__('Next Steps'); ?></h6>
-						<ul class="list-unstyled">
-							<li><?php Icon::show('ftp'); ?> <a href="<?php print $template->url('/module/ftp'); ?>"><?php I18N::__('Create an FTP Account'); ?></a></li>
-							<li><?php Icon::show('database'); ?> <a href="<?php print $template->url('/module/database'); ?>"><?php I18N::__('Create a new Database'); ?></a></li>
-							<li><?php Icon::show('mailbox'); ?> <a href="<?php print $template->url('/module/mailserver'); ?>"><?php I18N::__('Create a new Mailbox'); ?></a></li>
-						</ul>
-					</div>
+					<?php
+						if($template->getCore()->getModules()->hasModule('domains')) {
+							?>
+								<div class="col-sm-4 text-center">
+									<h6 class="text-left"><?php I18N::__('Get Started'); ?></h6>
+									<a href="<?php print $template->url('/module/domains'); ?>" class="btn btn-primary btn-lg ml-4 mr-4 mt-2"><?php I18N::__('Create a Domain'); ?></a>
+									<?php
+										if($template->getCore()->getModules()->hasModule('subdomains')) {
+											?>
+												<p><?php I18N::__('or'); ?> <a href="<?php print $template->url('/module/subdomains'); ?>"><?php I18N::__('create a new subdomain'); ?></a></p>
+											<?php
+										}
+									?>
+								</div>
+							<?php
+						}
+						
+						$empty = 0;
+						$steps = [
+							(object) [
+								'id'	=> 'ftp',
+								'icon'	=> 'ftp',
+								'url'	=> '/module/ftp',
+								'text'	=> I18N::get('Create an FTP Account')
+							], (object) [
+								'id'	=> 'mysql',
+								'icon'	=> 'database',
+								'url'	=> '/module/database',
+								'text'	=> I18N::get('Create a new Database')
+							], (object) [
+								'id'	=> 'mailserver',
+								'icon'	=> 'mailbox',
+								'url'	=> '/module/mailserver',
+								'text'	=> I18N::get('Create a new Mailbox')
+							]
+						];
+						
+						foreach($steps as $entry) {
+							if(!$template->getCore()->getModules()->hasModule($entry->id)) {
+								++$empty;
+							}
+						}
+						
+						if(count($steps) < $empty) {
+							?>
+								<div class="col-sm-4">
+									<h6><?php I18N::__('Next Steps'); ?></h6>
+									<ul class="list-unstyled">
+										<?php
+											foreach($steps as $entry) {
+												if($template->getCore()->getModules()->hasModule($entry->id)) {
+													printf('<li>%s <a href="%s">%s</a></li>', Icon::render($entry->icon), $template->url($entry->url), $entry->text);
+												}
+											}
+										?>
+									</ul>
+								</div>
+							<?php
+						}
+					?>
+					
 					<div class="col-sm-4">
 						<h6><?php I18N::__('More Actions'); ?></h6>
 						<ul class="list-unstyled">
