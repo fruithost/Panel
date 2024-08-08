@@ -84,7 +84,7 @@
 						<table class="table m-0 table-borderless table-striped">
 							<tr>
 								<td rowspan="4" class="text-center align-middle border-end">
-									<img height="50px" class="m-2" src="<?php print $template->url('/assets/systems/debian.svg'); ?>" alt="Debian" />
+									<img height="50px" class="m-2" src="<?php print $template->url(sprintf('/assets/systems/%s.svg', $id)); ?>" alt="<?php print $id; ?>" />
 								</td>
 								<td>
 									<strong><?php I18N::__('System'); ?></strong>

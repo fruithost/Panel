@@ -69,12 +69,16 @@
 		}
 		
 		public function getName() : string {
-			return $this->data['ID'];
+			return strtolower(trim($this->data['ID']));
 		}
 		
 		public function getPrettyName() : string {
 			return $this->data['PRETTY_NAME'];
 		}
+
+        public function getID() : string {
+            return $this->data['ID'];
+        }
 		
 		public function getCodename() : string {
 			return $this->data['VERSION_CODENAME'];
@@ -116,6 +120,10 @@
 		
 		public static function getMachineType() : string {
 			return OperatingSystemFactory::getInstance()->getMachineType();
+		}
+
+		public static function getID() : string {
+			return OperatingSystemFactory::getInstance()->getID();
 		}
 		
 		public static function getUptime(bool $nicename = false) : string | object {

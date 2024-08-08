@@ -34,6 +34,7 @@
 	$template->assign('time_php',			date('d M Y H:i:s T'));
 	$template->assign('time_system',		OperatingSystem::getTime());
 	$template->assign('os',					OperatingSystem::getPrettyName());
+	$template->assign('id',			        OperatingSystem::getID());
 	$template->assign('kernel',				OperatingSystem::getKernel());
 	$template->assign('machine_type',		OperatingSystem::getMachineType());
 	$template->assign('uptime',				OperatingSystem::getUptime(true));
