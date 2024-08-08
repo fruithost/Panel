@@ -1,4 +1,12 @@
 <?php
+    /**
+     * fruithost | OpenSource Hosting
+     *
+     * @author Adrian Preuß
+     * @version 1.0.0
+     * @license MIT
+     */
+
 	namespace fruithost\Accounting;
 	
 	use fruithost\Storage\Database;
@@ -41,32 +49,65 @@
 				}
 			}
 		}
-		
+
+        /*
+            Check if user is logged in.
+
+            @return bool
+         */
 		public function isLoggedIn() : bool {
 			$user_id = Session::get('user_id');
 			
 			return (!empty($user_id) && $user_id > 0);
 		}
-		
+
+        /*
+            Get user id of the current user.
+
+            @return int | null
+         */
 		public function getID() : ?int {
 			return Session::get('user_id');
 		}
-		
+
+		/*
+            Get username of the current user.
+
+            @return string | null
+         */
 		public function getUsername() : ?string {
 			return Session::get('user_name');
 		}
-		
+
+		/*
+            Log out the current user.
+
+            @return bool
+         */
 		public static function logout() : bool {
 			Session::remove('user_id');
 			Session::remove('user_name');
 			
 			return true;
 		}
-		
+
+		/*
+            Get E-Mail address of the current user.
+
+            @return string | null
+         */
 		public function getMail() : ?string {
 			return $this->user->getMail();
 		}
-		
+
+		/*
+            Log in a specific user by `$username` and `$password`.
+
+			@param string $username
+			@param string $password
+            @return bool
+			@throw Exception
+         */
 		public function login(string $username, #[\SensitiveParameter]  string $password) : bool {
 			$result = Database::single('SELECT `id`, `username`, `password`, UPPER(SHA2(CONCAT(`id`, :salt, :password), 512)) as `crypted` FROM `' . DATABASE_PREFIX . 'users` WHERE `username`=:username LIMIT 1', [
 				'username'	=> $username,
@@ -92,7 +133,15 @@
 			
 			return true;
 		}
-		
+
+		/*
+            Check a specific user by `$username` and `$password` for Two-Factor-Authentication.
+
+			@param string $username
+			@param string $password
+            @return bool
+			@throw Exception
+         */
 		public function TwoFactorLogin(string $username, #[\SensitiveParameter]  string $password) : bool {
 			$result = Database::single('SELECT `id`, `username`, `email`, `password`, UPPER(SHA2(CONCAT(`id`, :salt, :password), 512)) as `crypted` FROM `' . DATABASE_PREFIX . 'users` WHERE `username`=:username LIMIT 1', [
 				'username'	=> $username,
@@ -118,23 +167,55 @@
 			
 			return true;
 		}
-		
+
+		/*
+            Get Settings from (given) user account.
+
+			@param string				$name
+			@param string | int | null	$user_id
+			@param mixed				$default
+            @return mixed
+         */
 		public function getSettings(string $name, int | string | null $user_id = null, mixed $default = null) : mixed {
 			return $this->user->getSettings($name, $user_id, $default);
 		}
-		
+
+		/*
+            Remove Settings from (given) user account.
+
+			@param string				$name
+			@param string | int | null	$user_id
+         */
 		public function removeSettings(string $name, int | string | null $user_id = null) : void {
 			$this->user->removeSettings($name, $user_id);
 		}
-		
+
+		/*
+            Set Settings from (given) user account.
+
+			@param string				$name
+			@param string | int | null	$user_id
+			@param mixed				$value
+         */
 		public function setSettings(string $name, int | string | null $user_id = null, mixed $value = null) : void {
 			$this->user->setSettings($name, $user_id, $value);
 		}
-		
+
+		/*
+            Get Gravatar-URL from actual user.
+
+			@return string
+         */
 		public function getGravatar() : string {
 			return $this->user->getGravatar();
 		}
 
+		/*
+           	Check given Permission from actual user.
+
+			@param string				$name
+			@return bool
+         */
         public function hasPermission(string $name) : bool {
 			if(count($this->permissions) > 0) {
 				if($name === '*') {

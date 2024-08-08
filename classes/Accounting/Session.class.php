@@ -1,5 +1,13 @@
 <?php
-	namespace fruithost\Accounting;
+    /**
+     * fruithost | OpenSource Hosting
+     *
+     * @author Adrian Preuß
+     * @version 1.0.0
+     * @license MIT
+     */
+
+    namespace fruithost\Accounting;
 	
 	class Session {
 		public static function init() : void {
