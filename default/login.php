@@ -19,8 +19,9 @@
 				if(isset($two_factor) && $two_factor) {
 					?>
 						<div class="form-floating">
-							<input type="code" class="form-control" id="code" name="code" placeholder="<?php I18N::__('Code'); ?>" required autofocus />
-							<label for="code"><?php I18N::__('Code'); ?></label>
+							<input type="code" class="form-control" id="code" name="code" placeholder="<?php I18N::__('Code'); ?>"  autocomplete="off" required autofocus />
+							<br />
+                            <label for="code"><?php I18N::__('Code'); ?></label>
 						</div>
 					<?php
 				} else if(isset($two_factor_unknown) && $two_factor_unknown) {
