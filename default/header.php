@@ -17,16 +17,22 @@
 		<?php
 			if(!Auth::isLoggedIn()) {
 				?>
-					<body class="d-flex align-items-center py-4 bg-body-tertiary">
+					<body class="d-flex flex-column align-items-center py-4 bg-body-tertiary">
 				<?php
-			}
-			
-			if(Auth::isLoggedIn()) {
+			} else {
 				?>
 				<body class="d-flex overflow-hidden flex-column p-0 m-0 align-items-stretch">
 					<nav class="navbar sticky-top flex-nowrap p-0 border-bottom user-select-none">
-						<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 text-light fs-6" href="<?php print $template->url('/'); ?>"><?php print $project_name; ?></a>
-						
+						<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 text-light fs-6" href="<?php print $template->url('/'); ?>">
+                            <?php
+                                print $project_name;
+
+                                if(defined('DEMO') && DEMO) {
+                                    printf('<span class="badge text-bg-danger float-end justify-content-between">%s</span>', I18N::get('Demoversion'));
+								}
+                            ?>
+                        </a>
+
 						<div class="d-flex w-100 justify-content-between">
 							<div class="navbar-nav justify-content-start flex-row d-md-block d-sm-none"></div>
 							<ul class="navbar-nav justify-content-start flex-row d-md-none">
@@ -122,5 +128,5 @@
 												<main class="col px-md-4 d-block">
 											<?php
 										}
-					}
-			?>
+			}
+?>

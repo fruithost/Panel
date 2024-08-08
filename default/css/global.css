@@ -16,3 +16,9 @@ input:focus {
 	color: var(--bs-emphasis-color);
 	background-color: var(--bs-secondary-bg-subtle);
 }
+
+/* Dropdown */
+.dropdown-scroll {
+	max-height: 145px;
+	overflow-y: scroll;
+}

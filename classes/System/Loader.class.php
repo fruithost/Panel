@@ -12,6 +12,10 @@
 	if(is_readable('.DEBUG') || is_readable('../.DEBUG')) {
 		define('DEBUG', true);
 	}
+
+	if(is_readable('~DEMO') || is_readable('../~DEMO')) {
+		define('DEMO', true);
+	}
 	
 	if(defined('DEBUG') && DEBUG) {
 		@ini_set('display_errors', true);

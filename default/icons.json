@@ -18,7 +18,9 @@
 		"check":		"check2",
 		"okay":			"check-circle",
 		"error":		"x-circle-fill",
-		
+		"github": 		"github",
+		"dot": 			"dot",
+
 		"ftp":			"folder",
 		"database":		"database",
 		"mailbox":		"envelope",

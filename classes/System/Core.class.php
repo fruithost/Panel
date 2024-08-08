@@ -30,11 +30,7 @@
 		
 		public function __construct() {
             parent::__construct();
-			
-			if(is_readable('~demo')) {
-				define('DEMO', true);
-			}
-			
+
 			$this->init();
 		}
 		
