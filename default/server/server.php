@@ -277,7 +277,7 @@
 											<strong class="ml-2"><?php print $disk['name']; ?></strong>
 										</div>
 									</div>
-									<div class="bg-secondary" style="height: 15px;" data-percentage="<?php printf('%s%s', $disk['percent'], ($disk['available'] === '0' ? ' %' : sprintf(' %% (%s)', Utils::getFileSize($disk['used'])))); ?>">
+									<div class="bg-secondary" style="height: 15px;" data-percentage="<?php printf('%s %%', $disk['percent']); ?>">
 										<div class="bg-success" style="height: 100%; width: <?php print $disk['percent']; ?>%"></div>
 									</div>
 									<small class="text-muted"><?php printf(I18N::get('Type: %s | FileSystem: %s | Size: %s / %s'), $disk['type'], $disk['filesystem'], Utils::getFileSize($disk['used']), Utils::getFileSize($disk['size'])); ?></small>

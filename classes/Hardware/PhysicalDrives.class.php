@@ -29,19 +29,23 @@
 					if(str_starts_with($matches[3], 'loop') || str_starts_with($matches[3], 'ram')) {
 						continue;
 					}
-					
-					$df	= preg_split('/\s+/', (explode(PHP_EOL, trim(shell_exec(sprintf('df /dev/%s', $matches[3])))))[1]);
+
+					$df	= preg_split('/\s+/', (explode(PHP_EOL, trim(shell_exec(sprintf('df -kP --print-type --sync --total /dev/%s', $matches[3])))))[1]);
+
+					if($df[1] == 'devtmpfs') {
+						continue;
+					}
 
 					$this->devices[] = [
 						'name'			=> $matches[3],
 						'text'			=> trim(shell_exec(sprintf('cat /sys/block/%s/device/model', $matches[3]))),
-						'type'			=> shell_exec(sprintf('blkid -o value -s TYPE /dev/%s 2>&1', $matches[3])),
+						'type'			=> $df[1],
 						'blocks'		=> trim(shell_exec(sprintf('cat /sys/class/block/%s/queue/logical_block_size', $matches[3]))),
-						'size'			=> $df[1],
-						'used'			=> $df[2],
-						'available'		=> $df[3],
-						'percent'		=> (int) $df[4],
-						'filesystem'	=> $df[5]
+						'size'			=> (int) $df[2] * 1024,
+						'used'			=> (int) $df[3] * 1024,
+						'available'		=> (int) $df[4] * 1024,
+						'percent'		=> (int) $df[5],
+						'filesystem'	=> $df[6]
 					];
 				}
 			}

@@ -90,15 +90,18 @@
 			return $since;
 		}
 		
-		public static function getFileSize($bytes, $dec = 2) : string {
-			$size   = [ 'B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB' ];
-			$factor = floor((strlen($bytes) - 1) / 3);
-			
-			if($factor == 0) {
-				$dec = 0;
+		public static function getFileSize($size) : string {
+			if($size / 1024000000 > 1) {
+				$retval = round($size / 1024000000, 1) . ' GB';
+			} else if($size / 1024000 > 1) {
+				$retval = round($size / 1024000, 1) . ' MB';
+			} else if($size / 1024 > 1) {
+				$retval = round($size / 1024, 1) . ' KB';
+			} else {
+				$retval = round($size, 1) . ' bytes';
 			}
-			
-			return sprintf("%.{$dec}f %s", $bytes / (1000 ** $factor), $size[$factor]);
+
+			return $retval;
 		}
 	}
 ?>
