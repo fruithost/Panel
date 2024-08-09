@@ -52,13 +52,14 @@
 				}
 			});
 		
-			$this->getRouter()->addRoute('^/server(?:/([a-zA-Z0-9\-_]+))(?:/([a-zA-Z0-9\-_]+))?$', function(?string $destination = null, ?string $tab = null) {
+			$this->getRouter()->addRoute('^/server(?:/([a-zA-Z0-9\-_]+))(?:/([a-zA-Z0-9\-_]+))?(?:/([a-zA-Z0-9\-_]+))?$', function(?string $destination = null, ?string $tab = null, ?string $action = null) {
 				if(!Auth::isLoggedIn()) {
 					Response::redirect('/');
 				}
 				
 				if($this->getTemplate()->display('server' . (!empty($destination) ? sprintf('/%s', $destination) : ''), [
-					'tab'	=> $tab
+					'tab'		=> $tab,
+					'action'	=> $action
 				]) == false) {
 					$this->getTemplate()->display('error/404');
 				}

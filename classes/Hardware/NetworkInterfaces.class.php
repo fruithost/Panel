@@ -22,7 +22,33 @@
 		}
 		
 		protected function __construct() {
-			
+			$result = shell_exec('ls /sys/class/net | jq -R -s -c \'split("\n")[:-1]\'');
+
+			foreach(json_decode($result) AS $entry) {
+				$this->devices[$entry] = new NetworkInterface($entry);
+			}
+
+			$result = shell_exec('ip --json address show');
+
+			foreach(json_decode($result) AS $entry) {
+				$device = $this->devices[$entry->ifname];
+				$device->debug = $entry;
+
+				if(isset($entry->link_type)) {
+					$device->setType($entry->link_type);
+				}
+				if(isset($entry->operstate)) {
+					$device->setState(NetworkState::tryFromName($entry->operstate));
+				}
+
+				if(isset($entry->address)) {
+					$device->setAddress($entry->address);
+				}
+
+				if(isset($entry->broadcast)) {
+					$device->setBroadcast($entry->broadcast);
+				}
+			}
 		}
 		
 		public function getDevices() : array {
@@ -39,6 +65,10 @@
 		
 		public function getIPAddress() : string {
 			return trim($_SERVER['SERVER_ADDR']);
+		}
+
+		public function getDevice($id) : NetworkInterface | null {
+			return $this->devices[$id];
 		}
 	}
 	
@@ -61,6 +91,10 @@
 		
 		public static function getIPAddress() : string {
 			return NetworkInterfacesFactory::getInstance()->getDevices();
+		}
+
+		public static function getDevice($id) : NetworkInterface | null {
+			return NetworkInterfacesFactory::getInstance()->getDevice($id);
 		}
 	}
 ?>

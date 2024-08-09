@@ -23,6 +23,7 @@
 	}
 	
 	$rebooting = $template->getCore()->getSettings('REBOOT', null);
+
 	if(!empty($rebooting)) {
 		$this->assign('success', I18N::get('The System will be rebooted now!') . sprintf('<p><small>%s</small></p>', $rebooting));		
 	}
