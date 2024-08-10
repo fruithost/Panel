@@ -16,7 +16,7 @@
 
     class PHP {
 		private ?string $path		= null;
-		private string $socket		= '/var/lib/apache2/fcgid/sock'; //'/run/php/php8.2-fpm.sock'; // @ToDo HARD CODED value, we should find a way to get this value from the system
+		private string $socket		= '/run/php/php8.2-fpm.sock'; // @ToDo HARD CODED value, we should find a way to get this value from the system
 		private ?string $content	= null;
 		private array $data			= [];
 		private bool $error			= false;
