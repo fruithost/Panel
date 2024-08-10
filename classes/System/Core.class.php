@@ -20,8 +20,9 @@
     use fruithost\Storage\Database;
     use fruithost\Templating\Template;
     use fruithost\UI\Icon;
+	use PHPMailer\Exception;
 
-    class Core extends Loader {
+	class Core extends Loader {
 		private ?Modules $modules	= null;
 		private ?Hooks $hooks		= null;
 		private ?Router $router		= null;
@@ -190,11 +191,42 @@
 					$this->template->assign('error', Session::get('error'));
 					Session::remove('error');
 				}
-				
+
+				$errors = [];
+
 				foreach(($this->getModules()->getList()) AS $m) {
-					if($m != null && $m->getInstance() != null && method_exists($m->getInstance(), 'preLoad')) {
-						$m->getInstance()->preLoad();
+					try {
+						if($m != null && $m->getInstance() != null && method_exists($m->getInstance(), 'preLoad')) {
+							$m->getInstance()->preLoad();
+						}
+					} catch(\Exception $e) {
+						$errors[] = (object) [
+							'name'		=> $m->getInfo()->getName(),
+							'message'	=> $e->getMessage(),
+							'stack'		=> $e->getTrace()
+						];
 					}
+				}
+
+				if(count($errors) > 0) {
+					$message = I18N::get('Following Modules have some Errors:');
+					$message .= '<br />';
+
+					foreach($errors AS $entry) {
+						$message .= '<br />';
+						$message .= $entry->name;
+						$message .= ': ';
+						$message .= $entry->message;
+						$message .= '<pre>';
+						foreach($entry->stack AS $entry) {
+							if(!empty($entry['file']) && !empty($entry['line']) ) {
+								$message .= TAB . $entry['file'] . ':' . $entry['line'] . PHP_EOL;
+							}
+						}
+						$message .= '</pre>';
+					}
+
+					$this->template->assign('error', $message);
 				}
 				
 				if(empty($module)) {
@@ -218,7 +250,37 @@
 				}
 				
 				if(method_exists($module->getInstance(), 'load')) {
-					$module->getInstance()->load($submodule, $action);
+					$errors = [];
+					
+					try {
+						$module->getInstance()->load($submodule, $action);
+					} catch(\Exception $e) {
+						$errors[] = (object) [
+							'name'		=> $m->getInfo()->getName(),
+							'message'	=> $e->getMessage(),
+							'stack'		=> $e->getTrace()
+						];
+					}
+					
+					if(count($errors) > 0) {
+						$message = I18N::get('Following Modules have some Errors:');
+
+						foreach($errors AS $entry) {
+							$message .= '<br />';
+							$message .= $entry->name;
+							$message .= ': ';
+							$message .= $entry->message;
+							$message .= '<pre>';
+							foreach($entry->stack AS $entry) {
+								if(!empty($entry['file']) && !empty($entry['line']) ) {
+									$message .= TAB . $entry['file'] . ':' . $entry['line'] . PHP_EOL;
+								}
+							}
+							$message .= '</pre>';
+						}
+
+						$this->template->assign('error', $message);
+					}
 				}
 				
 				if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST' && method_exists($module->getInstance(), 'onPOST')) {

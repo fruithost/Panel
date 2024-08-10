@@ -40,6 +40,8 @@
 									$links['settings'] = sprintf('<a href="%s" class="text-primary">%s</a>', $this->url('/admin/modules/?settings=' . $module->getDirectory()), I18N::get('Settings'));
 								}
 								
+								$links['check'] = sprintf('<a href="%s" class="text-primary">%s</a>', $this->url('/admin/modules/?check=' . $module->getDirectory()), I18N::get('Check'));
+								
 								$links['deinstall'] = sprintf('<a href="%s" data-confirm="%s" class="text-danger">%s</a>', $this->url('/admin/modules/?deinstall=' . $module->getDirectory()), I18N::get('Do you really wan\'t to deinstall the module?'), I18N::get('Deinstall'));
 								
 								print implode(' | ', $links);

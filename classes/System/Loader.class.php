@@ -29,7 +29,7 @@
 	define('TAB',	"\t");
 	define('BS',	'\\');
 	define('DS',	DIRECTORY_SEPARATOR);
-	
+		
 	class Loader {
 		public function __construct() {
 			if((defined('DAEMON') && DAEMON) || (!empty($_SERVER['DAEMON']))) {
@@ -85,7 +85,7 @@
 					print "\033[39m";
 				}
 			}
-						
+			
 			spl_autoload_register([ $this, 'load' ]);
 			
 			// @ToDo Hash verify?

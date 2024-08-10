@@ -22,3 +22,12 @@ input:focus {
 	max-height: 145px;
 	overflow-y: scroll;
 }
+
+.btn-text:hover,
+.btn-text:active,
+.btn-text:focus {
+	color: var(--bs-body-color) !important;
+	background-color: transparent !important;
+	border-color: transparent !important;
+	cursor: normal !important;
+}

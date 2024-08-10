@@ -11,11 +11,12 @@
 
     use fruithost\Localization\I18N;
     use fruithost\Security\Encryption;
+	use fruithost\Accounting\Auth;
     use fruithost\System\Utils;
 
     class PHP {
 		private ?string $path		= null;
-		private string $socket		= '/run/php/php8.2-fpm.sock'; // @ToDo HARD CODED value, we should find a way to get this value from the system
+		private string $socket		= '/var/lib/apache2/fcgid/sock'; //'/run/php/php8.2-fpm.sock'; // @ToDo HARD CODED value, we should find a way to get this value from the system
 		private ?string $content	= null;
 		private array $data			= [];
 		private bool $error			= false;
@@ -29,14 +30,24 @@
 		}
 		
 		public function getBody() : ?string {
-			return explode("\r\n\r\n", $this->content)[1];
+			if(preg_match("/\r\n\r\n/Uis", $this->content)) {
+				return explode("\r\n\r\n", $this->content)[1];
+			} else if(preg_match("/(cgi\-fcgi|command not found)/Uis", $this->content)) {
+				throw new \Exception('Can\'t access cgi-fcgi.');
+			} else {
+				return $this->content;
+			}
 		}
 		
 		public function getContent() : ?string {
 			return $this->content;
 		}
 		
-		public function execute(string $file, array $arguments = []) : void {
+		public function isAvailable() : bool {
+			return !empty(shell_exec('which cgi-fcgi'));
+		}
+		
+		public function execute(string $file, array $arguments = [], ?string $password = null) : void {
 			if(!is_writable($this->path)) {
 				$this->error = true;
 				return;
@@ -56,15 +67,45 @@
 				$args .= sprintf('%s=%s \\%s', $name, $value, PHP_EOL);
 			}
 			
-			$command	= sprintf('%scgi-fcgi -bind -connect "%s" 2>&1', $args, $this->socket);
-			$result 	= shell_exec($command);
-						
-			if($result === null){
-				$this->error = true;
-				return;
-			}
+			// Check if cgi-fcgi available
+			if(!empty(shell_exec('which cgi-fcgi'))) {
+				$command	= sprintf('%scgi-fcgi -bind -connect "%s" 2>&1', $args, $this->socket);
 			
-			$this->content = $result;
+				if($password != null) {
+					$command = sprintf('bash -lc \'echo %s | /usr/bin/sudo -S %s\'', $password, $command);
+				}
+				
+				$result 	= shell_exec($command);
+				
+				if($result === null){
+					$this->error = true;
+					return;
+				}
+				
+				$this->content = $result;
+			} else {
+				// @ToDo Check security(!)
+				$temp	= sprintf('.fruithost.check.%s.php', Utils::randomString(5));
+				$hash	= Encryption::encrypt(Utils::randomString(28), ENCRYPTION_SALT);
+				
+				file_put_contents(sprintf('%s%s', $this->path, $temp), sprintf('<?php define(\'DAEMON\', true); if(isset($_GET[\'FRUITHOST\']) && $_GET[\'FRUITHOST\'] == \'%s\') { require_once(\'%s\'); require_once(\'%s\'); } ?>', $hash, sprintf('%s%s', $this->path, $file), $arguments['MODULE']));
+				
+				$ch = curl_init();
+				curl_setopt($ch, CURLOPT_URL, sprintf('https://%s/%s?FRUITHOST=%s&USERNAME=%s', $_SERVER['SERVER_NAME'], $temp, $hash, Auth::getUsername()));
+				curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
+				curl_setopt($ch, CURLOPT_HTTPHEADER, [
+					'Cookie: ' . $_SERVER['HTTP_COOKIE']
+				]);
+				$result = curl_exec($ch);
+				curl_close($ch);
+
+				$this->content	= $result;
+				@unlink(sprintf('%s%s', $this->path, $temp));
+			}
 		}
 		
 		public function exploding(string | array $name, mixed $data) : array | string {
@@ -203,10 +244,11 @@
 			$file	= sprintf('.fruithost.%s.php', Utils::randomString(5));
 			$hash	= Encryption::encrypt(Utils::randomString(28), ENCRYPTION_SALT);
 			
-			file_put_contents(sprintf('%s%s', $this->path, $file), sprintf('<?php if(isset($_SERVER[\'FRUITHOST\']) && $_SERVER[\'FRUITHOST\'] == \'%s\') { phpinfo(); } ?>', $hash));
+			file_put_contents(sprintf('%s%s', $this->path, $file), sprintf('<?php if(isset($_GET[\'FRUITHOST\']) && $_GET[\'FRUITHOST\'] == \'%s\') { phpinfo(); } ?>', $hash));
 			
 			$this->execute($file, [
-				'FRUITHOST'			=> $hash
+				'FRUITHOST'			=> $hash,
+				'MODULE'			=> sprintf('https://%s/%s?FRUITHOST=%s&USERNAME=%s', $_SERVER['SERVER_NAME'], $file, $hash, Auth::getUsername())
 			]);
 			
 			@unlink(sprintf('%s%s', $this->path, $file));

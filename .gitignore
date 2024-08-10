@@ -2,5 +2,9 @@
 .mail.php
 .config.php
 .DEBUG
+~DEBUG
+.DEMO
+~DEMO
+.fruithost
 .idea/*
 temp/*

@@ -3,6 +3,7 @@
     use fruithost\Storage\Database;
     use fruithost\UI\Button;
     use fruithost\UI\Modal;
+	use fruithost\Services\PHP;
 
     $template->getAdminCore()->addModal((new Modal('add_repository', I18N::get('Add Repository'), 'admin/modules/repository/create'))->addButton([
 		(new Button())->setName('cancel')->setLabel(I18N::get('Cancel'))->addClass('btn-outline-danger')->setDismissable(),
@@ -102,13 +103,84 @@
 		} else {
 			$template->assign('error', I18N::get('The module not exists!'));
 		}
+	} else if(isset($_GET['reinstall'])) {
+		if($modules->hasModule($_GET['reinstall'], true)) {
+			$module		= $modules->getModule($_GET['reinstall'], true);
+			$install	= sprintf('%s%s/setup/install.php', $module->getPath(), DS);
+			
+			if(file_exists($install)) {
+				try {
+					$php = new PHP();
+					$php->setPath(PATH);
+					$php->execute('/classes/System/Loader.class.php', [
+						'DAEMON'			=> true,
+						'REQUEST_URI'		=> '/',
+						'MODULE'			=> $install
+					]);
+					
+					if(preg_match('/(File Not Found|404 Not Found|500 Internal Server Error)/', $php->getHeader())) {
+						throw new \Exception('Installscript not found: ' . $install . PHP_EOL . $php->getHeader());
+					}
+					
+					if(!empty($php->getBody())) {
+						$template->assign('error', I18N::get('The module has an problem:') . '<br />' . $php->getBody());
+					}
+				} catch(\Exception $e) {
+					$template->assign('error', I18N::get('The module has an problem:') . '<br />' . $e->getMessage());
+				}
+			}
+			
+			$template->assign('success', I18N::get('The module was successfully reinstalled!'));
+		} else {
+			$template->assign('error', I18N::get('The module not exists!'));
+		}
+	} else if(isset($_GET['check'])) {
+		if($modules->hasModule($_GET['check'], true)) {
+			$module = $modules->getModule($_GET['check'], true);
+			
+			if($module) {
+				$check = sprintf('%s%s/setup/check.php', $module->getPath(), DS);
+				$fix_it = sprintf('<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+								<a class="btn btn-text btn-sm px-0">' . I18N::get('Try to fix the issue with') . '</a>
+								<a href="%s" class="btn btn-warning btn-sm">' . I18N::get('Reinstall') . '</a>
+								<a class="btn btn-text btn-sm px-0">' . I18N::get('the module.') . '</a>
+							</div>', $this->url('/admin/modules/?reinstall=' . $module->getDirectory()));
+				
+				if(file_exists($check)) {
+					try {
+						$php = new PHP();
+						$php->setPath(PATH);
+						$php->execute('/classes/System/Loader.class.php', [
+							'DAEMON'			=> true,
+							'REQUEST_URI'		=> '/',
+							'MODULE'			=> $check
+						]);
+						
+						if(preg_match('/(File Not Found|404 Not Found|500 Internal Server Error)/', $php->getHeader())) {
+							throw new \Exception('Installscript not found: ' . $check . PHP_EOL . $php->getHeader());
+						}
+						
+						if(!empty($php->getBody())) {
+							$template->assign('error', I18N::get('The module has an problem:') . '<br />' . $php->getBody() . $fix_it);
+						}
+					} catch(\Exception $e) {
+						$template->assign('error', I18N::get('The module has an problem:') . '<br />' . $e->getMessage());
+					}
+				}
+				
+				$template->assign('success', sprintf(I18N::get('The module <strong></strong> was successfully checked.'), $module->getInfo()->getName()));
+			} else {
+				$template->assign('error', I18N::get('The module has an instantiation problem!'));
+			}
+		} else {
+			$template->assign('error', I18N::get('The module not exists!'));
+		}
 	}
 	
 	$template->assign('module',			$module);
 	$template->assign('upgradeable',	$upgradeable);
 	$template->assign('repositorys',	Database::fetch('SELECT * FROM `' . DATABASE_PREFIX . 'repositorys`'));
 	$template->assign('modules',		$template->getCore()->getModules());
-	
 	
 	if(isset($_POST['action'])) {
 		switch($_POST['action']) {

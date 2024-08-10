@@ -14,11 +14,20 @@
 			if(!isset($_SESSION)) {
 				#@session_save_path(sprintf('%s%stemp', dirname(PATH), DS));
 				
-				@session_start(/*[
-					'cookie_lifetime'	=> 3600,
-					'read_and_close'	=> false
-				]*/);
+				@session_start([
+					//'cookie_lifetime'	=> 3600,
+					'read_and_close'	=> true
+				]);
 			}
+		}
+		
+		public static function debug() : void {
+			var_dump([
+				'HTTP_COOKIE'	=> $_SERVER['HTTP_COOKIE'],
+				'COOKIE'		=> $_COOKIE,
+				'session_id'	=> session_id(),
+				'data'			=> $_SESSION
+			]);
 		}
 				
 		public static function getID() : string | false {
