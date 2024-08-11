@@ -11,7 +11,7 @@
 						<a href="<?php print $this->url(); ?>"><?php I18N::__('Error'); ?></a>
 					</li>
 					<?php
-						if(!empty($submodule)) {
+						if(!empty($submodule) && !empty($module)) {
 							?>
 								<li class="breadcrumb-item active" aria-current="page">
 									<a href="<?php print $this->url(sprintf('/module/%s/%s', $module->getDirectory(), $submodule)); ?>"><?php print $this->getCore()->getHooks()->applyFilter('SUBMODULE_NAME', $submodule); ?></a>
