@@ -17,11 +17,17 @@
 	class Modules {
 		private ?Core $core		= null;
 		private array $modules	= [];
+		private bool $disabled = false;
 		
-		public function __construct(Core $core) {
+		public function __construct(Core $core, bool $disabled = false) {
 			$this->core = $core;
+			$this->disabled = $disabled;
 			$enabled	= [];
 			$versions	= [];
+
+			if($this->disabled) {
+				return;
+			}
 			
 			foreach(Database::fetch('SELECT `name` FROM `' . DATABASE_PREFIX . 'modules` WHERE `state`=\'ENABLED\' AND `time_deleted` IS NULL') AS $entry) {
 				$enabled[]				= $entry->name;
@@ -58,6 +64,18 @@
 				$module->setEnabled(in_array(basename($path), $enabled, true));
 				$this->addModule(basename($path), $module);
 			}
+		}
+
+		public function enable() : void {
+			$this->disabled = false;
+		}
+
+		public function disable() : void {
+			$this->disabled = true;
+		}
+
+		public function isDisabled() : bool {
+			return 	$this->disabled;
 		}
 		
 		public function getVersion($name) : ?string {

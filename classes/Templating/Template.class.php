@@ -175,7 +175,7 @@
 					}
 					
 					if(isset($_SERVER['HTTP_ACCEPT_ENCODING']) && substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')) {
-						ob_flush();
+						@flush();
 					}
 					
 					return true;

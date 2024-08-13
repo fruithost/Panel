@@ -28,6 +28,7 @@
 		private ?Router $router		= null;
 		private ?Template $template	= null;
 		private ?CoreAdmin $admin	= null;
+		private bool $modules_disabled = false;
 		
 		public function __construct() {
             parent::__construct();
@@ -38,7 +39,15 @@
 		public function getAdminCore() : ?CoreAdmin {
 			return $this->admin;
 		}
-		
+
+		public function disableModules() {
+			$this->modules_disabled = true;
+		}
+
+		public function enableModules() {
+			$this->modules_disabled = false;
+		}
+
 		public function getModules() : ?Modules {
 			return $this->modules;
 		}
@@ -100,11 +109,11 @@
 			}
 		}
 		
-		private function init() : void {
+		public function init() : void {
 			Request::init();
 
 			$this->hooks = new Hooks();
-			$this->modules = new Modules($this);
+			$this->modules = new Modules($this, $this->modules_disabled);
 			$this->template = new Template($this);
 			$this->router = new Router($this);
 			$this->admin = new CoreAdmin($this, null);

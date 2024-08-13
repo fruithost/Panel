@@ -19,6 +19,7 @@
 	
 	if(defined('DEBUG') && DEBUG) {
 		@ini_set('display_errors', true);
+		@ini_set('log_errors ', false);
 		error_reporting(E_ALL);
 	}
 	
@@ -29,7 +30,7 @@
 	define('TAB',	"\t");
 	define('BS',	'\\');
 	define('DS',	DIRECTORY_SEPARATOR);
-		
+	
 	class Loader {
 		public function __construct() {
 			if((defined('DAEMON') && DAEMON) || (!empty($_SERVER['DAEMON']))) {
@@ -85,7 +86,7 @@
 					print "\033[39m";
 				}
 			}
-			
+						
 			spl_autoload_register([ $this, 'load' ]);
 			
 			// @ToDo Hash verify?
