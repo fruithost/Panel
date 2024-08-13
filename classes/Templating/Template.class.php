@@ -25,7 +25,7 @@
 		private ?string $path = null;
 
 		public function __construct(Core $core) {
-			$this->path			= dirname(PATH);
+			$this->path			= PATH;
 			$this->core			= $core;
 			$this->files		= new TemplateFiles();
 			$this->navigation	= new TemplateNavigation($this->core);

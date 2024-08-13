@@ -100,8 +100,7 @@
 			}
 		}
 		
-		private function init() : void
-		{
+		private function init() : void {
 			Request::init();
 
 			$this->hooks = new Hooks();
