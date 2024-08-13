@@ -100,21 +100,27 @@
 			}
 		}
 		
-		private function init() : void {
+		private function init() : void
+		{
 			Request::init();
-			
-			$this->hooks	= new Hooks();
-			$this->modules	= new Modules($this);
-			$this->template	= new Template($this);
-			$this->router	= new Router($this);
-			$this->admin	= new CoreAdmin($this, null);
-			
+
+			$this->hooks = new Hooks();
+			$this->modules = new Modules($this);
+			$this->template = new Template($this);
+			$this->router = new Router($this);
+			$this->admin = new CoreAdmin($this, null);
+
 			Icon::init($this);
-			
+
 			Update::check();
-			
+
 			$this->getHooks()->runAction('core_pre_init');
-			
+			$this->initRoutes();
+			$this->getHooks()->runAction('core_init');
+			$this->router->run();
+		}
+
+		protected function initRoutes() : void {
 			$this->router->addRoute('/', function() {
 				if(Auth::isLoggedIn()) {
 					Response::redirect('/overview');
@@ -335,9 +341,6 @@
 					}
 				}
 			});
-
-			$this->getHooks()->runAction('core_init');
-			$this->router->run();
 		}
 	}
 ?>

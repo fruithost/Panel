@@ -18,14 +18,15 @@
     class Template extends TemplateDefaults {
 		private Core $core;
 		private ?string $theme					= null;
-		private ?string $path					= null;
 		private array $assigns					= [];
 		private ?TemplateFiles $files			= null;
 		private ?TemplateNavigation $navigation	= null;
-		
+
+		private ?string $path = null;
+
 		public function __construct(Core $core) {
+			$this->path			= dirname(PATH);
 			$this->core			= $core;
-			$this->path			= PATH;
 			$this->files		= new TemplateFiles();
 			$this->navigation	= new TemplateNavigation($this->core);
 			$this->theme		= $this->core->getHooks()->applyFilter('theme_name', 'default');
@@ -82,14 +83,6 @@
 			return $this->core->getAdminCore();
 		}
 		
-		public function getPath() : string {
-			return $this->path;
-		}
-		
-		public function setPath($path) : void {
-			$this->path = $path;
-		}
-		
 		public function isAssigned(string $name) : bool {
 			return array_key_exists($name, $this->assigns);
 		}
@@ -97,7 +90,15 @@
 		public function getAssigns() : array {
 			return $this->assigns;
 		}
-		
+
+		public function setPath($path) {
+			$this->path = $path;
+		}
+
+		public function getPath() {
+			return $this->path;
+		}
+
 		public function getFiles() : TemplateFiles {
 			return $this->files;
 		}
@@ -120,7 +121,7 @@
 			}
 			
 			if($basedir) {
-				$path		= sprintf('%1$s%2$sthemes%2$s%4$s%2$s%3$s.php', dirname($this->path), DS, $file, $this->theme);
+				$path		= sprintf('%1$s%2$sthemes%2$s%4$s%2$s%3$s.php', $this->path, DS, $file, $this->theme);
 			} else {
 				$path		= $file;
 			}
@@ -186,7 +187,7 @@
 		
 		public function header() : void {
 			$template	= $this;
-			$path		= sprintf('%1$s%2$sthemes%2$s%4$s%2$s%3$s.php', dirname($this->path), DS, 'header', $this->theme);
+			$path		= sprintf('%1$s%2$sthemes%2$s%4$s%2$s%3$s.php', $this->path, DS, 'header', $this->theme);
 			
 			foreach($this->assigns AS $name => $value) {
 				${$name} = $value;
@@ -206,7 +207,7 @@
 		
 		public function footer() : void {
 			$template	= $this;
-			$path		= sprintf('%1$s%2$sthemes%2$s%4$s%2$s%3$s.php', dirname($this->path), DS, 'footer', $this->theme);
+			$path		= sprintf('%1$s%2$sthemes%2$s%4$s%2$s%3$s.php', $this->path, DS, 'footer', $this->theme);
 			
 			foreach($this->assigns AS $name => $value) {
 				${$name} = $value;
