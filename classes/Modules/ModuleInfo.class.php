@@ -23,9 +23,10 @@
 		
 		public function __construct(string $path) {
 			$file = sprintf('%s%smodule.package', $path, DS);
-			
+
 			if(!file_exists($file)) {
-				// throw new \Exception('[Module] module.package not exists: ' . $path);
+				$this->is_valid = false;
+				//throw new \Exception('[Module] module.package not exists: ' . $file);
 				// @ToDo Exception
 				return;
 			}
@@ -33,6 +34,7 @@
 			$content = file_get_contents($file);
 			
 			if(empty($file)) {
+				$this->is_valid = false;
 				// throw new \Exception('[Module] module.package is empty: ' . $path);
 				// @ToDo Exception
 				return;
@@ -41,6 +43,7 @@
 			$data = json_decode($content, false);
 			
 			if(json_last_error() !== JSON_ERROR_NONE) {
+				$this->is_valid = false;
 				// throw new \Exception('[Module] module.package is broken: ' . $path);
 				// @ToDo Exception
 				return;
@@ -121,7 +124,7 @@
 			return sprintf('<i class="bi bi-%s"></i>', $this->icon);
 		}
 		
-		public function getDescription() : string {
+		public function getDescription() : ?string {
 			return $this->description;
 		}
 		

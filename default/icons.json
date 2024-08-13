@@ -20,6 +20,7 @@
 		"error":		"x-circle-fill",
 		"github": 		"github",
 		"dot": 			"dot",
+		"grid": 		"grid",
 
 		"ftp":			"folder",
 		"database":		"database",

@@ -21,6 +21,10 @@
 			$this->core = $core;
 		}
 		
+		public function cleanUp() : void {
+			$this->routes = [];
+		}
+		
 		public function addRoute(string $name, callable $callback) : Route | null {
 			$route					= new Route();
 			$this->routes[$name]	= $route;

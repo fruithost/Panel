@@ -18,12 +18,14 @@
     class Template extends TemplateDefaults {
 		private Core $core;
 		private ?string $theme					= null;
+		private ?string $path					= null;
 		private array $assigns					= [];
 		private ?TemplateFiles $files			= null;
 		private ?TemplateNavigation $navigation	= null;
 		
 		public function __construct(Core $core) {
 			$this->core			= $core;
+			$this->path			= PATH;
 			$this->files		= new TemplateFiles();
 			$this->navigation	= new TemplateNavigation($this->core);
 			$this->theme		= $this->core->getHooks()->applyFilter('theme_name', 'default');
@@ -80,6 +82,14 @@
 			return $this->core->getAdminCore();
 		}
 		
+		public function getPath() : string {
+			return $this->path;
+		}
+		
+		public function setPath($path) : void {
+			$this->path = $path;
+		}
+		
 		public function isAssigned(string $name) : bool {
 			return array_key_exists($name, $this->assigns);
 		}
@@ -110,12 +120,12 @@
 			}
 			
 			if($basedir) {
-				$path		= sprintf('%1$s%2$sthemes%2$s%4$s%2$s%3$s.php', dirname(PATH), DS, $file, $this->theme);
+				$path		= sprintf('%1$s%2$sthemes%2$s%4$s%2$s%3$s.php', dirname($this->path), DS, $file, $this->theme);
 			} else {
 				$path		= $file;
 			}
 			
-			$handler	= sprintf('%1$shandler%2$s%3$s.php', PATH, DS, $file);
+			$handler	= sprintf('%1$shandler%2$s%3$s.php', $this->path, DS, $file);
 			
 			foreach($this->assigns AS $name => $value) {
 				${$name} = $value;
@@ -154,7 +164,7 @@
 					$this->getFiles()->addJavascript('ui', $this->url('js/ui.js'), '2.0.0', [ 'bootstrap' ], TemplateFiles::FOOTER);
 				}
 				
-				$path = sprintf('%1$s%2$sdefault%2$s%3$s.php', PATH, DS, $file);
+				$path = sprintf('%1$s%2$sdefault%2$s%3$s.php', $this->path, DS, $file);
 				
 				if(file_exists($path) && is_readable($path)) {
 					if($once) {
@@ -176,7 +186,7 @@
 		
 		public function header() : void {
 			$template	= $this;
-			$path		= sprintf('%1$s%2$sthemes%2$s%4$s%2$s%3$s.php', dirname(PATH), DS, 'header', $this->theme);
+			$path		= sprintf('%1$s%2$sthemes%2$s%4$s%2$s%3$s.php', dirname($this->path), DS, 'header', $this->theme);
 			
 			foreach($this->assigns AS $name => $value) {
 				${$name} = $value;
@@ -186,7 +196,7 @@
 			if(file_exists($path)) {
 				@require_once($path);
 			} else {
-				$path = sprintf('%1$s%2$sdefault%2$s%3$s.php', PATH, DS, 'header');
+				$path = sprintf('%1$s%2$sdefault%2$s%3$s.php', $this->path, DS, 'header');
 				
 				if(file_exists($path)) {
 					@require_once($path);
@@ -196,7 +206,7 @@
 		
 		public function footer() : void {
 			$template	= $this;
-			$path		= sprintf('%1$s%2$sthemes%2$s%4$s%2$s%3$s.php', dirname(PATH), DS, 'footer', $this->theme);
+			$path		= sprintf('%1$s%2$sthemes%2$s%4$s%2$s%3$s.php', dirname($this->path), DS, 'footer', $this->theme);
 			
 			foreach($this->assigns AS $name => $value) {
 				${$name} = $value;
@@ -205,7 +215,7 @@
 			if(file_exists($path)) {
 				require_once($path);
 			} else {
-				$path = sprintf('%1$s%2$sdefault%2$s%3$s.php', PATH, DS, 'footer');
+				$path = sprintf('%1$s%2$sdefault%2$s%3$s.php', $this->path, DS, 'footer');
 				
 				if(file_exists($path)) {
 					@require_once($path);

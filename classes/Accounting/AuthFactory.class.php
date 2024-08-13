@@ -6,6 +6,12 @@
      * @version 1.0.0
      * @license MIT
      */
+	 
+	/*
+		@class Auth
+		@package fruithost
+		@subpackage Accounting
+	*/
 
 	namespace fruithost\Accounting;
 	
@@ -26,6 +32,11 @@
 			return self::$instance;
 		}
 		
+		/*
+			Constructor.
+			
+			Initialize the User.
+		*/
 		protected function __construct() {
 			$this->user = new User();
 			

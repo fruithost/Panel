@@ -8,6 +8,8 @@
 	<FilesMatch "\.(js|css|jpg|png)$">
 		Header set Cache-Control "max-age=31536000"
 	</FilesMatch>
+	
+	Header set Access-Control-Allow-Origin *
 </IfModule>
 
 <IfModule mod_filter.c>

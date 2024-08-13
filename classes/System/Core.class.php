@@ -213,22 +213,13 @@
 					$message .= '<br />';
 
 					foreach($errors AS $entry) {
-						$message .= '<br />';
 						$message .= $entry->name;
-						$message .= ': ';
-						$message .= $entry->message;
-						$message .= '<pre>';
-						foreach($entry->stack AS $entry) {
-							if(!empty($entry['file']) && !empty($entry['line']) ) {
-								$message .= TAB . $entry['file'] . ':' . $entry['line'] . PHP_EOL;
-							}
-						}
-						$message .= '</pre>';
 					}
 
 					$this->template->assign('error', $message);
 				}
-				
+
+
 				if(empty($module)) {
 					$this->template->display('error/module', array_merge($this->template->getAssigns(), [
 						'module'	=> $module,
@@ -239,7 +230,7 @@
 				}
 
 				$module = $this->getModules()->getModule($module);
-				
+
 				if(empty($module)) {
 					$this->template->display('error/module', array_merge($this->template->getAssigns(), [
 						'module'	=> $module,
@@ -250,37 +241,7 @@
 				}
 				
 				if(method_exists($module->getInstance(), 'load')) {
-					$errors = [];
-					
-					try {
-						$module->getInstance()->load($submodule, $action);
-					} catch(\Exception $e) {
-						$errors[] = (object) [
-							'name'		=> $m->getInfo()->getName(),
-							'message'	=> $e->getMessage(),
-							'stack'		=> $e->getTrace()
-						];
-					}
-					
-					if(count($errors) > 0) {
-						$message = I18N::get('Following Modules have some Errors:');
-
-						foreach($errors AS $entry) {
-							$message .= '<br />';
-							$message .= $entry->name;
-							$message .= ': ';
-							$message .= $entry->message;
-							$message .= '<pre>';
-							foreach($entry->stack AS $entry) {
-								if(!empty($entry['file']) && !empty($entry['line']) ) {
-									$message .= TAB . $entry['file'] . ':' . $entry['line'] . PHP_EOL;
-								}
-							}
-							$message .= '</pre>';
-						}
-
-						$this->template->assign('error', $message);
-					}
+					$module->getInstance()->load($submodule, $action);
 				}
 				
 				if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST' && method_exists($module->getInstance(), 'onPOST')) {

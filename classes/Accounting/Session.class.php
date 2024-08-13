@@ -16,7 +16,7 @@
 				
 				@session_start([
 					//'cookie_lifetime'	=> 3600,
-					'read_and_close'	=> true
+					//'read_and_close'	=> true
 				]);
 			}
 		}

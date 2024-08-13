@@ -94,7 +94,7 @@
 				return $buttons;
 			}, 10);
 		}
-		
+
 		public function addModal(Modal $modal) : void {
 			$this->addFilter('modals', function($modals) use($modal) {
 				$modals[] = $modal;
