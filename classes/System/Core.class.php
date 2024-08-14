@@ -63,7 +63,19 @@
 		public function getRouter() : ?Router {
 			return $this->router;
 		}
-		
+
+		public function hasSettings(string $name) : bool {
+			return Database::exists('SELECT `id` FROM `' . DATABASE_PREFIX . 'settings` WHERE `key`=:key LIMIT 1', [
+				'key'		=> $name
+			]);
+		}
+
+		public function removeSettings(string $name) : void {
+			Database::delete(DATABASE_PREFIX . 'settings', [
+				'key' => $name
+			]);
+		}
+
 		public function getSettings(string $name, mixed $default = null) : mixed {
 			$result = Database::single('SELECT * FROM `' . DATABASE_PREFIX . 'settings` WHERE `key`=:key LIMIT 1', [
 				'key'		=> $name
@@ -120,7 +132,7 @@
 
 			Icon::init($this);
 
-			Update::check();
+			Update::bind($this)::check();
 
 			$this->getHooks()->runAction('core_pre_init');
 			$this->initRoutes();
