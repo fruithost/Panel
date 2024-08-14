@@ -7,6 +7,7 @@
 	use fruithost\Hardware\Memory;
 	use fruithost\Network\Response;
 	use fruithost\System\Utils;
+	use fruithost\System\Update;
 	
 	if(isset($_POST['action']) && $_POST['action'] === 'command') {
 		if(!Auth::hasPermission('SERVER::MANAGE')) {
@@ -34,6 +35,8 @@
 	$time_format = Auth::getSettings('TIME_FORMAT', null, 'd.m.Y - H:i');
 	$time_update = new \DateTime($this->getCore()->getSettings('UPDATE_TIME', null));
 
+	$template->assign('update_version',		$this->getCore()->getSettings('UPDATE_VERSION'));
+	$template->assign('update_license',		Update::getLicense());
 	$template->assign('time_php',			date($time_format));
 	$template->assign('time_system',		OperatingSystem::getTime($time_format));
 	$template->assign('time_update',		($time_update->format($time_format)));

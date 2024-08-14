@@ -18,7 +18,8 @@
     use fruithost\Network\Router;
     use fruithost\Security\Encryption;
     use fruithost\Storage\Database;
-    use fruithost\Templating\Template;
+	use fruithost\Storage\PropertiesCache;
+	use fruithost\Templating\Template;
     use fruithost\UI\Icon;
 	use PHPMailer\Exception;
 
@@ -28,6 +29,7 @@
 		private ?Router $router		= null;
 		private ?Template $template	= null;
 		private ?CoreAdmin $admin	= null;
+		private ?PropertiesCache $cache = null;
 		private bool $modules_disabled = false;
 		
 		public function __construct() {
@@ -65,65 +67,25 @@
 		}
 
 		public function hasSettings(string $name) : bool {
-			return Database::exists('SELECT `id` FROM `' . DATABASE_PREFIX . 'settings` WHERE `key`=:key LIMIT 1', [
-				'key'		=> $name
-			]);
+			return $this->cache->exists('settings', $name);
 		}
 
 		public function removeSettings(string $name) : void {
-			Database::delete(DATABASE_PREFIX . 'settings', [
-				'key' => $name
-			]);
+			$this->cache->remove('settings', $name);
 		}
 
 		public function getSettings(string $name, mixed $default = null) : mixed {
-			$result = Database::single('SELECT * FROM `' . DATABASE_PREFIX . 'settings` WHERE `key`=:key LIMIT 1', [
-				'key'		=> $name
-			]);
-			
-			if(!empty($result) && !empty($result->value)) {
-				// Is Boolean: False
-				if(in_array(strtolower($result->value), [
-					'off', 'false', 'no'
-				])) {
-					return false;
-				// Is Boolean: True
-				} else if(in_array(strtolower($result->value), [
-					'on', 'true', 'yes'
-				])) {
-					return true;
-				}
-				
-				return $result->value;
-			}
-			
-			return $default;
+			return $this->cache->get('settings', $name, $default);
 		}
 		
 		public function setSettings(string $name, mixed $value = null) : void {
-			if(is_bool($value)) {
-				$value = ($value ? 'true' : 'false');
-			}
-				
-			if(Database::exists('SELECT `id` FROM `' . DATABASE_PREFIX . 'settings` WHERE `key`=:key LIMIT 1', [
-				'key'		=> $name
-			])) {
-				Database::update(DATABASE_PREFIX . 'settings', [ 'key' ], [
-					'key'			=> $name,
-					'value'			=> $value
-				]);
-			} else {
-				Database::insert(DATABASE_PREFIX . 'settings', [
-					'id'			=> null,
-					'key'			=> $name,
-					'value'			=> $value
-				]);
-			}
+			$this->cache->set('settings', $name,  $value);
 		}
 		
 		public function init() : void {
 			Request::init();
 
+			$this->cache = new PropertiesCache();
 			$this->hooks = new Hooks();
 			$this->modules = new Modules($this, $this->modules_disabled);
 			$this->template = new Template($this);

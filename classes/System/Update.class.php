@@ -80,14 +80,14 @@
 			return $response;
 		}
 		
-		protected static function setOnlineVersion($version) {
+		protected static function setOnlineVersion($version) : void {
 			self::$core->setSettings('UPDATE_TIME', date('Y-m-d H:i:s', time()));
 			self::$core->setSettings('UPDATE_VERSION', $version);
 		}
 		
-		public static function getLicense() {
+		public static function getLicense() : string {
 			if(self::$core->hasSettings('UPDATE_LICENSE')) {
-				return self::$core->getSettings('UPDATE_LICENSE', true);
+				return self::$core->getSettings('UPDATE_LICENSE', null);
 			} else {
 				$result = self::get('getLicense', [
 					'host'	=> $_SERVER['SERVER_NAME'],

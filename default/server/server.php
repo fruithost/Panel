@@ -2,7 +2,6 @@
     use fruithost\Localization\I18N;
     use fruithost\Accounting\Auth;
     use fruithost\System\Utils;
-    use fruithost\System\Update;
     use fruithost\UI\Icon;
 
     $template->header();
@@ -160,7 +159,7 @@
 									<strong><?php I18N::__('License Key'); ?></strong>
 								</td>
 								<td>
-									<?php print Update::getLicense(); ?>
+									<?php print $update_license; ?>
 								</td>
 							</tr>
 							<tr>
@@ -169,7 +168,7 @@
 								</td>
 								<td>
 									<?php
-										if(version_compare($version, $template->getCore()->getSettings('UPDATE_VERSION'), '>')) {
+										if(version_compare($version, $update_version, '>')) {
 											Icon::show('error', [
 												'classes'		=> [ 'text-danger', 'mr-2' ]
 											]);
@@ -181,12 +180,12 @@
 										
 										print ' ' . $version;
 											
-										if(version_compare($version, $template->getCore()->getSettings('UPDATE_VERSION'), '>')) {
+										if(version_compare($version, $update_version, '>')) {
 											Icon::show('warning', [
 												'classes'		=> [ 'text-warning', 'ml-1' ],
 												'attributes'	=> [
 													'data-bs-toggle'	=> 'hover',
-													'data-bs-content'	=> sprintf(I18N::get('Please update the system to <strong>Version %s</strong> via the fruithost daemon.'), $template->getCore()->getSettings('UPDATE_VERSION')),
+													'data-bs-content'	=> sprintf(I18N::get('Please update the system to <strong>Version %s</strong> via the fruithost daemon.'), $update_version),
 													'data-bs-title'		=> sprintf('<small class=\'text-warning fw-bolder\'>%s</small>', I18N::get('Update available!'))
 												]
 											]);
