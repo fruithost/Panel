@@ -86,11 +86,11 @@
 		}
 		
 		public static function getPanelHostname() : string {
-			return NetworkInterfacesFactory::getInstance()->getDevices();
+			return NetworkInterfacesFactory::getInstance()->getPanelHostname();
 		}
 		
 		public static function getIPAddress() : string {
-			return NetworkInterfacesFactory::getInstance()->getDevices();
+			return NetworkInterfacesFactory::getInstance()->getIPAddress();
 		}
 
 		public static function getDevice($id) : NetworkInterface | null {
