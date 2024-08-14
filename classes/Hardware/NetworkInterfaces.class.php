@@ -31,8 +31,8 @@
 			$result = shell_exec('ip --json address show');
 
 			foreach(json_decode($result) AS $entry) {
-				$device = $this->devices[$entry->ifname];
-				$device->debug = $entry;
+				$device			= $this->devices[$entry->ifname];
+				//$device->debug	= $entry;
 
 				if(isset($entry->link_type)) {
 					$device->setType($entry->link_type);

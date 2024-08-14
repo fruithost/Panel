@@ -36,11 +36,22 @@
 						continue;
 					}
 
+					$text 	= shell_exec(sprintf('cat /sys/block/%s/device/model', $matches[3]));
+					$blocks = shell_exec(sprintf('cat /sys/class/block/%s/queue/logical_block_size', $matches[3]));
+
+					if($text !== null) {
+						$text = trim($text);
+					}
+
+					if($blocks !== null) {
+						$blocks = trim($blocks);
+					}
+
 					$this->devices[] = [
 						'name'			=> $matches[3],
-						'text'			=> trim(shell_exec(sprintf('cat /sys/block/%s/device/model', $matches[3]))),
+						'text'			=> $text,
 						'type'			=> $df[1],
-						'blocks'		=> trim(shell_exec(sprintf('cat /sys/class/block/%s/queue/logical_block_size', $matches[3]))),
+						'blocks'		=> $blocks,
 						'size'			=> (int) $df[2] * 1024,
 						'used'			=> (int) $df[3] * 1024,
 						'available'		=> (int) $df[4] * 1024,
