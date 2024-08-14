@@ -191,6 +191,15 @@
 												]
 											]);
 										}
+
+
+										Icon::show('clock', [
+											'classes'		=> [ 'text-light', 'ml-1' ],
+											'attributes'	=> [
+												'data-bs-toggle'	=> 'hover',
+												'data-bs-title'		=> sprintf('%s %s', I18N::get('Last checked:'), $time_update)
+											]
+										]);
 									?>
 								</td>
 							</tr>

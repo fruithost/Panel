@@ -96,11 +96,14 @@
 			return $this->data['VERSION_ID'];
 		}
 		
-		public function getTime() : string {
-			return shell_exec('date +\'%d %b %Y %T %Z\'');
+		public function getTime($format = '') : string {
+			$result	= shell_exec('date +\'%d %b %Y %T %Z\'');
+			$time	= new \DateTime($result);
+
+			return $time->format($format);
 		}
 		
-		public function getUptime(bool $nicename = false) : string | object {
+		public function getUptime(bool $nicename = false) : string | object | null {
 			if(empty($this->uptime)) {
 				return null;
 			}
@@ -134,7 +137,7 @@
 			return OperatingSystemFactory::getInstance()->getID();
 		}
 		
-		public static function getUptime(bool $nicename = false) : string | object {
+		public static function getUptime(bool $nicename = false) : string | object | null {
 			return OperatingSystemFactory::getInstance()->getUptime($nicename);
 		}
 		
@@ -150,8 +153,8 @@
 			return OperatingSystemFactory::getInstance()->getVersion();
 		}
 		
-		public static function getTime() : string {
-			return OperatingSystemFactory::getInstance()->getTime();
+		public static function getTime($format) : string {
+			return OperatingSystemFactory::getInstance()->getTime($format);
 		}
 	}
 ?>

@@ -6,12 +6,6 @@
      * @version 1.0.0
      * @license MIT
      */
-	 
-	/*
-		@class Auth
-		@package fruithost
-		@subpackage Accounting
-	*/
 
 	namespace fruithost\Accounting;
 	
@@ -32,11 +26,6 @@
 			return self::$instance;
 		}
 		
-		/*
-			Constructor.
-			
-			Initialize the User.
-		*/
 		protected function __construct() {
 			$this->user = new User();
 			
@@ -157,7 +146,7 @@
 			$result = Database::single('SELECT `id`, `username`, `email`, `password`, UPPER(SHA2(CONCAT(`id`, :salt, :password), 512)) as `crypted` FROM `' . DATABASE_PREFIX . 'users` WHERE `username`=:username LIMIT 1', [
 				'username'	=> $username,
 				'password'	=> $password,
-				'salt'		=>	MYSQL_PASSWORTD_SALT
+				'salt'		=> MYSQL_PASSWORTD_SALT
 			]);
 			
 			if(!$result) {

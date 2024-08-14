@@ -31,8 +31,12 @@
 		exit();
 	}
 
-	$template->assign('time_php',			date('d M Y H:i:s T'));
-	$template->assign('time_system',		OperatingSystem::getTime());
+	$time_format = Auth::getSettings('TIME_FORMAT', null, 'd.m.Y - H:i');
+	$time_update = new \DateTime($this->getCore()->getSettings('UPDATE_TIME', null));
+
+	$template->assign('time_php',			date($time_format));
+	$template->assign('time_system',		OperatingSystem::getTime($time_format));
+	$template->assign('time_update',		($time_update->format($time_format)));
 	$template->assign('os',					OperatingSystem::getPrettyName());
 	$template->assign('id',			        OperatingSystem::getID());
 	$template->assign('kernel',				OperatingSystem::getKernel());
@@ -43,10 +47,10 @@
 	$template->assign('disks',				PhysicalDrives::getDevices());
 	$template->assign('version',			file_get_contents('.version'));
 	$template->assign('daemon',				[
-		'status'	=> time() - strtotime(date(Auth::getSettings('TIME_FORMAT', null, 'd.m.Y - H:i'), strtotime($this->getCore()->getSettings('DAEMON_TIME_END', 0)))) < 15 * 60,
+		'status'	=> time() - strtotime(date($time_format, strtotime($this->getCore()->getSettings('DAEMON_TIME_END', 0)))) < 15 * 60,
 		'started'	=> strtotime($this->getCore()->getSettings('DAEMON_TIME_START', 0)),
-		'start'		=> date(Auth::getSettings('TIME_FORMAT', null, 'd.m.Y - H:i'), strtotime($this->getCore()->getSettings('DAEMON_TIME_START', 0))),
-		'end'		=> date(Auth::getSettings('TIME_FORMAT', null, 'd.m.Y - H:i'), strtotime($this->getCore()->getSettings('DAEMON_TIME_END', 0))),
+		'start'		=> date($time_format, strtotime($this->getCore()->getSettings('DAEMON_TIME_START', 0))),
+		'end'		=> date($time_format, strtotime($this->getCore()->getSettings('DAEMON_TIME_END', 0))),
 		'ended'		=> strtotime($this->getCore()->getSettings('DAEMON_TIME_END', 0)),
 		'time'		=> number_format($this->getCore()->getSettings('DAEMON_RUNNING_END', 0) - $this->getCore()->getSettings('DAEMON_RUNNING_START', 0), 4, ',', '.')
 	]);

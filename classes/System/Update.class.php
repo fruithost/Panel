@@ -23,26 +23,39 @@
 
 		public static function check() {
 			if(self::$core->getSettings('UPDATE_ENABLED', true)) {
+				$time = self::$core->getSettings('UPDATE_TIME', null);
 
+				if($time == null) {
+					self::run();
+				} else {
+					$last = new \DateTime($time);
+					$last->add(\DateInterval::createFromDateString('15 minutes'));
 
-				$license	= self::getLicense();
-				$result		= self::get('getVersion', [
-					'license'	=> $license,
-					'host'		=> $_SERVER['SERVER_NAME'],
-					'ip'		=> $_SERVER['SERVER_ADDR'],
-					'admin'		=> $_SERVER['SERVER_ADMIN'],
-					'ssl'		=> $_SERVER['HTTPS'] == 'on'
-				]);
-
-				/* Refresh License */
-				if(!$result->status && $result->error == 'LICENSE_PROBLEM') {
-					self::$core->removeSettings('UPDATE_LICENSE');
-					self::check();
-					return;
+					if(new \DateTime() > $last) {
+						self::run();
+					}
 				}
-
-				self::setOnlineVersion($result->version);
 			}
+		}
+
+		public static function run() {
+			$license	= self::getLicense();
+			$result		= self::get('getVersion', [
+				'license'	=> $license,
+				'host'		=> $_SERVER['SERVER_NAME'],
+				'ip'		=> $_SERVER['SERVER_ADDR'],
+				'admin'		=> $_SERVER['SERVER_ADMIN'],
+				'ssl'		=> $_SERVER['HTTPS'] == 'on'
+			]);
+
+			/* Refresh License */
+			if(!$result->status && $result->error == 'LICENSE_PROBLEM') {
+				self::$core->removeSettings('UPDATE_LICENSE');
+				self::check();
+				return;
+			}
+
+			self::setOnlineVersion($result->version);
 		}
 		
 		protected static function get($action, $data) {
@@ -68,6 +81,7 @@
 		}
 		
 		protected static function setOnlineVersion($version) {
+			self::$core->setSettings('UPDATE_TIME', date('Y-m-d H:i:s', time()));
 			self::$core->setSettings('UPDATE_VERSION', $version);
 		}
 		
