@@ -74,7 +74,7 @@
 			$this->cache->remove('settings', $name);
 		}
 
-		public function getSettings(string $name, mixed $default = null) : mixed {
+		public function getSettings(?string $name = null, mixed $default = null) : mixed {
 			return $this->cache->get('settings', $name, $default);
 		}
 		
@@ -85,15 +85,14 @@
 		public function init() : void {
 			Request::init();
 
-			$this->cache = new PropertiesCache();
-			$this->hooks = new Hooks();
-			$this->modules = new Modules($this, $this->modules_disabled);
-			$this->template = new Template($this);
-			$this->router = new Router($this);
-			$this->admin = new CoreAdmin($this, null);
+			$this->cache	= new PropertiesCache();
+			$this->hooks	= new Hooks();
+			$this->modules	= new Modules($this, $this->modules_disabled);
+			$this->template	= new Template($this);
+			$this->router	= new Router($this);
+			$this->admin	= new CoreAdmin($this, null);
 
 			Icon::init($this);
-
 			Update::bind($this)::check();
 
 			$this->getHooks()->runAction('core_pre_init');
@@ -131,8 +130,7 @@
 				if(!Auth::isLoggedIn()) {
 					Response::redirect('/');
 				}
-				
-				
+
 				$this->template->display('settings', [
 					'tab'		=> $tab,
 					'languages'	=> I18N::getLanguages(),

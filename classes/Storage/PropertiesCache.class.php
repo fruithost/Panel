@@ -32,7 +32,33 @@
 			]);
 		}
 
-		public function get(string $table, string $name, mixed $default = null) : mixed {
+		public function get(string $table, ?string $name = null, mixed $default = null) : mixed {
+			/* Get all Settings */
+			if($name == null) {
+				$data = Database::fetch(sprintf('SELECT * FROM `%s%s`', DATABASE_PREFIX, $table));
+
+				foreach($data AS $index => $entry) {
+					// Is NULL-Value
+					if($entry->value == null) {
+						$entry->value = 'NULL';
+
+					// Is Boolean: False
+					} else if(in_array(strtolower($entry->value), [
+						'off', 'false', 'no'
+					])) {
+						$entry->value = false;
+
+					// Is Boolean: True
+					} else if(in_array(strtolower($entry->value), [
+						'on', 'true', 'yes'
+					])) {
+						$entry->value = true;
+					}
+				}
+
+				return $data;
+			}
+
 			if(isset($this->cache[$name])) {
 				return $this->cache[$name];
 			}

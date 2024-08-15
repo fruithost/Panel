@@ -105,7 +105,11 @@
 		public function assign(string $name, mixed $value) : void {
 			$this->getCore()->getTemplate()->assign($name, $value);
 		}
-		
+
+		public function display(string $file, array $arguments = [], bool $basedir = false, bool $once = true) : ?bool {
+			return $this->getCore()->getTemplate()->display($file, $arguments, $basedir, $once);
+		}
+
 		public function url(string $path = '') : string {
 			return $this->getCore()->getTemplate()->url($path);
 		}

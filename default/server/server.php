@@ -159,7 +159,22 @@
 									<strong><?php I18N::__('License Key'); ?></strong>
 								</td>
 								<td>
-									<?php print $update_license; ?>
+									<?php
+										if(DEMO) {
+											?>
+												<div class="alert alert-warning m-0 p-1" role="alert">
+													<?php
+														Icon::show('warning');
+													?> <strong><?php I18N::__('Warning'); ?></strong>
+													<div>
+														<?php I18N::__('This value is not visible in the demo version.'); ?>
+													</div>
+												</div>
+											<?php
+										} else {
+											print $update_license;
+										}
+									?>
 								</td>
 							</tr>
 							<tr>
@@ -191,9 +206,8 @@
 											]);
 										}
 
-
 										Icon::show('clock', [
-											'classes'		=> [ 'text-light', 'ml-1' ],
+											'classes'		=> [ 'text-light', 'ml-1', 'float-end' ],
 											'attributes'	=> [
 												'data-bs-toggle'	=> 'hover',
 												'data-bs-title'		=> sprintf('%s %s', I18N::get('Last checked:'), $time_update)

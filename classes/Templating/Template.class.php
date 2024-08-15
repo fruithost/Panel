@@ -125,7 +125,7 @@
 			} else {
 				$path		= $file;
 			}
-			
+
 			$handler	= sprintf('%1$shandler%2$s%3$s.php', $this->path, DS, $file);
 			
 			foreach($this->assigns AS $name => $value) {
@@ -147,7 +147,7 @@
 			if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 				return null;
 			}
-			
+
 			if(file_exists($path) && is_readable($path)) {
 				if($once) {
 					require_once($path);
@@ -181,7 +181,7 @@
 					return true;
 				}
 			}
-			
+
 			return false;
 		}
 		
