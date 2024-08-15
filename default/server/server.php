@@ -133,7 +133,7 @@
 									<?php
 										print $network->getHostname();
 										
-										if($network->getHostname() !== $network->getPanelHostname()) {
+										if(sprintf('my.%s', $network->getHostname()) !== $network->getPanelHostname()) {
 											Icon::show('warning', [
 												'classes'		=> [ 'text-warning', 'ml-1' ],
 												'attributes'	=> [
