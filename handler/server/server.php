@@ -34,6 +34,8 @@
 
 	$time_format = Auth::getSettings('TIME_FORMAT', null, 'd.m.Y - H:i');
 	$time_update = new \DateTime($this->getCore()->getSettings('UPDATE_TIME', null));
+	$time_status = new \DateTime($this->getCore()->getSettings('DAEMON_TIME_END', null));
+	$time_status->add(\DateInterval::createFromDateString('15 minutes'));
 
 	$template->assign('update_version',		$this->getCore()->getSettings('UPDATE_VERSION'));
 	$template->assign('update_license',		Update::getLicense());
@@ -50,7 +52,7 @@
 	$template->assign('disks',				PhysicalDrives::getDevices());
 	$template->assign('version',			file_get_contents('.version'));
 	$template->assign('daemon',				[
-		'status'	=> time() - strtotime(date($time_format, strtotime($this->getCore()->getSettings('DAEMON_TIME_END', 0)))) < 15 * 60,
+		'status'	=> $time_update < new \DateTime(),
 		'started'	=> strtotime($this->getCore()->getSettings('DAEMON_TIME_START', 0)),
 		'start'		=> date($time_format, strtotime($this->getCore()->getSettings('DAEMON_TIME_START', 0))),
 		'end'		=> date($time_format, strtotime($this->getCore()->getSettings('DAEMON_TIME_END', 0))),
