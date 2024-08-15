@@ -160,7 +160,7 @@
 								</td>
 								<td>
 									<?php
-										if(DEMO) {
+										if(defined('DEMO') && DEMO) {
 											?>
 												<div class="alert alert-warning m-0 p-1" role="alert">
 													<?php
