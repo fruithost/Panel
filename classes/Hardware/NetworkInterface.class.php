@@ -9,30 +9,6 @@
 
 	namespace fruithost\Hardware;
 
-	enum NetworkState : string {
-		case UP			= "UP";
-		case DOWN		= "DOWN";
-		case UNKNOWN	= "UNKNOWN";
-
-		public static function fromName(string $name): NetworkState {
-			foreach(self::cases() as $status) {
-				if($name === $status->value){
-					return $status;
-				}
-			}
-
-			throw new \ValueError("$name is not a valid backing value for enum " . self::class );
-		}
-
-		public static function tryFromName(string $name) : NetworkState | null {
-			try {
-				return self::fromName($name);
-			} catch (\ValueError $error) {
-				return null;
-			}
-		}
-	}
-
 	class NetworkInterface {
 		private ?string $id = null;
 		private bool $virtual = false;
@@ -41,6 +17,9 @@
 		private ?string $broadcast = null;
 		private ?string $type = null;
 		private ?NetworkState $state = null;
+		private array $flags = [];
+
+		private array $addresses = [];
 
 		public function __construct(string $id) {
 			$this->id = $id;
@@ -81,11 +60,45 @@
 		public function setType($type) {
 			$this->type = $type;
 		}
+
+		public function addFlag(string $flag) : void {
+			$this->flags[] = NetworkFlag::tryFromName($flag);
+		}
+
+		public function getFlags() : array {
+			return $this->flags;
+		}
+
+		public function hasFlag(string $flag) : bool {
+			return in_array(NetworkFlag::tryFromName($flag), $this->flags);
+		}
+
 		public function setAddress($address) {
 			$this->address = $address;
 		}
+
+		public function getAddress() {
+			return $this->address;
+		}
+
+		public function addAddress(NetworkAddress $address) {
+			$this->addresses[] = $address;
+		}
+
+		public function getAddresses() : array {
+			return $this->addresses;
+		}
+
+		public function hasAddresses() : bool {
+			return !empty($this->addresses);
+		}
+
 		public function setBroadcast($broadcast) {
 			$this->broadcast = $broadcast;
+		}
+
+		public function getBroadcast() {
+			return $this->broadcast;
 		}
 
 		public function enable() {

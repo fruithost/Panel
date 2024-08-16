@@ -8,7 +8,7 @@
      */
 
 	namespace fruithost\Hardware;
-	
+
 	class NetworkInterfacesFactory {
 		private static ?NetworkInterfacesFactory $instance = null;
 		private array $devices = [];
@@ -32,11 +32,11 @@
 
 			foreach(json_decode($result) AS $entry) {
 				$device			= $this->devices[$entry->ifname];
-				//$device->debug	= $entry;
 
 				if(isset($entry->link_type)) {
 					$device->setType($entry->link_type);
 				}
+
 				if(isset($entry->operstate)) {
 					$device->setState(NetworkState::tryFromName($entry->operstate));
 				}
@@ -48,11 +48,27 @@
 				if(isset($entry->broadcast)) {
 					$device->setBroadcast($entry->broadcast);
 				}
+
+				if(isset($entry->flags)) {
+					foreach($entry->flags AS $flag) {
+						$device->addFlag($flag);
+					}
+				}
+
+				if(isset($entry->addr_info)) {
+					foreach($entry->addr_info AS $address) {
+						$device->addAddress(new NetworkAddress($address));
+					}
+				}
 			}
 		}
 		
 		public function getDevices() : array {
 			return $this->devices;
+		}
+
+		public function hasDevices() : bool {
+			return !empty($this->devices);
 		}
 		
 		public function getHostname() : string {

@@ -88,7 +88,7 @@
 			}
 						
 			spl_autoload_register([ $this, 'load' ]);
-			
+
 			// @ToDo Hash verify?
 			if(!empty($_SERVER['MODULE'])) {
 				if(file_exists($_SERVER['MODULE'])) {
@@ -144,51 +144,59 @@
 			$path			= sprintf('%s%s.class.php', PATH, implode(DS, $file_array));
 
 			if(!file_exists($path)) {
+				// Check if it's an Enum
+				$enum		= sprintf('%s%s.enum.php', PATH, implode(DS, $file_array));
+
+				if(file_exists($enum)) {
+					require_once($enum);
+
 				// Check it's a Library
-				$file_array = explode(BS, $file);
-				array_unshift($file_array, 'libraries');
-				$path		= sprintf('%s%s.php', PATH, implode(DS, $file_array));
-				
-				if(!is_readable($path)) {
+				} else {
+					$file_array = explode(BS, $file);
+					array_unshift($file_array, 'libraries');
+					$path		= sprintf('%s%s.php', PATH, implode(DS, $file_array));
+
+					if(!is_readable($path)) {
+						if(defined('DAEMON') && DAEMON) {
+							print "\033[31;31m";
+						}
+
+						print 'Error accessing Library: ' . $path . PHP_EOL;
+
+						if(defined('DAEMON') && DAEMON) {
+							print "\033[39m";
+						}
+						return;
+					}
+
+					if(file_exists($path)) {
+						require_once($path);
+						return;
+					}
+					// Check it's a Library on a module!
+					/*} else if(preg_match('/\/module\//Uis', $_SERVER['REQUEST_URI'])) {
+						$file_array		= explode(BS, $file);
+						array_unshift($file_array, 'www');
+						array_unshift($file_array, str_replace('module', 'modules', $_SERVER['REQUEST_URI']));
+						$path	= sprintf('%s%s.php', dirname(PATH), implode(DS, $file_array));
+						require_once($path);
+						return;
+					}*/
+
 					if(defined('DAEMON') && DAEMON) {
 						print "\033[31;31m";
 					}
-					
-					print 'Error accessing Library: ' . $path . PHP_EOL;
-				
+
+					print 'Error Loading Library: ' . $path . PHP_EOL;
+
 					if(defined('DAEMON') && DAEMON) {
 						print "\033[39m";
 					}
-					return;
 				}
-				
-				if(file_exists($path)) {
-					require_once($path);
-					return;
-				}
-				// Check it's a Library on a module!
-				/*} else if(preg_match('/\/module\//Uis', $_SERVER['REQUEST_URI'])) {
-					$file_array		= explode(BS, $file);
-					array_unshift($file_array, 'www');
-					array_unshift($file_array, str_replace('module', 'modules', $_SERVER['REQUEST_URI']));
-					$path	= sprintf('%s%s.php', dirname(PATH), implode(DS, $file_array));
-					require_once($path);
-					return;
-				}*/
-				
-				if(defined('DAEMON') && DAEMON) {
-					print "\033[31;31m";
-				}
-				
-				print 'Error Loading Library: ' . $path . PHP_EOL;
-				
-				if(defined('DAEMON') && DAEMON) {
-					print "\033[39m";
-				}
-				
+
 				return;
 			}
-			
+
 			require_once($path);
 		}
 	}
