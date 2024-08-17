@@ -45,14 +45,14 @@
 		public function file(string $file, callable $callback) :void {
 			try {
 				if(!file_exists($file)) {
-					call_user_func_array($callback, [ 'Can\'t found file: ' . $file ]);
+					throw new \Exception(sprintf('Can\'t found file: %s', $file));
 					return;
 				}
 				
 				$sql = file_get_contents($file);
 				
 				if(empty(trim($sql))) {
-					call_user_func_array($callback, [ 'File is empty: ' . $file ]);
+					throw new \Exception(sprintf('File is empty: %s', $file));
 					return;
 				}
 				
@@ -64,13 +64,17 @@
 				
 				$stmt = $this->query($sql);
 				
+				//var_dump($stmt);
+				
 				if(!$stmt) {
-					call_user_func_array($callback, [ $this->errorInfo() ]);
+					throw new \Exception(sprintf('SQL Error: ', $this->errorInfo()));
 					return;
 				}
 				
 				call_user_func_array($callback, [ null ]);
-			} catch(\Exception) {}
+			} catch(\Exception $e) {
+				call_user_func_array($callback, [ $e ]);
+			}
 		}
 		
 		public function query(string $query, ?int $fetchMode = null, mixed ...$parameters) : \PDOStatement | false {
