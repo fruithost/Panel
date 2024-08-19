@@ -54,7 +54,7 @@
             return null;
         }
 
-		public function frame() : bool {
+		public function frame() : ?bool {
 			/* Override Me */
 
             return false;

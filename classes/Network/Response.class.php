@@ -17,6 +17,10 @@
 		public static function header() : void {
 			ResponseFactory::getInstance()->header();
 		}
+
+		public static function setContentType(string $type) : void {
+			ResponseFactory::getInstance()->setContentType($type);
+		}
 		
 		public static function redirect(string $url) : void {
 			ResponseFactory::getInstance()->redirect($url);

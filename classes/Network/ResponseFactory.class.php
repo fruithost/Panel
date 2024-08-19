@@ -33,6 +33,10 @@
 				// @ToDo Debug output encoding
 			}
 		}
+
+		public function setContentType(string $type) : void {
+			$headers['Content-Type'] = $type;
+		}
 		
 		public function addHeader(string $name, string $value) : void {
 			$this->headers[$name] = $value;

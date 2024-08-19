@@ -35,7 +35,7 @@
 
     # Redirect Trailing Slashes
     RewriteRule ^(.*)/$ /$1 [L,R=301]
-
+	
 	# Handle Template Files
 	RewriteRule ^(css|js|fonts|images|assets)/(.*)$ default/$1/$2 [QSA,L]
 	

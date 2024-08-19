@@ -151,10 +151,11 @@ main {
 .card-body .nav-pills .nav-item {
 	margin: 0 5px;
 	border-radius: var(--bs-nav-pills-border-radius);
+	background: var(--bs-card-cap-bg);
 }
 
 .card-body .nav-pills .nav-item:hover {
-	background: var(--bs-card-cap-bg);
+	background: var(--bs-card-border-color);
 }
 
 .card-body .nav-pills .nav-item .nav-link {

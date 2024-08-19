@@ -120,6 +120,10 @@
 			}
 			
 			// @ToDo check if its an local file
+			if(str_starts_with($this->icon, '/')) {
+				return sprintf('<img alt="Icon" class="module-icon" src="/app/phpmyadmin%s" />', $this->icon);
+			}
+
 			
 			return sprintf('<i class="bi bi-%s"></i>', $this->icon);
 		}

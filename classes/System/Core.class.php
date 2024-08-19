@@ -162,7 +162,50 @@
 					'data'	=> $data
 				]);
 			});
-			
+
+			$this->router->addRoute('^/app/([a-zA-Z0-9\-_]+)/(.*)$', function(?string $module = null, ?string $file = null) {
+				if(empty($module)) {
+					$this->template->display('error/module', array_merge($this->template->getAssigns(), [
+						'module'	=> $module
+					]));
+					return;
+				}
+
+				$module = $this->getModules()->getModule($module);
+
+				if(empty($module)) {
+					header('HTTP/1.1 403 Forbidden');
+					require_once(dirname(PATH) . '/placeholder/errors/403.html');
+					exit();
+				}
+
+
+				if(!method_exists($module->getInstance(), 'frame')) {
+					header('HTTP/1.1 403 Forbidden');
+					require_once(dirname(PATH) . '/placeholder/errors/403.html');
+					exit();
+				}
+
+				if(!file_exists(sprintf('%s/www/', $module->getPath()))) {
+					header('HTTP/1.1 403 Forbidden');
+					require_once(dirname(PATH) . '/placeholder/errors/403.html');
+					exit();
+				}
+
+				$file = sprintf('%s/www/%s', $module->getPath(), $file);
+
+				if(!file_exists($file)) {
+					header('HTTP/1.1 403 Forbidden');
+					require_once(dirname(PATH) . '/placeholder/errors/403.html');
+					exit();
+				}
+
+				Response::setContentType(mime_content_type($file));
+				Response::header();
+				readfile($file);
+				exit();
+			});
+
 			$this->router->addRoute('^/module(?:(?:/([a-zA-Z0-9\-_]+)?)(?:/([a-zA-Z0-9\-_]+)(?:/([a-zA-Z0-9\-_]+))?)?)?$', function(?string $module = null, ?string $submodule = null, ?string $action = null) {
 				if(!Auth::isLoggedIn()) {
 					Response::redirect('/');
