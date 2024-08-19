@@ -86,7 +86,12 @@
 					print "\033[39m";
 				}
 			}
-						
+			
+			# @since 1.0.4
+			if(!defined('CONFIG_PATH')) {
+				define('CONFIG_PATH', sprintf('%s/config/', dirname(__FILE__, 4)));
+			}
+			
 			spl_autoload_register([ $this, 'load' ]);
 
 			// @ToDo Hash verify?
