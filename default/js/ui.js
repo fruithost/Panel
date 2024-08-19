@@ -21,7 +21,23 @@
 		collapse.addEventListener('hide.bs.collapse', hide);
 		collapse.addEventListener('hidden.bs.collapse', hide);
 	});
-		
+
+	let sidebar = document.querySelector('.sidebar');
+
+	window.addEventListener('resize', (event) => {
+		if(window.getComputedStyle(sidebar, null).display !== 'block') {
+			sidebar.classList.remove('show');
+		}
+	}, true);
+
+	document.querySelector('[data-bs-toggle="sidebar"]').addEventListener('click', (event) => {
+		if(window.getComputedStyle(sidebar, null).display !== 'block') {
+			sidebar.classList.add('show');
+		} else {
+			sidebar.classList.remove('show');
+		}
+	});
+
 	const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
 	const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 	

@@ -35,9 +35,9 @@
 
 						<div class="d-flex w-100 justify-content-between">
 							<div class="navbar-nav justify-content-start flex-row d-md-block d-sm-none"></div>
-							<ul class="navbar-nav justify-content-start flex-row d-md-none">
+							<ul class="navbar-nav justify-content-start flex-row d-md-none  d-sm-block">
 								<li class="nav-item text-nowrap">
-									<button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+									<button class="nav-link px-3 text-white" type="button" data-bs-toggle="sidebar" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
 										<?php Icon::show('list'); ?>
 									</button>
 								</li>
@@ -61,9 +61,9 @@
 					
 					<div class="d-flex flex-row h-100 align-items-stretch p-0 m-0">
 						<!-- Navigation -->
-						<nav class="sidebar overflow-auto user-select-none align-items-stretch p-0 m-0 h-100 bg-body-tertiary d-sm-none d-md-block" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+						<nav class="sidebar overflow-auto user-select-none align-items-stretch p-0 m-0 h-100 bg-body-tertiary d-md-block  d-sm-none" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
 							<div class="h-100 border-end" tabindex="-1">
-								<div class="d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
+								<div class="d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto wrapper">
 									<?php
 										if(!$navigation->isEmpty()) {
 											foreach($navigation->getEntries() AS $category) {
