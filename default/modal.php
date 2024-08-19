@@ -47,10 +47,6 @@
 			if($modal->isShowing()) {
 				?>
 					<script>
-						if(typeof(window.showing) === 'undefined') {
-							window.showing = [];
-						}
-						
 						window.showing.push('<?php print $modal->getName(); ?>');
 					</script>
 				<?php

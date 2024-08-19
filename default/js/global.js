@@ -1,6 +1,11 @@
 (() => {
 	'use strict'
 
+
+	if(typeof(window.showing) === 'undefined') {
+		window.showing = [];
+	}
+
 	const getStoredTheme = () => localStorage.getItem('theme')
 	const setStoredTheme = theme => localStorage.setItem('theme', theme)
 
