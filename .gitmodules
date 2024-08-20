@@ -1,0 +1,3 @@
+[submodule "default/js/codemirror/source"]
+	path = default/js/codemirror/source
+	url = https://github.com/codemirror/dev.git
