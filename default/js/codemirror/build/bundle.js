@@ -27121,10 +27121,32 @@
    	window.addEventListener('DOMContentLoaded', () => {
    		let language = new Compartment;
 
+   		let myTheme = EditorView.theme({
+   		"&": {
+   		color: "white",
+   		backgroundColor: "var(--bs-body-bg)"
+   		},
+   		".cm-content": {
+   		caretColor: "#0e9"
+   		},
+   		"&.cm-focused .cm-cursor": {
+   		borderLeftColor: "#0e9"
+   		},
+   		"&.cm-focused .cm-selectionBackground, ::selection": {
+   		backgroundColor: "#074"
+   		},
+   		".cm-gutters": {
+   		backgroundColor: "#045",
+   		color: "#ddd",
+   		border: "none"
+   		}
+   		}, {dark: true});
+
    		let state = EditorState.create({
    			doc: document.querySelector('#editor-content').innerHTML,
    			extensions: [
    				basicSetup,
+   				myTheme,
    				language.of(python())
    			]
    		});
