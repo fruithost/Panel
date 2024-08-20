@@ -49,20 +49,25 @@
 				}
 
 				$path	= sprintf('%s%s%s', $this->getPath(), DS, $info->getFilename());
-				$module	= new Module($path);
+				
+				try {
+					$module	= new Module($path);
 
-				if(!$module->getInfo()->isValid()) {
-					return;
-				}
-
-				foreach($module->getInfo()->getDepencies() AS $name => $version) {
-					if(!in_array($name, $enabled, true) || version_compare($versions[$name], $version, '>=') === false) {
-						$module->setLocked(true);
+					if(!$module->getInfo()->isValid()) {
+						return;
 					}
-				}
 
-				$module->setEnabled(in_array(basename($path), $enabled, true));
-				$this->addModule(basename($path), $module);
+					foreach($module->getInfo()->getDepencies() AS $name => $version) {
+						if(!in_array($name, $enabled, true) || version_compare($versions[$name], $version, '>=') === false) {
+							$module->setLocked(true);
+						}
+					}
+
+					$module->setEnabled(in_array(basename($path), $enabled, true));
+					$this->addModule(basename($path), $module);
+				} catch(\Exception $e) {
+					// @ToDo Catch Module-Errors!
+				}
 			}
 		}
 
@@ -154,7 +159,11 @@
 				I18N::addPath(sprintf('%s/languages/', $module->getPath()));
 			}
 			
-			$this->modules[$name] = $module->init($this->core);
+			try {
+				$this->modules[$name] = $module->init($this->core);
+			} catch(\Exception $e) {
+				// @ToDo Catch Module-Errors!
+			}
 		}
 		
 		public function getModules() : array {
