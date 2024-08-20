@@ -67,6 +67,7 @@
 					$this->addModule(basename($path), $module);
 				} catch(\Exception $e) {
 					// @ToDo Catch Module-Errors!
+					print_r($e->getMessage());
 				}
 			}
 		}
@@ -163,6 +164,8 @@
 				$this->modules[$name] = $module->init($this->core);
 			} catch(\Exception $e) {
 				// @ToDo Catch Module-Errors!
+				print_r($e->getMessage());
+				exit();
 			}
 		}
 		

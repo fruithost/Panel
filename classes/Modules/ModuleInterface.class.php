@@ -54,7 +54,7 @@
             return null;
         }
 
-		public function frame() : ?bool {
+		public function frame() : mixed {
 			/* Override Me */
 
             return false;

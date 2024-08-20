@@ -12,9 +12,13 @@
 	class DatabaseFactory extends \PDO {
 		private static ?DatabaseFactory $instance = null;
 		
-		public static function getInstance() : DatabaseFactory {
+		public function __construct(string $dsn, ?string $username = null, #[\SensitiveParameter] ?string $password = null, ?array $options = null) {
+			parent::__construct($dsn, $username, $password, $options);
+		}
+		
+		public static function getInstance($host = 'mysql:host=%s;port=%d;dbname=%s') : DatabaseFactory {
 			if(self::$instance === null) {
-				self::$instance = new self(sprintf('mysql:host=%s;port=%d;dbname=%s', DATABASE_HOSTNAME, DATABASE_PORT, DATABASE_NAME), DATABASE_USERNAME, DATABASE_PASSWORD, [
+				self::$instance = new self(sprintf($host, DATABASE_HOSTNAME, DATABASE_PORT, DATABASE_NAME), DATABASE_USERNAME, DATABASE_PASSWORD, [
 					\PDO::MYSQL_ATTR_INIT_COMMAND	=> 'SET NAMES utf8',
 					#\PDO::ATTR_ERRMODE				=> \PDO::ERRMODE_EXCEPTION,
 					#\PDO::ATTR_EMULATE_PREPARES	=> false
