@@ -27126,7 +27126,7 @@
    				color: "var(-bs-body-color)",
    				backgroundColor: "var(--bs-body-bg)"
    			},
-   			
+   		
    			/* Content */
    			".cm-content": {
    				caretColor: "var(-bs-body-color)"
