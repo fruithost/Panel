@@ -21,6 +21,8 @@
 		@ini_set('display_errors', true);
 		@ini_set('log_errors ', false);
 		error_reporting(E_ALL);
+	} else {
+		define('DEBUG', false);
 	}
 	
 	if(!defined('UPDATE_ENDPOINT')) {
@@ -41,6 +43,10 @@
 			
 			if(!defined('PATH')) {
 				define('PATH', sprintf('%s/', dirname(__FILE__, 3)));
+			}
+			
+			if(!defined('CONFIG_PATH')) {
+				define('CONFIG_PATH', sprintf('%s/config/', dirname(__FILE__, 4)));
 			}
 			
 			if($this->readable('.security')) {
@@ -86,12 +92,7 @@
 					print "\033[39m";
 				}
 			}
-			
-			# @since 1.0.4
-			if(!defined('CONFIG_PATH')) {
-				define('CONFIG_PATH', sprintf('%s/config/', dirname(__FILE__, 4)));
-			}
-			
+						
 			spl_autoload_register([ $this, 'load' ]);
 
 			// @ToDo Hash verify?
