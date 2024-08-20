@@ -17793,7 +17793,7 @@
                Object.defineProperty(EditorState.prototype, "tree", { get() { return syntaxTree(this); } });
            this.parser = parser;
            this.extension = [
-               language$1.of(this),
+               language.of(this),
                EditorState.languageData.of((state, pos, side) => {
                    let top = topNodeAt(state, pos, side), data = top.type.prop(languageDataProp);
                    if (!data)
@@ -17823,7 +17823,7 @@
        in this language, when those exist.
        */
        findRegions(state) {
-           let lang = state.facet(language$1);
+           let lang = state.facet(language);
            if ((lang === null || lang === void 0 ? void 0 : lang.data) == this.data)
                return [{ from: 0, to: state.doc.length }];
            if (!lang || !lang.allowsNesting)
@@ -17871,7 +17871,7 @@
    */
    Language.setState = /*@__PURE__*/StateEffect.define();
    function topNodeAt(state, pos, side) {
-       let topLang = state.facet(language$1), tree = syntaxTree(state).topNode;
+       let topLang = state.facet(language), tree = syntaxTree(state).topNode;
        if (!topLang || topLang.allowsNesting) {
            for (let node = tree; node; node = node.enter(pos, side, IterMode.ExcludeBuffers))
                if (node.type.isTop)
@@ -18217,7 +18217,7 @@
        }
        static init(state) {
            let vpTo = Math.min(3000 /* Work.InitViewport */, state.doc.length);
-           let parseState = ParseContext.create(state.facet(language$1).parser, state, { from: 0, to: vpTo });
+           let parseState = ParseContext.create(state.facet(language).parser, state, { from: 0, to: vpTo });
            if (!parseState.work(20 /* Work.Apply */, vpTo))
                parseState.takeTree();
            return new LanguageState(parseState);
@@ -18229,7 +18229,7 @@
            for (let e of tr.effects)
                if (e.is(Language.setState))
                    return e.value;
-           if (tr.startState.facet(language$1) != tr.state.facet(language$1))
+           if (tr.startState.facet(language) != tr.state.facet(language))
                return LanguageState.init(tr.state);
            return value.apply(tr);
        }
@@ -18329,7 +18329,7 @@
    manually wrap your languages in this). Can be used to access the
    current language on a state.
    */
-   const language$1 = /*@__PURE__*/Facet.define({
+   const language = /*@__PURE__*/Facet.define({
        combine(languages) { return languages.length ? languages[0] : null; },
        enables: language => [
            Language.state,
@@ -19074,7 +19074,7 @@
            }
            update(update) {
                if (update.docChanged || update.viewportChanged ||
-                   update.startState.facet(language$1) != update.state.facet(language$1) ||
+                   update.startState.facet(language) != update.state.facet(language) ||
                    update.startState.field(foldState, false) != update.state.field(foldState, false) ||
                    syntaxTree(update.startState) != syntaxTree(update.state) ||
                    fullConfig.foldingChanged(update))
@@ -27116,18 +27116,24 @@
        ]);
    }
 
-   let language = new Compartment;
+   (() => {
+   	
+   	window.addEventListener('DOMContentLoaded', () => {
+   		let language = new Compartment;
 
-   let state = EditorState.create({
-     extensions: [
-       basicSetup,
-       language.of(python())
-     ]
-   });
+   		let state = EditorState.create({
+   			doc: document.querySelector('#editor-content').innerHTML,
+   			extensions: [
+   				basicSetup,
+   				language.of(python())
+   			]
+   		});
 
-   new EditorView({
-     state,
-     parent: document.querySelector('#code-editor')
-   });
+   		new EditorView({
+   			state,
+   			parent: document.querySelector('#code-editor')
+   		});
+   	});
+   })();
 
 })();
