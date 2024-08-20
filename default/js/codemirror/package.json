@@ -1,0 +1,19 @@
+{
+  "name": "codemirror",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "rollup -c"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@codemirror/basic-setup": "^0.20.0",
+    "@codemirror/lang-javascript": "^6.2.2",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "rollup": "^4.21.0"
+  }
+}

@@ -8,3 +8,5 @@
 .fruithost
 .idea/*
 temp/*
+/default/js/codemirror/node_modules
+default/js/codemirror/package-lock.json
