@@ -60,15 +60,6 @@
 					if(!in_array($name, $enabled, true) || version_compare($versions[$name], $version, '>=') === false) {
 						$module->setLocked(true);
 					}
-<<<<<<< HEAD
-
-					$module->setEnabled(in_array(basename($path), $enabled, true));
-					$this->addModule(basename($path), $module);
-				} catch(\Exception $e) {
-					// @ToDo Catch Module-Errors!
-					print_r($e->getMessage());
-=======
->>>>>>> Adding error handling for modules.
 				}
 
 				$module->setEnabled(in_array(basename($path), $enabled, true));
@@ -167,15 +158,9 @@
 			try {
 				$this->modules[$name] = $module->init($this->core);
 			} catch(\Exception $e) {
-<<<<<<< HEAD
-				// @ToDo Catch Module-Errors!
-				print_r($e->getMessage());
-				exit();
-=======
 				$module->setLocked(true);
 				$this->modules[$name]	= $module;
 				$this->errors[]			= new ModuleError($name, $e);
->>>>>>> Adding error handling for modules.
 			}
 		}
 		

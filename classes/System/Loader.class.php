@@ -16,19 +16,7 @@
 	if(is_readable('~DEMO') || is_readable('../~DEMO')) {
 		define('DEMO', true);
 	}
-	
-	if(defined('DEBUG') && DEBUG) {
-		@ini_set('display_errors', true);
-		@ini_set('log_errors ', false);
-		error_reporting(E_ALL);
-	} else {
-		define('DEBUG', false);
-	}
-	
-	if(!defined('UPDATE_ENDPOINT')) {
-		define('UPDATE_ENDPOINT', 'update.fruithost.de');
-	}
-	
+		
 	define('TAB',	"\t");
 	define('BS',	'\\');
 	define('DS',	DIRECTORY_SEPARATOR);
@@ -43,10 +31,6 @@
 			
 			if(!defined('PATH')) {
 				define('PATH', sprintf('%s/', dirname(__FILE__, 3)));
-			}
-			
-			if(!defined('CONFIG_PATH')) {
-				define('CONFIG_PATH', sprintf('%s/config/', dirname(__FILE__, 4)));
 			}
 			
 			if($this->readable('.security')) {
@@ -92,7 +76,23 @@
 					print "\033[39m";
 				}
 			}
-						
+			
+			if(defined('DEBUG') && DEBUG) {
+				@ini_set('display_errors', true);
+				@ini_set('log_errors ', false);
+				error_reporting(E_ALL);
+			} else if(!defined('DEBUG')) {
+				define('DEBUG', false);
+			}
+			
+			if(!defined('CONFIG_PATH')) {
+				define('CONFIG_PATH', sprintf('%s/config/', dirname(__FILE__, 4)));
+			}
+	
+			if(!defined('UPDATE_ENDPOINT')) {
+				define('UPDATE_ENDPOINT', 'update.fruithost.de');
+			}
+			
 			spl_autoload_register([ $this, 'load' ]);
 
 			// @ToDo Hash verify?
