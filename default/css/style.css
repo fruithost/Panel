@@ -187,10 +187,25 @@ main {
     position: relative;
 }
 
+main.frame {	
+	padding: 0px !important;
+	margin: 0px !important;
+}
+
+main iframe {
+	width: 100%;
+	border: none;
+	display: block;
+	height: 100%;
+	top: 0;
+    left: 0;
+    right: 0;
+    height: calc(100vh - 48px);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 /*
-
-
-
 body.sortable {
 	overflow: hidden;
 
@@ -198,10 +213,7 @@ body.sortable {
 .offcanvas-body {
 	height: 100vh;
 
-[role="main"].frame {
-	padding-left: 0px !important;
-    padding-right: 0px !important;
-}
+
 
 header.page-header h1 {
 	font-size: 22px;
@@ -220,18 +232,6 @@ header.page-header i.bi {
 	color: #DDDDDD;
 }
 
-main iframe {
-	width: 100%;
-	border: none;
-	display: block;
-	height: 100%;
-	top: 0;
-    left: 0;
-    right: 0;
-    height: calc(100vh - 48px);
-    overflow-x: hidden;
-    overflow-y: auto;
-}
 
 .form-control-dark {
 	color: #fff;
