@@ -38,32 +38,34 @@
 					#print_r($e->getMessage());
 				}
 			}
-
-			foreach(new \DirectoryIterator($this->getPath()) AS $info) {
-				if($info->isDot() || $info->getFilename()[0] == '.' || !$info->isDir() || in_array($info->getFilename(), [
-					'modules.packages',
-					'modules.list',
-					'LICENSE',
-					'README.md'
-				])) {
-					continue;
-				}
-
-				$path	= sprintf('%s%s%s', $this->getPath(), DS, $info->getFilename());
-				$module	= new Module($path);
-
-				if(!$module->getInfo()->isValid()) {
-					return;
-				}
-
-				foreach($module->getInfo()->getDepencies() AS $name => $version) {
-					if(!in_array($name, $enabled, true) || version_compare($versions[$name], $version, '>=') === false) {
-						$module->setLocked(true);
+			
+			if(file_exists($this->getPath())) {
+				foreach(new \DirectoryIterator($this->getPath()) AS $info) {
+					if($info->isDot() || $info->getFilename()[0] == '.' || !$info->isDir() || in_array($info->getFilename(), [
+						'modules.packages',
+						'modules.list',
+						'LICENSE',
+						'README.md'
+					])) {
+						continue;
 					}
-				}
 
-				$module->setEnabled(in_array(basename($path), $enabled, true));
-				$this->addModule(basename($path), $module);
+					$path	= sprintf('%s%s%s', $this->getPath(), DS, $info->getFilename());
+					$module	= new Module($path);
+
+					if(!$module->getInfo()->isValid()) {
+						return;
+					}
+
+					foreach($module->getInfo()->getDepencies() AS $name => $version) {
+						if(!in_array($name, $enabled, true) || version_compare($versions[$name], $version, '>=') === false) {
+							$module->setLocked(true);
+						}
+					}
+
+					$module->setEnabled(in_array(basename($path), $enabled, true));
+					$this->addModule(basename($path), $module);
+				}
 			}
 		}
 
@@ -115,26 +117,28 @@
 		public function getList() : array {
 			$modules = [];
 			
-			foreach(new \DirectoryIterator($this->getPath()) AS $info) {
-				if($info->isDot()) {
-					continue;
-				}
+			if(file_exists($this->getPath())) {
+				foreach(new \DirectoryIterator($this->getPath()) AS $info) {
+					if($info->isDot()) {
+						continue;
+					}
 
-				$path	= sprintf('%s%s%s', $this->getPath(), DS, $info->getFilename());
-				$module	= new Module($path);
-				$name	= basename($path);
+					$path	= sprintf('%s%s%s', $this->getPath(), DS, $info->getFilename());
+					$module	= new Module($path);
+					$name	= basename($path);
 
-				if(!$module->getInfo()->isValid()) {
-					continue;
-				}
-				
-				if(Database::exists('SELECT `id` FROM `' . DATABASE_PREFIX . 'modules` WHERE `name`=:name AND `time_deleted` IS NULL', [
-					'name'	=> $name
-				])) {
-					if($this->hasModule($name)) {
-						$modules[$name] = $this->getModule($name);
-					} else {
-						$modules[$name] = $module;					
+					if(!$module->getInfo()->isValid()) {
+						continue;
+					}
+					
+					if(Database::exists('SELECT `id` FROM `' . DATABASE_PREFIX . 'modules` WHERE `name`=:name AND `time_deleted` IS NULL', [
+						'name'	=> $name
+					])) {
+						if($this->hasModule($name)) {
+							$modules[$name] = $this->getModule($name);
+						} else {
+							$modules[$name] = $module;					
+						}
 					}
 				}
 			}
