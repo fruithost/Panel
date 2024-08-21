@@ -44,7 +44,7 @@
 				}
 			}
 			
-			if($this->socket == null) {
+			if(!empty(shell_exec('which cgi-fcgi')) && $this->socket == null) {
 				$this->error = true;
 			}
 		}
@@ -115,13 +115,16 @@
 			// If cgi-fcgi not available, use a polyfill with CURL
 			} else {
 				// @ToDo Check security(!)
-				$temp	= sprintf('.fruithost.check.%s.php', Utils::randomString(5));
-				$hash	= Encryption::encrypt(Utils::randomString(28), ENCRYPTION_SALT);
+				$temp		= sprintf('.fruithost.check.%s.php', Utils::randomString(5));
+				$token		= Encryption::encrypt(Utils::randomString(28), ENCRYPTION_SALT);
+				$content	= sprintf('<?php $wrapper_name = \'TOKEN\'; $wrapper_hash = \'%1$s\'; if((isset($_SERVER[$wrapper_name]) && $_SERVER[$wrapper_name] == $wrapper_hash) || (isset($_GET[$wrapper_name]) && $_GET[$wrapper_name] == $wrapper_hash)) { require_once(\'%2$s\'); } ?>', $token, sprintf('%s%s', $this->path, $file));
+				$ch			= curl_init();
+
+				file_put_contents(sprintf('%s%s', PATH, $temp), $content);
 				
-				file_put_contents(sprintf('%s%s', $this->path, $temp), sprintf('<?php define(\'DAEMON\', true); if(isset($_GET[\'FRUITHOST\']) && $_GET[\'FRUITHOST\'] == \'%s\') { require_once(\'%s\'); require_once(\'%s\'); } ?>', $hash, sprintf('%s%s', $this->path, $file), $arguments['MODULE']));
-				
-				$ch = curl_init();
-				curl_setopt($ch, CURLOPT_URL, sprintf('https://%s/%s?FRUITHOST=%s&USERNAME=%s', $_SERVER['SERVER_NAME'], $temp, $hash, Auth::getUsername()));
+				// @ToDo Domain = $_SERVER['SERVER_NAME']
+				curl_setopt($ch, CURLOPT_URL, sprintf('https://%s/%s?TOKEN=%s&FRUITHOST=%s&USERNAME=%s', $_SERVER['SERVER_NAME'], $temp, $token, $arguments['FRUITHOST'], Auth::getUsername()));
+				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
 				curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 				curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
@@ -130,11 +133,19 @@
 				curl_setopt($ch, CURLOPT_HTTPHEADER, [
 					'Cookie: ' . $_SERVER['HTTP_COOKIE']
 				]);
+				
 				$result = curl_exec($ch);
 				curl_close($ch);
+				
+				
+				if($result === null){
+					$this->error = true;
+					return;
+				}
+				
+				$this->content = $result;
 
-				$this->content	= $result;
-				@unlink(sprintf('%s%s', $this->path, $temp));
+				@unlink(sprintf('%s%s', PATH, $temp));
 			}
 		}
 		
@@ -278,8 +289,7 @@
 			
 			$this->execute($file, [
 				'FRUITHOST'			=> $hash,
-				'USERNAME'			=> Auth::getUsername(),
-				//'MODULE'			=> sprintf('http://%s/%s?FRUITHOST=%s&USERNAME=%s', $_SERVER['SERVER_NAME'], $file, $hash, Auth::getUsername())
+				'USERNAME'			=> Auth::getUsername()
 			]);
 			
 			@unlink(sprintf('%s%s', $this->path, $file));
