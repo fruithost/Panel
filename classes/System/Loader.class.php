@@ -15,6 +15,8 @@
 
 	if(is_readable('~DEMO') || is_readable('../~DEMO')) {
 		define('DEMO', true);
+	} else {
+		define('DEMO', false);
 	}
 		
 	define('TAB',	"\t");

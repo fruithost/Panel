@@ -13,13 +13,41 @@
     use fruithost\Security\Encryption;
 	use fruithost\Accounting\Auth;
     use fruithost\System\Utils;
-
+	
     class PHP {
 		private ?string $path		= null;
-		private string $socket		= '/run/php/php8.2-fpm.sock'; // @ToDo HARD CODED value, we should find a way to get this value from the system
+		private ?string $socket		= null;
 		private ?string $content	= null;
 		private array $data			= [];
 		private bool $error			= false;
+		
+		public function __construct() {
+			$ini		= null;
+			$version	= sprintf('%d.%d', PHP_MAJOR_VERSION, PHP_MINOR_VERSION);
+			
+			try {
+				# Ubuntu, Debian			
+				if(file_exists(sprintf('/etc/php/%s/fpm/pool.d/www.conf', $version))) {
+					$ini = parse_ini_file(sprintf('/etc/php/%s/fpm/pool.d/www.conf', $version), true);
+					
+				# CentOS, RHEL, Fedora
+				} else if(file_exists('/etc/php-fpm.d/www.conf')) {
+					$ini = parse_ini_file('/etc/php-fpm.d/www.conf', true);
+				}
+			} catch(\Exception $e) {}
+			
+			if(!empty($ini)) {
+				if(isset($ini['www'])) {
+					if(isset($ini['www']['listen'])) {
+						$this->socket = $ini['www']['listen'];
+					}
+				}
+			}
+			
+			if($this->socket == null) {
+				$this->error = true;
+			}
+		}
 		
 		public function setPath(string $path) : void {
 			$this->path = $path;
@@ -83,6 +111,8 @@
 				}
 				
 				$this->content = $result;
+				
+			// If cgi-fcgi not available, use a polyfill with CURL
 			} else {
 				// @ToDo Check security(!)
 				$temp	= sprintf('.fruithost.check.%s.php', Utils::randomString(5));
@@ -244,11 +274,12 @@
 			$file	= sprintf('.fruithost.%s.php', Utils::randomString(5));
 			$hash	= Encryption::encrypt(Utils::randomString(28), ENCRYPTION_SALT);
 			
-			file_put_contents(sprintf('%s%s', $this->path, $file), sprintf('<?php if(isset($_GET[\'FRUITHOST\']) && $_GET[\'FRUITHOST\'] == \'%s\') { phpinfo(); } ?>', $hash));
+			file_put_contents(sprintf('%s%s', $this->path, $file), sprintf('<?php $name = \'FRUITHOST\'; $hash = \'%s\'; if((isset($_SERVER[$name]) && $_SERVER[$name] == $hash) || (isset($_GET[$name]) && $_GET[$name] == $hash)) { phpinfo(); } ?>', $hash));
 			
 			$this->execute($file, [
 				'FRUITHOST'			=> $hash,
-				'MODULE'			=> sprintf('https://%s/%s?FRUITHOST=%s&USERNAME=%s', $_SERVER['SERVER_NAME'], $file, $hash, Auth::getUsername())
+				'USERNAME'			=> Auth::getUsername(),
+				//'MODULE'			=> sprintf('http://%s/%s?FRUITHOST=%s&USERNAME=%s', $_SERVER['SERVER_NAME'], $file, $hash, Auth::getUsername())
 			]);
 			
 			@unlink(sprintf('%s%s', $this->path, $file));
