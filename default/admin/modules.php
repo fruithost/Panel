@@ -130,6 +130,19 @@
 						<?php I18N::__('Repositorys'); ?>
 					</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link<?php print (!empty($tab) && $tab === 'errors' ? ' active' : ''); ?>" id="errors-tab" href="<?php print $this->url('/admin/modules/errors'); ?>" role="tab">
+						<?php
+							I18N::__('Errors');
+							
+							$error_count = count((array) $errors);
+							
+							if($error_count > 0) {
+								printf('<span class="badge rounded-pill text-bg-warning">%d</span>', $error_count);
+							}
+						?>
+					</a>
+				</li>
 			</ul>
 			<?php
 				if(isset($error)) {
@@ -151,6 +164,13 @@
 									$template->display('admin/modules/repository/empty');
 								} else {
 									$template->display('admin/modules/repository/list');
+								}
+							break;
+							case 'errors':
+								if(count($errors) === 0) {
+									$template->display('admin/modules/errors/empty');
+								} else {
+									$template->display('admin/modules/errors/list');
 								}
 							break;
 							default:

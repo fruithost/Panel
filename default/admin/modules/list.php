@@ -52,7 +52,11 @@
 										$list[] = sprintf('%s (%s)', $name, $version);
 									}
 									
-									printf('<small>Unresolved Depencies: %s</small>', implode(',', $list));
+									if(empty($list)) {
+										printf('<small class="text-danger">%s <a href="%s">%s</a></small>', I18N::get('Module has generated an error.'), $this->url('/admin/modules/errors'), I18N::get('See details'));
+									} else {
+										printf('<small>Unresolved Depencies: %s</small>', implode(',', $list));
+									}
 								}
 							?>
 						</td>

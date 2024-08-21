@@ -17,7 +17,8 @@
 	class Modules {
 		private ?Core $core		= null;
 		private array $modules	= [];
-		private bool $disabled = false;
+		private bool $disabled	= false;
+		private array $errors	= [];
 		
 		public function __construct(Core $core, bool $disabled = false) {
 			$this->core = $core;
@@ -49,26 +50,29 @@
 				}
 
 				$path	= sprintf('%s%s%s', $this->getPath(), DS, $info->getFilename());
-				
-				try {
-					$module	= new Module($path);
+				$module	= new Module($path);
 
-					if(!$module->getInfo()->isValid()) {
-						return;
-					}
+				if(!$module->getInfo()->isValid()) {
+					return;
+				}
 
-					foreach($module->getInfo()->getDepencies() AS $name => $version) {
-						if(!in_array($name, $enabled, true) || version_compare($versions[$name], $version, '>=') === false) {
-							$module->setLocked(true);
-						}
+				foreach($module->getInfo()->getDepencies() AS $name => $version) {
+					if(!in_array($name, $enabled, true) || version_compare($versions[$name], $version, '>=') === false) {
+						$module->setLocked(true);
 					}
+<<<<<<< HEAD
 
 					$module->setEnabled(in_array(basename($path), $enabled, true));
 					$this->addModule(basename($path), $module);
 				} catch(\Exception $e) {
 					// @ToDo Catch Module-Errors!
 					print_r($e->getMessage());
+=======
+>>>>>>> Adding error handling for modules.
 				}
+
+				$module->setEnabled(in_array(basename($path), $enabled, true));
+				$this->addModule(basename($path), $module);
 			}
 		}
 
@@ -163,10 +167,20 @@
 			try {
 				$this->modules[$name] = $module->init($this->core);
 			} catch(\Exception $e) {
+<<<<<<< HEAD
 				// @ToDo Catch Module-Errors!
 				print_r($e->getMessage());
 				exit();
+=======
+				$module->setLocked(true);
+				$this->modules[$name]	= $module;
+				$this->errors[]			= new ModuleError($name, $e);
+>>>>>>> Adding error handling for modules.
 			}
+		}
+		
+		public function getErrors() : array {
+			return $this->errors;
 		}
 		
 		public function getModules() : array {

@@ -108,6 +108,7 @@
 	$template->assign('upgradeable',	$upgradeable);
 	$template->assign('repositorys',	Database::fetch('SELECT * FROM `' . DATABASE_PREFIX . 'repositorys`'));
 	$template->assign('modules',		$template->getCore()->getModules());
+	$template->assign('errors',			$template->getCore()->getModules()->getErrors());
 
 	if(isset($_POST['action'])) {
 		switch($_POST['action']) {
