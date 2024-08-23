@@ -6,6 +6,7 @@ import {javascript} from "@codemirror/lang-javascript";
 import {StreamLanguage} from "@codemirror/language"
 import {properties} from "@codemirror/legacy-modes/mode/properties"
 import {myTheme} from "./theme.js";
+import {config} from "./languages/config.js";
 import {json} from "@codemirror/lang-json";
 
 class CodeEditor {
@@ -17,6 +18,14 @@ class CodeEditor {
     }
 
     getLanguage() {
+        if (typeof (this._container.dataset) === 'undefined') {
+            return 'unknown';
+        }
+
+        if (typeof (this._container.dataset.language) === 'undefined') {
+            return 'unknown';
+        }
+
         return this._container.dataset.language;
     }
 
@@ -55,6 +64,9 @@ class CodeEditor {
                 break;
             case "json":
                 language = json();
+                break;
+            case "config":
+                language = StreamLanguage.define(config);
                 break;
             case "properties":
                 language = StreamLanguage.define(properties);
