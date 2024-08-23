@@ -29824,6 +29824,7 @@
        constructor() {
            this._code = document.querySelector('#editor-content').innerHTML;
            this._container = document.querySelector('#code-editor');
+           this._textarea = document.querySelector('textarea#code-area');
            this._language = new Compartment;
            this.init();
        }
@@ -29846,14 +29847,35 @@
                extensions: [
                    basicSetup,
                    myTheme,
+                   EditorView.lineWrapping,
                    this._language.of(this.findLanguage()),
-                   this.loadLanguage()
+                   this.loadLanguage(),
+                   this.onChange()
                ],
            });
 
            this._view = new EditorView({
                state: this._state,
                parent: this._container
+           });
+       }
+
+       onChange() {
+           let _textarea = this._textarea;
+           return ViewPlugin.fromClass(class {
+               constructor(view) {
+                   _textarea.innerHTML = view.state.doc.toString();
+               }
+
+               update(update) {
+                   if (update.docChanged) {
+                       _textarea.innerHTML = update.view.state.doc.toString();
+                   }
+               }
+
+               destroy() {
+                   /* Do Nothing */
+               }
            });
        }
 

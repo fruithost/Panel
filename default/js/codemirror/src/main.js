@@ -1,9 +1,9 @@
-import {EditorView} from "@codemirror/view";
+import {EditorView, ViewPlugin} from "@codemirror/view";
 import {Compartment, EditorState} from "@codemirror/state";
 import {basicSetup} from "codemirror";
 import {html} from "@codemirror/lang-html";
 import {javascript} from "@codemirror/lang-javascript";
-import {StreamLanguage} from "@codemirror/language"
+import {StreamLanguage} from "@codemirror/language";
 import {properties} from "@codemirror/legacy-modes/mode/properties"
 import {myTheme} from "./theme.js";
 import {config} from "./languages/config.js";
@@ -13,6 +13,7 @@ class CodeEditor {
     constructor() {
         this._code = document.querySelector('#editor-content').innerHTML;
         this._container = document.querySelector('#code-editor');
+        this._textarea = document.querySelector('textarea#code-area');
         this._language = new Compartment;
         this.init();
     }
@@ -35,8 +36,10 @@ class CodeEditor {
             extensions: [
                 basicSetup,
                 myTheme,
+                EditorView.lineWrapping,
                 this._language.of(this.findLanguage()),
-                this.loadLanguage()
+                this.loadLanguage(),
+                this.onChange()
             ],
         });
 
@@ -46,10 +49,29 @@ class CodeEditor {
         });
     }
 
+    onChange() {
+        let _textarea = this._textarea;
+        return ViewPlugin.fromClass(class {
+            constructor(view) {
+                _textarea.innerHTML = view.state.doc.toString();
+            }
+
+            update(update) {
+                if (update.docChanged) {
+                    _textarea.innerHTML = update.view.state.doc.toString();
+                }
+            }
+
+            destroy() {
+                /* Do Nothing */
+            }
+        });
+    }
+
     update() {
         this._view.dispatch({
             effects: this._language.reconfigure(this.findLanguage())
-        })
+        });
     }
 
     findLanguage() {
