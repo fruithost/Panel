@@ -9,6 +9,7 @@
 
     namespace fruithost\System;
 	
+	/* Check if system relevant Files available */
 	if(is_readable('.DEBUG') || is_readable('../.DEBUG')) {
 		define('DEBUG', true);
 	}
@@ -18,13 +19,15 @@
 	} else {
 		define('DEMO', false);
 	}
-		
+	
+	/* Define defaul constants */
 	define('TAB',	"\t");
 	define('BS',	'\\');
 	define('DS',	DIRECTORY_SEPARATOR);
 	
 	class Loader {
 		public function __construct() {
+			/* Define relevant constants if not exists */
 			if((defined('DAEMON') && DAEMON) || (!empty($_SERVER['DAEMON']))) {
 				if(!defined('DAEMON')) {
 					define('DAEMON', true);
@@ -35,6 +38,7 @@
 				define('PATH', sprintf('%s/', dirname(__FILE__, 3)));
 			}
 			
+			/* Check local config files */
 			if($this->readable('.security')) {
 				$this->require('.security');
 			} else if($this->readable('../.security')) {
@@ -79,6 +83,7 @@
 				}
 			}
 			
+			/* Define syste relevant constants if previous not set on config files */
 			if(defined('DEBUG') && DEBUG) {
 				@ini_set('display_errors', true);
 				@ini_set('log_errors ', false);

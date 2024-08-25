@@ -9,9 +9,21 @@
 
 	namespace fruithost\Templating;
 	
+	use fruithost\Localization\I18N;
+	
 	class TemplateDefaults {
 		public function head_robots() : void {
-			printf('<meta name="robots" content="%s" />', $this->getCore()->getHooks()->applyFilter('meta_robots', 'noindex,follow', 10, false));
+			printf('<meta name="robots" content="%s" />', $this->getCore()->getHooks()->applyFilter('meta_robots', 'index,follow', 10, false));
+		}
+		
+		public function head_description() : void {
+
+			$description  = I18N::get('fruithost is an OpenSource Hosting-Panel for some Linux Distributions (later maybe also for Windows). With  fruithost you get a real alternative to confixx/Plesk, ISPConfig, froxlor and other derivatives.');
+			$description .= I18N::get('Whether private or professional, with  fruithost you get a clean and simple solution to manage your servers.');
+			$description .= I18N::get('Security comes first at  fruithost - that\'s why we only use up-to-date software and do without miserable old solutions. If you have an MIT license, you can use  fruithost for any scenario!');
+			$description .= I18N::get('Running a server has never been so easy!');
+			
+			printf('<meta name="description" content="%s" />', $this->getCore()->getHooks()->applyFilter('meta_description', $description, 10, false));
 		}
 		
 		public function favicon() : void {
