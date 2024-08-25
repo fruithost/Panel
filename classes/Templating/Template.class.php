@@ -172,7 +172,7 @@
                 } else {
 					$this->getFiles()->addStylesheet('style', $this->url('css/style.css'), '2.0.0', [ 'bootstrap' ]);
 					$this->getFiles()->addJavascript('ui', $this->url('js/ui.js'), '2.0.0', [ 'bootstrap' ], TemplateFiles::FOOTER);
-					$this->getFiles()->addJavascript('codemirror', $this->url('js/codemirror/build/bundle.js'), '6.0.0', [ 'ui' ], TemplateFiles::FOOTER);
+					$this->getFiles()->addJavascript('codemirror', $this->url('js/codemirror/build/bundle.min.js'), '6.0.0', [ 'ui' ], TemplateFiles::FOOTER);
 				}
 				
 				$path = sprintf('%1$s%2$sdefault%2$s%3$s.php', $this->path, DS, $file);
