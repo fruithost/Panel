@@ -30,6 +30,10 @@
 			printf('<meta name="theme-color" content="%s" />', $this->getCore()->getHooks()->applyFilter('theme_color', '#007BFF', 10, false));
 		}
 		
+		public function modal_showing() : void {
+			print('<script type="text/javascript">if(typeof(window.showing) === \'undefined\') { window.showing = []; }</script>');
+		}
+		
 		public function head_scripts() : void {
 			$loaded = [];
 			

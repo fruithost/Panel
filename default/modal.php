@@ -43,10 +43,9 @@
 					</div>
 				</div>
             <?php
-			
 			if($modal->isShowing()) {
 				?>
-					<script>
+					<script type="text/javascript">
 						window.showing.push('<?php print $modal->getName(); ?>');
 					</script>
 				<?php

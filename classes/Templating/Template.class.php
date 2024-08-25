@@ -14,6 +14,7 @@
     use fruithost\System\CoreAdmin;
     use fruithost\Localization\I18N;
     use fruithost\Network\Request;
+	use fruithost\UI\Modal;
 
     class Template extends TemplateDefaults {
 		private Core $core;
@@ -46,6 +47,7 @@
 			$this->core->getHooks()->addAction('html_head', [ $this, 'head_robots' ], 10, false);
 			$this->core->getHooks()->addAction('html_head', [ $this, 'head_scripts' ], 10, false);
 			$this->core->getHooks()->addAction('html_head', [ $this, 'theme_color' ], 10, false);
+			$this->core->getHooks()->addAction('html_head', [ $this, 'modal_showing' ], 10, false);
 			$this->core->getHooks()->addAction('html_head', [ $this, 'favicon' ], 10, false);
 			$this->core->getHooks()->addAction('html_foot', [ $this, 'foot_modals' ], 10, false);
 			$this->core->getHooks()->addAction('html_foot', [ $this, 'foot_scripts' ], 10, false);
@@ -106,6 +108,13 @@
         public function getTheme() : ?string {
             return $this->theme;
         }
+		
+		public function addModal(Modal $modal) : void {
+			$this->core->getHooks()->addFilter('modals', function($modals) use($modal) {
+				$modals[] = $modal;
+				return $modals;
+			}, 10);
+		}
 		
 		public function assign(string $name, mixed $value) : void {
 			$this->assigns[$name] = $value;
