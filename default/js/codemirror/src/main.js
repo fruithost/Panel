@@ -5,25 +5,51 @@ import {html} from "@codemirror/lang-html";
 import {javascript} from "@codemirror/lang-javascript";
 import {StreamLanguage} from "@codemirror/language";
 import {properties} from "@codemirror/legacy-modes/mode/properties"
-import {myTheme} from "./theme.js";
+import {theme} from "./theme.js";
 import {config} from "./languages/config.js";
 import {json} from "@codemirror/lang-json";
 
 class CodeEditor {
     constructor() {
-        this._code = document.querySelector('#editor-content').innerHTML;
-        this._container = document.querySelector('#code-editor');
-        this._textarea = document.querySelector('textarea#code-area');
-        this._language = new Compartment;
+        this._code		= '';
+        this._container	= this.getElement('#code-editor');
+        this._textarea	= this.getElement('textarea#code-area');
+        this._language	= new Compartment;
+		
+		if(this.exists('#editor-content')) {
+			this._code	= this.getElement('#editor-content').innerHTML;
+		}
+		
         this.init();
     }
+	
+	exists(query) {
+		if(typeof(query) === 'undefined' || query === null) {
+			return false;
+		}
+		
+		let search = (typeof(query) === 'string' ? document.querySelector(query) : query);
+		
+		return !(typeof(search) === 'undefined' || search === null);
+	}
+	
+	getElement(query) {
+		return document.querySelector(query);
+	}
 
     getLanguage() {
-        if (typeof (this._container.dataset) === 'undefined') {
+		if(!this.exists(this._container)) {
+			throw 'Container not exists.';
+			return 'unknown';
+		}
+		
+        if(typeof(this._container.dataset) === 'undefined') {
+			throw 'Container has no DataSet.';
             return 'unknown';
         }
 
-        if (typeof (this._container.dataset.language) === 'undefined') {
+        if(typeof(this._container.dataset.language) === 'undefined') {
+			throw 'Container has no language in DataSet.';
             return 'unknown';
         }
 
@@ -31,11 +57,12 @@ class CodeEditor {
     }
 
     init() {
+		// Create the Editor instance
         this._state = EditorState.create({
-            doc: this._code,
-            extensions: [
+            doc:		this._code,
+            extensions:	[
                 basicSetup,
-                myTheme,
+				theme,
                 EditorView.lineWrapping,
                 this._language.of(this.findLanguage()),
                 this.loadLanguage(),
@@ -43,22 +70,26 @@ class CodeEditor {
             ],
         });
 
+		// Create the Editor view
         this._view = new EditorView({
-            state: this._state,
-            parent: this._container
+            state:	this._state,
+            parent:	this._container
         });
     }
 
     onChange() {
-        let _textarea = this._textarea;
+		let _instance = this;
+		
         return ViewPlugin.fromClass(class {
             constructor(view) {
-                _textarea.innerHTML = view.state.doc.toString();
+				if(_instance.exists(_instance._textarea)) {
+					_instance._textarea.innerHTML = view.state.doc.toString();
+				}
             }
 
             update(update) {
-                if (update.docChanged) {
-                    _textarea.innerHTML = update.view.state.doc.toString();
+                if(update.docChanged && _instance.exists(_instance._textarea)) {
+                    _instance._textarea.innerHTML = update.view.state.doc.toString();
                 }
             }
 
@@ -77,37 +108,40 @@ class CodeEditor {
     findLanguage() {
         let language = null;
 
-        switch (this.getLanguage()) {
-            case "html":
-                language = html();
-                break;
-            case "javascript":
-                language = javascript();
-                break;
-            case "json":
-                language = json();
-                break;
-            case "config":
-                language = StreamLanguage.define(config);
-                break;
-            case "properties":
-                language = StreamLanguage.define(properties);
-                break;
+        switch(this.getLanguage()) {
+            case 'html':
+                language	= html();
+            break;
+            case 'javascript':
+                language	= javascript();
+            break;
+            case 'json':
+                language	= json();
+			break;
+            case 'config':
+                language	= StreamLanguage.define(config);
+            break;
+            case 'properties':
+                language	= StreamLanguage.define(properties);
+            break;
             default:
-                language = html();
-                break;
+                language	= html();
+            break;
         }
 
-        if (language === null) {
+        if(language === null) {
+			throw 'No language found!';
             return null
         }
+		
+		console.info('language', language);
 
         return language;
     }
 
     loadLanguage() {
         return EditorState.transactionExtender.of(tr => {
-            if (!tr.docChanged) {
+            if(!tr.docChanged) {
                 return null
             }
 

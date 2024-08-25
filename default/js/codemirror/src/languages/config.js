@@ -1,9 +1,7 @@
 var words = {};
 
-console.log("test");
-
 function define(style, dict) {
-    for (var i = 0; i < dict.length; i++) {
+    for(var i = 0; i < dict.length; i++) {
         words[dict[i]] = style;
     }
 };
@@ -42,143 +40,187 @@ var commonKeywords = [
     "SQLBackend", "SQLEngine", "SQLAuthenticate", "SQLAuthTypes", "SQLPasswordEngine", "SQLConnectInfo", "SQLNamedQuery", "SQLUserInfo", "SQLMinUserUID", "SQLDefaultUID",
     "SQLMinUserGID", "SQLMinID", "CreateHome", "SQLLogFile", "SQLGroupInfo", "QuotaDirectoryTally", "QuotaDisplayUnits", "QuotaShowQuotas", "QuotaLimitTable", "QuotaTallyTable",
     "RootLogin"
-
-    /* Apache2 */
 ];
-var commonCommands = ["standalone"];
 
-define('atom', commonAtoms);
-define('property', commonKeywords);
-define('builtin', commonCommands);
+var commonCommands = [
+    /* Apache2 */
+	"standalone"
+];
+
+define('atom',		commonAtoms);
+define('property',	commonKeywords);
+define('builtin',	commonCommands);
 
 function tokenBase(stream, state) {
-    if (stream.eatSpace()) return null;
-
+    if(stream.eatSpace()) {
+		return null;
+	}
+	
     var sol = stream.sol();
     var ch = stream.next();
 
-    if (ch === '\\') {
+	/* Escaping */
+    if(ch === '\\') {
         stream.next();
         return null;
     }
-    if (ch === '\'' || ch === '"' || ch === '`') {
+	
+	/* Qutotes */
+    if(ch === '\'' || ch === '"' || ch === '`') {
         state.tokens.unshift(tokenString(ch, ch === "`" ? "quote" : "string"));
+		
         return tokenize(stream, state);
-    }
-    if (ch === '#') {
-        if (sol && stream.eat('!')) {
+    } else if(ch === '#') {
+        if(sol && stream.eat('!')) {
             stream.skipToEnd();
             return 'meta'; // 'comment'?
         }
+		
         stream.skipToEnd();
         return 'comment';
     }
 
-    if (stream.match(/(?:[0-9a-fA-F]+)?(?:\:|$){1,8}?/)) {
+	/* IP-Address: ipv6 */
+    if(stream.match(/(?:[0-9a-fA-F]+)?(?:\:|$){1,8}?/)) {
         return "string";
     }
 
-    if (stream.match(/(?:[0-9]+)?\.(?:[0-9]+)?\.(?:[0-9]+)?\.(?:[0-9]+)?/)) {
+	/* IP-Address: ipv4 */
+    if(stream.match(/(?:[0-9]+)?\.(?:[0-9]+)?\.(?:[0-9]+)?\.(?:[0-9]+)?/)) {
         return "string";
     }
 
-    if (ch === '$') {
+	/* Variables */
+    if(ch === '$') {
         state.tokens.unshift(tokenDollar);
         return tokenize(stream, state);
     }
-    if (ch === '+' || ch === '=') {
-        return 'operator';
-    }
-    if (ch === '-') {
-        stream.eat('-');
+	
+	/* Options (Apache) */
+    if(ch === '-' || ch === '+') {
+        stream.eat(ch);
         stream.eatWhile(/\w/);
+		
         return 'attribute';
     }
 
-    if (ch === '<') {
+	/* Groups */
+    if(ch === '<') {
         state.tokens.unshift(tokenGroup(ch, "qualifier"));
+		
         return tokenize(stream, state);
     }
 
-    if (/\d/.test(ch)) {
+	/* Numbers*/
+    if(/\d/.test(ch)) {
         stream.eatWhile(/\d/);
-        if (stream.eol() || !/\w/.test(stream.peek())) {
+		
+        if(stream.eol() || !/\w/.test(stream.peek())) {
             return 'number';
         }
     }
+	
     stream.eatWhile(/[\w-]/);
+	
     var cur = stream.current();
-    if (stream.peek() === '.' && /\w+/.test(cur)) return 'def';
-    return words.hasOwnProperty(cur) ? words[cur] : null;
+	
+    if(stream.peek() === '.' && /\w+/.test(cur)) {
+		return 'def';
+    }
+	
+	return words.hasOwnProperty(cur) ? words[cur] : null;
 }
 
 function tokenGroup(quote, style) {
-    var close = quote === "<" ? ">" : quote
+    var close = quote === "<" ? ">" : quote;
+	
     return function (stream, state) {
         var next, escaped = false;
-        while ((next = stream.next()) != null) {
-            if (next === close && !escaped) {
+		
+        while((next = stream.next()) != null) {
+            if(next === close && !escaped) {
                 state.tokens.shift();
                 break;
-            } else if (!escaped && quote !== close && next === quote) {
-                state.tokens.unshift(tokenGroup(quote, style))
-                return tokenize(stream, state)
-            } else if (!escaped && /['"]/.test(next) && !/['"]/.test(quote)) {
+				
+            } else if(!escaped && quote !== close && next === quote) {
+                state.tokens.unshift(tokenGroup(quote, style));
+                return tokenize(stream, state);
+				
+            } else if(!escaped && /['"]/.test(next) && !/['"]/.test(quote)) {
                 state.tokens.unshift(tokenStringStart(next, "string"));
                 stream.backUp(1);
                 break;
             }
+			
             escaped = !escaped && next === '\\';
         }
+		
         return style;
     };
 }
 
 function tokenString(quote, style) {
-    var close = quote === "(" ? ")" : quote === "{" ? "}" : quote
+    var close = quote === "(" ? ")" : quote === "{" ? "}" : quote;
+	
     return function (stream, state) {
         var next, escaped = false;
-        while ((next = stream.next()) != null) {
-            if (next === close && !escaped) {
+		
+        while((next = stream.next()) != null) {
+            if(next === close && !escaped) {
                 state.tokens.shift();
                 break;
-            } else if (next === '$' && !escaped && quote !== "'" && stream.peek() !== close) {
+				
+            } else if(next === '$' && !escaped && quote !== "'" && stream.peek() !== close) {
                 escaped = true;
                 stream.backUp(1);
                 state.tokens.unshift(tokenDollar);
                 break;
-            } else if (!escaped && quote !== close && next === quote) {
-                state.tokens.unshift(tokenString(quote, style))
-                return tokenize(stream, state)
-            } else if (!escaped && /['"]/.test(next) && !/['"]/.test(quote)) {
+				
+            } else if(!escaped && quote !== close && next === quote) {
+                state.tokens.unshift(tokenString(quote, style));
+                return tokenize(stream, state);
+				
+            } else if(!escaped && /['"]/.test(next) && !/['"]/.test(quote)) {
                 state.tokens.unshift(tokenStringStart(next, "string"));
                 stream.backUp(1);
                 break;
             }
+			
             escaped = !escaped && next === '\\';
         }
+		
         return style;
     };
 };
 
 function tokenStringStart(quote, style) {
-    return function (stream, state) {
-        state.tokens[0] = tokenString(quote, style)
-        stream.next()
-        return tokenize(stream, state)
+    return function(stream, state) {
+        state.tokens[0] = tokenString(quote, style);
+        stream.next();
+		
+        return tokenize(stream, state);
     }
 }
 
 var tokenDollar = function (stream, state) {
-    if (state.tokens.length > 1) stream.eat('$');
-    var ch = stream.next()
-    if (/['"({]/.test(ch)) {
+    if(state.tokens.length > 1) {
+		stream.eat('$');
+    }
+	
+	var ch = stream.next();
+	
+    if(/['"({]/.test(ch)) {
         state.tokens[0] = tokenString(ch, ch === "(" ? "quote" : ch === "{" ? "def" : "string");
         return tokenize(stream, state);
     }
-    if (!/\d/.test(ch)) stream.eatWhile(/\w/);
+	
+    if(!/\d/.test(ch)) {
+		stream.eatWhile(/\w/);
+	}
+	
     state.tokens.shift();
-    return 'def';
+    
+	return 'def';
 };
 
 function tokenize(stream, state) {
@@ -186,16 +228,22 @@ function tokenize(stream, state) {
 }
 
 export const config = {
-    name: "config",
-    startState: function () {
-        return {tokens: []};
+    name:		"config",
+    startState:	function startState() {
+        return {
+			tokens: []
+		};
     },
-    token: function (stream, state) {
+    token: function token(stream, state) {
         return tokenize(stream, state);
     },
     languageData: {
-        autocomplete: commonAtoms.concat(commonKeywords, commonCommands),
-        closeBrackets: {brackets: ["(", "[", "{", "'", '"', "`"]},
-        commentTokens: {line: "#"}
+        autocomplete:	commonAtoms.concat(commonKeywords, commonCommands),
+        closeBrackets:	{
+			brackets: [ "<", "(", "[", "{", "'", '"', "`" ]
+		},
+        commentTokens:	{
+			line: "#"
+		}
     }
 };
