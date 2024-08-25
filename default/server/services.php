@@ -25,7 +25,7 @@
 			</ol>
 		</nav>
 		<div class="btn-toolbar mb-2 mb-md-0">
-			<button type="submit" name="action" value="refresh" class="btn btn-sm btn-outline-primary"><?php I18N::__('Refresh'); ?></button>
+			<a href="<?php print $this->url('/server/services' . (!empty($tab) ? '/' . $tab : '')); ?>" class="btn btn-sm btn-outline-primary"><?php I18N::__('Refresh'); ?></a>
 		</div>
 	</header>
 	<?php
