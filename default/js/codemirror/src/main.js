@@ -133,8 +133,6 @@ class CodeEditor {
 			throw 'No language found!';
             return null
         }
-		
-		console.info('language', language);
 
         return language;
     }

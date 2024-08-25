@@ -4,12 +4,28 @@ import { tags as Tags } from '@lezer/highlight';
 
 /* Color Table */
 const Colors = {
-    Text:			'var(--bs-success-text-emphasis)',
-    Key:			'var(--bs-code-color)',
-    Braces:			'var(--bs-tertiary-color)',
-    BracesActive:	'var(--bs-red)',
-    SameSelection:	'rgb(from var(--bs-red) r g b / 50%)',
-	Transparent:	'transparent'
+	/* Defaults */
+	Background:		'var(--bs-body-bg)',
+	Foreground:		'var(--bs-body-color)',
+	Transparent:	'transparent',
+	
+	/* Selections */
+	Active: {
+		Cursor:		'var(--bs-body-color)',
+		Selection:	'rgb(from var(--bs-body-color) r g b / 20%)',
+		Line:		'rgb(from var(--bs-body-color) r g b / 20%)',
+		Matches:	'rgb(from var(--bs-red) r g b / 50%)',
+		Braces:		'var(--bs-red)'
+	},
+	
+	/* Code */
+	Code: {
+		Braces:		'var(--bs-tertiary-color)',
+		Numbers:	'var(--bs-warning-text-emphasis)',
+		Variables:	'var(--bs-success-text-emphasis)',
+		Values:		'var(--bs-code-color)',
+		Groups:		'var(--bs-primary-text-emphasis)'
+	}
 };
 
 // @ToDo Replace
@@ -24,50 +40,43 @@ const base07 = '#000000';
 const base08 = '#A54543';
 const base09 = '#fc6d24';
 const base0A = '#fda331';
-const base0B = '#8abeb7';
 const base0D = '#6fb3d2';
 const base0F = '#6987AF';
 const invalid = base09;
-const darkBackground = '#292d30';
-const highlightBackground = base02 + '30';
-const background = base00;
-const tooltipBackground = base01;
-const selection = '#202325';
-const cursor = base01;
 
 /* Theme Colors */
 const Theme = EditorView.theme({
     '&': {
-        color:				base01,
-        backgroundColor:	background
+        color:				Colors.Foreground,
+        backgroundColor:	Colors.Background
     },
     '.cm-content': {
-        caretColor:			cursor
+        caretColor:			Colors.Active.Cursor
     },
     '.cm-cursor, .cm-dropCursor': {
-		borderLeftColor:	cursor
+		borderLeftColor:	Colors.Active.Cursor
 	},
     '&.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection': {
-		backgroundColor:	selection
+		backgroundColor:	Colors.Active.Selection
 	},
     '.cm-activeLine': {
-		backgroundColor:	highlightBackground
+		backgroundColor:	Colors.Active.Line
 	},
     '.cm-selectionMatch': {
-        backgroundColor:	Colors.SameSelection
+        backgroundColor:	Colors.Active.Matches
     },
     '&.cm-focused .cm-matchingBracket, &.cm-focused .cm-matchingBracket *': {
-        color:				Colors.BracesActive,
+        color:				Colors.Active.Braces,
         backgroundColor:	Colors.Transparent,
         fontWeight:			'bolder'
     },
     '.cm-gutters': {
         borderRight:		'1px solid #ffffff10',
-        color:				base06,
-        backgroundColor:	darkBackground
+        color:				Colors.Foreground,
+        backgroundColor:	Colors.Background
     },
     '.cm-activeLineGutter': {
-        backgroundColor:	highlightBackground
+        backgroundColor:	Colors.Active.Line
     },
 
     '.cm-foldPlaceholder': {
@@ -85,7 +94,7 @@ const Syntax = HighlightStyle.define([{
 	color:	base0A
 }, {
 	tag:	[ Tags.name, Tags.deleted, Tags.character, Tags.propertyName, Tags.macroName ],
-	color:	Colors.Key
+	color:	Colors.Code.Variables
 }, {
 	tag:	[ Tags.variableName ],
 	color:	base0D
@@ -100,31 +109,34 @@ const Syntax = HighlightStyle.define([{
 	color:	base0A
 }, {
 	tag:	[ Tags.definition(Tags.name), Tags.separator ],
-	color:	Colors.Text
+	color:	Colors.Code.Values
 }, {
 	tag:	[ Tags.brace ],
-	color:	Colors.Braces
+	color:	Colors.Code.Braces
 }, {
 	tag:	[ Tags.annotation ],
 	color:	invalid
 }, {
-	tag:	[ Tags.number, Tags.changed, Tags.annotation, Tags.modifier, Tags.self, Tags.namespace ],
-	color:	base0A
+	tag:	[ Tags.number ],
+	color:	Colors.Code.Numbers
+}, {
+	tag:	[ Tags.changed, Tags.annotation, Tags.modifier, Tags.self, Tags.namespace ],
+	color:	base0D
 }, {
 	tag:	[ Tags.typeName, Tags.className ],
 	color:	base0D
 }, {
 	tag:	[ Tags.operator, Tags.operatorKeyword ],
-	color:	Colors.Text
+	color:	Colors.Code.Values
 }, {
 	tag:	[ Tags.tagName ],
 	color:	base0A
 }, {
 	tag:	[ Tags.squareBracket ],
-	color:	Colors.Braces
+	color:	Colors.Code.Braces
 }, {
 	tag:	[ Tags.angleBracket ],
-	color:	Colors.Braces
+	color:	Colors.Code.Braces
 }, {
 	tag:	[ Tags.attributeName ],
 	color:	base0D
@@ -136,7 +148,7 @@ const Syntax = HighlightStyle.define([{
 	color:	base01
 }, {
 	tag:	[ Tags.string ],
-	color:	Colors.Text
+	color:	Colors.Code.Values
 }, {
 	tag:					Tags.link,
 	color:					base0F,
@@ -144,7 +156,7 @@ const Syntax = HighlightStyle.define([{
 	textUnderlinePosition:	'under'
 }, {
 	tag:	[ Tags.url, Tags.escape, Tags.special(Tags.string) ],
-	color:	base0B
+	color:	Colors.Code.Groups
 }, {
 	tag:	[ Tags.meta ],
 	color:	base08
@@ -187,10 +199,10 @@ const Syntax = HighlightStyle.define([{
 	color:		base01
 }, {
 	tag:		[ Tags.atom, Tags.bool, Tags.special(Tags.variableName) ],
-	color:		base0B
+	color:		Colors.Code.Groups
 }, {
 	tag:		[ Tags.processingInstruction, Tags.inserted ],
-	color:		base0B
+	color:		Colors.Code.Groups
 }, {
 	tag:		[ Tags.contentSeparator ],
 	color:		base0D
@@ -202,6 +214,5 @@ const Syntax = HighlightStyle.define([{
 
 export const theme = [
     Theme,
-    SyntaxHighlighting(Syntax),
-	SyntaxHighlighting(Default),
+    SyntaxHighlighting(Syntax)
 ];
