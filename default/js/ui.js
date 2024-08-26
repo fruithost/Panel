@@ -1,119 +1,126 @@
 (() => {
-	function show(event) {
-		[].map.call(document.querySelectorAll('.bi[data-bs-toggle="collapse"][data-bs-target="#' + event.target.id + '"], [data-bs-toggle="collapse"][data-bs-target="#' + event.target.id + '"] .bi'), function(icon) {
-			icon.classList.remove('bi-caret-up-square-fill');
-			icon.classList.remove('bi-caret-down-square-fill');
-			icon.classList.add('bi-caret-up-square-fill');
-		});
-	};
+    function show(event) {
+        [].map.call(document.querySelectorAll('.bi[data-bs-toggle="collapse"][data-bs-target="#' + event.target.id + '"], [data-bs-toggle="collapse"][data-bs-target="#' + event.target.id + '"] .bi'), function (icon) {
+            icon.classList.remove('bi-caret-up-square-fill');
+            icon.classList.remove('bi-caret-down-square-fill');
+            icon.classList.add('bi-caret-up-square-fill');
+        });
+    };
 
-	function hide(event) {
-		[].map.call(document.querySelectorAll('.bi[data-bs-toggle="collapse"][data-bs-target="#' + event.target.id + '"], [data-bs-toggle="collapse"][data-bs-target="#' + event.target.id + '"] .bi'), function(icon) {
-			icon.classList.remove('bi-caret-up-square-fill');
-			icon.classList.remove('bi-caret-down-square-fill');
-			icon.classList.add('bi-caret-down-square-fill');
-		});
-	};
+    function hide(event) {
+        [].map.call(document.querySelectorAll('.bi[data-bs-toggle="collapse"][data-bs-target="#' + event.target.id + '"], [data-bs-toggle="collapse"][data-bs-target="#' + event.target.id + '"] .bi'), function (icon) {
+            icon.classList.remove('bi-caret-up-square-fill');
+            icon.classList.remove('bi-caret-down-square-fill');
+            icon.classList.add('bi-caret-down-square-fill');
+        });
+    };
 
-	[].map.call(document.querySelectorAll('.collapse'), function(collapse) {
-		collapse.addEventListener('show.bs.collapse', show);
-		collapse.addEventListener('shown.bs.collapse', show);
-		collapse.addEventListener('hide.bs.collapse', hide);
-		collapse.addEventListener('hidden.bs.collapse', hide);
-	});
+    [].map.call(document.querySelectorAll('.collapse'), function (collapse) {
+        collapse.addEventListener('show.bs.collapse', show, false);
+        collapse.addEventListener('shown.bs.collapse', show, false);
+        collapse.addEventListener('hide.bs.collapse', hide, false);
+        collapse.addEventListener('hidden.bs.collapse', hide, false);
+    });
 
-	let sidebar = document.querySelector('.sidebar');
+    [].map.call(document.querySelectorAll('[data-bs-toggle="collapse"] a[href]'), function (collapse) {
+        collapse.addEventListener('click', (event) => {
+            window.location.href = event.target.href;
+        }, false);
+    });
 
-	window.addEventListener('resize', (event) => {
-		if(window.getComputedStyle(sidebar, null).display !== 'block') {
-			sidebar.classList.remove('show');
-		}
-	}, true);
 
-	document.querySelector('[data-bs-toggle="sidebar"]').addEventListener('click', (event) => {
-		if(window.getComputedStyle(sidebar, null).display !== 'block') {
-			sidebar.classList.add('show');
-		} else {
-			sidebar.classList.remove('show');
-		}
-	});
+    let sidebar = document.querySelector('.sidebar');
 
-	const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-	const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-	
-	const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"], [data-bs-toggle="hover"]')
-	const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl, {
-		trigger:	'hover',
-		html:		true
-	}))
-	
-	function serialize(form) {
-		var obj = {};
-		var formData = new FormData(form);
-		for (var key of formData.keys()) {
-			obj[key] = formData.get(key);
-		}
-		return obj;
-	};
+    window.addEventListener('resize', (event) => {
+        if (window.getComputedStyle(sidebar, null).display !== 'block') {
+            sidebar.classList.remove('show');
+        }
+    }, true);
 
-	function ajaxSubmit(event) {
-		event.preventDefault();
-		
-		try {
-			let form = this;
-			
-			// @ToDo add onError?
-			
-			new Ajax(form.action).onSuccess(function(response) {
-				if(response.toLowerCase() === 'true' || response.toLowerCase() === '1') {
-					window.location.reload();
-					return;
-				} else if(response.toLowerCase() == 'close') {
-					let node = form.parentNode.closest('.modal');
-					node.classList.remove('fade');
-					var modal = bootstrap.Modal.getInstance(node);
-					modal.hide();
-					event.stopPropagation();
-					return;
-				} else if(response.toLowerCase() === 'false') {
-					response = 'An unknown error has occurred.';
-				}
-				
-				let content	= form.querySelector('.modal-body');
-				let alert	= content.querySelector('.alert');
-				
-				if(alert) {
-					content.removeChild(alert);
-				}
-				
-				alert = document.createElement('div');
-				alert.classList.add('alert');
-				alert.classList.add('alert-danger');
-				alert.setAttribute('role', 'alert');
-				alert.innerHTML = response;
-				content.prepend(alert);
-			}).post(serialize(form));
-		} catch(e) {
-			
-		}
-		
-		return false;
-	};
-	
-	[].map.call(document.querySelectorAll('.ajax'), function(form) {
-		/*form.addEventListener('click', function(event) {
-			ajaxSubmit.apply(form, [ event ]);
-		});*/
-		
-		form.addEventListener('submit', function(event) {
-			ajaxSubmit.apply(form, [ event ]);
-		});
-	});
-	
-	
-	window.showing.forEach((modal) => {
-		new bootstrap.Modal('#' + modal, {}).show();
-	});
+    document.querySelector('[data-bs-toggle="sidebar"]').addEventListener('click', (event) => {
+        if (window.getComputedStyle(sidebar, null).display !== 'block') {
+            sidebar.classList.add('show');
+        } else {
+            sidebar.classList.remove('show');
+        }
+    });
+
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"], [data-bs-toggle="hover"]')
+    const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl, {
+        trigger: 'hover',
+        html: true
+    }))
+
+    function serialize(form) {
+        var obj = {};
+        var formData = new FormData(form);
+        for (var key of formData.keys()) {
+            obj[key] = formData.get(key);
+        }
+        return obj;
+    };
+
+    function ajaxSubmit(event) {
+        event.preventDefault();
+
+        try {
+            let form = this;
+
+            // @ToDo add onError?
+
+            new Ajax(form.action).onSuccess(function (response) {
+                if (response.toLowerCase() === 'true' || response.toLowerCase() === '1') {
+                    window.location.reload();
+                    return;
+                } else if (response.toLowerCase() == 'close') {
+                    let node = form.parentNode.closest('.modal');
+                    node.classList.remove('fade');
+                    var modal = bootstrap.Modal.getInstance(node);
+                    modal.hide();
+                    event.stopPropagation();
+                    return;
+                } else if (response.toLowerCase() === 'false') {
+                    response = 'An unknown error has occurred.';
+                }
+
+                let content = form.querySelector('.modal-body');
+                let alert = content.querySelector('.alert');
+
+                if (alert) {
+                    content.removeChild(alert);
+                }
+
+                alert = document.createElement('div');
+                alert.classList.add('alert');
+                alert.classList.add('alert-danger');
+                alert.setAttribute('role', 'alert');
+                alert.innerHTML = response;
+                content.prepend(alert);
+            }).post(serialize(form));
+        } catch (e) {
+
+        }
+
+        return false;
+    };
+
+    [].map.call(document.querySelectorAll('.ajax'), function (form) {
+        /*form.addEventListener('click', function(event) {
+            ajaxSubmit.apply(form, [ event ]);
+        });*/
+
+        form.addEventListener('submit', function (event) {
+            ajaxSubmit.apply(form, [event]);
+        });
+    });
+
+
+    window.showing.forEach((modal) => {
+        new bootstrap.Modal('#' + modal, {}).show();
+    });
 })();
 
 
