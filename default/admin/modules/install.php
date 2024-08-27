@@ -1,4 +1,7 @@
 <?php
+	
+	use fruithost\Localization\I18N;
+	
 	$results = [];
 	
 	foreach($repositorys as $entry) {
@@ -72,7 +75,7 @@
 				// @ToDo Cache
 				$name = trim($name);
 				$info = file_get_contents(sprintf('%s/%s/module.package', $entry->url, $name), false, $context);
-				$results[] = $info;
+				$results[$name] = $info;
 			}
 		}
 	}
@@ -81,7 +84,7 @@
     <div class="row row-cols-1 row-cols-md-3 g-4">
 		<?php
 			if(!empty($results)) {
-				foreach($results as $result) {
+				foreach($results as $name => $result) {
 					if(empty($result)) {
 						continue;
 					}
@@ -91,11 +94,12 @@
 					if(empty($result)) {
 						continue;
 					}
+					
+					$installed = $this->getCore()->getModules()->hasModule($name, true);
 					?>
                     <div class="col">
                         <div class="card">
                             <div class="card-body row">
-								<?php #print_r($json); ?>
                                 <div class="col-2 fs-1">
 									<?php
 										if(preg_match('/^(http|https|data):/', $json->icon)) {
@@ -113,16 +117,28 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="d-grid gap-2 mx-auto">
-                                        <button class="btn btn-success btn-sm">Install</button>
-                                        <button class="btn btn-light btn-sm">Info</button>
+										<?php
+											if($installed) {
+												?>
+                                                <a href="<?php print $this->url(sprintf('/admin/modules/?deinstall=%s', $name)); ?>"
+                                                   class="btn btn-outline-danger btn-sm"
+                                                   data-confirm="<?php printf(I18N::get('Do you really wan\'t to delete the Module %s?'), sprintf('<strong>%s</strong>', $json->name)); ?>"><?php I18N::__('Deinstall'); ?></a>
+												<?php
+											} else {
+												?>
+                                                <button class="btn btn-success btn-sm"><?php I18N::__('Install'); ?></button>
+												<?php
+											}
+										?>
+                                        <button class="btn btn-outline-light btn-sm"><?php I18N::__('Info'); ?></button>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-footer text-body-secondary">
                                 <div class="row">
                                     <div class="col small text-nowrap">
-                                        Von <?php printf('<a href="mailto:%s" target="_blank">%s</a>', $json->author->email, $json->author->name); ?>
-                                        | <?php printf('<a href="%1$s" target="_blank">%1$s</a>', $json->author->url); ?>
+										<?php I18N::__('From'); ?> <?php printf('<a href="mailto:%s" class="text-decoration-none" target="_blank">%s</a>', $json->author->email, $json->author->name); ?>
+                                        | <?php printf('<a href="%1$s" class="text-decoration-none" target="_blank">%1$s</a>', $json->author->url); ?>
                                     </div>
                                     <div class="col text-end">
                                         <span class="badge text-bg-secondary"><?php print $json->version; ?></span>

@@ -98,6 +98,12 @@
 					<?php
 						switch($tab) {
 							case 'install':
+								?>
+                                <a href="<?php print $this->url('/admin/modules'); ?>"
+                                   class="btn btn-sm btn-outline-secondary mx-2"><?php I18N::__('Back'); ?></a>
+                                <a href="<?php print $this->url('/admin/modules/install'); ?>"
+                                   class="btn btn-sm btn-outline-primary mx-2"><?php I18N::__('Refresh'); ?></a>
+								<?php
 								break;
 							case 'repositorys':
 								?>
@@ -132,15 +138,19 @@
 				if($tab == 'install') {
 					?>
                     <div class="nav nav-tabs">
-                        <li class="nav-item"><a class="nav-link active" role="tab">Popular</a></li>
-                        <li class="nav-item"><a class="nav-link" role="tab">Results</a></li>
+                        <li class="nav-item"><a class="nav-link active" role="tab"><?php I18N::__('Popular'); ?></a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link disabled" aria-disabled="true" role="tab"
+                                                aria-disabled="true"><?php I18N::__('Results'); ?></a></li>
                         <li class="nav-item ms-auto">
                             <form role="search">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search" aria-label="Search"
+                                    <input type="text" class="form-control form-control-sm"
+                                           placeholder="<?php I18N::__('Search terms...'); ?>"
+                                           aria-label="<?php I18N::__('Search'); ?>"
                                            aria-describedby="basic-addon1">
-                                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search
-                                    </button>
+                                    <button class="btn btn-sm btn-outline-success" type="button"
+                                            id="button-addon2"><?php I18N::__('Search'); ?></button>
                                 </div>
                             </form>
                         </li>
