@@ -31,3 +31,8 @@ input:focus {
 	border-color: transparent !important;
 	cursor: normal !important;
 }
+
+.text-justify {
+    text-align: justify;
+    text-justify: inter-word;
+}
