@@ -4,7 +4,6 @@
 	use fruithost\Localization\I18N;
 	
 	$template->header();
-	
 	if(!Auth::hasPermission('MODULES::VIEW')) {
 		?>
         <div class="alert alert-danger mt-4" role="alert">
@@ -15,7 +14,6 @@
 		$template->footer();
 		exit();
 	}
-	
 	if(isset($_GET['settings'])) {
 		?>
         <form method="post"
@@ -74,7 +72,6 @@
                             </div>
 							<?php
 						}
-						
 						require_once($module->getSettingsPath());
 					}
 				}
@@ -140,9 +137,9 @@
                     <div class="nav nav-tabs">
                         <li class="nav-item"><a class="nav-link active" role="tab"><?php I18N::__('Popular'); ?></a>
                         </li>
-                        <li class="nav-item"><a class="nav-link disabled" aria-disabled="true" role="tab"
-                                                aria-disabled="true"><?php I18N::__('Results'); ?></a></li>
-                        <li class="nav-item ms-auto">
+                        <!--<li class="nav-item"><a class="nav-link disabled" aria-disabled="true" role="tab"
+                                                aria-disabled="true"><?php I18N::__('Results'); ?></a></li>-->
+                        <!--<li class="nav-item ms-auto">
                             <form role="search">
                                 <div class="input-group">
                                     <input type="text" class="form-control form-control-sm"
@@ -153,7 +150,7 @@
                                             id="button-addon2"><?php I18N::__('Search'); ?></button>
                                 </div>
                             </form>
-                        </li>
+                        </li>-->
                     </div>
 					<?php
 				} else {
@@ -164,9 +161,7 @@
                                href="<?php print $this->url('/admin/modules'); ?>" role="tab">
 								<?php
 									I18N::__('Installed Modules');
-									
 									$updates = count((array) $upgradeable);
-									
 									if($updates > 0) {
 										printf('<span class="badge rounded-pill text-bg-warning">%d</span>', $updates);
 									}
@@ -185,9 +180,7 @@
                                id="errors-tab" href="<?php print $this->url('/admin/modules/errors'); ?>" role="tab">
 								<?php
 									I18N::__('Errors');
-									
 									$error_count = count((array) $errors);
-									
 									if($error_count > 0) {
 										printf('<span class="badge rounded-pill text-bg-warning">%d</span>', $error_count);
 									}
@@ -197,7 +190,6 @@
                     </ul>
 					<?php
 				}
-				
 				if(isset($error)) {
 					?>
                     <div class="alert alert-danger mt-4" role="alert"><?php print $error; ?></div>
@@ -260,6 +252,5 @@
         </script>
 		<?php
 	}
-	
 	$template->footer();
 ?>

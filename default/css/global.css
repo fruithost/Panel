@@ -1,38 +1,72 @@
 html, body {
-	height: 100%;
+    height: 100%;
 }
 
 textarea:focus,
-textarea:focus, 
+textarea:focus,
 input:focus {
-	outline: none;
-    box-shadow:none !important;
+    outline: none;
+    box-shadow: none !important;
 }
 
 /* Theme Switch */
 .theme-switch {
-	z-index: 99999;
-	border-radius: 35%;
-	color: var(--bs-emphasis-color);
-	background-color: var(--bs-secondary-bg-subtle);
+    z-index: 99999;
+    border-radius: 35%;
+    color: var(--bs-emphasis-color);
+    background-color: var(--bs-secondary-bg-subtle);
 }
 
 /* Dropdown */
 .dropdown-scroll {
-	max-height: 145px;
-	overflow-y: scroll;
+    max-height: 145px;
+    overflow-y: scroll;
 }
 
 .btn-text:hover,
 .btn-text:active,
 .btn-text:focus {
-	color: var(--bs-body-color) !important;
-	background-color: transparent !important;
-	border-color: transparent !important;
-	cursor: normal !important;
+    color: var(--bs-body-color) !important;
+    background-color: transparent !important;
+    border-color: transparent !important;
+    cursor: normal !important;
 }
 
 .text-justify {
     text-align: justify;
     text-justify: inter-word;
+}
+
+@keyframes dots {
+    0% {
+        content: "";
+    }
+
+    20% {
+        content: ".";
+    }
+
+    40% {
+        content: "..";
+    }
+
+    80% {
+        content: "...";
+    }
+
+    100% {
+        content: "";
+    }
+}
+
+span[data-dots="true"] {
+    display: inline-block;
+    text-align: left;
+    min-width: 10px;
+}
+
+span[data-dots="true"]::after {
+    content: "";
+    width: 5px;
+    animation: dots 3s linear infinite;
 }

@@ -86,7 +86,7 @@
 			/* Define syste relevant constants if previous not set on config files */
 			if(defined('DEBUG') && DEBUG) {
 				@ini_set('display_errors', true);
-				@ini_set('log_errors ', false);
+				@ini_set('log_errors ', true);
 				error_reporting(E_ALL);
 			} else if(!defined('DEBUG')) {
 				define('DEBUG', false);

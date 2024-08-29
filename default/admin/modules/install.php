@@ -1,84 +1,26 @@
 <?php
 	
+	use fruithost\Installer\Installer;
 	use fruithost\Localization\I18N;
 	
 	$results = [];
-	
 	foreach($repositorys as $entry) {
-		$headers = [];
-		$options = [];
-		$branch = 'master';
-		
-		// Load GitHub by RAW
-		if(preg_match('/github\.com\/([^\/]+)\/([^\/]+)$/Uis', rtrim($entry->url, '/'), $matches)) {
-			$user = rtrim($matches[1], '/');
-			$repo = rtrim($matches[2], '/');
-			$entry->url = sprintf('https://raw.githubusercontent.com/%s/%s/%s', $user, $repo, $branch);
-			
-			// Load by Git-Variables
-		} else if(str_starts_with($entry->url, 'git:')) {
-			$parts = explode(' ', $entry->url);
-			$user = null;
-			$repo = null;
-			$token = null;
-			
-			foreach($parts as $part) {
-				if(str_starts_with($part, 'user:')) {
-					$user = str_replace('user:', '', $part);
-				} else if(str_starts_with($part, 'repo:')) {
-					$repo = str_replace('repo:', '', $part);
-				} else if(str_starts_with($part, 'branch:')) {
-					$branch = str_replace('branch:', '', $part);
-				} else if(str_starts_with($part, 'token:')) {
-					$token = str_replace('token:', '', $part);
-				}
-			}
-			
-			$entry->url = sprintf('https://raw.githubusercontent.com/%s/%s/%s', $user, $repo, $branch);
-			
-			if(!empty($token)) {
-				$headers['Authorization'] = sprintf('token %s', $entry->token);
-				$headers['Accept'] = 'application/vnd.github.raw+json';
-				$headers['User-Agent'] = sprintf('%s@%s (PHP v1.0.0)', $user, $repo);
-				$headers['X-GitHub-Api-Version'] = '2022-11-28';
-				$entry->url = sprintf('https://api.github.com/repos/%s/%s/contents', $user, $repo);
-			}
-		}
-		
-		if(!empty($headers)) {
-			$h = '';
-			
-			foreach($headers as $name => $value) {
-				$h .= sprintf('%s: %s%s', $name, $value, "\r\n");
-			}
-			
-			$options = [
-				"http" => [
-					"header" => $h
-				]
-			];
-		}
-		
-		// @ToDo Cache
-		$request = sprintf('%s/modules.list', $entry->url);
-		$context = stream_context_create($options);
-		$list = @file_get_contents($request, false, $context);
-		
-		if(!empty($list)) {
-			$modules = explode(PHP_EOL, $list.PHP_EOL);
-			
+		$repository = Installer::getRepository($entry->id);
+		$content    = Installer::getFile($repository, 'modules.list');
+		if(!empty($content)) {
+			$modules = explode(PHP_EOL, $content.PHP_EOL);
 			foreach($modules as $name) {
 				if(empty($name)) {
 					continue;
 				}
-				
 				// @ToDo Cache
-				$name = trim($name);
-				$info = file_get_contents(sprintf('%s/%s/module.package', $entry->url, $name), false, $context);
+				$name           = trim($name);
+				$info           = Installer::getFile($repository, sprintf('%s/module.package', $name));
 				$results[$name] = $info;
 			}
 		}
 	}
+	// @ToDo Make Ajax Request
 ?>
 <div class="container mt-5">
     <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -88,13 +30,10 @@
 					if(empty($result)) {
 						continue;
 					}
-					
 					$json = json_decode($result, false);
-					
 					if(empty($result)) {
 						continue;
 					}
-					
 					$installed = $this->getCore()->getModules()->hasModule($name, true);
 					?>
                     <div class="col">
@@ -126,11 +65,13 @@
 												<?php
 											} else {
 												?>
-                                                <button class="btn btn-success btn-sm"><?php I18N::__('Install'); ?></button>
+                                                <a href="<?php print $this->url(sprintf('/admin/modules/?install=%s', $name)); ?>"
+                                                   class="btn btn-success btn-sm"
+                                                   data-loading="<?php I18N::__('Installing'); ?>"><?php I18N::__('Install'); ?></a>
 												<?php
 											}
 										?>
-                                        <button class="btn btn-outline-light btn-sm"><?php I18N::__('Info'); ?></button>
+                                        <!-- <button class="btn btn-outline-light btn-sm"><?php I18N::__('Info'); ?></button>-->
                                     </div>
                                 </div>
                             </div>
