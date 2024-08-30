@@ -45,7 +45,7 @@
         <div class="row g-3 gx-5">
             <div class="col-auto form-check">
                 <input class="form-check-input" type="radio" name="permissions_global" value="true"
-                       id="permissions_globals"<?php print ($user->hasPermission('*') ? ' CHECKED' : ''); ?>>
+                       id="permissions_globals"<?php print (in_array('*', $user->getPermissions()) ? ' CHECKED' : ''); ?>>
                 <label class="form-check-label" for="permissions_globals">
 					<?php I18N::__('Global rights'); ?>
                 </label>
@@ -60,7 +60,7 @@
         <div class="row g-3 gx-5">
             <div class="col-auto form-check">
                 <input class="form-check-input" type="radio" name="permissions_global" value="false"
-                       id="permissions_specific"<?php print (!$user->hasPermission('*') ? ' CHECKED' : ''); ?>>
+                       id="permissions_specific"<?php print (!in_array('*', $user->getPermissions()) ? ' CHECKED' : ''); ?>>
                 <label class="form-check-label" for="permissions_specific">
 					<?php I18N::__('Specific rights'); ?>
                 </label>
@@ -105,7 +105,7 @@
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" role="switch"
                                                name="permissions[<?php printf('%s::%s', $section, $right); ?>]"
-                                               id="<?php printf('%s_%s', $section, $right); ?>"/>
+                                               id="<?php printf('%s_%s', $section, $right); ?>"<?php print (in_array(sprintf('%s::%s', $section, $right), $user->getPermissions()) ? ' CHECKED' : ''); ?>/>
                                         <label class="form-check-label"
                                                for="<?php printf('%s_%s', $section, $right); ?>"><?php print $right; ?></label>
                                     </div>
@@ -141,7 +141,7 @@
                     });
                 });
 
-                change(<?php print ($user->hasPermission('*') ? 'true' : 'false'); ?>);
+                change(<?php print (in_array('*', $user->getPermissions()) ? 'true' : 'false'); ?>);
             })
         })();
     </script>
