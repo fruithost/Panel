@@ -1,20 +1,18 @@
 <?php
-    /**
-     * fruithost | OpenSource Hosting
-     *
-     * @author Adrian Preuß
-     * @version 1.0.0
-     * @license MIT
-     */
-
-    namespace fruithost\Accounting;
-	
+	/**
+	 * fruithost | OpenSource Hosting
+	 *
+	 * @author  Adrian Preuß
+	 * @version 1.0.0
+	 * @license MIT
+	 */
+	namespace fruithost\Accounting;
 	class Auth {
 		public static function isLoggedIn() : bool {
 			return AuthFactory::getInstance()->isLoggedIn();
 		}
 		
-		public static function TwoFactorLogin(string $username, #[\SensitiveParameter]  string $password) : bool {
+		public static function TwoFactorLogin(string $username, #[\SensitiveParameter] string $password) : bool {
 			return AuthFactory::getInstance()->TwoFactorLogin($username, $password);
 		}
 		
@@ -57,5 +55,10 @@
 		public static function hasPermission(string $name) : bool {
 			return AuthFactory::getInstance()->hasPermission($name);
 		}
+		
+		public static function getPermissions() : array {
+			return AuthFactory::getInstance()->getPermissions();
+		}
 	}
-?>
+	
+	?>

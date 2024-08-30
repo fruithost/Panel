@@ -4,7 +4,7 @@
 	use fruithost\Localization\I18N;
 	
 	$template->header();
-	if(!Auth::hasPermission('MODULES::VIEW')) {
+	if(!Auth::hasPermission('MODULES::*')) {
 		?>
         <div class="alert alert-danger mt-4" role="alert">
             <strong><?php I18N::__('Access denied!'); ?></strong>
@@ -14,7 +14,7 @@
 		$template->footer();
 		exit();
 	}
-	if(isset($_GET['settings'])) {
+	if(Auth::hasPermission('MODULES::HANDLE') && isset($_GET['settings'])) {
 		?>
         <form method="post"
               action="<?php print $this->url('/admin/modules'.(!empty($tab) ? '/'.$tab : '').'?settings='.$_GET['settings']); ?>">
@@ -95,44 +95,51 @@
 					<?php
 						switch($tab) {
 							case 'install':
-								?>
-                                <a href="<?php print $this->url('/admin/modules'); ?>"
-                                   class="btn btn-sm btn-outline-secondary mx-2"><?php I18N::__('Back'); ?></a>
-                                <a href="<?php print $this->url('/admin/modules/install'); ?>"
-                                   class="btn btn-sm btn-outline-primary mx-2"><?php I18N::__('Refresh'); ?></a>
-								<?php
+								if(!Auth::hasPermission('MODULES::INSTALL')) {
+									?>
+                                    <a href="<?php print $this->url('/admin/modules'); ?>"
+                                       class="btn btn-sm btn-outline-secondary mx-2"><?php I18N::__('Back'); ?></a>
+                                    <a href="<?php print $this->url('/admin/modules/install'); ?>"
+                                       class="btn btn-sm btn-outline-primary mx-2"><?php I18N::__('Refresh'); ?></a>
+									<?php
+								}
 								break;
 							case 'repositorys':
-								?>
-                                <div class="btn-group mr-2">
-                                    <button type="button" name="add_repository" data-bs-toggle="modal"
-                                            data-bs-target="#add_repository"
-                                            class="btn btn-sm btn-outline-primary"><?php I18N::__('Add new'); ?></button>
-                                    <button type="submit" name="action" value="update"
-                                            class="btn btn-sm btn-outline-success"><?php I18N::__('Update'); ?></button>
-                                    <button type="submit" name="action" value="delete"
-                                            class="btn btn-sm btn-outline-danger"><?php I18N::__('Delete'); ?></button>
-                                </div>
-								<?php
+								if(Auth::hasPermission('MODULES::REPOSITORYS')) {
+									?>
+                                    <div class="btn-group mr-2">
+                                        <button type="button" name="add_repository" data-bs-toggle="modal"
+                                                data-bs-target="#add_repository"
+                                                class="btn btn-sm btn-outline-primary"><?php I18N::__('Add new'); ?></button>
+                                        <button type="submit" name="action" value="update"
+                                                class="btn btn-sm btn-outline-success"><?php I18N::__('Update'); ?></button>
+                                        <button type="submit" name="action" value="delete"
+                                                class="btn btn-sm btn-outline-danger"><?php I18N::__('Delete'); ?></button>
+                                    </div>
+									<?php
+								}
 								break;
 							default:
-								?>
-                                <a href="<?php print $this->url('/admin/modules/install'); ?>"
-                                   class="btn btn-sm btn-outline-primary mx-2"><?php I18N::__('Install'); ?></a>
-                                <div class="btn-group mr-2">
-                                    <button type="submit" name="action" value="upgrade"
-                                            class="btn btn-sm btn-outline-success"><?php I18N::__('Upgrade'); ?></button>
-                                    <button type="submit" name="action" value="delete"
-                                            class="btn btn-sm btn-outline-danger"><?php I18N::__('Delete'); ?></button>
-                                </div>
-								<?php
+								if(Auth::hasPermission('MODULES::INSTALL')) {
+									
+									?>
+                                    <a href="<?php print $this->url('/admin/modules/install'); ?>"
+                                       class="btn btn-sm btn-outline-primary mx-2"><?php I18N::__('Install'); ?></a>
+                                    <div class="btn-group mr-2">
+                                        <button type="submit" name="action" value="upgrade"
+                                                class="btn btn-sm btn-outline-success"><?php I18N::__('Upgrade'); ?></button>
+                                        <button type="submit" name="action" value="delete"
+                                                class="btn btn-sm btn-outline-danger"><?php I18N::__('Delete'); ?></button>
+                                    </div>
+									<?php
+								}
 								break;
 						}
 					?>
                 </div>
             </header>
 			<?php
-				if($tab == 'install') {
+				if(Auth::hasPermission('MODULES::INSTALL') && $tab == 'install') {
 					?>
                     <div class="nav nav-tabs">
                         <li class="nav-item"><a class="nav-link active" role="tab"><?php I18N::__('Popular'); ?></a>
@@ -168,25 +175,36 @@
 								?>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link<?php print (!empty($tab) && $tab === 'repositorys' ? ' active' : ''); ?>"
-                               id="security-tab" href="<?php print $this->url('/admin/modules/repositorys'); ?>"
-                               role="tab">
-								<?php I18N::__('Repositorys'); ?>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link<?php print (!empty($tab) && $tab === 'errors' ? ' active' : ''); ?>"
-                               id="errors-tab" href="<?php print $this->url('/admin/modules/errors'); ?>" role="tab">
-								<?php
-									I18N::__('Errors');
-									$error_count = count((array) $errors);
-									if($error_count > 0) {
-										printf('<span class="badge rounded-pill text-bg-warning">%d</span>', $error_count);
-									}
+						<?php
+							if(Auth::hasPermission('MODULES::REPOSITORY')) {
 								?>
-                            </a>
-                        </li>
+                                <li class="nav-item">
+                                    <a class="nav-link<?php print (!empty($tab) && $tab === 'repositorys' ? ' active' : ''); ?>"
+                                       id="security-tab" href="<?php print $this->url('/admin/modules/repositorys'); ?>"
+                                       role="tab">
+										<?php I18N::__('Repositorys'); ?>
+                                    </a>
+                                </li>
+								<?php
+							}
+							if(Auth::hasPermission('MODULES::ERRORS')) {
+								?>
+                                <li class="nav-item">
+                                    <a class="nav-link<?php print (!empty($tab) && $tab === 'errors' ? ' active' : ''); ?>"
+                                       id="errors-tab" href="<?php print $this->url('/admin/modules/errors'); ?>"
+                                       role="tab">
+										<?php
+											I18N::__('Errors');
+											$error_count = count((array) $errors);
+											if($error_count > 0) {
+												printf('<span class="badge rounded-pill text-bg-warning">%d</span>', $error_count);
+											}
+										?>
+                                    </a>
+                                </li>
+								<?php
+							}
+						?>
                     </ul>
 					<?php
 				}
@@ -205,20 +223,26 @@
 					<?php
 						switch($tab) {
 							case 'install':
-								$template->display('admin/modules/install');
+								if(Auth::hasPermission('MODULES::INSTALL')) {
+									$template->display('admin/modules/install');
+								}
 								break;
 							case 'repositorys':
-								if(count($repositorys) === 0) {
-									$template->display('admin/modules/repository/empty');
-								} else {
-									$template->display('admin/modules/repository/list');
+								if(Auth::hasPermission('MODULES::REPOSITORY')) {
+									if(count($repositorys) === 0) {
+										$template->display('admin/modules/repository/empty');
+									} else {
+										$template->display('admin/modules/repository/list');
+									}
 								}
 								break;
 							case 'errors':
-								if(count($errors) === 0) {
-									$template->display('admin/modules/errors/empty');
-								} else {
-									$template->display('admin/modules/errors/list');
+								if(Auth::hasPermission('MODULES::ERRORS')) {
+									if(count($errors) === 0) {
+										$template->display('admin/modules/errors/empty');
+									} else {
+										$template->display('admin/modules/errors/list');
+									}
 								}
 								break;
 							default:

@@ -1,58 +1,50 @@
 <?php
-    /**
-     * fruithost | OpenSource Hosting
-     *
-     * @author Adrian Preuß
-     * @version 1.0.0
-     * @license MIT
-     */
-
-    namespace fruithost\Accounting;
+	/**
+	 * fruithost | OpenSource Hosting
+	 *
+	 * @author  Adrian Preuß
+	 * @version 1.0.0
+	 * @license MIT
+	 */
+	namespace fruithost\Accounting;
 	
-    use fruithost\Security\Encryption;
-    use fruithost\Storage\Database;
-
-    class User {
-		private ?int $id				= null;
-		private ?string $username		= null;
-		private ?string $email			= null;
-		private ?string $crypted_mail	= null;
-		private mixed $data		        = [];
+	use fruithost\Security\Encryption;
+	use fruithost\Storage\Database;
+	
+	class User {
+		private ?int    $id           = null;
+		private ?string $username     = null;
+		private ?string $email        = null;
+		private ?string $crypted_mail = null;
+		private mixed   $data         = [];
+		private mixed   $permissions  = [];
 		
 		public function __construct() {}
 		
-		public function fetch(int $id)  : void {
-			$result = Database::single('SELECT *, "[*** PROTECTED ***]" as `password`, UPPER(SHA2(CONCAT(`id`, :salt, `email`), 512)) AS `crypted_mail` FROM `' . DATABASE_PREFIX . 'users` WHERE `id`=:id LIMIT 1', [
-				'id'	=> $id,
-				'salt'	=> RESET_PASSWORD_SALT
+		public function fetch(int $id) : void {
+			$result             = Database::single('SELECT *, "[*** PROTECTED ***]" as `password`, UPPER(SHA2(CONCAT(`id`, :salt, `email`), 512)) AS `crypted_mail` FROM `'.DATABASE_PREFIX.'users` WHERE `id`=:id LIMIT 1', [
+				'id'   => $id,
+				'salt' => RESET_PASSWORD_SALT
 			]);
-			
-			$this->id 				= $result->id;
-			$this->username 		= $result->username;
-			$this->email 			= $result->email;
-			$this->crypted_mail 	= $result->crypted_mail;
-			
-			$this->data = Database::single('SELECT * FROM `' . DATABASE_PREFIX . 'users_data` WHERE `user_id`=:user_id LIMIT 1', [
-				'user_id'	=> $this->id
-			]);
-			
+			$this->id           = $result->id;
+			$this->username     = $result->username;
+			$this->email        = $result->email;
+			$this->crypted_mail = $result->crypted_mail;
+			$this->data         = Database::single('SELECT * FROM `'.DATABASE_PREFIX.'users_data` WHERE `user_id`=:user_id LIMIT 1', [ 'user_id' => $this->id ]);
+			foreach(Database::fetch('SELECT * FROM `'.DATABASE_PREFIX.'users_permissions` WHERE `user_id`=:user_id', [ 'user_id' => $this->id ]) as $permission) {
+				$this->permissions[] = $permission->permission;
+			}
 			if($this->data !== false) {
-				foreach($this->data AS $index => $entry) {
-					if(in_array($index, [ 'id', 'user_id' ])) {
+				foreach($this->data as $index => $entry) {
+					if(in_array($index, [
+						'id',
+						'user_id'
+					])) {
 						continue;
 					}
-					
 					$this->data->{$index} = Encryption::decrypt($entry, ENCRYPTION_SALT);
 				}
 			}
-		}
-		
-		public function getID() : ?int {
-			/*if($this->id == null && Auth::getID() != null) {
-				return Auth::getID();
-			}*/
-			
-			return $this->id;
 		}
 		
 		public function getFirstName() : ?string {
@@ -64,7 +56,7 @@
 		}
 		
 		public function getLastName() : ?string {
-            if(!$this->data) {
+			if(!$this->data) {
 				return null;
 			}
 			
@@ -72,7 +64,7 @@
 		}
 		
 		public function getPhoneNumber() : ?string {
-            if(!$this->data) {
+			if(!$this->data) {
 				return null;
 			}
 			
@@ -80,7 +72,7 @@
 		}
 		
 		public function getAddress() : ?string {
-            if(!$this->data) {
+			if(!$this->data) {
 				return null;
 			}
 			
@@ -88,10 +80,9 @@
 		}
 		
 		public function getFullName() : ?string {
-            if(!$this->data) {
+			if(!$this->data) {
 				return '';
 			}
-			
 			if(empty($this->data->name_first)) {
 				return '';
 			}
@@ -113,20 +104,15 @@
 		
 		public function getSettings(string $name, int | string | null $user_id = null, mixed $default = null) : mixed {
 			if(!empty($user_id) && is_string($user_id)) {
-				$result = Database::single('SELECT `id` FROM `' . DATABASE_PREFIX . 'users` WHERE `username`=:username LIMIT 1', [
-					'username'	=> $user_id
-				]);
-				
+				$result = Database::single('SELECT `id` FROM `'.DATABASE_PREFIX.'users` WHERE `username`=:username LIMIT 1', [ 'username' => $user_id ]);
 				if(!empty($result)) {
 					$user_id = $result->id;
 				}
 			}
-			
-			$result = Database::single('SELECT * FROM `' . DATABASE_PREFIX . 'users_settings` WHERE `user_id`=:user_id AND `key`=:key LIMIT 1', [
-				'user_id'	=> (empty($user_id) ? $this->getID() : $user_id),
-				'key'		=> $name
+			$result = Database::single('SELECT * FROM `'.DATABASE_PREFIX.'users_settings` WHERE `user_id`=:user_id AND `key`=:key LIMIT 1', [
+				'user_id' => (empty($user_id) ? $this->getID() : $user_id),
+				'key'     => $name
 			]);
-			
 			if(!empty($result)) {
 				if(!empty($result->value)) {
 					return $result->value;
@@ -136,34 +122,51 @@
 			return $default;
 		}
 		
+		public function getID() : ?int {
+			/*if($this->id == null && Auth::getID() != null) {
+				return Auth::getID();
+			}*/
+			return $this->id;
+		}
+		
 		public function removeSettings(string $name, int | string | null $user_id = null) : void {
-			if(Database::exists('SELECT `id` FROM `' . DATABASE_PREFIX . 'users_settings` WHERE `user_id`=:user_id AND `key`=:key LIMIT 1', [
-				'user_id'	=> (empty($user_id) ? $this->getID() : $user_id),
-				'key'		=> $name
+			if(Database::exists('SELECT `id` FROM `'.DATABASE_PREFIX.'users_settings` WHERE `user_id`=:user_id AND `key`=:key LIMIT 1', [
+				'user_id' => (empty($user_id) ? $this->getID() : $user_id),
+				'key'     => $name
 			])) {
-				Database::delete(DATABASE_PREFIX . 'users_settings', [
-					'user_id'	=> (empty($user_id) ? $this->getID() : $user_id),
-					'key'		=> $name
+				Database::delete(DATABASE_PREFIX.'users_settings', [
+					'user_id' => (empty($user_id) ? $this->getID() : $user_id),
+					'key'     => $name
 				]);
 			}
 		}
 		
+		public function delete() : void {
+			Database::update(DATABASE_PREFIX.'users', [ 'id' ], [
+				'id'      => (empty($user_id) ? $this->getID() : $user_id),
+				'deleted' => 'Yes'
+			]);
+		}
+		
 		public function setSettings(string $name, int | string | null $user_id = null, mixed $value = null) : void {
-			if(Database::exists('SELECT `id` FROM `' . DATABASE_PREFIX . 'users_settings` WHERE `user_id`=:user_id AND `key`=:key LIMIT 1', [
-				'user_id'	=> (empty($user_id) ? $this->getID() : $user_id),
-				'key'		=> $name
+			if(Database::exists('SELECT `id` FROM `'.DATABASE_PREFIX.'users_settings` WHERE `user_id`=:user_id AND `key`=:key LIMIT 1', [
+				'user_id' => (empty($user_id) ? $this->getID() : $user_id),
+				'key'     => $name
 			])) {
-				Database::update(DATABASE_PREFIX . 'users_settings', [ 'user_id', 'key' ], [
-					'user_id'		=> (empty($user_id) ? $this->getID() : $user_id),
-					'key'			=> $name,
-					'value'			=> $value
+				Database::update(DATABASE_PREFIX.'users_settings', [
+					'user_id',
+					'key'
+				], [
+					'user_id' => (empty($user_id) ? $this->getID() : $user_id),
+					'key'     => $name,
+					'value'   => $value
 				]);
 			} else {
-				Database::insert(DATABASE_PREFIX . 'users_settings', [
-					'id'			=> NULL,
-					'user_id'		=> (empty($user_id) ? $this->getID() : $user_id),
-					'key'			=> $name,
-					'value'			=> $value
+				Database::insert(DATABASE_PREFIX.'users_settings', [
+					'id'      => null,
+					'user_id' => (empty($user_id) ? $this->getID() : $user_id),
+					'key'     => $name,
+					'value'   => $value
 				]);
 			}
 		}
@@ -172,11 +175,39 @@
 			return sprintf('https://www.gravatar.com/avatar/%s?s=%d&d=%s&r=%s', md5(strtolower(trim($this->email))), 22, 'mp', 'g');
 		}
 		
-		public function delete() : void {
-			Database::update(DATABASE_PREFIX . 'users', [ 'id' ], [
-				'id'		=> (empty($user_id) ? $this->getID() : $user_id),
-				'deleted'	=> 'Yes'
-			]);
+		public function hasPermission(string $name) : bool {
+			if(count($this->permissions) > 0) {
+				if($name === '*') {
+					return count($this->permissions) >= 1;
+				}
+				if(in_array('*', $this->permissions)) {
+					return true;
+				}
+				if(stristr($name, '::*') !== false) {
+					$count = 0;
+					$split = explode('::*', $name);
+					foreach($this->permissions as $permission) {
+						if(str_starts_with($permission, $split[0])) {
+							++$count;
+						}
+					}
+					if($count > 0) {
+						return true;
+					}
+				}
+				
+				return in_array($name, $this->permissions);
+			}
+			if($name === '*') {
+				return (count($this->permissions) >= 1);
+			}
+			
+			return in_array($name, $this->permissions);
+		}
+		
+		public function getPermissions() : array {
+			return $this->permissions;
 		}
 	}
-?>
+	
+	?>
