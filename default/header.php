@@ -59,7 +59,7 @@
 						</div>
 					</nav>
 					
-					<div class="d-flex flex-row h-100 align-items-stretch p-0 m-0">
+					<div class="d-flex flex-row h-100 align-items-stretch p-0 m-0" style="height: calc(100% - 49px) !important;">
 						<!-- Navigation -->
 						<nav class="sidebar overflow-auto user-select-none align-items-stretch p-0 m-0 h-100 bg-body-tertiary d-md-block  d-sm-none" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
 							<div class="h-100 border-end" tabindex="-1">
