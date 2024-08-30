@@ -155,6 +155,10 @@
 					case 'permissions':
 						if(!Auth::hasPermission('USERS::PERMISSIONS')) {
 							$this->assign('error', I18N::get('You have no permissions for this action!'));
+						} else if($user->getID() == 1) {
+							$this->assign('error', I18N::get('You can\'t edit the rights of the super-user!'));
+						} else if($user->getID() == Auth::getID()) {
+							$this->assign('error', I18N::get('You can\'t edit your own rights!'));
 						} else {
 							// Delete All Permissions
 							Database::delete(DATABASE_PREFIX.'users_permissions', [
