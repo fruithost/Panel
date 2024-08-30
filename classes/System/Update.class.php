@@ -93,7 +93,7 @@
 					'host'	=> $_SERVER['SERVER_NAME'],
 					'ip'	=> $_SERVER['SERVER_ADDR'],
 					'admin'	=> $_SERVER['SERVER_ADMIN'],
-					'ssl'	=> $_SERVER['HTTPS'] == 'on'
+					'ssl'	=> isset($_SERVER['HTTPS']) ? ($_SERVER['HTTPS'] == 'on') : false
 				]);
 
 				self::$core->setSettings('UPDATE_LICENSE', $result->license);
