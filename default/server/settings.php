@@ -48,17 +48,16 @@
 
                 <div class="container">
                     <div class="form-group row">
-                        <label for="project_name" class="col-sm-2 col-form-label"><?php I18N::__('Project name'); ?>
-                            :</label>
-                        <div class="col-sm-10">
+                        <label for="project_name" class="col-3 col-lg-2 col-form-label"><?php I18N::__('Project name'); ?>:</label>
+                        <div class="col-9 col-lg-10">
                             <input type="text" class="form-control" id="project_name" name="project_name"
                                    value="<?php print $template->getCore()->getSettings('PROJECT_NAME', 'fruithost'); ?>"/>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="project_copyright"
-                               class="col-sm-2 col-form-label"><?php I18N::__('Show Copyright'); ?>:</label>
-                        <div class="col-sm-10">
+                               class="col-3 col-lg-2 col-form-label"><?php I18N::__('Show Copyright'); ?>:</label>
+                        <div class="col-9 col-lg-10">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="project_copyright" value="true"
                                        id="project_copyright"<?php print ($template->getCore()->getSettings('PROJECT_COPYRIGHT', true) ? ' CHECKED' : ''); ?>/>
@@ -70,9 +69,8 @@
                     </div>
                     <hr class="mb-4"/>
                     <div class="form-group row">
-                        <label for="language" class="col-sm-2 col-form-label"><?php I18N::__('Default Language'); ?>
-                            :</label>
-                        <div class="col-sm-10">
+                        <label for="language" class="col-3 col-lg-2 col-form-label"><?php I18N::__('Default Language'); ?>:</label>
+                        <div class="col-9 col-lg-10">
                             <select name="language" class="form-select">
 								<?php
 									foreach(I18N::getLanguages() as $code => $language) {
@@ -85,16 +83,15 @@
                     <hr class="mb-4"/>
                     <div class="form-group row">
                         <label for="time_format"
-                               class="col-sm-2 col-form-label"><?php I18N::__('Default Time Format'); ?>:</label>
-                        <div class="col-sm-10">
+                               class="col-3 col-lg-2 col-form-label"><?php I18N::__('Default Time Format'); ?>:</label>
+                        <div class="col-9 col-lg-10">
                             <input type="text" class="form-control" id="time_format" name="time_format"
                                    value="<?php print $template->getCore()->getSettings('TIME_FORMAT', 'd.m.Y - H:i:s'); ?>"/>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="time_zone" class="col-sm-2 col-form-label"><?php I18N::__('Default Timezone'); ?>
-                            :</label>
-                        <div class="col-sm-10">
+                        <label for="time_zone" class="col-3 col-lg-2 col-form-label"><?php I18N::__('Default Timezone'); ?>:</label>
+                        <div class="col-9 col-lg-10">
                             <select name="time_zone" id="time_zone" class="form-select">
 								<?php
 									foreach(json_decode(file_get_contents(dirname(PATH).'/config/timezones.json'), false) as $category) {
