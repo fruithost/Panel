@@ -21,9 +21,10 @@
 				<?php
 			} else {
 				?>
-				<body class="d-flex overflow-hidden flex-column p-0 m-0 align-items-stretch">
-					<nav class="navbar sticky-top flex-nowrap p-0 border-bottom user-select-none">
-						<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 text-light fs-6" href="<?php print $template->url('/'); ?>">
+				<!-- overflow-hidden  -->
+				<body class="d-flex flex-column p-0 m-0 align-items-stretch">
+					<nav class="navbar flex-nowrap p-0 border-bottom user-select-none">
+						<a class="navbar-brand col col-md-3 col-lg-2 me-0 px-3 text-light fs-6" href="<?php print $template->url('/'); ?>">
                             <?php
                                 print $project_name;
 
@@ -33,7 +34,7 @@
                             ?>
                         </a>
 
-						<div class="d-flex w-100 justify-content-between">
+						<div class="d-flex justify-content-between">
 							<div class="navbar-nav justify-content-start flex-row d-md-block d-sm-none"></div>
 							<ul class="navbar-nav justify-content-start flex-row d-md-none  d-sm-block">
 								<li class="nav-item text-nowrap">
@@ -59,10 +60,10 @@
 						</div>
 					</nav>
 					
-					<div class="d-flex flex-row h-100 align-items-stretch p-0 m-0" style="height: calc(100% - 49px) !important;">
+					<div class="d-flex flex-row h-100-head align-items-stretch p-0 m-0">
 						<!-- Navigation -->
-						<nav class="sidebar overflow-auto user-select-none align-items-stretch p-0 m-0 h-100 bg-body-tertiary d-md-block  d-sm-none" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
-							<div class="h-100 border-end" tabindex="-1">
+						<nav class="sidebar border-end overflow-auto user-select-none align-items-stretch p-0 m-0 h-100 bg-body-tertiary d-md-block  d-sm-none" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+							<div class="" tabindex="-1">
 								<div class="d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto wrapper">
 									<?php
 										if(!$navigation->isEmpty()) {
@@ -115,9 +116,9 @@
 						</nav>
 						
 						<!-- Content -->
-						<div class="h-100 flex-fill overflow-auto">
-							<div class="container-fluid h-100">
-								<div class="row h-100">
+						<div class="d-flex align-items-stretch flex-fill align-self-stretch overflow-auto">
+							<div class="flex-fill container-fluid">
+								<div class="row">
 									<?php
 										if(isset($module) && $module->isFrame() && !$template->getCore()->getRouter()->startsWith('/admin')) {
 											?>
@@ -125,7 +126,7 @@
 											<?php
 										} else {
 											?>
-												<main class="col px-md-4 d-block">
+												<main class="col px-md-4 d-block mb-5">
 											<?php
 										}
 			}

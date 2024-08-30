@@ -28,10 +28,11 @@
 
 body {
     font-size: .875rem;
+	max-height: 100vh;
 }
 
 main {
-    height: calc(100vh - 50px);
+/*    height: calc(100vh - 50px);*/
 }
 
 .h-100-head {
@@ -54,7 +55,10 @@ main {
 
     .sidebar.show {
         display: block;
-        position: absolute;
+        position: fixed;
+		top: 49px;
+		bottom: 0px;
+		max-height: calc(100% - 49px);
     }
 }
 
@@ -94,18 +98,24 @@ main {
     cursor: pointer;
 }
 
+/*
 .sidebar .wrapper {
     padding-bottom: 65px !important;
-}
+}*/
 
 /* Topbar */
 .navbar-brand {
     padding-top: .75rem;
     padding-bottom: .75rem;
-    min-width: 320px !important;
     font-size: 1rem;
     background-color: rgba(0, 0, 0, .25);
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+}
+
+@media (min-width: 575px) {
+	.navbar-brand {
+		min-width: 320px !important;
+	}
 }
 
 .navbar-nav {
