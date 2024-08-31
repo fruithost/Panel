@@ -116,9 +116,9 @@
 						</nav>
 						
 						<!-- Content -->
-						<div class="d-flex align-items-stretch flex-fill align-self-stretch overflow-auto">
-							<div class="flex-fill container-fluid">
-								<div class="row">
+						<div class="d-flex h-100 align-items-stretch flex-fill align-self-stretch overflow-auto">
+							<div class="flex-fill h-100 container-fluid">
+								<div class="row h-100">
 									<?php
 										if(isset($module) && $module->isFrame() && !$template->getCore()->getRouter()->startsWith('/admin')) {
 											?>
@@ -126,7 +126,7 @@
 											<?php
 										} else {
 											?>
-												<main class="col px-md-4 d-block mb-5">
+												<main class="col h-100 px-md-4 d-block mb-5">
 											<?php
 										}
 			}

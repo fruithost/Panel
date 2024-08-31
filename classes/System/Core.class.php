@@ -233,6 +233,27 @@
 					return;
 				}
 				
+				$permissions	= $module->getInfo()->getPermissions();
+				$visible		= true;
+				if(!empty($permissions)) {
+					$visible	= false;
+					
+					foreach($permissions AS $permission) {
+						if(Auth::hasPermission($permission)) {
+							$visible	= true;								
+						}
+					}
+				}
+				
+				if(!$visible) {
+					$this->template->display('error/permissions', array_merge($this->template->getAssigns(), [
+						'module' => $module,
+						'submodule' => $submodule,
+						'action' => $action
+					]));
+					return;
+				}
+					
 				if(method_exists($module->getInstance(), 'load')) {
 					$module->getInstance()->load($submodule, $action);
 				}

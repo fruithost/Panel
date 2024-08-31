@@ -92,6 +92,8 @@
 				return false;
 			}
 			
+			// @ToDo Permissions-Check?
+			
 			return method_exists($this->getInstance(), 'frame') && !empty($this->getInstance()->frame());
 		}
 		
@@ -132,14 +134,28 @@
 			
 			if(!empty($this->info->getCategory()) && !$this->isLocked()) {
 				$core->getHooks()->addFilter($this->info->getCategory(), function($entries) use ($core) {
-					$entries[] = (object) [
-						'name'		=> $this->info->getName(),
-						'icon'		=> $this->info->getIcon(),
-						'order'		=> $this->info->getOrder(),
-						'target'	=> $core->getHooks()->applyFilter('TARGET_' . $this->info->getName(), null),
-						'url'		=> $core->getHooks()->applyFilter('URL_' . $this->info->getName(), sprintf('/module/%s', basename($this->path))),
-						'active'	=> $core->getRouter()->is(sprintf('/module/%s', basename($this->path))) || $core->getRouter()->startsWith(sprintf('/module/%s/', basename($this->path)))
-					];
+					$permissions	= $this->info->getPermissions();
+					$visible		= true;
+					if(!empty($permissions)) {
+						$visible	= false;
+						
+						foreach($permissions AS $permission) {
+							if(\fruithost\Accounting\Auth::hasPermission($permission)) {
+								$visible	= true;								
+							}
+						}
+					}
+					
+					if($visible) {
+						$entries[] = (object) [
+							'name'		=> $this->info->getName(),
+							'icon'		=> $this->info->getIcon(),
+							'order'		=> $this->info->getOrder(),
+							'target'	=> $core->getHooks()->applyFilter('TARGET_' . $this->info->getName(), null),
+							'url'		=> $core->getHooks()->applyFilter('URL_' . $this->info->getName(), sprintf('/module/%s', basename($this->path))),
+							'active'	=> $core->getRouter()->is(sprintf('/module/%s', basename($this->path))) || $core->getRouter()->startsWith(sprintf('/module/%s/', basename($this->path)))
+						];
+					}
 					
 					return $entries;
 				});

@@ -19,6 +19,7 @@
 		private ?ModuleAuthor $author	= null;
 		private ?string $repository		= null;
 		private ?object $depencies		= null;
+		private ?array $permissions		= null;
 		private bool $is_valid			= false;
 		
 		public function __construct(string $path) {
@@ -70,6 +71,10 @@
 				$this->order = $data->order;
 			}
 			
+			if(!empty($data->permissions)) {
+				$this->permissions = $data->permissions;
+			}
+			
 			if(!empty($data->description)) {
 				$this->description = $data->description;
 			}
@@ -107,6 +112,14 @@
 		
 		public function getOrder() : int {
 			return $this->order;
+		}
+		
+		public function getPermissions() : array {
+			if($this->permissions === null) {
+				return [];
+			}
+			
+			return $this->permissions;
 		}
 		
 		public function getIcon(bool $raw = false) : ?string {
