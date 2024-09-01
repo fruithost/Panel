@@ -29,10 +29,16 @@
 				if(file_exists(sprintf('/etc/php/%s/fpm/pool.d/www.conf', $version))) {
 					$ini = parse_ini_file(sprintf('/etc/php/%s/fpm/pool.d/www.conf', $version), true);
 					$this->debug[] = 'Found Ubuntu/Debian';
-					# CentOS, RHEL, Fedora
+					
+				# CentOS, RHEL, Fedora
 				} else if(file_exists('/etc/php-fpm.d/www.conf')) {
 					$ini = parse_ini_file('/etc/php-fpm.d/www.conf', true);
 					$this->debug[] = 'Found CentOS/RHEL/Fedora';
+					
+				# fruithost
+				} else if(file_exists('/etc/fruithost/config/php/panel.conf')) {
+					$ini = parse_ini_file('/etc/fruithost/config/php/panel.conf', true);
+					$this->debug[] = 'Found fruithost';
 				}
 			} catch(\Exception $e) {
 				$this->debug[] = $e->getMessage();
