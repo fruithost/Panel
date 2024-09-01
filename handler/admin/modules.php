@@ -222,18 +222,23 @@
 		} else {
 			$template->assign('error', I18N::get('You have no permissions for this page.'));
 		}
-		/* Module :: Check */
+		/* Module :: Reinstall */
+	} else if(isset($_GET['reinstall'])) {
+		// Not implemented?
+	/* Module :: Check */
 	} else if(isset($_GET['check'])) {
 		if(Auth::hasPermission('MODULES::HANDLE')) {
 			if($modules->hasModule($_GET['check'], true)) {
 				$module = $modules->getModule($_GET['check'], true);
 				if($module) {
-					$check  = sprintf('%s%s/setup/check.php', $module->getPath(), DS);
+					// @ToDo export to template file!
+					$check  = sprintf('%s%ssetup/check.php', $module->getPath(), DS);
 					$fix_it = sprintf('<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 								<a class="btn btn-text btn-sm px-0">'.I18N::get('Try to fix the issue with').'</a>
 								<a href="%s" class="btn btn-warning btn-sm">'.I18N::get('Reinstall').'</a>
 								<a class="btn btn-text btn-sm px-0">'.I18N::get('the module.').'</a>
 							</div>', $this->url('/admin/modules/?reinstall='.$module->getDirectory()));
+					
 					if(file_exists($check)) {
 						try {
 							$php = new PHP();
@@ -243,17 +248,22 @@
 								'REQUEST_URI' => '/',
 								'MODULE'      => $check
 							]);
+							
 							if(preg_match('/(File Not Found|404 Not Found|500 Internal Server Error)/', $php->getHeader())) {
 								throw new \Exception('Installscript not found: '.$check.PHP_EOL.$php->getHeader());
 							}
+							
 							if(!empty($php->getBody())) {
 								$template->assign('error', I18N::get('The module has an problem:').'<br />'.$php->getBody().$fix_it);
+							} else {
+								$template->assign('success', sprintf(I18N::get('The module <strong>%s</strong> was successfully checked.'), $module->getInfo()->getName()));
 							}
 						} catch(\Exception $e) {
 							$template->assign('error', I18N::get('The module has an problem:').'<br />'.$e->getMessage());
 						}
+					} else {
+						$template->assign('success', sprintf(I18N::get('The module <strong>%s</strong> has no checks and seems be okay.'), $module->getInfo()->getName()));
 					}
-					$template->assign('success', sprintf(I18N::get('The module <strong></strong> was successfully checked.'), $module->getInfo()->getName()));
 				} else {
 					$template->assign('error', I18N::get('The module has an instantiation problem!'));
 				}

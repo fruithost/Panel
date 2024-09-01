@@ -19,19 +19,23 @@
 		private ?string $content = null;
 		private array   $data    = [];
 		private bool    $error   = false;
+		private array	$debug	 = [];
 		
 		public function __construct() {
 			$ini     = null;
 			$version = sprintf('%d.%d', PHP_MAJOR_VERSION, PHP_MINOR_VERSION);
 			try {
-				# Ubuntu, Debian			
+				# Ubuntu, Debian
 				if(file_exists(sprintf('/etc/php/%s/fpm/pool.d/www.conf', $version))) {
 					$ini = parse_ini_file(sprintf('/etc/php/%s/fpm/pool.d/www.conf', $version), true);
+					$this->debug[] = 'Found Ubuntu/Debian';
 					# CentOS, RHEL, Fedora
 				} else if(file_exists('/etc/php-fpm.d/www.conf')) {
 					$ini = parse_ini_file('/etc/php-fpm.d/www.conf', true);
+					$this->debug[] = 'Found CentOS/RHEL/Fedora';
 				}
 			} catch(\Exception $e) {
+				$this->debug[] = $e->getMessage();
 			}
 			if(!empty($ini)) {
 				if(isset($ini['www'])) {
@@ -40,12 +44,17 @@
 					}
 				}
 			}
+			
+			$this->debug[] = sprintf('Socket: %s', $this->socket);
+			
 			if(!empty(shell_exec('which cgi-fcgi')) && $this->socket == null) {
+				$this->debug[] = 'ERROR: cant find cgi-fcgi!';
 				$this->error = true;
 			}
 		}
 		
 		public function setPath(string $path) : void {
+			$this->debug[] = sprintf('Set Path: %s', $path);
 			$this->path = $path;
 		}
 		
@@ -71,6 +80,10 @@
 			return !empty(shell_exec('which cgi-fcgi'));
 		}
 		
+		public function getDebug() : array {
+			return $this->debug;
+		}
+		
 		public function hasErrors() : bool {
 			return $this->error;
 		}
@@ -87,9 +100,11 @@
 		}
 		
 		public function execute(string $file, array $arguments = [], ?string $password = null) : void {
+			$this->debug[] = 'cgi-fcgi NOT available, use cURL polyfill,..';
+			
 			if(!is_writable($this->path)) {
+				$this->debug[] = sprintf('Error: Path "%s" is not writeable!', $this->path);
 				$this->error = true;
-				
 				return;
 			}
 			$args = '';
@@ -101,6 +116,7 @@
 			}
 			// Check if cgi-fcgi available
 			if(!empty(shell_exec('which cgi-fcgi'))) {
+				$this->debug[] = 'cgi-fcgi is available, continue,..';
 				$command = sprintf('%scgi-fcgi -bind -connect "%s" 2>&1', $args, $this->socket);
 				if($password != null) {
 					$command = sprintf('bash -lc \'echo %s | /usr/bin/sudo -S %s\'', $password, $command);
@@ -114,6 +130,7 @@
 				$this->content = $result;
 				// If cgi-fcgi not available, use a polyfill with CURL
 			} else {
+				$this->debug[] = 'cgi-fcgi NOT available, use cURL polyfill,..';
 				// @ToDo Check security(!)
 				$additional = '';
 				if(array_key_exists('MODULE', $arguments)) {
