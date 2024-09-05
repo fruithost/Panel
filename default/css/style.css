@@ -28,11 +28,11 @@
 
 body {
     font-size: .875rem;
-	max-height: 100vh;
+    max-height: 100vh;
 }
 
 main {
-/*    height: calc(100vh - 50px);*/
+    /*    height: calc(100vh - 50px);*/
 }
 
 .h-100-head {
@@ -44,7 +44,7 @@ main {
 }
 
 .sidebar {
-    z-index: 9000;
+    z-index: 1000;
     min-width: 320px;
 }
 
@@ -56,9 +56,9 @@ main {
     .sidebar.show {
         display: block;
         position: fixed;
-		top: 49px;
-		bottom: 0px;
-		max-height: calc(100% - 49px);
+        top: 49px;
+        bottom: 0px;
+        max-height: calc(100% - 49px);
     }
 }
 
@@ -113,9 +113,9 @@ main {
 }
 
 @media (min-width: 575px) {
-	.navbar-brand {
-		min-width: 320px !important;
-	}
+    .navbar-brand {
+        min-width: 320px !important;
+    }
 }
 
 .navbar-nav {

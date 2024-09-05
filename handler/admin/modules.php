@@ -9,6 +9,7 @@
 	use fruithost\UI\Button;
 	use fruithost\UI\Modal;
 	
+	/* Add Repository */
 	$template->getAdminCore()->addModal((new Modal('add_repository', I18N::get('Add Repository'), 'admin/modules/repository/create'))->addButton([
 		(new Button())->setName('cancel')->setLabel(I18N::get('Cancel'))->addClass('btn-outline-danger')->setDismissable(),
 		(new Button())->setName('create')->setLabel(I18N::get('Create'))->addClass('btn-outline-success')
@@ -25,6 +26,10 @@
 		
 		return true;
 	}));
+	/* Module Informations */
+	$template->getAdminCore()->addModal((new Modal('module_info', '', 'admin/modules/info'))->addButton([
+		(new Button())->setName('cancel')->setLabel(I18N::get('Close'))->addClass('btn-outline-secondary')->setDismissable()
+	]));
 	$upgradeable = [];
 	$list        = sprintf('%s%s%s%s%s', dirname(PATH), DS, 'temp', DS, 'update.list');
 	$module      = null;
@@ -225,7 +230,7 @@
 		/* Module :: Reinstall */
 	} else if(isset($_GET['reinstall'])) {
 		// Not implemented?
-	/* Module :: Check */
+		/* Module :: Check */
 	} else if(isset($_GET['check'])) {
 		if(Auth::hasPermission('MODULES::HANDLE')) {
 			if($modules->hasModule($_GET['check'], true)) {
@@ -238,7 +243,6 @@
 								<a href="%s" class="btn btn-warning btn-sm">'.I18N::get('Reinstall').'</a>
 								<a class="btn btn-text btn-sm px-0">'.I18N::get('the module.').'</a>
 							</div>', $this->url('/admin/modules/?reinstall='.$module->getDirectory()));
-					
 					if(file_exists($check)) {
 						try {
 							$php = new PHP();
@@ -248,11 +252,9 @@
 								'REQUEST_URI' => '/',
 								'MODULE'      => $check
 							]);
-							
 							if(preg_match('/(File Not Found|404 Not Found|500 Internal Server Error)/', $php->getHeader())) {
 								throw new \Exception('Installscript not found: '.$check.PHP_EOL.$php->getHeader());
 							}
-							
 							if(!empty($php->getBody())) {
 								$template->assign('error', I18N::get('The module has an problem:').'<br />'.$php->getBody().$fix_it);
 							} else {

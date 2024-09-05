@@ -71,7 +71,9 @@
 												<?php
 											}
 										?>
-                                        <!-- <button class="btn btn-outline-light btn-sm"><?php I18N::__('Info'); ?></button>-->
+                                        <button type="button" name="module_info" data-bs-toggle="modal"
+                                                data-bs-target="#module_info" data-module="<?php print $name; ?>"
+                                                class="btn btn-outline-light btn-sm"><?php I18N::__('Info'); ?></button>
                                     </div>
                                 </div>
                             </div>
