@@ -1,5 +1,12 @@
 <?php
-	
+	/**
+     * fruithost | OpenSource Hosting
+     *
+     * @author Adrian Preuß
+     * @version 1.0.0
+     * @license MIT
+     */
+
 	use fruithost\Accounting\Auth;
 	use fruithost\Hardware\Memory;
 	use fruithost\Hardware\NetworkInterfaces;
@@ -15,7 +22,9 @@
 			$this->assign('error', I18N::get('You have no permissions for this action!'));
 			exit();
 		}
+
 		Response::addHeader('Content-Type', 'text/plain; charset=UTF-8');
+
 		switch($_POST['command']) {
 			case 'get_live_usage':
 				print json_encode([
@@ -28,17 +37,35 @@
 				]);
 				break;
 		}
+
 		exit();
 	}
-	$time_format = Auth::getSettings('TIME_FORMAT', null, 'd.m.Y - H:i');
-	$time_update = new \DateTime($this->getCore()->getSettings('UPDATE_TIME', null));
-	$time_status = new \DateTime($this->getCore()->getSettings('DAEMON_TIME_END', null));
-	$time_status->add(\DateInterval::createFromDateString('15 minutes'));
+
+	$time_format	= Auth::getSettings('TIME_FORMAT', null, 'd.m.Y - H:i');
+	$from			= $this->getCore()->getSettings('UPDATE_TIME', null);
+	$to				= $this->getCore()->getSettings('DAEMON_TIME_END', null);
+	$status			= null;
+	
+	if($from !== null) {
+		$time_update = new \DateTime($from);
+	}
+	
+	if($to !== null) {
+		$time_status = new \DateTime($to);
+	}
+	
+	if($to !== null && $from !== null) {
+		$time_status->add(\DateInterval::createFromDateString('15 minutes'));
+		$template->assign('time_update', ($time_update->format($time_format)));
+		$status = $time_update < new \DateTime();
+	} else {
+		$template->assign('time_update', null);
+	}
+	
 	$template->assign('update_version', $this->getCore()->getSettings('UPDATE_VERSION'));
 	$template->assign('update_license', Update::getLicense());
 	$template->assign('time_php', date($time_format));
 	$template->assign('time_system', OperatingSystem::getTime($time_format));
-	$template->assign('time_update', ($time_update->format($time_format)));
 	$template->assign('os', OperatingSystem::getPrettyName());
 	$template->assign('id', OperatingSystem::getID());
 	$template->assign('kernel', OperatingSystem::getKernel());
@@ -49,12 +76,13 @@
 	$template->assign('disks', PhysicalDrives::getDevices());
 	$template->assign('version', file_get_contents('.version'));
 	$template->assign('daemon', [
-		'status'  => $time_update < new \DateTime(),
+		'status'  => $status,
 		'started' => strtotime($this->getCore()->getSettings('DAEMON_TIME_START', 0)),
 		'start'   => date($time_format, strtotime($this->getCore()->getSettings('DAEMON_TIME_START', 0))),
 		'end'     => date($time_format, strtotime($this->getCore()->getSettings('DAEMON_TIME_END', 0))),
 		'ended'   => strtotime($this->getCore()->getSettings('DAEMON_TIME_END', 0)),
 		'time'    => number_format($this->getCore()->getSettings('DAEMON_RUNNING_END', 0) - $this->getCore()->getSettings('DAEMON_RUNNING_START', 0), 4, ',', '.')
 	]);
+
 	$template->getFiles()->addJavascript('statistics', $this->url('js/statistics.js'), '1.0.0', [ 'ajax' ], TemplateFiles::FOOTER);
 ?>

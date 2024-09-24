@@ -12,6 +12,33 @@
     use fruithost\Localization\I18N;
 
     class Utils {
+        public static function getMimeType($file) : string {
+            $mime       = mime_content_type($file);
+            $extension  = pathinfo($file, PATHINFO_EXTENSION);
+            $additional = [
+                'js'    => 'application/javascript',
+                'json'  => 'application/json',
+                'xml'   => 'application/xml',
+                'css'   => 'text/css'
+            ];
+
+            /* Set MIME-Type when not given */
+            if(!$mime) {
+                if(array_key_exists($extension, $additional)) {
+                    return $additional[$extension];
+                }
+            }
+
+            /* Override misconfigured MIME-Types */
+            if(array_key_exists($extension, $additional)) {
+                if($mime !== $additional[$extension]) {
+                    return $additional[$extension];
+                }
+            }
+
+            return $mime;
+        }
+
 		public static function randomString(int $length = 10) : string {
 			$characters			= 'abcdefghijklmonpqrstuvwxyz-_ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 			$charactersLength	= strlen($characters);

@@ -8,9 +8,6 @@
      */
 
 	namespace fruithost\System;
-	
-    use fruithost\Storage\Database;
-	use fruithost\System\Core;
 
 	class Update {
 		protected static Core $core;
@@ -45,7 +42,7 @@
 				'host'		=> $_SERVER['SERVER_NAME'],
 				'ip'		=> $_SERVER['SERVER_ADDR'],
 				'admin'		=> $_SERVER['SERVER_ADMIN'],
-				'ssl'		=> isset($_SERVER['HTTPS']) ? ($_SERVER['HTTPS'] == 'on') : false
+				'ssl'		=> isset($_SERVER['HTTPS'])  &&  $_SERVER['HTTPS'] == 'on'
 			]);
 
 			/* Refresh License */
@@ -73,7 +70,7 @@
 				if($json != NULL) {
 					$response = $json;
 				}
-			} catch(Exception $e) {
+			} catch(\Exception $e) {
 				
 			}
 
@@ -93,7 +90,7 @@
 					'host'	=> $_SERVER['SERVER_NAME'],
 					'ip'	=> $_SERVER['SERVER_ADDR'],
 					'admin'	=> $_SERVER['SERVER_ADMIN'],
-					'ssl'	=> isset($_SERVER['HTTPS']) ? ($_SERVER['HTTPS'] == 'on') : false
+					'ssl'	=> isset($_SERVER['HTTPS']) &&  $_SERVER['HTTPS'] === 'on'
 				]);
 
 				self::$core->setSettings('UPDATE_LICENSE', $result->license);

@@ -1,5 +1,12 @@
 <?php
-	
+	/**
+     * fruithost | OpenSource Hosting
+     *
+     * @author Adrian Preuß
+     * @version 1.0.0
+     * @license MIT
+     */
+
 	use fruithost\Accounting\Auth;
 	use fruithost\Localization\I18N;
 	use fruithost\Network\Response;
@@ -10,22 +17,26 @@
 			$this->assign('error', I18N::get('You have no permissions for this action!'));
 			exit();
 		}
+
 		Response::addHeader('Content-Type', 'text/plain; charset=UTF-8');
 		$user      = trim(shell_exec('whoami'));
 		$directory = trim(shell_exec('pwd'));
 		$hostname  = $_SERVER['SERVER_NAME'];
 		$prefix    = sprintf("\033[38;2;200;110;110m%s\033[34m@\033[1;32m%s\033[90m:\033[39m%s\033[90m#", $user, $hostname, $directory);
 		$command   = escapeshellcmd($_POST['command']);
-		if(defined('DEMO') && DEMO) {
+
+        if(defined('DEMO') && DEMO) {
 			if($command === 'motd') {
 				$output = 'Welcome to the Demoversion of fruithost!';
 				printf("%s\n\033[39m%s", $prefix, $output);
 				exit();
 			}
+
 			$output = "\033[31mERROR:\033[39m Your command is forbidden at the demo version.";
 			printf("%s %s\n\033[39m%s", $prefix, $command, $output);
 			exit();
 		}
+
 		if($command === 'ColorTest') {
 			$tests = [
 				'styles'     => [
@@ -75,6 +86,7 @@
 					107 => 'bright_white',
 				]
 			];
+
 			foreach($tests as $name => $values) {
 				printf("--- %s\n", $name);
 				foreach($values as $code => $color) {
@@ -84,8 +96,14 @@
 			}
 			exit();
 		}
+
 		setlocale(LC_ALL, I18N::set().'.UTF-8');
 		putenv('LC_ALL='.I18N::set().'.UTF-8');
+		
+		if($command === 'motd' && !file_exists('/etc/motd')) {
+			$command = '';
+		}
+		
 		$build = [
 			'export MAN_KEEP_FORMATTING=1;',
 			'export SHELL=/bin/bash;',
@@ -99,6 +117,7 @@
 			#'"',
 			' 2>&1'
 		];
+
 		// @ToDo try to fork it to /dev/ttys000, /dev/pts/0 or other for coloring output?
 		// Or using SSH? https://www.php.net/manual/en/function.ssh2-connect
 		$process = proc_open(implode('', $build), [
@@ -118,9 +137,11 @@
 			]
 			// stderr
 		], $pipes);
+
 		if($command === 'motd') {
 			$command = '';
 		}
+
 		if(is_resource($process)) {
 			$stdin  = $pipes[0];
 			$stdout = $pipes[1];
@@ -132,9 +153,11 @@
 			$errEof = false;
 			$result = '';
 			$error  = '';
+
 			if(!posix_isatty($stdout)) {
 				#$result = "NOT TTY : " . posix_ttyname($stdout);
 			}
+
 			do {
 				$read   = [
 					$stdout,
@@ -152,9 +175,11 @@
 					$error .= fgets($stderr);
 				}
 			} while(!$outEof || !$errEof);
+
 			fclose($stdout);
 			fclose($stderr);
 			proc_close($process);
+
 			if($result == "\x1B[H\x1B[2J\x1B[3J") {
 				print $result;
 			} else {
@@ -168,6 +193,7 @@
 		}
 		exit();
 	}
+
 	$template->getFiles()->addJavascript('terminal', $this->url('js/terminal.js'), '1.0.0', [ 'ajax' ], TemplateFiles::FOOTER);
 	$template->getFiles()->addJavascript('console', $this->url('js/console.js'), '1.0.0', [ 'terminal' ], TemplateFiles::FOOTER);
 ?>

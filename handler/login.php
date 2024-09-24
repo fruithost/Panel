@@ -1,4 +1,12 @@
 <?php
+    /**
+     * fruithost | OpenSource Hosting
+     *
+     * @author Adrian Preuß
+     * @version 1.0.0
+     * @license MIT
+     */
+
     use fruithost\Accounting\Auth;
     use fruithost\Accounting\Session;
     use fruithost\Network\Response;

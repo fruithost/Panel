@@ -1,4 +1,12 @@
 <?php
+    /**
+     * fruithost | OpenSource Hosting
+     *
+     * @author Adrian Preuß
+     * @version 1.0.0
+     * @license MIT
+     */
+
 	use fruithost\Accounting\Auth;
 	use fruithost\Localization\I18N;
 	
@@ -111,7 +119,7 @@
 						<?php
 							$template->getCore()->getHooks()->runAction('ACCOUNT_SETTINGS_GLOBAL');
 						?>
-						<div class="form-group text-right">
+						<div class="form-group text-end">
 							<button type="submit" name="action" value="save" class="btn btn-outline-success"><?php I18N::__('Save'); ?></button>
 						</div>
 					</div>
@@ -173,7 +181,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="form-group text-right">
+						<div class="form-group text-end">
 							<button type="submit" name="action" value="save" class="btn btn-outline-success"><?php I18N::__('Save'); ?></button>
 						</div>
 					</div>

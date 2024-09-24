@@ -1,5 +1,12 @@
 <?php
-    use fruithost\Accounting\Auth;
+    /**
+     * fruithost | OpenSource Hosting
+     *
+     * @author Adrian Preuß
+     * @version 1.0.0
+     * @license MIT
+     */
+
     use fruithost\Localization\I18N;
     use fruithost\UI\Icon;
 	
@@ -40,7 +47,6 @@
 		
 		return $args;
 	}
-	
 ?>
 <div class="border rounded overflow-hidden mt-5 mb-5">
 	<table class="table table-borderless table-striped table-hover mb-0">

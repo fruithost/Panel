@@ -1,7 +1,13 @@
 <?php
+    /**
+     * fruithost | OpenSource Hosting
+     *
+     * @author Adrian Preuß
+     * @version 1.0.0
+     * @license MIT
+     */
 	
 	use fruithost\Localization\I18N;
-
 ?>
 <div class="container">
     <div class="form-group row">

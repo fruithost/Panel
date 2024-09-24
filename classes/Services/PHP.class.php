@@ -6,6 +6,7 @@
 	 * @version 1.0.0
 	 * @license MIT
 	 */
+
 	namespace fruithost\Services;
 	
 	use fruithost\Accounting\Auth;
@@ -43,10 +44,15 @@
 			} catch(\Exception $e) {
 				$this->debug[] = $e->getMessage();
 			}
+			
 			if(!empty($ini)) {
 				if(isset($ini['www'])) {
 					if(isset($ini['www']['listen'])) {
 						$this->socket = $ini['www']['listen'];
+					}
+				} else if(isset($ini['panel'])) {
+					if(isset($ini['panel']['listen'])) {
+						$this->socket = str_replace('$pool', 'panel', $ini['panel']['listen']);
 					}
 				}
 			}
@@ -65,6 +71,10 @@
 		}
 		
 		public function getHeader() : ?string {
+			if(empty($this->content)) {
+				return null;
+			}
+			
 			return explode("\r\n\r\n", $this->content)[0];
 		}
 		
@@ -274,4 +284,4 @@
 		I18N::__('yes')
 		I18N::__('no value')
 	*/
-	?>
+?>

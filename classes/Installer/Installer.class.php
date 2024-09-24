@@ -1,5 +1,14 @@
 <?php
+    /**
+	 * fruithost | OpenSource Hosting
+	 *
+	 * @author  Adrian Preuß
+	 * @version 1.0.0
+	 * @license MIT
+	 */
+
 	namespace fruithost\Installer;
+
 	class Installer {
 		/* Repositorys */
 		public static function getRepositorys(?string $url = null) : array {
@@ -30,3 +39,4 @@
 			return Repository::getInstance()->getRepositorysByID($ids);
 		}
 	}
+?>

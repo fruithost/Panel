@@ -1,5 +1,12 @@
 <?php
-	
+	/**
+     * fruithost | OpenSource Hosting
+     *
+     * @author Adrian Preuß
+     * @version 1.0.0
+     * @license MIT
+     */
+
 	use fruithost\Accounting\Auth;
 	use fruithost\Hardware\NetworkFamily;
 	use fruithost\Hardware\NetworkFlag;
@@ -209,6 +216,10 @@
                                 <td>
 									<?php
 										foreach($device->getFlags() as $flag) {
+											if($flag === null) {
+												continue;
+											}
+											
 											$color = 'light';
 											switch($flag) {
 												case NetworkFlag::UP:
@@ -221,6 +232,7 @@
 													$color = 'warning';
 													break;
 											}
+
 											printf('<span class="badge m-1 text-bg-%s">%s</span>', $color, NetworkFlag::for($flag));
 										}
 									?>
@@ -326,16 +338,16 @@
 		<?php
 			} else {
 			?>
-            <div class="jumbotron text-center bg-transparent text-muted">
-				<?php Icon::show('networking'); ?>
-                <h2><?php I18N::__('No Device selected!'); ?></h2>
-                <p class="lead"><?php I18N::__('Please select an network device for more informations.'); ?></p>
-            </div>
+                <div class="jumbotron text-center bg-transparent text-muted">
+                    <?php Icon::show('networking'); ?>
+                    <h2><?php I18N::__('No Device selected!'); ?></h2>
+                    <p class="lead"><?php I18N::__('Please select an network device for more informations.'); ?></p>
+                </div>
 			<?php
 		}
-			}
-		?>
-    </div>
+	}
+?>
+</div>
 <?php
 	$this->footer();
 ?>

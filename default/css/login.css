@@ -1,41 +1,49 @@
+/*
+ * fruithost | OpenSource Hosting
+ *
+ * @author Adrian Preuß
+ * @version 1.0.0
+ * @license MIT
+*/
+
 .form-signin {
-	max-width: 330px;
-	padding: 1rem;
+    max-width: 330px;
+    padding: 1rem;
 }
 
 .form-signin .form-floating:focus-within {
-	z-index: 2;
+    z-index: 2;
 }
 
 .form-signin input[name="username"],
 .form-signin input[name="password_new"] {
-	margin-bottom: -1px;
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 .form-signin input[name="password"],
 .form-signin input[name="password_repeated"] {
-	margin-bottom: 10px;
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
 /* Theme Switch */
 .bi {
-	vertical-align: -.125em;
-	fill: currentColor;
+    vertical-align: -.125em;
+    fill: currentColor;
 }
 
 .btn-bd-primary:active,
 .btn-bd-primary:focus {
-	--bs-btn-active-border-color: transparent;
+    --bs-btn-active-border-color: transparent;
 }
 
 .bd-mode-toggle {
-	z-index: 1500;
+    z-index: 1500;
 }
 
 .bd-mode-toggle .dropdown-menu .active .bi {
-	display: block !important;
+    display: block !important;
 }

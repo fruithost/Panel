@@ -1,11 +1,18 @@
 <?php
+    /**
+     * fruithost | OpenSource Hosting
+     *
+     * @author Adrian Preuß
+     * @version 1.0.0
+     * @license MIT
+     */
 
-use fruithost\Accounting\Auth;
-use fruithost\Localization\I18N;
-use fruithost\Security\Encryption;
-use fruithost\Storage\Database;
+    use fruithost\Accounting\Auth;
+    use fruithost\Localization\I18N;
+    use fruithost\Security\Encryption;
+    use fruithost\Storage\Database;
 
-if(isset($_POST['action']) && $_POST['action'] === 'save') {
+    if(isset($_POST['action']) && $_POST['action'] === 'save') {
 		switch($tab) {
 			case 'password':
 				if(empty($_POST['password_current'])) {

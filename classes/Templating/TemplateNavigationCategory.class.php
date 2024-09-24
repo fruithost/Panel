@@ -198,5 +198,4 @@
 			return $results;
 		}
 	}
-	
-	?>
+?>

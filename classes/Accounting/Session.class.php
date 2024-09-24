@@ -8,7 +8,7 @@
      */
 
     namespace fruithost\Accounting;
-	
+
 	class Session {
 		public static function init() : void {
 			if(!isset($_SESSION)) {

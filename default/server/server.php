@@ -1,5 +1,12 @@
 <?php
-	
+	/**
+     * fruithost | OpenSource Hosting
+     *
+     * @author Adrian Preuß
+     * @version 1.0.0
+     * @license MIT
+     */
+
 	use fruithost\Accounting\Auth;
 	use fruithost\Localization\I18N;
 	use fruithost\System\Utils;
@@ -8,10 +15,10 @@
 	$template->header();
 	if(!Auth::hasPermission('SERVER::SERVER')) {
 		?>
-        <div class="alert alert-danger mt-4" role="alert">
-            <strong><?php I18N::__('Access denied!'); ?></strong>
-            <p class="pb-0 mb-0"><?php I18N::__('You have no permissions for this page.'); ?></p>
-        </div>
+            <div class="alert alert-danger mt-4" role="alert">
+                <strong><?php I18N::__('Access denied!'); ?></strong>
+                <p class="pb-0 mb-0"><?php I18N::__('You have no permissions for this page.'); ?></p>
+            </div>
 		<?php
 		$template->footer();
 		exit();
@@ -38,14 +45,12 @@
 						]);
 					?>
                     <span class="align-self-start flex-fill p-0 ml-2 mt-1">
-							<small><?php I18N::__('IP Address'); ?></small>
-							<h4 class="p-0 m-o"><?php print $network->getIPAddress(); ?></h4>
-						</span>
+                        <small><?php I18N::__('IP Address'); ?></small>
+                        <h4 class="p-0 m-o"><?php print $network->getIPAddress(); ?></h4>
+                    </span>
                 </div>
                 <div class="card-body p-1 text-center">
-                    <a class="icon-link icon-link-hover text-decoration-none"
-                       style="--bs-link-hover-color-rgb: 25, 135, 84;"
-                       href="<?php print $template->url('/server/network'); ?>">
+                    <a class="icon-link icon-link-hover text-decoration-none" style="--bs-link-hover-color-rgb: 25, 135, 84;" href="<?php print $template->url('/server/network'); ?>">
 						<?php
 							Icon::show('network', [
 								'classes' => [ 'mb-2' ]
@@ -74,14 +79,12 @@
 						]);
 					?>
                     <span class="align-self-start flex-fill p-0 ml-2 mt-1">
-							<small><?php I18N::__('Uptime'); ?></small>
-							<h4 class="p-0 m-o"><?php print $uptime; ?></h4>
-						</span>
+                        <small><?php I18N::__('Uptime'); ?></small>
+                        <h4 class="p-0 m-o"><?php print $uptime; ?></h4>
+                    </span>
                 </div>
                 <div class="card-body p-1 text-center">
-                    <a class="icon-link icon-link-hover text-decoration-none"
-                       style="--bs-link-hover-color-rgb: 25, 135, 84;"
-                       href="<?php print $template->url('/server/reboot'); ?>">
+                    <a class="icon-link icon-link-hover text-decoration-none" style="--bs-link-hover-color-rgb: 25, 135, 84;" href="<?php print $template->url('/server/reboot'); ?>">
 						<?php
 							Icon::show('restart', [
 								'classes' => [ 'mb-1' ]
@@ -101,9 +104,7 @@
                     <table class="table m-0 table-borderless table-striped">
                         <tr>
                             <td rowspan="4" class="text-center align-middle border-end">
-                                <img height="50px" class="m-2"
-                                     src="<?php print $template->url(sprintf('/assets/systems/%s.svg', $id)); ?>"
-                                     alt="<?php print $id; ?>"/>
+                                <img height="50px" class="m-2" src="<?php print $template->url(sprintf('/assets/systems/%s.svg', $id)); ?>" alt="<?php print $id; ?>"/>
                             </td>
                             <td>
                                 <strong><?php I18N::__('System'); ?></strong>
@@ -152,6 +153,7 @@
                             <td>
 								<?php
 									print $network->getHostname();
+									
 									if(sprintf('my.%s', $network->getHostname()) !== $network->getPanelHostname()) {
 										Icon::show('warning', [
 											'classes'    => [
@@ -204,7 +206,7 @@
                                 <strong><?php I18N::__('Version'); ?></strong>
                             </td>
                             <td>
-								<?php
+								<?php									
 									if(version_compare($version, $update_version, '>')) {
 										Icon::show('error', [
 											'classes' => [
@@ -220,7 +222,9 @@
 											]
 										]);
 									}
+									
 									print ' '.$version;
+									
 									if(version_compare($version, $update_version, '>')) {
 										Icon::show('warning', [
 											'classes'    => [
@@ -266,18 +270,16 @@
                                 <strong><?php I18N::__('Status'); ?></strong>
                             </td>
                             <td>
-                                <span class="d-inline-block badge badge-pill module-badge text-bg-<?php print ($daemon['status'] ? 'success' : 'danger'); ?>"
-                                      data-toggle="tooltip"
-                                      title="<?php ($daemon['status'] ? I18N::__('Running normally.') : I18N::__('Error during execution!')); ?>"></span>
+                                <span class="d-inline-block badge badge-pill module-badge text-bg-<?php print ($daemon['status'] ? 'success' : 'danger'); ?>" data-toggle="tooltip" title="<?php ($daemon['status'] ? I18N::__('Running normally.') : I18N::__('Error during execution!')); ?>"></span>
                                 <span class="d-inline-block text-<?php print ($daemon['status'] ? 'success' : 'danger fw-bolder'); ?>">
-										<?php
-											if($daemon['status']) {
-												I18N::__('Okay');
-											} else {
-												I18N::__('Error');
-											}
-										?>
-									</span>
+                                    <?php
+                                        if($daemon['status']) {
+                                            I18N::__('Okay');
+                                        } else {
+                                            I18N::__('Error');
+                                        }
+                                    ?>
+                                </span>
                             </td>
                         </tr>
                         <tr>
@@ -335,10 +337,8 @@
                                         <strong class="ml-2"><?php print $disk['name']; ?></strong>
                                     </div>
                                 </div>
-                                <div class="bg-secondary" style="height: 15px;"
-                                     data-percentage="<?php printf('%s %%', $disk['percent']); ?>">
-                                    <div class="bg-success"
-                                         style="height: 100%; width: <?php print $disk['percent']; ?>%"></div>
+                                <div class="bg-secondary" style="height: 15px;" data-percentage="<?php printf('%s %%', $disk['percent']); ?>">
+                                    <div class="bg-success" style="height: 100%; width: <?php print $disk['percent']; ?>%"></div>
                                 </div>
                                 <small class="text-muted"><?php printf(I18N::get('Type: %s | FileSystem: %s | Size: %s / %s'), $disk['type'], $disk['filesystem'], Utils::getFileSize($disk['used']), Utils::getFileSize($disk['size'])); ?></small>
                             </div>
@@ -374,10 +374,8 @@
                                 <strong class="ml-2"><?php I18N::__('RAM'); ?></strong>
                             </div>
                         </div>
-                        <div data-name="mem_visual" class="bg-secondary" style="height: 15px;"
-                             data-percentage="<?php print $memory->getPercentage(); ?> %">
-                            <div class="bg-success"
-                                 style="height: 100%; width: <?php print $memory->getPercentage(); ?>%"></div>
+                        <div data-name="mem_visual" class="bg-secondary" style="height: 15px;" data-percentage="<?php print $memory->getPercentage(); ?> %">
+                            <div class="bg-success" style="height: 100%; width: <?php print $memory->getPercentage(); ?>%"></div>
                         </div>
                     </div>
                     <div id="memory" class="bg-light-subtle overflow-hidden"></div>

@@ -47,7 +47,7 @@
 					'tab'		=> $tab,
 					'action'	=> $action,
 					'admin'		=> true
-				]) == false) {
+				]) === false) {
 					$this->getTemplate()->display('error/404');
 				}
 			});
@@ -60,7 +60,7 @@
 				if($this->getTemplate()->display('server' . (!empty($destination) ? sprintf('/%s', $destination) : ''), [
 					'tab'		=> $tab,
 					'action'	=> $action
-				]) == false) {
+				]) === false) {
 					$this->getTemplate()->display('error/404');
 				}
 			});

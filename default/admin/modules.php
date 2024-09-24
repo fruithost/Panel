@@ -1,27 +1,33 @@
 <?php
-	
+    /**
+     * fruithost | OpenSource Hosting
+     *
+     * @author Adrian Preuß
+     * @version 1.0.0
+     * @license MIT
+     */
+
 	use fruithost\Accounting\Auth;
 	use fruithost\Localization\I18N;
 	
 	$template->header();
 	if(!Auth::hasPermission('MODULES::*')) {
 		?>
-        <div class="alert alert-danger mt-4" role="alert">
-            <strong><?php I18N::__('Access denied!'); ?></strong>
-            <p class="pb-0 mb-0"><?php I18N::__('You have no permissions for this page.'); ?></p>
-        </div>
+            <div class="alert alert-danger mt-4" role="alert">
+                <strong><?php I18N::__('Access denied!'); ?></strong>
+                <p class="pb-0 mb-0"><?php I18N::__('You have no permissions for this page.'); ?></p>
+            </div>
 		<?php
 		$template->footer();
 		exit();
 	}
+
 	if(Auth::hasPermission('MODULES::HANDLE') && isset($_GET['settings'])) {
 		?>
-        <form method="post"
-              action="<?php print $this->url('/admin/modules'.(!empty($tab) ? '/'.$tab : '').'?settings='.$_GET['settings']); ?>">
+        <form method="post" action="<?php print $this->url('/admin/modules'.(!empty($tab) ? '/'.$tab : '').'?settings='.$_GET['settings']); ?>">
             <header class="page-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
                 <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb"
-                        style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z' fill='%236c757d'/%3E%3C/svg%3E&#34;);">
+                    <ol class="breadcrumb" style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z' fill='%236c757d'/%3E%3C/svg%3E&#34;);">
                         <li class="breadcrumb-item">
                             <a href="<?php print $this->url('/admin/modules'); ?>"><?php I18N::__('Modules'); ?></a>
                         </li>
@@ -35,10 +41,8 @@
 
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
-                        <a class="btn btn-sm btn-outline-danger"
-                           href="<?php print $this->url('/admin/modules'.(!empty($tab) ? '/'.$tab : '')); ?>"><?php I18N::__('Cancel'); ?></a>
-                        <button type="submit" name="action" value="settings"
-                                class="btn btn-sm btn-outline-success"><?php I18N::__('Save'); ?></button>
+                        <a class="btn btn-sm btn-outline-danger" href="<?php print $this->url('/admin/modules'.(!empty($tab) ? '/'.$tab : '')); ?>"><?php I18N::__('Cancel'); ?></a>
+                        <button type="submit" name="action" value="settings" class="btn btn-sm btn-outline-success"><?php I18N::__('Save'); ?></button>
                     </div>
                 </div>
             </header>
@@ -83,11 +87,9 @@
         <form method="post" action="<?php print $this->url('/admin/modules'.(!empty($tab) ? '/'.$tab : '')); ?>">
             <header class="page-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
                 <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb"
-                        style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z' fill='%236c757d'/%3E%3C/svg%3E&#34;);">
+                    <ol class="breadcrumb" style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z' fill='%236c757d'/%3E%3C/svg%3E&#34;);">
                         <li class="breadcrumb-item active" aria-current="page">
-                            <a class="active"
-                               href="<?php print $this->url('/admin/modules'); ?>"><?php I18N::__('Modules'); ?></a>
+                            <a class="active" href="<?php print $this->url('/admin/modules'); ?>"><?php I18N::__('Modules'); ?></a>
                         </li>
                     </ol>
                 </nav>
@@ -97,40 +99,30 @@
 							case 'install':
 								if(!Auth::hasPermission('MODULES::INSTALL')) {
 									?>
-                                    <a href="<?php print $this->url('/admin/modules'); ?>"
-                                       class="btn btn-sm btn-outline-secondary mx-2"><?php I18N::__('Back'); ?></a>
-                                    <a href="<?php print $this->url('/admin/modules/install'); ?>"
-                                       class="btn btn-sm btn-outline-primary mx-2"><?php I18N::__('Refresh'); ?></a>
+                                        <a href="<?php print $this->url('/admin/modules'); ?>" class="btn btn-sm btn-outline-secondary mx-2"><?php I18N::__('Back'); ?></a>
+                                        <a href="<?php print $this->url('/admin/modules/install'); ?>" class="btn btn-sm btn-outline-primary mx-2"><?php I18N::__('Refresh'); ?></a>
 									<?php
 								}
 								break;
 							case 'repositorys':
 								if(Auth::hasPermission('MODULES::REPOSITORYS')) {
 									?>
-                                    <div class="btn-group mr-2">
-                                        <button type="button" name="add_repository" data-bs-toggle="modal"
-                                                data-bs-target="#add_repository"
-                                                class="btn btn-sm btn-outline-primary"><?php I18N::__('Add new'); ?></button>
-                                        <button type="submit" name="action" value="update"
-                                                class="btn btn-sm btn-outline-success"><?php I18N::__('Update'); ?></button>
-                                        <button type="submit" name="action" value="delete"
-                                                class="btn btn-sm btn-outline-danger"><?php I18N::__('Delete'); ?></button>
-                                    </div>
+                                        <div class="btn-group mr-2">
+                                            <button type="button" name="add_repository" data-bs-toggle="modal" data-bs-target="#add_repository" class="btn btn-sm btn-outline-primary"><?php I18N::__('Add new'); ?></button>
+                                            <button type="submit" name="action" value="update" class="btn btn-sm btn-outline-success"><?php I18N::__('Update'); ?></button>
+                                            <button type="submit" name="action" value="delete" class="btn btn-sm btn-outline-danger"><?php I18N::__('Delete'); ?></button>
+                                        </div>
 									<?php
 								}
 								break;
 							default:
 								if(Auth::hasPermission('MODULES::INSTALL')) {
-									
 									?>
-                                    <a href="<?php print $this->url('/admin/modules/install'); ?>"
-                                       class="btn btn-sm btn-outline-primary mx-2"><?php I18N::__('Install'); ?></a>
-                                    <div class="btn-group mr-2">
-                                        <button type="submit" name="action" value="upgrade"
-                                                class="btn btn-sm btn-outline-success"><?php I18N::__('Upgrade'); ?></button>
-                                        <button type="submit" name="action" value="delete"
-                                                class="btn btn-sm btn-outline-danger"><?php I18N::__('Delete'); ?></button>
-                                    </div>
+                                        <a href="<?php print $this->url('/admin/modules/install'); ?>" class="btn btn-sm btn-outline-primary mx-2"><?php I18N::__('Install'); ?></a>
+                                        <div class="btn-group mr-2">
+                                            <button type="submit" name="action" value="upgrade" class="btn btn-sm btn-outline-success"><?php I18N::__('Upgrade'); ?></button>
+                                            <button type="submit" name="action" value="delete" class="btn btn-sm btn-outline-danger"><?php I18N::__('Delete'); ?></button>
+                                        </div>
 									<?php
 								}
 								break;
@@ -142,33 +134,25 @@
 				if(Auth::hasPermission('MODULES::INSTALL') && $tab == 'install') {
 					?>
                     <div class="nav nav-tabs">
-                        <li class="nav-item"><a class="nav-link active" role="tab"><?php I18N::__('Popular'); ?></a>
+                        <li class="nav-item modules-popular"><a class="nav-link active" id="popular-tab" role="tab" data-bs-toggle="tab" data-bs-target="#popular" role="tab"><?php I18N::__('Popular'); ?></a></li>
+                        <li class="nav-item modules-results"><a class="nav-link disabled" aria-disabled="true" role="tab" id="results-tab" role="tab" data-bs-toggle="tab" data-bs-target="#results" aria-disabled="true"><?php I18N::__('Results'); ?></a></li>
+                        <li class="nav-item ms-auto">
+                            <div class="input-group" id="module-search">
+                                <input name="query" type="text" class="form-control form-control-sm" placeholder="<?php I18N::__('Search terms...'); ?>" aria-label="<?php I18N::__('Search'); ?>" aria-describedby="basic-addon1">
+                                <button class="btn btn-sm btn-outline-success" type="button" id="button-addon2"><?php I18N::__('Search'); ?></button>
+                            </div>
                         </li>
-                        <!--<li class="nav-item"><a class="nav-link disabled" aria-disabled="true" role="tab"
-                                                aria-disabled="true"><?php I18N::__('Results'); ?></a></li>-->
-                        <!--<li class="nav-item ms-auto">
-                            <form role="search">
-                                <div class="input-group">
-                                    <input type="text" class="form-control form-control-sm"
-                                           placeholder="<?php I18N::__('Search terms...'); ?>"
-                                           aria-label="<?php I18N::__('Search'); ?>"
-                                           aria-describedby="basic-addon1">
-                                    <button class="btn btn-sm btn-outline-success" type="button"
-                                            id="button-addon2"><?php I18N::__('Search'); ?></button>
-                                </div>
-                            </form>
-                        </li>-->
                     </div>
 					<?php
 				} else {
 					?>
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link<?php print (empty($tab) ? ' active' : ''); ?>" id="globals-tab"
-                               href="<?php print $this->url('/admin/modules'); ?>" role="tab">
+                            <a class="nav-link<?php print (empty($tab) ? ' active' : ''); ?>" id="globals-tab" href="<?php print $this->url('/admin/modules'); ?>" role="tab">
 								<?php
 									I18N::__('Installed Modules');
 									$updates = count((array) $upgradeable);
+
 									if($updates > 0) {
 										printf('<span class="badge rounded-pill text-bg-warning">%d</span>', $updates);
 									}
@@ -179,23 +163,19 @@
 							if(Auth::hasPermission('MODULES::REPOSITORY')) {
 								?>
                                 <li class="nav-item">
-                                    <a class="nav-link<?php print (!empty($tab) && $tab === 'repositorys' ? ' active' : ''); ?>"
-                                       id="security-tab" href="<?php print $this->url('/admin/modules/repositorys'); ?>"
-                                       role="tab">
-										<?php I18N::__('Repositorys'); ?>
-                                    </a>
+                                    <a class="nav-link<?php print (!empty($tab) && $tab === 'repositorys' ? ' active' : ''); ?>" id="security-tab" href="<?php print $this->url('/admin/modules/repositorys'); ?>" role="tab"><?php I18N::__('Repositorys'); ?></a>
                                 </li>
 								<?php
 							}
+
 							if(Auth::hasPermission('MODULES::ERRORS')) {
 								?>
                                 <li class="nav-item">
-                                    <a class="nav-link<?php print (!empty($tab) && $tab === 'errors' ? ' active' : ''); ?>"
-                                       id="errors-tab" href="<?php print $this->url('/admin/modules/errors'); ?>"
-                                       role="tab">
+                                    <a class="nav-link<?php print (!empty($tab) && $tab === 'errors' ? ' active' : ''); ?>" id="errors-tab" href="<?php print $this->url('/admin/modules/errors'); ?>" role="tab">
 										<?php
 											I18N::__('Errors');
 											$error_count = count((array) $errors);
+
 											if($error_count > 0) {
 												printf('<span class="badge rounded-pill text-bg-warning">%d</span>', $error_count);
 											}
@@ -208,13 +188,14 @@
                     </ul>
 					<?php
 				}
+
 				if(isset($error)) {
 					?>
-                    <div class="alert alert-danger mt-4" role="alert"><?php print $error; ?></div>
+                        <div class="alert alert-danger mt-4" role="alert"><?php print $error; ?></div>
 					<?php
 				} else if(isset($success)) {
 					?>
-                    <div class="alert alert-success mt-4" role="alert"><?php print $success; ?></div>
+                        <div class="alert alert-success mt-4" role="alert"><?php print $success; ?></div>
 					<?php
 				}
 			?>
@@ -226,7 +207,7 @@
 								if(Auth::hasPermission('MODULES::INSTALL')) {
 									$template->display('admin/modules/install');
 								}
-								break;
+							break;
 							case 'repositorys':
 								if(Auth::hasPermission('MODULES::REPOSITORY')) {
 									if(count($repositorys) === 0) {
@@ -235,7 +216,7 @@
 										$template->display('admin/modules/repository/list');
 									}
 								}
-								break;
+							break;
 							case 'errors':
 								if(Auth::hasPermission('MODULES::ERRORS')) {
 									if(count($errors) === 0) {
@@ -244,14 +225,14 @@
 										$template->display('admin/modules/errors/list');
 									}
 								}
-								break;
+							break;
 							default:
 								if(count($modules->getList()) === 0) {
 									$template->display('admin/modules/empty');
 								} else {
 									$template->display('admin/modules/list');
 								}
-								break;
+							break;
 						}
 					?>
                 </div>

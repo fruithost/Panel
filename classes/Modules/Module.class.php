@@ -17,7 +17,7 @@
 		private ?ModuleInfo $info			= null;
 		private ?ModuleInterface $instance	= null;
 		private bool $enabled				= false;
-		private bool$locked					= false;
+		private bool $locked				= false;
 		
 		public function __construct(string $path) {
 			$this->path = $path;

@@ -1,3 +1,11 @@
+/**
+ * fruithost | OpenSource Hosting
+ *
+ * @author Adrian Preuß
+ * @version 1.0.0
+ * @license MIT
+ */
+
 (() => {
     function show(event) {
         [].map.call(document.querySelectorAll('.bi[data-bs-toggle="collapse"][data-bs-target="#' + event.target.id + '"], [data-bs-toggle="collapse"][data-bs-target="#' + event.target.id + '"] .bi'), function (icon) {
@@ -117,7 +125,7 @@
         });
     });
 
-    [].map.call(document.querySelectorAll('[data-loading]'), function (element) {
+    window.Loading = function Loading(element) {
         element.addEventListener('click', function (event) {
             let element = event.target;
 
@@ -136,7 +144,9 @@
             dots.dataset.dots = 'true';
             element.append(dots);
         }, false);
-    });
+    };
+
+    [].map.call(document.querySelectorAll('[data-loading]'), Loading);
 
     document.querySelector('div#module_info').addEventListener('show.bs.modal', (event) => {
         let modal = event.target;
@@ -283,7 +293,7 @@
         });
     });
 
-    [].map.call(document.querySelectorAll('[data-confirm]'), function (element) {
+    window.Confirm = function Confirm(element) {
         element.addEventListener('mousedown', function (event) {
 
             let target = event.target;
@@ -343,7 +353,9 @@
                 return false;
             }
         });
-    });
+    };
+
+    [].map.call(document.querySelectorAll('[data-confirm]'), Confirm);
 
 
     window.showing.forEach((modal) => {

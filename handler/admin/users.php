@@ -1,5 +1,12 @@
 <?php
-	
+	/**
+     * fruithost | OpenSource Hosting
+     *
+     * @author Adrian Preuß
+     * @version 1.0.0
+     * @license MIT
+     */
+
 	use fruithost\Accounting\Auth;
 	use fruithost\Accounting\Session;
 	use fruithost\Accounting\User;
@@ -12,9 +19,11 @@
 	$users = Database::fetch('SELECT *, \'[*** PROTECTED ***]\' AS `password` FROM `'.DATABASE_PREFIX.'users` WHERE `deleted`=\'NO\' ORDER BY `id`');
 	if(isset($_POST['action'])) {
 		$user = new User();
+
 		if(is_numeric($tab) && $tab > 0) {
 			$user->fetch($tab);
 		}
+
 		switch($_POST['action']) {
 			/* Save user */
 			case 'save':
@@ -38,7 +47,7 @@
 							$this->assign('success', sprintf(I18N::get('Settings for <strong>%s</strong> was successfully updated.'), $user->getUsername()));
 							I18N::reload();
 						}
-						break;
+					break;
 					case 'password':
 						if(!Auth::hasPermission('USERS::EDIT')) {
 							$this->assign('error', I18N::get('You have no permissions for this action!'));
@@ -151,7 +160,7 @@
 							}
 							$template->assign('success', sprintf(I18N::get('Security-Settings for <strong>%s</strong> was successfully updated.'), $user->getUsername()));
 						}
-						break;
+					break;
 					case 'permissions':
 						if(!Auth::hasPermission('USERS::PERMISSIONS')) {
 							$this->assign('error', I18N::get('You have no permissions for this action!'));
@@ -198,7 +207,7 @@
 							}
 							$template->assign('success', sprintf(I18N::get('The user\'s permissions for the user <strong>%s</strong> have been adjusted.'), $user->getUsername()));
 						}
-						break;
+					break;
 					default:
 						if(!Auth::hasPermission('USERS::EDIT')) {
 							$this->assign('error', I18N::get('You have no permissions for this action!'));
@@ -220,9 +229,10 @@
 							/* @ToDo rename User, with all hosted files! */
 							$template->assign('success', sprintf(I18N::get('User <strong>%s</strong> was successfully edited.'), $user->getUsername()));
 						}
-						break;
+					break;
 				}
-				break;
+			break;
+
 			/* delete user */
 			case 'delete':
 				if(!Auth::hasPermission('USERS::DELETE')) {
@@ -235,7 +245,8 @@
 					Response::redirect('/admin/users');
 					exit();
 				}
-				break;
+			break;
+
 			/* Delete users */
 			case 'deletes':
 				if(!Auth::hasPermission('USERS::DELETE')) {
@@ -263,7 +274,8 @@
 					}
 					$users = Database::fetch('SELECT *, \'[*** PROTECTED ***]\' AS `password` FROM `'.DATABASE_PREFIX.'users` WHERE `deleted`=\'NO\'');
 				}
-				break;
+			break;
+
 			/* create user */
 			case 'create':
 				if(!Auth::hasPermission('USERS::CREATE')) {
@@ -339,20 +351,22 @@
 				]);
 				Session::set('success', sprintf(I18N::get('The user <strong>%s</strong> was successfully created.'), $_POST['username']));
 				Response::redirect('/admin/users');
-				exit();
-				break;
+			exit();
+			break;
 		}
 	}
+
 	if(!Auth::hasPermission('USERS::*')) {
 		$this->assign('error', I18N::get('You have no permissions for this action!'));
-		
 		return;
 	}
+
 	if(!Auth::hasPermission('USERS::EDIT') && is_numeric($tab) && $tab > 0) {
 		$this->assign('error', I18N::get('You have no permissions for this action!'));
 	} else if(!Auth::hasPermission('USERS::CREATE') && $tab == 'create') {
 		$this->assign('error', I18N::get('You have no permissions for this action!'));
 	}
+
 	if(Auth::hasPermission('USERS::EDIT') && is_numeric($tab) && $tab > 0) {
 		$user = new User();
 		$user->fetch($tab);

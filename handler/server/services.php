@@ -1,5 +1,12 @@
 <?php
-	
+	/**
+     * fruithost | OpenSource Hosting
+     *
+     * @author Adrian Preuß
+     * @version 1.0.0
+     * @license MIT
+     */
+
 	use fruithost\Accounting\Auth;
 	use fruithost\Localization\I18N;
 	use fruithost\UI\Button;
@@ -12,6 +19,7 @@
 	} else {
 		$command = 'systemctl list-units --type service --full --all --no-pager';
 		$json    = shell_exec($command.' --output json');
+
 		if(empty($json)) {
 			$type		= 'init.d';
 			$services	= [];
@@ -40,18 +48,19 @@
 	if(isset($_POST['action'])) {
 		if(!Auth::hasPermission('SERVER::SERVICES')) {
 			$this->assign('error', I18N::get('You have no permissions for this action!'));
-			
 			return;
 		}
+
 		switch($_POST['action']) {
 			case 'start':
 				if(defined('DEMO') && DEMO) {
 					$this->assign('error', I18N::get('DEMO-VERSION: This action can\'t be used!'));
-					
 					return;
 				}
+
 				$service = $_POST['service'];
 				$command = '';
+
 				switch($type) {
 					case 'init.d':
 						$command = sprintf('service %s start', $service);
@@ -65,17 +74,19 @@
 					$this->assign('success', I18N::get('Unsupported operating system?'));
 					return;
 				}
+
 				shell_exec($command);
 				$this->assign('success', sprintf(I18N::get('The Service "%s" will be started!'), $service));
-				break;
+			break;
 			case 'stop':
 				if(defined('DEMO') && DEMO) {
 					$this->assign('error', I18N::get('DEMO-VERSION: This action can\'t be used!'));
-					
 					return;
 				}
+
 				$service = $_POST['service'];
 				$command = '';
+
 				switch($type) {
 					case 'init.d':
 						$command = sprintf('service %s stop', $service);
@@ -89,17 +100,19 @@
 					$this->assign('success', I18N::get('Unsupported operating system?'));
 					return;
 				}
+
 				shell_exec($command);
 				$this->assign('success', sprintf(I18N::get('The Service "%s" will be stopped!'), $service));
-				break;
+			break;
 			case 'restart':
 				if(defined('DEMO') && DEMO) {
 					$this->assign('error', I18N::get('DEMO-VERSION: This action can\'t be used!'));
-					
 					return;
 				}
+
 				$service = $_POST['service'];
 				$command = '';
+
 				switch($type) {
 					case 'init.d':
 						$command = sprintf('service %s restart', $service);
@@ -113,12 +126,14 @@
 					$this->assign('success', I18N::get('Unsupported operating system?'));
 					return;
 				}
+
 				shell_exec($command);
 				$this->assign('success', sprintf(I18N::get('The Service "%s" will be restarted!'), $service));
-				break;
+			break;
 			case 'status':
 				$service = $_POST['service'];
 				$command = '';
+
 				switch($type) {
 					case 'init.d':
 						$command = sprintf('service %s status', $service);
@@ -142,7 +157,7 @@
 				$modal->show([
 					'result' => $result
 				]);
-				break;
+			break;
 		}
 	}
 	$template->assign('services', $services);

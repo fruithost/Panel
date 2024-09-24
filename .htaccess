@@ -37,6 +37,7 @@
     RewriteRule ^(.*)/$ /$1 [L,R=301]
 	
 	# Handle Template Files
+	RewriteRule ^theme/([^/]+)/(.*)$ index.php?theme=$1&file=$2 [QSA,L]
 	RewriteRule ^(css|js|fonts|images|assets)/(.*)$ default/$1/$2 [QSA,L]
 	
     # Handle Front Controller

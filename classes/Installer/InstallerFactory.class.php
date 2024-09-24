@@ -6,7 +6,9 @@
 	 * @version 1.0.0
 	 * @license MIT
 	 */
+
 	namespace fruithost\Installer;
+
 	class InstallerFactory {
 		private static ?InstallerFactory $instance = null;
 		
@@ -22,3 +24,4 @@
 		
 		public function getList() {}
 	}
+?>

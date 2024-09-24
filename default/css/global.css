@@ -1,3 +1,11 @@
+/*
+ * fruithost | OpenSource Hosting
+ *
+ * @author Adrian Preuß
+ * @version 1.0.0
+ * @license MIT
+*/
+
 html, body {
     height: 100%;
 }
@@ -69,4 +77,9 @@ span[data-dots="true"]::after {
     content: "";
     width: 5px;
     animation: dots 3s linear infinite;
+}
+
+/* XDebug */
+.xdebug-error {
+    color: #000000;
 }

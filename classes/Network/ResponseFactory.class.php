@@ -35,7 +35,7 @@
 		}
 
 		public function setContentType(string $type) : void {
-			$headers['Content-Type'] = $type;
+			$this->headers['Content-Type'] = $type;
 		}
 		
 		public function addHeader(string $name, string $value) : void {

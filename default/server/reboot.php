@@ -1,5 +1,12 @@
 <?php
-	
+	/**
+     * fruithost | OpenSource Hosting
+     *
+     * @author Adrian Preuß
+     * @version 1.0.0
+     * @license MIT
+     */
+
 	use fruithost\Accounting\Auth;
 	use fruithost\Localization\I18N;
 	use fruithost\UI\Icon;
@@ -7,10 +14,10 @@
 	$template->header();
 	if(!Auth::hasPermission('SERVER::REBOOT')) {
 		?>
-        <div class="alert alert-danger mt-4" role="alert">
-            <strong><?php I18N::__('Access denied!'); ?></strong>
-            <p class="pb-0 mb-0"><?php I18N::__('You have no permissions for this page.'); ?></p>
-        </div>
+            <div class="alert alert-danger mt-4" role="alert">
+                <strong><?php I18N::__('Access denied!'); ?></strong>
+                <p class="pb-0 mb-0"><?php I18N::__('You have no permissions for this page.'); ?></p>
+            </div>
 		<?php
 		$template->footer();
 		exit();

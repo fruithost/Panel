@@ -1,8 +1,16 @@
 <?php
-	namespace fruithost\Hardware;
+    /**
+	 * fruithost | OpenSource Hosting
+	 *
+	 * @author  Adrian Preuß
+	 * @version 1.0.0
+	 * @license MIT
+	 */
 
-	enum NetworkFamily : string {
-		case IPV4			= "inet";
+    namespace fruithost\Hardware;
+
+    enum NetworkFamily : string {
+        case IPV4			= "inet";
 		case IPV6			= "inet6";
 		case UNKNOWN		= "";
 

@@ -8,6 +8,7 @@
      */
 
     namespace fruithost\Localization;
+
     use fruithost\Accounting\Auth;
     use fruithost\Network\Request;
     use fruithost\Storage\Database;

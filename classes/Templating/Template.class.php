@@ -27,16 +27,16 @@
 		private ?string $path = null;
 
 		public function __construct(Core $core) {
-			$this->path			= PATH;
+			$this->path			= dirname(PATH);
 			$this->core			= $core;
 			$this->files		= new TemplateFiles();
 			$this->navigation	= new TemplateNavigation($this->core);
-			$this->theme		= $this->core->getHooks()->applyFilter('theme_name', 'default');
+			$this->theme		= $this->core->getHooks()->applyFilter('theme_name', $this->getDefaultTheme());
 			$this->assigns		= [
 				'project_name' 		=> $this->core->getSettings('PROJECT_NAME', 'fruithost'),
 				'project_copyright' => $this->core->getSettings('PROJECT_COPYRIGHT', true)
 			];
-			
+
 			// gzip, deflate, br, zstd
 			if(isset($_SERVER['HTTP_ACCEPT_ENCODING']) && substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')) {
 				@ob_start('ob_gzhandler');
@@ -55,11 +55,8 @@
 			$this->files->addStylesheet('bootstrap', $this->url('css/bootstrap/bootstrap.min.css'), '5.3.2');
             $this->files->addStylesheet('bootstrap-icons', $this->url('fonts/bootstrap-icons/bootstrap-icons.css'), '1.11.1', [ 'bootstrap' ]);
             $this->files->addStylesheet('cascadia-mono', $this->url('fonts/cascadia-mono/cascadia-mono.css'), '2111.01', [ 'bootstrap' ]);
-            $this->files->addStylesheet('global', $this->url('css/global.css'), '1.0.0', [ 'bootstrap' ]);
-			$this->files->addJavascript('bootstrap', $this->url('js/bootstrap/bootstrap.bundle.min.js'), '5.3.2', [], TemplateFiles::FOOTER);
-			$this->files->addJavascript('global', $this->url('js/global.js'), '1.0.0', [ 'bootstrap' ], TemplateFiles::FOOTER);
-			$this->files->addJavascript('ajax', $this->url('js/ajax.js'), '1.0.0', [ 'bootstrap' ], TemplateFiles::FOOTER);
-			
+            $this->files->addJavascript('bootstrap', $this->url('js/bootstrap/bootstrap.bundle.min.js'), '5.3.2', [], TemplateFiles::FOOTER);
+
 			$this->navigation->addCategory('account', I18N::get('Account'));
 			$this->navigation->addCategory('database', I18N::get('Databases'));
 			$this->navigation->addCategory('domain', I18N::get('Domains'));
@@ -72,11 +69,26 @@
 			$this->navigation->addCategory('server', I18N::get('Server'));
 			
 			$this->assign('topbar',		$this->navigation->getCategory('account'));
-			$this->assign('navigation', $this->navigation);
+			$this->assign('navigation',   $this->navigation);
 			
-			$this->core->getHooks()->runAction('template_init');
+			$this->core->getHooks()->runAction('template_init', $this);
 		}
-		
+
+        public function getDefaultTheme() {
+            $theme = 'default';
+
+            if(isset($_GET['theme'])) {
+                $theme = $_GET['theme'];
+            }
+
+            // @ToDo Check if Theme-Directory exists
+            if($theme != 'default') {
+
+            }
+            
+            return $theme;
+        }
+
 		public function getCore() : Core {
 			return $this->core;
 		}
@@ -92,6 +104,23 @@
 		public function getAssigns() : array {
 			return $this->assigns;
 		}
+
+        public function resolveThemePath($file, $handler = false) : string {
+            $entry  = 'default';
+
+            if($handler) {
+                $entry  = 'handler';
+                $theme	= sprintf('%1$s%2$sthemes%2$shandler%2$s%4$s%2$s%3$s.php', $this->path, DS, $file, $this->theme);
+            } else {
+                $theme	= sprintf('%1$s%2$sthemes%2$s%4$s%2$s%3$s.php', $this->path, DS, $file, $this->theme);
+            }
+
+            if(!file_exists($theme)) {
+                $theme	= sprintf('%1$s%4$s%2$s%3$s.php', PATH, DS, $file, $entry);
+            }
+
+            return $theme;
+        }
 
 		public function setPath($path) {
 			$this->path = $path;
@@ -122,7 +151,16 @@
 		
 		public function display(string $file, array $arguments = [], bool $basedir = true, bool $once = true) : ?bool {
 			$template	= $this;
-			
+			$functions	= $this->resolveThemePath('functions');
+
+            if(file_exists($functions)) {
+               if($once) {
+                    require_once($functions);
+                } else {
+                    require($functions);
+                }
+            }
+
 			$this->core->getHooks()->runAction('html_render');
 			
 			foreach($arguments AS $name => $value) {
@@ -130,13 +168,13 @@
 			}
 			
 			if($basedir) {
-				$path		= sprintf('%1$s%2$sthemes%2$s%4$s%2$s%3$s.php', $this->path, DS, $file, $this->theme);
+                $path   = $this->resolveThemePath($file);
 			} else {
-				$path		= $file;
+				$path	= $file;
 			}
 
-			$handler	= sprintf('%1$shandler%2$s%3$s.php', $this->path, DS, $file);
-			
+			$handler	= $this->resolveThemePath($file, true);
+
 			foreach($this->assigns AS $name => $value) {
 				${$name} = $value;
 			}
@@ -165,27 +203,6 @@
 				}
 					
 				return true;
-			} else {
-				if(!Auth::isLoggedIn()) {
-					$this->getFiles()->addStylesheet('login', $this->url('css/login.css'), '2.0.0', [ 'bootstrap' ]);
-                    $this->getFiles()->addJavascript('login', $this->url('js/login.js'), '1.0.0', [ 'bootstrap' ], TemplateFiles::FOOTER);
-                } else {
-					$this->getFiles()->addStylesheet('style', $this->url('css/style.css'), '2.0.0', [ 'bootstrap' ]);
-					$this->getFiles()->addJavascript('ui', $this->url('js/ui.js'), '2.0.0', [ 'bootstrap' ], TemplateFiles::FOOTER);
-					$this->getFiles()->addJavascript('codemirror', $this->url('js/codemirror/build/bundle.min.js'), '6.0.0', [ 'ui' ], TemplateFiles::FOOTER);
-				}
-				
-				$path = sprintf('%1$s%2$sdefault%2$s%3$s.php', $this->path, DS, $file);
-				
-				if(file_exists($path) && is_readable($path)) {
-					if($once) {
-						require_once($path);
-					} else {
-						require($path);
-					}
-					
-					return true;
-				}
 			}
 
 			return false;
@@ -193,27 +210,20 @@
 		
 		public function header() : void {
 			$template	= $this;
-			$path		= sprintf('%1$s%2$sthemes%2$s%4$s%2$s%3$s.php', $this->path, DS, 'header', $this->theme);
-			
+            $path       = $this->resolveThemePath('header');
+
 			foreach($this->assigns AS $name => $value) {
 				${$name} = $value;
 			}
 
-
 			if(file_exists($path)) {
 				@require_once($path);
-			} else {
-				$path = sprintf('%1$s%2$sdefault%2$s%3$s.php', $this->path, DS, 'header');
-				
-				if(file_exists($path)) {
-					@require_once($path);
-				}
 			}
 		}
 		
 		public function footer() : void {
 			$template	= $this;
-			$path		= sprintf('%1$s%2$sthemes%2$s%4$s%2$s%3$s.php', $this->path, DS, 'footer', $this->theme);
+             $path       = $this->resolveThemePath('footer');
 			
 			foreach($this->assigns AS $name => $value) {
 				${$name} = $value;
@@ -221,12 +231,6 @@
 			
 			if(file_exists($path)) {
 				require_once($path);
-			} else {
-				$path = sprintf('%1$s%2$sdefault%2$s%3$s.php', $this->path, DS, 'footer');
-				
-				if(file_exists($path)) {
-					@require_once($path);
-				}
 			}
 		}
 		

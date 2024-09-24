@@ -6,6 +6,7 @@
 	 * @version 1.0.0
 	 * @license MIT
 	 */
+
 	namespace fruithost\Accounting;
 	
 	use fruithost\Security\Encryption;
@@ -209,5 +210,4 @@
 			return $this->permissions;
 		}
 	}
-	
-	?>
+?>

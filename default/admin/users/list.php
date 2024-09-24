@@ -1,9 +1,15 @@
 <?php
+    /**
+     * fruithost | OpenSource Hosting
+     *
+     * @author Adrian Preuß
+     * @version 1.0.0
+     * @license MIT
+     */
 	
 	use fruithost\Accounting\Auth;
 	use fruithost\Accounting\User;
 	use fruithost\Localization\I18N;
-
 ?>
 <div class="border rounded overflow-hidden mb-5">
     <table class="table table-borderless table-striped table-hover mb-0">
@@ -20,6 +26,7 @@
 			foreach($users as $u) {
 				$user = new User();
 				$user->fetch($u->id);
+
 				if($user->getID() == null) {
 					continue;
 				}
@@ -27,15 +34,12 @@
                 <tr>
                     <td scope="row" width="1px">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="user_<?php print $user->getID(); ?>"
-                                   name="user[]"
-                                   value="<?php print $user->getID(); ?>"<?php print ($user->getID() == 1 ? ' DISABLED' : ''); ?> />
+                            <input class="form-check-input" type="checkbox" id="user_<?php print $user->getID(); ?>" name="user[]" value="<?php print $user->getID(); ?>"<?php print ($user->getID() == 1 ? ' DISABLED' : ''); ?> />
                             <label class="form-check-label" for="user_<?php print $user->getID(); ?>"></label>
                         </div>
                     </td>
                     <td width="1px">
-                        <img src="<?php print $user->getGravatar(); ?>" class="object-fit-cover bg-dark border rounded"
-                             alt=""/>
+                        <img src="<?php print $user->getGravatar(); ?>" class="object-fit-cover bg-dark border rounded" alt=""/>
                     </td>
                     <td>
                         <small>#<?php print $user->getID(); ?></small>
@@ -53,6 +57,7 @@
 								if(Auth::hasPermission('USERS::EDIT')) {
 									printf('<a href="%s" class="btn btn-info">%s</a>', $this->url('/admin/users/'.$user->getID()), I18N::get('Edit'));
 								}
+
 								if(Auth::hasPermission('USERS::DELETE') && $user->getID() != 1) {
 									printf('<button name="action" value="deletes" data-confirm="%s" class="btn btn-danger deletes">%s</button>', I18N::get('Do you really wan\'t to delete the user?'), I18N::get('Delete'));
 								}

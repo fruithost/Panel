@@ -17,7 +17,6 @@
 		}
 		
 		public function head_description() : void {
-
 			$description  = I18N::get('fruithost is an OpenSource Hosting-Panel for some Linux Distributions (later maybe also for Windows). With  fruithost you get a real alternative to confixx/Plesk, ISPConfig, froxlor and other derivatives.');
 			$description .= I18N::get('Whether private or professional, with  fruithost you get a clean and simple solution to manage your servers.');
 			$description .= I18N::get('Security comes first at  fruithost - that\'s why we only use up-to-date software and do without miserable old solutions. If you have an MIT license, you can use  fruithost for any scenario!');

@@ -1,6 +1,18 @@
 <?php
-	require_once(sprintf('%s/classes/System/Loader.class.php', dirname(__FILE__)));
-	require_once(sprintf('%s/classes/System/Core.class.php', dirname(__FILE__)));
-	
+    /**
+     * fruithost | OpenSource Hosting
+     *
+     * @author  Adrian Preuß
+     * @version 1.0.0
+     * @license MIT
+     */
+
+	foreach([
+        'Loader',
+        'Core'
+    ] as $file) {
+		require_once(sprintf('%1$s/classes/System/%2$s.class.php', dirname(__FILE__), $file));
+	}
+
 	new fruithost\System\Core();
 ?>

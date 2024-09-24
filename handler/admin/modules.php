@@ -1,5 +1,12 @@
 <?php
-	
+	/**
+     * fruithost | OpenSource Hosting
+     *
+     * @author Adrian Preuß
+     * @version 1.0.0
+     * @license MIT
+     */
+
 	use fruithost\Accounting\Auth;
 	use fruithost\Installer\Installer;
 	use fruithost\Installer\Repository;
@@ -26,6 +33,7 @@
 		
 		return true;
 	}));
+
 	/* Module Informations */
 	$template->getAdminCore()->addModal((new Modal('module_info', '', 'admin/modules/info'))->addButton([
 		(new Button())->setName('cancel')->setLabel(I18N::get('Close'))->addClass('btn-outline-secondary')->setDismissable()
@@ -37,6 +45,7 @@
 	if(file_exists($list)) {
 		$upgradeable = json_decode(file_get_contents($list));
 	}
+
 	/* Module :: Settings */
 	if(isset($_GET['settings'])) {
 		if(Auth::hasPermission('MODULES::HANDLE')) {
@@ -49,7 +58,8 @@
 		} else {
 			$template->assign('error', I18N::get('You have no permissions for this page.'));
 		}
-		/* Module :: Disable */
+
+	/* Module :: Disable */
 	} else if(isset($_GET['disable'])) {
 		if(Auth::hasPermission('MODULES::HANDLE')) {
 			if($modules->hasModule($_GET['disable'], true)) {
@@ -70,7 +80,8 @@
 		} else {
 			$template->assign('error', I18N::get('You have no permissions for this page.'));
 		}
-		/* Mdoule :: Enable */
+
+	/* Mdoule :: Enable */
 	} else if(isset($_GET['enable'])) {
 		if(Auth::hasPermission('MODULES::HANDLE')) {
 			if($modules->hasModule($_GET['enable'], true)) {
@@ -91,7 +102,8 @@
 		} else {
 			$template->assign('error', I18N::get('You have no permissions for this page.'));
 		}
-		/* Module :: Install */
+
+	/* Module :: Install */
 	} else if(isset($_GET['install'])) {
 		if(Auth::hasPermission('MODULES::INSTALL')) {
 			if($modules->hasModule($_GET['install'], true)) {
@@ -143,6 +155,9 @@
 								// Check ZIP-Package
 								if($zip->open($zip_path) !== true) {
 									$template->assign('error', I18N::get('The Module-Package is broken!'));
+								} else if(!is_writable(sprintf('%s%s%s%s', dirname(PATH), DS, 'modules', DS))) {
+									$template->assign('error', sprintf(I18N::get('The Path %s is not writeable!'), sprintf('%s%s%s%s', dirname(PATH), DS, 'modules', DS)));
+										
 								} else {
 									// Extract ZIP-Package
 									if(!$zip->extractTo(sprintf('%s%s%s%s', dirname(PATH), DS, 'modules', DS))) {
@@ -169,6 +184,7 @@
 													'REQUEST_URI' => '/',
 													'MODULE'      => sprintf('%s/setup/install.php', $module_path)
 												]);
+												
 												if(preg_match('/(File Not Found|404 Not Found|500 Internal Server Error)/', $php->getHeader())) {
 													$template->assign('error', sprintf(I18N::get('Installscript not found: %s/setup/install.php'), $module_path));
 													// Register Module
@@ -206,7 +222,8 @@
 		} else {
 			$template->assign('error', I18N::get('You have no permissions for this page.'));
 		}
-		/* Module :: Deinstall */
+
+	/* Module :: Deinstall */
 	} else if(isset($_GET['deinstall'])) {
 		if(Auth::hasPermission('MODULES::DEINSTALL')) {
 			if($modules->hasModule($_GET['deinstall'], true)) {
@@ -227,10 +244,41 @@
 		} else {
 			$template->assign('error', I18N::get('You have no permissions for this page.'));
 		}
-		/* Module :: Reinstall */
+
+	/* Module :: Reinstall */
 	} else if(isset($_GET['reinstall'])) {
-		// Not implemented?
-		/* Module :: Check */
+		if($modules->hasModule($_GET['reinstall'], true)) {
+            $module		= $modules->getModule($_GET['reinstall'], true);
+            $install	= sprintf('%s%s/setup/install.php', $module->getPath(), DS);
+
+            if(file_exists($install)) {
+                try {
+                    $php = new PHP();
+                    $php->setPath(PATH);
+                    $php->execute('/classes/System/Loader.class.php', [
+                        'DAEMON'			=> true,
+                        'REQUEST_URI'		=> '/',
+                        'MODULE'			=> $install
+                    ]);
+
+                    if(preg_match('/(File Not Found|404 Not Found|500 Internal Server Error)/', $php->getHeader())) {
+                        throw new \Exception('Installscript not found: ' . $install . PHP_EOL . $php->getHeader());
+                    }
+
+                    if(!empty($php->getBody())) {
+                        $template->assign('error', I18N::get('The module has an problem:') . '<br />' . $php->getBody());
+                    }
+                } catch(\Exception $e) {
+                    $template->assign('error', I18N::get('The module has an problem:') . '<br />' . $e->getMessage());
+                }
+            }
+
+            $template->assign('success', I18N::get('The module was successfully reinstalled!'));
+        } else {
+            $template->assign('error', I18N::get('The module not exists!'));
+        }
+
+	/* Module :: Check */
 	} else if(isset($_GET['check'])) {
 		if(Auth::hasPermission('MODULES::HANDLE')) {
 			if($modules->hasModule($_GET['check'], true)) {
@@ -276,23 +324,25 @@
 			$template->assign('error', I18N::get('You have no permissions for this page.'));
 		}
 	}
+
 	switch($tab) {
 		case 'install':
 			if(!Auth::hasPermission('MODULES::INSTALL')) {
 				$template->assign('error', I18N::get('You have no permissions for this page.'));
 			}
-			break;
+		break;
 		case 'repositorys':
 			if(!Auth::hasPermission('MODULES::REPOSITORY')) {
 				$template->assign('error', I18N::get('You have no permissions for this page.'));
 			}
-			break;
+		break;
 		case 'errors':
 			if(!Auth::hasPermission('MODULES::ERRORS')) {
 				$template->assign('error', I18N::get('You have no permissions for this page.'));
 			}
-			break;
+		break;
 	}
+
 	if(isset($_POST['action'])) {
 		switch($_POST['action']) {
 			/* Repositorys :: Update */
@@ -362,7 +412,8 @@
 				} else {
 					$template->assign('error', I18N::get('You have no permissions for this page.'));
 				}
-				break;
+			break;
+
 			/* Repository :: Delete */
 			case 'delete':
 				if(Auth::hasPermission('MODULES::DEINSTALL')) {
@@ -381,7 +432,7 @@
 				} else {
 					$template->assign('error', I18N::get('You have no permissions for this page.'));
 				}
-				break;
+			break;
 		}
 	}
 	$template->assign('module', $module);

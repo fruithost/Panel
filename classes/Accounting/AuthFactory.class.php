@@ -6,6 +6,7 @@
 	 * @version 1.0.0
 	 * @license MIT
 	 */
+
 	namespace fruithost\Accounting;
 	
 	use fruithost\Localization\I18N;
@@ -236,5 +237,4 @@
 			return $this->permissions;
 		}
 	}
-	
-	?>
+?>
