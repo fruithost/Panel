@@ -172,12 +172,10 @@
 					if(!is_readable($path)) {
 						if(defined('DAEMON') && DAEMON) {
 							print "\033[31;31m";
-						}
-
-						print 'Error accessing Library: ' . $path . PHP_EOL;
-
-						if(defined('DAEMON') && DAEMON) {
+							print 'Error accessing Library: ' . $path . PHP_EOL;
 							print "\033[39m";
+						} else {
+							throw new \Exception('Error accessing Library: ' . $path);
 						}
 						return;
 					}
@@ -198,12 +196,10 @@
 
 					if(defined('DAEMON') && DAEMON) {
 						print "\033[31;31m";
-					}
-
-					print 'Error Loading Library: ' . $path . PHP_EOL;
-
-					if(defined('DAEMON') && DAEMON) {
+						print 'Error Loading Library: ' . $path . PHP_EOL;
 						print "\033[39m";
+					} else {
+						throw new \Exception('Error Loading Library: ' . $path);
 					}
 				}
 
