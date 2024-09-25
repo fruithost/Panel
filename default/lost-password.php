@@ -72,7 +72,9 @@
 							<ul class="dropdown-menu">
 								<?php
 									foreach(I18N::getLanguages() AS $code => $language) {
-										printf('<li><a class="dropdown-item" href="%s">%s</a></li>', $template->url('/login?lang=' . $code), $language);
+										printf('<li><a class="dropdown-item" href="%s">%s</a></li>', $template->url('/login', [
+											'lang'	=> $code
+										]), $language);
 									}
 								?>
 							</ul>

@@ -256,6 +256,10 @@
 		public function url(bool | string $path = null, array $parameters = null) : string {
 			$scheme = 'http';
 			
+			if($parameters == null) {
+				$parameters = [];
+			}
+			
 			if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
 				$scheme = 'https';
 			}
@@ -267,19 +271,30 @@
 			if(substr($path, 0, 1) === '/') {
 				$path = substr($path, 1);
 			}
-			
-			if(!empty($parameters)) {
-				if(strpos($path, '?')) {
-					$path	= explode('?', $path);
-					$path	= $path[0];
-				}
+
+			if(strpos($path, '?')) {
+				$parts	= explode('?', $path);
+				$path	= $parts[0];
 				
-				$path .= '?' . http_build_query(array_merge($_GET, $parameters));
-			} else if(Request::has('lang') && !strpos($path, '?')) {
-				$path .= '?lang=' . Request::get('lang');
+				parse_str($parts[1], $arguments);
+				
+				$parameters = array_merge($arguments, $_GET, $parameters);
 			}
 			
-			return $scheme . '://' . $_SERVER['HTTP_HOST'] . '/' . $path;
+			foreach([
+				'lang',
+				'theme'
+			] AS $include) {
+				if(!array_key_exists($include, $parameters) && Request::has($include)) {
+					$parameters[$include] = Request::get($include);
+				}
+			}
+			
+			if(count($parameters) > 0) {
+				$path .= '?' . http_build_query($parameters);
+			}
+			
+			return sprintf('%s://%s/%s', $scheme, $_SERVER['HTTP_HOST'], $path);
 		}
 	}
 ?>
