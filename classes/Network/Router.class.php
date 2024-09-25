@@ -80,15 +80,27 @@
 		
 		public function run(bool $ajax = false) : void {
 			// @ToDo is it secure?
-			$uri	= explode('/',	($ajax ? preg_replace('#(http|https)://([^/]+)#', '', $_SERVER['HTTP_REFERER']) : $_SERVER['REQUEST_URI']));
-			$name	= explode('/',	$_SERVER['SCRIPT_NAME']);
+			if($ajax) {
+				$data = preg_replace('#(http|https)://([^/]+)#', '', $_SERVER['HTTP_REFERER']);
+			} else if(isset($_SERVER['REQUEST_URI'])) {
+				$data = $_SERVER['REQUEST_URI'];
+			} else {
+				$data = null;
+			}
+			
+			if(empty($data)) {
+				return;
+			}
+		
+			$uri	= explode('/',	$data);
+			$name	= explode('/',	(isset($_SERVER['SCRIPT_NAME']) ? $_SERVER['SCRIPT_NAME'] : '/'));
 			
 			for($i = 0; $i < sizeof($name); $i++) {
 				if($uri[$i] === $name[$i]) {
 					unset($uri[$i]);
 				}
 			}
-			
+		
 			$command	= array_values($uri);
 			$route		= '';
 			
