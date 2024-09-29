@@ -118,22 +118,24 @@
 		}
 		
 		public function getFile($repository, $file) : string | int | null {
-			$options = [];
 			$headers = [];
 			$url     = $repository->url;
 			$branch  = 'master';
+		
 			// Load GitHub by RAW
 			if(preg_match('/github\.com\/([^\/]+)\/([^\/]+)$/Uis', rtrim($repository->url, '/'), $matches)) {
 				$user = rtrim($matches[1], '/');
 				$repo = rtrim($matches[2], '/');
 				$url  = sprintf('https://raw.githubusercontent.com/%s/%s/%s', $user, $repo, $branch);
-				// Load by Git-Variables
+				
+			// Load by Git-Variables
 			} else if(str_starts_with($url, 'git:')) {
 				$parts  = explode(' ', $url);
 				$user   = null;
 				$repo   = null;
 				$token  = $repository->token;
 				$branch = null;
+				
 				foreach($parts as $part) {
 					if(str_starts_with($part, 'user:')) {
 						$user = str_replace('user:', '', $part);
@@ -143,7 +145,9 @@
 						$branch = str_replace('branch:', '', $part);
 					}
 				}
+				
 				$url = sprintf('https://raw.githubusercontent.com/%s/%s/%s', $user, $repo, $branch);
+				
 				if(!empty($token)) {
 					$headers['Authorization']        = sprintf('token %s', $token);
 					$headers['Accept']               = 'application/vnd.github.raw+json';
@@ -152,25 +156,35 @@
 					$url                             = sprintf('https://api.github.com/repos/%s/%s/contents', $user, $repo);
 				}
 			}
+			
+			$request = curl_init();
+            curl_setopt($request, CURLOPT_URL,				sprintf('%s/%s', $url, $file));
+            curl_setopt($request, CURLOPT_HEADER,			false);
+            curl_setopt($request, CURLOPT_RETURNTRANSFER,	true);
+			
 			if(!empty($headers)) {
-				$h = '';
-				foreach($headers as $name => $value) {
-					$h .= sprintf('%s: %s%s', $name, $value, "\r\n");
+				$temp = [];
+				
+				foreach($headers AS $name => $value) {
+					$temp[] = sprintf('%s: %s', $name, $value);
 				}
-				$options = [ "http" => [ "header" => $h ] ];
+				
+				curl_setopt($request, CURLOPT_HTTPHEADER, $temp);
 			}
-			$context = stream_context_create($options);
-			$request = sprintf('%s/%s', $url, $file);
-			$content = @file_get_contents($request, false, $context);
-			if(empty($http_response_header)) {
+			
+            $response	= curl_exec($request);
+            $code		= curl_getinfo($request, CURLINFO_HTTP_CODE);
+            curl_close($request);
+			
+			if($code != 200) {
 				return self::BAD_RESPONSE;
-			} else if(count(preg_grep('/Forbidden/', $http_response_header)) == 1) {
+			} else if($code == 403) {
 				return self::FORBIDDEN;
-			} else if(empty($content)) {
+			} else if(empty($response)) {
 				return self::EMPTY;
 			}
 			
-			return $content;
+			return $response;
 		}
 	}
 ?>
