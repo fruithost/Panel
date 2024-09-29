@@ -114,11 +114,15 @@
             } else {
                 $theme	= sprintf('%1$s%2$sthemes%2$s%4$s%2$s%3$s.php', $this->path, DS, $file, $this->theme);
             }
+			
+			if(!file_exists($theme)) {
+                $theme	= sprintf('%1$s%2$s%4$s%2$s%3$s.php', $this->path, DS, $file, $entry);
+            }
 
             if(!file_exists($theme)) {
                 $theme	= sprintf('%1$s%4$s%2$s%3$s.php', PATH, DS, $file, $entry);
             }
-
+			
             return $theme;
         }
 
@@ -152,7 +156,7 @@
 		public function display(string $file, array $arguments = [], bool $basedir = true, bool $once = true) : ?bool {
 			$template	= $this;
 			$functions	= $this->resolveThemePath('functions');
-
+			
             if(file_exists($functions)) {
                if($once) {
                     require_once($functions);
@@ -223,7 +227,7 @@
 		
 		public function footer() : void {
 			$template	= $this;
-             $path       = $this->resolveThemePath('footer');
+            $path       = $this->resolveThemePath('footer');
 			
 			foreach($this->assigns AS $name => $value) {
 				${$name} = $value;
