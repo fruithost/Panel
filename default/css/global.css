@@ -17,14 +17,6 @@ input:focus {
     box-shadow: none !important;
 }
 
-/* Theme Switch */
-.theme-switch {
-    z-index: 99999;
-    border-radius: 35%;
-    color: var(--bs-emphasis-color);
-    background-color: var(--bs-secondary-bg-subtle);
-}
-
 /* Dropdown */
 .dropdown-scroll {
     max-height: 145px;
@@ -77,9 +69,4 @@ span[data-dots="true"]::after {
     content: "";
     width: 5px;
     animation: dots 3s linear infinite;
-}
-
-/* XDebug */
-.xdebug-error {
-    color: #000000;
 }

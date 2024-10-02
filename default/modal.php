@@ -51,13 +51,15 @@
 					</div>
 				</div>
             <?php
-			if($modal->isShowing()) {
-				?>
-					<script type="text/javascript">
-						window.showing.push('<?php print $modal->getName(); ?>');
-					</script>
-				<?php
-			}
+                if($modal->isShowing()) {
+                    ?>
+                        <script type="text/javascript">
+                            if(typeof(window.showing) !== 'undefined') {
+                                window.showing.push('<?php print $modal->getName(); ?>');
+                            }
+                        </script>
+                    <?php
+                }
         }
     }
 ?>

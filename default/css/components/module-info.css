@@ -1,0 +1,48 @@
+/*
+ * fruithost | OpenSource Hosting
+ *
+ * @author Adrian Preuß
+ * @version 1.0.0
+ * @license MIT
+*/
+div#module_info .module-icon {
+    font-size: 100px;
+}
+
+div#module_info .carousel-caption {
+    right: 0;
+    bottom: 0;
+    left: 0;
+    color: #fff !important;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+div#module_info div.markdown {
+    background: var(--bs-modal-footer-border-color);
+    padding: 20px;
+    font-size: 16px;
+}
+
+div#module_info div.markdown h1 {
+    font-size: 1.4rem;
+}
+
+div#module_info div.markdown h2 {
+    font-size: 1.3rem;
+}
+
+div#module_info div.markdown h3 {
+    font-size: 1.2rem;
+}
+
+div#module_info div.markdown h4 {
+    font-size: 1.1rem;
+}
+
+div#module_info div.markdown h5 {
+    font-size: 1.0rem;
+}
+
+div#module_info div.markdown h6 {
+    font-size: 0.9rem;
+}

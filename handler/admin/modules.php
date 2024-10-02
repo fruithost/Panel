@@ -38,6 +38,7 @@
 	$template->getAdminCore()->addModal((new Modal('module_info', '', 'admin/modules/info'))->addButton([
 		(new Button())->setName('cancel')->setLabel(I18N::get('Close'))->addClass('btn-outline-secondary')->setDismissable()
 	]));
+
 	$upgradeable = [];
 	$list        = sprintf('%s%s%s%s%s', dirname(PATH), DS, 'temp', DS, 'update.list');
 	$module      = null;

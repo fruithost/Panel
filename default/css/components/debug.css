@@ -1,0 +1,19 @@
+/*
+ * fruithost | OpenSource Hosting
+ *
+ * @author Adrian Preuß
+ * @version 1.0.0
+ * @license MIT
+*/
+
+.xdebug-error, .xdebug-var-dump {
+    z-index: 9999999999;
+    position: relative;
+    overflow: visible !important;
+    background: #FEFEFE;
+    color: #000000;
+}
+
+[data-bs-theme="dark"] .xdebug-error, [data-bs-theme="dark"] .xdebug-var-dump {
+    background: #444444;
+}

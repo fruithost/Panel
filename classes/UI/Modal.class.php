@@ -72,7 +72,7 @@
 			
 			// @ToDo check if is template file
 			if(!empty($this->content)) {
-				$template->display($this->content, $this->variables, false, false);
+				$template->display($this->content, $this->variables, true, false);
 				return null;
 			}
 			

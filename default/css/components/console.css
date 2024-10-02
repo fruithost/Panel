@@ -1,0 +1,42 @@
+/*
+ * fruithost | OpenSource Hosting
+ *
+ * @author Adrian Preuß
+ * @version 1.0.0
+ * @license MIT
+*/
+
+div.terminal {
+    position: relative;
+    margin: 0 -1.5rem !important;
+    width: calc(100% + 3rem);
+    background: #282c34;
+    color: #dcdfe4;
+    box-shadow: inset 0px 2px 10px rgba(0, 0, 0, .25);
+}
+
+div.terminal div.output {
+    height: calc(100% - 35px);
+    overflow: auto;
+    padding: 15px;
+    line-height: 14px;
+    font-size: 12px;
+    font-family: 'Cascadia Mono';
+}
+
+div.terminal div.output span[data-color="0;32"] {
+    color: #9bc67c;
+}
+
+div.terminal div.output span[data-color="38;5;202"] {
+    color: #e5c07b;
+}
+
+div.terminal input[name="command"] {
+    height: 35px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 0;
+    padding: 10px;
+    color: #FFFFFF;
+}

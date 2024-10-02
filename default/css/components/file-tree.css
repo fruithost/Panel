@@ -1,0 +1,47 @@
+/*
+ * fruithost | OpenSource Hosting
+ *
+ * @author Adrian Preuß
+ * @version 1.0.0
+ * @license MIT
+*/
+.tree {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    padding: 0;
+    overflow: hidden;
+}
+
+.tree .list-group {
+    margin-bottom: 0;
+}
+
+.tree .list-group-item {
+    border-radius: 0;
+    border-width: 1px 0 0 0;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.tree [data-type="directory"]::before {
+    content: "\F3D9";
+    position: relative;
+    display: inline-block;
+    font-family: 'bootstrap-icons';
+    font-size: 20px;
+    color: #f3c36b;
+}
+
+.tree .list-group-item:hover {
+    background-color: #dee2e6;
+}
+
+.tree > .list-group-item:first-child {
+    border-top-width: 0;
+}

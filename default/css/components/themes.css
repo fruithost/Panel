@@ -1,0 +1,32 @@
+/*
+ * fruithost | OpenSource Hosting
+ *
+ * @author Adrian Preuß
+ * @version 1.0.0
+ * @license MIT
+*/
+
+.theme-switch {
+    z-index: 99999;
+    border-radius: 35%;
+    color: var(--bs-emphasis-color);
+    background-color: var(--bs-secondary-bg-subtle);
+}
+
+.theme-switch .bi {
+    vertical-align: -.125em;
+    fill: currentColor;
+}
+
+.theme-switch .btn-bd-primary:active,
+.theme-switch .btn-bd-primary:focus {
+    --bs-btn-active-border-color: transparent;
+}
+
+.theme-switch .bd-mode-toggle {
+    z-index: 1500;
+}
+
+.theme-switch .bd-mode-toggle .dropdown-menu .active .bi {
+    display: block !important;
+}

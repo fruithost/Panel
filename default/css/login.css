@@ -28,22 +28,3 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
-
-/* Theme Switch */
-.bi {
-    vertical-align: -.125em;
-    fill: currentColor;
-}
-
-.btn-bd-primary:active,
-.btn-bd-primary:focus {
-    --bs-btn-active-border-color: transparent;
-}
-
-.bd-mode-toggle {
-    z-index: 1500;
-}
-
-.bd-mode-toggle .dropdown-menu .active .bi {
-    display: block !important;
-}

@@ -51,11 +51,53 @@
 			$this->core->getHooks()->addAction('html_head', [ $this, 'favicon' ], 10, false);
 			$this->core->getHooks()->addAction('html_foot', [ $this, 'foot_modals' ], 10, false);
 			$this->core->getHooks()->addAction('html_foot', [ $this, 'foot_scripts' ], 10, false);
-			
-			$this->files->addStylesheet('bootstrap', $this->url('css/bootstrap/bootstrap.min.css'), '5.3.2');
-            $this->files->addStylesheet('bootstrap-icons', $this->url('fonts/bootstrap-icons/bootstrap-icons.css'), '1.11.1', [ 'bootstrap' ]);
-            $this->files->addStylesheet('cascadia-mono', $this->url('fonts/cascadia-mono/cascadia-mono.css'), '2111.01', [ 'bootstrap' ]);
-            $this->files->addJavascript('bootstrap', $this->url('js/bootstrap/bootstrap.bundle.min.js'), '5.3.2', [], TemplateFiles::FOOTER);
+
+            $this->getFiles()->addStylesheet('global', $this->url('css/global.css'), '1.0.0', [ 'bootstrap' ]);
+			$this->getFiles()->addStylesheet('bootstrap', $this->url('css/bootstrap/bootstrap.min.css'), '5.3.2');
+            $this->getFiles()->addStylesheet('bootstrap-icons', $this->url('fonts/bootstrap-icons/bootstrap-icons.css'), '1.11.1', [ 'bootstrap' ]);
+            $this->getFiles()->addStylesheet('cascadia-mono', $this->url('fonts/cascadia-mono/cascadia-mono.css'), '2111.01', [ 'bootstrap' ]);
+            $this->getFiles()->addJavascript('ajax', $this->url('js/ajax.js'), '1.0.0', [ 'bootstrap' ], TemplateFiles::FOOTER);
+            $this->getFiles()->addJavascript('bootstrap', $this->url('js/bootstrap/bootstrap.bundle.min.js'), '5.3.2', [], TemplateFiles::FOOTER);
+
+            if(defined('DEBUG' && DEBUG)) {
+                 $this->getFiles()->addStylesheet('debug', $this->url('css/components/debug.css'), '1.0.0', [ 'bootstrap' ]);
+            }
+
+            foreach([
+                'themes',
+                'tooltip',
+                'popover',
+                'ajax',
+                'modal'
+            ] AS $component) {
+                if(file_exists(sprintf('default/css/components/%s.css', $component))) {
+                    $this->getFiles()->addStylesheet(sprintf('component-%s', $component), $this->url(sprintf('css/components/%s.css', $component)), '1.0.0', [ 'bootstrap' ]);
+                }
+
+                if(file_exists(sprintf('default/js/components/%s.js', $component))) {
+                    $this->getFiles()->addJavascript(sprintf('component-%s', $component), $this->url(sprintf('js/components/%s.js', $component)), '1.0.0', [ 'bootstrap' ], TemplateFiles::FOOTER);
+                }
+            }
+
+            if(Auth::isLoggedIn()) {
+                $this->getFiles()->addJavascript('codemirror', $this->url('js/codemirror/build/bundle.min.js'), '6.0.0', [ 'bootstrap' ], TemplateFiles::FOOTER);
+
+                foreach([
+                    'confirmation',
+                    'loading',
+                    'module-info',
+                    'console',
+                    'file-tree'
+                ] AS $component) {
+                    if(file_exists(sprintf('default/css/components/%s.css', $component))) {
+                        $this->getFiles()->addStylesheet(sprintf('component-%s', $component), $this->url(sprintf('css/components/%s.css', $component)), '1.0.0', [ 'bootstrap' ]);
+                    }
+
+                    if(file_exists(sprintf('default/js/components/%s.js', $component))) {
+                        $this->getFiles()->addJavascript(sprintf('component-%s', $component), $this->url(sprintf('js/components/%s.js', $component)), '1.0.0', [ 'bootstrap' ], TemplateFiles::FOOTER);
+                    }
+                }
+            }
 
 			$this->navigation->addCategory('account', I18N::get('Account'));
 			$this->navigation->addCategory('database', I18N::get('Databases'));

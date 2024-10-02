@@ -6,18 +6,6 @@
  * @license MIT
 */
 
-/* DEBUG */
-.xdebug-error, .xdebug-var-dump {
-    z-index: 9999999999;
-    position: relative;
-    overflow: visible !important;
-    background: #FEFEFE;
-}
-
-[data-bs-theme="dark"] .xdebug-error, [data-bs-theme="dark"] .xdebug-var-dump {
-    background: #444444;
-}
-
 /* Animations & Effects */
 @keyframes blink {
     50% {
@@ -26,10 +14,6 @@
 }
 
 /* Globals */
-:root {
-
-}
-
 * {
     outline: none !important;
 }
@@ -37,10 +21,6 @@
 body {
     font-size: .875rem;
     max-height: 100vh;
-}
-
-main {
-    /*    height: calc(100vh - 50px);*/
 }
 
 .h-100-head {
@@ -130,11 +110,6 @@ main {
     text-transform: uppercase;
     cursor: pointer;
 }
-
-/*
-.sidebar .wrapper {
-    padding-bottom: 65px !important;
-}*/
 
 /* Topbar */
 .navbar-brand {
@@ -247,98 +222,6 @@ main iframe {
     overflow-x: hidden;
     overflow-y: auto;
 }
-
-/*
-body.sortable {
-	overflow: hidden;
-
-
-.offcanvas-body {
-	height: 100vh;
-
-
-
-header.page-header h1 {
-	font-size: 22px;
-	display: flex;
-}
-
-header.page-header a {
-	color: #444444;
-}
-
-header.page-header a.active {
-	color: var(--primary);
-}
-
-header.page-header i.bi {
-	color: #DDDDDD;
-}
-
-
-.form-control-dark {
-	color: #fff;
-	background-color: rgba(255, 255, 255, .1);
-	border-color: rgba(255, 255, 255, .1);
-}
-
-.form-control-dark:focus {
-	border-color: transparent;
-	box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
-}
-
-.alert.welcome li .bi {
-	font-size: 20px;
-	vertical-align: text-bottom;
-}
-
-.sortable-placeholder .card {
-	border: 4px dotted var(--gray);
-	text-align: center;
-	font-weight: bold;
-	color: var(--gray);
-	padding: 20px;
-}
-
-ul.sortable li .card-header .actions .bi {
-	font-size: 20px;
-    height: 26px;
-    line-height: 22px;
-    width: 26px;
-    background: var(--white);
-    margin: 0 5px 0 0;
-	padding: 2px;
-	color: var(--secondary);
-	border: 1px solid var(--secondary);
-}
-
-ul.sortable li .card-body {
-	padding: 0;
-}
-
-ul.sortable li ul.list-unstyled {
-	overflow-x: auto;
-	padding: 5px;
-}
-
-ul.sortable li ul.list-unstyled li a {
-	color: #333;
-}
-
-ul.sortable li ul.list-unstyled li a:hover {
-	color: var(--primary);
-}
-
-ul.sortable li ul.list-unstyled li a div.icon {
-	font-size: 22px;
-}
-
-ul.sortable li ul.list-unstyled li a div.label {
-	font-size: 12px;
-}
-
-
-*/
 
 /* Module Icons */
 img.module-icon {
@@ -538,42 +421,7 @@ tr:hover .module-badge {
     opacity: 1;
 }
 
-/* Bash Colors */
-div.terminal {
-    position: relative;
-    margin: 0 -1.5rem !important;
-    width: calc(100% + 3rem);
-    background: #282c34;
-    color: #dcdfe4;
-    box-shadow: inset 0px 2px 10px rgba(0, 0, 0, .25);
-}
 
-div.terminal div.output {
-    height: calc(100% - 35px);
-    overflow: auto;
-    padding: 15px;
-    line-height: 14px;
-    font-size: 12px;
-    font-family: 'Cascadia Mono';
-}
-
-div.terminal div.output span[data-color="0;32"] {
-    color: #9bc67c;
-}
-
-
-div.terminal div.output span[data-color="38;5;202"] {
-    color: #e5c07b;
-}
-
-div.terminal input[name="command"] {
-    height: 35px;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    border: 0;
-    padding: 10px;
-    color: #FFFFFF;
-}
 
 /* Logfile Viewer */
 .contentbar {
@@ -747,89 +595,4 @@ li.empty::before {
     flex: 1 1 auto;
     width: 1%;
     min-width: 0;
-}
-
-/* Tree */
-.tree {
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    padding: 0;
-    overflow: hidden;
-}
-
-.tree .list-group {
-    margin-bottom: 0;
-}
-
-.tree .list-group-item {
-    border-radius: 0;
-    border-width: 1px 0 0 0;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    cursor: pointer;
-}
-
-.tree [data-type="directory"]::before {
-    content: "\F3D9";
-    position: relative;
-    display: inline-block;
-    font-family: 'bootstrap-icons';
-    font-size: 20px;
-    color: #f3c36b;
-}
-
-.tree .list-group-item:hover {
-    background-color: #dee2e6;
-}
-
-.tree > .list-group-item:first-child {
-    border-top-width: 0;
-}
-
-/* Module Info */
-div#module_info .module-icon {
-    font-size: 100px;
-}
-
-div#module_info .carousel-caption {
-    right: 0;
-    bottom: 0;
-    left: 0;
-    color: #fff !important;
-    background: rgba(0, 0, 0, 0.5);
-}
-
-div#module_info div.markdown {
-    background: var(--bs-modal-footer-border-color);
-    padding: 20px;
-    font-size: 16px;
-}
-
-div#module_info div.markdown h1 {
-    font-size: 1.4rem;
-}
-
-div#module_info div.markdown h2 {
-    font-size: 1.3rem;
-}
-
-div#module_info div.markdown h3 {
-    font-size: 1.2rem;
-}
-
-div#module_info div.markdown h4 {
-    font-size: 1.1rem;
-}
-
-div#module_info div.markdown h5 {
-    font-size: 1.0rem;
-}
-
-div#module_info div.markdown h6 {
-    font-size: 0.9rem;
 }
