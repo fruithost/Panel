@@ -1,3 +1,14 @@
+> [!WARNING]
+> # **Announcement - development stop (missing donations)**
+> 
+> Since there is hardly any interest and support from the community, I am currently working on other projects.
+> 
+> The ![](https://raw.githubusercontent.com/fruithost/Documentation/main/Images/LOGO_TEXT.png) **fruithost** project will _not_ be discontinued, it will only be **further developed** at a later date if there is more interest.
+> 
+> Since I am covering all development costs myself and there are no donations, we are currently unable to offer a public hosting demo. I had purchased a HomeServer for local development to make it easier to continue working on the project and switch between different Linux distributions. To date, it has not been worthwhile to continue running it due to the lack of donations.
+> 
+> If you want to set up your own hosting service, we recommend that you do not use ![](https://raw.githubusercontent.com/fruithost/Documentation/main/Images/LOGO_TEXT.png) **fruithost** - the system is far from being suitable for productive use and has little chance of > succeeding in the existing market due to the lack of interest.
+
 # Panel
 ![](https://raw.githubusercontent.com/fruithost/Documentation/main/Images/LOGO_TEXT.png) **fruithost** is an OpenSource Hosting-Panel for some Linux Distributions (later maybe also for Windows). With ![](https://raw.githubusercontent.com/fruithost/Documentation/main/Images/LOGO_TEXT.png) **fruithost**  you get a real alternative to confixx/Plesk, ISPConfig, froxlor and other derivatives.
 
