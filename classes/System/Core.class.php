@@ -40,14 +40,18 @@
 			$this->init();
 		}
 		
-		public function init() : void {
-			Request::init();
+		public function initBindings() : void {
 			$this->cache    = new PropertiesCache();
 			$this->hooks    = new Hooks();
 			$this->modules  = new Modules($this, $this->modules_disabled);
 			$this->template = new Template($this);
 			$this->router   = new Router($this);
 			$this->admin    = new CoreAdmin($this, null);
+		}
+		
+		public function init() : void {
+			Request::init();
+			$this->initBindings();
 			Icon::init($this);
 			Update::bind($this)::check();
 			$this->getHooks()->runAction('core_pre_init');

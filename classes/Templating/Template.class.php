@@ -70,11 +70,11 @@
                 'ajax',
                 'modal'
             ] AS $component) {
-                if(file_exists(sprintf('default/css/components/%s.css', $component))) {
+                if(file_exists(sprintf('%s/default/css/components/%s.css', PATH, $component))) {
                     $this->getFiles()->addStylesheet(sprintf('component-%s', $component), $this->url(sprintf('css/components/%s.css', $component)), '1.0.0', [ 'bootstrap' ]);
                 }
 
-                if(file_exists(sprintf('default/js/components/%s.js', $component))) {
+                if(file_exists(sprintf('%s/default/js/components/%s.js', PATH, $component))) {
                     $this->getFiles()->addJavascript(sprintf('component-%s', $component), $this->url(sprintf('js/components/%s.js', $component)), '1.0.0', [ 'bootstrap' ], TemplateFiles::FOOTER);
                 }
             }
