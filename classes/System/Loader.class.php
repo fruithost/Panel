@@ -97,7 +97,7 @@
 			}
 	
 			if(!defined('UPDATE_ENDPOINT')) {
-				define('UPDATE_ENDPOINT', 'update.fruithost.de');
+				define('UPDATE_ENDPOINT', 'update.fruithost.net');
 			}
 			
 			spl_autoload_register([ $this, 'load' ]);
